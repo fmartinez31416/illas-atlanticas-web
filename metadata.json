@@ -1,0 +1,6 @@
+{
+  "name": "Illas Atlánticas Ático",
+  "description": "Ático vacacional de lujo en Aguiño (Ribeira, Galicia) con terraza panorámica de 48 m² frente a la Isla de Sálvora. Reserva directa garantizada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

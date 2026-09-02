@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #09090b; /* zinc-950 */
+    color: #f4f4f5; /* zinc-100 */
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  .font-brand {
+    font-family: var(--font-display);
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
+
+/* Luxury glassmorphism utilities matching Elegant Dark */
+.glass-panel {
+  background: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+}
+
+.glass-panel-subtle {
+  background: rgba(24, 24, 27, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(63, 63, 70, 0.4);
+}
+
+.glass-dropdown {
+  background: rgba(9, 9, 11, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+/* Elegant Dark Ambient glows */
+.amber-glow {
+  box-shadow: 0 0 40px -5px rgba(217, 119, 6, 0.2);
+}
+
+.amber-border-glow:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.2);
+}
+
