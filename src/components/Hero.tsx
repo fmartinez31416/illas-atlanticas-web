@@ -12,10 +12,10 @@ export function Hero({ onOpenBooking }: HeroProps) {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="/01_hero_portada.webp"
-          alt="Vistas a la Isla de Sálvora y el Atlántico desde Ático Illas Atlánticas"
+          alt="Vistas a las islas de Sálvora y Ons sobre la Ría de Arousa desde Ático Illas Atlánticas"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Capa de contraste para legibilidad */}
+        {/* Capa de contraste suave para legibilidad */}
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/30"></div>
         <div className="absolute inset-0 bg-black/25"></div>
       </div>
@@ -23,12 +23,12 @@ export function Hero({ onOpenBooking }: HeroProps) {
       {/* Contenido Principal */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
-        {/* Ubicación */}
+        {/* Entorno Geográfico Exacto */}
         <span className="text-amber-400 uppercase tracking-[0.4em] text-xs font-bold mb-4 block drop-shadow-md">
-          Aguiño · Ribeira · Frente al Parque Nacional de Sálvora
+          Aguiño · Ría de Arousa · Vistas a Sálvora y Ons
         </span>
 
-        {/* Título */}
+        {/* Título Principal */}
         <h1
           id="hero-main-title"
           className="text-4xl sm:text-6xl md:text-7xl font-serif text-white tracking-tight leading-[1.08] max-w-4xl mb-6 drop-shadow-lg"
@@ -37,33 +37,33 @@ export function Hero({ onOpenBooking }: HeroProps) {
           <span className="italic font-light text-amber-200 font-serif">a tus pies.</span>
         </h1>
 
-        {/* Subtítulo realista */}
+        {/* Subtítulo riguroso y atractivo */}
         <div className="max-w-3xl mb-8">
           <p
             id="hero-subtitle"
             className="text-base sm:text-lg md:text-xl text-zinc-100 font-light leading-relaxed border-l-2 border-amber-400/80 pl-6 text-left drop-shadow"
           >
-            Ático singular en Aguiño con <span className="text-white font-semibold">48 m² de terraza panorámica</span>, 3 dormitorios dobles y vistas abiertas al océano y a la <span className="text-amber-200 font-semibold">Isla de Sálvora</span>.
+            Amplitud, luz y horizonte. Un ático exclusivo de <span className="text-white font-semibold">230 m²</span> con <span className="text-white font-semibold">48 m² de terraza panorámica</span>, 3 dormitorios (dos de ellos en suite), 3 baños completos y el privilegio de contemplar <span className="text-amber-200 font-semibold">Sálvora y Ons</span> sobre la ría.
           </p>
         </div>
 
-        {/* Especificaciones reales del ático */}
+        {/* Los 4 pilares de valor real */}
         <div className="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3.5 mb-10 text-xs sm:text-sm text-zinc-200">
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/70 border border-zinc-700/60 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/75 border border-zinc-700/70 backdrop-blur-sm shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            <span className="uppercase tracking-wider text-[11px] font-medium">Terraza 48 m²</span>
+            <span className="uppercase tracking-wider text-[11px] font-medium">230 m² de Espacio</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/70 border border-zinc-700/60 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/75 border border-zinc-700/70 backdrop-blur-sm shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            <span className="uppercase tracking-wider text-[11px] font-medium">3 Dormitorios Dobles</span>
+            <span className="uppercase tracking-wider text-[11px] font-medium">Terraza Panorámica 48 m²</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/70 border border-zinc-700/60 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/75 border border-zinc-700/70 backdrop-blur-sm shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            <span className="uppercase tracking-wider text-[11px] font-medium">Salón 75" TV & Chimenea</span>
+            <span className="uppercase tracking-wider text-[11px] font-medium">2 Suites + 1 Habitación</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/70 border border-zinc-700/60 backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-sm bg-zinc-950/75 border border-zinc-700/70 backdrop-blur-sm shadow-md">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            <span className="uppercase tracking-wider text-[11px] font-medium">Garaje Privado & Ascensor</span>
+            <span className="uppercase tracking-wider text-[11px] font-medium">3 Baños Completos</span>
           </div>
         </div>
 
