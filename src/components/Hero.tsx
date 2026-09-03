@@ -89,18 +89,14 @@ export function Hero({ onOpenBooking, onOpenVirtualTour }: HeroProps) {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             videoLoaded ? 'opacity-40 grayscale-[15%]' : 'opacity-30'
           }`}
-          poster="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85"
+          poster="/01_hero_portada.webp"
         >
           <source src="/videos/hero_dia_mar.mp4" type="video/mp4" />
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-calm-sea-water-in-sunset-41716-large.mp4"
-            type="video/mp4"
-          />
         </video>
 
         {/* Fallback image layer behind video */}
         <img
-          src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=85"
+          src="/01_hero_portada.webp"
           alt="Vistas al Atlántico y Sálvora desde Ático Illas Atlánticas"
           className="absolute inset-0 w-full h-full object-cover -z-10 brightness-[0.4] grayscale-[15%]"
           referrerPolicy="no-referrer"
