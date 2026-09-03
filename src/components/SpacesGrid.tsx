@@ -1,7 +1,121 @@
 import { useState } from 'react';
-import { SPACES_DATA } from '../data/spacesData';
 import { Space } from '../types';
 import { Maximize2, Sparkles, Check, ChevronRight, X, ArrowLeft, ArrowRight, Layers, Eye } from 'lucide-react';
+
+const SPACES_DATA: Space[] = [
+  {
+    id: 'terraza',
+    name: 'Terraza Panorámica',
+    subtitle: 'Vistas al Atlántico y Sálvora',
+    tag: 'Exterior',
+    area: '48 m²',
+    description: 'Impresionante terraza privada de 48 m² con vistas abiertas hacia el Parque Nacional de las Islas Atlánticas y la ría. Orientación privilegiada para disfrutar de puestas de sol inolvidables.',
+    coverImage: '/01_hero_portada.webp',
+    gallery: ['/01_hero_portada.webp'],
+    highlights: ['Vistas panorámicas directas a la Isla de Sálvora', 'Mobiliario exterior de relax', 'Conexión fluida con el salón'],
+    specs: [
+      { label: 'Superficie', value: '48 m²' },
+      { label: 'Orientación', value: 'Suroeste / Océano' },
+      { label: 'Ambiente', value: 'Zona lounge exterior' }
+    ]
+  },
+  {
+    id: 'salon',
+    name: 'Salón & Comedor',
+    subtitle: 'Chimenea, TV 75" y Luz Natural',
+    tag: 'Zona Común',
+    area: '35 m²',
+    description: 'Espacio principal bañado por la luz del Atlántico. Cuenta con chimenea de diseño, pantalla Smart TV de 75 pulgadas, amplio sofá y mesa de comedor integrada.',
+    coverImage: '/02b_salon_chimenea_tv.webp',
+    gallery: ['/02b_salon_chimenea_tv.webp', '/02c_comedor.webp', '/02d_salon_tv_detalle.webp'],
+    highlights: ['Smart TV 75" de última generación', 'Chimenea de ambiente cálido', 'Comedor para 6 comensales'],
+    specs: [
+      { label: 'Multimedia', value: 'Smart TV 75"' },
+      { label: 'Climatización', value: 'Chimenea y confort térmico' },
+      { label: 'Mobiliario', value: 'Sofá amplio y mesa noble' }
+    ]
+  },
+  {
+    id: 'cocina',
+    name: 'Cocina Abierta',
+    subtitle: 'Equipamiento Integral & Gastronomía',
+    tag: 'Cocina',
+    area: '16 m²',
+    description: 'Cocina totalmente equipada con electrodomésticos modernos, encimeras resistentes y menaje de calidad para cocinar los mejores mariscos y pescados de la ría.',
+    coverImage: '/03_cocina_abierta.webp',
+    gallery: ['/03_cocina_abierta.webp'],
+    highlights: ['Electrodomésticos completos integrados', 'Vajilla y menaje de cocina completo', 'Diseño abierto hacia el salón'],
+    specs: [
+      { label: 'Equipamiento', value: 'Placa, horno, microondas y lavavajillas' },
+      { label: 'Cafetera', value: 'Cafetera eléctrica e italiana' },
+      { label: 'Concepto', value: 'Abierto y funcional' }
+    ]
+  },
+  {
+    id: 'master-suite',
+    name: 'Master Suite Zenital',
+    subtitle: 'Luz Natural y Cama King Size',
+    tag: 'Dormitorio Principal',
+    area: '22 m²',
+    description: 'Dormitorio principal con cama king size, iluminación cenital para contemplar el cielo gallego y cabecero de diseño exclusivo con iluminación ambiental.',
+    coverImage: '/04_master_suite.webp',
+    gallery: ['/04_master_suite.webp'],
+    highlights: ['Cama de 180x200 cm de máximo confort', 'Ventanal cenital con control de luz', 'Armarios empotrados de gran capacidad'],
+    specs: [
+      { label: 'Cama', value: 'King Size (180x200 cm)' },
+      { label: 'Iluminación', value: 'Luz cenital y LED indirecta' },
+      { label: 'Baño', value: 'Baño en suite' }
+    ]
+  },
+  {
+    id: 'habitacion-twin',
+    name: 'Segunda Habitación',
+    subtitle: 'Confort y Descanso Independiente',
+    tag: 'Dormitorio',
+    area: '14 m²',
+    description: 'Dormitorio doble con dos camas individuales de alto confort, ideal para familia o acompañantes en un ambiente tranquilo y silencioso.',
+    coverImage: '/06_habitacion_twin.webp',
+    gallery: ['/06_habitacion_twin.webp'],
+    highlights: ['Dos camas individuales confortables', 'Espacio de almacenaje amplio', 'Aislamiento térmico y acústico'],
+    specs: [
+      { label: 'Configuración', value: '2 Camas individuales' },
+      { label: 'Ventilación', value: 'Exterior y luz natural' },
+      { label: 'Textiles', value: 'Lencería de algodón de alta calidad' }
+    ]
+  },
+  {
+    id: 'bano-hidromasaje',
+    name: 'Baño con Hidromasaje',
+    subtitle: 'Relajación y Acabados Nobles',
+    tag: 'Bienestar',
+    area: '10 m²',
+    description: 'Baño completo diseñado para el relax, dotado de bañera de hidromasaje, encimeras con acabado efecto mármol y grifería de alta gama.',
+    coverImage: '/07_bano_hidromasaje.webp',
+    gallery: ['/07_bano_hidromasaje.webp'],
+    highlights: ['Bañera de hidromasaje privada', 'Toallero calefactado', 'Secador y juego de toallas de baño'],
+    specs: [
+      { label: 'Bañera', value: 'Hidromasaje' },
+      { label: 'Acabados', value: 'Efecto mármol' },
+      { label: 'Equipamiento', value: 'Espejo retroiluminado' }
+    ]
+  },
+  {
+    id: 'workspace',
+    name: 'Zona Despacho / Workspace',
+    subtitle: 'Teletrabajo Cómodo y Conectado',
+    tag: 'Trabajo Remoto',
+    area: '8 m²',
+    description: 'Espacio dedicado para teletrabajar con luz natural directa, tomas de corriente y conexión Wi-Fi de alta velocidad para nómadas digitales.',
+    coverImage: '/08_despacho_workspace.webp',
+    gallery: ['/08_despacho_workspace.webp'],
+    highlights: ['Escritorio de trabajo con iluminación dedicada', 'Conexión a internet estable y rápida', 'Ambiente silencioso'],
+    specs: [
+      { label: 'Conectividad', value: 'Fibra Wi-Fi de alta velocidad' },
+      { label: 'Mobiliario', value: 'Mesa de despacho y asiento cómodo' },
+      { label: 'Luz', value: 'Luz natural de día' }
+    ]
+  }
+];
 
 interface SpacesGridProps {
   onSelectSpaceForTour?: (spaceId: string) => void;
@@ -32,11 +146,11 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
 
   return (
     <section id="espacios" className="py-24 bg-zinc-950 relative border-t border-zinc-800/50">
-      {/* Subtle ambient light gradient in background */}
+      {/* Sombra ambiental de fondo */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-96 bg-amber-600/5 blur-[140px] pointer-events-none -z-10 rounded-full"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Cabecera de Sección */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-amber-500 uppercase tracking-[0.4em] text-xs font-bold mb-3 block">
             Arquitectura & Luz Atlántica
@@ -45,11 +159,11 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
             Espacios concebidos para el <span className="italic font-light text-amber-100">deleite y la calma</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Cada estancia ha sido proyectada para enmarcar la luz atlántica de Aguiño, integrando materiales nobles, confort domótico y vistas directas a la ría.
+            Cada estancia ha sido proyectada para enmarcar la luz atlántica de Aguiño, integrando materiales nobles, confort y vistas directas a la ría.
           </p>
         </div>
 
-        {/* Spaces Grid */}
+        {/* Cuadrícula de Espacios */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {spaces.map((space) => (
             <div
@@ -58,17 +172,16 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
               onClick={() => openSpaceDetails(space)}
               className="group cursor-pointer rounded-sm overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between shadow-2xl shadow-black/80"
             >
-              {/* Image Container with overlay */}
+              {/* Imagen con capa oscura suave */}
               <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
                 <img
                   src={space.coverImage}
                   alt={space.name}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[10%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
 
-                {/* Badge tags */}
+                {/* Etiquetas de tipo y superficie */}
                 <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
                   <span className="px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase bg-zinc-950/85 text-amber-400 border border-amber-500/30 backdrop-blur-md">
                     {space.tag}
@@ -80,7 +193,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                   )}
                 </div>
 
-                {/* Hover Quick Action */}
+                {/* Icono de zoom al pasar el ratón */}
                 <div className="absolute top-3.5 right-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <span className="w-8 h-8 rounded-sm bg-amber-500 text-zinc-950 flex items-center justify-center shadow-lg font-bold">
                     <Maximize2 className="w-4 h-4" />
@@ -88,7 +201,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                 </div>
               </div>
 
-              {/* Card Details */}
+              {/* Información de la estancia */}
               <div className="p-6 flex flex-col flex-grow justify-between">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-serif text-zinc-100 group-hover:text-amber-100 transition-colors mb-1.5">
@@ -102,7 +215,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                   </p>
                 </div>
 
-                {/* Specs Pill Summary */}
+                {/* Resumen inferior */}
                 <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-300">
                   <span className="text-zinc-400 flex items-center gap-1.5 font-light text-[11px]">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
@@ -118,14 +231,14 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
           ))}
         </div>
 
-        {/* Global Penthouse Specs Banner */}
+        {/* Banner General del Ático */}
         <div className="mt-14 p-6 sm:p-8 rounded-sm bg-zinc-900/60 border border-zinc-800/80 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="flex flex-col text-center lg:text-left">
             <h4 className="text-lg sm:text-xl font-serif text-zinc-100">
               Distribución integral del ático: <span className="text-amber-200 font-serif italic">140 m² de superficie total</span>
             </h4>
             <p className="text-zinc-400 text-xs sm:text-sm font-light mt-1">
-              Planta ático con ascensor directo, terraza 48 m², 2 dormitorios, 2 baños completos, salón con chimenea y plaza de garaje con cargador VE.
+              Planta ático con ascensor directo, terraza panorámica de 48 m², 2 dormitorios, 2 baños completos, salón con chimenea y plaza de garaje con cargador VE.
             </p>
           </div>
 
@@ -146,7 +259,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
         </div>
       </div>
 
-      {/* Modal Deep-Dive for Space Details */}
+      {/* Modal Detallado con Galería Carrusel */}
       {activeSpaceModal && (
         <div
           id="space-detail-modal"
@@ -157,7 +270,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
             className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-sm shadow-2xl p-6 sm:p-8 text-zinc-100"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Botón Cerrar */}
             <button
               onClick={() => setActiveSpaceModal(null)}
               className="absolute top-4 right-4 p-2 rounded-sm bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-colors z-20"
@@ -166,9 +279,8 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Content */}
+            {/* Contenido del Modal */}
             <div className="space-y-6">
-              {/* Header */}
               <div>
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-amber-600/10 border border-amber-600/30 text-amber-400 text-[10px] tracking-widest uppercase font-bold mb-2">
                   <span>{activeSpaceModal.tag}</span>
@@ -182,12 +294,11 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                 </p>
               </div>
 
-              {/* Photo Gallery Carousel */}
+              {/* Carrusel de Fotos */}
               <div className="relative aspect-[16/9] rounded-sm overflow-hidden bg-zinc-950 border border-zinc-800">
                 <img
                   src={activeSpaceModal.gallery[modalImageIndex] || activeSpaceModal.coverImage}
                   alt={activeSpaceModal.name}
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
                 
@@ -214,12 +325,12 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                 )}
               </div>
 
-              {/* Description */}
+              {/* Descripción */}
               <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
                 {activeSpaceModal.description}
               </p>
 
-              {/* Two Column Highlights & Features */}
+              {/* Puntos destacados y Ficha técnica */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-zinc-800">
                 <div>
                   <h4 className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-3">
@@ -250,7 +361,7 @@ export function SpacesGrid({ onSelectSpaceForTour, onOpenBooking }: SpacesGridPr
                 </div>
               </div>
 
-              {/* Modal Bottom CTA */}
+              {/* Botones inferiores del modal */}
               <div className="pt-4 flex flex-col sm:flex-row justify-end gap-3 border-t border-zinc-800">
                 <button
                   onClick={() => setActiveSpaceModal(null)}
