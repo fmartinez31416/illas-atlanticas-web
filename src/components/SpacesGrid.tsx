@@ -9,10 +9,14 @@ const SPACES_DATA: Space[] = [
     subtitle: 'Vistas a la Ría, Sálvora y Ons',
     tag: 'Exterior',
     area: '48 m²',
-    description: 'Amplia terraza privada de 48 m² orientada al nordeste con vistas abiertas hacia la Ría de Arousa y las islas de Sálvora y Ons. Espacio ideal para desayunar al aire libre y relajarse contemplando el paso de los barcos.',
+    description: 'Amplia terraza privada de 48 m² orientada al nordeste con vistas abiertas hacia la Ría de Arousa y las islas de Sálvora y Ons. Un mirador privilegiado para desayunar al aire libre o descansar contemplando el movimiento del puerto.',
     coverImage: '/01_hero_portada.webp',
     gallery: ['/01_hero_portada.webp'],
-    highlights: ['Vistas panorámicas directas a Sálvora y Ons', 'Mobiliario exterior de descanso', 'Salida directa desde el salón'],
+    highlights: [
+      'Vistas panorámicas directas a Sálvora y Ons',
+      'Mobiliario exterior para comer y descansar',
+      'Salida directa desde el salón'
+    ],
     specs: [
       { label: 'Superficie', value: '48 m²' },
       { label: 'Orientación', value: 'Nordeste' },
@@ -25,45 +29,60 @@ const SPACES_DATA: Space[] = [
     subtitle: 'Chimenea, Climatización y Smart TV 75"',
     tag: 'Zona Común',
     area: '38 m²',
-    description: 'Zona de estar amplia y luminosa con vistas al mar. Equipada con chimenea, climatización mediante splits de frío/calor, pantalla Smart TV de 75 pulgadas y mesa noble de comedor.',
+    description: 'Estancia luminosa y espaciosa con vistas directas al mar. Dispone de chimenea de leña, climatización por splits frío/calor, televisión Smart TV de 75 pulgadas y zona de comedor independiente para 6 personas.',
     coverImage: '/02b_salon_chimenea_tv.webp',
     gallery: ['/02b_salon_chimenea_tv.webp', '/02c_comedor.webp', '/02d_salon_tv_detalle.webp'],
-    highlights: ['Smart TV de 75"', 'Chimenea de ambiente cálido', 'Splits de climatización frío / calor', 'Mesa de comedor para 6 comensales'],
+    highlights: [
+      'Smart TV de 75 pulgadas',
+      'Chimenea de leña',
+      'Climatización frío / calor por splits',
+      'Mesa de comedor para 6 comensales'
+    ],
     specs: [
       { label: 'Climatización', value: 'Splits frío/calor + chimenea' },
       { label: 'Multimedia', value: 'Smart TV 75"' },
-      { label: 'Espacio', value: 'Salón y comedor integrados' }
+      { label: 'Capacidad', value: 'Comedor para 6 plazas' }
     ]
   },
   {
     id: 'cocina',
     name: 'Cocina & Lavandería',
-    subtitle: 'Equipamiento Integral y Menaje Completo',
+    subtitle: 'Equipamiento Integral y Variedad de Cafeteras',
     tag: 'Cocina',
     area: '16 m²',
-    description: 'Cocina espaciosa totalmente equipada para largas estancias. Cuenta con lavadora integrada, menaje completo y tres tipos de cafetera para todos los gustos.',
+    description: 'Cocina amplia y totalmente equipada tanto para estancias cortas como largas. Dispone de lavadora, electrodomésticos completos y tres modalidades de cafetera para cubrir cualquier preferencia.',
     coverImage: '/03_cocina_abierta.webp',
     gallery: ['/03_cocina_abierta.webp'],
-    highlights: ['Lavadora integrada en cocina', 'Cafetera Dolce Gusto, de filtro e italiana', 'Placa, horno, microondas y lavavajillas', 'Menaje completo de menaje y cristalería'],
+    highlights: [
+      'Lavadora integrada',
+      '3 cafeteras: Dolce Gusto (cápsulas), filtro e italiana',
+      'Placa, horno, microondas y lavavajillas',
+      'Vajilla, cubertería, cristalería y batería de cocina'
+    ],
     specs: [
       { label: 'Lavandería', value: 'Lavadora integrada' },
-      { label: 'Cafeteras', value: 'Dolce Gusto, filtro e italiana' },
-      { label: 'Electrodomésticos', value: 'Totalmente equipada' }
+      { label: 'Cafeteras', value: 'Dolce Gusto, goteo e italiana' },
+      { label: 'Electrodomésticos', value: 'Placa, horno, lavavajillas, microondas' }
     ]
   },
   {
     id: 'master-suite',
     name: 'Master Suite',
-    subtitle: 'Cama King Size y Baño Privado en Suite',
+    subtitle: 'Cama King Size y Baño en Suite',
     tag: 'Dormitorio 1',
     area: '24 m²',
-    description: 'Dormitorio principal con cama de matrimonio grande, armarios empotrados y cuarto de baño privado completo integrado dentro de la propia estancia.',
+    description: 'Dormitorio principal con cama de matrimonio grande (King Size), armarios empotrados de gran fondo y cuarto de baño completo integrado de forma privada dentro de la habitación.',
     coverImage: '/04_master_suite.webp',
     gallery: ['/04_master_suite.webp'],
-    highlights: ['Cama de matrimonio de gran tamaño', 'Baño privado completo en suite', 'Armarios empotrados y máxima tranquilidad'],
+    highlights: [
+      'Cama de matrimonio de gran formato (King Size)',
+      'Baño completo privado dentro del dormitorio',
+      'Amplios armarios empotrados',
+      'Ambiente silencioso y luz natural'
+    ],
     specs: [
-      { label: 'Tipo de Cama', value: 'Cama de matrimonio' },
-      { label: 'Baño', value: 'En suite (dentro de la habitación)' },
+      { label: 'Cama', value: 'King Size (matrimonio grande)' },
+      { label: 'Baño', value: 'Privado en suite' },
       { label: 'Almacenaje', value: 'Armarios empotrados' }
     ]
   },
@@ -73,46 +92,61 @@ const SPACES_DATA: Space[] = [
     subtitle: 'Cama de Matrimonio y Baño en Suite',
     tag: 'Dormitorio 2',
     area: '18 m²',
-    description: 'Segundo dormitorio doble con cama de matrimonio y baño completo incorporado. Ofrece privacidad e independencia total para una segunda pareja o acompañantes.',
+    description: 'Segundo dormitorio doble dotado de cama matrimonial y su propio cuarto de baño privado completo. Proporciona total intimidad e independencia para una segunda pareja o acompañantes.',
     coverImage: '/05_habitacion_doble.webp',
     gallery: ['/05_habitacion_doble.webp'],
-    highlights: ['Cama de matrimonio confortable', 'Segundo baño completo privado en suite', 'Luz natural y ambiente silencioso'],
+    highlights: [
+      'Cama de matrimonio confortable',
+      'Baño completo privado en suite',
+      'Luz natural exterior',
+      'Ropa de cama y toallas de algodón'
+    ],
     specs: [
-      { label: 'Tipo de Cama', value: 'Cama de matrimonio' },
-      { label: 'Baño', value: 'En suite (privado)' },
-      { label: 'Luz', value: 'Luz natural directa' }
+      { label: 'Cama', value: 'Cama de matrimonio' },
+      { label: 'Baño', value: 'Privado en suite' },
+      { label: 'Iluminación', value: 'Luz natural exterior' }
     ]
   },
   {
     id: 'habitacion-twin',
     name: 'Tercer Dormitorio',
-    subtitle: '2 Camas Individuales y Vistas Laterales al Mar',
+    subtitle: '2 Camas Individuales y Vistas a la Ría',
     tag: 'Dormitorio 3',
     area: '15 m²',
-    description: 'Dormitorio con dos camas individuales de 90 x 190 cm (adaptables juntas o separadas). Dispone de luz natural exterior y vistas laterales al mar.',
+    description: 'Dormitorio con dos camas individuales de 90 x 190 cm que pueden disponerse juntas o separadas. Cuenta con luz natural exterior y vistas laterales al mar.',
     coverImage: '/06_habitacion_twin.webp',
     gallery: ['/06_habitacion_twin.webp'],
-    highlights: ['Dos camas de 90 x 190 cm (juntas o separadas)', 'Luz natural directa', 'Vistas laterales al mar'],
+    highlights: [
+      '2 camas de 90 x 190 cm (adaptables juntas o separadas)',
+      'Vistas laterales al mar y a la ría',
+      'Luz natural exterior',
+      'Uso asignado al tercer baño completo'
+    ],
     specs: [
       { label: 'Camas', value: '2 individuales (90x190 cm)' },
-      { label: 'Vistas', value: 'Laterales al mar' },
-      { label: 'Baño asignado', value: 'Tercer baño completo independiente' }
+      { label: 'Vistas', value: 'Laterales a la ría' },
+      { label: 'Baño correspondiente', value: 'Tercer baño completo independiente' }
     ]
   },
   {
     id: 'despacho-workspace',
     name: 'Despacho & Zona de Trabajo',
-    subtitle: 'Luz Natural y Vistas Laterales al Mar',
+    subtitle: 'Escritorio Cómodo y Vistas Laterales al Mar',
     tag: 'Teletrabajo',
     area: '10 m²',
-    description: 'Estancia independiente concebida para concentrarse o teletrabajar con comodidad. Equipada con mesa de escritorio, luz natural, vistas laterales al mar y Wi-Fi de alta velocidad.',
+    description: 'Estancia independiente pensada para leer, concentrarse o teletrabajar sin interrupciones. Dispone de amplia mesa de trabajo, luz natural, vistas laterales a la ría y conexión Wi-Fi de alta velocidad.',
     coverImage: '/08_despacho_workspace.webp',
     gallery: ['/08_despacho_workspace.webp'],
-    highlights: ['Mesa de trabajo y asiento de escritorio', 'Luz natural y vistas laterales al mar', 'Conexión Wi-Fi de alta velocidad'],
+    highlights: [
+      'Mesa de escritorio con espacio de trabajo',
+      'Vistas laterales al mar y luz natural directa',
+      'Conexión Wi-Fi de alta velocidad',
+      'Entorno aislado y silencioso'
+    ],
     specs: [
-      { label: 'Conectividad', value: 'Wi-Fi de alta velocidad' },
-      { label: 'Ambiente', value: 'Espacio silencioso e independiente' },
-      { label: 'Vistas', value: 'Laterales al mar' }
+      { label: 'Conectividad', value: 'Wi-Fi alta velocidad' },
+      { label: 'Uso', value: 'Despacho de trabajo / lectura' },
+      { label: 'Vistas', value: 'Laterales a la ría' }
     ]
   },
   {
@@ -121,14 +155,19 @@ const SPACES_DATA: Space[] = [
     subtitle: 'Bañera de Hidromasaje y Dos Baños en Suite',
     tag: 'Baños',
     area: '18 m²',
-    description: 'El ático dispone de 3 cuartos de baño completos: dos de ellos integrados directamente en sus respectivos dormitorios (en suite), y un tercer baño completo independiente con bañera de hidromasaje.',
+    description: 'El ático cuenta con tres cuartos de baño completos: dos de ellos incorporados de forma privada en sus respectivos dormitorios (en suite), y un tercer baño completo independiente con bañera de hidromasaje.',
     coverImage: '/07_bano_hidromasaje.webp',
     gallery: ['/07_bano_hidromasaje.webp'],
-    highlights: ['Bañera de hidromasaje para momentos de relax', '2 baños completos privados en suite', '1 baño completo común independiente', 'Secador de pelo y juegos de toallas'],
+    highlights: [
+      'Bañera de hidromasaje en el baño común',
+      '2 cuartos de baño en suite dentro de los dormitorios',
+      '1 cuarto de baño completo exterior independiente',
+      'Secador de pelo y toallas incluidas en cada baño'
+    ],
     specs: [
-      { label: 'Total Baños', value: '3 baños completos' },
-      { label: 'Equipamiento', value: 'Bañera de hidromasaje y duchas' },
-      { label: 'Distribución', value: '2 en suite + 1 común' }
+      { label: 'Total baños', value: '3 cuartos de baño completos' },
+      { label: 'Bienestar', value: 'Bañera de hidromasaje' },
+      { label: 'Distribución', value: '2 privados en suite + 1 común' }
     ]
   }
 ];
@@ -172,7 +211,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
             230 m² concebidos para el <span className="italic font-light text-amber-100">descanso y la amplitud</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Un ático pensado para convivir con comodidad y privacidad: 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 48 m² de terraza frente a Sálvora y Ons.
+            Un ático proyectado para convivir con total comodidad: 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho de trabajo y 48 m² de terraza frente a Sálvora y Ons.
           </p>
         </div>
 
