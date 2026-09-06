@@ -1,4 +1,4 @@
-import { ShieldCheck, ChevronDown, ArrowRight, MessageCircle } from 'lucide-react';
+import { ShieldCheck, ChevronDown, ArrowRight, MessageCircle, Star } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -51,7 +51,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* Los 4 pilares de valor real */}
-        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-12 text-xs text-stone-200">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">230 m² Construidos</span>
           </div>
@@ -89,15 +89,35 @@ export function Hero({ onOpenBooking }: HeroProps) {
           </a>
         </div>
 
-        {/* Trato directo */}
-        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-stone-300/90 font-light">
-          <ShieldCheck className="w-4 h-4 text-stone-300" />
-          <span>Trato directo con el anfitrión · Sin comisiones de intermediarios</span>
+        {/* Sello de Calificación Booking y Trato Directo */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-stone-300/90 font-light">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/15">
+            <div className="flex items-center gap-1 text-white font-medium">
+              <Star className="w-3.5 h-3.5 fill-white text-white" />
+              <span>9,5 / 10</span>
+            </div>
+            <span className="text-stone-300">·</span>
+            <span className="text-stone-200">54 opiniones en Booking.com</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-stone-300" />
+            <span>Trato directo con el anfitrión · Sin comisiones</span>
+          </div>
         </div>
 
       </div>
 
-      {/* Licencia Oficial Xunta de Galicia */}
+      {/* Nota Oficial Booking (Esquina Inferior Izquierda) */}
+      <div className="absolute left-6 sm:left-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-start gap-0.5 pointer-events-none z-10 text-left">
+        <div className="flex items-center gap-1.5">
+          <span className="px-2 py-0.5 bg-white text-stone-900 font-serif font-semibold text-xs shadow-sm">9,5</span>
+          <span className="text-xs font-serif italic text-stone-200">Excepcional</span>
+        </div>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">54 opiniones en Booking.com</span>
+      </div>
+
+      {/* Licencia Oficial Xunta de Galicia (Esquina Inferior Derecha) */}
       <div className="absolute right-6 sm:right-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-end gap-0.5 pointer-events-none z-10 text-right">
         <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">Vivienda de Uso Turístico</span>
         <span className="text-xs font-serif italic text-stone-200">VUT-CO-007656</span>
