@@ -1,194 +1,195 @@
 import { useState } from 'react';
 import { Space } from '../types';
-import { Maximize2, Sparkles, Check, ChevronRight, X, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Maximize2, Check, ChevronRight, X, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const SPACES_DATA: Space[] = [
   {
     id: 'terraza',
     name: 'Terraza Panorámica',
-    subtitle: 'Vistas a la Ría, Sálvora y Ons',
+    subtitle: 'Vistas al Parque Nacional de Sálvora y Ons',
     tag: 'Exterior',
     area: '48 m²',
-    description: 'Amplia terraza privada de 48 m² orientada al nordeste con vistas abiertas hacia la Ría de Arousa y las islas de Sálvora y Ons. Un mirador despejado para desayunar al aire libre o descansar contemplando la entrada de los barcos.',
+    description: '48 m² de mirador privado abierto al nordeste hacia la boca de la Ría de Arousa y las islas del Parque Nacional. Un remanso de paz con mobiliario de descanso donde desayunar con la salida del sol o contemplar en calma el paso silencioso de los barcos.',
     coverImage: '/01_hero_portada.webp',
     gallery: ['/01_hero_portada.webp'],
     highlights: [
-      'Vistas panorámicas directas a Sálvora y Ons',
-      'Mobiliario exterior para comer y descansar',
-      'Salida directa desde el salón'
+      'Horizonte despejado hacia Sálvora, Ons y la ría',
+      'Mobiliario exterior para comedor al aire libre y descanso',
+      'Acceso directo y fluido desde el salón',
+      'Orientación nordeste con suave brisa marina'
     ],
     specs: [
-      { label: 'Superficie', value: '48 m²' },
+      { label: 'Espacio', value: '48 m² privados' },
       { label: 'Orientación', value: 'Nordeste' },
-      { label: 'Vistas', value: 'Ría de Arousa, Sálvora y Ons' }
+      { label: 'Panorámica', value: 'Sálvora, Ons y Ría de Arousa' }
     ]
   },
   {
     id: 'salon',
     name: 'Salón & Comedor',
-    subtitle: 'Chimenea, Climatización y Smart TV 75"',
-    tag: 'Zona Común',
+    subtitle: 'Luz Marina, Chimenea y Gran Amplitud',
+    tag: 'Zona Noble',
     area: '38 m²',
-    description: 'Estancia luminosa y espaciosa con vistas directas al mar. Dispone de chimenea de leña, climatización por splits frío/calor, televisión Smart TV de 75 pulgadas y zona de comedor para 6 personas.',
+    description: 'Un espacio amplio bañado por la luz natural con vistas al mar. Diseñado tanto para largas sobremesas en torno a su mesa de comedor como para tardes de lectura junto al fuego de la chimenea o noches de cine en su pantalla de 75 pulgadas.',
     coverImage: '/02b_salon_chimenea_tv.webp',
     gallery: ['/02b_salon_chimenea_tv.webp', '/02c_comedor.webp', '/02d_salon_tv_detalle.webp'],
     highlights: [
-      'Smart TV de 75 pulgadas',
-      'Chimenea de leña',
-      'Climatización frío / calor por splits',
-      'Mesa de comedor para 6 comensales'
+      'Chimenea de leña para estancias acogedoras fuera de temporada',
+      'Smart TV de 75 pulgadas integrada con discreción',
+      'Climatización silenciosa frío/calor por splits independientes',
+      'Comedor con capacidad para 6 comensales con vistas exteriores'
     ],
     specs: [
-      { label: 'Climatización', value: 'Splits frío/calor + chimenea' },
-      { label: 'Multimedia', value: 'Smart TV 75"' },
-      { label: 'Capacidad', value: 'Comedor para 6 plazas' }
+      { label: 'Ambiente', value: 'Salón y comedor integrados' },
+      { label: 'Climatización', value: 'Splits frío/calor y chimenea' },
+      { label: 'Entretenimiento', value: 'Smart TV 75"' }
     ]
   },
   {
     id: 'cocina',
     name: 'Cocina & Lavandería',
-    subtitle: 'Equipamiento Integral y Variedad de Cafeteras',
-    tag: 'Cocina',
+    subtitle: 'Pensada para Estancias Largas y Producto Fresco',
+    tag: 'Gastronomía',
     area: '16 m²',
-    description: 'Cocina amplia y totalmente equipada tanto para estancias cortas como largas. Dispone de lavadora, electrodomésticos completos y tres modalidades de cafetera para cubrir cualquier preferencia.',
+    description: 'Una cocina generosa, funcional y totalmente equipada para quienes disfrutan preparando el mejor marisco y pescado de la lonja local. Cuenta con lavadora integrada, menaje completo y diferentes cafeteras para cada momento del día.',
     coverImage: '/03_cocina_abierta.webp',
     gallery: ['/03_cocina_abierta.webp'],
     highlights: [
-      'Lavadora integrada en el mobiliario',
-      '3 cafeteras: Dolce Gusto (cápsulas), filtro e italiana',
-      'Placa, horno, microondas y lavavajillas',
-      'Vajilla, cubertería, cristalería y batería de cocina completa'
+      'Lavadora integrada y zona de lavado para estancias prolongadas',
+      'Selección de cafeteras: Dolce Gusto (cápsulas), filtro e italiana',
+      'Horno, placa de inducción, microondas y lavavajillas',
+      'Menaje, batería de cocina y cristalería completa'
     ],
     specs: [
+      { label: 'Concepto', value: 'Totalmente equipada para larga estancia' },
       { label: 'Lavandería', value: 'Lavadora integrada' },
-      { label: 'Cafeteras', value: 'Dolce Gusto, filtro e italiana' },
-      { label: 'Electrodomésticos', value: 'Placa, horno, microondas y lavavajillas' }
+      { label: 'Desayuno', value: 'Tres modalidades de cafetera' }
     ]
   },
   {
     id: 'master-suite',
-    name: 'Master Suite',
-    subtitle: 'Cama King Size y Baño Privado en Suite',
+    name: 'Master Suite Principal',
+    subtitle: 'Cama King Size, Madera Noble y Baño Privado',
     tag: 'Dormitorio 1',
     area: '24 m²',
-    description: 'Dormitorio principal con cama de matrimonio de gran tamaño, armarios empotrados y cuarto de baño completo integrado de forma privada dentro de la habitación.',
+    description: 'El dormitorio principal ofrece un refugio de descanso absoluto: cama de gran formato (King Size), armarios empotrados de suelo a techo y su propio cuarto de baño completo integrado de forma privada dentro de la estancia.',
     coverImage: '/04_master_suite.webp',
-    gallery: ['/04_master_suite.webp'],
+    gallery: ['/04_master_suite.webp', '/04b_master_suite_noche.webp'],
     highlights: [
-      'Cama de matrimonio King Size',
-      'Baño completo privado dentro del dormitorio',
-      'Amplios armarios empotrados',
-      'Ambiente silencioso y luminoso'
+      'Cama King Size de confort superior',
+      'Cuarto de baño completo privado en suite',
+      'Armarios empotrados con gran capacidad para estancias de semanas o meses',
+      'Ambiente apacible, silencioso y con luz natural'
     ],
     specs: [
       { label: 'Cama', value: 'King Size' },
-      { label: 'Baño', value: 'Privado en suite' },
-      { label: 'Almacenaje', value: 'Armarios empotrados' }
+      { label: 'Privacidad', value: 'Baño completo en suite' },
+      { label: 'Almacenaje', value: 'Armarios empotrados amplios' }
     ]
   },
   {
     id: 'segunda-suite',
     name: 'Segunda Suite Doble',
-    subtitle: 'Cama de Matrimonio y Baño en Suite',
+    subtitle: 'Independencia y Baño Completo en Suite',
     tag: 'Dormitorio 2',
     area: '18 m²',
-    description: 'Segundo dormitorio doble con cama de matrimonio, suelos de madera noble y cuarto de baño privado completo integrado. Ofrece total intimidad e independencia.',
-    coverImage: '/05_habitacion_doble.webp',
-    gallery: ['/05_habitacion_doble.webp', '/05b_bano_suite_doble.webp'],
+    description: 'Dormitorio doble con cama de matrimonio, suelos de madera noble y baño completo privado con plato de ducha. Una estancia concebida para ofrecer total intimidad e independencia a una segunda pareja o acompañantes.',
+    coverImage: '/05_suite_este.webp',
+    gallery: ['/05_suite_este.webp', '/07b_bano_suite_este.webp'],
     highlights: [
-      'Cama de matrimonio confortable',
-      'Baño completo privado en suite',
-      'Luz natural exterior',
-      'Armario empotrado y tarima de madera'
+      'Cama de matrimonio confortable con cabecero artesanal',
+      'Acceso privado directo a su propio cuarto de baño en suite',
+      'Luz natural y ventilación exterior directa',
+      'Suelo de madera cálida y armario empotrado'
     ],
     specs: [
-      { label: 'Cama', value: 'Cama matrimonial' },
-      { label: 'Baño', value: 'Privado en suite (ducha)' },
-      { label: 'Iluminación', value: 'Luz natural exterior' }
+      { label: 'Cama', value: 'Matrimonial doble' },
+      { label: 'Privacidad', value: 'Baño en suite con ducha' },
+      { label: 'Confort', value: 'Tarima de madera noble' }
     ]
   },
   {
-    id: 'bano-suite-doble',
-    name: 'Baño de la Segunda Suite',
-    subtitle: 'Privado, Funcional y con Plato de Ducha',
-    tag: 'Baño Privado',
+    id: 'bano-suite-este',
+    name: 'Baño Privado Segunda Suite',
+    subtitle: 'Plato de Ducha Funcional y Confort Íntimo',
+    tag: 'Baño 1',
     area: '4 m²',
-    description: 'Cuarto de baño privado integrado en el segundo dormitorio doble. Equipado con plato de ducha, lavabo rústico con encimera de madera y espejo artesanal tallado.',
-    coverImage: '/05b_bano_suite_doble.webp',
-    gallery: ['/05b_bano_suite_doble.webp'],
+    description: 'Cuarto de baño integrado dentro del segundo dormitorio doble. Dispone de plato de ducha con asidero, lavabo esquinero de madera y espejo artesanal, garantizando independencia sin necesidad de salir a las zonas comunes.',
+    coverImage: '/07b_bano_suite_este.webp',
+    gallery: ['/07b_bano_suite_este.webp'],
     highlights: [
-      'Uso exclusivo para la segunda suite',
-      'Plato de ducha con asidero de apoyo',
-      'Lavabo en esquina con balda de almacenaje',
-      'Juegos de toallas y secador incluidos'
+      'Uso exclusivo para los ocupantes de la segunda suite',
+      'Plato de ducha cómodo y seguro',
+      'Encimera esquinera en madera y espejo con carácter',
+      'Toallas de algodón y secador disponibles'
     ],
     specs: [
-      { label: 'Acceso', value: 'Privado desde el dormitorio' },
-      { label: 'Ducha', value: 'Plato de ducha' },
-      { label: 'Equipamiento', value: 'Toallas y secador' }
+      { label: 'Acceso', value: 'Exclusivo desde el dormitorio' },
+      { label: 'Equipamiento', value: 'Plato de ducha y lavabo' },
+      { label: 'Detalles', value: 'Secador y toallas' }
     ]
   },
   {
     id: 'habitacion-twin',
     name: 'Tercer Dormitorio',
-    subtitle: '2 Camas Individuales y Vistas a la Ría',
+    subtitle: 'Dos Camas Individuales y Vistas a la Ría',
     tag: 'Dormitorio 3',
     area: '15 m²',
-    description: 'Dormitorio con dos camas individuales de 90 x 190 cm (adaptables juntas o separadas). Dispone de luz natural exterior y vistas laterales al mar.',
+    description: 'Habitación dotada de dos camas individuales de 90 x 190 cm (adaptables según las necesidades de la estancia). Cuenta con luz natural directa, vistas laterales al mar y acceso inmediato al baño independiente con bañera.',
     coverImage: '/06_habitacion_twin.webp',
     gallery: ['/06_habitacion_twin.webp'],
     highlights: [
-      '2 camas de 90 x 190 cm (juntas o separadas)',
-      'Vistas laterales al mar y a la ría',
-      'Luz natural directa',
-      'Uso asignado al baño independiente común'
+      'Dos camas individuales de 90 x 190 cm (juntas o separadas)',
+      'Vistas laterales hacia el horizonte del mar',
+      'Ventanal con abundante luz natural matinal',
+      'Uso asignado al tercer baño completo de la casa'
     ],
     specs: [
-      { label: 'Camas', value: '2 individuales (90x190 cm)' },
-      { label: 'Vistas', value: 'Laterales a la ría' },
-      { label: 'Baño asignado', value: 'Baño común independiente' }
+      { label: 'Configuración', value: '2 camas individuales (90x190)' },
+      { label: 'Vistas', value: 'Laterales al mar' },
+      { label: 'Baño', value: 'Baño común con bañera' }
     ]
   },
   {
     id: 'despacho-workspace',
-    name: 'Despacho & Zona de Trabajo',
-    subtitle: 'Escritorio Cómodo y Vistas Laterales al Mar',
-    tag: 'Teletrabajo',
+    name: 'Despacho & Teletrabajo',
+    subtitle: 'Silencio, Luz Natural y Fibra de Alta Velocidad',
+    tag: 'Espacio de Trabajo',
     area: '10 m²',
-    description: 'Estancia independiente concebida para concentrarse o teletrabajar sin distracciones. Cuenta con mesa de trabajo, luz natural, vistas laterales a la ría y conexión Wi-Fi de alta velocidad.',
+    description: 'Una estancia independiente pensada para quienes combinan descanso y responsabilidades profesionales. Dispone de amplio escritorio de trabajo, luz natural, vistas laterales a la ría y conexión Wi-Fi de alta velocidad para trabajar con total serenidad.',
     coverImage: '/08_despacho_workspace.webp',
     gallery: ['/08_despacho_workspace.webp'],
     highlights: [
-      'Mesa de escritorio amplia con espacio de trabajo',
-      'Vistas laterales al mar y luz natural directa',
-      'Conexión Wi-Fi de alta velocidad',
-      'Espacio independiente y silencioso'
+      'Escritorio amplio con iluminación natural',
+      'Vistas laterales al mar para pausas visuales',
+      'Wi-Fi de fibra óptica estable y veloz',
+      'Habitación cerrada para reuniones y concentración'
     ],
     specs: [
-      { label: 'Conectividad', value: 'Wi-Fi de alta velocidad' },
-      { label: 'Uso', value: 'Despacho de trabajo / lectura' },
-      { label: 'Vistas', value: 'Laterales a la ría' }
+      { label: 'Uso', value: 'Despacho independiente' },
+      { label: 'Conexión', value: 'Wi-Fi de alta velocidad' },
+      { label: 'Ambiente', value: 'Aislado y luminoso' }
     ]
   },
   {
     id: 'bano-independiente',
-    name: 'Baño Común Independiente',
-    subtitle: 'Doble Lavabo, Gran Espejo y Bañera',
+    name: 'Baño Principal Independiente',
+    subtitle: 'Doble Lavabo, Bañera y Zona Reservada',
     tag: 'Baño Principal',
     area: '8 m²',
-    description: 'Cuarto de baño completo independiente accesible desde el pasillo distribuidor. Dispone de encimera con dos senos (doble lavabo), bañera con mampara de cristal e inodoro y bidé en zona reservada.',
-    coverImage: '/07_bano_independiente.webp',
-    gallery: ['/07_bano_independiente.webp'],
+    description: 'Cuarto de baño completo situado en el pasillo distribuidor. Dispone de mueble de lavabo con dos senos, bañera con mampara de cristal para baños relajantes y zona de sanitarios reservada para máxima privacidad.',
+    coverImage: '/07_bano_hidromasaje.webp',
+    gallery: ['/07_bano_hidromasaje.webp'],
     highlights: [
-      'Encimera con doble lavabo y gran espejo iluminado',
-      'Bañera completa con mampara de vidrio',
-      'Inodoro y bidé independientes a la izquierda',
-      'Da servicio al tercer dormitorio y a la zona de estar'
+      'Encimera con doble lavabo para mayor agilidad y comodidad',
+      'Bañera completa con mampara de cristal',
+      'Inodoro y bidé reservados discretamente a la izquierda',
+      'Da servicio al tercer dormitorio y a los invitados'
     ],
     specs: [
-      { label: 'Lavabos', value: 'Doble seno (2 lavabos)' },
+      { label: 'Lavabos', value: 'Doble seno (dos lavabos)' },
       { label: 'Bañera', value: 'Bañera completa con mampara' },
-      { label: 'Acceso', value: 'Pasillo común (independiente)' }
+      { label: 'Ubicación', value: 'Pasillo distribuidor común' }
     ]
   }
 ];
@@ -220,100 +221,102 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
   };
 
   return (
-    <section id="espacios" className="py-24 bg-zinc-950 relative border-t border-zinc-800/50">
+    <section id="espacios" className="py-28 bg-[#FAF8F5] text-stone-900 relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabecera de Sección */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-500 uppercase tracking-[0.4em] text-xs font-bold mb-3 block">
-            Distribución & Espacios Reales
+        {/* Cabecera Editorial */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-stone-500 uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">
+            Espacios & Distribución
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif text-zinc-50 tracking-tight mb-5">
-            230 m² concebidos para el <span className="italic font-light text-amber-100">descanso y la amplitud</span>
+          <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-6">
+            230 m² diseñados para vivir el Atlántico con <span className="italic font-serif text-stone-600">amplitud y calma</span>
           </h2>
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Un ático proyectado para convivir con total holgura y privacidad: 3 dormitorios (dos de ellos en suite), 3 baños completos, despacho independiente y 48 m² de terraza frente a Sálvora y Ons.
+          <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
+            Una distribución pensada para la convivencia holgada y la privacidad: 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y una terraza privada de 48 m² abierta al Parque Nacional.
           </p>
         </div>
 
         {/* Cuadrícula de Estancias */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {spaces.map((space) => (
-            <div
+            <article
               key={space.id}
-              id={`space-card-${space.id}`}
               onClick={() => openSpaceDetails(space)}
-              className="group cursor-pointer rounded-sm overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between shadow-2xl shadow-black/80"
+              className="group cursor-pointer bg-white rounded-none border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-stone-400/80 transition-all duration-500 flex flex-col justify-between overflow-hidden"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
+              {/* Imagen con aire editorial */}
+              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
                 <img
                   src={space.coverImage}
                   alt={space.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
-
-                <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                  <span className="px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase bg-zinc-950/85 text-amber-400 border border-amber-500/30 backdrop-blur-md">
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase bg-white/95 text-stone-800 backdrop-blur-sm border border-stone-200 shadow-sm">
                     {space.tag}
                   </span>
                   {space.area && (
-                    <span className="px-2.5 py-1 text-[10px] font-medium tracking-wider uppercase text-zinc-300 bg-zinc-900/85 border border-zinc-800 backdrop-blur-md">
+                    <span className="px-2.5 py-1 text-[10px] font-light tracking-wider text-stone-600 bg-stone-50/90 backdrop-blur-sm border border-stone-200">
                       {space.area}
                     </span>
                   )}
                 </div>
 
-                <div className="absolute top-3.5 right-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="w-8 h-8 rounded-sm bg-amber-500 text-zinc-950 flex items-center justify-center shadow-lg font-bold">
-                    <Maximize2 className="w-4 h-4" />
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="w-8 h-8 bg-white/95 text-stone-900 flex items-center justify-center border border-stone-200 shadow-sm">
+                    <Maximize2 className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
 
-              <div className="p-6 flex flex-col flex-grow justify-between">
+              {/* Textos limpios */}
+              <div className="p-7 flex flex-col flex-grow justify-between bg-white">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-zinc-100 group-hover:text-amber-100 transition-colors mb-1.5">
+                  <h3 className="text-xl sm:text-2xl font-serif text-stone-900 group-hover:text-stone-700 transition-colors mb-2">
                     {space.name}
                   </h3>
-                  <p className="text-amber-500/90 text-xs tracking-wider uppercase font-semibold mb-3">
+                  <p className="text-stone-500 text-xs tracking-wider uppercase font-medium mb-3">
                     {space.subtitle}
                   </p>
-                  <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 mb-5">
+                  <p className="text-stone-600 text-sm font-light leading-relaxed line-clamp-3 mb-6">
                     {space.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-300">
-                  <span className="text-zinc-400 flex items-center gap-1.5 font-light text-[11px]">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                    <span>{space.specs[0].label}: <strong className="text-zinc-200 font-normal">{space.specs[0].value}</strong></span>
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+                  <span className="text-stone-400 font-light text-xs">
+                    {space.specs[0].label}: <strong className="text-stone-700 font-normal">{space.specs[0].value}</strong>
                   </span>
-                  <span className="inline-flex items-center gap-1 text-amber-400 text-xs font-semibold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                  <span className="inline-flex items-center gap-1 text-stone-900 text-xs font-medium uppercase tracking-wider group-hover:translate-x-1 transition-transform">
                     <span>Ver detalle</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <ChevronRight className="w-3.5 h-3.5 text-stone-500" />
                   </span>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Ficha Resumen Global */}
-        <div className="mt-14 p-6 sm:p-8 rounded-sm bg-zinc-900/60 border border-zinc-800/80 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl">
-          <div className="flex flex-col text-center lg:text-left">
-            <h4 className="text-lg sm:text-xl font-serif text-zinc-100">
-              Superficie total: <span className="text-amber-200 font-serif italic">230 m² construidos</span>
+        {/* Ficha Resumen de Calidad */}
+        <div className="mt-16 p-8 sm:p-10 bg-white border border-stone-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="text-center lg:text-left max-w-2xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-stone-400 font-semibold block mb-2">
+              Arquitectura & Confort
+            </span>
+            <h4 className="text-2xl font-serif text-stone-900 font-normal">
+              230 m² en planta ático con ascensor y garaje privado
             </h4>
-            <p className="text-zinc-400 text-xs sm:text-sm font-light mt-1">
-              Planta ático con ascensor, 48 m² de terraza (orientación nordeste), 3 dormitorios (dos suites), 3 baños completos, chimenea, climatización por splits frío/calor y plaza de garaje privada.
+            <p className="text-stone-600 text-sm font-light mt-2 leading-relaxed">
+              Terraza exterior de 48 m² con orientación nordeste, chimenea de leña, climatización por splits frío/calor, fibra óptica de alta velocidad y 3 cuartos de baño completos.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div>
             <button
               onClick={onOpenBooking}
-              className="px-6 py-3 rounded-sm text-xs uppercase tracking-widest font-bold bg-amber-500 hover:bg-amber-400 text-zinc-950 transition-colors shadow-lg"
+              className="px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium bg-stone-900 hover:bg-stone-800 text-stone-50 transition-colors shadow-sm"
             >
               Consultar Disponibilidad
             </button>
@@ -321,20 +324,20 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
         </div>
       </div>
 
-      {/* Modal de Detalle */}
+      {/* Modal de Detalle Editorial */}
       {activeSpaceModal && (
         <div
           id="space-detail-modal"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/70 backdrop-blur-sm animate-fadeIn"
           onClick={() => setActiveSpaceModal(null)}
         >
           <div
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-zinc-900 border border-zinc-800 rounded-sm shadow-2xl p-6 sm:p-8 text-zinc-100"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#FAF8F5] border border-stone-200 shadow-2xl p-6 sm:p-10 text-stone-900"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveSpaceModal(null)}
-              className="absolute top-4 right-4 p-2 rounded-sm bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-colors z-20"
+              className="absolute top-5 right-5 p-2 bg-white text-stone-400 hover:text-stone-900 border border-stone-200 transition-colors z-20"
               aria-label="Cerrar modal"
             >
               <X className="w-5 h-5" />
@@ -342,20 +345,20 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
 
             <div className="space-y-6">
               <div>
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] tracking-widest uppercase font-bold mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-stone-200 text-stone-600 text-[10px] tracking-[0.2em] uppercase font-medium mb-3">
                   <span>{activeSpaceModal.tag}</span>
                   {activeSpaceModal.area && <span>· {activeSpaceModal.area}</span>}
                 </div>
-                <h3 className="text-2xl sm:text-4xl font-serif text-zinc-50">
+                <h3 className="text-2xl sm:text-4xl font-serif font-normal text-stone-900">
                   {activeSpaceModal.name}
                 </h3>
-                <p className="text-amber-500 text-xs tracking-wider uppercase font-semibold mt-1">
+                <p className="text-stone-500 text-xs tracking-wider uppercase font-medium mt-1.5">
                   {activeSpaceModal.subtitle}
                 </p>
               </div>
 
-              {/* Imagen / Galería */}
-              <div className="relative aspect-[16/9] rounded-sm overflow-hidden bg-zinc-950 border border-zinc-800">
+              {/* Galería de Fotos */}
+              <div className="relative aspect-[16/10] bg-stone-200 border border-stone-200 overflow-hidden">
                 <img
                   src={activeSpaceModal.gallery[modalImageIndex] || activeSpaceModal.coverImage}
                   alt={activeSpaceModal.name}
@@ -366,63 +369,47 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                   <>
                     <button
                       onClick={prevModalImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-sm bg-zinc-950/80 text-white hover:bg-zinc-900 transition-colors border border-zinc-700"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 text-stone-800 hover:bg-white transition-colors border border-stone-200 shadow-sm"
                       aria-label="Imagen anterior"
                     >
                       <ArrowLeft className="w-4 h-4" />
                     </button>
                     <button
                       onClick={nextModalImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-sm bg-zinc-950/80 text-white hover:bg-zinc-900 transition-colors border border-zinc-700"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 text-stone-800 hover:bg-white transition-colors border border-stone-200 shadow-sm"
                       aria-label="Imagen siguiente"
                     >
                       <ArrowRight className="w-4 h-4" />
                     </button>
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-zinc-950/90 px-3 py-1 rounded-sm border border-zinc-800 text-xs text-zinc-300">
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-white/90 px-3 py-1 border border-stone-200 text-xs text-stone-700 shadow-sm">
                       <span>{modalImageIndex + 1}</span> / <span>{activeSpaceModal.gallery.length}</span>
                     </div>
                   </>
                 )}
               </div>
 
-              <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
+              <p className="text-stone-700 text-base sm:text-lg leading-relaxed font-light">
                 {activeSpaceModal.description}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-zinc-800">
-                <div>
-                  <h4 className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-3">
-                    Puntos Destacados
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {activeSpaceModal.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-zinc-300 font-light">
-                        <Check className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="text-xs uppercase tracking-widest text-amber-500 font-bold mb-3">
-                    Ficha Técnica & Equipamiento
-                  </h4>
-                  <div className="space-y-2 bg-zinc-950/70 p-4 rounded-sm border border-zinc-800">
-                    {activeSpaceModal.specs.map((spec, idx) => (
-                      <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-zinc-800/80 last:border-0">
-                        <span className="text-zinc-400">{spec.label}</span>
-                        <span className="text-zinc-200 font-medium">{spec.value}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="pt-6 border-t border-stone-200">
+                <h4 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-4">
+                  Cualidades del Espacio
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {activeSpaceModal.highlights.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-white border border-stone-200/80 text-xs sm:text-sm text-stone-700 font-light">
+                      <Check className="w-4 h-4 text-stone-800 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-col sm:flex-row justify-end gap-3 border-t border-zinc-800">
+              <div className="pt-6 flex flex-col sm:flex-row justify-end gap-3 border-t border-stone-200">
                 <button
                   onClick={() => setActiveSpaceModal(null)}
-                  className="px-5 py-2.5 rounded-sm border border-zinc-700 text-zinc-300 hover:text-white text-xs uppercase tracking-widest font-bold bg-zinc-950/40"
+                  className="px-6 py-3 border border-stone-300 text-stone-700 hover:text-stone-950 text-xs uppercase tracking-[0.2em] font-medium bg-white"
                 >
                   Volver a Espacios
                 </button>
@@ -431,7 +418,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                     setActiveSpaceModal(null);
                     onOpenBooking();
                   }}
-                  className="px-6 py-2.5 rounded-sm bg-amber-500 hover:bg-amber-400 text-zinc-950 text-xs uppercase tracking-widest font-bold shadow-lg"
+                  className="px-7 py-3 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium shadow-sm"
                 >
                   Consultar Disponibilidad
                 </button>
