@@ -1,224 +1,188 @@
-import { useState } from 'react';
-import { MapPin, Phone, Mail, MessageCircle, ShieldCheck, FileText, ChevronRight, X, Heart, Sparkles } from 'lucide-react';
+import React from 'react';
+import { MapPin, ShieldCheck, ArrowUp, Instagram, Facebook } from 'lucide-react';
+
+function TikTokIcon({ className = 'w-4 h-4' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.86 4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-3.04-1.52z" />
+    </svg>
+  );
+}
 
 export function Footer() {
-  const [legalModalContent, setLegalModalContent] = useState<'legal' | 'privacy' | 'terms' | null>(null);
-
-  const openLegal = (type: 'legal' | 'privacy' | 'terms') => {
-    setLegalModalContent(type);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer id="contacto" className="bg-zinc-950 text-zinc-300 border-t border-zinc-800/80 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative text-white overflow-hidden border-t border-stone-800">
+      {/* Imagen de fondo en formato .webp */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 scale-105 transition-transform duration-1000"
+        style={{
+          backgroundImage: "url('/footer-bg.webp')",
+        }}
+      />
+      
+      {/* Capa de contraste cinematográfico */}
+      <div className="absolute inset-0 bg-stone-950/85 backdrop-blur-[1px] z-0" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-zinc-800">
+        {/* Cabecera del pie */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-stone-800/80 gap-8">
+          <div>
+            <span className="text-stone-400 uppercase tracking-[0.25em] text-xs font-semibold block mb-3">
+              Ático Singular · Aguiño (Ribeira)
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-light text-stone-100 tracking-tight">
+              Despertar frente al <span className="italic font-serif text-stone-300">Atlántico</span>
+            </h2>
+          </div>
+
+          <button
+            onClick={scrollToTop}
+            aria-label="Volver arriba"
+            className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-white transition-colors group"
+          >
+            <span>Subir al inicio</span>
+            <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+          </button>
+        </div>
+
+        {/* Bloque principal de información */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-stone-800/80 text-sm">
           
-          {/* Brand & Manifesto */}
-          <div className="space-y-4 lg:col-span-1">
-            <div>
-              <span className="text-xl font-serif text-zinc-100 uppercase tracking-widest block font-medium">
+          {/* Columna 1: Identidad & Redes */}
+          <div className="space-y-5">
+            <div className="space-y-1">
+              <span className="font-serif text-lg tracking-wider text-stone-100 uppercase block">
                 Illas Atlánticas
               </span>
-              <span className="text-xs text-amber-500 uppercase tracking-widest font-bold">
-                Ático Singular · Aguiño
+              <span className="text-xs text-stone-400 uppercase tracking-[0.15em] block">
+                Ático Privado · 230 m²
               </span>
             </div>
-            <p className="text-xs text-zinc-400 font-light leading-relaxed">
-              Refugio atlántico exclusivo frente al Parque Nacional de Sálvora. 48 m² de terraza panorámica, master suite con luz cenital y desconexión absoluta en las Rías Baixas.
+            <p className="text-xs text-stone-400 font-light leading-relaxed">
+              Exclusivo ático en primera línea sobre el puerto de Aguiño. 9,5 sobre 10 de calificación con terraza panorámica frente a Sálvora y Ons.
             </p>
+
             <div className="pt-2">
-              <span className="inline-block px-3 py-1 rounded-sm bg-zinc-900 border border-zinc-800 text-zinc-300 font-mono text-[11px]">
-                Rexistro Oficial: <strong className="text-amber-400">VUT-CO-008942</strong>
+              <span className="text-[11px] uppercase tracking-[0.15em] text-stone-400 font-medium block mb-3">
+                Síguenos en redes
               </span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.tiktok.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-300 hover:text-stone-900 flex items-center justify-center transition-all"
+                >
+                  <TikTokIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-300 hover:text-stone-900 flex items-center justify-center transition-all"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-300 hover:text-stone-900 flex items-center justify-center transition-all"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-200 font-bold mb-4">
+          {/* Columna 2: Navegación */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-300">
               Navegación
-            </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400 font-light">
+            </h3>
+            <ul className="space-y-2.5 text-xs text-stone-400 font-light">
               <li>
-                <a href="#hero" className="hover:text-amber-400 transition-colors">Inicio</a>
+                <a href="#espacios" className="hover:text-stone-100 transition-colors">
+                  Distribución & Espacios
+                </a>
               </li>
               <li>
-                <a href="#espacios" className="hover:text-amber-400 transition-colors">Espacios & Terraza</a>
+                <a href="#servicios" className="hover:text-stone-100 transition-colors">
+                  Equipamiento & Confort
+                </a>
               </li>
               <li>
-                <a href="#experiencias" className="hover:text-amber-400 transition-colors">Experiencias & Lonja de Aguiño</a>
+                <a href="#opiniones" className="hover:text-stone-100 transition-colors">
+                  Opiniones de Huéspedes
+                </a>
               </li>
               <li>
-                <a href="#servicios" className="hover:text-amber-400 transition-colors">Equipamiento & Aerotermia</a>
-              </li>
-              <li>
-                <a href="#reservas" className="hover:text-amber-400 transition-colors">Reserva Directa Beds24</a>
-              </li>
-              <li>
-                <a href="#ubicacion" className="hover:text-amber-400 transition-colors">Ubicación & Sálvora</a>
+                <a href="#reservas" className="hover:text-stone-100 transition-colors">
+                  Consultar Disponibilidad
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Direct Contact & Concierge */}
-          <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-200 font-bold mb-4">
-              Contacto & Conserjería
-            </h4>
-            <div className="space-y-3 text-xs text-zinc-400 font-light">
+          {/* Columna 3: Atención y Ubicación */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-300">
+              Atención Directa
+            </h3>
+            <div className="space-y-3 text-xs text-stone-400 font-light">
+              <p className="text-stone-200">
+                Anfitrión: <span className="font-medium text-white">Fernando</span>
+              </p>
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                <span>Rúa Castelao / Porto de Aguiño, 15965 Ribeira (A Coruña, Galicia)</span>
+                <MapPin className="w-4 h-4 text-stone-400 shrink-0 mt-0.5" />
+                <span>Rúa Francisco Lorenzo Mariño, 93<br />15965 Aguiño (Ribeira, A Coruña)</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-amber-500 shrink-0" />
-                <a href="tel:+34600000000" className="hover:text-white transition-colors">+34 600 000 000</a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a
-                  href="https://wa.me/34600000000"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline"
-                >
-                  WhatsApp Atención Inmediata
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-amber-500 shrink-0" />
-                <a href="mailto:reservas@illasatlanticas-atico.com" className="hover:text-white transition-colors">
-                  reservas@illasatlanticas-atico.com
-                </a>
-              </div>
+              <p className="text-[11px] text-stone-400 pt-1 leading-relaxed">
+                Atención personalizada y trato directo sin intermediarios para coordinar fechas y bienvenida.
+              </p>
             </div>
           </div>
 
-          {/* Guarantees & Certifications */}
-          <div>
-            <h4 className="text-xs uppercase tracking-widest text-zinc-200 font-bold mb-4">
-              Garantías Oficiales
-            </h4>
-            <div className="space-y-3 text-xs text-zinc-400 font-light">
-              <div className="p-3 rounded-sm bg-zinc-900 border border-zinc-800 space-y-1">
-                <span className="text-zinc-200 font-medium block">Motor Oficial Beds24</span>
-                <p className="text-[11px] text-zinc-400">Reserva directa cifrada SSL sin intermediarios.</p>
+          {/* Columna 4: Garantías Oficiales */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-300">
+              Garantía & Registro
+            </h3>
+            <div className="space-y-3 text-xs text-stone-400 font-light">
+              <div className="flex items-start gap-2">
+                <ShieldCheck className="w-4 h-4 text-stone-300 shrink-0 mt-0.5" />
+                <span>Alojamiento turístico reglamentado conforme a la normativa oficial de la Xunta de Galicia.</span>
               </div>
-              <div className="p-3 rounded-sm bg-zinc-900 border border-zinc-800 space-y-1">
-                <span className="text-zinc-200 font-medium block">Partee & SES.Hospedajes</span>
-                <p className="text-[11px] text-zinc-400">Cumplimiento del Real Decreto 933/2021 de partes de entrada.</p>
-              </div>
+              <p className="text-[11px] text-stone-500 leading-relaxed">
+                Plaza de garaje privada en el edificio, ascensor directo hasta la vivienda y reserva directa garantizada al mejor precio.
+              </p>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Legal bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-light">
-          <div>
-            © {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4 text-[11px]">
-            <button
-              onClick={() => openLegal('legal')}
-              className="hover:text-zinc-300 transition-colors underline-offset-2 hover:underline"
-            >
-              Aviso Legal
-            </button>
-            <span>·</span>
-            <button
-              onClick={() => openLegal('privacy')}
-              className="hover:text-zinc-300 transition-colors underline-offset-2 hover:underline"
-            >
-              Política de Privacidad
-            </button>
-            <span>·</span>
-            <button
-              onClick={() => openLegal('terms')}
-              className="hover:text-zinc-300 transition-colors underline-offset-2 hover:underline"
-            >
-              Condiciones de Reserva & Cancelación
-            </button>
-          </div>
+        {/* Créditos de cierre */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 font-light">
+          <p>© {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.</p>
+          <p className="text-[11px] text-stone-500">
+            Reserva directa con el anfitrión · Aguiño, Rías Baixas.
+          </p>
         </div>
 
       </div>
-
-      {/* Legal Information Modal */}
-      {legalModalContent && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
-          onClick={() => setLegalModalContent(null)}
-        >
-          <div
-            className="relative w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-sm p-6 sm:p-8 text-zinc-200 max-h-[85vh] overflow-y-auto shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setLegalModalContent(null)}
-              className="absolute top-4 right-4 p-2 rounded-sm bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {legalModalContent === 'legal' && (
-              <div className="space-y-4 text-xs sm:text-sm font-light leading-relaxed">
-                <h3 className="text-xl font-serif text-zinc-100">Aviso Legal</h3>
-                <p>
-                  En cumplimiento del deber de información recogido en la Ley 34/2002 de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE):
-                </p>
-                <p>
-                  <strong>Titular:</strong> Explotación Turística Illas Atlánticas Ático.<br />
-                  <strong>Registro de Vivienda de Uso Turístico (Xunta de Galicia):</strong> VUT-CO-008942.<br />
-                  <strong>Ubicación:</strong> Rúa Castelao / Porto de Aguiño, 15965 Ribeira (A Coruña).<br />
-                  <strong>Contacto:</strong> reservas@illasatlanticas-atico.com.
-                </p>
-                <p>
-                  El acceso y navegación por este sitio web atribuye la condición de usuario e implica la aceptación plena de todas las cláusulas de uso y contratación directa.
-                </p>
-              </div>
-            )}
-
-            {legalModalContent === 'privacy' && (
-              <div className="space-y-4 text-xs sm:text-sm font-light leading-relaxed">
-                <h3 className="text-xl font-serif text-zinc-100">Política de Privacidad y Protección de Datos</h3>
-                <p>
-                  De conformidad con el Reglamento General de Protección de Datos (RGPD UE 2016/679) y la LOPDGDD 3/2018:
-                </p>
-                <p>
-                  <strong>Finalidad:</strong> Gestión directa de la reserva, facturación, atención a solicitudes del huésped y cumplimiento de la normativa de registro de viajeros (SES.Hospedajes / Partee conforme al Real Decreto 933/2021).
-                </p>
-                <p>
-                  <strong>Legitimación:</strong> Ejecución del contrato de reserva de hospedaje y cumplimiento de obligaciones legales de seguridad ciudadana.
-                </p>
-                <p>
-                  <strong>Derechos:</strong> Puede ejercer sus derechos de acceso, rectificación, supresión y limitación escribiendo a reservas@illasatlanticas-atico.com.
-                </p>
-              </div>
-            )}
-
-            {legalModalContent === 'terms' && (
-              <div className="space-y-4 text-xs sm:text-sm font-light leading-relaxed">
-                <h3 className="text-xl font-serif text-zinc-100">Condiciones de Reserva Directa y Cancelación</h3>
-                <p>
-                  <strong>1. Tarifa Garantizada:</strong> Al reservar a través del motor directo Beds24, la propiedad garantiza el mejor precio disponible sin comisiones intermediarias.
-                </p>
-                <p>
-                  <strong>2. Horarios:</strong> Check-in a partir de las 16:00 h (acceso autónomo 24/7 disponible mediante Smart Lock). Check-out hasta las 11:30 h.
-                </p>
-                <p>
-                  <strong>3. Cancelación Flexible:</strong> Cancelación gratuita con reembolso del 100% de los importes abonados hasta 7 días naturales antes de la fecha de entrada.
-                </p>
-                <p>
-                  <strong>4. Normas del Ático:</strong> Capacidad máxima de 4 personas. No se permiten fiestas o eventos no autorizados. Política pet-friendly exclusiva bajo consulta previa.
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </footer>
   );
 }
