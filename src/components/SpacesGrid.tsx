@@ -6,190 +6,190 @@ const SPACES_DATA: Space[] = [
   {
     id: 'terraza',
     name: 'Terraza Panorámica',
-    subtitle: 'Vistas al Parque Nacional de Sálvora y Ons',
-    tag: 'Exterior',
+    subtitle: 'Vistas a la Ría, Sálvora y Ons',
+    tag: 'Exterior Privado',
     area: '48 m²',
-    description: '48 m² de mirador privado abierto al nordeste hacia la boca de la Ría de Arousa y las islas del Parque Nacional. Un remanso de paz con mobiliario de descanso donde desayunar con la salida del sol o contemplar en calma el paso silencioso de los barcos.',
+    description: '48 m² de mirador privado orientado al nordeste con vistas abiertas hacia la ría y las islas de Sálvora y Ons. Un espacio amplio con mobiliario exterior para desayunar al aire libre o descansar contemplando la entrada y salida de los barcos.',
     coverImage: '/01_hero_portada.webp',
     gallery: ['/01_hero_portada.webp'],
     highlights: [
-      'Horizonte despejado hacia Sálvora, Ons y la ría',
+      'Panorámica directa a la ría y a las islas de Sálvora y Ons',
       'Mobiliario exterior para comedor al aire libre y descanso',
       'Acceso directo y fluido desde el salón',
-      'Orientación nordeste con suave brisa marina'
+      'Orientación nordeste con sol de mañana'
     ],
     specs: [
-      { label: 'Espacio', value: '48 m² privados' },
+      { label: 'Superficie', value: '48 m² privados' },
       { label: 'Orientación', value: 'Nordeste' },
-      { label: 'Panorámica', value: 'Sálvora, Ons y Ría de Arousa' }
+      { label: 'Vistas', value: 'Ría de Arousa, Sálvora y Ons' }
     ]
   },
   {
     id: 'salon',
     name: 'Salón & Comedor',
-    subtitle: 'Luz Marina, Chimenea y Gran Amplitud',
-    tag: 'Zona Noble',
+    subtitle: 'Luz Natural, Chimenea y Vistas al Mar',
+    tag: 'Zona de Estar',
     area: '38 m²',
-    description: 'Un espacio amplio bañado por la luz natural con vistas al mar. Diseñado tanto para largas sobremesas en torno a su mesa de comedor como para tardes de lectura junto al fuego de la chimenea o noches de cine en su pantalla de 75 pulgadas.',
+    description: 'Estancia luminosa y diáfana con vistas al mar. Diseñada para sobremesas en torno a su mesa de comedor para 6 personas, tardes de lectura junto al fuego de la chimenea de leña o descanso con su pantalla de 75 pulgadas.',
     coverImage: '/02b_salon_chimenea_tv.webp',
     gallery: ['/02b_salon_chimenea_tv.webp', '/02c_comedor.webp', '/02d_salon_tv_detalle.webp'],
     highlights: [
-      'Chimenea de leña para estancias acogedoras fuera de temporada',
+      'Chimenea de leña para estancias acogedoras en otoño e invierno',
       'Smart TV de 75 pulgadas integrada con discreción',
-      'Climatización silenciosa frío/calor por splits independientes',
-      'Comedor con capacidad para 6 comensales con vistas exteriores'
+      'Climatización por splits frío/calor',
+      'Mesa de comedor para 6 comensales con luz natural'
     ],
     specs: [
-      { label: 'Ambiente', value: 'Salón y comedor integrados' },
+      { label: 'Distribución', value: 'Salón y comedor integrados' },
       { label: 'Climatización', value: 'Splits frío/calor y chimenea' },
-      { label: 'Entretenimiento', value: 'Smart TV 75"' }
+      { label: 'Multimedia', value: 'Smart TV 75"' }
     ]
   },
   {
     id: 'cocina',
     name: 'Cocina & Lavandería',
-    subtitle: 'Pensada para Estancias Largas y Producto Fresco',
-    tag: 'Gastronomía',
+    subtitle: 'Equipamiento Completo para Estancias Largas',
+    tag: 'Cocina',
     area: '16 m²',
-    description: 'Una cocina generosa, funcional y totalmente equipada para quienes disfrutan preparando el mejor marisco y pescado de la lonja local. Cuenta con lavadora integrada, menaje completo y diferentes cafeteras para cada momento del día.',
+    description: 'Cocina amplia, funcional y pensada para estancias prolongadas. Cuenta con lavadora integrada en el mobiliario, electrodomésticos completos, tres tipos de cafetera y menaje para cocinar a diario.',
     coverImage: '/03_cocina_abierta.webp',
     gallery: ['/03_cocina_abierta.webp'],
     highlights: [
-      'Lavadora integrada y zona de lavado para estancias prolongadas',
-      'Selección de cafeteras: Dolce Gusto (cápsulas), filtro e italiana',
-      'Horno, placa de inducción, microondas y lavavajillas',
-      'Menaje, batería de cocina y cristalería completa'
+      'Lavadora integrada en el mobiliario',
+      '3 cafeteras: Dolce Gusto (cápsulas), filtro e italiana',
+      'Placa de inducción, horno, microondas y lavavajillas',
+      'Vajilla, cubertería, cristalería y batería de cocina completa'
     ],
     specs: [
-      { label: 'Concepto', value: 'Totalmente equipada para larga estancia' },
       { label: 'Lavandería', value: 'Lavadora integrada' },
-      { label: 'Desayuno', value: 'Tres modalidades de cafetera' }
+      { label: 'Cafeteras', value: 'Dolce Gusto, filtro e italiana' },
+      { label: 'Cocción', value: 'Placa, horno, microondas y lavavajillas' }
     ]
   },
   {
     id: 'master-suite',
     name: 'Master Suite Principal',
-    subtitle: 'Cama King Size, Madera Noble y Baño Privado',
+    subtitle: 'Cama King Size y Baño Privado',
     tag: 'Dormitorio 1',
     area: '24 m²',
-    description: 'El dormitorio principal ofrece un refugio de descanso absoluto: cama de gran formato (King Size), armarios empotrados de suelo a techo y su propio cuarto de baño completo integrado de forma privada dentro de la estancia.',
+    description: 'Dormitorio principal con cama de matrimonio King Size, armarios empotrados de gran capacidad y su propio cuarto de baño completo integrado de forma privada dentro de la habitación.',
     coverImage: '/04_master_suite.webp',
     gallery: ['/04_master_suite.webp', '/04b_master_suite_noche.webp'],
     highlights: [
-      'Cama King Size de confort superior',
+      'Cama de matrimonio King Size',
       'Cuarto de baño completo privado en suite',
-      'Armarios empotrados con gran capacidad para estancias de semanas o meses',
-      'Ambiente apacible, silencioso y con luz natural'
+      'Armarios empotrados con gran fondo para ropa y equipaje',
+      'Entorno silencioso y luminoso'
     ],
     specs: [
       { label: 'Cama', value: 'King Size' },
-      { label: 'Privacidad', value: 'Baño completo en suite' },
-      { label: 'Almacenaje', value: 'Armarios empotrados amplios' }
+      { label: 'Baño', value: 'Privado en suite' },
+      { label: 'Almacenaje', value: 'Armarios empotrados' }
     ]
   },
   {
     id: 'segunda-suite',
     name: 'Segunda Suite Doble',
-    subtitle: 'Independencia y Baño Completo en Suite',
+    subtitle: 'Cama Matrimonial y Baño en Suite',
     tag: 'Dormitorio 2',
     area: '18 m²',
-    description: 'Dormitorio doble con cama de matrimonio, suelos de madera noble y baño completo privado con plato de ducha. Una estancia concebida para ofrecer total intimidad e independencia a una segunda pareja o acompañantes.',
+    description: 'Segundo dormitorio doble con cama de matrimonio, suelos de madera y baño completo privado con plato de ducha. Ofrece total independencia e intimidad para una segunda pareja.',
     coverImage: '/05_suite_este.webp',
     gallery: ['/05_suite_este.webp', '/07b_bano_suite_este.webp'],
     highlights: [
       'Cama de matrimonio confortable con cabecero artesanal',
       'Acceso privado directo a su propio cuarto de baño en suite',
-      'Luz natural y ventilación exterior directa',
-      'Suelo de madera cálida y armario empotrado'
+      'Luz natural y ventilación exterior',
+      'Armario empotrado y suelos de madera'
     ],
     specs: [
       { label: 'Cama', value: 'Matrimonial doble' },
-      { label: 'Privacidad', value: 'Baño en suite con ducha' },
-      { label: 'Confort', value: 'Tarima de madera noble' }
+      { label: 'Baño', value: 'Privado en suite con ducha' },
+      { label: 'Suelos', value: 'Madera natural' }
     ]
   },
   {
     id: 'bano-suite-este',
     name: 'Baño Privado Segunda Suite',
-    subtitle: 'Plato de Ducha Funcional y Confort Íntimo',
-    tag: 'Baño 1',
+    subtitle: 'Plato de Ducha Funcional en Suite',
+    tag: 'Baño Privado',
     area: '4 m²',
-    description: 'Cuarto de baño integrado dentro del segundo dormitorio doble. Dispone de plato de ducha con asidero, lavabo esquinero de madera y espejo artesanal, garantizando independencia sin necesidad de salir a las zonas comunes.',
+    description: 'Cuarto de baño privado integrado en el segundo dormitorio doble. Dispone de plato de ducha con asidero, lavabo de esquina y espejo artesanal tallado.',
     coverImage: '/07b_bano_suite_este.webp',
     gallery: ['/07b_bano_suite_este.webp'],
     highlights: [
-      'Uso exclusivo para los ocupantes de la segunda suite',
-      'Plato de ducha cómodo y seguro',
-      'Encimera esquinera en madera y espejo con carácter',
-      'Toallas de algodón y secador disponibles'
+      'Uso exclusivo dentro del segundo dormitorio',
+      'Plato de ducha con barra de apoyo',
+      'Lavabo en esquina con balda inferior',
+      'Toallas de algodón y secador incluidos'
     ],
     specs: [
-      { label: 'Acceso', value: 'Exclusivo desde el dormitorio' },
+      { label: 'Acceso', value: 'Privado desde el dormitorio' },
       { label: 'Equipamiento', value: 'Plato de ducha y lavabo' },
-      { label: 'Detalles', value: 'Secador y toallas' }
+      { label: 'Servicio', value: 'Toallas y secador incluidos' }
     ]
   },
   {
     id: 'habitacion-twin',
     name: 'Tercer Dormitorio',
-    subtitle: 'Dos Camas Individuales y Vistas a la Ría',
+    subtitle: '2 Camas Individuales y Vistas a la Ría',
     tag: 'Dormitorio 3',
     area: '15 m²',
-    description: 'Habitación dotada de dos camas individuales de 90 x 190 cm (adaptables según las necesidades de la estancia). Cuenta con luz natural directa, vistas laterales al mar y acceso inmediato al baño independiente con bañera.',
+    description: 'Dormitorio equipado con dos camas individuales de 90 x 190 cm (adaptables juntas o separadas). Cuenta con luz natural directa, vistas laterales al mar y acceso inmediato al baño común independiente.',
     coverImage: '/06_habitacion_twin.webp',
     gallery: ['/06_habitacion_twin.webp'],
     highlights: [
-      'Dos camas individuales de 90 x 190 cm (juntas o separadas)',
-      'Vistas laterales hacia el horizonte del mar',
-      'Ventanal con abundante luz natural matinal',
-      'Uso asignado al tercer baño completo de la casa'
+      'Dos camas individuales de 90 x 190 cm',
+      'Vistas laterales al mar',
+      'Ventanal amplio con luz natural de mañana',
+      'Uso asignado al baño común independiente'
     ],
     specs: [
-      { label: 'Configuración', value: '2 camas individuales (90x190)' },
+      { label: 'Camas', value: '2 individuales (90x190 cm)' },
       { label: 'Vistas', value: 'Laterales al mar' },
-      { label: 'Baño', value: 'Baño común con bañera' }
+      { label: 'Baño asignado', value: 'Baño común independiente' }
     ]
   },
   {
     id: 'despacho-workspace',
     name: 'Despacho & Teletrabajo',
-    subtitle: 'Silencio, Luz Natural y Fibra de Alta Velocidad',
-    tag: 'Espacio de Trabajo',
+    subtitle: 'Espacio de Concentración y Fibra Óptica',
+    tag: 'Despacho',
     area: '10 m²',
-    description: 'Una estancia independiente pensada para quienes combinan descanso y responsabilidades profesionales. Dispone de amplio escritorio de trabajo, luz natural, vistas laterales a la ría y conexión Wi-Fi de alta velocidad para trabajar con total serenidad.',
+    description: 'Estancia independiente pensada para teletrabajar o leer con tranquilidad. Cuenta con amplia mesa de escritorio, luz natural, vistas laterales a la ría y conexión Wi-Fi de alta velocidad.',
     coverImage: '/08_despacho_workspace.webp',
     gallery: ['/08_despacho_workspace.webp'],
     highlights: [
-      'Escritorio amplio con iluminación natural',
-      'Vistas laterales al mar para pausas visuales',
-      'Wi-Fi de fibra óptica estable y veloz',
-      'Habitación cerrada para reuniones y concentración'
+      'Mesa de escritorio con espacio de trabajo holgado',
+      'Vistas laterales al mar',
+      'Wi-Fi de fibra óptica de alta velocidad',
+      'Habitación independiente y silenciosa'
     ],
     specs: [
       { label: 'Uso', value: 'Despacho independiente' },
-      { label: 'Conexión', value: 'Wi-Fi de alta velocidad' },
-      { label: 'Ambiente', value: 'Aislado y luminoso' }
+      { label: 'Conexión', value: 'Fibra óptica alta velocidad' },
+      { label: 'Vistas', value: 'Laterales a la ría' }
     ]
   },
   {
     id: 'bano-independiente',
-    name: 'Baño Principal Independiente',
+    name: 'Baño Común Independiente',
     subtitle: 'Doble Lavabo, Bañera y Zona Reservada',
-    tag: 'Baño Principal',
+    tag: 'Baño Común',
     area: '8 m²',
-    description: 'Cuarto de baño completo situado en el pasillo distribuidor. Dispone de mueble de lavabo con dos senos, bañera con mampara de cristal para baños relajantes y zona de sanitarios reservada para máxima privacidad.',
+    description: 'Cuarto de baño completo ubicado en el pasillo distribuidor. Dispone de encimera con dos senos (doble lavabo), bañera con mampara de cristal e inodoro y bidé reservados discretamente a la izquierda.',
     coverImage: '/07_bano_hidromasaje.webp',
     gallery: ['/07_bano_hidromasaje.webp'],
     highlights: [
-      'Encimera con doble lavabo para mayor agilidad y comodidad',
+      'Encimera con doble lavabo y espejo de gran tamaño',
       'Bañera completa con mampara de cristal',
-      'Inodoro y bidé reservados discretamente a la izquierda',
-      'Da servicio al tercer dormitorio y a los invitados'
+      'Inodoro y bidé en zona reservada e independiente',
+      'Da servicio al tercer dormitorio y a la zona de estar'
     ],
     specs: [
-      { label: 'Lavabos', value: 'Doble seno (dos lavabos)' },
-      { label: 'Bañera', value: 'Bañera completa con mampara' },
-      { label: 'Ubicación', value: 'Pasillo distribuidor común' }
+      { label: 'Lavabos', value: 'Doble seno (2 lavabos)' },
+      { label: 'Bañera', value: 'Bañera con mampara' },
+      { label: 'Acceso', value: 'Pasillo distribuidor común' }
     ]
   }
 ];
@@ -221,102 +221,107 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
   };
 
   return (
-    <section id="espacios" className="py-28 bg-[#FAF8F5] text-stone-900 relative border-t border-stone-200">
+    <section id="espacios" className="py-24 bg-[#FBF9F5] text-stone-900 relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Cabecera Editorial */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-stone-500 uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">
-            Espacios & Distribución
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-stone-500 uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
+            Distribución & Estancias
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-6">
-            230 m² diseñados para vivir el Atlántico con <span className="italic font-serif text-stone-600">amplitud y calma</span>
+          <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
+            230 m² concebidos para <span className="italic font-serif text-stone-600">vivir con amplitud</span>
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            Una distribución pensada para la convivencia holgada y la privacidad: 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y una terraza privada de 48 m² abierta al Parque Nacional.
+            Una planta ático con luz marina, 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 48 m² de terraza abierta a la ría y a las islas de Sálvora y Ons.
           </p>
         </div>
 
-        {/* Cuadrícula de Estancias */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {spaces.map((space) => (
-            <article
-              key={space.id}
-              onClick={() => openSpaceDetails(space)}
-              className="group cursor-pointer bg-white rounded-none border border-stone-200/90 shadow-sm hover:shadow-xl hover:border-stone-400/80 transition-all duration-500 flex flex-col justify-between overflow-hidden"
-            >
-              {/* Imagen con aire editorial */}
-              <div className="relative aspect-[16/11] overflow-hidden bg-stone-100">
-                <img
-                  src={space.coverImage}
-                  alt={space.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase bg-white/95 text-stone-800 backdrop-blur-sm border border-stone-200 shadow-sm">
-                    {space.tag}
-                  </span>
-                  {space.area && (
-                    <span className="px-2.5 py-1 text-[10px] font-light tracking-wider text-stone-600 bg-stone-50/90 backdrop-blur-sm border border-stone-200">
-                      {space.area}
+        {/* Cuadrícula Asimétrica con la Terraza Destacada */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {spaces.map((space, idx) => {
+            const isFeatured = idx === 0; // La Terraza preside con mayor anchura
+            return (
+              <article
+                key={space.id}
+                onClick={() => openSpaceDetails(space)}
+                className={`group cursor-pointer bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-stone-400 transition-all duration-500 flex flex-col justify-between overflow-hidden ${
+                  isFeatured ? 'md:col-span-2' : ''
+                }`}
+              >
+                {/* Imagen */}
+                <div className={`relative overflow-hidden bg-stone-100 ${isFeatured ? 'aspect-[16/9]' : 'aspect-[16/11]'}`}>
+                  <img
+                    src={space.coverImage}
+                    alt={space.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <span className="px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase bg-white/95 text-stone-800 backdrop-blur-sm border border-stone-200 shadow-sm">
+                      {space.tag}
                     </span>
-                  )}
+                    {space.area && (
+                      <span className="px-2.5 py-1 text-[10px] font-light tracking-wider text-stone-600 bg-stone-50/95 backdrop-blur-sm border border-stone-200">
+                        {space.area}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="w-8 h-8 bg-white/95 text-stone-900 flex items-center justify-center border border-stone-200 shadow-sm">
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
                 </div>
 
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="w-8 h-8 bg-white/95 text-stone-900 flex items-center justify-center border border-stone-200 shadow-sm">
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
+                {/* Contenido */}
+                <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between bg-white">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-serif text-stone-900 group-hover:text-stone-700 transition-colors mb-1.5">
+                      {space.name}
+                    </h3>
+                    <p className="text-stone-500 text-xs tracking-wider uppercase font-medium mb-3">
+                      {space.subtitle}
+                    </p>
+                    <p className="text-stone-600 text-sm font-light leading-relaxed line-clamp-2 mb-5">
+                      {space.description}
+                    </p>
+                  </div>
 
-              {/* Textos limpios */}
-              <div className="p-7 flex flex-col flex-grow justify-between bg-white">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-serif text-stone-900 group-hover:text-stone-700 transition-colors mb-2">
-                    {space.name}
-                  </h3>
-                  <p className="text-stone-500 text-xs tracking-wider uppercase font-medium mb-3">
-                    {space.subtitle}
-                  </p>
-                  <p className="text-stone-600 text-sm font-light leading-relaxed line-clamp-3 mb-6">
-                    {space.description}
-                  </p>
+                  <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <span className="text-stone-500 font-light text-xs">
+                      {space.specs[0].label}: <strong className="text-stone-800 font-normal">{space.specs[0].value}</strong>
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-stone-900 text-xs font-medium uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                      <span>Ver detalle</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-stone-500" />
+                    </span>
+                  </div>
                 </div>
-
-                <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
-                  <span className="text-stone-400 font-light text-xs">
-                    {space.specs[0].label}: <strong className="text-stone-700 font-normal">{space.specs[0].value}</strong>
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-stone-900 text-xs font-medium uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                    <span>Ver detalle</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-stone-500" />
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
 
         {/* Ficha Resumen de Calidad */}
-        <div className="mt-16 p-8 sm:p-10 bg-white border border-stone-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="mt-14 p-8 sm:p-10 bg-white border border-stone-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="text-center lg:text-left max-w-2xl">
             <span className="text-xs uppercase tracking-[0.25em] text-stone-400 font-semibold block mb-2">
-              Arquitectura & Confort
+              Resumen de la Propiedad
             </span>
             <h4 className="text-2xl font-serif text-stone-900 font-normal">
               230 m² en planta ático con ascensor y garaje privado
             </h4>
             <p className="text-stone-600 text-sm font-light mt-2 leading-relaxed">
-              Terraza exterior de 48 m² con orientación nordeste, chimenea de leña, climatización por splits frío/calor, fibra óptica de alta velocidad y 3 cuartos de baño completos.
+              Terraza exterior de 48 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica de alta velocidad y 3 cuartos de baño completos.
             </p>
           </div>
 
           <div>
             <button
               onClick={onOpenBooking}
-              className="px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium bg-stone-900 hover:bg-stone-800 text-stone-50 transition-colors shadow-sm"
+              className="px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium bg-stone-900 hover:bg-stone-800 text-white transition-colors shadow-sm"
             >
               Consultar Disponibilidad
             </button>
@@ -324,7 +329,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
         </div>
       </div>
 
-      {/* Modal de Detalle Editorial */}
+      {/* Modal de Detalle */}
       {activeSpaceModal && (
         <div
           id="space-detail-modal"
@@ -332,7 +337,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
           onClick={() => setActiveSpaceModal(null)}
         >
           <div
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#FAF8F5] border border-stone-200 shadow-2xl p-6 sm:p-10 text-stone-900"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#FBF9F5] border border-stone-200 shadow-2xl p-6 sm:p-10 text-stone-900"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -357,7 +362,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                 </p>
               </div>
 
-              {/* Galería de Fotos */}
+              {/* Galería */}
               <div className="relative aspect-[16/10] bg-stone-200 border border-stone-200 overflow-hidden">
                 <img
                   src={activeSpaceModal.gallery[modalImageIndex] || activeSpaceModal.coverImage}
