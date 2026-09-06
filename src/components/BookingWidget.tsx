@@ -1,5 +1,5 @@
 import { useState, useId } from 'react';
-import { Calendar, Users, ShieldCheck, Sparkles, CheckCircle, Clock, HeartHandshake, FileCheck, ArrowRight, Phone, MessageSquare, AlertCircle, Percent, Lock } from 'lucide-react';
+import { Calendar, Users, ShieldCheck, CheckCircle, Clock, HeartHandshake, FileCheck, ArrowRight, MessageSquare, Lock } from 'lucide-react';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -12,7 +12,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const adultsId = useId();
   const childrenId = useId();
 
-  // Calculate default dates
+  // Fechas por defecto
   const today = new Date();
   const nextWeek = new Date(today);
   nextWeek.setDate(today.getDate() + 14);
@@ -26,11 +26,8 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
   const [hasPet, setHasPet] = useState<boolean>(false);
-  const [promoCode, setPromoCode] = useState<string>('DIRECTO-AGUINO');
-  const [bookingSubmitted, setBookingSubmitted] = useState<boolean>(false);
-  const [showDirectContactModal, setShowDirectContactModal] = useState<boolean>(false);
 
-  // Price calculations
+  // Cálculo de noches
   const calculateNights = () => {
     if (!checkIn || !checkOut) return 3;
     const start = new Date(checkIn).getTime();
@@ -40,57 +37,51 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   };
 
   const nights = calculateNights();
-  const basePricePerNight = 240; // Luxury penthouse average direct rate
-  const otaPricePerNight = 285; // OTA rate (Airbnb/Booking 18% fee)
+  const basePricePerNight = 240;
+  const otaPricePerNight = 285;
 
   const directSubtotal = basePricePerNight * nights;
   const otaSubtotal = otaPricePerNight * nights;
   const directSavings = otaSubtotal - directSubtotal;
-  const cleaningFee = 60; // 0 on direct promo
   const totalDirect = directSubtotal;
 
   const handleBeds24Redirect = () => {
-    // Construct Beds24 direct booking engine deep link
     const beds24Url = `https://beds24.com/booking2.php?propid=illasatlanticas&checkin=${checkIn}&checkout=${checkOut}&numadult=${adults}&numchild=${children}`;
-    // Open direct booking engine in new tab
     window.open(beds24Url, '_blank', 'noopener,noreferrer');
   };
 
   const handleWhatsAppBooking = () => {
     const text = encodeURIComponent(
-      `Hola, me gustaría reservar directamente en Illas Atlánticas Ático:\n- Fechas: del ${checkIn} al ${checkOut} (${nights} noches)\n- Huéspedes: ${adults} adultos, ${children} niños\n- Mascota: ${hasPet ? 'Sí' : 'No'}\n- Tarifa Directa estimada: ${totalDirect}€\n\n¿Tienen disponibilidad confirmada?`
+      `Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático:\n- Fechas: del ${checkIn} al ${checkOut} (${nights} noches)\n- Huéspedes: ${adults} adultos, ${children} niños\n- Mascota: ${hasPet ? 'Sí' : 'No'}\n\n¿Tienen disponibilidad confirmada para estas fechas?`
     );
-    window.open(`https://wa.me/34600000000?text=${text}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/34606025318?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="reservas" className="py-24 bg-zinc-950 relative border-t border-zinc-800/50">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[500px] bg-amber-600/5 blur-[160px] pointer-events-none -z-10 rounded-full"></div>
-
+    <section id="reservas" className="py-24 bg-[#FAF8F5] text-stone-900 relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Cabecera Editorial */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-amber-500 uppercase tracking-[0.4em] text-xs font-bold mb-3 block">
-            Motor de Reserva Directa Beds24
+          <span className="text-stone-500 uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
+            Reserva Directa Oficial
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif text-zinc-50 tracking-tight mb-5">
-            Tarifa oficial garantizada <span className="italic font-light text-amber-100">sin comisiones</span>
+          <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
+            Trato directo con el anfitrión, <span className="italic font-serif text-stone-600">sin intermediarios</span>
           </h2>
-          <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Al reservar de forma directa a través de nuestro motor oficial ahorras entre un 15% y un 20% en comisiones de plataformas intermediarias y disfrutas de ventajas exclusivas.
+          <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
+            Al reservar directamente con la propiedad obtienes la tarifa más ventajosa, flexibilidad en las condiciones y contacto personal directo desde el primer momento.
           </p>
         </div>
 
-        {/* Main Booking Engine Card */}
-        <div className="max-w-4xl mx-auto rounded-sm bg-zinc-900 border border-zinc-800 p-6 sm:p-10 shadow-2xl relative mb-16">
+        {/* Tarjeta Principal del Motor */}
+        <div className="max-w-4xl mx-auto bg-white border border-stone-200 p-6 sm:p-10 shadow-sm relative mb-16">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {/* Check-In */}
             <div className="space-y-1.5">
-              <label htmlFor={checkInId} className="text-xs uppercase tracking-wider text-zinc-300 font-medium flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-amber-500" />
+              <label htmlFor={checkInId} className="text-xs uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-stone-700" />
                 <span>Fecha Entrada</span>
               </label>
               <input
@@ -99,14 +90,14 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                 value={checkIn}
                 min={formatDate(today)}
                 onChange={(e) => setCheckIn(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-sm bg-zinc-950 border border-zinc-800 text-zinc-100 text-xs sm:text-sm focus:outline-none focus:border-amber-500 font-sans"
+                className="w-full px-3.5 py-3 bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-stone-500 font-sans"
               />
             </div>
 
             {/* Check-Out */}
             <div className="space-y-1.5">
-              <label htmlFor={checkOutId} className="text-xs uppercase tracking-wider text-zinc-300 font-medium flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-amber-500" />
+              <label htmlFor={checkOutId} className="text-xs uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-stone-700" />
                 <span>Fecha Salida</span>
               </label>
               <input
@@ -115,188 +106,182 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                 value={checkOut}
                 min={checkIn}
                 onChange={(e) => setCheckOut(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-sm bg-zinc-950 border border-zinc-800 text-zinc-100 text-xs sm:text-sm focus:outline-none focus:border-amber-500 font-sans"
+                className="w-full px-3.5 py-3 bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-stone-500 font-sans"
               />
             </div>
 
-            {/* Guests: Adults */}
+            {/* Adultos */}
             <div className="space-y-1.5">
-              <label htmlFor={adultsId} className="text-xs uppercase tracking-wider text-zinc-300 font-medium flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-amber-500" />
+              <label htmlFor={adultsId} className="text-xs uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5 text-stone-700" />
                 <span>Adultos</span>
               </label>
               <select
                 id={adultsId}
                 value={adults}
                 onChange={(e) => setAdults(Number(e.target.value))}
-                className="w-full px-3.5 py-3 rounded-sm bg-zinc-950 border border-zinc-800 text-zinc-100 text-xs sm:text-sm focus:outline-none focus:border-amber-500"
+                className="w-full px-3.5 py-3 bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-stone-500"
               >
-                <option value={1}>1 Adulto</option>
-                <option value={2}>2 Adultos</option>
-                <option value={3}>3 Adultos</option>
-                <option value={4}>4 Adultos (Capacidad Máx)</option>
+                <option value={1}>1 Huésped</option>
+                <option value={2}>2 Huéspedes</option>
+                <option value={3}>3 Huéspedes</option>
+                <option value={4}>4 Huéspedes</option>
+                <option value={5}>5 Huéspedes</option>
+                <option value={6}>6 Huéspedes (Capacidad Máx)</option>
               </select>
             </div>
 
-            {/* Guests: Children */}
+            {/* Niños */}
             <div className="space-y-1.5">
-              <label htmlFor={childrenId} className="text-xs uppercase tracking-wider text-zinc-300 font-medium flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-amber-500" />
-                <span>Niños (0-12)</span>
+              <label htmlFor={childrenId} className="text-xs uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5 text-stone-700" />
+                <span>Niños</span>
               </label>
               <select
                 id={childrenId}
                 value={children}
                 onChange={(e) => setChildren(Number(e.target.value))}
-                className="w-full px-3.5 py-3 rounded-sm bg-zinc-950 border border-zinc-800 text-zinc-100 text-xs sm:text-sm focus:outline-none focus:border-amber-500"
+                className="w-full px-3.5 py-3 bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-stone-500"
               >
-                <option value={0}>0 Niños</option>
+                <option value={0}>Sin niños</option>
                 <option value={1}>1 Niño</option>
                 <option value={2}>2 Niños</option>
               </select>
             </div>
           </div>
 
-          {/* Pet Friendly Toggle & Promo Code */}
-          <div className="flex flex-wrap items-center justify-between gap-4 py-4 px-4 bg-zinc-950 rounded-sm border border-zinc-800 mb-6 text-xs text-zinc-300">
+          {/* Opciones adicionales */}
+          <div className="flex flex-wrap items-center justify-between gap-4 py-4 px-4 bg-stone-50 border border-stone-200 mb-6 text-xs text-stone-700">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"
                 checked={hasPet}
                 onChange={(e) => setHasPet(e.target.checked)}
-                className="rounded text-amber-600 focus:ring-amber-500 bg-zinc-900 border-zinc-700"
+                className="rounded text-stone-800 focus:ring-stone-500 bg-white border-stone-300"
               />
-              <span>Viajo con mascota (Pet-friendly prémium bajo consulta)</span>
+              <span>Viajo con mascota (admisión bajo consulta previa)</span>
             </label>
 
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-400">Código Promo:</span>
-              <span className="font-mono text-amber-300 bg-amber-600/10 px-2 py-0.5 rounded border border-amber-600/30 font-bold">
-                DIRECTO-AGUINO (-15%)
-              </span>
-            </div>
+            <span className="text-stone-500 text-xs">
+              Tarifa sin intermediarios aplicada
+            </span>
           </div>
 
-          {/* Transparent Price Breakdown & Comparison */}
-          <div className="p-6 rounded-sm bg-zinc-950 border border-zinc-800 mb-8">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-zinc-800">
+          {/* Desglose Limpio */}
+          <div className="p-6 bg-stone-50 border border-stone-200 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-stone-200">
               <div>
-                <span className="text-xs uppercase tracking-wider text-amber-500 font-bold block">
+                <span className="text-xs uppercase tracking-wider text-stone-500 font-semibold block">
                   Estancia Seleccionada
                 </span>
-                <span className="text-lg font-serif text-zinc-100">
+                <span className="text-lg font-serif text-stone-900">
                   {nights} noches ({checkIn} al {checkOut})
                 </span>
               </div>
 
-              {/* Price Tag with OTA Comparison */}
               <div className="text-left sm:text-right">
                 <div className="flex items-center sm:justify-end gap-2">
-                  <span className="text-xs line-through text-zinc-500">
-                    {otaSubtotal}€ en plataformas
+                  <span className="text-xs line-through text-stone-400">
+                    {otaSubtotal}€ en agencias
                   </span>
-                  <span className="px-2 py-0.5 rounded-sm bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
-                    Ahorras {directSavings}€
+                  <span className="px-2 py-0.5 bg-stone-900 text-white text-[10px] font-medium tracking-wider uppercase">
+                    Ahorro directo: {directSavings}€
                   </span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-serif text-zinc-50 mt-1">
-                  {totalDirect}€ <span className="text-xs font-sans text-zinc-400 font-light">total estancia ({basePricePerNight}€/noche)</span>
+                <div className="text-2xl sm:text-3xl font-serif text-stone-900 mt-1">
+                  {totalDirect}€ <span className="text-xs font-sans text-stone-500 font-light">total ({basePricePerNight}€/noche)</span>
                 </div>
               </div>
             </div>
 
-            {/* Direct Booking Inclusions Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-4 text-xs text-zinc-300">
+            {/* Inclusiones reales */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 text-xs text-stone-700">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>Botella de Albariño frío D.O. y cesta gallega de bienvenida</span>
+                <CheckCircle className="w-4 h-4 text-stone-800 shrink-0" />
+                <span>Plaza de garaje privada en el propio edificio</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>Limpieza integral final incluida (0€ cargo extra)</span>
+                <CheckCircle className="w-4 h-4 text-stone-800 shrink-0" />
+                <span>Limpieza integral inicial y lencería completa</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>Plaza de garaje privada y punto de carga VE</span>
+                <CheckCircle className="w-4 h-4 text-stone-800 shrink-0" />
+                <span>Wi-Fi de fibra óptica de alta velocidad</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>Cancelación flexible 100% reembolsable hasta 7 días</span>
+                <CheckCircle className="w-4 h-4 text-stone-800 shrink-0" />
+                <span>Atención directa y personalizada con el anfitrión</span>
               </div>
             </div>
           </div>
 
-          {/* Action CTAs: Beds24 & WhatsApp Concierge */}
+          {/* Botones de Acción */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <button
               id="booking-beds24-confirm-btn"
               onClick={handleBeds24Redirect}
-              className="w-full sm:flex-1 py-4 px-6 rounded-sm bg-amber-600 hover:bg-amber-500 text-zinc-950 text-xs font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(217,119,6,0.2)] transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:flex-1 py-4 px-6 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium shadow-sm transition-all flex items-center justify-center gap-2 group"
             >
               <Lock className="w-4 h-4" />
-              <span>Confirmar Disponibilidad en Beds24</span>
+              <span>Consultar Calendario en Beds24</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
               id="booking-whatsapp-direct-btn"
               onClick={handleWhatsAppBooking}
-              className="w-full sm:w-auto py-4 px-6 rounded-sm border border-emerald-500/40 bg-emerald-950/40 hover:bg-emerald-900/40 text-emerald-300 text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+              className="w-full sm:w-auto py-4 px-6 border border-stone-300 hover:border-stone-400 bg-white text-stone-900 text-xs uppercase tracking-[0.2em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" />
-              <span>Solicitar vía WhatsApp</span>
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
+              <span>Consultar por WhatsApp</span>
             </button>
           </div>
 
-          <p className="text-[11px] text-zinc-500 text-center mt-4 font-mono">
-            Conexión encriptada directa con Beds24 PMS · Sin comisiones bancarias adicionales · Confirmación inmediata
+          <p className="text-[11px] text-stone-400 text-center mt-4">
+            Gestión directa de reservas · Calendario sincronizado en tiempo real · Sin costes ocultos
           </p>
         </div>
 
-        {/* 4 Direct Booking Guarantee Cards */}
+        {/* 4 Garantías Reales */}
         <div id="garantias" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          {/* Guarantee 1 */}
-          <div className="p-6 rounded-sm bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all shadow-lg">
-            <div className="w-10 h-10 rounded-sm bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-4 font-bold">
+          <div className="p-6 bg-white border border-stone-200 shadow-sm">
+            <div className="w-10 h-10 bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800 mb-4">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h4 className="text-lg font-serif text-zinc-100 mb-2">Garantía Mejor Precio</h4>
-            <p className="text-xs text-zinc-400 font-light leading-relaxed">
-              Reserva directa con la propiedad sin comisiones intermedias de Booking ni Airbnb. Tarifa más baja siempre garantizada.
+            <h4 className="text-base font-serif text-stone-900 mb-2">Mejor Tarifa Directa</h4>
+            <p className="text-xs text-stone-600 font-light leading-relaxed">
+              Al reservar directamente con la propiedad evitas las comisiones de intermediación que encarecen la estancia en plataformas externas.
             </p>
           </div>
 
-          {/* Guarantee 2 */}
-          <div className="p-6 rounded-sm bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all shadow-lg">
-            <div className="w-10 h-10 rounded-sm bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-4 font-bold">
+          <div className="p-6 bg-white border border-stone-200 shadow-sm">
+            <div className="w-10 h-10 bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800 mb-4">
               <FileCheck className="w-5 h-5" />
             </div>
-            <h4 className="text-lg font-serif text-zinc-100 mb-2">Check-in Online Rápido</h4>
-            <p className="text-xs text-zinc-400 font-light leading-relaxed">
-              Integración digital oficial con Partee y SES.Hospedajes (Policía/Guardia Civil). Registro ágil desde el móvil y acceso autónomo con cerradura inteligente 24/7.
+            <h4 className="text-base font-serif text-stone-900 mb-2">Registro Oficial Ágil</h4>
+            <p className="text-xs text-stone-600 font-light leading-relaxed">
+              Cumplimiento estricto con el registro oficial de hospedaje. Registro cómodo antes de la llegada para una entrada sin esperas.
             </p>
           </div>
 
-          {/* Guarantee 3 */}
-          <div className="p-6 rounded-sm bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all shadow-lg">
-            <div className="w-10 h-10 rounded-sm bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-4 font-bold">
+          <div className="p-6 bg-white border border-stone-200 shadow-sm">
+            <div className="w-10 h-10 bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800 mb-4">
               <Clock className="w-5 h-5" />
             </div>
-            <h4 className="text-lg font-serif text-zinc-100 mb-2">Cancelación Transparente</h4>
-            <p className="text-xs text-zinc-400 font-light leading-relaxed">
-              Flexibilidad total: 100% de reembolso en cancelaciones realizadas hasta 7 días antes de la fecha de llegada.
+            <h4 className="text-base font-serif text-stone-900 mb-2">Flexibilidad & Claridad</h4>
+            <p className="text-xs text-stone-600 font-light leading-relaxed">
+              Condiciones de reserva transparentes y directas, con comunicación continua para adaptar horarios de llegada según tus necesidades.
             </p>
           </div>
 
-          {/* Guarantee 4 */}
-          <div className="p-6 rounded-sm bg-zinc-900 border border-zinc-800 hover:border-amber-500/50 transition-all shadow-lg">
-            <div className="w-10 h-10 rounded-sm bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-4 font-bold">
+          <div className="p-6 bg-white border border-stone-200 shadow-sm">
+            <div className="w-10 h-10 bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800 mb-4">
               <HeartHandshake className="w-5 h-5" />
             </div>
-            <h4 className="text-lg font-serif text-zinc-100 mb-2">Atención Personalizada</h4>
-            <p className="text-xs text-zinc-400 font-light leading-relaxed">
-              Conserjería directa con el anfitrión local para reservas de lonja, traslados náuticos a Sálvora y recomendaciones enogastronómicas a medida.
+            <h4 className="text-base font-serif text-stone-900 mb-2">Anfitrión Local</h4>
+            <p className="text-xs text-stone-600 font-light leading-relaxed">
+              Recomendaciones auténticas de primera mano: producto de lonja, rincones de la ría y asistencia personal durante toda tu estancia.
             </p>
           </div>
 
