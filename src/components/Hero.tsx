@@ -7,7 +7,7 @@ interface HeroProps {
 
 export function Hero({ onOpenBooking }: HeroProps) {
   return (
-    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-20 bg-stone-900">
+    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16 bg-stone-900">
       {/* Imagen de Portada Real */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -16,19 +16,21 @@ export function Hero({ onOpenBooking }: HeroProps) {
           className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000"
           loading="eager"
         />
-        {/* Capa de contraste cinematográfica que deja respirar la luz del mar */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/35 to-stone-950/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/30 to-stone-950/40"></div>
       </div>
 
       {/* Contenido Principal */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
-        {/* Entorno Geográfico Exacto */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-stone-200"></span>
-          <span className="text-white/90 uppercase tracking-[0.25em] text-[11px] font-medium">
-            Aguiño · Ría de Arousa · Vistas a Sálvora y Ons
-          </span>
+        {/* Sello de Reputación Oficial Directo Arriba */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 mb-6 shadow-sm">
+          <div className="flex items-center gap-1 text-white font-medium text-xs">
+            <Star className="w-3.5 h-3.5 fill-white text-white" />
+            <span className="font-semibold">9,5 / 10</span>
+            <span className="italic font-serif text-stone-200">Excepcional</span>
+          </div>
+          <span className="text-white/40">·</span>
+          <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
         </div>
 
         {/* Título Principal */}
@@ -46,7 +48,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             id="hero-subtitle"
             className="text-base sm:text-lg md:text-xl text-stone-200 font-light leading-relaxed drop-shadow"
           >
-            Amplitud, luz y horizonte. Un ático de <span className="text-white font-medium">230 m²</span> con <span className="text-white font-medium">48 m² de terraza panorámica</span>, 3 dormitorios (dos de ellos en suite), 3 baños completos y el privilegio de contemplar <span className="text-white font-medium">Sálvora y Ons</span> sobre la ría.
+            Amplitud, luz y horizonte en Aguiño. Un ático de <span className="text-white font-medium">230 m²</span> con <span className="text-white font-medium">48 m² de terraza panorámica</span>, 3 dormitorios (dos de ellos en suite), 3 baños completos y vistas a las islas de <span className="text-white font-medium">Sálvora y Ons</span>.
           </p>
         </div>
 
@@ -66,7 +68,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
           </div>
         </div>
 
-        {/* Botones de acción refinados */}
+        {/* Botones de acción */}
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <button
             id="hero-direct-booking-cta"
@@ -89,35 +91,15 @@ export function Hero({ onOpenBooking }: HeroProps) {
           </a>
         </div>
 
-        {/* Sello de Calificación Booking y Trato Directo */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-stone-300/90 font-light">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/15">
-            <div className="flex items-center gap-1 text-white font-medium">
-              <Star className="w-3.5 h-3.5 fill-white text-white" />
-              <span>9,5 / 10</span>
-            </div>
-            <span className="text-stone-300">·</span>
-            <span className="text-stone-200">54 opiniones en Booking.com</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-stone-300" />
-            <span>Trato directo con el anfitrión · Sin comisiones</span>
-          </div>
+        {/* Garantía de trato directo */}
+        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-stone-300/90 font-light">
+          <ShieldCheck className="w-4 h-4 text-stone-300" />
+          <span>Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones</span>
         </div>
 
       </div>
 
-      {/* Nota Oficial Booking (Esquina Inferior Izquierda) */}
-      <div className="absolute left-6 sm:left-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-start gap-0.5 pointer-events-none z-10 text-left">
-        <div className="flex items-center gap-1.5">
-          <span className="px-2 py-0.5 bg-white text-stone-900 font-serif font-semibold text-xs shadow-sm">9,5</span>
-          <span className="text-xs font-serif italic text-stone-200">Excepcional</span>
-        </div>
-        <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">54 opiniones en Booking.com</span>
-      </div>
-
-      {/* Licencia Oficial Xunta de Galicia (Esquina Inferior Derecha) */}
+      {/* Licencia Oficial Xunta de Galicia */}
       <div className="absolute right-6 sm:right-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-end gap-0.5 pointer-events-none z-10 text-right">
         <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">Vivienda de Uso Turístico</span>
         <span className="text-xs font-serif italic text-stone-200">VUT-CO-007656</span>
