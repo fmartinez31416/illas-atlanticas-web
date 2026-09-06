@@ -9,7 +9,7 @@ import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 import { ReviewsAndPress } from './components/ReviewsAndPress';
 import { Footer } from './components/Footer';
 import { VirtualTourModal } from './components/VirtualTourModal';
-import { CalendarCheck, Compass, MessageCircle, ChevronUp } from 'lucide-react';
+import { CalendarCheck, MessageCircle, ChevronUp } from 'lucide-react';
 
 export default function App() {
   const [virtualTourOpen, setVirtualTourOpen] = useState(false);
@@ -20,8 +20,8 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setShowFloatingCTA(scrollY > 600);
-      setShowBackToTop(scrollY > 900);
+      setShowFloatingCTA(scrollY > 500);
+      setShowBackToTop(scrollY > 800);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -45,47 +45,47 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-amber-600/30 selection:text-amber-200">
+    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-stone-200 selection:text-stone-900">
       
-      {/* 1. Header de Navegación */}
+      {/* 1. Cabecera */}
       <Header
         onOpenBooking={scrollToBooking}
         onOpenVirtualTour={() => setVirtualTourOpen(true)}
       />
 
       <main className="flex-grow">
-        {/* 2. Hero Principal (Impacto Visual) */}
+        {/* 2. Portada Principal */}
         <Hero
           onOpenBooking={scrollToBooking}
           onOpenVirtualTour={() => setVirtualTourOpen(true)}
         />
 
-        {/* 3. Grid Interactivo de Espacios Singulares */}
+        {/* 3. Estancias & Distribución Real */}
         <SpacesGrid
           onSelectSpaceForTour={openVirtualTourForSpace}
           onOpenBooking={scrollToBooking}
         />
 
-        {/* 4. Módulo Diferencial: Experiencias de Ría & Asistente Gastro */}
-        <GastroAndExperiences />
-
-        {/* 5. Widget de Reserva Directa y Disponibilidad */}
-        <BookingWidget />
-
-        {/* Servicios & Confort */}
+        {/* 4. Confort & Servicios */}
         <AmenitiesSection />
 
-        {/* 6. Ubicación & Entorno de Aguiño / Sálvora */}
+        {/* 5. Motor de Reserva Directa */}
+        <BookingWidget />
+
+        {/* 6. Experiencias & Gastronomía */}
+        <GastroAndExperiences />
+
+        {/* 7. Ubicación & Entorno */}
         <LocationAndSurroundings />
 
-        {/* Reseñas y Testimonios */}
+        {/* 8. Reputación y Reseñas Reales */}
         <ReviewsAndPress />
       </main>
 
-      {/* 7. Footer Editorial */}
+      {/* 9. Pie de Página */}
       <Footer />
 
-      {/* Virtual Tour Modal */}
+      {/* Modal de Tour Virtual (si se requiere) */}
       {virtualTourOpen && (
         <VirtualTourModal
           initialSpaceId={selectedTourSpace}
@@ -94,46 +94,40 @@ export default function App() {
         />
       )}
 
-      {/* Floating Bottom Quick Action Bar for Mobile / Tablet */}
+      {/* Barra Rápida Flotante (Elegante y Discreta) */}
       {showFloatingCTA && (
-        <div
+        <aside
           id="floating-mobile-cta"
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:w-auto z-40 flex items-center gap-2 p-1.5 rounded-full bg-zinc-900/90 border border-amber-600/30 backdrop-blur-lg shadow-2xl shadow-black/80 animate-fadeIn"
+          aria-label="Acciones rápidas de contacto y reserva"
+          className="fixed bottom-5 left-4 right-4 sm:left-auto sm:right-6 sm:w-auto z-40 flex items-center gap-2 p-1.5 rounded-full bg-white/95 border border-stone-200 backdrop-blur-md shadow-xl animate-fadeIn"
         >
+          {/* Enlace a WhatsApp directo */}
           <a
-            href="https://wa.me/34600000000?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20Illas%20Atl%C3%A1nticas%20%C3%81tico"
+            href="https://wa.me/34600000000?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20Ático%20en%20Aguiño"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-900/40 transition-colors"
-            title="Contactar vía WhatsApp"
+            className="p-2.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+            title="Consultar por WhatsApp"
           >
             <MessageCircle className="w-4 h-4" />
           </a>
 
-          <button
-            onClick={() => setVirtualTourOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-zinc-950 text-zinc-300 hover:text-amber-200 border border-zinc-800 text-xs font-medium"
-            title="Recorrido virtual"
-          >
-            <Compass className="w-3.5 h-3.5 text-amber-500" />
-            <span>Tour 360°</span>
-          </button>
-
+          {/* Botón de Reserva Directa */}
           <button
             onClick={scrollToBooking}
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-amber-600 hover:bg-amber-500 text-zinc-950 text-xs font-bold uppercase tracking-wider shadow-lg shadow-amber-600/25 transition-all"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium uppercase tracking-wider transition-all shadow-sm"
           >
             <CalendarCheck className="w-3.5 h-3.5" />
-            <span>Reserva Directa</span>
+            <span>Consultar Fechas</span>
           </button>
-        </div>
+        </aside>
       )}
 
-      {/* Back to top button */}
+      {/* Botón Volver Arriba */}
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-20 sm:bottom-6 left-6 z-30 p-2.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-400 hover:text-amber-300 hover:border-amber-500/40 backdrop-blur-md shadow-lg transition-all hidden md:flex items-center justify-center"
+          className="fixed bottom-20 sm:bottom-6 left-6 z-30 p-2.5 rounded-full bg-white/90 border border-stone-200 text-stone-600 hover:text-stone-900 hover:border-stone-400 backdrop-blur-md shadow-md transition-all hidden md:flex items-center justify-center"
           title="Subir al inicio"
         >
           <ChevronUp className="w-4 h-4" />
