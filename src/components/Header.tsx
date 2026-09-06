@@ -3,7 +3,7 @@ import { Menu, X, Phone, MessageCircle, CalendarCheck, ShieldCheck } from 'lucid
 
 interface HeaderProps {
   onOpenBooking: () => void;
-  // onOpenVirtualTour?: () => void; // Tour virtual desactivado temporalmente para simplificar la landing
+  onOpenVirtualTour?: () => void;
 }
 
 export function Header({ onOpenBooking }: HeaderProps) {
@@ -31,50 +31,50 @@ export function Header({ onOpenBooking }: HeaderProps) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-white/95 border-b border-stone-200/80 py-3 backdrop-blur-md shadow-sm'
-          : 'bg-transparent py-6'
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           
-          {/* Logo Editorial - Tipografía Serif Elegante */}
+          {/* Logotipo Editorial */}
           <a
             href="#"
             id="header-brand-link"
-            className="group flex flex-col focus:outline-none"
+            className="group flex flex-col focus:outline-none shrink-0"
           >
             <div className="flex items-center gap-2">
-              <span className={`text-lg sm:text-2xl font-serif font-normal uppercase tracking-[0.25em] transition-colors ${
+              <span className={`text-base sm:text-xl font-serif uppercase tracking-[0.2em] transition-colors ${
                 isScrolled ? 'text-stone-900' : 'text-white'
               }`}>
                 Illas Atlánticas
               </span>
-              <span className={`w-1.5 h-1.5 rounded-full ${
-                isScrolled ? 'bg-stone-800' : 'bg-white/90'
+              <span className={`w-1 h-1 rounded-full ${
+                isScrolled ? 'bg-stone-500' : 'bg-white/80'
               }`}></span>
-              <span className={`hidden sm:inline-block text-[11px] font-medium uppercase tracking-[0.3em] ${
-                isScrolled ? 'text-stone-700' : 'text-white/80'
+              <span className={`text-[10px] uppercase tracking-[0.25em] font-medium ${
+                isScrolled ? 'text-stone-600' : 'text-stone-200'
               }`}>
                 Ático
               </span>
             </div>
-            <span className={`text-[10px] sm:text-[11px] font-light uppercase tracking-[0.4em] ${
-              isScrolled ? 'text-stone-600' : 'text-white/70'
+            <span className={`text-[9px] uppercase tracking-[0.3em] font-light ${
+              isScrolled ? 'text-stone-500' : 'text-stone-300'
             }`}>
-              Aguiño / Ribeira
+              Aguiño · Ribeira
             </span>
           </a>
 
-          {/* Desktop Navigation - Menú Editorial */}
-          <nav className="hidden md:flex items-center space-x-7" aria-label="Navegación principal">
+          {/* Menú Central Limpio (Solo 4 enlaces clave) */}
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" aria-label="Navegación principal">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-[11px] uppercase tracking-[0.25em] font-medium transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] hover:after:w-full after:transition-all after:duration-300 ${
+                className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
                   isScrolled
-                    ? 'text-stone-800 hover:text-stone-950 after:bg-stone-900'
-                    : 'text-white/95 hover:text-white after:bg-white'
+                    ? 'text-stone-700 hover:text-stone-950'
+                    : 'text-white/90 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -82,143 +82,123 @@ export function Header({ onOpenBooking }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Right Action CTA & Contact (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-3.5">
-            {/* Teléfono Real Integrado (Sin ámbar) */}
+          {/* Acciones de Contacto & Reserva */}
+          <div className="hidden md:flex items-center space-x-3 shrink-0">
+            {/* Llamada directa */}
             <a
               id="header-phone-link"
               href="tel:+34606025318"
-              className={`p-2.5 rounded-sm transition-colors border shadow-sm ${
+              className={`p-2 rounded-sm transition-colors border shadow-sm ${
                 isScrolled
-                  ? 'text-stone-600 hover:text-stone-950 bg-stone-50 border-stone-200'
+                  ? 'text-stone-700 hover:text-stone-950 bg-stone-50 border-stone-200'
                   : 'text-white hover:text-white/80 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
-              title="Llamar al anfitrión: +34 606 025 318"
+              title="Llamar al anfitrión: 606 02 53 18"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-3.5 h-3.5" />
             </a>
 
-            {/* WhatsApp Real Integrado (Sin ámbar) */}
+            {/* WhatsApp directo */}
             <a
               id="header-whatsapp-link"
-              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20Ático%20Illas%20Atlánticas."
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-2.5 rounded-sm transition-colors border shadow-sm ${
+              className={`p-2 rounded-sm transition-colors border shadow-sm ${
                 isScrolled
-                  ? 'text-stone-600 hover:text-emerald-800 bg-stone-50 border-stone-200 hover:bg-emerald-50 hover:border-emerald-200'
-                  : 'text-white hover:text-emerald-300 bg-white/10 border-white/20 backdrop-blur-sm hover:bg-emerald-950/20 hover:border-emerald-500/30'
+                  ? 'text-stone-700 hover:text-emerald-700 bg-stone-50 border-stone-200 hover:bg-emerald-50'
+                  : 'text-white hover:text-emerald-300 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
-              title="Contacto directo por WhatsApp"
+              title="WhatsApp directo"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-3.5 h-3.5" />
             </a>
 
-            {/* Botón de Reserva Editorial */}
+            {/* Botón de Reserva */}
             <button
               id="header-booking-cta-btn"
               onClick={onOpenBooking}
-              className={`px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-sm rounded-sm flex items-center gap-2 ${
+              className={`px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-sm rounded-sm flex items-center gap-2 ${
                 isScrolled
                   ? 'bg-stone-900 text-white hover:bg-stone-800'
-                  : 'bg-white text-stone-950 hover:bg-white/95 backdrop-blur-md'
+                  : 'bg-white text-stone-950 hover:bg-stone-100'
               }`}
             >
-              <CalendarCheck className="w-3.5 h-3.5 shrink-0" />
+              <CalendarCheck className="w-3.5 h-3.5" />
               <span>Consultar Fechas</span>
             </button>
           </div>
 
-          {/* Mobile menu trigger */}
+          {/* Menú Móvil */}
           <div className="flex md:hidden items-center space-x-2">
             <button
-              id="mobile-book-btn-compact"
               onClick={onOpenBooking}
-              className={`px-3.5 py-2 rounded-sm text-xs font-medium uppercase tracking-wider shadow-sm transition-all ${
-                isScrolled
-                  ? 'bg-stone-900 text-white'
-                  : 'bg-white text-stone-950 backdrop-blur-md'
+              className={`px-3 py-1.5 rounded-sm text-xs font-medium uppercase tracking-wider ${
+                isScrolled ? 'bg-stone-900 text-white' : 'bg-white text-stone-950'
               }`}
             >
               Reservar
             </button>
 
             <button
-              id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2.5 rounded-sm transition-colors ${
-                isScrolled
-                  ? 'text-stone-700 hover:text-stone-950 bg-stone-50 hover:bg-stone-100 border border-stone-200 shadow-sm'
-                  : 'text-white hover:text-white/80 bg-white/10 border-white/20 backdrop-blur-sm shadow-sm'
+              className={`p-2 rounded-sm ${
+                isScrolled ? 'text-stone-900' : 'text-white'
               }`}
               aria-label="Abrir menú"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
+
         </div>
       </div>
 
-      {/* Mobile Drawer Editorial (Luminoso) */}
+      {/* Cajón Móvil */}
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="md:hidden glass-dropdown border-b border-stone-200 px-6 py-6 mt-3 space-y-4 animate-fadeIn bg-white/95 backdrop-blur-xl shadow-lg"
+          className="md:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg"
         >
-          <div className="flex flex-col space-y-3.5 pb-4 border-b border-stone-100">
+          <div className="flex flex-col space-y-3 pb-4 border-b border-stone-100">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1.5"
+                className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="flex flex-col space-y-2.5 pt-2">
-            {/* WhatsApp Móvil real */}
+          <div className="flex flex-col space-y-2 pt-2">
             <a
-              id="mobile-drawer-whatsapp-btn"
-              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20Ático%20Illas%20Atlánticas."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm border border-emerald-300 text-emerald-800 text-xs uppercase tracking-widest font-medium bg-emerald-50 shadow-sm"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-sm border border-emerald-300 text-emerald-800 text-xs uppercase tracking-widest font-medium bg-emerald-50"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Directo anfitrión</span>
+              <span>WhatsApp Directo</span>
             </a>
 
-            {/* Llamada Móvil real */}
-            <a
-              id="mobile-drawer-phone-btn"
-              href="tel:+34606025318"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm border border-stone-300 text-stone-800 text-xs uppercase tracking-widest font-medium bg-stone-50 shadow-sm"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Llamar al anfitrión</span>
-            </a>
-
-            {/* Reserva Móvil */}
             <button
-              id="mobile-drawer-booking-btn"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm bg-stone-900 text-white text-xs uppercase tracking-widest font-medium shadow-sm"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm bg-stone-900 text-white text-xs uppercase tracking-widest font-medium"
             >
               <CalendarCheck className="w-4 h-4" />
-              <span>Consultar Disponibilidad Directa</span>
+              <span>Consultar Disponibilidad</span>
             </button>
           </div>
 
-          {/* Garantías y Licencia real */}
-          <div className="pt-3.5 flex items-center justify-between text-xs text-stone-500 font-light">
-            <span className="flex items-center gap-1.5 text-stone-600">
-              <ShieldCheck className="w-3.5 h-3.5 text-stone-800" />
+          <div className="pt-2 flex items-center justify-between text-xs text-stone-500 font-light">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-stone-700" />
               <span>Trato directo con el anfitrión</span>
             </span>
             <span className="text-stone-500 italic font-mono text-[10px]">VUT-CO-007656</span>
