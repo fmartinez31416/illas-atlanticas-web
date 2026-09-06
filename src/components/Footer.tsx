@@ -1,5 +1,7 @@
 import React from 'react';
 import { MapPin, ShieldCheck, ArrowUp, Instagram, Facebook } from 'lucide-react';
+// Importamos la imagen directamente desde la raíz del proyecto para forzar su empaquetado
+import footerBg from '../../footer-bg.webp';
 
 function TikTokIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -22,33 +24,33 @@ export function Footer() {
   return (
     <footer className="relative bg-stone-950 text-white overflow-hidden border-t border-stone-800">
       
-      {/* Imagen marina de fondo */}
+      {/* Fotografía de fondo procesada por Vite */}
       <img
-        src="/footer-bg.webp"
+        src={footerBg}
         alt="Vistas panorámicas a la ría y las bateas desde Aguiño"
-        className="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-45"
+        className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
       
-      {/* Capa de contraste equilibrada */}
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-950/90 via-stone-950/75 to-stone-950/95 z-0" />
+      {/* Velo traslúcido para legibilidad sin oscurecer en exceso */}
+      <div className="absolute inset-0 bg-stone-950/65 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         
         {/* Cabecera del pie */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-stone-800 gap-8">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-white/15 gap-8">
           <div>
             <span className="text-stone-300 uppercase tracking-[0.25em] text-xs font-semibold block mb-3">
               Ático Singular · Aguiño (Ribeira)
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-light text-stone-100 tracking-tight">
-              Despertar frente al <span className="italic font-serif text-stone-300">Atlántico</span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-tight drop-shadow-sm">
+              Despertar frente al <span className="italic font-serif text-stone-200">Atlántico</span>
             </h2>
           </div>
 
           <button
             onClick={scrollToTop}
             aria-label="Volver arriba"
-            className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-stone-300 hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-stone-300 hover:text-white transition-colors group bg-black/30 hover:bg-black/50 px-4 py-2.5 rounded-full border border-white/10"
           >
             <span>Subir al inicio</span>
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
@@ -56,20 +58,20 @@ export function Footer() {
         </div>
 
         {/* Bloque principal en 4 columnas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-stone-800 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-b border-white/15 text-sm">
           
           {/* Columna 1: Identidad & Redes */}
           <div className="space-y-5">
             <div className="space-y-1">
-              <span className="font-serif text-lg tracking-wider text-stone-100 uppercase block">
+              <span className="font-serif text-lg tracking-wider text-white uppercase block">
                 Illas Atlánticas
               </span>
               <span className="text-xs text-stone-300 uppercase tracking-[0.15em] block">
                 Ático Privado · 230 m²
               </span>
             </div>
-            <p className="text-xs text-stone-300 font-light leading-relaxed">
-              Exclusivo ático en primera línea sobre el puerto de Aguiño. 9,5 sobre 10 de calificación con terraza panorámica frente a Sálvora y Ons.
+            <p className="text-xs text-stone-200 font-light leading-relaxed drop-shadow-sm">
+              Exclusivo ático en primera línea sobre el puerto de Aguiño. Calificación 9,5 sobre 10 con terraza panorámica frente a Sálvora y Ons.
             </p>
 
             <div className="pt-2">
@@ -82,7 +84,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all"
+                  className="w-9 h-9 rounded-full bg-black/40 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all border border-white/20"
                 >
                   <TikTokIcon className="w-4 h-4" />
                 </a>
@@ -91,7 +93,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all"
+                  className="w-9 h-9 rounded-full bg-black/40 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all border border-white/20"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -100,7 +102,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all"
+                  className="w-9 h-9 rounded-full bg-black/40 hover:bg-white text-stone-200 hover:text-stone-950 flex items-center justify-center transition-all border border-white/20"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -110,10 +112,10 @@ export function Footer() {
 
           {/* Columna 2: Navegación */}
           <div className="space-y-4">
-            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-200">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-white">
               Navegación
             </h3>
-            <ul className="space-y-2.5 text-xs text-stone-300 font-light">
+            <ul className="space-y-2.5 text-xs text-stone-200 font-light">
               <li>
                 <a href="#espacios" className="hover:text-white transition-colors">
                   Distribución & Espacios
@@ -139,37 +141,42 @@ export function Footer() {
 
           {/* Columna 3: Atención y Ubicación */}
           <div className="space-y-4">
-            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-200">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-white">
               Atención Directa
             </h3>
-            <div className="space-y-3 text-xs text-stone-300 font-light">
-              <p className="text-stone-100">
-                Anfitrión: <span className="font-medium text-white">Fernando</span>
+            <div className="space-y-3 text-xs text-stone-200 font-light">
+              <p className="text-white">
+                Anfitrión: <span className="font-medium">Fernando</span>
               </p>
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-stone-400 shrink-0 mt-0.5" />
                 <span>Rúa Francisco Lorenzo Mariño, 93<br />15965 Aguiño (Ribeira, A Coruña)</span>
               </div>
               <p className="text-xs text-stone-300 pt-1 leading-relaxed">
-                Atención personalizada y trato directo sin intermediarios para coordinar fechas y bienvenida.
+                Atención personalizada y reservas directas sin intermediarios ni sobrecostes.
               </p>
             </div>
           </div>
 
-          {/* Columna 4: Garantías Oficiales */}
+          {/* Columna 4: Garantías Oficiales & Licencia VUT */}
           <div className="space-y-4">
-            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-stone-200">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-white">
               Garantía & Registro
             </h3>
-            <div className="space-y-3 text-xs text-stone-300 font-light">
-              <div className="flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 text-stone-300 shrink-0 mt-0.5" />
-                <span className="text-stone-200 font-normal">
-                  Alojamiento turístico reglamentado conforme a la normativa oficial de la Xunta de Galicia.
-                </span>
+            <div className="space-y-3 text-xs text-stone-200 font-light">
+              
+              <div className="bg-black/40 border border-white/20 p-3 rounded-sm space-y-1">
+                <div className="flex items-center gap-2 text-white font-medium">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span className="text-[11px] uppercase tracking-wider">Registro Oficial Turismo</span>
+                </div>
+                <p className="text-xs font-mono font-semibold text-amber-200 pl-6">
+                  VUT-CO-007656
+                </p>
               </div>
+
               <p className="text-xs text-stone-300 leading-relaxed font-light">
-                Plaza de garaje privada en el edificio, ascensor directo hasta la vivienda y reserva directa garantizada al mejor precio.
+                Vivienda de Uso Turístico reglamentada conforme a la normativa oficial de la Xunta de Galicia. Garaje cerrado en el edificio y acceso directo por ascensor.
               </p>
             </div>
           </div>
@@ -182,7 +189,7 @@ export function Footer() {
             © {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.
           </p>
           <p className="text-xs text-stone-300">
-            Reserva directa gestionada personalmente por el anfitrión · Aguiño, Rías Baixas.
+            Licencia VUT-CO-007656 · Aguiño, Rías Baixas.
           </p>
         </div>
 
