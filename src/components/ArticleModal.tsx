@@ -87,51 +87,109 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
             </p>
           </header>
 
-          {/* Cuerpo del Artículo con Rigor Documental */}
+          {/* CUERPO DINÁMICO SEGÚN EL ARTÍCULO */}
           <div className="prose prose-stone max-w-none text-stone-800 font-light leading-relaxed space-y-6 text-sm sm:text-base">
             
-            <p className="first-letter:text-5xl first-letter:font-serif first-letter:font-normal first-letter:float-left first-letter:mr-3 first-letter:text-stone-900">
-              En la madrugada del 2 de enero de 1921, bajo un temporal desatado del sudoeste con visibilidad nula y mar de fondo atlántico, el vapor correo de pasaje y carga <em>Santa Isabel</em> enfilaba la bocana de la Ría de Arousa rumbo al puerto de Cádiz, escala previa a su destino final en Buenos Aires. A bordo viajaban 268 personas entre tripulantes y emigrantes gallegos en busca de futuro.
-            </p>
+            {/* ARTÍCULO 1: SÁLVORA Y EL SANTA ISABEL */}
+            {article.id === '1' && (
+              <>
+                <p className="first-letter:text-5xl first-letter:font-serif first-letter:font-normal first-letter:float-left first-letter:mr-3 first-letter:text-stone-900">
+                  En la madrugada del 2 de enero de 1921, bajo un temporal desatado del sudoeste con visibilidad nula y mar de fondo atlántico, el vapor correo de pasaje y carga <em>Santa Isabel</em> enfilaba la bocana de la Ría de Arousa rumbo al puerto de Cádiz, escala previa a su destino final en Buenos Aires. A bordo viajaban 268 personas entre tripulantes y emigrantes gallegos en busca de futuro.
+                </p>
 
-            <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
-              La hidrografía traicionera de los Bajos de Pegar
-            </h2>
-            <p>
-              La entrada occidental a la ría esconde una de las formaciones batimétricas más complejas del litoral ibérico. El barco, desviado de su derrota estimada por la intensidad de la corriente y la galerna, colisionó violentamente contra las piedras sumergidas de los bajos de Pegar, a escasos doscientos metros de los acantilados de la Isla de Sálvora. El impacto desgarró el casco metálico, interrumpiendo el fluido eléctrico y condenando a la nave a zozobrar en cuestión de minutos.
-            </p>
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  La hidrografía traicionera de los Bajos de Pegar
+                </h2>
+                <p>
+                  La entrada occidental a la ría esconde una de las formaciones batimétricas más complejas del litoral ibérico. El barco, desviado de su derrota estimada por la intensidad de la corriente y la galerna, colisionó violentamente contra las piedras sumergidas de los bajos de Pegar, a escasos doscientos metros de los acantilados de la Isla de Sálvora. El impacto desgarró el casco metálico, interrumpiendo el fluido eléctrico y condenando a la nave a zozobrar en cuestión de minutos.
+                </p>
 
-            <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
-              Las Heroínas de Sálvora y el bote de madera
-            </h2>
-            <p>
-              Alertadas por los lamentos que arrastraba el vendaval, cuatro jóvenes de la aldea insular —María Fernández Oujo, Josefa Parada, Cipriana Oujo Maneiro y Cipriana Crujeiras— botaron una pequeña <em>dornilla</em> de madera en medio de un mar dantesco. En sucesivos viajes sin instrumentos de navegación ni chalecos, desafiando rompientes letales, lograron rescatar a pulso de remo a más de medio centenar de náufragos ateridos.
-            </p>
-            <p>
-              Su hazaña se convirtió en uno de los episodios de mayor coraje civil de la historia náutica española, condecoradas posteriormente por la Real Sociedad de Salvamento de Náufragos.
-            </p>
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  Las Heroínas de Sálvora y el bote de madera
+                </h2>
+                <p>
+                  Alertadas por los lamentos que arrastraba el vendaval, cuatro jóvenes de la aldea insular —María Fernández Oujo, Josefa Parada, Cipriana Oujo Maneiro y Cipriana Crujeiras— botaron una pequeña <em>dornilla</em> de madera en medio de un mar dantesco. En sucesivos viajes sin instrumentos de navegación ni chalecos, desafiando rompientes letales, lograron rescatar a pulso de remo a más de medio centenar de náufragos ateridos.
+                </p>
+                <p>
+                  Su hazaña se convirtió en uno de los episodios de mayor coraje civil de la historia náutica española, condecoradas posteriormente por la Real Sociedad de Salvamento de Náufragos.
+                </p>
 
-            <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
-              El archipiélago hoy: Santuario del Parque Nacional
-            </h2>
-            <p>
-              Hoy en día, Sálvora no solo custodia la memoria de aquel naufragio en su faro y sus roquedos; constituye la vanguardia meridional del <strong>Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia</strong>. Un enclave de máxima protección ambiental donde anidan colonias de cormorán moñudo y gaviota patiamarilla, con un estricto régimen de acceso que preserva su ecosistema virgen.
-            </p>
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  El archipiélago hoy: Santuario del Parque Nacional
+                </h2>
+                <p>
+                  Hoy en día, Sálvora no solo custodia la memoria de aquel naufragio en su faro y sus roquedos; constituye la vanguardia meridional del <strong>Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia</strong>. Un enclave de máxima protección ambiental donde anidan colonias de cormorán moñudo y gaviota patiamarilla, con un estricto régimen de acceso que preserva su ecosistema virgen.
+                </p>
+              </>
+            )}
+
+            {/* ARTÍCULO 2: EL PERCEBE DE AGUIÑO */}
+            {article.id === '2' && (
+              <>
+                <p className="first-letter:text-5xl first-letter:font-serif first-letter:font-normal first-letter:float-left first-letter:mr-3 first-letter:text-stone-900">
+                  El percebeiro de Aguiño y de los islotes de Sagres o Sálvora trabaja en el límite físico donde rompe la ola atlántica. El crustáceo cirrípedo (<em>Pollicipes pollicipes</em>) requiere aguas hiperoxigenadas y una presión hidrodinámica violenta y constante para desarrollarse; por ello, cuanto más expuesta y batida esté la piedra de granito, mayor será la calidad, densidad y calibre de su carne.
+                </p>
+
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  Morfología: Percebe de sol y rompiente vs. Percebe de sombra
+                </h2>
+                <p>
+                  En lonja, el ojo experto distingue de inmediato el origen de la extracción: el percebe de rompiente exterior presenta un pedúnculo carnoso, corto, grueso y compacto, con un tono oscuro casi ferroso y una uña calcárea sin algas adheridas. Por contra, el percebe desarrollado en grietas resguardadas o canales de sombra es largo, acuoso y de menor concentración salina y umami.
+                </p>
+
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  Tratado de cocción y salinidad: La regla exacta
+                </h2>
+                <p>
+                  El respeto al producto fresco de la ría exige una técnica inmutable: agua de mar limpia o, en su defecto, agua dulce con una proporción de 60 a 70 gramos de sal marina gruesa por litro, acompañada de una hoja de laurel seca de calidad.
+                </p>
+                <p>
+                  El procedimiento no admite desviaciones: el agua se lleva a ebullición viva. En ese instante se vierten los percebes; el hervor se interrumpirá unos instantes. En el momento exacto en que el agua rompe a hervir por segunda vez, se cuentan exactamente 60 segundos y se retiran inmediatamente a una fuente cubierta con un paño de lino limpio para atemperar y concentrar los jugos antes de servir templados.
+                </p>
+              </>
+            )}
+
+            {/* ARTÍCULO 3: BATEAS Y LA RÍA DE AROUSA */}
+            {article.id === '3' && (
+              <>
+                <p className="first-letter:text-5xl first-letter:font-serif first-letter:font-normal first-letter:float-left first-letter:mr-3 first-letter:text-stone-900">
+                  Frente a la costa de Aguiño, el laberinto ordenado de las bateas define el horizonte de la Ría de Arousa. Lejos de ser un simple artificio humano, estas estructuras flotantes de vigas de eucalipto representan una simbiosis perfecta con uno de los fenómenos oceanográficos más singulares del planeta: el afloramiento costero o <em>upwelling</em>.
+                </p>
+
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  El motor del upwelling: Viento del norte y fitoplancton
+                </h2>
+                <p>
+                  Durante la primavera y el verano, los vientos dominantes del norte (alisios ibéricos) empujan las aguas superficiales hacia el exterior del océano. Por convección física, ese vacío es compensado por la entrada en profundidad del Agua Central Noratlántica (ACNA), fría y cargada de nutrientes minerales de los cañones submarinos.
+                </p>
+                <p>
+                  Al penetrar en la cuenca resguardada de la ría y recibir la radiación solar, se produce una explosión fotosintética de microalgas y fitoplancton que sitúa a la Ría de Arousa como una de las áreas biológicamente más fértiles de la Tierra, comparable a las corrientes de Humboldt o Benguela.
+                </p>
+
+                <h2 className="font-serif text-2xl text-stone-900 font-normal pt-4 border-t border-stone-200">
+                  Ingeniería vernácula: Las cuadrículas flotantes
+                </h2>
+                <p>
+                  Cada batea suspende hasta quinientas cuerdas de 12 metros de longitud donde el mejillón (<em>Mytilus galloprovincialis</em>) se fija y alimenta por filtración continua sin intervención artificial de piensos ni aditivos. Tras el proceso de desdoble y selección, el resultado es un bivalvo de carnosidad excepcional, amparado por la Denominación de Origen Protegida Mexillón de Galicia.
+                </p>
+              </>
+            )}
+
           </div>
 
           {/* Bloque de Cierre y Conversión Directa */}
           <div className="mt-14 p-8 bg-stone-900 text-white rounded-sm space-y-4 shadow-xl">
             <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.2em] font-semibold">
               <MapPin className="w-4 h-4 text-amber-300" />
-              <span>Horizonte de Sálvora desde el Ático</span>
+              <span>Experiencia Directa desde el Ático</span>
             </div>
             
             <h3 className="font-serif text-xl sm:text-2xl font-light text-white leading-snug">
-              La silueta de Sálvora, visible frente a nuestra terraza panorámica
+              Vive el Atlántico en primera línea desde nuestra terraza privada
             </h3>
 
             <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-              Desde el salón y la terraza privada de <em>Illas Atlánticas Ático</em> en Aguiño, el perfil de la isla y sus bajos rocosos presiden el horizonte atlántico día y noche. Experimenta este paisaje histórico con absoluta tranquilidad y confort de primera línea.
+              Desde el salón y la terraza privada de <em>Illas Atlánticas Ático</em> en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stone-800">
