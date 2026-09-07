@@ -25,48 +25,50 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-200 selection:text-stone-950 font-sans">
       
-      {/* CABECERA CON LA FOTO DE A PEDRA DA RÁ */}
-      <header className="relative h-[65vh] min-h-[480px] max-h-[650px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
+      {/* CABECERA CON LA FOTO DE A PEDRA DA RÁ (LUMINOSA Y NÍTIDA) */}
+      <header className="relative h-[70vh] min-h-[520px] max-h-[700px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
         <img
           src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
           alt="Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico"
-          className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.72] scale-[1.02] transform transition-transform duration-1000 ease-out"
+          className="absolute inset-0 w-full h-full object-cover object-center transform scale-[1.01]"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-950/40 to-transparent" />
+        {/* Gradiente suave solo en la base para que el texto blanco sea 100% legible sin tapar el paisaje */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
 
+        {/* Barra superior con botón de regreso */}
         <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-900/80 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/70 text-stone-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-lg group"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-950/70 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/60 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Volver al Ático</span>
           </button>
 
-          <span className="hidden sm:inline-block text-[11px] uppercase tracking-[0.2em] text-stone-300/80 bg-stone-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-stone-800">
+          <span className="hidden sm:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
             Mirador da Pedra da Rá · Ribeira
           </span>
         </div>
 
+        {/* Textos de cabecera con sombras tipográficas nítidas */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-950/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
             <Compass className="w-3.5 h-3.5 text-amber-300" />
             <span>Archivo Territorial & Crónicas de Mar</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight drop-shadow-lg">
             Cuaderno de <span className="italic font-serif text-amber-100">Bitácora</span>
           </h1>
 
-          <p className="text-stone-300 text-sm sm:text-base font-light max-w-2xl leading-relaxed">
+          <p className="text-stone-200 text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-md">
             Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.
           </p>
         </div>
       </header>
 
-      {/* CUERPO DEL ARCHIVO */}
+      {/* CUERPO DEL ARCHIVO DE ARTÍCULOS */}
       <main className="max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-12">
         <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-stone-800/80">
           <span className="text-xs uppercase tracking-[0.2em] text-stone-400 mr-2 flex items-center gap-1.5">
@@ -167,6 +169,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
         </section>
       </main>
 
+      {/* Modal de lectura para abrir la crónica completa */}
       <ArticleModal
         article={selectedArticle}
         onClose={() => setSelectedArticle(null)}
@@ -179,3 +182,5 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
     </div>
   );
 }
+
+export default BitacoraPage;
