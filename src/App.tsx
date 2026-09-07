@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { SpacesGrid } from './components/SpacesGrid';
 import { AmenitiesSection } from './components/AmenitiesSection';
 import { ReviewsAndPress } from './components/ReviewsAndPress';
+import { BlogSection } from './components/BlogSection';
 import { BookingWidget } from './components/BookingWidget';
 import { Footer } from './components/Footer';
 import { VirtualTourModal } from './components/VirtualTourModal';
@@ -52,7 +53,7 @@ export default function App() {
       />
 
       <main className="flex-grow">
-        {/* 2. Portada (Hero con sello 9,5 integrado arriba) */}
+        {/* 2. Portada (Hero con vistas panorámicas al Atlántico) */}
         <Hero
           onOpenBooking={scrollToBooking}
           onOpenVirtualTour={() => setVirtualTourOpen(true)}
@@ -70,11 +71,14 @@ export default function App() {
         {/* 5. Opiniones Reales (9,5 Excepcional · 54 opiniones) */}
         <ReviewsAndPress />
 
-        {/* 6. Motor de Reserva Directa (Beds24 & WhatsApp) */}
+        {/* 6. Cuaderno de Bitácora · Divulgación y Rigor Territorial */}
+        <BlogSection />
+
+        {/* 7. Motor de Reserva Directa (Beds24 & WhatsApp) */}
         <BookingWidget />
       </main>
 
-      {/* 7. Pie de Página */}
+      {/* 8. Pie de Página con Licencia VUT-CO-007656 */}
       <Footer />
 
       {/* Modal Virtual Tour */}
