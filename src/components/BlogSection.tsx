@@ -10,7 +10,7 @@ interface BlogSectionProps {
 export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
-  // La portada queda estrictamente limitada a 3 artículos destacados
+  // La portada queda estrictamente limitada a 3 tarjetas fijas (NUNCA crece ni se expande aquí)
   const featuredArticles = ARTICLES.filter(a => a.featured).slice(0, 3);
 
   const handleOpenBooking = () => {
@@ -24,7 +24,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
     <section id="bitacora" className="py-24 bg-stone-900 text-stone-100 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Encabezado del escaparate */}
+        {/* Encabezado */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-stone-800 gap-6">
           <div>
             <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.25em] font-semibold mb-3">
@@ -91,10 +91,10 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
           ))}
         </div>
 
-        {/* Botón hacia la Bitácora Completa */}
+        {/* Botón que ABRE la página de Bitácora (no despliega nada en la landing) */}
         <div className="mt-14 text-center">
           <button
-            onClick={() => onOpenBitacora ? onOpenBitacora() : window.location.assign('/#bitacora-archivo')}
+            onClick={() => onOpenBitacora && onOpenBitacora()}
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-stone-700 bg-stone-950/80 hover:bg-stone-800 text-stone-200 hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-md group"
           >
             <BookOpen className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
@@ -104,7 +104,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
 
       </div>
 
-      {/* Visor de lectura rápida sobre la portada */}
+      {/* Modal de lectura para cuando se hace clic en una tarjeta */}
       <ArticleModal
         article={selectedArticle}
         onClose={() => setSelectedArticle(null)}
