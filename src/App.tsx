@@ -9,12 +9,10 @@ import { GastroAndExperiences } from './components/GastroAndExperiences';
 import { ReviewsAndPress } from './components/ReviewsAndPress';
 import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
-import { VirtualTourModal } from './components/VirtualTourModal';
 import { BitacoraPage } from './components/BitacoraPage';
 
 export function App() {
   const [currentView, setCurrentView] = useState<'home' | 'bitacora'>('home');
-  const [isTourOpen, setIsTourOpen] = useState(false);
 
   const scrollToBooking = () => {
     setCurrentView('home');
@@ -39,29 +37,26 @@ export function App() {
   // VISTA 2: Portada principal del Ático
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
-      <Header onOpenBooking={scrollToBooking} onOpenTour={() => setIsTourOpen(true)} />
+      <Header onOpenBooking={scrollToBooking} />
       
       <main>
-        <Hero onOpenBooking={scrollToBooking} onOpenTour={() => setIsTourOpen(true)} />
+        <Hero onOpenBooking={scrollToBooking} />
         
         <div id="reservas">
           <BookingWidget />
         </div>
 
-        <SpacesGrid onOpenTour={() => setIsTourOpen(true)} />
+        <SpacesGrid />
         <AmenitiesSection />
         <LocationAndSurroundings />
         <GastroAndExperiences />
         <ReviewsAndPress />
         
-        {/* Sección de crónicas con botón para explorar la Bitácora */}
+        {/* Sección de crónicas en portada */}
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
       </main>
 
       <Footer />
-
-      {/* Visor 360 del ático */}
-      <VirtualTourModal isOpen={isTourOpen} onClose={() => setIsTourOpen(false)} />
     </div>
   );
 }
