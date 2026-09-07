@@ -3,12 +3,15 @@ import { Clock, ArrowRight, Compass, BookOpen } from 'lucide-react';
 import { ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
 
-export function BlogSection() {
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [showAll, setShowAll] = useState(false);
+interface BlogSectionProps {
+  onOpenBitacora?: () => void;
+}
 
-  // Muestra 3 destacadas o la biblioteca completa si se pulsa el botón
-  const displayedArticles = showAll ? ARTICLES : ARTICLES.filter(a => a.featured).slice(0, 3);
+export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
+  // La portada queda estrictamente limitada a 3 artículos destacados
+  const featuredArticles = ARTICLES.filter(a => a.featured).slice(0, 3);
 
   const handleOpenBooking = () => {
     const bookingSection = document.getElementById('reservas');
@@ -21,7 +24,7 @@ export function BlogSection() {
     <section id="bitacora" className="py-24 bg-stone-900 text-stone-100 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabecera de la sección */}
+        {/* Encabezado del escaparate */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-stone-800 gap-6">
           <div>
             <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.25em] font-semibold mb-3">
@@ -37,9 +40,9 @@ export function BlogSection() {
           </p>
         </div>
 
-        {/* Cuadrícula de artículos (exactamente 3 en la vista principal) */}
+        {/* Escaparate fijo: exactamente 3 tarjetas */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {displayedArticles.map((article) => (
+          {featuredArticles.map((article) => (
             <article
               key={article.id}
               onClick={() => setSelectedArticle(article)}
@@ -88,26 +91,20 @@ export function BlogSection() {
           ))}
         </div>
 
-        {/* Botón de acceso al archivo completo */}
+        {/* Botón hacia la Bitácora Completa */}
         <div className="mt-14 text-center">
           <button
-            onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-700 bg-stone-950/80 hover:bg-stone-800 text-stone-300 hover:text-white text-xs uppercase tracking-[0.18em] transition-all"
+            onClick={() => onOpenBitacora ? onOpenBitacora() : window.location.assign('/#bitacora-archivo')}
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-stone-700 bg-stone-950/80 hover:bg-stone-800 text-stone-200 hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-md group"
           >
-            <BookOpen className="w-4 h-4 text-amber-300" />
-            <span>{showAll ? 'Mostrar solo crónicas destacadas' : `Ver archivo completo (${ARTICLES.length} crónicas)`}</span>
+            <BookOpen className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
+            <span>Explorar Bitácora Completa ({ARTICLES.length} Crónicas)</span>
           </button>
-        </div>
-
-        <div className="mt-12 text-center border-t border-stone-800/60 pt-8">
-          <p className="text-xs text-stone-400 font-light tracking-wide">
-            Artículos elaborados con rigor histórico y técnico · Archivo documental de Illas Atlánticas Ático
-          </p>
         </div>
 
       </div>
 
-      {/* Visor de lectura completa */}
+      {/* Visor de lectura rápida sobre la portada */}
       <ArticleModal
         article={selectedArticle}
         onClose={() => setSelectedArticle(null)}
