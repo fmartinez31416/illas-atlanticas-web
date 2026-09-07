@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { Navbar } from './components/Navbar';
+import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { Gallery } from './components/Gallery';
-import { Pricing } from './components/Pricing';
-import { Reviews } from './components/Reviews';
-import { BookingSection } from './components/BookingSection';
+import { BookingWidget } from './components/BookingWidget';
+import { SpacesGrid } from './components/SpacesGrid';
+import { AmenitiesSection } from './components/AmenitiesSection';
+import { LocationAndSurroundings } from './components/LocationAndSurroundings';
+import { GastroAndExperiences } from './components/GastroAndExperiences';
+import { ReviewsAndPress } from './components/ReviewsAndPress';
 import { BlogSection } from './components/BlogSection';
-import { BitacoraPage } from './components/BitacoraPage';
 import { Footer } from './components/Footer';
+import { VirtualTourModal } from './components/VirtualTourModal';
+import { BitacoraPage } from './components/BitacoraPage';
 
 export function App() {
-  // Estado para alternar entre la portada del ático y la bitácora completa
   const [currentView, setCurrentView] = useState<'home' | 'bitacora'>('home');
+  const [isTourOpen, setIsTourOpen] = useState(false);
 
   const scrollToBooking = () => {
     setCurrentView('home');
@@ -24,7 +26,7 @@ export function App() {
     }, 150);
   };
 
-  // VISTA 1: La Bitácora completa (con la foto de A Pedra da Rá y el archivo documental)
+  // VISTA 1: Bitácora completa con la foto de A Pedra da Rá
   if (currentView === 'bitacora') {
     return (
       <BitacoraPage
@@ -34,27 +36,32 @@ export function App() {
     );
   }
 
-  // VISTA 2: La Portada del Ático (con solo 3 crónicas destacadas para no saturar)
+  // VISTA 2: Portada principal del Ático
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
-      <Navbar onOpenBooking={scrollToBooking} />
+      <Header onOpenBooking={scrollToBooking} onOpenTour={() => setIsTourOpen(true)} />
       
       <main>
-        <Hero onOpenBooking={scrollToBooking} />
-        <Features />
-        <Gallery />
-        <Pricing onOpenBooking={scrollToBooking} />
-        <Reviews />
-        
-        {/* Sección de Bitácora en portada con botón que abre la revista completa */}
-        <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
+        <Hero onOpenBooking={scrollToBooking} onOpenTour={() => setIsTourOpen(true)} />
         
         <div id="reservas">
-          <BookingSection />
+          <BookingWidget />
         </div>
+
+        <SpacesGrid onOpenTour={() => setIsTourOpen(true)} />
+        <AmenitiesSection />
+        <LocationAndSurroundings />
+        <GastroAndExperiences />
+        <ReviewsAndPress />
+        
+        {/* Sección de crónicas con botón para explorar la Bitácora */}
+        <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
       </main>
 
       <Footer />
+
+      {/* Visor 360 del ático */}
+      <VirtualTourModal isOpen={isTourOpen} onClose={() => setIsTourOpen(false)} />
     </div>
   );
 }
