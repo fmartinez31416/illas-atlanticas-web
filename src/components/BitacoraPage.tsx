@@ -25,18 +25,19 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-200 selection:text-stone-950 font-sans">
       
-      {/* CABECERA CON LA FOTO DE A PEDRA DA RÁ (LUMINOSA Y NÍTIDA) */}
-      <header className="relative h-[70vh] min-h-[520px] max-h-[700px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
+      {/* CABECERA CON TIRO BAJO: ENFOCADA AL MAR Y A PEDRA DA RÁ */}
+      <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
         <img
           src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
           alt="Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico"
-          className="absolute inset-0 w-full h-full object-cover object-center transform scale-[1.01]"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center 78%' }}
         />
 
-        {/* Gradiente suave solo en la base para que el texto blanco sea 100% legible sin tapar el paisaje */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
+        {/* Sombra muy sutil solo en el fondo para la lectura, dejando el agua limpia */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent" />
 
-        {/* Barra superior con botón de regreso */}
+        {/* Botón superior de regreso */}
         <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between">
           <button
             onClick={onBack}
@@ -51,24 +52,24 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
           </span>
         </div>
 
-        {/* Textos de cabecera con sombras tipográficas nítidas */}
+        {/* Textos con sombra propia para no tapar la fotografía */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-950/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
             <Compass className="w-3.5 h-3.5 text-amber-300" />
             <span>Archivo Territorial & Crónicas de Mar</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             Cuaderno de <span className="italic font-serif text-amber-100">Bitácora</span>
           </h1>
 
-          <p className="text-stone-200 text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-md">
+          <p className="text-stone-200 text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
             Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.
           </p>
         </div>
       </header>
 
-      {/* CUERPO DEL ARCHIVO DE ARTÍCULOS */}
+      {/* CUERPO DEL ARCHIVO */}
       <main className="max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-12">
         <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-stone-800/80">
           <span className="text-xs uppercase tracking-[0.2em] text-stone-400 mr-2 flex items-center gap-1.5">
@@ -169,7 +170,6 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
         </section>
       </main>
 
-      {/* Modal de lectura para abrir la crónica completa */}
       <ArticleModal
         article={selectedArticle}
         onClose={() => setSelectedArticle(null)}
