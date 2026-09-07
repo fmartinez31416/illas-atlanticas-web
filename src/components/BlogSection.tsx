@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, ArrowRight, Compass } from 'lucide-react';
+import { ArticleModal } from './ArticleModal';
 
 interface Article {
   id: string;
@@ -50,6 +51,15 @@ const ARTICLES: Article[] = [
 ];
 
 export function BlogSection() {
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
+  const handleOpenBooking = () => {
+    const bookingSection = document.getElementById('reservas');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="bitacora" className="py-24 bg-stone-900 text-stone-100 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,10 +85,10 @@ export function BlogSection() {
           {ARTICLES.map((article) => (
             <article
               key={article.id}
-              className="group bg-stone-950/60 border border-stone-800 hover:border-amber-200/40 transition-all duration-300 flex flex-col justify-between p-8 rounded-sm hover:-translate-y-1 shadow-lg"
+              onClick={() => setSelectedArticle(article)}
+              className="group bg-stone-950/60 border border-stone-800 hover:border-amber-200/40 transition-all duration-300 flex flex-col justify-between p-8 rounded-sm hover:-translate-y-1 shadow-lg cursor-pointer"
             >
               <div className="space-y-4">
-                {/* Categoría y tiempo */}
                 <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-stone-400">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
                   <span className="flex items-center gap-1 text-stone-400">
@@ -87,18 +97,15 @@ export function BlogSection() {
                   </span>
                 </div>
 
-                {/* Título */}
                 <h3 className="font-serif text-xl sm:text-2xl text-white font-normal leading-snug group-hover:text-amber-100 transition-colors">
                   {article.title}
                 </h3>
 
-                {/* Extracto descriptivo */}
                 <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed line-clamp-4">
                   {article.excerpt}
                 </p>
               </div>
 
-              {/* Pie de tarjeta */}
               <div className="pt-8 mt-6 border-t border-stone-800/80 flex items-center justify-between">
                 <div className="flex flex-wrap gap-1.5">
                   {article.tags.slice(0, 2).map((tag) => (
@@ -111,16 +118,19 @@ export function BlogSection() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-stone-300 group-hover:text-amber-200 font-medium transition-colors">
+                <button
+                  type="button"
+                  aria-label={`Leer artículo completo: ${article.title}`}
+                  className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-stone-300 group-hover:text-amber-200 font-medium transition-colors"
+                >
                   <span>Leer</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
+                </button>
               </div>
             </article>
           ))}
         </div>
 
-        {/* Nota editorial inferior */}
         <div className="mt-16 text-center border-t border-stone-800/60 pt-8">
           <p className="text-xs text-stone-400 font-light tracking-wide">
             Artículos elaborados con rigor histórico y técnico · Archivo documental de Illas Atlánticas Ático
@@ -128,6 +138,13 @@ export function BlogSection() {
         </div>
 
       </div>
+
+      {/* Visor modal de lectura completa */}
+      <ArticleModal
+        article={selectedArticle}
+        onClose={() => setSelectedArticle(null)}
+        onOpenBooking={handleOpenBooking}
+      />
     </section>
   );
 }
