@@ -1,0 +1,192 @@
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, Clock, Calendar, Compass, BookOpen, ShieldCheck, MapPin, Tag } from 'lucide-react';
+import { ARTICLES, Article } from '../data/articles';
+import { ArticleModal } from './ArticleModal';
+
+interface BitacoraPageProps {
+  onBack: () => void;
+  onOpenBooking: () => void;
+}
+
+export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría'];
+
+  const filteredArticles = selectedCategory === 'Todas'
+    ? ARTICLES
+    : ARTICLES.filter(a => a.category.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(a.category.toLowerCase()));
+
+  return (
+    <div className="min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-200 selection:text-stone-950 font-sans">
+      
+      {/* CABECERA CON LA FOTO DE A PEDRA DA RÁ */}
+      <header className="relative h-[65vh] min-h-[480px] max-h-[650px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
+        
+        {/* Imagen optimizada de fondo */}
+        <img
+          src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
+          alt="Mirador da Pedra da Rá en Ribeira con vistas a Corrubedo y el Océano Atlántico"
+          className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.72] scale-[1.02] transform transition-transform duration-1000 ease-out"
+        />
+
+        {/* Gradientes cinematográficos para lectura limpia */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-950/40 to-transparent" />
+
+        {/* Botón flotante para regresar a la portada del ático */}
+        <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between">
+          <button
+            onClick={onBack}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-900/80 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/70 text-stone-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-lg group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Volver al Ático</span>
+          </button>
+
+          <span className="hidden sm:inline-block text-[11px] uppercase tracking-[0.2em] text-stone-300/80 bg-stone-900/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-stone-800">
+            Mirador da Pedra da Rá · Ribeira
+          </span>
+        </div>
+
+        {/* Texto Hero sobreimpreso en el tercio inferior */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/30 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-sm">
+            <Compass className="w-3.5 h-3.5 text-amber-300" />
+            <span>Archivo Territorial & Crónicas de Mar</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight">
+            Cuaderno de <span className="italic font-serif text-amber-100">Bitácora</span>
+          </h1>
+
+          <p className="text-stone-300 text-sm sm:text-base font-light max-w-2xl leading-relaxed">
+            Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.
+          </p>
+        </div>
+      </header>
+
+      {/* CUERPO PRINCIPAL DEL ARCHIVO */}
+      <main className="max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-12">
+        
+        {/* Barra de Filtros por Categoría */}
+        <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-stone-800/80">
+          <span className="text-xs uppercase tracking-[0.2em] text-stone-400 mr-2 flex items-center gap-1.5">
+            <Tag className="w-3.5 h-3.5" />
+            <span>Filtrar:</span>
+          </span>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 rounded-full text-xs uppercase tracking-[0.15em] transition-all ${
+                selectedCategory === cat
+                  ? 'bg-amber-100 text-stone-950 font-semibold shadow-md'
+                  : 'bg-stone-900/90 text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Rejilla de Artículos (2 columnas equilibradas y espaciosas) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredArticles.map((article) => (
+            <article
+              key={article.id}
+              onClick={() => setSelectedArticle(article)}
+              className="group bg-stone-900/40 border border-stone-800/90 hover:border-amber-200/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:bg-stone-900/70 cursor-pointer shadow-xl"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-400">
+                  <span className="text-amber-200/90 font-medium">{article.category}</span>
+                  <span className="flex items-center gap-1 text-stone-400">
+                    <Clock className="w-3.5 h-3.5" />
+                    {article.readTime}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-serif text-white font-light leading-snug group-hover:text-amber-100 transition-colors">
+                  {article.title}
+                </h2>
+
+                <p className="text-stone-300/90 text-sm font-light leading-relaxed">
+                  {article.excerpt}
+                </p>
+              </div>
+
+              <div className="pt-6 mt-8 border-t border-stone-800/80 flex items-center justify-between">
+                <div className="flex flex-wrap gap-2">
+                  {article.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] uppercase tracking-wider bg-stone-950 text-stone-400 px-2.5 py-1 rounded-sm border border-stone-800"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <span className="text-xs uppercase tracking-[0.18em] text-amber-200 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Leer Crónica →
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Bloque Inferior de Conversión hacia el Ático */}
+        <section className="mt-20 p-8 sm:p-12 bg-gradient-to-br from-stone-900 to-stone-950 border border-stone-800 rounded-sm flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex items-center gap-2 text-amber-300 text-xs uppercase tracking-[0.2em] font-semibold">
+              <MapPin className="w-4 h-4" />
+              <span>Observatorio Privado en Aguiño</span>
+            </div>
+            <h3 className="font-serif text-2xl sm:text-3xl text-white font-light">
+              Descubre este horizonte desde la terraza de Illas Atlánticas Ático
+            </h3>
+            <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed">
+              Un refugio frente al océano y a las bateas de la ría para quienes valoran la autenticidad, la calma y el conocimiento del territorio sin intermediarios.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            <button
+              onClick={onBack}
+              className="px-6 py-3.5 rounded-full border border-stone-700 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
+            >
+              Ver Fotografías del Ático
+            </button>
+            <button
+              onClick={() => {
+                onBack();
+                setTimeout(() => onOpenBooking(), 200);
+              }}
+              className="px-6 py-3.5 rounded-full bg-white hover:bg-stone-200 text-stone-950 text-xs font-semibold uppercase tracking-[0.18em] transition-all text-center shadow-lg"
+            >
+              Consultar Fechas
+            </button>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Visor de lectura íntegro */}
+      <ArticleModal
+        article={selectedArticle}
+        onClose={() => setSelectedArticle(null)}
+        onOpenBooking={() => {
+          setSelectedArticle(null);
+          onBack();
+          setTimeout(() => onOpenBooking(), 250);
+        }}
+      />
+    </div>
+  );
+}
