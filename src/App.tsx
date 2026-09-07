@@ -4,8 +4,6 @@ import { Hero } from './components/Hero';
 import { BookingWidget } from './components/BookingWidget';
 import { SpacesGrid } from './components/SpacesGrid';
 import { AmenitiesSection } from './components/AmenitiesSection';
-import { LocationAndSurroundings } from './components/LocationAndSurroundings';
-import { GastroAndExperiences } from './components/GastroAndExperiences';
 import { ReviewsAndPress } from './components/ReviewsAndPress';
 import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
@@ -24,7 +22,7 @@ export function App() {
     }, 150);
   };
 
-  // VISTA 1: Bitácora completa con la foto de A Pedra da Rá
+  // VISTA 1: Bitácora completa e independiente (Presidida por A Pedra da Rá)
   if (currentView === 'bitacora') {
     return (
       <BitacoraPage
@@ -34,7 +32,7 @@ export function App() {
     );
   }
 
-  // VISTA 2: Portada principal del Ático
+  // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
       <Header onOpenBooking={scrollToBooking} />
@@ -48,11 +46,9 @@ export function App() {
 
         <SpacesGrid />
         <AmenitiesSection />
-        <LocationAndSurroundings />
-        <GastroAndExperiences />
         <ReviewsAndPress />
         
-        {/* Sección de crónicas en portada */}
+        {/* Acceso elegante a la Bitácora */}
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
       </main>
 
