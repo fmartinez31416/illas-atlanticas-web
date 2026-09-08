@@ -135,8 +135,7 @@ El mejillón (*Mytilus galloprovincialis*) filtra hasta 8 litros de agua por hor
 2. **Encordado:** Sujeción a cuerdas de 12 metros con malla de algodón biodegradable.
 3. **Desdoble:** A los seis meses, la piña de mejillón se reparte en nuevas cuerdas para garantizar un engorde uniforme.
 4. **Cosecha:** Tras 14-18 meses de maduración se extrae un bivalvo de carnosidad excepcional.`
-  }
-];
+  },
 {
     id: 'la-falacia-del-mapa-del-tiempo-microclima-aguiño',
     title: 'La falacia del mapa del tiempo: por qué los modelos neuronales de 1 km dan la razón al marinero de Aguiño',
