@@ -185,3 +185,4 @@ Comprender el microclima de Aguiño no es solo una curiosidad técnica; es una d
 Sentarse en la terraza frente a las bateas al atardecer, bajo un cielo abierto que los telediarios daban por perdido, es el mejor recordatorio de que en el Atlántico, la verdad meteorológica siempre la dicta el mar.
     `
   },
+];
