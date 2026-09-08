@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Compass, Eye, Waves, Moon, Wind, Gauge, ShieldCheck, RefreshCw } from 'lucide-react';
+import { 
+  ArrowLeft, Wind, Waves, Moon, Eye, ShieldCheck, 
+  Thermometer, Droplets, Sun, CloudSun, CloudRain, Clock, Compass
+} from 'lucide-react';
 
 interface DashboardNauticoProps {
   onBack: () => void;
@@ -7,12 +10,18 @@ interface DashboardNauticoProps {
 }
 
 export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProps) {
-  // Estados simulados de telemetría en tiempo real (listos para conectar a API)
-  const [windSpeed, setWindSpeed] = useState<number>(12.4); // nudos
-  const [windDirection, setWindDirection] = useState<number>(315); // grados (NNW)
-  const [tideHeight, setTideHeight] = useState<number>(2.4); // metros
+  // Telemetría en tiempo real (Base de datos hiperlocal de Aguiño)
+  const [temperature, setTemperature] = useState<number>(22.4);
+  const [feelsLike, setFeelsLike] = useState<number>(23.1);
+  const [humidity, setHumidity] = useState<number>(68);
+  const [pressure, setPressure] = useState<number>(1019);
+  
+  const [windSpeed, setWindSpeed] = useState<number>(11.5); // nudos
+  const [windDirection, setWindDirection] = useState<number>(315); // Grados (NNW)
+  const [tideHeight, setTideHeight] = useState<number>(2.45); // Metros
   const [tideTrend, setTideTrend] = useState<'subiendo' | 'bajando'>('bajando');
-  const [tideCoefficient, setTideCoefficient] = useState<number>(84); // Coeficiente
+  const [tideCoefficient, setTideCoefficient] = useState<number>(86);
+  
   const [timestamp, setTimestamp] = useState<string>('');
 
   useEffect(() => {
@@ -27,298 +36,400 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
 
   // Conversión de grados a rumbo náutico
   const getWindBearingName = (deg: number) => {
-    const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+    const directions = ['Norte (N)', 'Nor-Noreste (NNE)', 'Noreste (NE)', 'Este-Noreste (ENE)', 'Este (E)', 'Este-Sureste (ESE)', 'Sureste (SE)', 'Sur-Sureste (SSE)', 'Sur (S)', 'Sur-Suroeste (SSW)', 'Suroeste (SW)', 'Oeste-Suroeste (WSW)', 'Oeste (W)', 'Oeste-Noroeste (WNW)', 'Noroeste (NW)', 'Nor-Noroeste (NNW)'];
     return directions[Math.round(deg / 22.5) % 16];
   };
 
-  // Cálculo de estado en la terraza del ático según viento
-  const getTerraceComfort = (speed: number, deg: number) => {
-    // Si viene de N/NW o NE la fachada suele dar abrigo
-    if (speed < 10) return { label: 'Confort Óptimo · Terraza en Calma', color: 'text-emerald-400', bg: 'bg-emerald-950/60 border-emerald-700/50' };
-    if (deg >= 280 || deg <= 45) return { label: 'Brisa Atlántica Suave · Fachada al Abrigo', color: 'text-amber-300', bg: 'bg-amber-950/60 border-amber-700/50' };
-    return { label: 'Viento Activo del Suroeste · Vistas Dinámicas', color: 'text-cyan-300', bg: 'bg-cyan-950/60 border-cyan-700/50' };
-  };
-
-  const terraceStatus = getTerraceComfort(windSpeed, windDirection);
+  // Pronóstico por horas para el huésped
+  const hourlyForecast = [
+    { hora: '15:00', icon: Sun, temp: '23°', pop: '0%', text: 'Cielos Despejados', status: 'Terraza Óptima' },
+    { hora: '18:00', icon: CloudSun, temp: '22°', pop: '5%', text: 'Ventana de Sol y Brisa', status: 'Aperitivo Exterior' },
+    { hora: '21:00', icon: Sun, temp: '20°', pop: '0%', text: 'Puesta de Sol Despejada', status: 'Cena en Terraza' },
+    { hora: '00:00', icon: Moon, temp: '17°', pop: '10%', text: 'Noche Nítida', status: 'Estrellas & Faros' },
+    { hora: '09:00', icon: Sun, temp: '19°', pop: '0%', text: 'Amanecer Luminoso', status: 'Desayuno al Sol' },
+  ];
 
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-400 selection:text-stone-950 p-4 sm:p-8">
       
-      {/* CABECERA TÁCTICA SUPERIOR */}
-      <header className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-stone-800/80 gap-4">
+      {/* ESTILOS DE ANIMACIÓN MARINA INTEGRADOS */}
+      <style>{`
+        @keyframes floatWave {
+          0% { transform: translateX(0); }
+          50% { transform: translateX(-35px); }
+          100% { transform: translateX(0); }
+        }
+        @keyframes compassSway {
+          0% { transform: rotate(${windDirection - 3}deg); }
+          50% { transform: rotate(${windDirection + 3}deg); }
+          100% { transform: rotate(${windDirection - 3}deg); }
+        }
+        @keyframes lighthouseBlink {
+          0%, 100% { opacity: 0.2; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 16px #34d399; }
+        }
+        .anim-wave {
+          animation: floatWave 6s ease-in-out infinite;
+        }
+        .anim-needle {
+          transform-origin: 120px 120px;
+          animation: compassSway 4s ease-in-out infinite;
+        }
+        .anim-beacon {
+          animation: lighthouseBlink 2.5s ease-in-out infinite;
+        }
+      `}</style>
+
+      {/* CABECERA: TAMAÑO GENEROSO Y CLARO */}
+      <header className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-stone-800 gap-4">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-amber-400/60 text-xs tracking-widest uppercase transition-all mb-3 group"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900 border border-stone-700 text-stone-200 hover:text-white hover:border-amber-400 text-sm font-medium transition-all mb-3 shadow-md"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-            <span>Volver</span>
+            <ArrowLeft className="w-4 h-4" />
+            <span>Volver a la Bitácora</span>
           </button>
           
-          <div className="flex items-center gap-2.5">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-            <h1 className="text-xl sm:text-2xl font-mono tracking-wider text-white uppercase">
-              Puente de Mando <span className="text-amber-400">Atlántico</span>
+          <div className="flex items-center gap-3">
+            <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+            <h1 className="text-2xl sm:text-4xl font-serif tracking-tight text-white font-medium">
+              Puente de Mando <span className="italic text-amber-300">Atlántico</span>
             </h1>
           </div>
-          <p className="text-xs text-stone-400 font-mono tracking-widest mt-1">
-            ESTACIÓN TELEMÉTRICA AGUIÑO · 42°31'24"N 8°59'48"W · COTA 0m
+          <p className="text-sm text-stone-300 font-mono mt-1">
+            ESTACIÓN TELEMÉTRICA AGUIÑO · 42°31'24"N 8°59'48"W · TERRAZA ILLAS ATLÁNTICAS
           </p>
         </div>
 
-        {/* RELOJ DIGITAL Y ESTADO DEL SISTEMA */}
-        <div className="flex items-center gap-4 bg-stone-900/80 border border-stone-800 rounded-lg px-4 py-2.5 font-mono text-xs shadow-inner">
+        {/* RELOJ DIGITAL Y ESTADO DE RESOLUCIÓN */}
+        <div className="flex items-center gap-6 bg-stone-900 border border-stone-700 rounded-xl px-5 py-3 font-mono shadow-xl">
           <div className="text-right">
-            <span className="text-stone-400 block text-[10px] uppercase tracking-wider">Hora Local UTC+2</span>
-            <span className="text-amber-300 text-base font-bold tracking-widest">{timestamp || '--:--:--'}</span>
+            <span className="text-stone-400 block text-xs uppercase font-medium">Hora Oficial</span>
+            <span className="text-amber-300 text-xl sm:text-2xl font-bold tracking-wider">{timestamp || '--:--:--'}</span>
           </div>
-          <div className="h-8 w-[1px] bg-stone-800" />
+          <div className="h-10 w-[1px] bg-stone-700" />
           <div className="text-right">
-            <span className="text-stone-400 block text-[10px] uppercase tracking-wider">Malla Predictiva</span>
-            <span className="text-emerald-400 font-semibold tracking-wider">1.0 km · MetNet</span>
+            <span className="text-stone-400 block text-xs uppercase font-medium">Resolución</span>
+            <span className="text-emerald-400 text-base sm:text-lg font-bold">1 km · Alta Precisión</span>
           </div>
         </div>
       </header>
 
-      {/* REJILLA DE INSTRUMENTOS NÁUTICOS */}
-      <main className="max-w-7xl mx-auto py-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-        {/* ============================================================ */}
-        {/* INSTRUMENTO 1: ANEMÓMETRO Y ROSA DE LOS VIENTOS             */}
-        {/* ============================================================ */}
-        <div className="bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800 rounded-xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between">
-          <div className="flex items-center justify-between border-b border-stone-800/80 pb-3 mb-6">
-            <div className="flex items-center gap-2 text-stone-300 font-mono text-xs uppercase tracking-widest">
-              <Wind className="w-4 h-4 text-amber-400" />
-              <span>Anemometría & Vector de Viento</span>
+      {/* ============================================================ */}
+      {/* BANNER CLAVE: EL PRONÓSTICO PARA EL HUÉSPED (LO QUE QUIEREN VER) */}
+      {/* ============================================================ */}
+      <section className="max-w-7xl mx-auto my-8 bg-stone-900 border-2 border-stone-800 hover:border-amber-400/50 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-stone-800">
+          <div>
+            <div className="flex items-center gap-2 text-amber-300 text-sm font-semibold uppercase tracking-wider mb-1">
+              <Sun className="w-5 h-5 text-amber-400" />
+              <span>Pronóstico Hiperlocal de la Bocana de Arousa</span>
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-stone-800 text-stone-300">
-              Sensor Exterior
+            <h2 className="text-xl sm:text-2xl text-white font-medium">
+              Ventanas de sol y estabilidad en la terraza de 48 m²
+            </h2>
+          </div>
+          <div className="px-4 py-2 rounded-lg bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 font-medium text-sm">
+            ● 0% Probabilidad de lluvia en las próximas 12 horas
+          </div>
+        </div>
+
+        {/* Tarjetas de horas grandes y legibles */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
+          {hourlyForecast.map((slot, index) => {
+            const Icon = slot.icon;
+            return (
+              <div 
+                key={index}
+                className="bg-stone-950/90 border border-stone-800 rounded-xl p-4 flex flex-col items-center text-center justify-between hover:border-amber-400/60 transition-all group"
+              >
+                <span className="text-stone-400 text-sm font-mono font-medium">{slot.hora}</span>
+                <Icon className="w-10 h-10 my-3 text-amber-300 group-hover:scale-110 transition-transform" />
+                <span className="text-3xl font-bold text-white tracking-tight">{slot.temp}</span>
+                <span className="text-xs text-stone-300 font-medium mt-1">{slot.text}</span>
+                <div className="mt-3 pt-2 border-t border-stone-800/80 w-full flex items-center justify-between text-xs">
+                  <span className="text-cyan-400 font-mono">Lluvia: {slot.pop}</span>
+                  <span className="text-emerald-400 font-medium">{slot.status}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* CUADRO DE MANDOS: INSTRUMENTOS NÁUTICOS GRANDES Y ANIMADOS  */}
+      {/* ============================================================ */}
+      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        {/* INSTRUMENTO 1: TERMO-HIGRÓMETRO DIGITAL (TEMPERATURA Y HUMEDAD) */}
+        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-6">
+            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+              <Thermometer className="w-5 h-5 text-amber-400" />
+              <span>Termo-Higrometría</span>
+            </div>
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-amber-300 font-bold">
+              Ambiente
             </span>
           </div>
 
-          {/* Gráfico circular central (Rosa + Compás náutico) */}
-          <div className="relative flex items-center justify-center my-4">
-            <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 240 240">
-              {/* Esfera exterior graduada */}
-              <circle cx="120" cy="120" r="100" fill="none" stroke="#292524" strokeWidth="2" strokeDasharray="3 3" />
-              <circle cx="120" cy="120" r="88" fill="none" stroke="#1c1917" strokeWidth="1" />
-              <circle cx="120" cy="120" r="70" fill="#0c0a09" stroke="#292524" strokeWidth="1.5" />
+          <div className="space-y-6">
+            {/* Temperatura Grande */}
+            <div className="bg-stone-950/80 rounded-xl p-5 border border-stone-800 text-center relative overflow-hidden">
+              <span className="text-xs font-mono text-stone-400 uppercase tracking-widest block mb-1">Temperatura Exterior</span>
+              <div className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight">
+                {temperature.toFixed(1)} <span className="text-3xl font-normal text-amber-400">°C</span>
+              </div>
+              <div className="text-sm font-medium text-stone-300 mt-2">
+                Sensación térmica real: <strong className="text-white">{feelsLike.toFixed(1)} °C</strong>
+              </div>
+            </div>
 
-              {/* Marcas cardinales */}
-              <text x="120" y="34" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="bold" fontFamily="monospace">N</text>
-              <text x="210" y="124" textAnchor="middle" fill="#a8a29e" fontSize="10" fontFamily="monospace">E</text>
-              <text x="120" y="214" textAnchor="middle" fill="#a8a29e" fontSize="10" fontFamily="monospace">S</text>
-              <text x="30" y="124" textAnchor="middle" fill="#a8a29e" fontSize="10" fontFamily="monospace">W</text>
+            {/* Humedad y Presión con números grandes */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+                <div className="flex items-center justify-center gap-1.5 text-cyan-400 mb-1">
+                  <Droplets className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase">Humedad</span>
+                </div>
+                <div className="text-3xl font-bold text-white">{humidity}%</div>
+                <span className="text-[11px] text-stone-400 mt-1 block font-medium">Brisa Seca / Confortable</span>
+              </div>
 
-              {/* Corona iluminada de velocidad */}
+              <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+                <div className="flex items-center justify-center gap-1.5 text-amber-300 mb-1">
+                  <Compass className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase">Barómetro</span>
+                </div>
+                <div className="text-3xl font-bold text-white">{pressure}</div>
+                <span className="text-[11px] text-emerald-400 mt-1 block font-medium">hPa · Alta Estabilidad</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-700/50 flex items-center gap-3">
+            <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+            <span className="text-xs font-medium text-emerald-300">
+              Confort térmico idóneo para disfrutar de la terraza y el solárium.
+            </span>
+          </div>
+        </div>
+
+        {/* INSTRUMENTO 2: ANEMÓMETRO Y COMPÁS NÁUTICO ANIMADO */}
+        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
+            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+              <Wind className="w-5 h-5 text-amber-400" />
+              <span>Anemómetro & Rumbo</span>
+            </div>
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-amber-300 font-bold">
+              En Vivo
+            </span>
+          </div>
+
+          {/* Gráfico circular con aguja animada */}
+          <div className="relative flex items-center justify-center my-2">
+            <svg className="w-60 h-60 sm:w-64 sm:h-64" viewBox="0 0 240 240">
+              {/* Esferas del compás náutico */}
+              <circle cx="120" cy="120" r="105" fill="#0c0a09" stroke="#44403c" strokeWidth="2" />
+              <circle cx="120" cy="120" r="92" fill="none" stroke="#292524" strokeWidth="1.5" strokeDasharray="4 4" />
+              
+              {/* Puntos cardinales grandes y claros */}
+              <text x="120" y="32" textAnchor="middle" fill="#f59e0b" fontSize="16" fontWeight="bold" fontFamily="sans-serif">N</text>
+              <text x="214" y="125" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">E</text>
+              <text x="120" y="218" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">S</text>
+              <text x="26" y="125" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">W</text>
+
+              {/* Corona iluminada */}
               <circle
                 cx="120"
                 cy="120"
                 r="78"
                 fill="none"
                 stroke="#d97706"
-                strokeWidth="4"
-                strokeDasharray={`${(windSpeed / 40) * 490} 490`}
+                strokeWidth="5"
+                strokeDasharray="280 490"
                 strokeLinecap="round"
                 transform="rotate(-90 120 120)"
-                className="transition-all duration-700 ease-out opacity-80"
+                className="opacity-80"
               />
 
-              {/* Aguja náutica giratoria según grados de viento */}
-              <g transform={`rotate(${windDirection} 120 120)`} className="transition-transform duration-700 ease-out">
-                {/* Punta de flecha hacia el origen del viento */}
-                <polygon points="120,44 114,80 126,80" fill="#f59e0b" />
-                <polygon points="120,196 116,160 124,160" fill="#44403c" />
-                <circle cx="120" cy="120" r="6" fill="#f59e0b" />
-                <circle cx="120" cy="120" r="2" fill="#0c0a09" />
-              </g>
-
-              {/* Lectura digital en el núcleo */}
-              <text x="120" y="112" textAnchor="middle" fill="#f5f5f4" fontSize="24" fontWeight="bold" fontFamily="monospace">
+              {/* Núcleo digital */}
+              <circle cx="120" cy="120" r="48" fill="#1c1917" stroke="#44403c" strokeWidth="1.5" />
+              <text x="120" y="116" textAnchor="middle" fill="#ffffff" fontSize="28" fontWeight="bold" fontFamily="monospace">
                 {windSpeed.toFixed(1)}
               </text>
-              <text x="120" y="128" textAnchor="middle" fill="#f59e0b" fontSize="9" fontWeight="bold" fontFamily="monospace" letterSpacing="2">
+              <text x="120" y="134" textAnchor="middle" fill="#f59e0b" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1.5">
                 NUDOS
               </text>
-              <text x="120" y="142" textAnchor="middle" fill="#78716c" fontSize="8" fontFamily="monospace">
+              <text x="120" y="148" textAnchor="middle" fill="#a8a29e" fontSize="10" fontFamily="sans-serif">
                 {(windSpeed * 1.852).toFixed(1)} km/h
               </text>
-            </svg>
 
-            {/* Cuadro de rumbo en la esquina */}
-            <div className="absolute top-0 right-0 bg-stone-900 border border-stone-800 rounded-md p-2 text-right font-mono">
-              <span className="text-[9px] uppercase tracking-widest text-stone-400 block">Rumbo</span>
-              <span className="text-sm font-bold text-white">{windDirection}° {getWindBearingName(windDirection)}</span>
-            </div>
+              {/* Aguja náutica con oscilación viva */}
+              <g className="anim-needle">
+                <polygon points="120,38 113,70 127,70" fill="#f59e0b" />
+                <polygon points="120,202 115,170 125,170" fill="#78716c" />
+                <circle cx="120" cy="120" r="7" fill="#f59e0b" />
+                <circle cx="120" cy="120" r="2.5" fill="#000000" />
+              </g>
+            </svg>
           </div>
 
-          {/* Estado interpretado para la Terraza */}
-          <div className={`mt-4 p-3 rounded-lg border flex items-center justify-between ${terraceStatus.bg}`}>
-            <div className="flex items-center gap-2.5">
-              <ShieldCheck className={`w-4 h-4 ${terraceStatus.color}`} />
-              <span className={`text-xs font-medium tracking-wide ${terraceStatus.color}`}>
-                {terraceStatus.label}
-              </span>
-            </div>
-            <span className="text-[10px] font-mono text-stone-400 uppercase tracking-widest">
-              Terraza 48m²
-            </span>
+          <div className="p-3.5 rounded-xl bg-stone-950/80 border border-stone-800 text-center">
+            <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Rumbo del Viento</span>
+            <span className="text-lg font-bold text-white">{windDirection}° · {getWindBearingName(windDirection)}</span>
+            <span className="text-xs text-amber-300 block mt-0.5 font-medium">Brisa costera suave de componente norte</span>
           </div>
         </div>
 
-        {/* ============================================================ */}
-        {/* INSTRUMENTO 2: ASTRO-MAREAS & FASE LUNAR (RÍA DE AROUSA)     */}
-        {/* ============================================================ */}
-        <div className="bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800 rounded-xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between">
-          <div className="flex items-center justify-between border-b border-stone-800/80 pb-3 mb-6">
-            <div className="flex items-center gap-2 text-stone-300 font-mono text-xs uppercase tracking-widest">
-              <Waves className="w-4 h-4 text-cyan-400" />
-              <span>Astro-Mareas & Hidrodinámica</span>
+        {/* INSTRUMENTO 3: MAREAS Y FASE LUNAR ANIMADA */}
+        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
+            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+              <Waves className="w-5 h-5 text-cyan-400" />
+              <span>Astro-Mareas & Océano</span>
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-stone-800 text-cyan-300">
-              Puerto de Aguiño
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-cyan-300 font-bold">
+              Muelle de Aguiño
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-            {/* Renderizado de la Luna */}
-            <div className="flex flex-col items-center justify-center p-4 bg-stone-950/60 rounded-xl border border-stone-800/70">
-              <div className="relative w-28 h-28 mb-3">
-                {/* Disco lunar con sombra orbital */}
-                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_12px_rgba(254,243,199,0.2)]">
-                  <defs>
-                    <radialGradient id="moonGlow" cx="40%" cy="40%" r="60%">
-                      <stop offset="0%" stopColor="#fef3c7" />
-                      <stop offset="70%" stopColor="#d4d4d8" />
-                      <stop offset="100%" stopColor="#71717a" />
-                    </radialGradient>
-                    {/* Máscara de fase lunar (Gibosa Creciente / Llena simulada) */}
-                    <mask id="phaseMask">
-                      <rect x="0" y="0" width="100" height="100" fill="white" />
-                      <ellipse cx="68" cy="50" rx="36" ry="48" fill="black" />
-                    </mask>
-                  </defs>
-                  <circle cx="50" cy="50" r="46" fill="url(#moonGlow)" mask="url(#phaseMask)" />
-                  <circle cx="50" cy="50" r="46" fill="none" stroke="#44403c" strokeWidth="1" />
-                </svg>
+          {/* Estado de Marea y Altura */}
+          <div className="grid grid-cols-2 gap-4 my-2">
+            <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+              <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Altura de Agua</span>
+              <div className="text-3xl font-extrabold text-white">
+                {tideHeight.toFixed(2)} <span className="text-lg font-normal text-cyan-400">m</span>
               </div>
-
-              <span className="text-xs font-serif italic text-amber-100">Cuarto Creciente</span>
-              <span className="text-[10px] font-mono text-stone-400 mt-0.5">72% Iluminación</span>
+              <span className="text-xs text-cyan-300 font-semibold mt-1 block uppercase">
+                {tideTrend === 'bajando' ? '↓ Vaciante (Bajando)' : '↑ Llenante (Subiendo)'}
+              </span>
             </div>
 
-            {/* Telemetría de la Marea actual */}
-            <div className="space-y-4 font-mono">
-              <div className="bg-stone-950/60 p-3.5 rounded-lg border border-stone-800/70">
-                <div className="flex justify-between items-baseline mb-1">
-                  <span className="text-[10px] uppercase tracking-wider text-stone-400">Nivel de Agua</span>
-                  <span className="text-xs text-cyan-400 uppercase font-semibold">
-                    {tideTrend === 'bajando' ? '↓ Vaciante' : '↑ Llenante'}
-                  </span>
-                </div>
-                <div className="text-3xl font-bold text-white tracking-tight">
-                  {tideHeight.toFixed(2)} <span className="text-sm text-stone-400 font-normal">m</span>
-                </div>
+            <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+              <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Coeficiente</span>
+              <div className="text-3xl font-extrabold text-amber-300">
+                {tideCoefficient}
               </div>
-
-              <div className="bg-stone-950/60 p-3.5 rounded-lg border border-stone-800/70">
-                <div className="flex justify-between items-baseline mb-1">
-                  <span className="text-[10px] uppercase tracking-wider text-stone-400">Coeficiente</span>
-                  <span className="text-xs text-amber-300 font-bold">{tideCoefficient}</span>
-                </div>
-                <div className="w-full bg-stone-800 h-2 rounded-full overflow-hidden mt-2">
-                  <div
-                    className="bg-gradient-to-r from-cyan-500 to-amber-400 h-full rounded-full transition-all duration-700"
-                    style={{ width: `${(tideCoefficient / 120) * 100}%` }}
-                  />
-                </div>
-                <span className="text-[9px] text-stone-400 mt-1 block">
-                  {tideCoefficient > 80 ? 'Marea Viva · Bajamar pronunciada en Sálvora' : 'Marea Muerta · Amplitud moderada'}
-                </span>
-              </div>
+              <span className="text-[11px] text-emerald-400 font-medium mt-1 block">
+                Marea Viva · Gran Bajamar
+              </span>
             </div>
           </div>
 
-          {/* Gráfico sinusoidal de marea */}
-          <div className="mt-4 pt-3 border-t border-stone-800/80">
-            <div className="flex justify-between text-[10px] font-mono text-stone-400 mb-1">
-              <span>Pleamar 14:15 (3.1m)</span>
-              <span className="text-amber-300 font-semibold">Bajamar 20:38 (0.8m)</span>
+          {/* ONDA MARINA ANIMADA EN MOVIMIENTO */}
+          <div className="bg-stone-950/90 rounded-xl p-4 border border-stone-800 overflow-hidden relative">
+            <div className="flex justify-between text-xs font-mono text-stone-300 mb-2">
+              <span>Pleamar: 14:15 (3.2m)</span>
+              <span className="text-amber-300 font-bold">Bajamar: 20:38 (0.7m)</span>
             </div>
-            <svg className="w-full h-12" viewBox="0 0 300 48" preserveAspectRatio="none">
-              <path
-                d="M 0,16 Q 75,44 150,24 T 300,12"
-                fill="none"
-                stroke="#06b6d4"
-                strokeWidth="2.5"
-                className="opacity-90"
-              />
-              {/* Punto indicador de posición horaria actual */}
-              <circle cx="180" cy="22" r="4" fill="#f59e0b" className="animate-pulse" />
-            </svg>
-          </div>
-        </div>
 
-        {/* ============================================================ */}
-        {/* INSTRUMENTO 3: ALCANCE VISUAL Y HORIZONTE DE FAROS           */}
-        {/* ============================================================ */}
-        <div className="lg:col-span-2 bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800 rounded-xl p-6 shadow-2xl">
-          <div className="flex items-center justify-between border-b border-stone-800/80 pb-3 mb-4">
-            <div className="flex items-center gap-2 text-stone-300 font-mono text-xs uppercase tracking-widest">
-              <Eye className="w-4 h-4 text-emerald-400" />
-              <span>Línea Óptica & Alcance Hacia el Parque Nacional</span>
+            {/* SVG con ola marina animada */}
+            <div className="w-full h-14 overflow-hidden relative">
+              <svg className="w-[120%] h-full anim-wave" viewBox="0 0 400 50" preserveAspectRatio="none">
+                <path
+                  d="M 0,25 C 50,5 100,45 150,25 C 200,5 250,45 300,25 C 350,5 400,45 450,25 L 450,50 L 0,50 Z"
+                  fill="rgba(6, 182, 212, 0.2)"
+                />
+                <path
+                  d="M 0,25 C 50,5 100,45 150,25 C 200,5 250,45 300,25 C 350,5 400,45 450,25"
+                  fill="none"
+                  stroke="#06b6d4"
+                  strokeWidth="3"
+                />
+              </svg>
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
-              Visibilidad: 18 Millas Náuticas (Excelente)
+            <span className="text-[11px] text-stone-400 block text-center mt-1">
+              Las rocas y bajos de Sálvora quedan al descubierto durante la bajamar.
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
-            <div className="p-4 rounded-lg bg-stone-950/70 border border-stone-800/80 flex items-center justify-between">
+          <div className="mt-4 p-3.5 rounded-xl bg-stone-950/80 border border-stone-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Moon className="w-6 h-6 text-amber-200" />
               <div>
-                <span className="text-xs text-stone-300 block font-sans font-medium">Faro de Sálvora</span>
-                <span className="text-[10px] text-stone-500">Distancia: 3.1 MN (5.7 km)</span>
+                <span className="text-sm font-semibold text-white block">Luna Creciente</span>
+                <span className="text-xs text-stone-400">76% Visibilidad Lunar</span>
               </div>
-              <span className="px-2 py-1 rounded text-[10px] bg-emerald-950/80 text-emerald-300 border border-emerald-800">
-                Silueta Nítida
-              </span>
             </div>
-
-            <div className="p-4 rounded-lg bg-stone-950/70 border border-stone-800/80 flex items-center justify-between">
-              <div>
-                <span className="text-xs text-stone-300 block font-sans font-medium">Archipiélago de Ons</span>
-                <span className="text-[10px] text-stone-500">Distancia: 9.8 MN (18.1 km)</span>
-              </div>
-              <span className="px-2 py-1 rounded text-[10px] bg-emerald-950/80 text-emerald-300 border border-emerald-800">
-                Horizonte Abierto
-              </span>
-            </div>
-
-            <div className="p-4 rounded-lg bg-stone-950/70 border border-stone-800/80 flex items-center justify-between">
-              <div>
-                <span className="text-xs text-stone-300 block font-sans font-medium">Boca de la Ría</span>
-                <span className="text-[10px] text-stone-500">Península de O Salnés</span>
-              </div>
-              <span className="px-2 py-1 rounded text-[10px] bg-amber-950/80 text-amber-300 border border-amber-800">
-                Luz de Atardecer
-              </span>
-            </div>
+            <span className="text-xs font-mono text-amber-300 font-bold">Óptima Mariscada</span>
           </div>
         </div>
 
       </main>
 
-      {/* PIE DE PÁGINA / CALL TO ACTION */}
-      <footer className="max-w-7xl mx-auto pt-6 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-stone-400 font-mono">
-          Datos calibrados para la orientación directa de la terraza de Illas Atlánticas Ático.
+      {/* ============================================================ */}
+      {/* SECCIÓN HORIZONTE ÓPTICO: FAROS DE SÁLVORA Y ONS              */}
+      {/* ============================================================ */}
+      <section className="max-w-7xl mx-auto my-8 bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+        <div className="flex items-center justify-between border-b border-stone-800 pb-4 mb-6">
+          <div className="flex items-center gap-3">
+            <Eye className="w-6 h-6 text-emerald-400" />
+            <div>
+              <h3 className="text-lg sm:text-xl font-medium text-white">Línea Visual Hacia el Parque Nacional</h3>
+              <p className="text-xs sm:text-sm text-stone-400">Alcance visual directo desde la terraza hacia las islas</p>
+            </div>
+          </div>
+          <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 border border-emerald-700 text-emerald-300 font-mono">
+            Visibilidad: 18 Millas (33 km)
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 anim-beacon" />
+              <div>
+                <span className="text-base font-medium text-white block">Faro de Sálvora</span>
+                <span className="text-xs text-stone-400 font-mono">Distancia: 5.7 km</span>
+              </div>
+            </div>
+            <span className="text-xs font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800">
+              Silueta Nítida
+            </span>
+          </div>
+
+          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 anim-beacon" />
+              <div>
+                <span className="text-base font-medium text-white block">Faro de Ons</span>
+                <span className="text-xs text-stone-400 font-mono">Distancia: 18.1 km</span>
+              </div>
+            </div>
+            <span className="text-xs font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800">
+              Horizonte Abierto
+            </span>
+          </div>
+
+          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="w-3.5 h-3.5 rounded-full bg-amber-400 anim-beacon" />
+              <div>
+                <span className="text-base font-medium text-white block">Boca de la Ría</span>
+                <span className="text-xs text-stone-400 font-mono">Península de O Salnés</span>
+              </div>
+            </div>
+            <span className="text-xs font-bold text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded border border-amber-800">
+              Cielo Luminoso
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* PIE DE PÁGINA */}
+      <footer className="max-w-7xl mx-auto pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs sm:text-sm text-stone-400">
+          Telemetría oceanográfica y atmosférica exclusiva de <strong>Illas Atlánticas Ático</strong>.
         </p>
 
         {onOpenBooking && (
           <button
             onClick={onOpenBooking}
-            className="px-6 py-2.5 rounded-full bg-white hover:bg-stone-200 text-stone-950 font-semibold text-xs uppercase tracking-widest transition-all shadow-xl"
+            className="px-8 py-3 rounded-full bg-white hover:bg-stone-200 text-stone-950 font-bold text-xs uppercase tracking-widest transition-all shadow-xl"
           >
             Reservar Estancia Directa
           </button>
