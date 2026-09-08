@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Compass, Tag, MapPin } from 'lucide-react';
+import { ArrowLeft, Clock, Compass, Tag, MapPin, Gauge } from 'lucide-react';
 import { ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
+import { DashboardNautico } from './DashboardNautico';
 
 interface BitacoraPageProps {
   onBack: () => void;
@@ -11,10 +12,21 @@ interface BitacoraPageProps {
 export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [showDashboard, setShowDashboard] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Si el usuario activa el Puente de Mando, mostramos la consola interactiva
+  if (showDashboard) {
+    return (
+      <DashboardNautico
+        onBack={() => setShowDashboard(false)}
+        onOpenBooking={onOpenBooking}
+      />
+    );
+  }
 
   const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría'];
 
@@ -34,11 +46,11 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
           style={{ objectPosition: 'center 78%' }}
         />
 
-        {/* Sombra muy sutil solo en el fondo para la lectura, dejando el agua limpia */}
+        {/* Sombra sutil para lectura sin tapar el agua */}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent" />
 
-        {/* Botón superior de regreso */}
-        <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between">
+        {/* Barra superior con navegación y acceso al Puente de Mando */}
+        <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between gap-3">
           <button
             onClick={onBack}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-950/70 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/60 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
@@ -47,12 +59,23 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
             <span>Volver al Ático</span>
           </button>
 
-          <span className="hidden sm:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
-            Mirador da Pedra da Rá · Ribeira
-          </span>
+          <div className="flex items-center gap-3">
+            {/* BOTÓN DE ACCESO AL INSTRUMENTAL */}
+            <button
+              onClick={() => setShowDashboard(true)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500/20 hover:bg-amber-400 hover:text-stone-950 backdrop-blur-md border border-amber-400/60 text-amber-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
+            >
+              <Gauge className="w-4 h-4 text-amber-300 group-hover:text-stone-950 transition-colors" />
+              <span>Puente de Mando</span>
+            </button>
+
+            <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
+              Mirador da Pedra da Rá · Ribeira
+            </span>
+          </div>
         </div>
 
-        {/* Textos con sombra propia para no tapar la fotografía */}
+        {/* Textos de cabecera */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-950/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
             <Compass className="w-3.5 h-3.5 text-amber-300" />
@@ -152,10 +175,10 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <button
-              onClick={onBack}
-              className="px-6 py-3.5 rounded-full border border-stone-700 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
+              onClick={() => setShowDashboard(true)}
+              className="px-6 py-3.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-400 hover:text-stone-950 text-amber-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
             >
-              Ver Fotografías del Ático
+              Abrir Puente de Mando
             </button>
             <button
               onClick={() => {
