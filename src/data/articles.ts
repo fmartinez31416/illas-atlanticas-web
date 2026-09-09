@@ -199,21 +199,26 @@ Sentarse en la terraza frente a las bateas al atardecer, bajo un cielo abierto q
     content: `Descubrir Aguiño es situarse en el límite donde la ría se rinde ante la inmensidad del océano. En este confín rocoso de la comarca del Barbanza, la vida cotidiana sigue pautada por las mareas, el viento del sudoeste y la silueta inconfundible del archipiélago de Sálvora recortándose en el horizonte.
 
 ### Playas y ensenadas locales: refugio de arena y calma
+
 Lejos del bullicio masificado, el litoral de Aguiño despliega arenales singulares moldeados por el granito:
+
 * **Playa de O Castro:** Aguas cristalinas y tranquilas al abrigo de las corrientes mayores, con una panorámica privilegiada hacia las bateas y la entrada de la ría.
 * **Playa de A Catía:** Cala recogida de espíritu salvaje, ideal para el descanso sereno y la contemplación del paisaje costero.
 * **Playa de O Carreiro:** Anclada junto al puerto tradicional, donde el pulso marinero convive con la arena fina.
 
 ### La Isla de Sálvora: vigía del Parque Nacional
+
 A escasas millas náuticas de Aguiño emerge Sálvora, la joya salvaje del Parque Nacional das Illas Atlánticas:
+
 * **La aldea y el pazo:** Vestigios de piedra de una comunidad que habitó en régimen comunal hasta mediados del siglo XX, vigilada por la leyenda pétrea de la sirena de Sálvora.
 * **El faro y la tragedia del Santa Isabel:** Escenario de heroísmo y memoria donde las remeras locales desafiaron la tempestad en 1921.
 * **Santuario biológico:** Un ecosistema protegido donde las colonias de aves y la fauna marina conviven entre formaciones graníticas de caprichosa geomorfología.
 
 ### Identidad gastronómica: el sabor del mar bravo
+
 La despensa marina de Aguiño no admite intermediarios:
+
 * **El percebe de las rompientes:** Extraído en las piedras más batidas por los percebeiros de la lonja local, reconocido por su sabor concentrado y yodado.
 * **Marisco y lonja de proximidad:** Pulpo de roca, nécoras, almejas y el indiscutible mejillón de batea de la ría, directos del barco a la mesa.`
   }
-
 ];
