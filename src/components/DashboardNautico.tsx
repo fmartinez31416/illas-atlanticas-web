@@ -82,7 +82,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       // Coordenadas reales de Aguiño: 42.5233 N, -9.0294 W
       const [res, resMarine] = await Promise.all([
         fetch(
-          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset,moonrise,moonset,moon_phase,moon_illumination,temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&forecast_days=7&wind_speed_unit=kn&timezone=Europe%2FMadrid'
+          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset,moonrise,moonset,moon_phase,temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&forecast_days=7&wind_speed_unit=kn&timezone=Europe%2FMadrid'
         ),
         fetch(
           'https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height,sea_surface_temperature&forecast_days=1&timezone=Europe%2FMadrid'
@@ -127,8 +127,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         setMoon({
           phase: typeof data.daily.moon_phase?.[0] === 'number' ? data.daily.moon_phase[0] : null,
           illum:
-            typeof data.daily.moon_illumination?.[0] === 'number'
-              ? Math.round(data.daily.moon_illumination[0] * 100)
+            typeof data.daily.moon_phase?.[0] === 'number'
+              ? Math.round(((1 - Math.cos(2 * Math.PI * data.daily.moon_phase[0])) / 2) * 100)
               : null,
           rise: data.daily.moonrise?.[0]
             ? new Date(data.daily.moonrise[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
@@ -546,7 +546,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                       {moon.phase !== null ? moonPhaseName(moon.phase) : 'Luna'}
                     </span>
                     <span className="font-mono text-[#A9C9DD]/80 text-xs tabular-nums">
-                      {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
+                      {moon.illum !== null ? `~${moon.illum}% iluminada` : ''}
                       {moon.rise && moon.set ? ` · ${moon.rise}→${moon.set}` : ''}
                     </span>
                   </div>
