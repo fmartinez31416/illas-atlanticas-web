@@ -21,7 +21,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative text-white overflow-hidden border-t border-[#3D5A7D]">
+    <footer className="relative text-white overflow-hidden border-t border-stone-700">
       
       {/* Fotografía de la ría al 100% de luminosidad */}
       <img
@@ -31,14 +31,14 @@ export function Footer() {
       />
       
       {/* Velo transparente muy ligero (25%) para dar presencia a la imagen sin cegar los textos */}
-      <div className="absolute inset-0 bg-[#0F2B47]/25 backdrop-brightness-90 z-0" />
+      <div className="absolute inset-0 bg-stone-950/25 backdrop-brightness-90 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         
         {/* Cabecera del pie */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-white/30 gap-8">
           <div>
-            <span className="text-[#F1F5FA] uppercase tracking-[0.25em] text-xs font-semibold block mb-3 drop-shadow-md">
+            <span className="text-stone-100 uppercase tracking-[0.25em] text-xs font-semibold block mb-3 drop-shadow-md">
               Ático Singular · Aguiño (Ribeira)
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-tight drop-shadow-lg">
@@ -65,16 +65,16 @@ export function Footer() {
               <span className="font-serif text-lg tracking-wider text-white uppercase block drop-shadow-sm">
                 Illas Atlánticas
               </span>
-              <span className="text-xs text-[#E5EDF5] uppercase tracking-[0.15em] block">
+              <span className="text-xs text-stone-200 uppercase tracking-[0.15em] block">
                 Ático Privado · 230 m²
               </span>
             </div>
-            <p className="text-xs text-[#F1F5FA] font-light leading-relaxed">
+            <p className="text-xs text-stone-100 font-light leading-relaxed">
               Exclusivo ático en primera línea sobre el puerto de Aguiño. Calificación 9,5 sobre 10 con terraza panorámica frente a Sálvora y Ons.
             </p>
 
             <div className="pt-2">
-              <span className="text-[11px] uppercase tracking-[0.15em] text-[#E5EDF5] font-medium block mb-3">
+              <span className="text-[11px] uppercase tracking-[0.15em] text-stone-200 font-medium block mb-3">
                 Síguenos en redes
               </span>
               <div className="flex items-center gap-3">
@@ -83,7 +83,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"
-                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#FAF7F0] flex items-center justify-center transition-all border border-white/30 shadow-sm"
+                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
                 >
                   <TikTokIcon className="w-4 h-4" />
                 </a>
@@ -92,7 +92,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#FAF7F0] flex items-center justify-center transition-all border border-white/30 shadow-sm"
+                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -101,7 +101,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#FAF7F0] flex items-center justify-center transition-all border border-white/30 shadow-sm"
+                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -114,7 +114,7 @@ export function Footer() {
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
               Navegación
             </h3>
-            <ul className="space-y-3 text-xs text-[#F1F5FA] font-light">
+            <ul className="space-y-3 text-xs text-stone-100 font-light">
               <li>
                 <a href="#espacios" className="hover:text-amber-200 transition-colors">
                   Distribución & Espacios
@@ -143,7 +143,7 @@ export function Footer() {
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
               Atención Directa
             </h3>
-            <div className="space-y-3 text-xs text-[#F1F5FA] font-light">
+            <div className="space-y-3 text-xs text-stone-100 font-light">
               <p className="text-white font-medium">
                 Anfitrión: <span>Fernando</span>
               </p>
@@ -151,7 +151,7 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
                 <span>Rúa Francisco Lorenzo Mariño, 93<br />15965 Aguiño (Ribeira, A Coruña)</span>
               </div>
-              <p className="text-xs text-[#E5EDF5] pt-1 leading-relaxed">
+              <p className="text-xs text-stone-200 pt-1 leading-relaxed">
                 Atención personalizada y trato directo sin intermediarios.
               </p>
             </div>
@@ -162,7 +162,7 @@ export function Footer() {
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
               Garantía & Registro
             </h3>
-            <div className="space-y-3 text-xs text-[#F1F5FA] font-light">
+            <div className="space-y-3 text-xs text-stone-100 font-light">
               
               <div className="bg-black/60 border border-amber-200/40 p-3 rounded-sm space-y-1">
                 <div className="flex items-center gap-2 text-white font-medium">
@@ -174,7 +174,7 @@ export function Footer() {
                 </p>
               </div>
 
-              <p className="text-xs text-[#E5EDF5] leading-relaxed font-light">
+              <p className="text-xs text-stone-200 leading-relaxed font-light">
                 Vivienda de Uso Turístico reglamentada conforme a la normativa oficial de la Xunta de Galicia. Plaza de garaje cerrada y ascensor directo.
               </p>
             </div>
@@ -183,7 +183,7 @@ export function Footer() {
         </div>
 
         {/* Créditos y Legal */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#F1F5FA] drop-shadow-md">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-stone-100 drop-shadow-md">
           <p>
             © {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.
           </p>

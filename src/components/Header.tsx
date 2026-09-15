@@ -45,21 +45,21 @@ export function Header({ onOpenBooking }: HeaderProps) {
           >
             <div className="flex items-center gap-2">
               <span className={`text-base sm:text-xl font-serif uppercase tracking-[0.2em] transition-colors ${
-                isScrolled ? 'text-[#FAF7F0]' : 'text-white'
+                isScrolled ? 'text-stone-900' : 'text-white'
               }`}>
                 Illas Atlánticas
               </span>
               <span className={`w-1 h-1 rounded-full ${
-                isScrolled ? 'bg-[#FAF7F0]0' : 'bg-white/80'
+                isScrolled ? 'bg-stone-500' : 'bg-white/80'
               }`}></span>
               <span className={`text-[10px] uppercase tracking-[0.25em] font-medium ${
-                isScrolled ? 'text-[#C9D6E5]' : 'text-[#E5EDF5]'
+                isScrolled ? 'text-stone-600' : 'text-stone-200'
               }`}>
                 Ático
               </span>
             </div>
             <span className={`text-[9px] uppercase tracking-[0.3em] font-light ${
-              isScrolled ? 'text-[#A9C9DD]' : 'text-[#C9D6E5]'
+              isScrolled ? 'text-stone-500' : 'text-stone-300'
             }`}>
               Aguiño · Ribeira
             </span>
@@ -73,7 +73,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
                 href={link.href}
                 className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
                   isScrolled
-                    ? 'text-[#E5DCCB] hover:text-[#FAF7F0]'
+                    ? 'text-stone-700 hover:text-stone-950'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
@@ -90,7 +90,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
               href="tel:+34606025318"
               className={`p-2 rounded-sm transition-colors border shadow-sm ${
                 isScrolled
-                  ? 'text-[#E5DCCB] hover:text-[#FAF7F0] bg-[#FAF7F0] border-stone-200'
+                  ? 'text-stone-700 hover:text-stone-950 bg-stone-50 border-stone-200'
                   : 'text-white hover:text-white/80 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
               title="Llamar al anfitrión: 606 02 53 18"
@@ -106,7 +106,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
               rel="noopener noreferrer"
               className={`p-2 rounded-sm transition-colors border shadow-sm ${
                 isScrolled
-                  ? 'text-[#E5DCCB] hover:text-emerald-700 bg-[#FAF7F0] border-stone-200 hover:bg-emerald-50'
+                  ? 'text-stone-700 hover:text-emerald-700 bg-stone-50 border-stone-200 hover:bg-emerald-50'
                   : 'text-white hover:text-emerald-300 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
               title="WhatsApp directo"
@@ -120,8 +120,8 @@ export function Header({ onOpenBooking }: HeaderProps) {
               onClick={onOpenBooking}
               className={`px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-sm rounded-sm flex items-center gap-2 ${
                 isScrolled
-                  ? 'bg-[#1A3A5C] text-white hover:bg-[#24466B]'
-                  : 'bg-white text-[#FAF7F0] hover:bg-[#F1EBE0]'
+                  ? 'bg-stone-900 text-white hover:bg-stone-800'
+                  : 'bg-white text-stone-950 hover:bg-stone-100'
               }`}
             >
               <CalendarCheck className="w-3.5 h-3.5" />
@@ -134,7 +134,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
             <button
               onClick={onOpenBooking}
               className={`px-3 py-1.5 rounded-sm text-xs font-medium uppercase tracking-wider ${
-                isScrolled ? 'bg-[#1A3A5C] text-white' : 'bg-white text-[#FAF7F0]'
+                isScrolled ? 'bg-stone-900 text-white' : 'bg-white text-stone-950'
               }`}
             >
               Reservar
@@ -143,7 +143,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 rounded-sm ${
-                isScrolled ? 'text-[#FAF7F0]' : 'text-white'
+                isScrolled ? 'text-stone-900' : 'text-white'
               }`}
               aria-label="Abrir menú"
             >
@@ -166,7 +166,7 @@ export function Header({ onOpenBooking }: HeaderProps) {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium tracking-[0.2em] text-[#E5DCCB] hover:text-[#FAF7F0] uppercase py-1"
+                className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1"
               >
                 {link.name}
               </a>
@@ -189,19 +189,19 @@ export function Header({ onOpenBooking }: HeaderProps) {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm bg-[#1A3A5C] text-white text-xs uppercase tracking-widest font-medium"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-sm bg-stone-900 text-white text-xs uppercase tracking-widest font-medium"
             >
               <CalendarCheck className="w-4 h-4" />
               <span>Consultar Disponibilidad</span>
             </button>
           </div>
 
-          <div className="pt-2 flex items-center justify-between text-xs text-[#A9C9DD] font-light">
+          <div className="pt-2 flex items-center justify-between text-xs text-stone-500 font-light">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#E5DCCB]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-stone-700" />
               <span>Trato directo con el anfitrión</span>
             </span>
-            <span className="text-[#A9C9DD] italic font-mono text-[10px]">VUT-CO-007656</span>
+            <span className="text-stone-500 italic font-mono text-[10px]">VUT-CO-007656</span>
           </div>
         </div>
       )}
