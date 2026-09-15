@@ -1,4 +1,4 @@
-import { useState, useId } from 'react';
+import { useState, useId, useMemo } from 'react';
 import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
 
 interface BookingWidgetProps {
@@ -11,6 +11,8 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const checkOutId = useId();
   const adultsId = useId();
   const childrenId = useId();
+
+  const PROP_ID = '349411';
 
   const today = new Date();
   const nextWeek = new Date(today);
@@ -25,9 +27,21 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
 
+  const beds24Src = useMemo(() => {
+    const params = new URLSearchParams({
+      propid: PROP_ID,
+      numadult: String(adults),
+      numchild: String(children),
+      ...(checkIn ? { firstnight: checkIn } : {}),
+      ...(checkIn && checkOut
+        ? { numnight: String(Math.max(1, Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000))) }
+        : {}),
+    });
+    return `https://beds24.com/booking2.php?${params.toString()}`;
+  }, [adults, children, checkIn, checkOut]);
+
   const handleBeds24Redirect = () => {
-    const beds24Url = `https://beds24.com/booking2.php?propid=illasatlanticas&checkin=${checkIn}&checkout=${checkOut}&numadult=${adults}&numchild=${children}`;
-    window.open(beds24Url, '_blank', 'noopener,noreferrer');
+    window.open(beds24Src, '_blank', 'noopener,noreferrer');
   };
 
   const handleWhatsAppBooking = () => {
@@ -145,10 +159,35 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
           <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             <span>Plaza de garaje incluida</span>
             <span className="text-stone-300">·</span>
-            <span>Calendario y precios reales, sincronizados en tiempo real</span>
+            <span>Disponibilidad y precios reales, sincronizados en tiempo real</span>
             <span className="text-stone-300">·</span>
             <span>Sin comisiones de intermediarios</span>
           </p>
+        </div>
+
+        {/* Motor de reserva embebido de Beds24: precios y disponibilidad en vivo */}
+        <div className="bg-white border border-stone-200 shadow-sm p-4 sm:p-5">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-stone-600 font-medium">
+              Disponibilidad y precios en tiempo real
+            </h3>
+            <button
+              onClick={handleBeds24Redirect}
+              className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#1A3A5C] hover:underline font-medium"
+            >
+              Abrir en pestaña nueva
+              <ArrowRight className="w-3 h-3" />
+            </button>
+          </div>
+          <div className="w-full overflow-hidden border border-stone-100 bg-stone-50">
+            <iframe
+              title="Motor de reserva Illas Atlánticas Ático (Beds24)"
+              src={beds24Src}
+              className="w-full"
+              style={{ height: '900px', border: '0' }}
+              loading="lazy"
+            />
+          </div>
         </div>
 
       </div>
