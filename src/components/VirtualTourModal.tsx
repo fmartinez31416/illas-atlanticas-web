@@ -31,27 +31,27 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
   return (
     <div
       id="virtual-tour-modal-backdrop"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/95 backdrop-blur-xl p-2 sm:p-6 animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF7F0]/95 backdrop-blur-xl p-2 sm:p-6 animate-fadeIn"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-6xl h-[90vh] bg-zinc-900 border border-zinc-800 rounded-sm overflow-hidden flex flex-col shadow-2xl"
+        className="relative w-full max-w-6xl h-[90vh] bg-[#F1EBE0] border border-[#1A3A5C]/25 rounded-sm overflow-hidden flex flex-col shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar */}
-        <div className="p-4 sm:p-5 bg-zinc-950 border-b border-zinc-800 flex items-center justify-between z-20">
+        <div className="p-4 sm:p-5 bg-[#FAF7F0] border-b border-[#1A3A5C]/25 flex items-center justify-between z-20">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-sm bg-zinc-900 text-amber-500 border border-zinc-800">
+            <div className="p-2 rounded-sm bg-[#F1EBE0] text-amber-500 border border-[#1A3A5C]/25">
               <Compass className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-serif text-zinc-100 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-serif text-[#1A3A5C] flex items-center gap-2">
                 <span>Recorrido Virtual 360°</span>
                 <span className="text-[10px] font-sans text-amber-400 font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-amber-600/10 border border-amber-600/30">
                   {activeSpace.name}
                 </span>
               </h3>
-              <p className="text-[11px] text-zinc-400 font-light">
+              <p className="text-[11px] text-[#52688A] font-light">
                 {activeSpace.subtitle}
               </p>
             </div>
@@ -63,7 +63,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
               className={`px-3 py-1.5 rounded-sm text-xs font-bold uppercase tracking-wider border transition-colors ${
                 isRotating
                   ? 'bg-amber-600/20 border-amber-500/40 text-amber-300'
-                  : 'bg-zinc-900 border-zinc-800 text-zinc-400'
+                  : 'bg-[#F1EBE0] border-[#1A3A5C]/25 text-[#52688A]'
               }`}
             >
               {isRotating ? 'Auto-Pan Activo' : 'Pausar Rotación'}
@@ -71,7 +71,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
 
             <button
               onClick={onClose}
-              className="p-2 rounded-sm bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 border border-zinc-800 transition-colors"
+              className="p-2 rounded-sm bg-[#F1EBE0] text-[#52688A] hover:text-white hover:bg-[#E5DCCB] border border-[#1A3A5C]/25 transition-colors"
               aria-label="Cerrar tour"
             >
               <X className="w-5 h-5" />
@@ -118,18 +118,18 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
                 >
                   <div className="relative flex items-center justify-center">
                     <span className="absolute w-8 h-8 rounded-full bg-amber-500/40 animate-ping"></span>
-                    <span className="relative w-6 h-6 rounded-full bg-amber-500 text-zinc-950 flex items-center justify-center font-bold text-xs shadow-lg shadow-amber-500/50">
+                    <span className="relative w-6 h-6 rounded-full bg-amber-500 text-[#FAF7F0] flex items-center justify-center font-bold text-xs shadow-lg shadow-amber-500/50">
                       +
                     </span>
                   </div>
 
                   {isOpen && (
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 p-3.5 rounded-sm bg-zinc-950 border border-amber-500/50 text-zinc-100 text-xs shadow-2xl backdrop-blur-md animate-fadeIn z-30">
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 p-3.5 rounded-sm bg-[#FAF7F0] border border-amber-500/50 text-[#1A3A5C] text-xs shadow-2xl backdrop-blur-md animate-fadeIn z-30">
                       <div className="flex items-center gap-1 text-amber-400 font-bold uppercase tracking-wider text-[10px] mb-1">
                         <Sparkles className="w-3.5 h-3.5" />
                         <span>Detalle de Estancia</span>
                       </div>
-                      <p className="text-zinc-300 font-light leading-relaxed">{hl}</p>
+                      <p className="text-[#3D5A7D] font-light leading-relaxed">{hl}</p>
                     </div>
                   )}
                 </div>
@@ -138,14 +138,14 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
           </div>
 
           {/* Overlay info box on bottom left */}
-          <div className="absolute bottom-6 left-6 max-w-md p-4 rounded-sm bg-zinc-950/90 border border-zinc-800 backdrop-blur-md text-zinc-200 hidden sm:block shadow-xl">
+          <div className="absolute bottom-6 left-6 max-w-md p-4 rounded-sm bg-[#FAF7F0]/90 border border-[#1A3A5C]/25 backdrop-blur-md text-[#24466B] hidden sm:block shadow-xl">
             <h4 className="text-sm font-serif text-amber-300">{activeSpace.name} ({activeSpace.area})</h4>
-            <p className="text-xs text-zinc-400 font-light mt-1 line-clamp-2">{activeSpace.description}</p>
+            <p className="text-xs text-[#52688A] font-light mt-1 line-clamp-2">{activeSpace.description}</p>
           </div>
         </div>
 
         {/* Bottom Space Switcher Strip */}
-        <div className="p-4 bg-zinc-950 border-t border-zinc-800 flex items-center justify-between gap-4 overflow-x-auto">
+        <div className="p-4 bg-[#FAF7F0] border-t border-[#1A3A5C]/25 flex items-center justify-between gap-4 overflow-x-auto">
           <div className="flex items-center gap-2 overflow-x-auto py-1">
             {SPACES_DATA.map((space) => (
               <button
@@ -156,8 +156,8 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
                 }}
                 className={`px-3.5 py-2 rounded-sm text-xs font-bold tracking-wider uppercase whitespace-nowrap transition-all flex items-center gap-2 border ${
                   selectedSpaceId === space.id
-                    ? 'bg-amber-600 text-zinc-950 border-amber-600'
-                    : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700'
+                    ? 'bg-amber-600 text-[#FAF7F0] border-amber-600'
+                    : 'bg-[#F1EBE0] border-[#1A3A5C]/25 text-[#52688A] hover:text-[#24466B] hover:border-[#1A3A5C]/30'
                 }`}
               >
                 <Eye className="w-3.5 h-3.5" />
@@ -171,7 +171,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
               onClose();
               onOpenBooking();
             }}
-            className="px-6 py-2.5 rounded-sm bg-amber-600 hover:bg-amber-500 text-zinc-950 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-lg shadow-black/50 transition-all shrink-0"
+            className="px-6 py-2.5 rounded-sm bg-amber-600 hover:bg-amber-500 text-[#FAF7F0] text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-lg shadow-black/50 transition-all shrink-0"
           >
             Reservar Este Ático
           </button>
