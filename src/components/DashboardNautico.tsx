@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowLeft, Wind, Waves, Moon, Eye, ShieldCheck, 
-  Thermometer, Droplets, Sun, CloudSun, Cloud, CloudRain, Clock, Compass, RefreshCw
+import {
+  ArrowLeft, Wind, Waves, Moon, Eye, ShieldCheck,
+  Thermometer, Droplets, Compass, Clock, RefreshCw
 } from 'lucide-react';
 
 interface DashboardNauticoProps {
@@ -32,7 +32,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isLive, setIsLive] = useState<boolean>(false);
 
-  // Mareas estimadas astronómicas para Aguiño (Ría de Arousa)
+  // Valores orientativos de marea para Aguiño (Ría de Arousa) — no sustituyen al parte oficial
   const tideHeight = 2.35;
   const tideTrend: 'subiendo' | 'bajando' = 'bajando';
   const tideCoefficient = 82;
@@ -47,7 +47,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       if (!res.ok) throw new Error('Error al conectar con la estación meteorológica');
       const data = await res.json();
       const cur = data.current;
-      
+
       const now = new Date();
       setTelemetry({
         temp: cur.temperature_2m,
@@ -79,233 +79,216 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1624] text-stone-100 font-sans selection:bg-amber-400 selection:text-stone-950 p-4 sm:p-8">
-      
-      <style>{`
-        @keyframes floatWave {
-          0% { transform: translateX(0); }
-          50% { transform: translateX(-35px); }
-          100% { transform: translateX(0); }
-        }
-        @keyframes compassSway {
-          0% { transform: rotate(${telemetry.windDeg - 3}deg); }
-          50% { transform: rotate(${telemetry.windDeg + 3}deg); }
-          100% { transform: rotate(${telemetry.windDeg - 3}deg); }
-        }
-        @keyframes lighthouseBlink {
-          0%, 100% { opacity: 0.2; transform: scale(0.9); }
-          50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 16px #34d399; }
-        }
-        .anim-wave { animation: floatWave 6s ease-in-out infinite; }
-        .anim-needle { transform-origin: 120px 120px; animation: compassSway 4s ease-in-out infinite; }
-        .anim-beacon { animation: lighthouseBlink 2.5s ease-in-out infinite; }
-      `}</style>
+    <div id="puente-de-mando" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950 p-4 sm:p-8">
 
       {/* Cabecera */}
-      <header className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-stone-800 gap-4">
+      <header className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 border-b border-[#1A3A5C]/15 gap-5">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-3 bg-stone-900/80 hover:bg-stone-800 border border-stone-700 text-stone-200 hover:text-white text-xs uppercase tracking-wider font-medium transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-white/70 hover:bg-white border border-[#1A3A5C]/20 text-[#1A3A5C] text-xs uppercase tracking-[0.18em] font-medium transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Volver a la Bitácora</span>
           </button>
-          
+
           <div className="flex items-center gap-3">
-            <span className={`w-3 h-3 rounded-full ${isLive ? 'bg-emerald-400 animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.9)]' : 'bg-amber-400'}`} />
-            <h1 className="text-2xl sm:text-3xl font-serif tracking-tight text-white font-medium">
-              Puente de Mando <span className="italic text-amber-300">Atlántico</span>
+            <span className={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-[#1A3A5C]' : 'bg-[#D4A017]'}`} />
+            <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#1A3A5C]">
+              Puente de Mando <span className="italic text-[#D4A017]">Atlántico</span>
             </h1>
-            <span className="text-[11px] uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-950/80 border border-emerald-700 text-emerald-300 font-mono">
-              {isLive ? '● Datos En Vivo' : 'Cargando...'}
-            </span>
           </div>
-          <p className="text-xs text-stone-400 font-mono mt-1">
-            ESTACIÓN AGUIÑO · 42°31'24"N 8°59'48"W · TERRAZA ILLAS ATLÁNTICAS
+          <p className="text-xs tracking-wide text-stone-500 mt-1.5">
+            Aguiño · 42°31&apos;24&quot;N 8°59&apos;48&quot;W · Ría de Arousa, a las puertas del Parque Nacional das Illas Atlánticas
           </p>
         </div>
 
-        <div className="flex items-center gap-4 bg-stone-900/90 border border-stone-800 px-4 py-2.5 font-mono shadow-md text-xs">
+        <div className="flex items-center gap-3 bg-white/70 border border-[#1A3A5C]/15 px-4 py-3 shadow-sm">
+          <Clock className="w-4 h-4 text-[#1A3A5C]" />
           <div>
-            <span className="text-stone-400 block text-[10px] uppercase">Última lectura</span>
-            <span className="text-amber-300 text-base font-bold">{telemetry.updatedAt}</span>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-stone-500 block">Última lectura</span>
+            <span className="text-lg font-serif font-semibold text-[#1A3A5C] leading-tight">{telemetry.updatedAt}</span>
           </div>
-          <button 
+          <button
             onClick={fetchRealWeather}
             disabled={isLoading}
-            className="p-2 text-stone-400 hover:text-white transition-colors"
-            title="Refrescar datos reales"
+            className="ml-2 p-2 text-[#1A3A5C] hover:text-[#D4A017] transition-colors"
+            title="Refrescar datos"
+            aria-label="Refrescar datos meteorológicos"
           >
-            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-amber-300' : ''}`} />
+            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           </button>
         </div>
       </header>
 
-      {/* Cuadro de Mandos */}
-      <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 my-8">
+      {/* Cuadro de mandos */}
+      <main className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 my-8">
 
-        {/* 1: Temperatura y Humedad */}
-        <div className="bg-stone-900/90 border border-stone-800 p-6 flex flex-col justify-between shadow-xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-5">
-            <div className="flex items-center gap-2 text-stone-200 font-medium text-xs uppercase tracking-wider">
-              <Thermometer className="w-4 h-4 text-amber-400" />
-              <span>Termo-Higrometría Real</span>
+        {/* 1: Temperatura y humedad */}
+        <div className="bg-white border border-[#1A3A5C]/10 p-6 flex flex-col justify-between shadow-sm">
+          <div className="flex items-center justify-between border-b border-[#1A3A5C]/10 pb-3 mb-5">
+            <div className="flex items-center gap-2 text-[#1A3A5C] font-medium text-xs uppercase tracking-[0.16em]">
+              <Thermometer className="w-4 h-4 text-[#D4A017]" />
+              <span>Termo-Higrometría</span>
             </div>
-            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-stone-800 text-amber-300 font-bold">
+            <span className="text-[10px] uppercase tracking-[0.16em] px-2 py-0.5 bg-[#A9C9DD]/25 text-[#1A3A5C] font-medium">
               Aguiño
             </span>
           </div>
 
           <div className="space-y-4">
-            <div className="bg-stone-950/80 p-5 border border-stone-800 text-center">
-              <span className="text-[10px] font-mono text-stone-400 uppercase tracking-widest block mb-1">Temperatura Exterior</span>
-              <div className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight">
-                {telemetry.temp.toFixed(1)} <span className="text-2xl font-normal text-amber-400">°C</span>
+            <div className="bg-[#EBE6DD]/70 p-5 border border-[#1A3A5C]/10 text-center">
+              <span className="text-[10px] text-stone-500 uppercase tracking-[0.2em] block mb-1">Temperatura exterior</span>
+              <div className="text-5xl sm:text-6xl font-serif font-semibold text-[#1A3A5C] tracking-tight">
+                {telemetry.temp.toFixed(1)} <span className="text-2xl font-normal text-[#D4A017]">°C</span>
               </div>
-              <div className="text-xs text-stone-300 mt-2">
-                Sensación térmica real: <strong className="text-white">{telemetry.feelsLike.toFixed(1)} °C</strong>
+              <div className="text-xs text-stone-500 mt-2">
+                Sensación térmica: <strong className="text-[#1A3A5C] font-medium">{telemetry.feelsLike.toFixed(1)} °C</strong>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-stone-950/80 p-3.5 border border-stone-800 text-center">
-                <div className="flex items-center justify-center gap-1 text-cyan-400 mb-0.5">
+              <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
+                <div className="flex items-center justify-center gap-1 text-[#1A3A5C] mb-0.5">
                   <Droplets className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-mono uppercase">Humedad</span>
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500">Humedad</span>
                 </div>
-                <div className="text-2xl font-bold text-white">{telemetry.humidity}%</div>
+                <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">{telemetry.humidity}%</div>
               </div>
 
-              <div className="bg-stone-950/80 p-3.5 border border-stone-800 text-center">
-                <div className="flex items-center justify-center gap-1 text-amber-300 mb-0.5">
+              <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
+                <div className="flex items-center justify-center gap-1 text-[#1A3A5C] mb-0.5">
                   <Compass className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-mono uppercase">Barómetro</span>
+                  <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500">Barómetro</span>
                 </div>
-                <div className="text-2xl font-bold text-white">{telemetry.pressure} <span className="text-[10px] font-normal text-stone-400">hPa</span></div>
+                <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">{telemetry.pressure} <span className="text-[10px] font-sans font-normal text-stone-500">hPa</span></div>
               </div>
             </div>
           </div>
 
-          <div className="mt-5 p-3 rounded bg-stone-950/70 border border-stone-800 flex items-center gap-2 text-xs text-stone-300">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Datos en tiempo real servidos vía satélite/estación local.</span>
+          <div className="mt-5 p-3 bg-[#A9C9DD]/20 border border-[#A9C9DD]/40 flex items-center gap-2 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-[#1A3A5C] shrink-0" />
+            <span>Datos en tiempo real de la estación meteorológica de la zona (Open-Meteo).</span>
           </div>
         </div>
 
-        {/* 2: Anemómetro y Compás Real */}
-        <div className="bg-stone-900/90 border border-stone-800 p-6 flex flex-col justify-between shadow-xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
-            <div className="flex items-center gap-2 text-stone-200 font-medium text-xs uppercase tracking-wider">
-              <Wind className="w-4 h-4 text-amber-400" />
-              <span>Anemómetro & Compás</span>
+        {/* 2: Anemómetro y compás */}
+        <div className="bg-white border border-[#1A3A5C]/10 p-6 flex flex-col justify-between shadow-sm">
+          <div className="flex items-center justify-between border-b border-[#1A3A5C]/10 pb-3 mb-4">
+            <div className="flex items-center gap-2 text-[#1A3A5C] font-medium text-xs uppercase tracking-[0.16em]">
+              <Wind className="w-4 h-4 text-[#D4A017]" />
+              <span>Anemómetro &amp; Compás</span>
             </div>
-            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-stone-800 text-amber-300 font-bold">
-              Bocana Arousa
+            <span className="text-[10px] uppercase tracking-[0.16em] px-2 py-0.5 bg-[#A9C9DD]/25 text-[#1A3A5C] font-medium">
+              Bocana de Arousa
             </span>
           </div>
 
           <div className="relative flex items-center justify-center my-2">
-            <svg className="w-56 h-56" viewBox="0 0 240 240">
-              <circle cx="120" cy="120" r="105" fill="#0c0a09" stroke="#44403c" strokeWidth="2" />
-              <circle cx="120" cy="120" r="92" fill="none" stroke="#292524" strokeWidth="1.5" strokeDasharray="4 4" />
-              <text x="120" y="32" textAnchor="middle" fill="#f59e0b" fontSize="16" fontWeight="bold" fontFamily="sans-serif">N</text>
-              <text x="214" y="125" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">E</text>
-              <text x="120" y="218" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">S</text>
-              <text x="26" y="125" textAnchor="middle" fill="#d6d3d1" fontSize="14" fontWeight="bold" fontFamily="sans-serif">W</text>
+            <svg className="w-56 h-56" viewBox="0 0 240 240" role="img" aria-label="Rosa de los vientos con rumbo del viento">
+              <circle cx="120" cy="120" r="105" fill="#FFFFFF" stroke="#1A3A5C" strokeWidth="2.5" />
+              <circle cx="120" cy="120" r="92" fill="none" stroke="#1A3A5C" strokeWidth="1" strokeDasharray="4 4" opacity="0.35" />
+              <text x="120" y="34" textAnchor="middle" fill="#D4A017" fontSize="17" fontWeight="bold" fontFamily="serif">N</text>
+              <text x="212" y="126" textAnchor="middle" fill="#1A3A5C" fontSize="14" fontFamily="serif">E</text>
+              <text x="120" y="216" textAnchor="middle" fill="#1A3A5C" fontSize="14" fontFamily="serif">S</text>
+              <text x="28" y="126" textAnchor="middle" fill="#1A3A5C" fontSize="14" fontFamily="serif">W</text>
 
-              <circle cx="120" cy="120" r="48" fill="#1c1917" stroke="#44403c" strokeWidth="1.5" />
-              <text x="120" y="116" textAnchor="middle" fill="#ffffff" fontSize="26" fontWeight="bold" fontFamily="monospace">
+              <circle cx="120" cy="120" r="48" fill="#EBE6DD" stroke="#1A3A5C" strokeWidth="1.5" />
+              <text x="120" y="116" textAnchor="middle" fill="#1A3A5C" fontSize="26" fontWeight="bold" fontFamily="serif">
                 {telemetry.windKnots.toFixed(1)}
               </text>
-              <text x="120" y="132" textAnchor="middle" fill="#f59e0b" fontSize="10" fontWeight="bold" letterSpacing="1.5">
+              <text x="120" y="133" textAnchor="middle" fill="#D4A017" fontSize="9" letterSpacing="2" fontFamily="sans-serif">
                 NUDOS
               </text>
-              <text x="120" y="146" textAnchor="middle" fill="#a8a29e" fontSize="9">
+              <text x="120" y="147" textAnchor="middle" fill="#78716C" fontSize="9" fontFamily="sans-serif">
                 {(telemetry.windKnots * 1.852).toFixed(1)} km/h
               </text>
 
-              <g className="anim-needle">
-                <polygon points="120,38 113,70 127,70" fill="#f59e0b" />
-                <polygon points="120,202 115,170 125,170" fill="#78716c" />
-                <circle cx="120" cy="120" r="6" fill="#f59e0b" />
+              <g style={{ transform: `rotate(${telemetry.windDeg}deg)`, transformOrigin: '120px 120px' }}>
+                <polygon points="120,38 113,70 127,70" fill="#D4A017" />
+                <polygon points="120,202 115,170 125,170" fill="#1A3A5C" />
+                <circle cx="120" cy="120" r="6" fill="#D4A017" />
               </g>
             </svg>
           </div>
 
-          <div className="p-3 rounded bg-stone-950/80 border border-stone-800 text-center">
-            <span className="text-[10px] text-stone-400 font-mono uppercase block">Rumbo Real</span>
-            <span className="text-base font-bold text-white">{telemetry.windDeg}° · {getWindBearingName(telemetry.windDeg)}</span>
+          <div className="p-3 bg-[#EBE6DD]/70 border border-[#1A3A5C]/10 text-center">
+            <span className="text-[10px] text-stone-500 uppercase tracking-[0.16em] block">Rumbo del viento</span>
+            <span className="text-base font-serif font-semibold text-[#1A3A5C]">{telemetry.windDeg}° · {getWindBearingName(telemetry.windDeg)}</span>
           </div>
         </div>
 
-        {/* 3: Mareas y Horizonte Sálvora */}
-        <div className="bg-stone-900/90 border border-stone-800 p-6 flex flex-col justify-between shadow-xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
-            <div className="flex items-center gap-2 text-stone-200 font-medium text-xs uppercase tracking-wider">
-              <Waves className="w-4 h-4 text-cyan-400" />
-              <span>Astro-Mareas & Sálvora</span>
+        {/* 3: Mareas y horizonte */}
+        <div className="bg-white border border-[#1A3A5C]/10 p-6 flex flex-col justify-between shadow-sm">
+          <div className="flex items-center justify-between border-b border-[#1A3A5C]/10 pb-3 mb-4">
+            <div className="flex items-center gap-2 text-[#1A3A5C] font-medium text-xs uppercase tracking-[0.16em]">
+              <Waves className="w-4 h-4 text-[#D4A017]" />
+              <span>Mareas &amp; Horizonte</span>
             </div>
-            <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-stone-800 text-cyan-300 font-bold">
-              Muelle Aguiño
+            <span className="text-[10px] uppercase tracking-[0.16em] px-2 py-0.5 bg-[#A9C9DD]/25 text-[#1A3A5C] font-medium">
+              Muelle de Aguiño
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-3">
-            <div className="bg-stone-950/80 p-3.5 border border-stone-800 text-center">
-              <span className="text-[10px] text-stone-400 font-mono uppercase block">Nivel Agua</span>
-              <div className="text-2xl font-extrabold text-white">
-                {tideHeight.toFixed(2)} <span className="text-sm font-normal text-cyan-400">m</span>
+            <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
+              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Nivel del agua*</span>
+              <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">
+                {tideHeight.toFixed(2)} <span className="text-sm font-sans font-normal text-stone-500">m</span>
               </div>
-              <span className="text-[10px] text-cyan-300 font-semibold block uppercase mt-0.5">
+              <span className="text-[10px] text-[#1A3A5C] font-medium block uppercase mt-0.5">
                 {tideTrend === 'bajando' ? '↓ Vaciante' : '↑ Llenante'}
               </span>
             </div>
 
-            <div className="bg-stone-950/80 p-3.5 border border-stone-800 text-center">
-              <span className="text-[10px] text-stone-400 font-mono uppercase block">Coeficiente</span>
-              <div className="text-2xl font-extrabold text-amber-300">{tideCoefficient}</div>
-              <span className="text-[10px] text-emerald-400 block mt-0.5">Marea Viva</span>
+            <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
+              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Coeficiente*</span>
+              <div className="text-2xl font-serif font-semibold text-[#D4A017]">{tideCoefficient}</div>
+              <span className="text-[10px] text-[#1A3A5C] block mt-0.5">Marea viva</span>
             </div>
           </div>
 
-          <div className="bg-stone-950/80 p-4 border border-stone-800 space-y-2.5">
+          <div className="bg-[#EBE6DD]/70 p-4 border border-[#1A3A5C]/10 space-y-2.5">
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 anim-beacon" />
-                <span className="text-white font-medium">Faro de Sálvora</span>
+                <Eye className="w-3.5 h-3.5 text-[#1A3A5C]" />
+                <span className="text-stone-700 font-medium">Faro de Sálvora</span>
               </div>
-              <span className="text-stone-400 font-mono text-[11px]">5.7 km · Silueta Nítida</span>
+              <span className="text-stone-500">5,7 km · silueta nítida</span>
             </div>
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-stone-800/60">
+            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#1A3A5C]/10">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 anim-beacon" />
-                <span className="text-white font-medium">Faro de Ons</span>
+                <Eye className="w-3.5 h-3.5 text-[#1A3A5C]" />
+                <span className="text-stone-700 font-medium">Faro de Ons</span>
               </div>
-              <span className="text-stone-400 font-mono text-[11px]">18.1 km · Horizonte Abierto</span>
+              <span className="text-stone-500">18,1 km · horizonte abierto</span>
             </div>
           </div>
 
-          <div className="mt-3 p-3 rounded bg-stone-950/80 border border-stone-800 flex items-center justify-between">
+          <div className="mt-3 p-3 bg-[#A9C9DD]/20 border border-[#A9C9DD]/40 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Moon className="w-4 h-4 text-amber-200" />
-              <span className="text-xs text-stone-300">Fase Lunar Activa</span>
+              <Moon className="w-4 h-4 text-[#1A3A5C]" />
+              <span className="text-xs text-stone-600">Luna*</span>
             </div>
-            <span className="text-[11px] font-mono text-amber-300 font-bold">Óptima Mariscada</span>
+            <span className="text-[11px] font-medium text-[#1A3A5C]">Buena para mariscada</span>
           </div>
+
+          <p className="mt-3 text-[10px] leading-relaxed text-stone-500">
+            * Valores astronómicos orientativos para la Ría de Arousa; consulta el parte oficial antes de salir al mar.
+          </p>
         </div>
 
       </main>
 
       {/* Pie */}
-      <footer className="max-w-7xl mx-auto pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-stone-400">
-          Telemetría en tiempo real desde la estación de Aguiño y el Parque Nacional de las Islas Atlánticas.
+      <footer className="max-w-6xl mx-auto pt-6 border-t border-[#1A3A5C]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs text-stone-500">
+          Meteorología en vivo de la estación de la zona (Open-Meteo) · Ría de Arousa, Parque Nacional das Illas Atlánticas.
         </p>
         {onOpenBooking && (
           <button
             onClick={onOpenBooking}
-            className="px-6 py-2.5 bg-[#1A3A5C] hover:bg-[#132B44] text-white font-medium text-xs uppercase tracking-wider transition-colors shadow-sm"
+            className="px-6 py-2.5 bg-[#1A3A5C] hover:bg-[#132B44] text-white font-medium text-xs uppercase tracking-[0.16em] transition-colors"
           >
             Reservar Estancia Directa
           </button>

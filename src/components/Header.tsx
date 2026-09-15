@@ -21,7 +21,7 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
 
   const navLinks = [
     { name: 'Espacios', href: '#espacios' },
-        { name: '[PERSON_NAME]', href: '#servicios' },
+        { name: 'Confort', href: '#servicios' },
         { name: 'Opiniones', href: '#opiniones' },
         { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
         { name: 'Reservar', href: '#reservas' },

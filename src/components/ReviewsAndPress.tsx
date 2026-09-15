@@ -89,7 +89,7 @@ export function ReviewsAndPress() {
             className="hidden lg:inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-sm shrink-0"
           >
             <CalendarCheck className="w-3.5 h-3.5" />
-            <span>[PERSON_NAME] Directo</span>
+            <span>Reservar Directo</span>
           </button>
         </div>
 
