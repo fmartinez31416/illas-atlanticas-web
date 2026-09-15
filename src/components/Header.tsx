@@ -37,32 +37,39 @@ export function Header({ onOpenBooking }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           
-          {/* Logotipo Editorial */}
+          {/* Logotipo con Monograma */}
           <a
             href="#"
             id="header-brand-link"
-            className="group flex flex-col focus:outline-none shrink-0"
+            className="group flex items-center gap-3 focus:outline-none shrink-0"
           >
-            <div className="flex items-center gap-2">
-              <span className={`text-base sm:text-xl font-serif uppercase tracking-[0.2em] transition-colors ${
-                isScrolled ? 'text-stone-900' : 'text-white'
+            <img
+              src={isScrolled ? "/logo_transparent.png" : "/logo_white.png"}
+              alt="Logo Illas Atlánticas Ático"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-all duration-300"
+            />
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className={`text-base sm:text-lg font-serif uppercase tracking-[0.2em] transition-colors ${
+                  isScrolled ? 'text-stone-900' : 'text-white'
+                }`}>
+                  Illas Atlánticas
+                </span>
+                <span className={`w-1 h-1 rounded-full ${
+                  isScrolled ? 'bg-stone-500' : 'bg-white/80'
+                }`}></span>
+                <span className={`text-[10px] uppercase tracking-[0.25em] font-medium ${
+                  isScrolled ? 'text-stone-600' : 'text-stone-200'
+                }`}>
+                  Ático
+                </span>
+              </div>
+              <span className={`text-[9px] uppercase tracking-[0.3em] font-light ${
+                isScrolled ? 'text-stone-500' : 'text-stone-300'
               }`}>
-                Illas Atlánticas
-              </span>
-              <span className={`w-1 h-1 rounded-full ${
-                isScrolled ? 'bg-stone-500' : 'bg-white/80'
-              }`}></span>
-              <span className={`text-[10px] uppercase tracking-[0.25em] font-medium ${
-                isScrolled ? 'text-stone-600' : 'text-stone-200'
-              }`}>
-                Ático
+                Aguiño · Ribeira
               </span>
             </div>
-            <span className={`text-[9px] uppercase tracking-[0.3em] font-light ${
-              isScrolled ? 'text-stone-500' : 'text-stone-300'
-            }`}>
-              Aguiño · Ribeira
-            </span>
           </a>
 
           {/* Menú Central Limpio (Solo 4 enlaces clave) */}
