@@ -62,9 +62,38 @@
   border: 1px solid rgba(217, 119, 6, 0.3);
 }
 
-/* Elegant Dark Ambient glows */
-.amber-glow {
-  box-shadow: 0 0 40px -5px rgba(217, 119, 6, 0.2);
+/* Ken Burns suave para imágenes destacadas */
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.07) translate(1%, -1%); }
+  100% { transform: scale(1.02) translate(-1%, 1%); }
+}
+.anim-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
+/* Puente de Mando HUD */
+@keyframes spin360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes waveDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-120px); }
+}
+@keyframes hudPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes digitPop {
+  0% { opacity: 0.35; transform: scale(0.965); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.anim-digit { animation: digitPop 0.8s ease-out both; }
+
+/* Respeta las preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .anim-kenburns { animation: none; }
 }
 
 .amber-border-glow:hover {

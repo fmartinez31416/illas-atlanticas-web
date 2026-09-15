@@ -43,30 +43,30 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
           <a
             href="#"
             id="header-brand-link"
-            className="group flex items-center gap-3 focus:outline-none shrink-0"
+            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink-0 min-w-0"
           >
             <img
               src={isScrolled ? "/logo_transparent.png" : "/logo_white.png"}
               alt="Logo Illas Atlánticas Ático"
-              className="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-all duration-300"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-all duration-300 shrink-0"
             />
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className={`text-base sm:text-lg font-serif uppercase tracking-[0.2em] transition-colors ${
+            <div className="flex flex-col min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className={`text-sm sm:text-lg font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-colors whitespace-nowrap ${
                   isScrolled ? 'text-stone-900' : 'text-white'
                 }`}>
                   Illas Atlánticas
                 </span>
-                <span className={`w-1 h-1 rounded-full ${
+                <span className={`w-1 h-1 rounded-full hidden sm:block ${
                   isScrolled ? 'bg-stone-500' : 'bg-white/80'
                 }`}></span>
-                <span className={`text-[10px] uppercase tracking-[0.25em] font-medium ${
+                <span className={`hidden sm:block text-[10px] uppercase tracking-[0.25em] font-medium ${
                   isScrolled ? 'text-stone-600' : 'text-stone-200'
                 }`}>
                   Ático
                 </span>
               </div>
-              <span className={`text-[9px] uppercase tracking-[0.3em] font-light ${
+              <span className={`text-[9px] uppercase tracking-[0.3em] font-light hidden sm:block ${
                 isScrolled ? 'text-stone-500' : 'text-stone-300'
               }`}>
                 Aguiño · Ribeira

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Space } from '../types';
+import { Reveal } from './Reveal';
 import { Maximize2, Check, ChevronRight, X, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const SPACES_DATA: Space[] = [
@@ -263,11 +264,11 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
           {spaces.map((space, idx) => {
             const isFeatured = idx === 0; // La Terraza preside con mayor anchura
             return (
+              <Reveal key={space.id} delay={(idx % 3) * 110} className={isFeatured ? 'md:col-span-2' : ''}>
               <article
-                key={space.id}
                 onClick={() => openSpaceDetails(space)}
-                className={`group cursor-pointer bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-stone-400 transition-all duration-500 flex flex-col justify-between overflow-hidden ${
-                  isFeatured ? 'md:col-span-2' : ''
+                className={`group cursor-pointer bg-white border border-stone-200 shadow-sm hover:shadow-xl hover:border-stone-400 transition-all duration-500 flex flex-col justify-between overflow-hidden h-full ${
+                  isFeatured ? '' : ''
                 }`}
               >
                 {/* Imagen */}
@@ -275,9 +276,16 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                   <img
                     src={space.coverImage}
                     alt={space.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className={`w-full h-full object-cover object-center transition-transform duration-700 ease-out ${
+                      isFeatured ? 'anim-kenburns' : 'group-hover:scale-105'
+                    }`}
                     loading="lazy"
                   />
+                  {/* Velo cinematográfico + pie que aparece al pasar */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <p className="absolute bottom-4 left-4 right-12 text-white/95 text-sm font-light leading-snug italic opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 pointer-events-none">
+                    {space.subtitle}
+                  </p>
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <span className="px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase bg-white/95 text-stone-800 backdrop-blur-sm border border-stone-200 shadow-sm">
                       {space.tag}
@@ -321,6 +329,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                   </div>
                 </div>
               </article>
+              </Reveal>
             );
           })}
         </div>

@@ -44,6 +44,9 @@ export function App() {
           <BookingWidget />
         </div>
 
+        {/* Prueba social pronto: opiniones reales de Booking.com */}
+        <ReviewsAndPress />
+
         <SpacesGrid onOpenBooking={scrollToBooking} />
         <AmenitiesSection />
 
