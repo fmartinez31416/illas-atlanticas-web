@@ -4,9 +4,10 @@ import { Menu, X, Phone, MessageCircle, CalendarCheck, ShieldCheck } from 'lucid
 interface HeaderProps {
   onOpenBooking: () => void;
   onOpenVirtualTour?: () => void;
+  onOpenBitacora?: () => void;
 }
 
-export function Header({ onOpenBooking }: HeaderProps) {
+export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,10 +21,11 @@ export function Header({ onOpenBooking }: HeaderProps) {
 
   const navLinks = [
     { name: 'Espacios', href: '#espacios' },
-    { name: 'Confort', href: '#servicios' },
-    { name: 'Opiniones', href: '#opiniones' },
-    { name: 'Reservar', href: '#reservas' },
-  ];
+        { name: '[PERSON_NAME]', href: '#servicios' },
+        { name: 'Opiniones', href: '#opiniones' },
+        { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
+        { name: 'Reservar', href: '#reservas' },
+      ];
 
   return (
     <header
@@ -73,21 +75,35 @@ export function Header({ onOpenBooking }: HeaderProps) {
           </a>
 
           {/* Menú Central Limpio (Solo 4 enlaces clave) */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" aria-label="Navegación principal">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
-                  isScrolled
-                    ? 'text-stone-700 hover:text-stone-950'
-                    : 'text-white/90 hover:text-white'
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" aria-label="Menú principal">
+            {navLinks.map((link) =>
+                        link.action ? (
+                          <button
+                            key={link.name}
+                            onClick={link.action}
+                            className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
+                              isScrolled
+                                ? 'text-stone-700 hover:text-stone-950'
+                                : 'text-white/90 hover:text-white'
+                            }`}
+                          >
+                            {link.name}
+                          </button>
+                        ) : (
+                          <a
+                            key={link.name}
+                            href={link.href}
+                            className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
+                              isScrolled
+                                ? 'text-stone-700 hover:text-stone-950'
+                                : 'text-white/90 hover:text-white'
+                            }`}
+                          >
+                            {link.name}
+                          </a>
+                        )
+                      )}
+                    </nav>
 
           {/* Acciones de Contacto & Reserva */}
           <div className="hidden md:flex items-center space-x-3 shrink-0">
@@ -168,16 +184,26 @@ export function Header({ onOpenBooking }: HeaderProps) {
           className="md:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg"
         >
           <div className="flex flex-col space-y-3 pb-4 border-b border-stone-100">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.action ? (
+                <button
+                  key={link.name}
+                  onClick={() => { setMobileMenuOpen(false); link.action?.(); }}
+                  className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1 text-left"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xs font-medium tracking-[0.2em] text-stone-700 hover:text-stone-950 uppercase py-1"
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex flex-col space-y-2 pt-2">

@@ -35,7 +35,7 @@ export function App() {
   // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
-      <Header onOpenBooking={scrollToBooking} />
+      <Header onOpenBooking={scrollToBooking} onOpenBitacora={() => setCurrentView('bitacora')} />
       
       <main>
         <Hero onOpenBooking={scrollToBooking} />
