@@ -74,36 +74,36 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
             </div>
           </a>
 
-          {/* Menú Central Limpio (Solo 4 enlaces clave) */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8" aria-label="Menú principal">
+          {/* Menú Central Limpio */}
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label="Navegación principal">
             {navLinks.map((link) =>
-                        link.action ? (
-                          <button
-                            key={link.name}
-                            onClick={link.action}
-                            className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
-                              isScrolled
-                                ? 'text-stone-700 hover:text-stone-950'
-                                : 'text-white/90 hover:text-white'
-                            }`}
-                          >
-                            {link.name}
-                          </button>
-                        ) : (
-                          <a
-                            key={link.name}
-                            href={link.href}
-                            className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors relative py-1 ${
-                              isScrolled
-                                ? 'text-stone-700 hover:text-stone-950'
-                                : 'text-white/90 hover:text-white'
-                            }`}
-                          >
-                            {link.name}
-                          </a>
-                        )
-                      )}
-                    </nav>
+              link.action ? (
+                <button
+                  key={link.name}
+                  onClick={link.action}
+                  className={`text-[11px] uppercase tracking-[0.16em] font-medium transition-colors relative py-1 whitespace-nowrap ${
+                    isScrolled
+                      ? 'text-stone-700 hover:text-stone-950'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`text-[11px] uppercase tracking-[0.16em] font-medium transition-colors relative py-1 whitespace-nowrap ${
+                    isScrolled
+                      ? 'text-stone-700 hover:text-stone-950'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              )
+            )}
+          </nav>
 
           {/* Acciones de Contacto & Reserva */}
           <div className="hidden md:flex items-center space-x-3 shrink-0">
@@ -111,7 +111,7 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
             <a
               id="header-phone-link"
               href="tel:+34606025318"
-              className={`p-2 rounded-sm transition-colors border shadow-sm ${
+              className={`p-2 rounded-sm transition-colors border shadow-sm hidden xl:inline-flex ${
                 isScrolled
                   ? 'text-stone-700 hover:text-stone-950 bg-stone-50 border-stone-200'
                   : 'text-white hover:text-white/80 bg-white/10 border-white/20 backdrop-blur-sm'
@@ -141,14 +141,14 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
             <button
               id="header-booking-cta-btn"
               onClick={onOpenBooking}
-              className={`px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] font-medium transition-all shadow-sm rounded-sm flex items-center gap-2 ${
+              className={`px-4 py-2.5 text-[11px] uppercase tracking-[0.14em] font-medium transition-all shadow-sm rounded-sm flex items-center gap-2 whitespace-nowrap shrink-0 ${
                 isScrolled
                   ? 'bg-stone-900 text-white hover:bg-stone-800'
                   : 'bg-white text-stone-950 hover:bg-stone-100'
               }`}
             >
               <CalendarCheck className="w-3.5 h-3.5" />
-              <span>Consultar Fechas</span>
+              <span>Reservar</span>
             </button>
           </div>
 

@@ -8,7 +8,7 @@ export interface Space {
   gallery: string[];
   description: string;
   highlights: string[];
-  features: string[];
+  features?: string[];
   specs: { label: string; value: string }[];
 }
 

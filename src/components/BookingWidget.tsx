@@ -1,4 +1,4 @@
-import { useState, useId, useMemo } from 'react';
+import { useState, useId } from 'react';
 import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
 
 interface BookingWidgetProps {
@@ -27,28 +27,27 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
 
-  const beds24Src = useMemo(() => {
+  const nights = Math.max(
+    1,
+    Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000)
+  );
+
+  const beds24Url = (() => {
     const params = new URLSearchParams({
       propid: PROP_ID,
       numadult: String(adults),
       numchild: String(children),
       ...(checkIn ? { firstnight: checkIn } : {}),
-      ...(checkIn && checkOut
-        ? { numnight: String(Math.max(1, Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000))) }
-        : {}),
+      ...(checkIn && checkOut ? { numnight: String(nights) } : {}),
     });
     return `https://beds24.com/booking2.php?${params.toString()}`;
-  }, [adults, children, checkIn, checkOut]);
+  })();
 
   const handleBeds24Redirect = () => {
-    window.open(beds24Src, '_blank', 'noopener,noreferrer');
+    window.open(beds24Url, '_blank', 'noopener,noreferrer');
   };
 
   const handleWhatsAppBooking = () => {
-    const nights = Math.max(
-      1,
-      Math.ceil((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000)
-    );
     const text = encodeURIComponent(
       `Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático:\n- Fechas: del ${checkIn} al ${checkOut} (${nights} noches)\n- Ocupantes: ${adults} adultos, ${children} niños\n\n¿Tienen disponibilidad confirmada para estas fechas?`
     );
@@ -57,14 +56,13 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
   return (
     <section id="reservas" className="py-10 bg-[#FAF8F5] border-t border-stone-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Barra única compacta */}
         <div className="bg-white border border-stone-200 shadow-sm p-4 sm:p-5">
 
           <div className="flex flex-col lg:flex-row lg:items-end gap-4">
 
-            {/* Campos: fechas + ocupantes en una línea */}
+            {/* Campos: fechas + ocupantes */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 flex-1">
 
               <div className="space-y-1">
@@ -137,16 +135,16 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               <button
                 id="booking-beds24-confirm-btn"
                 onClick={handleBeds24Redirect}
-                className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
+                className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
-                <span>Ver precio en Beds24</span>
+                <span>Ver precio real</span>
                 <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
               </button>
 
               <button
                 id="booking-whatsapp-direct-btn"
                 onClick={handleWhatsAppBooking}
-                className="flex-1 lg:flex-initial px-5 py-3 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-800 text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
+                className="flex-1 lg:flex-initial px-5 py-3 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-800 text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
                 <span>WhatsApp</span>
@@ -155,39 +153,14 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           </div>
 
-          {/* Línea de confianza en una sola fila */}
+          {/* Línea de confianza */}
           <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             <span>Plaza de garaje incluida</span>
             <span className="text-stone-300">·</span>
-            <span>Disponibilidad y precios reales, sincronizados en tiempo real</span>
+            <span>{nights} {nights === 1 ? 'noche' : 'noches'} · {adults} {adults === 1 ? 'adulto' : 'adultos'}{children > 0 ? ` + ${children}` : ''}</span>
             <span className="text-stone-300">·</span>
-            <span>Sin comisiones de intermediarios</span>
+            <span>Precio y disponibilidad reales en Beds24</span>
           </p>
-        </div>
-
-        {/* Motor de reserva embebido de Beds24: precios y disponibilidad en vivo */}
-        <div className="bg-white border border-stone-200 shadow-sm p-4 sm:p-5">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-stone-600 font-medium">
-              Disponibilidad y precios en tiempo real
-            </h3>
-            <button
-              onClick={handleBeds24Redirect}
-              className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#1A3A5C] hover:underline font-medium"
-            >
-              Abrir en pestaña nueva
-              <ArrowRight className="w-3 h-3" />
-            </button>
-          </div>
-          <div className="w-full overflow-hidden border border-stone-100 bg-stone-50">
-            <iframe
-              title="Motor de reserva Illas Atlánticas Ático (Beds24)"
-              src={beds24Src}
-              className="w-full"
-              style={{ height: '900px', border: '0' }}
-              loading="lazy"
-            />
-          </div>
         </div>
 
       </div>

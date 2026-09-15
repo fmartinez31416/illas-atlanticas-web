@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  ArrowLeft, Wind, Waves, Moon, Eye, ShieldCheck,
-  Thermometer, Droplets, Compass, Clock, RefreshCw
+  ArrowLeft, Wind, Waves, Sun, Sunrise, Sunset, Eye, ShieldCheck,
+  Thermometer, Droplets, Compass, Clock, RefreshCw, Activity
 } from 'lucide-react';
 
 interface DashboardNauticoProps {
@@ -19,6 +19,21 @@ interface TelemetryData {
   updatedAt: string;
 }
 
+interface MarineData {
+  waveHeight: number | null;
+  seaTemp: number | null;
+}
+
+interface SunData {
+  sunrise: string | null;
+  sunset: string | null;
+}
+
+interface HourlyData {
+  temps: number[];
+  hours: string[];
+}
+
 export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProps) {
   const [telemetry, setTelemetry] = useState<TelemetryData>({
     temp: 18.5,
@@ -29,26 +44,38 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     windDeg: 320,
     updatedAt: '--:--',
   });
+  const [marine, setMarine] = useState<MarineData>({ waveHeight: null, seaTemp: null });
+  const [sun, setSun] = useState<SunData>({ sunrise: null, sunset: null });
+  const [hourly, setHourly] = useState<HourlyData>({ temps: [], hours: [] });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isLive, setIsLive] = useState<boolean>(false);
+  const [now, setNow] = useState<Date>(new Date());
+  const fetchedAtRef = useRef<number>(Date.now());
 
-  // Valores orientativos de marea para Aguiño (Ría de Arousa) — no sustituyen al parte oficial
-  const tideHeight = 2.35;
-  const tideTrend: 'subiendo' | 'bajando' = 'bajando';
-  const tideCoefficient = 82;
+  // Reloj local en vivo (sensación de instrumento encendido)
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
 
   const fetchRealWeather = async () => {
     try {
       setIsLoading(true);
       // Coordenadas reales de Aguiño: 42.5233 N, -9.0294 W
-      const res = await fetch(
-        'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&wind_speed_unit=kn&timezone=Europe%2FMadrid'
-      );
+      const [res, resMarine] = await Promise.all([
+        fetch(
+          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset&forecast_days=1&wind_speed_unit=kn&timezone=Europe%2FMadrid'
+        ),
+        fetch(
+          'https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height,sea_surface_temperature&forecast_days=1&timezone=Europe%2FMadrid'
+        ),
+      ]);
       if (!res.ok) throw new Error('Error al conectar con la estación meteorológica');
       const data = await res.json();
       const cur = data.current;
 
-      const now = new Date();
+      const updated = new Date();
+      fetchedAtRef.current = Date.now();
       setTelemetry({
         temp: cur.temperature_2m,
         feelsLike: cur.apparent_temperature,
@@ -56,8 +83,51 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         pressure: Math.round(cur.surface_pressure),
         windKnots: Math.round(cur.wind_speed_10m * 10) / 10,
         windDeg: Math.round(cur.wind_direction_10m),
-        updatedAt: now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
+        updatedAt: updated.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
       });
+
+      // Pronóstico horario (24h) para la gráfica
+      if (data.hourly && data.hourly.temperature_2m) {
+        const times = data.hourly.time.slice(0, 24);
+        const temps = data.hourly.temperature_2m.slice(0, 24);
+        setHourly({
+          temps,
+          hours: times.map((t: string) =>
+            new Date(t).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+          ),
+        });
+      }
+
+      // Amanecer / anochecer de hoy
+      if (data.daily) {
+        setSun({
+          sunrise: data.daily.sunrise?.[0]
+            ? new Date(data.daily.sunrise[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+            : null,
+          sunset: data.daily.sunset?.[0]
+            ? new Date(data.daily.sunset[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+            : null,
+        });
+      }
+
+      // Datos marinos (olas y temperatura del mar)
+      if (resMarine.ok) {
+        const mData = await resMarine.json();
+        if (mData.hourly) {
+          const last = mData.hourly.time.length - 1;
+          setMarine({
+            waveHeight:
+              typeof mData.hourly.wave_height?.[last] === 'number'
+                ? Math.round(mData.hourly.wave_height[last] * 10) / 10
+                : null,
+            seaTemp:
+              typeof mData.hourly.sea_surface_temperature?.[last] === 'number'
+                ? Math.round(mData.hourly.sea_surface_temperature[last] * 10) / 10
+                : null,
+          });
+        }
+      }
+
       setIsLive(true);
     } catch (err) {
       console.warn('Usando telemetría local de respaldo:', err);
@@ -73,10 +143,32 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     return () => clearInterval(interval);
   }, []);
 
+  const minutesAgo = Math.max(0, Math.floor((Date.now() - fetchedAtRef.current) / 60000));
+  const freshnessLabel =
+    minutesAgo < 1 ? 'actualizado ahora mismo' : `actualizado hace ${minutesAgo} min`;
+
   const getWindBearingName = (deg: number) => {
     const directions = ['Norte (N)', 'Nor-Noreste (NNE)', 'Noreste (NE)', 'Este-Noreste (ENE)', 'Este (E)', 'Este-Sureste (ESE)', 'Sureste (SE)', 'Sur-Sureste (SSE)', 'Sur (S)', 'Sur-Suroeste (SSW)', 'Suroeste (SW)', 'Oeste-Suroeste (WSW)', 'Oeste (W)', 'Oeste-Noroeste (WNW)', 'Noroeste (NW)', 'Nor-Noroeste (NNW)'];
     return directions[Math.round(deg / 22.5) % 16];
   };
+
+  // Puntos de la gráfica de temperatura (24h)
+  const chartW = 260;
+  const chartH = 64;
+  const temps = hourly.temps;
+  let polyPoints = '';
+  if (temps.length > 1) {
+    const min = Math.min(...temps);
+    const max = Math.max(...temps);
+    const span = Math.max(1, max - min);
+    polyPoints = temps
+      .map((t, i) => {
+        const x = (i / (temps.length - 1)) * chartW;
+        const y = chartH - 6 - ((t - min) / span) * (chartH - 14);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      })
+      .join(' ');
+  }
 
   return (
     <div id="puente-de-mando" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950 p-4 sm:p-8">
@@ -93,7 +185,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </button>
 
           <div className="flex items-center gap-3">
-            <span className={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-[#1A3A5C]' : 'bg-[#D4A017]'}`} />
+            <span className={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-[#1A3A5C] animate-pulse' : 'bg-[#D4A017]'}`} />
             <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#1A3A5C]">
               Puente de Mando <span className="italic text-[#D4A017]">Atlántico</span>
             </h1>
@@ -103,28 +195,39 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </p>
         </div>
 
-        <div className="flex items-center gap-3 bg-white/70 border border-[#1A3A5C]/15 px-4 py-3 shadow-sm">
-          <Clock className="w-4 h-4 text-[#1A3A5C]" />
-          <div>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-stone-500 block">Última lectura</span>
-            <span className="text-lg font-serif font-semibold text-[#1A3A5C] leading-tight">{telemetry.updatedAt}</span>
+        <div className="flex items-center gap-4">
+          {/* Reloj local en vivo */}
+          <div className="bg-white/70 border border-[#1A3A5C]/15 px-4 py-3 shadow-sm">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-stone-500 block">Hora en Aguiño</span>
+            <span className="text-xl font-serif font-semibold text-[#1A3A5C] tabular-nums leading-tight">
+              {now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </span>
           </div>
-          <button
-            onClick={fetchRealWeather}
-            disabled={isLoading}
-            className="ml-2 p-2 text-[#1A3A5C] hover:text-[#D4A017] transition-colors"
-            title="Refrescar datos"
-            aria-label="Refrescar datos meteorológicos"
-          >
-            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-          </button>
+
+          <div className="flex items-center gap-3 bg-white/70 border border-[#1A3A5C]/15 px-4 py-3 shadow-sm">
+            <Clock className="w-4 h-4 text-[#1A3A5C]" />
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-stone-500 block">Última lectura</span>
+              <span className="text-lg font-serif font-semibold text-[#1A3A5C] leading-tight">{telemetry.updatedAt}</span>
+              <span className="text-[10px] text-stone-500 block">{freshnessLabel}</span>
+            </div>
+            <button
+              onClick={fetchRealWeather}
+              disabled={isLoading}
+              className="ml-2 p-2 text-[#1A3A5C] hover:text-[#D4A017] transition-colors"
+              title="Refrescar datos"
+              aria-label="Refrescar datos meteorológicos"
+            >
+              <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Cuadro de mandos */}
       <main className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 my-8">
 
-        {/* 1: Temperatura y humedad */}
+        {/* 1: Temperatura, humedad y gráfica 24h */}
         <div className="bg-white border border-[#1A3A5C]/10 p-6 flex flex-col justify-between shadow-sm">
           <div className="flex items-center justify-between border-b border-[#1A3A5C]/10 pb-3 mb-5">
             <div className="flex items-center gap-2 text-[#1A3A5C] font-medium text-xs uppercase tracking-[0.16em]">
@@ -162,6 +265,52 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500">Barómetro</span>
                 </div>
                 <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">{telemetry.pressure} <span className="text-[10px] font-sans font-normal text-stone-500">hPa</span></div>
+              </div>
+            </div>
+
+            {/* Gráfica de evolución 24h */}
+            {temps.length > 1 && (
+              <div className="bg-[#EBE6DD]/70 border border-[#1A3A5C]/10 p-3">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-stone-500 flex items-center gap-1">
+                    <Activity className="w-3 h-3 text-[#1A3A5C]" /> Evolución 24 h
+                  </span>
+                  <span className="text-[10px] text-stone-500 tabular-nums">
+                    {Math.min(...temps).toFixed(0)}° – {Math.max(...temps).toFixed(0)}°
+                  </span>
+                </div>
+                <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-16" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
+                  <polyline
+                    points={polyPoints}
+                    fill="none"
+                    stroke="#1A3A5C"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx={temps.length - 1 > 0 ? chartW : 0}
+                    cy={chartH - 6 - ((temps[temps.length - 1] - Math.min(...temps)) / Math.max(1, Math.max(...temps) - Math.min(...temps))) * (chartH - 14)}
+                    r="3.5"
+                    fill="#D4A017"
+                  />
+                  <text x="0" y={chartH - 1} fill="#78716C" fontSize="8" fontFamily="sans-serif">{hourly.hours[0] || ''}</text>
+                  <text x={chartW - 28} y={chartH - 1} fill="#78716C" fontSize="8" fontFamily="sans-serif">{hourly.hours[temps.length - 1] || ''}</text>
+                </svg>
+              </div>
+            )}
+
+            {/* Amanecer y anochecer reales */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-[#A9C9DD]/20 border border-[#A9C9DD]/40 p-3 text-center">
+                <Sunrise className="w-4 h-4 text-[#D4A017] mx-auto mb-1" />
+                <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500 block">Amanecer</span>
+                <span className="text-base font-serif font-semibold text-[#1A3A5C] tabular-nums">{sun.sunrise || '--:--'}</span>
+              </div>
+              <div className="bg-[#A9C9DD]/20 border border-[#A9C9DD]/40 p-3 text-center">
+                <Sunset className="w-4 h-4 text-[#D4A017] mx-auto mb-1" />
+                <span className="text-[10px] uppercase tracking-[0.14em] text-stone-500 block">Anochecer</span>
+                <span className="text-base font-serif font-semibold text-[#1A3A5C] tabular-nums">{sun.sunset || '--:--'}</span>
               </div>
             </div>
           </div>
@@ -204,7 +353,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 {(telemetry.windKnots * 1.852).toFixed(1)} km/h
               </text>
 
-              <g style={{ transform: `rotate(${telemetry.windDeg}deg)`, transformOrigin: '120px 120px' }}>
+              <g
+                style={{
+                  transform: `rotate(${telemetry.windDeg}deg)`,
+                  transformOrigin: '120px 120px',
+                  transition: 'transform 1.2s ease-in-out',
+                }}
+              >
                 <polygon points="120,38 113,70 127,70" fill="#D4A017" />
                 <polygon points="120,202 115,170 125,170" fill="#1A3A5C" />
                 <circle cx="120" cy="120" r="6" fill="#D4A017" />
@@ -218,33 +373,45 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </div>
         </div>
 
-        {/* 3: Mareas y horizonte */}
+        {/* 3: Mar y horizonte */}
         <div className="bg-white border border-[#1A3A5C]/10 p-6 flex flex-col justify-between shadow-sm">
           <div className="flex items-center justify-between border-b border-[#1A3A5C]/10 pb-3 mb-4">
             <div className="flex items-center gap-2 text-[#1A3A5C] font-medium text-xs uppercase tracking-[0.16em]">
               <Waves className="w-4 h-4 text-[#D4A017]" />
-              <span>Mareas &amp; Horizonte</span>
+              <span>Mar &amp; Horizonte</span>
             </div>
             <span className="text-[10px] uppercase tracking-[0.16em] px-2 py-0.5 bg-[#A9C9DD]/25 text-[#1A3A5C] font-medium">
-              Muelle de Aguiño
+              Ría de Arousa
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-3">
             <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
-              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Nivel del agua*</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Olas (altura)</span>
               <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">
-                {tideHeight.toFixed(2)} <span className="text-sm font-sans font-normal text-stone-500">m</span>
+                {marine.waveHeight !== null ? marine.waveHeight.toFixed(1) : '--'}
+                <span className="text-sm font-sans font-normal text-stone-500"> m</span>
               </div>
-              <span className="text-[10px] text-[#1A3A5C] font-medium block uppercase mt-0.5">
-                {tideTrend === 'bajando' ? '↓ Vaciante' : '↑ Llenante'}
+              <span className="text-[10px] text-stone-500 block mt-0.5">
+                {marine.waveHeight !== null
+                  ? marine.waveHeight < 0.5
+                    ? 'Mar en calma'
+                    : marine.waveHeight < 1.25
+                      ? 'Oleaje moderado'
+                      : marine.waveHeight < 2.5
+                        ? 'Mar movido'
+                        : 'Fuerte marejada'
+                  : 'en vivo'}
               </span>
             </div>
 
             <div className="bg-[#EBE6DD]/70 p-3.5 border border-[#1A3A5C]/10 text-center">
-              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Coeficiente*</span>
-              <div className="text-2xl font-serif font-semibold text-[#D4A017]">{tideCoefficient}</div>
-              <span className="text-[10px] text-[#1A3A5C] block mt-0.5">Marea viva</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-[0.14em] block">Temperatura del mar</span>
+              <div className="text-2xl font-serif font-semibold text-[#1A3A5C]">
+                {marine.seaTemp !== null ? marine.seaTemp.toFixed(1) : '--'}
+                <span className="text-sm font-sans font-normal text-stone-500"> °C</span>
+              </div>
+              <span className="text-[10px] text-stone-500 block mt-0.5">en la bocana</span>
             </div>
           </div>
 
@@ -267,14 +434,16 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
 
           <div className="mt-3 p-3 bg-[#A9C9DD]/20 border border-[#A9C9DD]/40 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Moon className="w-4 h-4 text-[#1A3A5C]" />
-              <span className="text-xs text-stone-600">Luna*</span>
+              <Sun className="w-4 h-4 text-[#1A3A5C]" />
+              <span className="text-xs text-stone-600">Sol hoy en Aguiño</span>
             </div>
-            <span className="text-[11px] font-medium text-[#1A3A5C]">Buena para mariscada</span>
+            <span className="text-[11px] font-medium text-[#1A3A5C] tabular-nums">
+              {sun.sunrise && sun.sunset ? `${sun.sunrise} → ${sun.sunset}` : '--:-- → --:--'}
+            </span>
           </div>
 
           <p className="mt-3 text-[10px] leading-relaxed text-stone-500">
-            * Valores astronómicos orientativos para la Ría de Arousa; consulta el parte oficial antes de salir al mar.
+            Datos marinos en vivo de Open-Meteo Marine. Para salir al mar, consulta siempre el parte oficial de Salvamento Marítimo.
           </p>
         </div>
 
@@ -283,7 +452,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       {/* Pie */}
       <footer className="max-w-6xl mx-auto pt-6 border-t border-[#1A3A5C]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-stone-500">
-          Meteorología en vivo de la estación de la zona (Open-Meteo) · Ría de Arousa, Parque Nacional das Illas Atlánticas.
+          Meteorología y estado del mar en vivo · Ría de Arousa, Parque Nacional das Illas Atlánticas.
         </p>
         {onOpenBooking && (
           <button
