@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowLeft, Wind, Waves, Sun, Sunrise, Sunset, Eye, ShieldCheck,
-  Thermometer, Droplets, Compass, RefreshCw, Activity
+  Thermometer, Droplets, Compass, RefreshCw, Activity,
+  CloudSun, Cloud, CloudFog, CloudDrizzle, CloudRain, CloudSnow, CloudLightning, Moon
 } from 'lucide-react';
 
 interface DashboardNauticoProps {
@@ -34,6 +35,21 @@ interface HourlyData {
   hours: string[];
 }
 
+interface ForecastDay {
+  day: string;
+  wmo: number;
+  tmax: number;
+  tmin: number;
+  pop: number | null;
+}
+
+interface MoonData {
+  phase: number | null;
+  illum: number | null;
+  rise: string | null;
+  set: string | null;
+}
+
 export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProps) {
   const [telemetry, setTelemetry] = useState<TelemetryData>({
     temp: 18.5,
@@ -46,6 +62,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   });
   const [marine, setMarine] = useState<MarineData>({ waveHeight: null, seaTemp: null });
   const [sun, setSun] = useState<SunData>({ sunrise: null, sunset: null });
+  const [moon, setMoon] = useState<MoonData>({ phase: null, illum: null, rise: null, set: null });
+  const [forecast, setForecast] = useState<ForecastDay[]>([]);
   const [hourly, setHourly] = useState<HourlyData>({ temps: [], hours: [] });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isLive, setIsLive] = useState<boolean>(false);
@@ -64,7 +82,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       // Coordenadas reales de Aguiño: 42.5233 N, -9.0294 W
       const [res, resMarine] = await Promise.all([
         fetch(
-          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset&forecast_days=1&wind_speed_unit=kn&timezone=Europe%2FMadrid'
+          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset,moonrise,moonset,moon_phase,moon_illumination,temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&forecast_days=7&wind_speed_unit=kn&timezone=Europe%2FMadrid'
         ),
         fetch(
           'https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height,sea_surface_temperature&forecast_days=1&timezone=Europe%2FMadrid'
@@ -106,6 +124,32 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             ? new Date(data.daily.sunset[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
             : null,
         });
+        setMoon({
+          phase: typeof data.daily.moon_phase?.[0] === 'number' ? data.daily.moon_phase[0] : null,
+          illum:
+            typeof data.daily.moon_illumination?.[0] === 'number'
+              ? Math.round(data.daily.moon_illumination[0] * 100)
+              : null,
+          rise: data.daily.moonrise?.[0]
+            ? new Date(data.daily.moonrise[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+            : null,
+          set: data.daily.moonset?.[0]
+            ? new Date(data.daily.moonset[0]).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+            : null,
+        });
+        // Pronóstico de 7 días
+        const days = data.daily.time || [];
+        const fcast: ForecastDay[] = days.slice(0, 7).map((t: string, i: number) => ({
+          day: new Date(t).toLocaleDateString('es-ES', { weekday: 'short' }),
+          wmo: data.daily.weathercode?.[i] ?? 0,
+          tmax: Math.round(data.daily.temperature_2m_max?.[i] ?? 0),
+          tmin: Math.round(data.daily.temperature_2m_min?.[i] ?? 0),
+          pop:
+            typeof data.daily.precipitation_probability_max?.[i] === 'number'
+              ? Math.round(data.daily.precipitation_probability_max[i])
+              : null,
+        }));
+        setForecast(fcast);
       }
 
       if (resMarine.ok) {
@@ -147,6 +191,31 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const getWindBearingName = (deg: number) => {
     const directions = ['Norte (N)', 'Nor-Noreste (NNE)', 'Noreste (NE)', 'Este-Noreste (ENE)', 'Este (E)', 'Este-Sureste (ESE)', 'Sureste (SE)', 'Sur-Sureste (SSE)', 'Sur (S)', 'Sur-Suroeste (SSW)', 'Suroeste (SW)', 'Oeste-Suroeste (WSW)', 'Oeste (W)', 'Oeste-Noroeste (WNW)', 'Noroeste (NW)', 'Nor-Noroeste (NNW)'];
     return directions[Math.round(deg / 22.5) % 16];
+  };
+
+  const moonPhaseName = (phase: number) => {
+    if (phase < 0.03 || phase >= 0.97) return 'Luna nueva';
+    if (phase < 0.22) return 'Creciente';
+    if (phase < 0.28) return 'Cuarto creciente';
+    if (phase < 0.47) return 'Gibosa creciente';
+    if (phase < 0.53) return 'Luna llena';
+    if (phase < 0.72) return 'Gibosa menguante';
+    if (phase < 0.78) return 'Cuarto menguante';
+    return 'Menguante';
+  };
+
+  const weatherIcon = (wmo: number) => {
+    const cls = 'w-5 h-5 text-[#D4A017]';
+    if (wmo === 0) return <Sun className={cls} />;
+    if (wmo === 1) return <Sun className={cls} />;
+    if (wmo === 2) return <CloudSun className={cls} />;
+    if (wmo === 3) return <Cloud className={cls} />;
+    if (wmo === 45 || wmo === 48) return <CloudFog className={cls} />;
+    if (wmo >= 51 && wmo <= 57) return <CloudDrizzle className={cls} />;
+    if ((wmo >= 61 && wmo <= 67) || (wmo >= 80 && wmo <= 82)) return <CloudRain className={cls} />;
+    if ((wmo >= 71 && wmo <= 77) || wmo === 85 || wmo === 86) return <CloudSnow className={cls} />;
+    if (wmo >= 95) return <CloudLightning className={cls} />;
+    return <Cloud className={cls} />;
   };
 
   // Velocidad de giro del anemómetro proporcional al viento (más viento → más rápido)
@@ -268,8 +337,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   <Thermometer className="w-3.5 h-3.5 text-[#D4A017]" /> Temperatura exterior
                 </span>
                 <div key={telemetry.updatedAt} className="anim-digit">
-                  <div className="font-serif text-7xl sm:text-8xl text-[#EBE6DD] leading-none tabular-nums">
-                    {telemetry.temp.toFixed(1)}<span className="text-3xl text-[#D4A017] align-top ml-1">°C</span>
+                  <div className="text-7xl sm:text-8xl text-[#EBE6DD] leading-none tabular-nums font-sans font-bold tracking-tight">
+                    {telemetry.temp.toFixed(1)}<span className="text-3xl text-[#D4A017] align-top ml-1 font-medium">°C</span>
                   </div>
                   <p className="text-sm text-[#A9C9DD]/80 mt-2 font-light">
                     Sensación <span className="text-[#EBE6DD] font-medium tabular-nums">{telemetry.feelsLike.toFixed(1)} °C</span>
@@ -291,18 +360,33 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   </div>
                 </div>
 
-                {/* Gráfica 24h */}
+                {/* Gráfica 24h con ejes legibles */}
                 {temps.length > 1 && (
                   <div className="mt-5">
-                    <span className="text-[9px] tracking-[0.22em] text-[#A9C9DD]/60 uppercase flex items-center gap-1.5 mb-2">
-                      <Activity className="w-3 h-3 text-[#D4A017]" /> Evolución 24 h
-                    </span>
-                    <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-14" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
-                      <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
-                      <circle cx={lastDot.x} cy={lastDot.y} r="3" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
-                      <text x="0" y={chartH - 1} fill="#A9C9DD" opacity="0.55" fontSize="7.5" fontFamily="monospace">{hourly.hours[0] || ''}</text>
-                      <text x={chartW - 30} y={chartH - 1} fill="#A9C9DD" opacity="0.55" fontSize="7.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
-                    </svg>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[9px] tracking-[0.22em] text-[#A9C9DD]/60 uppercase flex items-center gap-1.5">
+                        <Activity className="w-3 h-3 text-[#D4A017]" /> Temperatura · próximas 24 h
+                      </span>
+                      <span className="text-[9px] text-[#A9C9DD]/60 font-mono">
+                        {Math.min(...temps).toFixed(0)}° / {Math.max(...temps).toFixed(0)}°
+                      </span>
+                    </div>
+                    <div className="relative bg-white/[0.03] border border-[#A9C9DD]/15 rounded-sm p-2 pt-3">
+                      <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-16" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
+                        {/* Líneas de referencia */}
+                        <line x1="0" y1="6" x2={chartW} y2="6" stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                        <line x1="0" y1={chartH / 2} x2={chartW} y2={chartH / 2} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                        <line x1="0" y1={chartH - 6} x2={chartW} y2={chartH - 6} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                        <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+                        <circle cx={lastDot.x} cy={lastDot.y} r="3" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
+                        <text x="2" y="10" fill="#A9C9DD" opacity="0.5" fontSize="7" fontFamily="monospace">{Math.max(...temps).toFixed(0)}°</text>
+                        <text x="2" y={chartH / 2 + 4} fill="#A9C9DD" opacity="0.5" fontSize="7" fontFamily="monospace">{((Math.max(...temps) + Math.min(...temps)) / 2).toFixed(0)}°</text>
+                        <text x="2" y={chartH - 2} fill="#A9C9DD" opacity="0.5" fontSize="7" fontFamily="monospace">{Math.min(...temps).toFixed(0)}°</text>
+                        <text x="0" y={chartH + 12} fill="#A9C9DD" opacity="0.55" fontSize="7.5" fontFamily="monospace">{hourly.hours[0] || ''}</text>
+                        <text x={chartW / 2 - 14} y={chartH + 12} fill="#A9C9DD" opacity="0.55" fontSize="7.5" fontFamily="monospace">{hourly.hours[Math.floor(temps.length / 2)] || ''}</text>
+                        <text x={chartW - 28} y={chartH + 12} fill="#A9C9DD" opacity="0.55" fontSize="7.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
+                      </svg>
+                    </div>
                   </div>
                 )}
 
@@ -454,6 +538,28 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   </div>
                 </div>
 
+                {/* Luna real de hoy */}
+                <div className="mt-3 bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-3">
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-2 text-xs text-[#EBE6DD]/85">
+                      <Moon className="w-3.5 h-3.5 text-[#D4A017]" />
+                      {moon.phase !== null ? moonPhaseName(moon.phase) : 'Luna'}
+                    </span>
+                    <span className="font-mono text-[#A9C9DD]/80 text-xs tabular-nums">
+                      {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
+                      {moon.rise && moon.set ? ` · ${moon.rise}→${moon.set}` : ''}
+                    </span>
+                  </div>
+                  {moon.phase !== null && (
+                    <div className="mt-2 h-1.5 w-full bg-[#A9C9DD]/10 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full transition-all duration-1000"
+                        style={{ width: `${Math.min(100, Math.max(0, moon.illum ?? 0))}%`, background: 'linear-gradient(90deg, #A9C9DD, #D4A017)' }}
+                      />
+                    </div>
+                  )}
+                </div>
+
                 <div className="mt-auto pt-4 flex items-center justify-between text-[11px]">
                   <span className="text-[#A9C9DD]/60 font-light flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#D4A017]" /> Lectura {freshnessLabel}
@@ -465,6 +571,40 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               </div>
 
             </div>
+
+            {/* ===== PRONÓSTICO 7 DÍAS ===== */}
+            {forecast.length > 0 && (
+              <div className="mt-8 pt-6 border-t border-[#A9C9DD]/10">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD]/70 uppercase font-medium flex items-center gap-2">
+                    <CloudSun className="w-4 h-4 text-[#D4A017]" /> Pronóstico · próximos 7 días
+                  </span>
+                  <span className="text-[9px] text-[#A9C9DD]/50 font-mono uppercase">Aguiño · Ría de Arousa</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
+                  {forecast.map((d, i) => (
+                    <div
+                      key={d.day + i}
+                      className={`rounded-sm p-3 text-center border ${
+                        i === 0 ? 'bg-[#D4A017]/10 border-[#D4A017]/40' : 'bg-white/[0.04] border-[#A9C9DD]/15'
+                      }`}
+                    >
+                      <span className={`text-[10px] uppercase tracking-[0.18em] block mb-2 ${i === 0 ? 'text-[#D4A017] font-medium' : 'text-[#A9C9DD]/70'}`}>
+                        {i === 0 ? 'Hoy' : d.day}
+                      </span>
+                      {weatherIcon(d.wmo)}
+                      <div className="mt-2 font-mono text-base text-[#EBE6DD] tabular-nums leading-tight">
+                        {d.tmax}° <span className="text-[#A9C9DD]/60 text-xs">{d.tmin}°</span>
+                      </div>
+                      <div className="mt-1 flex items-center justify-center gap-1 text-[9px] text-[#A9C9DD]/70 font-mono">
+                        <Droplets className="w-2.5 h-2.5" />
+                        {d.pop !== null ? `${d.pop}%` : '—'}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Nota de honestidad dentro del panel */}
             <p className="mt-6 pt-4 border-t border-[#A9C9DD]/10 text-[10px] text-[#A9C9DD]/50 font-light leading-relaxed">

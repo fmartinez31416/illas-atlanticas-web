@@ -47,10 +47,7 @@ export function App() {
         {/* Prueba social pronto: opiniones reales de Booking.com */}
         <ReviewsAndPress />
 
-        <SpacesGrid onOpenBooking={scrollToBooking} />
-        <AmenitiesSection />
-
-        {/* Presencia del Cuaderno de Bitácora a mitad de la portada */}
+        {/* Presencia del Cuaderno de Bitácora nada más pasar las opiniones */}
         <section id="bitacora-nav" className="py-12 bg-[#EBE6DD] border-y border-[#1A3A5C]/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
@@ -75,8 +72,9 @@ export function App() {
           </div>
         </section>
 
-        <ReviewsAndPress />
-        
+        <SpacesGrid onOpenBooking={scrollToBooking} />
+        <AmenitiesSection />
+
         {/* Acceso elegante a la Bitácora */}
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
       </main>
