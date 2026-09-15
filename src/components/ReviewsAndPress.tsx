@@ -69,9 +69,9 @@ export function ReviewsAndPress() {
         <div className="bg-white border border-stone-200 p-8 sm:p-10 shadow-sm mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
           
           <div className="flex items-center gap-5 sm:gap-6 text-center sm:text-left">
-            <div className="w-20 h-20 bg-stone-900 text-white flex flex-col items-center justify-center shrink-0 shadow-sm">
+            <div className="w-20 h-20 bg-[#1A3A5C] text-white flex flex-col items-center justify-center shrink-0 shadow-sm">
               <span className="text-3xl font-serif font-bold leading-none">9,5</span>
-              <span className="text-[10px] uppercase tracking-wider text-stone-300 mt-1">de 10</span>
+              <span className="text-[10px] uppercase tracking-wider text-[#C9D6E5] mt-1">de 10</span>
             </div>
 
             <div>
@@ -80,10 +80,10 @@ export function ReviewsAndPress() {
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <h3 className="text-2xl font-serif text-stone-900 font-normal">
-                Calificación oficial: <span className="italic font-serif text-stone-700">Excepcional</span>
+              <h3 className="text-2xl font-serif text-[#FAF7F0] font-normal">
+                Calificación oficial: <span className="italic font-serif text-[#E5DCCB]">Excepcional</span>
               </h3>
-              <p className="text-xs sm:text-sm text-stone-600 font-light mt-0.5">
+              <p className="text-xs sm:text-sm text-[#C9D6E5] font-light mt-0.5">
                 54 comentarios verificados de huéspedes tras completar su estancia.
               </p>
             </div>
@@ -92,20 +92,20 @@ export function ReviewsAndPress() {
           {/* Desglose oficial de notas */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto text-center border-y lg:border-y-0 lg:border-x border-stone-200 py-5 lg:py-0 lg:px-8">
             <div className="px-2">
-              <span className="block text-xl font-serif font-semibold text-stone-900">9,8</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Personal</span>
+              <span className="block text-xl font-serif font-semibold text-[#FAF7F0]">9,8</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#A9C9DD]">Personal</span>
             </div>
             <div className="px-2">
-              <span className="block text-xl font-serif font-semibold text-stone-900">9,6</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Servicios</span>
+              <span className="block text-xl font-serif font-semibold text-[#FAF7F0]">9,6</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#A9C9DD]">Servicios</span>
             </div>
             <div className="px-2">
-              <span className="block text-xl font-serif font-semibold text-stone-900">9,4</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Confort</span>
+              <span className="block text-xl font-serif font-semibold text-[#FAF7F0]">9,4</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#A9C9DD]">Confort</span>
             </div>
             <div className="px-2">
-              <span className="block text-xl font-serif font-semibold text-stone-900">9,4</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Ubicación</span>
+              <span className="block text-xl font-serif font-semibold text-[#FAF7F0]">9,4</span>
+              <span className="text-[10px] uppercase tracking-widest text-[#A9C9DD]">Ubicación</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function ReviewsAndPress() {
           <div className="shrink-0 w-full lg:w-auto">
             <button
               onClick={scrollToBooking}
-              className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-7 py-3.5 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-sm"
+              className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-7 py-3.5 bg-[#1A3A5C] hover:bg-[#24466B] text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-sm"
             >
               <CalendarCheck className="w-3.5 h-3.5" />
               <span>Garantizar Mejor Precio Directo</span>
@@ -130,27 +130,27 @@ export function ReviewsAndPress() {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <Quote className="w-6 h-6 text-stone-300 stroke-1" />
-                  <span className="px-2 py-0.5 bg-stone-900 text-white text-xs font-serif font-bold">
+                  <Quote className="w-6 h-6 text-[#C9D6E5] stroke-1" />
+                  <span className="px-2 py-0.5 bg-[#1A3A5C] text-white text-xs font-serif font-bold">
                     {rev.score}
                   </span>
                 </div>
                 
-                <h4 className="text-base font-serif font-semibold text-stone-900 mb-2 leading-snug">
+                <h4 className="text-base font-serif font-semibold text-[#FAF7F0] mb-2 leading-snug">
                   «{rev.title}»
                 </h4>
 
-                <p className="text-stone-700 text-xs sm:text-sm font-light leading-relaxed mb-6 italic">
+                <p className="text-[#E5DCCB] text-xs sm:text-sm font-light leading-relaxed mb-6 italic">
                   "{rev.comment}"
                 </p>
               </div>
 
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
                 <div>
-                  <span className="font-serif font-medium text-stone-900 block">
+                  <span className="font-serif font-medium text-[#FAF7F0] block">
                     {rev.name} ({rev.country})
                   </span>
-                  <span className="text-[11px] text-stone-500 font-light">
+                  <span className="text-[11px] text-[#A9C9DD] font-light">
                     {rev.details} · {rev.date}
                   </span>
                 </div>
@@ -163,8 +163,8 @@ export function ReviewsAndPress() {
         </div>
 
         {/* Garantía al pie */}
-        <div className="mt-10 flex items-center justify-center gap-2 text-xs text-stone-500 font-light">
-          <ShieldCheck className="w-4 h-4 text-stone-700" />
+        <div className="mt-10 flex items-center justify-center gap-2 text-xs text-[#A9C9DD] font-light">
+          <ShieldCheck className="w-4 h-4 text-[#E5DCCB]" />
           <span>Opiniones reales extraídas de valoraciones de huéspedes en plataformas oficiales tras estancia completada.</span>
         </div>
 

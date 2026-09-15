@@ -21,21 +21,21 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
   };
 
   return (
-    <section id="bitacora" className="py-24 bg-stone-900 text-stone-100 border-t border-stone-800">
+    <section id="bitacora" className="py-24 bg-[#1A3A5C] text-[#F1F5FA] border-t border-[#3D5A7D]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Encabezado */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-stone-800 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-[#3D5A7D] gap-6">
           <div>
             <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.25em] font-semibold mb-3">
               <Compass className="w-4 h-4 text-amber-300" />
               <span>Cuaderno de Bitácora · Divulgación & Territorio</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-white tracking-tight">
-              Crónicas del <span className="italic font-serif text-stone-300">Atlántico</span>
+              Crónicas del <span className="italic font-serif text-[#C9D6E5]">Atlántico</span>
             </h2>
           </div>
-          <p className="text-stone-400 text-xs sm:text-sm font-light max-w-md leading-relaxed">
+          <p className="text-[#B8D0E3] text-xs sm:text-sm font-light max-w-md leading-relaxed">
             Documentación rigurosa sobre el Parque Nacional, la cultura náutica, la oceanografía de la Ría de Arousa y la gastronomía de lonja.
           </p>
         </div>
@@ -46,12 +46,12 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
             <article
               key={article.id}
               onClick={() => setSelectedArticle(article)}
-              className="group bg-stone-950/60 border border-stone-800 hover:border-amber-200/40 transition-all duration-300 flex flex-col justify-between p-8 rounded-sm hover:-translate-y-1 shadow-lg cursor-pointer"
+              className="group bg-[#0F2B47]/60 border border-[#3D5A7D] hover:border-amber-200/40 transition-all duration-300 flex flex-col justify-between p-8 rounded-sm hover:-translate-y-1 shadow-lg cursor-pointer"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-stone-400">
+                <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-[#B8D0E3]">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
-                  <span className="flex items-center gap-1 text-stone-400">
+                  <span className="flex items-center gap-1 text-[#B8D0E3]">
                     <Clock className="w-3.5 h-3.5" />
                     {article.readTime}
                   </span>
@@ -61,17 +61,17 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
                   {article.title}
                 </h3>
 
-                <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed line-clamp-4">
+                <p className="text-[#B8D0E3] text-xs sm:text-sm font-light leading-relaxed line-clamp-4">
                   {article.excerpt}
                 </p>
               </div>
 
-              <div className="pt-8 mt-6 border-t border-stone-800/80 flex items-center justify-between">
+              <div className="pt-8 mt-6 border-t border-[#3D5A7D]/80 flex items-center justify-between">
                 <div className="flex flex-wrap gap-1.5">
                   {article.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] uppercase tracking-wider bg-stone-900 text-stone-400 px-2.5 py-1 rounded-sm border border-stone-800"
+                      className="text-[10px] uppercase tracking-wider bg-[#1A3A5C] text-[#B8D0E3] px-2.5 py-1 rounded-sm border border-[#3D5A7D]"
                     >
                       {tag}
                     </span>
@@ -81,7 +81,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
                 <button
                   type="button"
                   aria-label={`Leer artículo: ${article.title}`}
-                  className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-stone-300 group-hover:text-amber-200 font-medium transition-colors"
+                  className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-[#C9D6E5] group-hover:text-amber-200 font-medium transition-colors"
                 >
                   <span>Leer</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -95,7 +95,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
         <div className="mt-14 text-center">
           <button
             onClick={() => onOpenBitacora && onOpenBitacora()}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-stone-700 bg-stone-950/80 hover:bg-stone-800 text-stone-200 hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-md group"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-[#3D5A7D] bg-[#0F2B47]/80 hover:bg-[#24466B] text-[#E5EDF5] hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-md group"
           >
             <BookOpen className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
             <span>Explorar Bitácora Completa ({ARTICLES.length} Crónicas)</span>

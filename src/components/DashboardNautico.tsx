@@ -50,7 +50,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   ];
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-400 selection:text-stone-950 p-4 sm:p-8">
+    <div className="min-h-screen bg-[#0F2B47] text-[#F1F5FA] font-sans selection:bg-amber-400 selection:text-[#FAF7F0] p-4 sm:p-8">
       
       {/* ESTILOS DE ANIMACIÓN MARINA INTEGRADOS */}
       <style>{`
@@ -81,11 +81,11 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       `}</style>
 
       {/* CABECERA: TAMAÑO GENEROSO Y CLARO */}
-      <header className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-stone-800 gap-4">
+      <header className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-[#3D5A7D] gap-4">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-900 border border-stone-700 text-stone-200 hover:text-white hover:border-amber-400 text-sm font-medium transition-all mb-3 shadow-md"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A3A5C] border border-[#3D5A7D] text-[#E5EDF5] hover:text-white hover:border-amber-400 text-sm font-medium transition-all mb-3 shadow-md"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Volver a la Bitácora</span>
@@ -97,20 +97,20 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               Puente de Mando <span className="italic text-amber-300">Atlántico</span>
             </h1>
           </div>
-          <p className="text-sm text-stone-300 font-mono mt-1">
+          <p className="text-sm text-[#C9D6E5] font-mono mt-1">
             ESTACIÓN TELEMÉTRICA AGUIÑO · 42°31'24"N 8°59'48"W · TERRAZA ILLAS ATLÁNTICAS
           </p>
         </div>
 
         {/* RELOJ DIGITAL Y ESTADO DE RESOLUCIÓN */}
-        <div className="flex items-center gap-6 bg-stone-900 border border-stone-700 rounded-xl px-5 py-3 font-mono shadow-xl">
+        <div className="flex items-center gap-6 bg-[#1A3A5C] border border-[#3D5A7D] rounded-xl px-5 py-3 font-mono shadow-xl">
           <div className="text-right">
-            <span className="text-stone-400 block text-xs uppercase font-medium">Hora Oficial</span>
+            <span className="text-[#B8D0E3] block text-xs uppercase font-medium">Hora Oficial</span>
             <span className="text-amber-300 text-xl sm:text-2xl font-bold tracking-wider">{timestamp || '--:--:--'}</span>
           </div>
-          <div className="h-10 w-[1px] bg-stone-700" />
+          <div className="h-10 w-[1px] bg-[#3D5A7D]" />
           <div className="text-right">
-            <span className="text-stone-400 block text-xs uppercase font-medium">Resolución</span>
+            <span className="text-[#B8D0E3] block text-xs uppercase font-medium">Resolución</span>
             <span className="text-emerald-400 text-base sm:text-lg font-bold">1 km · Alta Precisión</span>
           </div>
         </div>
@@ -119,8 +119,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       {/* ============================================================ */}
       {/* BANNER CLAVE: EL PRONÓSTICO PARA EL HUÉSPED (LO QUE QUIEREN VER) */}
       {/* ============================================================ */}
-      <section className="max-w-7xl mx-auto my-8 bg-stone-900 border-2 border-stone-800 hover:border-amber-400/50 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-stone-800">
+      <section className="max-w-7xl mx-auto my-8 bg-[#1A3A5C] border-2 border-[#3D5A7D] hover:border-amber-400/50 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-[#3D5A7D]">
           <div>
             <div className="flex items-center gap-2 text-amber-300 text-sm font-semibold uppercase tracking-wider mb-1">
               <Sun className="w-5 h-5 text-amber-400" />
@@ -142,13 +142,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             return (
               <div 
                 key={index}
-                className="bg-stone-950/90 border border-stone-800 rounded-xl p-4 flex flex-col items-center text-center justify-between hover:border-amber-400/60 transition-all group"
+                className="bg-[#0F2B47]/90 border border-[#3D5A7D] rounded-xl p-4 flex flex-col items-center text-center justify-between hover:border-amber-400/60 transition-all group"
               >
-                <span className="text-stone-400 text-sm font-mono font-medium">{slot.hora}</span>
+                <span className="text-[#B8D0E3] text-sm font-mono font-medium">{slot.hora}</span>
                 <Icon className="w-10 h-10 my-3 text-amber-300 group-hover:scale-110 transition-transform" />
                 <span className="text-3xl font-bold text-white tracking-tight">{slot.temp}</span>
-                <span className="text-xs text-stone-300 font-medium mt-1">{slot.text}</span>
-                <div className="mt-3 pt-2 border-t border-stone-800/80 w-full flex items-center justify-between text-xs">
+                <span className="text-xs text-[#C9D6E5] font-medium mt-1">{slot.text}</span>
+                <div className="mt-3 pt-2 border-t border-[#3D5A7D]/80 w-full flex items-center justify-between text-xs">
                   <span className="text-cyan-400 font-mono">Lluvia: {slot.pop}</span>
                   <span className="text-emerald-400 font-medium">{slot.status}</span>
                 </div>
@@ -164,41 +164,41 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         {/* INSTRUMENTO 1: TERMO-HIGRÓMETRO DIGITAL (TEMPERATURA Y HUMEDAD) */}
-        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-6">
-            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+        <div className="bg-[#1A3A5C] border-2 border-[#3D5A7D] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-[#3D5A7D] pb-3 mb-6">
+            <div className="flex items-center gap-2 text-[#E5EDF5] font-semibold text-sm uppercase tracking-wider">
               <Thermometer className="w-5 h-5 text-amber-400" />
               <span>Termo-Higrometría</span>
             </div>
-            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-amber-300 font-bold">
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-[#24466B] text-amber-300 font-bold">
               Ambiente
             </span>
           </div>
 
           <div className="space-y-6">
             {/* Temperatura Grande */}
-            <div className="bg-stone-950/80 rounded-xl p-5 border border-stone-800 text-center relative overflow-hidden">
-              <span className="text-xs font-mono text-stone-400 uppercase tracking-widest block mb-1">Temperatura Exterior</span>
+            <div className="bg-[#0F2B47]/80 rounded-xl p-5 border border-[#3D5A7D] text-center relative overflow-hidden">
+              <span className="text-xs font-mono text-[#B8D0E3] uppercase tracking-widest block mb-1">Temperatura Exterior</span>
               <div className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight">
                 {temperature.toFixed(1)} <span className="text-3xl font-normal text-amber-400">°C</span>
               </div>
-              <div className="text-sm font-medium text-stone-300 mt-2">
+              <div className="text-sm font-medium text-[#C9D6E5] mt-2">
                 Sensación térmica real: <strong className="text-white">{feelsLike.toFixed(1)} °C</strong>
               </div>
             </div>
 
             {/* Humedad y Presión con números grandes */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+              <div className="bg-[#0F2B47]/80 p-4 rounded-xl border border-[#3D5A7D] text-center">
                 <div className="flex items-center justify-center gap-1.5 text-cyan-400 mb-1">
                   <Droplets className="w-4 h-4" />
                   <span className="text-xs font-mono uppercase">Humedad</span>
                 </div>
                 <div className="text-3xl font-bold text-white">{humidity}%</div>
-                <span className="text-[11px] text-stone-400 mt-1 block font-medium">Brisa Seca / Confortable</span>
+                <span className="text-[11px] text-[#B8D0E3] mt-1 block font-medium">Brisa Seca / Confortable</span>
               </div>
 
-              <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
+              <div className="bg-[#0F2B47]/80 p-4 rounded-xl border border-[#3D5A7D] text-center">
                 <div className="flex items-center justify-center gap-1.5 text-amber-300 mb-1">
                   <Compass className="w-4 h-4" />
                   <span className="text-xs font-mono uppercase">Barómetro</span>
@@ -218,13 +218,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         </div>
 
         {/* INSTRUMENTO 2: ANEMÓMETRO Y COMPÁS NÁUTICO ANIMADO */}
-        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
-            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+        <div className="bg-[#1A3A5C] border-2 border-[#3D5A7D] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-[#3D5A7D] pb-3 mb-4">
+            <div className="flex items-center gap-2 text-[#E5EDF5] font-semibold text-sm uppercase tracking-wider">
               <Wind className="w-5 h-5 text-amber-400" />
               <span>Anemómetro & Rumbo</span>
             </div>
-            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-amber-300 font-bold">
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-[#24466B] text-amber-300 font-bold">
               En Vivo
             </span>
           </div>
@@ -278,29 +278,29 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             </svg>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-stone-950/80 border border-stone-800 text-center">
-            <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Rumbo del Viento</span>
+          <div className="p-3.5 rounded-xl bg-[#0F2B47]/80 border border-[#3D5A7D] text-center">
+            <span className="text-xs text-[#B8D0E3] font-mono uppercase block mb-1">Rumbo del Viento</span>
             <span className="text-lg font-bold text-white">{windDirection}° · {getWindBearingName(windDirection)}</span>
             <span className="text-xs text-amber-300 block mt-0.5 font-medium">Brisa costera suave de componente norte</span>
           </div>
         </div>
 
         {/* INSTRUMENTO 3: MAREAS Y FASE LUNAR ANIMADA */}
-        <div className="bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
-          <div className="flex items-center justify-between border-b border-stone-800 pb-3 mb-4">
-            <div className="flex items-center gap-2 text-stone-200 font-semibold text-sm uppercase tracking-wider">
+        <div className="bg-[#1A3A5C] border-2 border-[#3D5A7D] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div className="flex items-center justify-between border-b border-[#3D5A7D] pb-3 mb-4">
+            <div className="flex items-center gap-2 text-[#E5EDF5] font-semibold text-sm uppercase tracking-wider">
               <Waves className="w-5 h-5 text-cyan-400" />
               <span>Astro-Mareas & Océano</span>
             </div>
-            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-stone-800 text-cyan-300 font-bold">
+            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-[#24466B] text-cyan-300 font-bold">
               Muelle de Aguiño
             </span>
           </div>
 
           {/* Estado de Marea y Altura */}
           <div className="grid grid-cols-2 gap-4 my-2">
-            <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
-              <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Altura de Agua</span>
+            <div className="bg-[#0F2B47]/80 p-4 rounded-xl border border-[#3D5A7D] text-center">
+              <span className="text-xs text-[#B8D0E3] font-mono uppercase block mb-1">Altura de Agua</span>
               <div className="text-3xl font-extrabold text-white">
                 {tideHeight.toFixed(2)} <span className="text-lg font-normal text-cyan-400">m</span>
               </div>
@@ -309,8 +309,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               </span>
             </div>
 
-            <div className="bg-stone-950/80 p-4 rounded-xl border border-stone-800 text-center">
-              <span className="text-xs text-stone-400 font-mono uppercase block mb-1">Coeficiente</span>
+            <div className="bg-[#0F2B47]/80 p-4 rounded-xl border border-[#3D5A7D] text-center">
+              <span className="text-xs text-[#B8D0E3] font-mono uppercase block mb-1">Coeficiente</span>
               <div className="text-3xl font-extrabold text-amber-300">
                 {tideCoefficient}
               </div>
@@ -321,8 +321,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </div>
 
           {/* ONDA MARINA ANIMADA EN MOVIMIENTO */}
-          <div className="bg-stone-950/90 rounded-xl p-4 border border-stone-800 overflow-hidden relative">
-            <div className="flex justify-between text-xs font-mono text-stone-300 mb-2">
+          <div className="bg-[#0F2B47]/90 rounded-xl p-4 border border-[#3D5A7D] overflow-hidden relative">
+            <div className="flex justify-between text-xs font-mono text-[#C9D6E5] mb-2">
               <span>Pleamar: 14:15 (3.2m)</span>
               <span className="text-amber-300 font-bold">Bajamar: 20:38 (0.7m)</span>
             </div>
@@ -342,17 +342,17 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 />
               </svg>
             </div>
-            <span className="text-[11px] text-stone-400 block text-center mt-1">
+            <span className="text-[11px] text-[#B8D0E3] block text-center mt-1">
               Las rocas y bajos de Sálvora quedan al descubierto durante la bajamar.
             </span>
           </div>
 
-          <div className="mt-4 p-3.5 rounded-xl bg-stone-950/80 border border-stone-800 flex items-center justify-between">
+          <div className="mt-4 p-3.5 rounded-xl bg-[#0F2B47]/80 border border-[#3D5A7D] flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Moon className="w-6 h-6 text-amber-200" />
               <div>
                 <span className="text-sm font-semibold text-white block">Luna Creciente</span>
-                <span className="text-xs text-stone-400">76% Visibilidad Lunar</span>
+                <span className="text-xs text-[#B8D0E3]">76% Visibilidad Lunar</span>
               </div>
             </div>
             <span className="text-xs font-mono text-amber-300 font-bold">Óptima Mariscada</span>
@@ -364,13 +364,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       {/* ============================================================ */}
       {/* SECCIÓN HORIZONTE ÓPTICO: FAROS DE SÁLVORA Y ONS              */}
       {/* ============================================================ */}
-      <section className="max-w-7xl mx-auto my-8 bg-stone-900 border-2 border-stone-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-stone-800 pb-4 mb-6">
+      <section className="max-w-7xl mx-auto my-8 bg-[#1A3A5C] border-2 border-[#3D5A7D] rounded-2xl p-6 sm:p-8 shadow-2xl">
+        <div className="flex items-center justify-between border-b border-[#3D5A7D] pb-4 mb-6">
           <div className="flex items-center gap-3">
             <Eye className="w-6 h-6 text-emerald-400" />
             <div>
               <h3 className="text-lg sm:text-xl font-medium text-white">Línea Visual Hacia el Parque Nacional</h3>
-              <p className="text-xs sm:text-sm text-stone-400">Alcance visual directo desde la terraza hacia las islas</p>
+              <p className="text-xs sm:text-sm text-[#B8D0E3]">Alcance visual directo desde la terraza hacia las islas</p>
             </div>
           </div>
           <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 border border-emerald-700 text-emerald-300 font-mono">
@@ -379,12 +379,12 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+          <div className="bg-[#0F2B47]/90 border border-[#3D5A7D] rounded-xl p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 anim-beacon" />
               <div>
                 <span className="text-base font-medium text-white block">Faro de Sálvora</span>
-                <span className="text-xs text-stone-400 font-mono">Distancia: 5.7 km</span>
+                <span className="text-xs text-[#B8D0E3] font-mono">Distancia: 5.7 km</span>
               </div>
             </div>
             <span className="text-xs font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800">
@@ -392,12 +392,12 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             </span>
           </div>
 
-          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+          <div className="bg-[#0F2B47]/90 border border-[#3D5A7D] rounded-xl p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 anim-beacon" />
               <div>
                 <span className="text-base font-medium text-white block">Faro de Ons</span>
-                <span className="text-xs text-stone-400 font-mono">Distancia: 18.1 km</span>
+                <span className="text-xs text-[#B8D0E3] font-mono">Distancia: 18.1 km</span>
               </div>
             </div>
             <span className="text-xs font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded border border-emerald-800">
@@ -405,12 +405,12 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             </span>
           </div>
 
-          <div className="bg-stone-950/90 border border-stone-800 rounded-xl p-5 flex items-center justify-between">
+          <div className="bg-[#0F2B47]/90 border border-[#3D5A7D] rounded-xl p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="w-3.5 h-3.5 rounded-full bg-amber-400 anim-beacon" />
               <div>
                 <span className="text-base font-medium text-white block">Boca de la Ría</span>
-                <span className="text-xs text-stone-400 font-mono">Península de O Salnés</span>
+                <span className="text-xs text-[#B8D0E3] font-mono">Península de O Salnés</span>
               </div>
             </div>
             <span className="text-xs font-bold text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded border border-amber-800">
@@ -421,15 +421,15 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       </section>
 
       {/* PIE DE PÁGINA */}
-      <footer className="max-w-7xl mx-auto pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs sm:text-sm text-stone-400">
+      <footer className="max-w-7xl mx-auto pt-6 border-t border-[#3D5A7D] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs sm:text-sm text-[#B8D0E3]">
           Telemetría oceanográfica y atmosférica exclusiva de <strong>Illas Atlánticas Ático</strong>.
         </p>
 
         {onOpenBooking && (
           <button
             onClick={onOpenBooking}
-            className="px-8 py-3 rounded-full bg-white hover:bg-stone-200 text-stone-950 font-bold text-xs uppercase tracking-widest transition-all shadow-xl"
+            className="px-8 py-3 rounded-full bg-white hover:bg-[#E5DCCB] text-[#FAF7F0] font-bold text-xs uppercase tracking-widest transition-all shadow-xl"
           >
             Reservar Estancia Directa
           </button>

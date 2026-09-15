@@ -35,10 +35,10 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
     : ARTICLES.filter(a => a.category.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(a.category.toLowerCase()));
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-200 selection:text-stone-950 font-sans">
+    <div className="min-h-screen bg-[#0F2B47] text-[#F1F5FA] selection:bg-amber-200 selection:text-[#FAF7F0] font-sans">
       
       {/* CABECERA CON TIRO BAJO: ENFOCADA AL MAR Y A PEDRA DA RÁ */}
-      <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
+      <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-[#0F2B47] flex items-end overflow-hidden border-b border-[#3D5A7D]">
         <img
           src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
           alt="Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico"
@@ -47,13 +47,13 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
         />
 
         {/* Sombra sutil para lectura sin tapar el agua */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/20 to-transparent" />
 
         {/* Barra superior con navegación y acceso al Puente de Mando */}
         <div className="absolute top-0 left-0 right-0 z-20 px-6 sm:px-10 py-6 max-w-7xl mx-auto flex items-center justify-between gap-3">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-950/70 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/60 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#0F2B47]/70 hover:bg-white hover:text-[#FAF7F0] backdrop-blur-md border border-[#3D5A7D]/60 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Volver al Ático</span>
@@ -63,13 +63,13 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
             {/* BOTÓN DE ACCESO AL INSTRUMENTAL */}
             <button
               onClick={() => setShowDashboard(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500/20 hover:bg-amber-400 hover:text-stone-950 backdrop-blur-md border border-amber-400/60 text-amber-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500/20 hover:bg-amber-400 hover:text-[#FAF7F0] backdrop-blur-md border border-amber-400/60 text-amber-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
             >
-              <Gauge className="w-4 h-4 text-amber-300 group-hover:text-stone-950 transition-colors" />
+              <Gauge className="w-4 h-4 text-amber-300 group-hover:text-[#FAF7F0] transition-colors" />
               <span>Puente de Mando</span>
             </button>
 
-            <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
+            <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-[#0F2B47]/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#3D5A7D]/50 shadow-lg">
               Mirador da Pedra da Rá · Ribeira
             </span>
           </div>
@@ -77,7 +77,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
 
         {/* Textos de cabecera */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-950/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0F2B47]/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
             <Compass className="w-3.5 h-3.5 text-amber-300" />
             <span>Archivo Territorial & Crónicas de Mar</span>
           </div>
@@ -86,7 +86,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
             Cuaderno de <span className="italic font-serif text-amber-100">Bitácora</span>
           </h1>
 
-          <p className="text-stone-200 text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+          <p className="text-[#E5EDF5] text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
             Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.
           </p>
         </div>
@@ -94,8 +94,8 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
 
       {/* CUERPO DEL ARCHIVO */}
       <main className="max-w-7xl mx-auto px-6 sm:px-10 py-16 space-y-12">
-        <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-stone-800/80">
-          <span className="text-xs uppercase tracking-[0.2em] text-stone-400 mr-2 flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-[#3D5A7D]/80">
+          <span className="text-xs uppercase tracking-[0.2em] text-[#B8D0E3] mr-2 flex items-center gap-1.5">
             <Tag className="w-3.5 h-3.5" />
             <span>Filtrar:</span>
           </span>
@@ -105,8 +105,8 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs uppercase tracking-[0.15em] transition-all ${
                 selectedCategory === cat
-                  ? 'bg-amber-100 text-stone-950 font-semibold shadow-md'
-                  : 'bg-stone-900/90 text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
+                  ? 'bg-amber-100 text-[#FAF7F0] font-semibold shadow-md'
+                  : 'bg-[#1A3A5C]/90 text-[#B8D0E3] hover:text-white hover:bg-[#24466B] border border-[#3D5A7D]'
               }`}
             >
               {cat}
@@ -119,12 +119,12 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
             <article
               key={article.id}
               onClick={() => setSelectedArticle(article)}
-              className="group bg-stone-900/40 border border-stone-800/90 hover:border-amber-200/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:bg-stone-900/70 cursor-pointer shadow-xl"
+              className="group bg-[#1A3A5C]/40 border border-[#3D5A7D]/90 hover:border-amber-200/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:bg-[#1A3A5C]/70 cursor-pointer shadow-xl"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-400">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[#B8D0E3]">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
-                  <span className="flex items-center gap-1 text-stone-400">
+                  <span className="flex items-center gap-1 text-[#B8D0E3]">
                     <Clock className="w-3.5 h-3.5" />
                     {article.readTime}
                   </span>
@@ -134,17 +134,17 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
                   {article.title}
                 </h2>
 
-                <p className="text-stone-300/90 text-sm font-light leading-relaxed">
+                <p className="text-[#C9D6E5]/90 text-sm font-light leading-relaxed">
                   {article.excerpt}
                 </p>
               </div>
 
-              <div className="pt-6 mt-8 border-t border-stone-800/80 flex items-center justify-between">
+              <div className="pt-6 mt-8 border-t border-[#3D5A7D]/80 flex items-center justify-between">
                 <div className="flex flex-wrap gap-2">
                   {article.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] uppercase tracking-wider bg-stone-950 text-stone-400 px-2.5 py-1 rounded-sm border border-stone-800"
+                      className="text-[10px] uppercase tracking-wider bg-[#0F2B47] text-[#B8D0E3] px-2.5 py-1 rounded-sm border border-[#3D5A7D]"
                     >
                       {tag}
                     </span>
@@ -159,7 +159,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
           ))}
         </div>
 
-        <section className="mt-20 p-8 sm:p-12 bg-gradient-to-br from-stone-900 to-stone-950 border border-stone-800 rounded-sm flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <section className="mt-20 p-8 sm:p-12 bg-gradient-to-br from-stone-900 to-stone-950 border border-[#3D5A7D] rounded-sm flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2 text-amber-300 text-xs uppercase tracking-[0.2em] font-semibold">
               <MapPin className="w-4 h-4" />
@@ -168,7 +168,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-light">
               Descubre este horizonte desde la terraza de Illas Atlánticas Ático
             </h3>
-            <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed">
+            <p className="text-[#B8D0E3] text-xs sm:text-sm font-light leading-relaxed">
               Un refugio frente al océano y a las bateas de la ría para quienes valoran la autenticidad, la calma y el conocimiento del territorio sin intermediarios.
             </p>
           </div>
@@ -176,7 +176,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <button
               onClick={() => setShowDashboard(true)}
-              className="px-6 py-3.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-400 hover:text-stone-950 text-amber-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
+              className="px-6 py-3.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-400 hover:text-[#FAF7F0] text-amber-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
             >
               Abrir Puente de Mando
             </button>
@@ -185,7 +185,7 @@ export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
                 onBack();
                 setTimeout(() => onOpenBooking(), 200);
               }}
-              className="px-6 py-3.5 rounded-full bg-white hover:bg-stone-200 text-stone-950 text-xs font-semibold uppercase tracking-[0.18em] transition-all text-center shadow-lg"
+              className="px-6 py-3.5 rounded-full bg-white hover:bg-[#E5DCCB] text-[#FAF7F0] text-xs font-semibold uppercase tracking-[0.18em] transition-all text-center shadow-lg"
             >
               Consultar Fechas
             </button>

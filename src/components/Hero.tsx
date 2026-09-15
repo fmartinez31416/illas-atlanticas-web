@@ -7,7 +7,7 @@ interface HeroProps {
 
 export function Hero({ onOpenBooking }: HeroProps) {
   return (
-    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16 bg-stone-900">
+    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16 bg-[#1A3A5C]">
       {/* Imagen de Portada Real */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
@@ -16,7 +16,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
           className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/30 to-stone-950/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020817]/80 via-[#1A3A5C]/25 to-[#020817]/35"></div>
       </div>
 
       {/* Contenido Principal */}
@@ -27,10 +27,10 @@ export function Hero({ onOpenBooking }: HeroProps) {
           <div className="flex items-center gap-1 text-white font-medium text-xs">
             <Star className="w-3.5 h-3.5 fill-white text-white" />
             <span className="font-semibold">9,5 / 10</span>
-            <span className="italic font-serif text-stone-200">Excepcional</span>
+            <span className="italic font-serif text-[#E5EDF5]">Excepcional</span>
           </div>
           <span className="text-white/40">·</span>
-          <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
+          <span className="text-[#E5EDF5] text-xs font-light">54 opiniones en Booking.com</span>
         </div>
 
         {/* Título Principal */}
@@ -39,21 +39,21 @@ export function Hero({ onOpenBooking }: HeroProps) {
           className="text-4xl sm:text-6xl md:text-7xl font-serif text-white font-normal tracking-tight leading-[1.1] max-w-4xl mb-6 drop-shadow-md"
         >
           El Atlántico <br className="hidden sm:inline" />
-          <span className="italic font-light text-stone-200">a tus pies.</span>
+          <span className="italic font-light text-[#E5EDF5]">a tus pies.</span>
         </h1>
 
         {/* Subtítulo sobrio y descriptivo */}
         <div className="max-w-3xl mb-10">
           <p
             id="hero-subtitle"
-            className="text-base sm:text-lg md:text-xl text-stone-200 font-light leading-relaxed drop-shadow"
+            className="text-base sm:text-lg md:text-xl text-[#E5EDF5] font-light leading-relaxed drop-shadow"
           >
             Amplitud, luz y horizonte en Aguiño. Un ático de <span className="text-white font-medium">230 m²</span> con <span className="text-white font-medium">48 m² de terraza panorámica</span>, 3 dormitorios (dos de ellos en suite), 3 baños completos y vistas a las islas de <span className="text-white font-medium">Sálvora y Ons</span>.
           </p>
         </div>
 
         {/* Los 4 pilares de valor real */}
-        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-[#E5EDF5]">
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">230 m² Construidos</span>
           </div>
@@ -73,10 +73,10 @@ export function Hero({ onOpenBooking }: HeroProps) {
           <button
             id="hero-direct-booking-cta"
             onClick={onOpenBooking}
-            className="w-full sm:w-auto px-9 py-4 bg-white hover:bg-stone-100 text-stone-900 text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
+            className="w-full sm:w-auto px-9 py-4 bg-white hover:bg-[#F1EBE0] text-[#FAF7F0] text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
           >
             <span>Consultar Disponibilidad</span>
-            <ArrowRight className="w-4 h-4 text-stone-600" />
+            <ArrowRight className="w-4 h-4 text-[#C9D6E5]" />
           </button>
 
           <a
@@ -92,8 +92,8 @@ export function Hero({ onOpenBooking }: HeroProps) {
         </div>
 
         {/* Garantía de trato directo */}
-        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-stone-300/90 font-light">
-          <ShieldCheck className="w-4 h-4 text-stone-300" />
+        <div className="mt-8 flex items-center justify-center gap-2 text-xs text-[#C9D6E5]/90 font-light">
+          <ShieldCheck className="w-4 h-4 text-[#C9D6E5]" />
           <span>Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones</span>
         </div>
 
@@ -101,19 +101,19 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
       {/* Licencia Oficial Xunta de Galicia */}
       <div className="absolute right-6 sm:right-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-end gap-0.5 pointer-events-none z-10 text-right">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">Vivienda de Uso Turístico</span>
-        <span className="text-xs font-serif italic text-stone-200">VUT-CO-007656</span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[#B8D0E3] font-medium">Vivienda de Uso Turístico</span>
+        <span className="text-xs font-serif italic text-[#E5EDF5]">VUT-CO-007656</span>
       </div>
 
       {/* Indicador de scroll */}
       <a
         href="#espacios"
         id="hero-scroll-indicator"
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-stone-300 hover:text-white transition-colors flex flex-col items-center gap-1.5"
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-[#C9D6E5] hover:text-white transition-colors flex flex-col items-center gap-1.5"
         aria-label="Desplazarse a los espacios"
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-medium">Descubrir</span>
-        <ChevronDown className="w-4 h-4 animate-bounce text-stone-300" />
+        <span className="text-[10px] uppercase tracking-[0.25em] text-[#B8D0E3] font-medium">Descubrir</span>
+        <ChevronDown className="w-4 h-4 animate-bounce text-[#C9D6E5]" />
       </a>
     </section>
   );

@@ -15,18 +15,18 @@ export function LocationAndSurroundings() {
   };
 
   return (
-    <section id="ubicacion" className="py-24 bg-white text-stone-900 relative border-t border-stone-200">
+    <section id="ubicacion" className="py-24 bg-white text-[#FAF7F0] relative border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Cabecera Editorial */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-stone-500 uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
+          <span className="text-[#A9C9DD] uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
             Ubicación & Entorno
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
-            Aguiño y la Ría de Arousa: <span className="italic font-serif text-stone-600">autenticidad marinera</span>
+          <h2 className="text-3xl sm:text-5xl font-serif text-[#FAF7F0] font-normal tracking-tight mb-5">
+            Aguiño y la Ría de Arousa: <span className="italic font-serif text-[#C9D6E5]">autenticidad marinera</span>
           </h2>
-          <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
+          <p className="text-[#C9D6E5] text-base sm:text-lg font-light leading-relaxed">
             Situado en el extremo sur de la península del Barbanza (Ribeira), Aguiño conserva el ritmo tranquilo de un pueblo marinero frente a las islas de Sálvora y Ons, con calas serenas y naturaleza abierta al Atlántico.
           </p>
         </div>
@@ -36,7 +36,7 @@ export function LocationAndSurroundings() {
           
           {/* Lista Selectora */}
           <div className="lg:col-span-5 space-y-3">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-4">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-[#A9C9DD] font-semibold mb-4">
               Lugares Destacados
             </h3>
 
@@ -46,11 +46,11 @@ export function LocationAndSurroundings() {
                 onClick={() => setActivePoi(poi)}
                 className={`p-4 cursor-pointer transition-all duration-300 border flex items-start gap-4 ${
                   activePoi.id === poi.id
-                    ? 'bg-[#FAF8F5] border-stone-800 shadow-sm'
-                    : 'bg-white border-stone-200 hover:border-stone-400 text-stone-700'
+                    ? 'bg-[#FAF8F5] border-[#3D5A7D] shadow-sm'
+                    : 'bg-white border-stone-200 hover:border-stone-400 text-[#E5DCCB]'
                 }`}
               >
-                <div className="w-16 h-16 shrink-0 bg-stone-100 border border-stone-200 overflow-hidden">
+                <div className="w-16 h-16 shrink-0 bg-[#F1EBE0] border border-stone-200 overflow-hidden">
                   <img
                     src={poi.image}
                     alt={poi.name}
@@ -60,14 +60,14 @@ export function LocationAndSurroundings() {
                 </div>
                 <div className="flex-grow">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-serif text-stone-900 font-medium">
+                    <h4 className="text-sm font-serif text-[#FAF7F0] font-medium">
                       {poi.name}
                     </h4>
                   </div>
-                  <p className="text-xs text-stone-500 font-medium mt-0.5">
+                  <p className="text-xs text-[#A9C9DD] font-medium mt-0.5">
                     {poi.distance}
                   </p>
-                  <p className="text-xs text-stone-600 font-light mt-1 line-clamp-2">
+                  <p className="text-xs text-[#C9D6E5] font-light mt-1 line-clamp-2">
                     {poi.description}
                   </p>
                 </div>
@@ -77,7 +77,7 @@ export function LocationAndSurroundings() {
 
           {/* Ficha Visual del Lugar Activo */}
           <div className="lg:col-span-7 bg-[#FAF8F5] border border-stone-200 overflow-hidden shadow-sm flex flex-col">
-            <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
+            <div className="relative aspect-[16/10] bg-[#F1EBE0] overflow-hidden">
               <img
                 src={activePoi.image}
                 alt={activePoi.name}
@@ -89,7 +89,7 @@ export function LocationAndSurroundings() {
               <div className="absolute top-4 right-4">
                 <button
                   onClick={handleOpenGoogleMaps}
-                  className="px-3.5 py-1.5 bg-white/95 text-stone-900 border border-stone-200 text-xs uppercase tracking-wider font-medium backdrop-blur-md hover:bg-white flex items-center gap-1.5 transition-colors shadow-sm"
+                  className="px-3.5 py-1.5 bg-white/95 text-[#FAF7F0] border border-stone-200 text-xs uppercase tracking-wider font-medium backdrop-blur-md hover:bg-white flex items-center gap-1.5 transition-colors shadow-sm"
                 >
                   <span>Abrir en Google Maps</span>
                   <ExternalLink className="w-3 h-3" />
@@ -97,27 +97,27 @@ export function LocationAndSurroundings() {
               </div>
 
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="px-2.5 py-0.5 text-[9px] uppercase tracking-wider bg-white text-stone-900 font-medium inline-block mb-1">
+                <span className="px-2.5 py-0.5 text-[9px] uppercase tracking-wider bg-white text-[#FAF7F0] font-medium inline-block mb-1">
                   {activePoi.type}
                 </span>
                 <h4 className="text-2xl font-serif text-white">{activePoi.name}</h4>
-                <p className="text-xs text-stone-200 font-light">{activePoi.distance}</p>
+                <p className="text-xs text-[#E5EDF5] font-light">{activePoi.distance}</p>
               </div>
             </div>
 
             <div className="p-6 sm:p-7 space-y-4 bg-white">
-              <p className="text-stone-700 text-sm font-light leading-relaxed">
+              <p className="text-[#E5DCCB] text-sm font-light leading-relaxed">
                 {activePoi.description}
               </p>
 
-              <div className="pt-4 border-t border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-stone-600">
+              <div className="pt-4 border-t border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#C9D6E5]">
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-stone-800" />
+                  <MapPin className="w-3.5 h-3.5 text-[#F1EBE0]" />
                   <span>Porto de Aguiño, 15965 Ribeira (A Coruña)</span>
                 </span>
                 <button
                   onClick={handleOpenGoogleMaps}
-                  className="text-stone-900 hover:text-stone-600 font-medium uppercase tracking-wider text-[11px] underline underline-offset-4 self-start sm:self-auto"
+                  className="text-[#FAF7F0] hover:text-[#C9D6E5] font-medium uppercase tracking-wider text-[11px] underline underline-offset-4 self-start sm:self-auto"
                 >
                   Cómo llegar
                 </button>
@@ -130,32 +130,32 @@ export function LocationAndSurroundings() {
         {/* Conexiones y Accesos */}
         <div className="p-6 sm:p-8 bg-[#FAF8F5] border border-stone-200 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left shadow-sm">
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-white border border-stone-200 text-stone-800">
+            <div className="p-3 bg-white border border-stone-200 text-[#F1EBE0]">
               <Plane className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aeropuerto de Santiago (SCQ)</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">50 minutos por autovía AG-11</p>
+              <h5 className="text-[11px] uppercase tracking-wider text-[#A9C9DD] font-semibold">Aeropuerto de Santiago (SCQ)</h5>
+              <p className="text-sm font-serif text-[#FAF7F0] font-normal">50 minutos por autovía AG-11</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-white border border-stone-200 text-stone-800">
+            <div className="p-3 bg-white border border-stone-200 text-[#F1EBE0]">
               <Plane className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aeropuerto de Vigo (VGO)</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">58 minutos por AP-9 / AG-11</p>
+              <h5 className="text-[11px] uppercase tracking-wider text-[#A9C9DD] font-semibold">Aeropuerto de Vigo (VGO)</h5>
+              <p className="text-sm font-serif text-[#FAF7F0] font-normal">58 minutos por AP-9 / AG-11</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5">
-            <div className="p-3 bg-white border border-stone-200 text-stone-800">
+            <div className="p-3 bg-white border border-stone-200 text-[#F1EBE0]">
               <Car className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aparcamiento</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">Plaza de garaje privada en el edificio incluida</p>
+              <h5 className="text-[11px] uppercase tracking-wider text-[#A9C9DD] font-semibold">Aparcamiento</h5>
+              <p className="text-sm font-serif text-[#FAF7F0] font-normal">Plaza de garaje privada en el edificio incluida</p>
             </div>
           </div>
         </div>
