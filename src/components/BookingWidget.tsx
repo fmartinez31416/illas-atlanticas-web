@@ -26,6 +26,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [checkOut, setCheckOut] = useState<string>(initialCheckOut || formatDate(nextWeekPlus));
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
+  const [motorAbierto, setMotorAbierto] = useState(false);
 
   const nights = Math.max(
     1,
@@ -42,10 +43,6 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
     });
     return `https://beds24.com/booking2.php?${params.toString()}`;
   })();
-
-  const handleBeds24Redirect = () => {
-    window.open(beds24Url, '_blank', 'noopener,noreferrer');
-  };
 
   const handleWhatsAppBooking = () => {
     const text = encodeURIComponent(
@@ -134,11 +131,11 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             <div className="flex items-center gap-2.5 shrink-0">
               <button
                 id="booking-beds24-confirm-btn"
-                onClick={handleBeds24Redirect}
+                onClick={() => setMotorAbierto(!motorAbierto)}
                 className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
-                <span>Ver precio real</span>
-                <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
+                <span>{motorAbierto ? 'Cerrar reserva' : 'Ver precio y reservar'}</span>
+                <ArrowRight className={`w-3.5 h-3.5 text-amber-300 transition-transform ${motorAbierto ? 'rotate-90' : ''}`} />
               </button>
 
               <button
@@ -153,13 +150,47 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           </div>
 
+          {/* Motor de reservas embebido (Beds24, sin salir de la web) */}
+          {motorAbierto && (
+            <div className="mt-4 border border-stone-200 bg-white">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-stone-50 border-b border-stone-200">
+                <p className="text-[11px] text-stone-600 font-medium uppercase tracking-[0.14em]">
+                  Reserva segura · precio y disponibilidad reales
+                </p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href={beds24Url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]"
+                  >
+                    Abrir en ventana nueva ↗
+                  </a>
+                  <button
+                    onClick={() => setMotorAbierto(false)}
+                    aria-label="Cerrar motor de reservas"
+                    className="text-[11px] text-stone-500 hover:text-stone-800"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+              <iframe
+                src={beds24Url}
+                title="Motor de reservas — Illas Atlánticas Ático"
+                className="w-full h-[720px]"
+                loading="lazy"
+              />
+            </div>
+          )}
+
           {/* Línea de confianza */}
           <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             <span>Plaza de garaje incluida</span>
             <span className="text-stone-300">·</span>
             <span>{nights} {nights === 1 ? 'noche' : 'noches'} · {adults} {adults === 1 ? 'adulto' : 'adultos'}{children > 0 ? ` + ${children}` : ''}</span>
             <span className="text-stone-300">·</span>
-            <span>Precio y disponibilidad reales en Beds24</span>
+            <span className="text-[#1A3A5C]">Mejor precio garantizado: lo igualamos +5%</span>
           </p>
         </div>
 
