@@ -10,6 +10,7 @@ import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
 import { BitacoraPage } from './components/BitacoraPage';
 import { LonjaLens } from './components/LonjaLens';
+import { NiaChat } from './components/NiaChat';
 
 export function App() {
   const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja'>('home');
@@ -33,22 +34,28 @@ export function App() {
   // VISTA 1: Bitácora completa e independiente (Presidida por A Pedra da Rá)
   if (currentView === 'bitacora') {
     return (
-      <BitacoraPage
-        onBack={() => { setCurrentView('home'); setPendingArticle(null); }}
-        onOpenBooking={scrollToBooking}
-        initialArticleSlug={pendingArticle}
-      />
+      <>
+        <BitacoraPage
+          onBack={() => { setCurrentView('home'); setPendingArticle(null); }}
+          onOpenBooking={scrollToBooking}
+          initialArticleSlug={pendingArticle}
+        />
+        <NiaChat />
+      </>
     );
   }
 
   // VISTA 2: LonjaLens — guía oficial de la lonja de Aguiño
   if (currentView === 'lonja') {
     return (
-      <LonjaLens
-        onBack={() => setCurrentView('home')}
-        onOpenBooking={scrollToBooking}
-        onOpenArticle={openBitacoraArticle}
-      />
+      <>
+        <LonjaLens
+          onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
+          onOpenArticle={openBitacoraArticle}
+        />
+        <NiaChat />
+      </>
     );
   }
 
@@ -128,6 +135,7 @@ export function App() {
       </main>
 
       <Footer />
+      <NiaChat />
     </div>
   );
 }
