@@ -39,6 +39,27 @@ export function NiaChat() {
     finRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [mensajes, escribiendo, abierto]);
 
+  const llamar = async (mensajes: Mensaje[]): Promise<string> => {
+    const pedir = () => {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 30000);
+      return fetch(NIA_API_URL, {
+        method: 'POST',
+        signal: ctrl.signal,
+        headers: { 'Content-Type': 'application/json', 'X-Nia-Token': NIA_TOKEN },
+        body: JSON.stringify({ messages: mensajes.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
+      }).finally(() => clearTimeout(timer));
+    };
+    let r = await pedir();
+    if (!r.ok) {
+      await new Promise((res) => setTimeout(res, 1500));
+      r = await pedir();
+    }
+    if (!r.ok) throw new Error(String(r.status));
+    const d = await r.json();
+    return d.reply || '…';
+  };
+
   const enviar = async (texto: string) => {
     const limpio = texto.trim();
     if (!limpio || escribiendo) return;
@@ -48,14 +69,8 @@ export function NiaChat() {
     setEntrada('');
     setEscribiendo(true);
     try {
-      const r = await fetch(NIA_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Nia-Token': NIA_TOKEN },
-        body: JSON.stringify({ messages: nuevo.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
-      });
-      if (!r.ok) throw new Error(String(r.status));
-      const d = await r.json();
-      setMensajes([...nuevo, { rol: 'nia', texto: d.reply || '…' }]);
+      const respuesta = await llamar(nuevo);
+      setMensajes([...nuevo, { rol: 'nia', texto: respuesta }]);
     } catch {
       setFallo(true);
       setMensajes([
@@ -157,7 +172,8 @@ export function NiaChat() {
               value={entrada}
               onChange={(e) => setEntrada(e.target.value)}
               placeholder="Escribe a Nía…"
-              className="flex-1 px-2 py-1.5 text-sm bg-transparent focus:outline-none placeholder-stone-400"
+              className="flex-1 px-2 py-1.5 text-sm text-stone-800 bg-transparent focus:outline-none placeholder-stone-400 caret-[#D4A017]"
+              style={{ color: '#292524' }}
               aria-label="Mensaje para Nía"
             />
             <button
