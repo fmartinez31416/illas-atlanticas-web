@@ -5,6 +5,7 @@ import { BookingWidget } from './components/BookingWidget';
 import { SpacesGrid } from './components/SpacesGrid';
 import { AmenitiesSection } from './components/AmenitiesSection';
 import { ReviewsAndPress } from './components/ReviewsAndPress';
+import { DirectBookingSection } from './components/DirectBookingSection';
 import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
 import { BitacoraPage } from './components/BitacoraPage';
@@ -43,6 +44,9 @@ export function App() {
         <div id="reservas">
           <BookingWidget />
         </div>
+
+        {/* Reserva directa: el argumento que sostiene todo el negocio */}
+        <DirectBookingSection onOpenBooking={scrollToBooking} />
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
         <ReviewsAndPress />

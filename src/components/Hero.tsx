@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ShieldCheck, ChevronDown, ArrowRight, MessageCircle, Star } from 'lucide-react';
 
 interface HeroProps {
@@ -6,6 +7,33 @@ interface HeroProps {
 }
 
 export function Hero({ onOpenBooking }: HeroProps) {
+  const [liveWeather, setLiveWeather] = useState<{ temp: number; waves: number | null } | null>(null);
+
+  // Chip de "Aguiño ahora" con datos reales (Open-Meteo)
+  useEffect(() => {
+    let alive = true;
+    const load = async () => {
+      try {
+        const [w, m] = await Promise.all([
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m&timezone=Europe%2FMadrid'),
+          fetch('https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height&forecast_days=1&timezone=Europe%2FMadrid'),
+        ]);
+        const wj = await w.json();
+        let waves: number | null = null;
+        if (m.ok) {
+          const mj = await m.json();
+          const h = mj.hourly?.wave_height;
+          if (Array.isArray(h) && h.length) waves = h[h.length - 1];
+        }
+        if (alive && wj.current?.temperature_2m != null) {
+          setLiveWeather({ temp: wj.current.temperature_2m, waves });
+        }
+      } catch { /* sin datos: el chip no se muestra */ }
+    };
+    load();
+    return () => { alive = false; };
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16 bg-stone-900">
       {/* Imagen de Portada Real */}
@@ -13,7 +41,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         <img
           src="/01_hero_portada.webp"
           alt="Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.02] transform transition-transform duration-1000"
+          className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/30 to-stone-950/40"></div>
@@ -23,14 +51,25 @@ export function Hero({ onOpenBooking }: HeroProps) {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
         {/* Sello de Reputación Oficial Directo Arriba */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 mb-6 shadow-sm">
-          <div className="flex items-center gap-1 text-white font-medium text-xs">
-            <Star className="w-3.5 h-3.5 fill-white text-white" />
-            <span className="font-semibold">9,5 / 10</span>
-            <span className="italic font-serif text-stone-200">Excepcional</span>
+        <div className="flex flex-wrap justify-center items-center gap-2.5 mb-6">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-sm">
+            <div className="flex items-center gap-1 text-white font-medium text-xs">
+              <Star className="w-3.5 h-3.5 fill-white text-white" />
+              <span className="font-semibold">9,5 / 10</span>
+              <span className="italic font-serif text-stone-200">Excepcional</span>
+            </div>
+            <span className="text-white/40">·</span>
+            <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
           </div>
-          <span className="text-white/40">·</span>
-          <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
+          {liveWeather && (
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ animation: 'hudPulse 2.4s ease-in-out infinite' }} />
+              <span className="text-stone-100 text-xs font-light">
+                Aguiño ahora · <span className="font-medium text-white">{liveWeather.temp.toFixed(0)}°</span>
+                {liveWeather.waves != null && <> · mar {liveWeather.waves.toFixed(1)} m</>}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Título Principal */}
