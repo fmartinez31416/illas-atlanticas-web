@@ -13,6 +13,7 @@ import { LonjaLens } from './components/LonjaLens';
 
 export function App() {
   const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja'>('home');
+  const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   const scrollToBooking = () => {
     setCurrentView('home');
@@ -24,12 +25,18 @@ export function App() {
     }, 150);
   };
 
+  const openBitacoraArticle = (slug: string) => {
+    setPendingArticle(slug);
+    setCurrentView('bitacora');
+  };
+
   // VISTA 1: Bitácora completa e independiente (Presidida por A Pedra da Rá)
   if (currentView === 'bitacora') {
     return (
       <BitacoraPage
-        onBack={() => setCurrentView('home')}
+        onBack={() => { setCurrentView('home'); setPendingArticle(null); }}
         onOpenBooking={scrollToBooking}
+        initialArticleSlug={pendingArticle}
       />
     );
   }
@@ -40,6 +47,7 @@ export function App() {
       <LonjaLens
         onBack={() => setCurrentView('home')}
         onOpenBooking={scrollToBooking}
+        onOpenArticle={openBitacoraArticle}
       />
     );
   }

@@ -6,9 +6,15 @@ import { Reveal } from './Reveal';
 interface LonjaLensProps {
   onBack: () => void;
   onOpenBooking?: () => void;
+  onOpenArticle?: (slug: string) => void;
 }
 
-export function LonjaLens({ onBack, onOpenBooking }: LonjaLensProps) {
+// Especies con historia completa en el Cuaderno de Bitácora
+const ARTICULOS_POR_ESPECIE: Record<string, string> = {
+  percebe: 'percebe-bravura-rompiente-aguiño-tabla-salmuera',
+};
+
+export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensProps) {
   const [query, setQuery] = useState('');
   const [filtro, setFiltro] = useState<'todos' | 'marisco' | 'pescado'>('todos');
   const [seleccionada, setSeleccionada] = useState<Especie | null>(null);
@@ -229,6 +235,18 @@ export function LonjaLens({ onBack, onOpenBooking }: LonjaLensProps) {
               <p className="mt-6 pt-4 border-t border-stone-100 text-[10px] text-stone-400 font-light">
                 Tallas oficiales de la Xunta de Galicia · temporadas orientativas · consulta las vedas vigentes.
               </p>
+
+              {onOpenArticle && ARTICULOS_POR_ESPECIE[seleccionada.id] && (
+                <button
+                  onClick={() => { const s = ARTICULOS_POR_ESPECIE[seleccionada.id]; setSeleccionada(null); onOpenArticle(s); }}
+                  className="mt-4 w-full text-left px-4 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white transition-colors flex items-center justify-between group"
+                >
+                  <span className="text-[11px] uppercase tracking-[0.16em] font-medium">
+                    Leer la historia completa en el Cuaderno de Bitácora
+                  </span>
+                  <ArrowLeft className="w-4 h-4 rotate-180 text-[#D4A017] group-hover:translate-x-1 transition-transform" />
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -7,15 +7,21 @@ import { DashboardNautico } from './DashboardNautico';
 interface BitacoraPageProps {
   onBack: () => void;
   onOpenBooking: () => void;
+  initialArticleSlug?: string | null;
 }
 
-export function BitacoraPage({ onBack, onOpenBooking }: BitacoraPageProps) {
+export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: BitacoraPageProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (initialArticleSlug) {
+      const art = ARTICLES.find((a) => a.slug === initialArticleSlug);
+      if (art) setSelectedArticle(art);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Si el usuario activa el Puente de Mando, mostramos la consola interactiva
