@@ -20,21 +20,37 @@ export function DirectBookingSection({ onOpenBooking }: DirectBookingSectionProp
                 El mejor precio, <span className="italic text-[#D4A017]">garantizado.</span>
               </h2>
               <p className="text-stone-600 mt-4 leading-relaxed max-w-xl">
-                Las plataformas cobran hasta un <strong className="text-stone-900">23% de comisión</strong> a cada
-                alojamiento, y ese coste lo paga el huésped en el precio. Reservando aquí, esa comisión
-                no existe: <strong className="text-stone-900">mejor tarifa y atención directa con el anfitrión</strong>,
-                sin intermediarios.
+                Reservando directamente disfrutas de la <strong className="text-stone-900">mejor tarifa</strong>,
+                la <strong className="text-stone-900">atención personal del anfitrión</strong> y unas
+                condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
               </p>
-              <p className="text-sm text-stone-500 mt-3 font-light italic">
-                Compromiso: si encuentras un precio menor en Booking para las mismas fechas y condiciones,
-                te lo igualamos.
-              </p>
+
+              {/* Garantía del mejor precio */}
+              <div className="mt-5 border-l-2 border-[#D4A017] pl-4">
+                <p className="text-stone-700 leading-relaxed">
+                  <strong className="text-[#1A3A5C]">Garantía del mejor precio:</strong> si encuentras un
+                  precio más bajo en cualquier otra web para las mismas fechas y condiciones, te lo
+                  igualamos y añadimos un <strong className="text-[#1A3A5C]">5% de descuento adicional</strong>.
+                </p>
+                <details className="mt-2 group">
+                  <summary className="text-xs text-stone-500 underline decoration-dotted underline-offset-4 cursor-pointer hover:text-[#1A3A5C] transition-colors list-none">
+                    Condiciones de la garantía
+                  </summary>
+                  <ul className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed">
+                    <li>• Mismo alojamiento, mismas fechas y mismo número de huéspedes.</li>
+                    <li>• Mismas condiciones de reserva y cancelación.</li>
+                    <li>• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).</li>
+                    <li>• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.</li>
+                    <li>• La diferencia se aplica sobre el precio total de la estancia.</li>
+                  </ul>
+                </details>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7">
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <BadgeEuro className="w-5 h-5 text-[#D4A017] mb-2" />
                   <p className="text-[13px] font-medium text-[#1A3A5C]">Mejor precio garantizado</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">Sin la comisión de las plataformas</p>
+                  <p className="text-xs text-stone-500 mt-1 font-light">La tarifa directa, siempre la mejor</p>
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
