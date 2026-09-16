@@ -95,7 +95,7 @@ export function App() {
                     Lonja<span className="italic text-[#D4A017]">Lens</span>
                   </h3>
                   <p className="text-sm text-stone-600 mt-1 max-w-xl leading-relaxed">
-                    La guía de la lonja de Aguiño: 24 especies con su talla mínima oficial, su temporada
+                    La guía de la lonja de Aguiño: 27 especies con su talla mínima oficial, su temporada
                     y cómo se cocinan aquí. Antes de comprar marisco, consulta la lente.
                   </p>
                 </div>
