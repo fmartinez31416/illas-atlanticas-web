@@ -104,7 +104,8 @@ export function App() {
                   </h3>
                   <p className="text-sm text-stone-600 mt-1 max-w-xl leading-relaxed">
                     La guía de la lonja de Aguiño: 27 especies con su talla mínima oficial, su temporada
-                    y cómo se cocinan aquí. Antes de comprar marisco, consulta la lente.
+                    y cómo se cocinan aquí. Entiende la subasta que ves desde la terraza y compra con
+                    criterio en la plaza de abastos de Ribeira.
                   </p>
                 </div>
               </div>

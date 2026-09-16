@@ -27,7 +27,7 @@ export const ESPECIES: Especie[] = [
   { id: 'percebe', nombreES: 'Percebe', nombreGL: 'Percebe', cientifico: 'Pollicipes pollicipes', tipo: 'marisco',
     talla: 'Planes anuales', tallaDetalle: 'Talla regulada por los planes de explotación de cada zona',
     temporada: 'noviembre–abril', origen: 'Autóctono',
-    curiosidad: 'Los percebeiros salen con la marea baja — a veces al amanecer y otras al mediodía — en sus lanchas desde el puerto de Aguiño, rumbo a los bajos donde está el percebe. Desde la terraza se ve la flota salir y volver con la faena, aunque no la captura en sí: eso ocurre en las rocas batidas, lejos de la vista… y del precio. Es el marisco más caro de la lonja por algo.',
+    curiosidad: 'Los percebeiros salen con la marea baja — a veces al amanecer y otras al mediodía — en sus lanchas desde el puerto de Aguiño, rumbo a los bajos donde está el percebe. Desde la terraza se ve la flota salir y volver con la faena, aunque no la captura en sí: eso ocurre en las rocas batidas, lejos de la vista… y del precio. En la Navidad de 2025, el percebe de Aguiño tocó un récord de 280 €/kg en subasta (media de 115 €). Es el marisco más caro de la lonja por algo.',
     cocina: 'Al agua de mar (o agua dulce con 60 g de sal por litro) se le añade una ramita de laurel. Cuando hierve, dentro los percebes; cuando vuelve a hervir, un minuto y fuera. Se tapan con un paño y se esperan 5 minutos antes de comerlos. Receta del anfitrión, que ha hervido muchos.' },
   { id: 'centola', nombreES: 'Centolla', nombreGL: 'Centola', cientifico: 'Maja brachydactyla', tipo: 'marisco',
     talla: '12 cm', tallaDetalle: 'Longitud del cefalotórax',

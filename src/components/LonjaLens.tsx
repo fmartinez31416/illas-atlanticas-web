@@ -76,6 +76,15 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               <strong className="text-[#1A3A5C]">su talla mínima oficial, cuándo está en su mejor momento
               y cómo se cocina aquí</strong>.
             </p>
+            <div className="mt-4 bg-white border border-[#1A3A5C]/10 p-4 sm:p-5">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">Cómo funciona, sin rodeos</p>
+              <ul className="mt-2 space-y-1.5 text-sm text-stone-600 font-light leading-relaxed">
+                <li>· <strong className="font-normal text-[#1A3A5C]">La subasta se puede ver</strong> desde la lonja — el espectáculo es público.</li>
+                <li>· <strong className="font-normal text-[#1A3A5C]">La lonja no vende al público</strong>: el pescado se compra después en la <strong className="font-normal text-[#1A3A5C]">plaza de abastos de Ribeira</strong>.</li>
+                <li>· Visitas guiadas a la lonja de Ribeira: <span className="font-mono text-stone-700">881 076 880</span>.</li>
+                <li>· En julio, no te pierdas la <strong className="font-normal text-[#1A3A5C]">Festa do Percebe de Aguiño</strong> (Fiesta de Interés Turístico de Galicia).</li>
+              </ul>
+            </div>
             <p className="text-xs text-stone-500 mt-3 flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-[#D4A017] shrink-0 mt-0.5" />
               {FUENTE_TALLAS}
