@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BookingWidget } from './components/BookingWidget';
@@ -11,10 +11,23 @@ import { Footer } from './components/Footer';
 import { BitacoraPage } from './components/BitacoraPage';
 import { LonjaLens } from './components/LonjaLens';
 import { NiaChat } from './components/NiaChat';
+import { NIA_API_URL } from './niaConfig';
 
 export function App() {
   const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
+
+  // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
+  // cuenta visitas y de dónde vienen (TikTok, Google, directo...) para medir qué funciona.
+  useEffect(() => {
+    if (sessionStorage.getItem('hit_enviado')) return;
+    sessionStorage.setItem('hit_enviado', '1');
+    try {
+      const referer = document.referrer || 'directo';
+      fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=${encodeURIComponent(referer)}`)
+        .catch(() => {});
+    } catch { /* silencioso: nunca bloquea la web */ }
+  }, []);
 
   const scrollToBooking = () => {
     setCurrentView('home');
