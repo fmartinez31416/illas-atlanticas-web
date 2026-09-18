@@ -24,7 +24,8 @@ export function App() {
     sessionStorage.setItem('hit_enviado', '1');
     try {
       const referer = document.referrer || 'directo';
-      fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=${encodeURIComponent(referer)}`)
+      const fuente = new URLSearchParams(window.location.search).get('fuente') || '';
+      fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=${encodeURIComponent(referer)}&s=${encodeURIComponent(fuente)}`)
         .catch(() => {});
     } catch { /* silencioso: nunca bloquea la web */ }
   }, []);
