@@ -3,9 +3,10 @@ import { Reveal } from './Reveal';
 
 interface DirectBookingSectionProps {
   onOpenBooking: () => void;
+  onOpenBitacora: () => void;
 }
 
-export function DirectBookingSection({ onOpenBooking }: DirectBookingSectionProps) {
+export function DirectBookingSection({ onOpenBooking, onOpenBitacora }: DirectBookingSectionProps) {
   return (
     <section id="reserva-directa" className="py-14 bg-white border-b border-[#1A3A5C]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,9 +75,15 @@ export function DirectBookingSection({ onOpenBooking }: DirectBookingSectionProp
             </div>
           </Reveal>
 
-          {/* Dato vivo: el Puente de Mando como gancho */}
+          {/* Dato vivo: el Puente de Mando como gancho (clicable, abre la Bitácora con el panel) */}
           <Reveal delay={120}>
-            <div className="relative rounded-md overflow-hidden shadow-xl" style={{ border: '1px solid rgba(26,58,92,0.15)' }}>
+            <button
+              type="button"
+              onClick={onOpenBitacora}
+              aria-label="Abrir el Puente de Mando Atlántico"
+              className="relative rounded-md overflow-hidden shadow-xl w-full text-left cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/60"
+              style={{ border: '1px solid rgba(26,58,92,0.15)' }}
+            >
               <div className="relative" style={{ background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)' }}>
                 <span className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
                 <span className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
@@ -99,7 +106,7 @@ export function DirectBookingSection({ onOpenBooking }: DirectBookingSectionProp
                   </div>
                 </div>
               </div>
-            </div>
+            </button>
           </Reveal>
         </div>
       </div>

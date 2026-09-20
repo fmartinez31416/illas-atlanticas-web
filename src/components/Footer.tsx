@@ -79,7 +79,7 @@ export function Footer() {
               </span>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://www.tiktok.com"
+                  href="https://www.tiktok.com/@fernando.martnez517"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok"

@@ -86,7 +86,7 @@ export function App() {
         </div>
 
         {/* Reserva directa: el argumento que sostiene todo el negocio */}
-        <DirectBookingSection onOpenBooking={scrollToBooking} />
+        <DirectBookingSection onOpenBooking={scrollToBooking} onOpenBitacora={() => setCurrentView('bitacora')} />
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
         <ReviewsAndPress />
