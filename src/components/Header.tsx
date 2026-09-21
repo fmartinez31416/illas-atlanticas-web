@@ -24,7 +24,6 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
         { name: 'Confort', href: '#servicios' },
         { name: 'Opiniones', href: '#opiniones' },
         { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
-        { name: 'Reservar', href: '#reservas' },
       ];
 
   return (

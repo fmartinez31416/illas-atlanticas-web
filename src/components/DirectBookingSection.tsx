@@ -36,7 +36,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     la misma estancia más barata en otra web, la igualamos y añadimos un{' '}
                     <strong className="text-[#1A3A5C]">5% extra de descuento</strong>.{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
-                      Cómo funciona
+                      ¿Cómo funciona?
                     </span>
                   </span>
                 </summary>
@@ -105,13 +105,13 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     <p className="font-serif text-xl text-[#EBE6DD] mt-3 italic">
                       «El tiempo, el mar y las mareas, como si miraras por la ventana»
                     </p>
-                    <p className="text-xs text-[#A9C9DD]/70 mt-3 font-light">
+                    <p className="text-xs text-[#A9C9DD] mt-3 font-light">
                       Pronóstico a 7 días · estado del mar · amanecer y anochecer ·
                       fases lunares · todo con datos reales
                     </p>
                     <div className="flex items-center justify-center gap-2 mt-4">
                       <span className="w-2 h-2 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
-                      <span className="text-[10px] tracking-[0.22em] text-[#D4A017] uppercase">Puente de Mando Atlántico</span>
+                      <span className="text-[11px] tracking-[0.22em] text-[#D4A017] uppercase font-medium">Puente de Mando Atlántico</span>
                     </div>
                   </div>
                 </div>
