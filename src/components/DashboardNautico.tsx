@@ -714,14 +714,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 opacity: isNight ? 0 : 1,
                 background: `radial-gradient(55% 55% at 72% 0%, rgba(255,214,120,${(0.12 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,196,110,${(0.04 + dayGlow.warm * 0.4).toFixed(3)}) 38%, transparent 68%)`,
               }} />
-            {/* Haz de luz diagonal desde la ventana */}
+            {/* Haz de luz diagonal desde la ventana (suave) */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              <div className="absolute -top-1/4 -right-[8%] w-[46%] h-[160%] -rotate-12 pointer-events-none transition-opacity duration-[3000ms]"
+              <div className="absolute -top-1/4 -right-[6%] w-[52%] h-[170%] -rotate-12 pointer-events-none transition-opacity duration-[3000ms]"
                 style={{
-                  opacity: isNight ? 0.3 + moonPower * 0.45 : 0.22 + dayGlow.warm,
+                  opacity: isNight ? 0.2 + moonPower * 0.35 : 0.15 + dayGlow.warm * 0.8,
                   background: isNight
-                    ? `linear-gradient(90deg, transparent 0%, rgba(203,218,242,${(0.05 + moonPower * 0.1).toFixed(3)}) 42%, rgba(203,218,242,${(0.11 + moonPower * 0.18).toFixed(3)}) 55%, transparent 100%)`
-                    : `linear-gradient(90deg, transparent 0%, rgba(255,222,140,${(0.04 + dayGlow.warm).toFixed(3)}) 42%, rgba(255,214,120,${(0.08 + dayGlow.warm).toFixed(3)}) 55%, transparent 100%)`,
+                    ? `linear-gradient(90deg, transparent 0%, transparent 28%, rgba(203,218,242,${(0.03 + moonPower * 0.06).toFixed(3)}) 42%, rgba(203,218,242,${(0.07 + moonPower * 0.12).toFixed(3)}) 52%, rgba(203,218,242,${(0.03 + moonPower * 0.06).toFixed(3)}) 62%, transparent 78%, transparent 100%)`
+                    : `linear-gradient(90deg, transparent 0%, transparent 28%, rgba(255,222,140,${(0.025 + dayGlow.warm * 0.5).toFixed(3)}) 42%, rgba(255,214,120,${(0.05 + dayGlow.warm).toFixed(3)}) 52%, rgba(255,222,140,${(0.025 + dayGlow.warm * 0.5).toFixed(3)}) 62%, transparent 78%, transparent 100%)`,
                 }} />
             </div>
 
@@ -846,7 +846,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   {telemetry.windDeg}° {getWindBearingName(telemetry.windDeg)}
                   <span className="text-[#A9C9DD]"> · {(telemetry.windKnots * 1.852).toFixed(1)} km/h</span>
                 </p>
-                <p className="text-[10px] text-[#A9C9DD]/80 font-light mt-1 tracking-wide">
+                <p className="text-[11px] text-[#A9C9DD] mt-1 font-light tracking-wide">
                   Fuerza {beaufortName(telemetry.windKnots)} · rotor a la velocidad real del viento
                 </p>
               </div>
@@ -1005,7 +1005,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             )}
 
             {/* Nota de honestidad */}
-            <p className="mt-6 pt-4 border-t border-[#A9C9DD]/10 text-[10px] text-[#A9C9DD]/70 font-light leading-relaxed flex items-center gap-2">
+            <p className="mt-6 pt-4 border-t border-[#A9C9DD]/10 text-[11px] text-[#A9C9DD]/85 font-light leading-relaxed flex items-center gap-2">
               <ShieldCheck className="w-3.5 h-3.5 text-[#D4A017] shrink-0" />
               <span>
                 Lectura {freshnessLabel}. Meteorología y estado del mar en vivo (Open-Meteo y Open-Meteo Marine, coordenadas reales de Aguiño).

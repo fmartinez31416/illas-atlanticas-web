@@ -205,7 +205,7 @@ export function CompassNautico() {
           Probar brújula
         </button>
       )}
-      <p className="text-[10px] text-[#A9C9DD]/70 font-light mt-1.5 text-center max-w-[220px]">
+      <p className="text-[11px] text-[#A9C9DD] font-light mt-1.5 text-center max-w-[230px]">
         {isMobile
           ? 'En el móvil, la brújula gira contigo: apunta al norte real con el sensor del teléfono.'
           : 'En el móvil, la brújula gira contigo. En este ordenador queda fija al norte.'}
