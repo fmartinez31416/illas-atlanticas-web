@@ -42,6 +42,8 @@ interface ForecastDay {
   tmax: number;
   tmin: number;
   pop: number | null;
+  wind: number | null;
+  uv: number | null;
 }
 
 interface MoonData {
@@ -336,7 +338,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       setIsLoading(true);
       const [res, resMarine] = await Promise.all([
         fetch(
-          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset,moonrise,moonset,moon_phase,temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&forecast_days=7&wind_speed_unit=kn&timezone=Europe%2FMadrid'
+          'https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m,relative_humidity_2m,apparent_temperature,surface_pressure,wind_speed_10m,wind_direction_10m&hourly=temperature_2m&daily=sunrise,sunset,moonrise,moonset,moon_phase,temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode,wind_speed_10m_max,uv_index_max&forecast_days=7&wind_speed_unit=kn&timezone=Europe%2FMadrid'
         ),
         fetch(
           'https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height,sea_surface_temperature&forecast_days=1&timezone=Europe%2FMadrid'
@@ -387,6 +389,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           tmax: Math.round(data.daily.temperature_2m_max?.[i] ?? 0),
           tmin: Math.round(data.daily.temperature_2m_min?.[i] ?? 0),
           pop: typeof data.daily.precipitation_probability_max?.[i] === 'number' ? Math.round(data.daily.precipitation_probability_max[i]) : null,
+          wind: typeof data.daily.wind_speed_10m_max?.[i] === 'number' ? Math.round(data.daily.wind_speed_10m_max[i]) : null,
+          uv: typeof data.daily.uv_index_max?.[i] === 'number' ? Math.round(data.daily.uv_index_max[i] * 10) / 10 : null,
         }));
         setForecast(fcast);
       }
@@ -500,6 +504,11 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     };
   }
 
+  // Rango térmico global de la semana (para las barras del pronóstico)
+  const gmin = forecast.length > 0 ? Math.min(...forecast.map((d) => d.tmin)) : 0;
+  const gmax = forecast.length > 0 ? Math.max(...forecast.map((d) => d.tmax)) : 1;
+  const gspan = Math.max(1, gmax - gmin);
+
   return (
     <div id="puente-de-mando" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950 p-4 sm:p-8">
 
@@ -541,7 +550,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               background: `radial-gradient(52% 42% at 72% 7%, rgba(255,214,120,${(0.14 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,196,110,${(0.05 + dayGlow.warm * 0.5).toFixed(3)}) 38%, rgba(255,196,110,0.02) 62%, transparent 75%)`,
             }} />
 
-          {/* ===== CIELO ===== */}
+          {/* ===== LA VENTANA: cielo y mar ===== */}
+          <div className="relative" style={{ background: '#0A1520', borderBottom: '2px solid rgba(212,160,23,0.35)' }}>
           <div className="relative h-[230px] sm:h-[290px] overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${skyTop} 0%, ${skyMid} 55%, ${skyLow} 100%)`, transition: 'background 3s ease' }}
           >
@@ -645,6 +655,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             </svg>
           </div>
 
+          {/* Cantoneras de latón de la ventana */}
+          <span className="absolute top-1.5 left-1.5 w-5 h-5 border-t-2 border-l-2 border-[#D4A017]/70 pointer-events-none z-10" />
+          <span className="absolute top-1.5 right-1.5 w-5 h-5 border-t-2 border-r-2 border-[#D4A017]/70 pointer-events-none z-10" />
+          <span className="absolute bottom-1.5 left-1.5 w-5 h-5 border-b-2 border-l-2 border-[#D4A017]/70 pointer-events-none z-10" />
+          <span className="absolute bottom-1.5 right-1.5 w-5 h-5 border-b-2 border-r-2 border-[#D4A017]/70 pointer-events-none z-10" />
+          </div>
+
           {/* Barra de estado del instrumento */}
           <div className="relative flex flex-wrap items-center justify-between gap-3 px-5 sm:px-8 py-3 border-b border-[#A9C9DD]/10 bg-[#0B1D2E]/60">
             <div className="flex items-center gap-3">
@@ -677,10 +694,36 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
 
           {/* ===== CONSOLA DE INSTRUMENTOS ===== */}
           <div className="relative px-4 sm:px-8 py-8"
-            style={{ background: 'linear-gradient(180deg, #0E2233 0%, #0B1D2E 60%, #081826 100%)' }}>
+            style={{ background: 'linear-gradient(180deg, #0A1A28 0%, #060F1A 55%, #040A12 100%)' }}>
             {/* Riel de latón sobre la consola */}
             <div className="absolute inset-x-0 top-0 h-[2px]"
               style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.4) 20%, rgba(212,160,23,0.6) 50%, rgba(212,160,23,0.4) 80%, transparent 100%)' }} />
+
+            {/* Pared de la habitación (tablones sutiles) */}
+            <div className="absolute inset-0 pointer-events-none"
+              style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0px, transparent 44px, rgba(255,255,255,0.02) 46px)' }} />
+
+            {/* Luz que entra por la ventana: de noche, la luna; de día, el sol */}
+            <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
+              style={{
+                opacity: isNight ? 1 : 0,
+                background: `radial-gradient(55% 55% at 72% 0%, rgba(203,218,242,${(0.16 + moonPower * 0.26).toFixed(3)}) 0%, rgba(203,218,242,${(0.06 + moonPower * 0.09).toFixed(3)}) 38%, transparent 68%)`,
+              }} />
+            <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
+              style={{
+                opacity: isNight ? 0 : 1,
+                background: `radial-gradient(55% 55% at 72% 0%, rgba(255,214,120,${(0.12 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,196,110,${(0.04 + dayGlow.warm * 0.4).toFixed(3)}) 38%, transparent 68%)`,
+              }} />
+            {/* Haz de luz diagonal desde la ventana */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <div className="absolute -top-1/4 -right-[8%] w-[46%] h-[160%] -rotate-12 pointer-events-none transition-opacity duration-[3000ms]"
+                style={{
+                  opacity: isNight ? 0.3 + moonPower * 0.45 : 0.22 + dayGlow.warm,
+                  background: isNight
+                    ? `linear-gradient(90deg, transparent 0%, rgba(203,218,242,${(0.05 + moonPower * 0.1).toFixed(3)}) 42%, rgba(203,218,242,${(0.11 + moonPower * 0.18).toFixed(3)}) 55%, transparent 100%)`
+                    : `linear-gradient(90deg, transparent 0%, rgba(255,222,140,${(0.04 + dayGlow.warm).toFixed(3)}) 42%, rgba(255,214,120,${(0.08 + dayGlow.warm).toFixed(3)}) 55%, transparent 100%)`,
+                }} />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
               {/* ANEMÓMETRO */}
@@ -836,25 +879,32 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                     <div className="mt-5">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                          <Activity className="w-3 h-3 text-[#D4A017]" /> Próximas 24 h
+                          <Activity className="w-3 h-3 text-[#D4A017]" /> Temperatura · próximas 24 h
                         </span>
                         <span className="text-[10px] text-[#A9C9DD] font-mono">
-                          {Math.min(...temps).toFixed(0)}° / {Math.max(...temps).toFixed(0)}°
+                          mín {Math.min(...temps).toFixed(0)}° · máx {Math.max(...temps).toFixed(0)}°
                         </span>
                       </div>
-                      <div className="relative bg-white/[0.03] border border-[#A9C9DD]/15 rounded-sm p-2 pt-3">
-                        <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-16" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
-                          <line x1="0" y1="6" x2={chartW} y2="6" stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                          <line x1="0" y1={chartH / 2} x2={chartW} y2={chartH / 2} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                          <line x1="0" y1={chartH - 6} x2={chartW} y2={chartH - 6} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                          <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
-                          <circle cx={lastDot.x} cy={lastDot.y} r="3" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
-                          <text x="2" y="10" fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.max(...temps).toFixed(0)}°</text>
-                          <text x="2" y={chartH / 2 + 4} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{((Math.max(...temps) + Math.min(...temps)) / 2).toFixed(0)}°</text>
-                          <text x="2" y={chartH - 2} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.min(...temps).toFixed(0)}°</text>
-                          <text x="0" y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[0] || ''}</text>
-                          <text x={chartW / 2 - 14} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[Math.floor(temps.length / 2)] || ''}</text>
-                          <text x={chartW - 28} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
+                      <div className="relative bg-white/[0.03] border border-[#A9C9DD]/15 rounded-sm px-3 pt-4 pb-2">
+                        <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-24" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
+                          <defs>
+                            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#D4A017" stopOpacity="0.28" />
+                              <stop offset="100%" stopColor="#D4A017" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                          <line x1="0" y1="6" x2={chartW} y2="6" stroke="#A9C9DD" strokeOpacity="0.15" strokeWidth="1" strokeDasharray="3 4" />
+                          <line x1="0" y1={chartH / 2} x2={chartW} y2={chartH / 2} stroke="#A9C9DD" strokeOpacity="0.15" strokeWidth="1" strokeDasharray="3 4" />
+                          <line x1="0" y1={chartH - 6} x2={chartW} y2={chartH - 6} stroke="#A9C9DD" strokeOpacity="0.15" strokeWidth="1" strokeDasharray="3 4" />
+                          <text x="4" y="11" fill="#A9C9DD" opacity="0.85" fontSize="10" fontFamily="monospace">{Math.max(...temps).toFixed(0)}°</text>
+                          <text x="4" y={chartH / 2 + 6} fill="#A9C9DD" opacity="0.85" fontSize="10" fontFamily="monospace">{((Math.max(...temps) + Math.min(...temps)) / 2).toFixed(0)}°</text>
+                          <text x="4" y={chartH - 2} fill="#A9C9DD" opacity="0.85" fontSize="10" fontFamily="monospace">{Math.min(...temps).toFixed(0)}°</text>
+                          <polygon points={`0,${chartH - 6} ${polyPoints} ${chartW},${chartH - 6}`} fill="url(#chartFill)" />
+                          <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
+                          <circle cx={lastDot.x} cy={lastDot.y} r="4" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
+                          <text x="0" y={chartH + 16} fill="#A9C9DD" opacity="0.9" fontSize="9.5" fontFamily="monospace">ahora</text>
+                          <text x={chartW / 2 - 26} y={chartH + 16} fill="#A9C9DD" opacity="0.9" fontSize="9.5" fontFamily="monospace">{hourly.hours[12] || ''}</text>
+                          <text x={chartW - 44} y={chartH + 16} fill="#A9C9DD" opacity="0.9" fontSize="9.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
                         </svg>
                       </div>
                     </div>
@@ -901,33 +951,55 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   <span className="text-[10px] text-[#A9C9DD]/70 font-mono uppercase">Aguiño · Ría de Arousa</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
-                  {forecast.map((d, i) => (
-                    <div
-                      key={d.day + i}
-                      className={`relative rounded-sm p-4 text-center border ${
-                        i === 0 ? 'bg-[#D4A017]/10 border-[#D4A017]/45' : 'bg-white/[0.04] border-[#A9C9DD]/15'
-                      }`}
-                    >
-                      {i === 0 && (
-                        <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#D4A017] text-[#071522] text-[9px] font-bold uppercase tracking-[0.14em] rounded-sm">
-                          Hoy
+                  {forecast.map((d, i) => {
+                    const left = ((d.tmin - gmin) / gspan) * 100;
+                    const width = Math.max(8, ((d.tmax - d.tmin) / gspan) * 100);
+                    return (
+                      <div
+                        key={d.day + i}
+                        className={`relative rounded-sm p-3.5 pt-4 text-center border ${
+                          i === 0 ? 'bg-[#D4A017]/10 border-[#D4A017]/45' : 'bg-white/[0.04] border-[#A9C9DD]/15'
+                        }`}
+                      >
+                        {i === 0 && (
+                          <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#D4A017] text-[#071522] text-[9px] font-bold uppercase tracking-[0.14em] rounded-sm">
+                            Hoy
+                          </span>
+                        )}
+                        <span className={`text-[11px] uppercase tracking-[0.18em] block mb-2 ${i === 0 ? 'text-[#D4A017] font-medium' : 'text-[#A9C9DD]'}`}>
+                          {d.day}
                         </span>
-                      )}
-                      <span className={`text-[11px] uppercase tracking-[0.18em] block mb-3 ${i === 0 ? 'text-[#D4A017] font-medium' : 'text-[#A9C9DD]'}`}>
-                        {i === 0 ? '\u00A0' : d.day}
-                      </span>
-                      <div className="flex justify-center"><WeatherGlyph wmo={d.wmo} size={52} /></div>
-                      <div className="mt-2 text-xs text-[#A9C9DD] leading-snug min-h-[2em]">{wmoText(d.wmo)}</div>
-                      <div className="mt-1.5 font-serif text-2xl text-[#EBE6DD] leading-none">
-                        {d.tmax}° <span className="text-sm text-[#A9C9DD] font-sans">{d.tmin}°</span>
+                        <div className="flex justify-center"><WeatherGlyph wmo={d.wmo} size={54} /></div>
+                        <div className="mt-2 text-[11px] text-[#A9C9DD] leading-snug min-h-[2.4em]">{wmoText(d.wmo)}</div>
+                        <div className="mt-1.5 flex items-baseline justify-center gap-1.5">
+                          <span className="font-serif text-3xl text-[#EBE6DD] leading-none">{d.tmax}°</span>
+                          <span className="text-sm text-[#A9C9DD]">{d.tmin}°</span>
+                        </div>
+                        {/* Rango térmico dentro de la semana */}
+                        <div className="relative h-1 bg-[#A9C9DD]/10 rounded-full mt-2.5" title={`De ${d.tmin}° a ${d.tmax}°`}>
+                          <div
+                            className="absolute inset-y-0 rounded-full bg-gradient-to-r from-[#A9C9DD]/60 to-[#D4A017]"
+                            style={{ left: `${left}%`, width: `${width}%` }}
+                          />
+                        </div>
+                        {/* Viento y UV */}
+                        <div className="mt-2 flex items-center justify-center gap-3 text-[10px] text-[#A9C9DD]">
+                          {d.wind !== null && (
+                            <span className="flex items-center gap-1">
+                              <Wind className="w-3 h-3 text-[#D4A017]" />{d.wind} kn
+                            </span>
+                          )}
+                          {d.uv !== null && <span className="font-mono tabular-nums">UV {d.uv}</span>}
+                        </div>
+                        {/* Lluvia */}
+                        <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#A9C9DD]/10 border border-[#A9C9DD]/20 text-[11px]">
+                          <Droplets className="w-3 h-3 text-[#A9C9DD]" />
+                          <span className="text-[#A9C9DD]">Lluvia</span>
+                          <span className="font-mono text-[#EBE6DD] font-medium tabular-nums">{d.pop !== null ? `${d.pop}%` : '—'}</span>
+                        </div>
                       </div>
-                      <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#A9C9DD]/10 border border-[#A9C9DD]/20 text-[11px]">
-                        <Droplets className="w-3 h-3 text-[#A9C9DD]" />
-                        <span className="text-[#A9C9DD]">Lluvia</span>
-                        <span className="font-mono text-[#EBE6DD] font-medium tabular-nums">{d.pop !== null ? `${d.pop}%` : '—'}</span>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
