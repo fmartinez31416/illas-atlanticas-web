@@ -144,6 +144,34 @@ function MoonDisc({ phase, size = 200 }: { phase: number; size?: number }) {
   );
 }
 
+/** Sol realista: corona, núcleo blanco-dorado y rayos suaves. Su fuerza depende del tiempo del día */
+function SunDisc({ strength, size = 190 }: { strength: number; size?: number }) {
+  return (
+    <div className="relative" style={{ width: size, height: size, opacity: 0.3 + strength * 0.7, transition: 'opacity 2s ease' }}>
+      <div className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 42px 18px rgba(255,216,120,${(0.2 + strength * 0.35).toFixed(3)}), 0 0 120px 45px rgba(255,190,90,${(0.1 + strength * 0.2).toFixed(3)})` }} />
+      <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Sol">
+        <defs>
+          <radialGradient id="sunDiscGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FFF8E0" />
+            <stop offset="55%" stopColor="#FFE9A8" />
+            <stop offset="85%" stopColor="#F5C04E" />
+            <stop offset="100%" stopColor="#E8A33D" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="34" fill="url(#sunDiscGrad)" />
+        <circle cx="50" cy="50" r="34" fill="none" stroke="#FFE9A8" strokeOpacity="0.6" strokeWidth="0.8" />
+        {Array.from({ length: 12 }).map((_, i) => {
+          const a = (i * Math.PI) / 6;
+          return (
+            <line key={i} x1={50 + Math.cos(a) * 41} y1={50 + Math.sin(a) * 41} x2={50 + Math.cos(a) * 47} y2={50 + Math.sin(a) * 47}
+              stroke="#FFE9A8" strokeOpacity="0.35" strokeWidth="1.6" strokeLinecap="round" />
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 /** Glifo meteorológico dibujado a mano */
 function WeatherGlyph({ wmo, size = 48 }: { wmo: number; size?: number }) {
   const gold = '#D4A017';
@@ -409,6 +437,28 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const moonPower = moon.illum !== null ? moon.illum / 100 : 0;
   const starsOpacity = isNight ? 0.25 + (1 - moonPower) * 0.6 : 0;
 
+  // Fuerza del sol según el tiempo de hoy (wmo de Open-Meteo)
+  const wmoToday = forecast.length > 0 ? forecast[0].wmo : 0;
+  const dayGlow = (() => {
+    if (wmoToday <= 1) return { sun: 1, warm: 0.26 };        // despejado: sol pleno
+    if (wmoToday === 2) return { sun: 0.6, warm: 0.14 };     // sol y nubes
+    if (wmoToday === 3) return { sun: 0.28, warm: 0.06 };    // nublado: luz difusa
+    return { sun: 0.14, warm: 0.03 };                        // lluvia/tormenta: gris
+  })();
+  const skyTop = isNight
+    ? '#050D18'
+    : dayGlow.sun > 0.6 ? '#0F3A5E' : dayGlow.sun > 0.25 ? '#14384F' : '#132C40';
+  const skyMid = isNight
+    ? '#071A2B'
+    : dayGlow.sun > 0.6 ? '#1F6494' : dayGlow.sun > 0.25 ? '#1E4C68' : '#193A50';
+  const skyLow = isNight
+    ? '#0E2A3F'
+    : dayGlow.sun > 0.6 ? '#2C7FAF' : dayGlow.sun > 0.25 ? '#26546F' : '#1C4257';
+  const seaTop = isNight
+    ? '#0D2032'
+    : dayGlow.sun > 0.6 ? '#1B5272' : dayGlow.sun > 0.25 ? '#164056' : '#123546';
+  const seaLow = isNight ? '#081A2A' : '#0E2A3F';
+
   const STARS = [
     [6, 14, 1.2], [14, 6, 0.9], [22, 18, 1.3], [28, 8, 0.8], [36, 16, 1.1], [44, 6, 0.7],
     [52, 14, 1.0], [60, 5, 0.9], [68, 16, 1.3], [76, 8, 0.8], [84, 15, 1.0], [92, 6, 0.7],
@@ -479,30 +529,23 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             border: '1px solid rgba(212,160,23,0.35)',
           }}
         >
-          {/* ===== ILUMINACIÓN DE LA ESCENA: la luz nace del astro ===== */}
-          {/* Noche: luz de luna desde el astro (arriba a la derecha), baña todo el panel */}
+          {/* ===== ILUMINACIÓN DE LA ESCENA: la luz nace del astro y del tiempo ===== */}
           <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
             style={{
               opacity: isNight ? 1 : 0,
-              background: `radial-gradient(42% 34% at 72% 10%, rgba(203,218,242,${(0.22 + moonPower * 0.34).toFixed(3)}) 0%, rgba(203,218,242,${(0.08 + moonPower * 0.12).toFixed(3)}) 35%, rgba(203,218,242,0.02) 60%, transparent 78%)`,
+              background: `radial-gradient(42% 34% at 72% 9%, rgba(203,218,242,${(0.22 + moonPower * 0.34).toFixed(3)}) 0%, rgba(203,218,242,${(0.08 + moonPower * 0.12).toFixed(3)}) 35%, rgba(203,218,242,0.02) 60%, transparent 78%)`,
             }} />
-          {/* Día: luz cálida del sol */}
           <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
             style={{
               opacity: isNight ? 0 : 1,
-              background: 'radial-gradient(50% 40% at 30% 6%, rgba(212,160,23,0.22) 0%, rgba(212,160,23,0.07) 40%, transparent 70%)',
+              background: `radial-gradient(52% 42% at 72% 7%, rgba(255,214,120,${(0.14 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,196,110,${(0.05 + dayGlow.warm * 0.5).toFixed(3)}) 38%, rgba(255,196,110,0.02) 62%, transparent 75%)`,
             }} />
 
-          {/* ===== CIELO CON LA LUNA ===== */}
-          <div className="relative h-[240px] sm:h-[300px] overflow-hidden"
-            style={{
-              background: isNight
-                ? 'linear-gradient(180deg, #050D18 0%, #071A2B 55%, #0E2A3F 100%)'
-                : 'linear-gradient(180deg, #0D2942 0%, #16405F 55%, #1E5378 100%)',
-              transition: 'background 3s ease',
-            }}
+          {/* ===== CIELO ===== */}
+          <div className="relative h-[230px] sm:h-[290px] overflow-hidden"
+            style={{ background: `linear-gradient(180deg, ${skyTop} 0%, ${skyMid} 55%, ${skyLow} 100%)`, transition: 'background 3s ease' }}
           >
-            {/* Estrellas */}
+            {/* Estrellas (noche) */}
             <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]" style={{ opacity: starsOpacity }}>
               {STARS.map(([x, y, r], i) => (
                 <span
@@ -516,41 +559,90 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               ))}
             </div>
 
-            {/* LA LUNA — protagonista del cielo */}
+            {/* ASTRO PROTAGONISTA: sol de día, luna de noche */}
             <div className="absolute right-[7%] top-[4%] sm:right-[10%] sm:top-[2%]"
               style={{ filter: 'drop-shadow(0 0 18px rgba(169,201,221,0.25))' }}
             >
-              {moon.phase !== null ? (
-                <MoonDisc phase={moon.phase} />
-              ) : (
-                <Moon className="w-40 h-40 text-[#A9C9DD]/40" />
-              )}
+              {isNight
+                ? (moon.phase !== null ? <MoonDisc phase={moon.phase} /> : <Moon className="w-40 h-40 text-[#A9C9DD]/40" />)
+                : <SunDisc strength={dayGlow.sun} />}
             </div>
 
-            {/* Ficha de la luna */}
+            {/* Ficha del astro: sol de día / luna de noche */}
             <div className="absolute left-4 sm:left-8 bottom-4">
-              <span className="text-[10px] tracking-[0.3em] text-[#D4A017] uppercase font-medium flex items-center gap-2">
-                <Moon className="w-3.5 h-3.5" /> La luna, hoy
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#EBE6DD] mt-1.5 drop-shadow">
-                {moon.phase !== null ? moonPhaseName(moon.phase) : '—'}
-              </h2>
-              <p className="text-xs sm:text-sm text-[#A9C9DD] mt-1 font-light">
-                {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
-                {moon.rise && moon.set ? ` · sale ${moon.rise} · se pone ${moon.set}` : ''}
-              </p>
-              <p className="text-[11px] text-[#A9C9DD]/75 font-light italic mt-1.5">
-                {isNight
-                  ? moonPower >= 0.1 ? 'Su luz baña la bocana — y este panel.' : 'Noche oscura: la Vía Láctea manda esta noche.'
-                  : 'Al caer la noche, este panel se encenderá con su luz.'}
-              </p>
+              {isNight ? (
+                <>
+                  <span className="text-[10px] tracking-[0.3em] text-[#D4A017] uppercase font-medium flex items-center gap-2">
+                    <Moon className="w-3.5 h-3.5" /> La luna, hoy
+                  </span>
+                  <h2 className="font-serif text-2xl sm:text-3xl text-[#EBE6DD] mt-1.5 drop-shadow">
+                    {moon.phase !== null ? moonPhaseName(moon.phase) : '—'}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#A9C9DD] mt-1 font-light">
+                    {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
+                    {moon.rise && moon.set ? ` · sale ${moon.rise} · se pone ${moon.set}` : ''}
+                  </p>
+                  <p className="text-[11px] text-[#A9C9DD]/75 font-light italic mt-1.5">
+                    {moonPower >= 0.1 ? 'Su luz baña la bocana — y este panel.' : 'Noche oscura: la Vía Láctea manda esta noche.'}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <span className="text-[10px] tracking-[0.3em] text-[#D4A017] uppercase font-medium flex items-center gap-2">
+                    <Sun className="w-3.5 h-3.5" /> El sol, hoy
+                  </span>
+                  <h2 className="font-serif text-2xl sm:text-3xl text-[#EBE6DD] mt-1.5 drop-shadow">
+                    {wmoText(wmoToday)}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-[#A9C9DD] mt-1 font-light">
+                    Sale {fmtTime(sun.sunriseD)} · se pone {fmtTime(sun.sunsetD)}
+                  </p>
+                  <p className="text-[11px] text-[#A9C9DD]/75 font-light italic mt-1.5">
+                    {dayGlow.sun > 0.6 ? 'Sol pleno sobre la bocana — este panel lo refleja.'
+                      : dayGlow.sun > 0.25 ? 'Luz suave entre nubes sobre Aguiño.'
+                      : 'Cielo cubierto: la luz llega difusa del Atlántico.'}
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Horizonte */}
             <div className="absolute inset-x-0 bottom-0 h-[3px]"
               style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.55) 50%, transparent 100%)' }} />
-            <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
-              style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,21,34,0.6) 100%)' }} />
+          </div>
+
+          {/* ===== EL MAR: fondo con el reflejo del astro ===== */}
+          <div className="relative h-[80px] sm:h-[104px] overflow-hidden"
+            style={{ background: `linear-gradient(180deg, ${seaTop} 0%, ${seaLow} 100%)`, transition: 'background 3s ease' }}
+          >
+            {/* Camino de luz del astro sobre el agua */}
+            <div className="absolute top-0 h-full w-[120px]"
+              style={{
+                left: '62%',
+                background: isNight
+                  ? `linear-gradient(180deg, rgba(203,218,242,${(0.4 + moonPower * 0.45).toFixed(3)}) 0%, rgba(203,218,242,${(0.12 + moonPower * 0.15).toFixed(3)}) 55%, transparent 100%)`
+                  : `linear-gradient(180deg, rgba(255,222,140,${(0.42 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,205,110,${(0.12 + dayGlow.warm).toFixed(3)}) 55%, transparent 100%)`,
+                animation: 'hudPulse 3.4s ease-in-out infinite',
+                transition: 'background 3s ease',
+              }} />
+            <div className="absolute top-0 h-full w-[64px]"
+              style={{
+                left: '70%',
+                background: isNight
+                  ? `linear-gradient(180deg, rgba(203,218,242,${(0.25 + moonPower * 0.3).toFixed(3)}) 0%, transparent 85%)`
+                  : `linear-gradient(180deg, rgba(255,222,140,${(0.25 + dayGlow.warm).toFixed(3)}) 0%, transparent 85%)`,
+                animation: 'hudPulse 2.8s ease-in-out 0.9s infinite',
+                transition: 'background 3s ease',
+              }} />
+            {/* Ondas suaves */}
+            <svg className="absolute bottom-0 left-0 w-[200%] h-6 opacity-25" viewBox="0 0 240 20" preserveAspectRatio="none"
+              style={{ animation: 'waveDrift 9s linear infinite' }}>
+              <path d="M0 10 Q 7.5 4 15 10 T 30 10 T 45 10 T 60 10 T 75 10 T 90 10 T 105 10 T 120 10 T 135 10 T 150 10 T 165 10 T 180 10 T 195 10 T 210 10 T 225 10 T 240 10 V 20 H 0 Z" fill="#A9C9DD" />
+            </svg>
+            <svg className="absolute bottom-0 left-0 w-[200%] h-8 opacity-15" viewBox="0 0 240 20" preserveAspectRatio="none"
+              style={{ animation: 'waveDrift 6s linear infinite' }}>
+              <path d="M0 10 Q 7.5 2 15 10 T 30 10 T 45 10 T 60 10 T 75 10 T 90 10 T 105 10 T 120 10 T 135 10 T 150 10 T 165 10 T 180 10 T 195 10 T 210 10 T 225 10 T 240 10 V 20 H 0 Z" fill="#EBE6DD" />
+            </svg>
           </div>
 
           {/* Barra de estado del instrumento */}
