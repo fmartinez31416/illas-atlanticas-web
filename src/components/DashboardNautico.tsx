@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { CompassNautico } from './CompassNautico';
 import {
   ArrowLeft, Wind, Sun, Sunrise, Sunset,
   Thermometer, Droplets, Compass, RefreshCw, Activity,
@@ -90,51 +91,62 @@ const wmoText = (wmo: number) => {
   return 'Tormenta';
 };
 
-/** Disco lunar con fase real (aproximación por intersección de círculos, sin ramas complejas) */
-function MoonDisc({ phase, size = 110 }: { phase: number; size?: number }) {
-  const k = (1 - Math.cos(2 * Math.PI * phase)) / 2; // fracción iluminada
-  const waxing = phase <= 0.5;
+/** Luna real: fotografía NASA + sombra de fase con terminador difuminado (fracción iluminada exacta) */
+function MoonDisc({ phase, size = 132 }: { phase: number; size?: number }) {
   const r = 32;
   const c = 50;
-  let baseFill = '#EBE6DD';
-  let overlay: { cx: number; fill: string } | null = null;
-  const off = Math.abs(0.5 - k) * 200;
-  if (waxing) {
-    if (k <= 0.5) {
-      baseFill = '#0B1D2E';
-      overlay = { cx: c + off, fill: '#EBE6DD' };
-    } else {
-      overlay = { cx: c - off, fill: '#0B1D2E' };
-    }
-  } else {
-    if (k <= 0.5) {
-      baseFill = '#0B1D2E';
-      overlay = { cx: c - off, fill: '#EBE6DD' };
-    } else {
-      overlay = { cx: c + off, fill: '#0B1D2E' };
-    }
+  const k = (1 - Math.cos(2 * Math.PI * phase)) / 2; // fracción iluminada
+  const s = 1 - k; // fracción en sombra
+  // Distancia del disco de sombra para tapar exactamente la fracción s (bisección sobre solapamiento de círculos)
+  const overlap = (d: number) => {
+    const x = Math.min(1, Math.max(0, d / (2 * r)));
+    return (2 / Math.PI) * (Math.acos(x) - x * Math.sqrt(1 - x * x));
+  };
+  let lo = 0, hi = 2 * r;
+  for (let i = 0; i < 26; i++) {
+    const mid = (lo + hi) / 2;
+    if (overlap(mid) < s) hi = mid; else lo = mid;
   }
-  const glow = 0.25 + (k * 0.55);
+  const d = (lo + hi) / 2;
+  const waxing = phase <= 0.5;
+  const shadowCx = waxing ? c - d : c + d;
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={`Luna ${moonPhaseName(phase)}`}>
-      <defs>
-        <clipPath id="moonDiscClip"><circle cx={c} cy={c} r={r} /></clipPath>
-        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#EBE6DD" stopOpacity={glow} />
-          <stop offset="70%" stopColor="#EBE6DD" stopOpacity={glow * 0.35} />
-          <stop offset="100%" stopColor="#EBE6DD" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <circle cx={c} cy={c} r="46" fill="url(#moonGlow)" />
-      <circle cx={c} cy={c} r={r + 2.5} fill="none" stroke="#D4A017" strokeOpacity="0.45" strokeWidth="0.8" />
-      <circle cx={c} cy={c} r={r} fill={baseFill} />
-      {overlay && (
-        <g clipPath="url(#moonDiscClip)">
-          <circle cx={overlay.cx} cy={c} r={r} fill={overlay.fill} />
+    <div className="relative" style={{ width: size, height: size }}>
+      {/* Halo suave */}
+      <div className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 28px 10px rgba(169,201,221,${(0.10 + k * 0.14).toFixed(3)}), 0 0 70px 24px rgba(169,201,221,0.05)` }} />
+      <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={`Luna ${moonPhaseName(phase)}`}>
+        <defs>
+          <clipPath id="moonClip"><circle cx={c} cy={c} r={r} /></clipPath>
+          <filter id="softTerminator" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="1.9" />
+          </filter>
+          <radialGradient id="limbShade" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#071522" stopOpacity="0" />
+            <stop offset="78%" stopColor="#071522" stopOpacity="0.08" />
+            <stop offset="96%" stopColor="#071522" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#071522" stopOpacity="0.85" />
+          </radialGradient>
+          <mask id="phaseMask">
+            <circle cx={c} cy={c} r={r} fill="white" />
+            <circle cx={shadowCx} cy={c} r={r} fill="black" filter="url(#softTerminator)" />
+          </mask>
+        </defs>
+        {/* Anillo dorado sutil */}
+        <circle cx={c} cy={c} r={r + 2} fill="none" stroke="#D4A017" strokeOpacity="0.35" strokeWidth="0.7" />
+        {/* Base: luna en sombra (earthshine tenue) */}
+        <g clipPath="url(#moonClip)">
+          <image href="/media/moon_full.jpg" x={c - r} y={c - r} width={2 * r} height={2 * r} preserveAspectRatio="xMidYMid slice" opacity="0.22" />
+          <circle cx={c} cy={c} r={r} fill="#2A3F55" opacity="0.45" />
         </g>
-      )}
-      <circle cx={c} cy={c} r={r} fill="none" stroke="#EBE6DD" strokeOpacity="0.3" strokeWidth="0.5" />
-    </svg>
+        {/* Zona iluminada: fotografía a plena luz con la máscara de fase */}
+        <g clipPath="url(#moonClip)">
+          <image href="/media/moon_full.jpg" x={c - r} y={c - r} width={2 * r} height={2 * r} preserveAspectRatio="xMidYMid slice" mask="url(#phaseMask)" />
+        </g>
+        {/* Profundidad de esfera (oscurecimiento del limbo) */}
+        <circle cx={c} cy={c} r={r} fill="url(#limbShade)" />
+        <circle cx={c} cy={c} r={r} fill="none" stroke="#EBE6DD" strokeOpacity="0.18" strokeWidth="0.4" />
+      </svg>
+    </div>
   );
 }
 
@@ -313,7 +325,6 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
 
   // ==== ANEMÓMETRO: escala 0–35 nudos ====
   const ANEMO_MAX = 35;
-  const anemoC = 150;
   const anemoStart = 225; // ángulo inicial (abajo-izquierda)
   const anemoSweep = 270;
   const anemoValue = Math.max(0, Math.min(ANEMO_MAX, telemetry.windKnots));
@@ -529,89 +540,127 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 </span>
 
                 <div className="relative">
-                  <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 300 300" role="img" aria-label="Anemómetro con escala de nudos y rosa de los vientos">
-                    <circle cx={anemoC} cy={anemoC} r="146" fill="none" stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                    <circle cx={anemoC} cy={anemoC} r="132" fill="none" stroke="#D4A017" strokeOpacity="0.4" strokeWidth="1" />
+                  <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 300 300" role="img" aria-label="Anemómetro náutico con escala de nudos">
+                    <defs>
+                      <linearGradient id="brassRing" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#F5D780" />
+                        <stop offset="25%" stopColor="#D4A017" />
+                        <stop offset="50%" stopColor="#B8860B" />
+                        <stop offset="75%" stopColor="#D4A017" />
+                        <stop offset="100%" stopColor="#F5D780" />
+                      </linearGradient>
+                      <radialGradient id="bezelInner" cx="45%" cy="40%" r="80%">
+                        <stop offset="0%" stopColor="#1A3A5C" />
+                        <stop offset="85%" stopColor="#071522" />
+                        <stop offset="100%" stopColor="#0B1D2E" />
+                      </radialGradient>
+                      <radialGradient id="glassDome" cx="38%" cy="32%" r="75%">
+                        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.20" />
+                        <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.05" />
+                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                      </radialGradient>
+                      <linearGradient id="specular" x1="0.3" y1="0" x2="0.7" y2="0.5">
+                        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.24" />
+                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                      </linearGradient>
+                      <radialGradient id="cupMetal" cx="35%" cy="30%" r="80%">
+                        <stop offset="0%" stopColor="#F5F7FA" stopOpacity="0.8" />
+                        <stop offset="35%" stopColor="#A9C9DD" stopOpacity="0.3" />
+                        <stop offset="70%" stopColor="#123350" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#071522" stopOpacity="0.7" />
+                      </radialGradient>
+                    </defs>
 
-                    {/* Escala de nudos (0–35) */}
-                    {anemoScaleTicks.map((v) => {
+                    {/* Sombra proyectada del instrumento */}
+                    <circle cx="152" cy="156" r="132" fill="#000" opacity="0.45" />
+
+                    {/* Aro de latón biselado */}
+                    <circle cx="150" cy="150" r="138" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1.2" />
+                    <circle cx="150" cy="150" r="132" fill="none" stroke="#F5D780" strokeOpacity="0.35" strokeWidth="1" />
+                    {/* Esfera interior profunda */}
+                    <circle cx="150" cy="150" r="124" fill="url(#bezelInner)" />
+
+                    {/* Escala grabada 0–35 nudos */}
+                    {Array.from({ length: 36 }).map((_, i) => {
+                      const v = i;
                       const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
-                      const x1 = anemoC + Math.sin(a) * 128;
-                      const y1 = anemoC - Math.cos(a) * 128;
-                      const x2 = anemoC + Math.sin(a) * 119;
-                      const y2 = anemoC - Math.cos(a) * 119;
-                      const xl = anemoC + Math.sin(a) * 108;
-                      const yl = anemoC - Math.cos(a) * 108;
+                      const major = v % 5 === 0;
+                      const r1 = major ? 104 : 110;
+                      const r2 = 116;
                       return (
-                        <g key={v}>
-                          <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#D4A017" strokeOpacity="0.7" strokeWidth="2" />
-                          <text x={xl} y={yl + 3.5} textAnchor="middle" fill="#A9C9DD" opacity="0.75" fontSize="9" fontFamily="monospace">{v}</text>
-                        </g>
+                        <line
+                          key={v}
+                          x1={150 + Math.sin(a) * r1} y1={150 - Math.cos(a) * r1}
+                          x2={150 + Math.sin(a) * r2} y2={150 - Math.cos(a) * r2}
+                          stroke={major ? '#D4A017' : '#A9C9DD'}
+                          strokeOpacity={major ? 0.85 : 0.3}
+                          strokeWidth={major ? 2 : 0.8}
+                        />
                       );
                     })}
+                    {anemoScaleTicks.map((v) => {
+                      const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
+                      return (
+                        <text key={v} x={150 + Math.sin(a) * 90} y={150 - Math.cos(a) * 90 + 3.5}
+                          textAnchor="middle" fill="#EBE6DD" opacity="0.8" fontSize="10" fontFamily="monospace">
+                          {v}
+                        </text>
+                      );
+                    })}
+                    {/* Puntos cardinales de referencia */}
+                    <text x="150" y="56" textAnchor="middle" fill="#D4A017" fontSize="12" fontWeight="bold" fontFamily="serif">N</text>
+                    <text x="238" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">E</text>
+                    <text x="150" y="252" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">S</text>
+                    <text x="62" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">W</text>
 
-                    {/* Rosa de los vientos */}
-                    <g stroke="#A9C9DD" strokeOpacity="0.22" strokeWidth="1">
-                      {Array.from({ length: 36 }).map((_, i) => {
-                        const ang = (i * 10 * Math.PI) / 180;
-                        const r1 = 92, r2 = i % 3 === 0 ? 84 : 88;
-                        return (
-                          <line
-                            key={i}
-                            x1={anemoC + r1 * Math.sin(ang)} y1={anemoC - r1 * Math.cos(ang)}
-                            x2={anemoC + r2 * Math.sin(ang)} y2={anemoC - r2 * Math.cos(ang)}
-                          />
-                        );
-                      })}
-                    </g>
-                    <text x={anemoC} y="44" textAnchor="middle" fill="#D4A017" fontSize="17" fontWeight="bold" fontFamily="serif">N</text>
-                    <text x={anemoC + 80} y={anemoC + 5} textAnchor="middle" fill="#A9C9DD" fontSize="13" fontFamily="serif" opacity="0.8">E</text>
-                    <text x={anemoC} y={anemoC + 82} textAnchor="middle" fill="#A9C9DD" fontSize="13" fontFamily="serif" opacity="0.8">S</text>
-                    <text x={anemoC - 80} y={anemoC + 5} textAnchor="middle" fill="#A9C9DD" fontSize="13" fontFamily="serif" opacity="0.8">W</text>
-
-                    {/* Aguja de velocidad (escala de nudos) */}
-                    <g
-                      style={{
-                        transform: `rotate(${anemoAngle}deg)`,
-                        transformOrigin: `${anemoC}px ${anemoC}px`,
-                        transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                    >
-                      <line x1={anemoC} y1={anemoC} x2={anemoC} y2={anemoC - 112} stroke="#D4A017" strokeWidth="2.6" strokeLinecap="round" />
-                      <polygon points={`${anemoC},${anemoC - 120} ${anemoC - 5},${anemoC - 103} ${anemoC + 5},${anemoC - 103}`} fill="#D4A017" />
-                    </g>
-
-                    {/* Aguja de dirección (rosa) */}
+                    {/* Aguja de dirección (viento) */}
                     <g
                       style={{
                         transform: `rotate(${telemetry.windDeg}deg)`,
-                        transformOrigin: `${anemoC}px ${anemoC}px`,
+                        transformOrigin: '150px 150px',
                         transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       }}
                     >
-                      <polygon points={`${anemoC},${anemoC - 74} ${anemoC - 4.5},${anemoC - 60} ${anemoC + 4.5},${anemoC - 60}`} fill="#EBE6DD" opacity="0.9" />
-                      <polygon points={`${anemoC},${anemoC + 74} ${anemoC - 4.5},${anemoC + 60} ${anemoC + 4.5},${anemoC + 60}`} fill="#A9C9DD" opacity="0.5" />
+                      <polygon points="150,74 154.5,150 145.5,150" fill="#EBE6DD" opacity="0.85" />
                     </g>
 
-                    {/* Rotor de cazoletas girando */}
-                    <g style={{ animation: `spin360 ${spinDuration}s linear infinite`, transformOrigin: `${anemoC}px ${anemoC}px` }}>
+                    {/* Rotor de cazoletas metálico */}
+                    <g style={{ animation: `spin360 ${spinDuration}s linear infinite`, transformOrigin: '150px 150px' }}>
                       {[0, 120, 240].map((deg) => (
-                        <g key={deg} transform={`rotate(${deg} ${anemoC} ${anemoC})`}>
-                          <line x1={anemoC} y1={anemoC} x2={anemoC} y2={anemoC - 52} stroke="#A9C9DD" strokeOpacity="0.7" strokeWidth="2.5" />
-                          <circle cx={anemoC} cy={anemoC - 58} r="11" fill="none" stroke="#EBE6DD" strokeWidth="2.5" opacity="0.95" />
+                        <g key={deg} transform={`rotate(${deg} 150 150)`}>
+                          <line x1="150" y1="150" x2="150" y2="112" stroke="#8B6914" strokeWidth="2" strokeOpacity="0.9" />
+                          <circle cx="150" cy="104" r="13" fill="url(#cupMetal)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8" />
+                          <circle cx="146" cy="100" r="4" fill="#FFFFFF" opacity="0.35" />
                         </g>
                       ))}
-                      <circle cx={anemoC} cy={anemoC} r="9" fill="none" stroke="#D4A017" strokeWidth="2" />
-                      <circle cx={anemoC} cy={anemoC} r="3" fill="#EBE6DD" />
+                      <circle cx="150" cy="150" r="10" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1" />
                     </g>
 
+                    {/* Aguja de velocidad con sombra proyectada */}
+                    <g
+                      style={{
+                        transform: `rotate(${anemoAngle}deg)`,
+                        transformOrigin: '150px 150px',
+                        transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}
+                    >
+                      <line x1="151.5" y1="153" x2="151.5" y2="62" stroke="#071522" strokeOpacity="0.6" strokeWidth="4" strokeLinecap="round" />
+                      <line x1="150" y1="150" x2="150" y2="60" stroke="url(#brassRing)" strokeWidth="3" strokeLinecap="round" />
+                      <polygon points="150,52 155.5,72 144.5,72" fill="#D4A017" />
+                    </g>
+                    <circle cx="150" cy="150" r="6" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="0.8" />
+
                     {/* Lectura central */}
-                    <text x={anemoC} y={anemoC + 2} textAnchor="middle" fill="#EBE6DD" fontSize="26" fontWeight="bold" fontFamily="serif">
+                    <text x="150" y="178" textAnchor="middle" fill="#EBE6DD" fontSize="24" fontWeight="bold" fontFamily="serif">
                       {telemetry.windKnots.toFixed(1)}
                     </text>
-                    <text x={anemoC} y={anemoC + 20} textAnchor="middle" fill="#D4A017" fontSize="8.5" letterSpacing="2.5" fontFamily="monospace">
+                    <text x="150" y="194" textAnchor="middle" fill="#D4A017" fontSize="8" letterSpacing="2.5" fontFamily="monospace">
                       NUDOS
                     </text>
+
+                    {/* Cúpula de cristal + reflejo especular */}
+                    <circle cx="150" cy="150" r="124" fill="url(#glassDome)" />
+                    <ellipse cx="108" cy="92" rx="46" ry="18" fill="url(#specular)" transform="rotate(-25 108 92)" opacity="0.85" />
                   </svg>
                 </div>
 
@@ -622,6 +671,11 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 <p className="text-[10px] text-[#A9C9DD] mt-1 font-light tracking-wide">
                   Fuerza {beaufortName(telemetry.windKnots)} · el rotor gira a la velocidad real del viento
                 </p>
+
+                {/* BRÚJULA REAL (DeviceOrientation en móvil) */}
+                <div className="mt-6 pt-6 border-t border-[#A9C9DD]/10 w-full">
+                  <CompassNautico />
+                </div>
               </div>
 
               {/* 3 · ESTADO DEL MAR (medidor de metros, sin olas animadas) */}
