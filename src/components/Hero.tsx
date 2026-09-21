@@ -36,13 +36,18 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
   return (
     <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-28 pb-16 bg-stone-900">
-      {/* Imagen de Portada Real */}
+      {/* Vídeo real de las vistas desde el ático */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img
-          src="/01_hero_portada.webp"
-          alt="Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño"
+        <video
           className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
-          loading="eager"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/media/hero_vistas_islas_poster.jpg"
+          src="/media/hero_vistas_islas.mp4"
+          aria-label="Vídeo de las vistas a la ría y a las islas desde el ático Illas Atlánticas"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/30 to-stone-950/40"></div>
       </div>
