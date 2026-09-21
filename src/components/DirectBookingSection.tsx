@@ -11,7 +11,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
   return (
     <section id="reserva-directa" className="py-12 sm:py-14 bg-white border-b border-[#1A3A5C]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
           {/* Texto */}
           <Reveal>
             <div>
@@ -22,8 +22,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 El mejor precio, <span className="italic text-[#D4A017]">garantizado.</span>
               </h2>
               <p className="text-stone-600 mt-4 leading-relaxed max-w-xl">
-                Reservando directamente disfrutas de la <strong className="text-stone-900">mejor tarifa</strong>,
-                la <strong className="text-stone-900">atención personal del anfitrión</strong> y unas
+                La <strong className="text-stone-900">mejor tarifa</strong>, la{' '}
+                <strong className="text-stone-900">atención personal del anfitrión</strong> y unas
                 condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
               </p>
 
@@ -32,9 +32,9 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#D4A017] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">Garantía del mejor precio:</strong> si encuentras
-                    la misma estancia más barata en otra web, la igualamos y añadimos un{' '}
-                    <strong className="text-[#1A3A5C]">5% extra de descuento</strong>.{' '}
+                    <strong className="text-[#1A3A5C]">Garantía del mejor precio:</strong> si está más
+                    barato en otra web, lo igualamos y añadimos un{' '}
+                    <strong className="text-[#1A3A5C]">5% extra</strong>.{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
                       ¿Cómo funciona?
                     </span>
@@ -83,17 +83,17 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
           </Reveal>
 
           {/* Columna viva: Puente de Mando + Bitácora + LonjaLens */}
-          <Reveal delay={120}>
-            <div className="flex flex-col gap-4">
+          <Reveal delay={120} className="h-full">
+            <div className="flex flex-col gap-4 h-full">
               {/* Dato vivo: el Puente de Mando como gancho */}
               <button
                 type="button"
                 onClick={onOpenBitacora}
                 aria-label="Abrir el Puente de Mando Atlántico"
-                className="relative rounded-md overflow-hidden shadow-xl w-full text-left cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/60"
+                className="relative rounded-md overflow-hidden shadow-xl w-full text-left cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/60 flex-1"
                 style={{ border: '1px solid rgba(26,58,92,0.15)' }}
               >
-                <div className="relative" style={{ background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)' }}>
+                <div className="relative h-full" style={{ background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)' }}>
                   <span className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
                   <span className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
                   <span className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
