@@ -92,12 +92,11 @@ const wmoText = (wmo: number) => {
 };
 
 /** Luna real: fotografía NASA + sombra de fase con terminador difuminado (fracción iluminada exacta) */
-function MoonDisc({ phase, size = 132 }: { phase: number; size?: number }) {
+function MoonDisc({ phase, size = 200 }: { phase: number; size?: number }) {
   const r = 32;
   const c = 50;
   const k = (1 - Math.cos(2 * Math.PI * phase)) / 2; // fracción iluminada
   const s = 1 - k; // fracción en sombra
-  // Distancia del disco de sombra para tapar exactamente la fracción s (bisección sobre solapamiento de círculos)
   const overlap = (d: number) => {
     const x = Math.min(1, Math.max(0, d / (2 * r)));
     return (2 / Math.PI) * (Math.acos(x) - x * Math.sqrt(1 - x * x));
@@ -112,8 +111,7 @@ function MoonDisc({ phase, size = 132 }: { phase: number; size?: number }) {
   const shadowCx = waxing ? c - d : c + d;
   return (
     <div className="relative" style={{ width: size, height: size }}>
-      {/* Halo suave */}
-      <div className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 28px 10px rgba(169,201,221,${(0.10 + k * 0.14).toFixed(3)}), 0 0 70px 24px rgba(169,201,221,0.05)` }} />
+      <div className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 34px 12px rgba(169,201,221,${(0.14 + k * 0.2).toFixed(3)}), 0 0 90px 30px rgba(169,201,221,${(0.06 + k * 0.1).toFixed(3)})` }} />
       <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={`Luna ${moonPhaseName(phase)}`}>
         <defs>
           <clipPath id="moonClip"><circle cx={c} cy={c} r={r} /></clipPath>
@@ -131,18 +129,14 @@ function MoonDisc({ phase, size = 132 }: { phase: number; size?: number }) {
             <circle cx={shadowCx} cy={c} r={r} fill="black" filter="url(#softTerminator)" />
           </mask>
         </defs>
-        {/* Anillo dorado sutil */}
         <circle cx={c} cy={c} r={r + 2} fill="none" stroke="#D4A017" strokeOpacity="0.35" strokeWidth="0.7" />
-        {/* Base: luna en sombra (earthshine tenue) */}
         <g clipPath="url(#moonClip)">
           <image href="/media/moon_full.jpg" x={c - r} y={c - r} width={2 * r} height={2 * r} preserveAspectRatio="xMidYMid slice" opacity="0.22" />
           <circle cx={c} cy={c} r={r} fill="#2A3F55" opacity="0.45" />
         </g>
-        {/* Zona iluminada: fotografía a plena luz con la máscara de fase */}
         <g clipPath="url(#moonClip)">
           <image href="/media/moon_full.jpg" x={c - r} y={c - r} width={2 * r} height={2 * r} preserveAspectRatio="xMidYMid slice" mask="url(#phaseMask)" />
         </g>
-        {/* Profundidad de esfera (oscurecimiento del limbo) */}
         <circle cx={c} cy={c} r={r} fill="url(#limbShade)" />
         <circle cx={c} cy={c} r={r} fill="none" stroke="#EBE6DD" strokeOpacity="0.18" strokeWidth="0.4" />
       </svg>
@@ -150,8 +144,8 @@ function MoonDisc({ phase, size = 132 }: { phase: number; size?: number }) {
   );
 }
 
-/** Glifo meteorológico dibujado a mano (más vistoso que un icono estándar) */
-function WeatherGlyph({ wmo, size = 40 }: { wmo: number; size?: number }) {
+/** Glifo meteorológico dibujado a mano */
+function WeatherGlyph({ wmo, size = 48 }: { wmo: number; size?: number }) {
   const gold = '#D4A017';
   const cream = '#EBE6DD';
   const sky = '#A9C9DD';
@@ -186,6 +180,107 @@ function WeatherGlyph({ wmo, size = 40 }: { wmo: number; size?: number }) {
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
       {body}
     </svg>
+  );
+}
+
+/** Medidor de altura de ola: instrumento circular de latón, a juego con el anemómetro */
+function WaveGauge({ height, seaTemp }: { height: number | null; seaTemp: number | null }) {
+  const MAX = 3;
+  const v = height !== null ? Math.max(0, Math.min(MAX, height)) : 0;
+  const angle = 225 + (v / MAX) * 270;
+  const ticks = [0, 0.5, 1, 1.5, 2, 2.5, 3];
+  const stateLabel = height !== null
+    ? height < 0.5 ? 'Mar en calma'
+      : height < 1.25 ? 'Oleaje moderado'
+        : height < 2.5 ? 'Mar movido'
+          : 'Fuerte marejada'
+    : '—';
+  return (
+    <div className="flex flex-col items-center">
+      <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-4 flex items-center gap-2">
+        <Activity className="w-3.5 h-3.5 text-[#D4A017]" /> Altura de ola
+      </span>
+      <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 240 240" role="img" aria-label="Medidor de altura de ola">
+        <defs>
+          <linearGradient id="waveBrass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#F5D780" />
+            <stop offset="25%" stopColor="#D4A017" />
+            <stop offset="50%" stopColor="#B8860B" />
+            <stop offset="75%" stopColor="#D4A017" />
+            <stop offset="100%" stopColor="#F5D780" />
+          </linearGradient>
+          <radialGradient id="waveFace" cx="45%" cy="40%" r="80%">
+            <stop offset="0%" stopColor="#1E4A66" />
+            <stop offset="75%" stopColor="#0B1D2E" />
+            <stop offset="100%" stopColor="#071522" />
+          </radialGradient>
+          <radialGradient id="waveGlass" cx="38%" cy="32%" r="75%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.20" />
+            <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.05" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id="waveSpec" x1="0.3" y1="0" x2="0.7" y2="0.5">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.24" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <circle cx="122" cy="124" r="104" fill="#000" opacity="0.45" />
+        <circle cx="120" cy="120" r="110" fill="url(#waveBrass)" stroke="#8B6914" strokeWidth="1.2" />
+        <circle cx="120" cy="120" r="104" fill="none" stroke="#F5D780" strokeOpacity="0.35" strokeWidth="1" />
+        <circle cx="120" cy="120" r="98" fill="url(#waveFace)" />
+
+        {/* Escala 0–3 m */}
+        {ticks.map((t) => {
+          const a = ((225 + (t / MAX) * 270) * Math.PI) / 180;
+          const major = Math.round(t * 2) % 2 === 0;
+          const r1 = major ? 78 : 82;
+          const r2 = 90;
+          return (
+            <line
+              key={t}
+              x1={120 + Math.sin(a) * r1} y1={120 - Math.cos(a) * r1}
+              x2={120 + Math.sin(a) * r2} y2={120 - Math.cos(a) * r2}
+              stroke={major ? '#D4A017' : '#A9C9DD'}
+              strokeOpacity={major ? 0.85 : 0.3}
+              strokeWidth={major ? 2 : 0.8}
+            />
+          );
+        })}
+        {[0, 1, 2, 3].map((t) => {
+          const a = ((225 + (t / MAX) * 270) * Math.PI) / 180;
+          return (
+            <text key={t} x={120 + Math.sin(a) * 64} y={120 - Math.cos(a) * 64 + 3.5}
+              textAnchor="middle" fill="#EBE6DD" opacity="0.8" fontSize="10" fontFamily="monospace">
+              {t}
+            </text>
+          );
+        })}
+        <text x="120" y="30" textAnchor="middle" fill="#A9C9DD" fontSize="8" letterSpacing="2" fontFamily="monospace" opacity="0.7">METROS</text>
+
+        {/* Aguja */}
+        <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: '120px 120px', transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+          <line x1="121.5" y1="123" x2="121.5" y2="48" stroke="#071522" strokeOpacity="0.6" strokeWidth="4" strokeLinecap="round" />
+          <line x1="120" y1="120" x2="120" y2="46" stroke="url(#waveBrass)" strokeWidth="3" strokeLinecap="round" />
+          <polygon points="120,40 125,58 115,58" fill="#D4A017" />
+        </g>
+        <circle cx="120" cy="120" r="6" fill="url(#waveBrass)" stroke="#8B6914" strokeWidth="0.8" />
+
+        {/* Lectura central */}
+        <text x="120" y="138" textAnchor="middle" fill="#EBE6DD" fontSize="26" fontWeight="bold" fontFamily="serif">
+          {height !== null ? height.toFixed(1) : '--'}
+        </text>
+        <text x="120" y="154" textAnchor="middle" fill="#D4A017" fontSize="8" letterSpacing="2" fontFamily="monospace">METROS</text>
+
+        {/* Cristal */}
+        <circle cx="120" cy="120" r="98" fill="url(#waveGlass)" />
+        <ellipse cx="88" cy="76" rx="36" ry="14" fill="url(#waveSpec)" transform="rotate(-25 88 76)" opacity="0.85" />
+      </svg>
+      <p className="font-mono text-sm text-[#EBE6DD] tabular-nums mt-1">
+        {stateLabel}
+        <span className="text-[#A9C9DD]"> · mar {seaTemp !== null ? `${seaTemp.toFixed(1)} °C` : '--'}</span>
+      </p>
+      <p className="text-[10px] text-[#A9C9DD]/70 font-light mt-0.5">bocana de Arousa, en vivo</p>
+    </div>
   );
 }
 
@@ -312,12 +407,13 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const hour = now.getHours();
   const isNight = sun.sunsetD && sun.sunriseD ? now >= sun.sunsetD || now < sun.sunriseD : hour >= 21 || hour < 7;
   const moonPower = moon.illum !== null ? moon.illum / 100 : 0;
-  const starsOpacity = isNight ? 0.12 + (1 - moonPower) * 0.55 : 0;
+  const starsOpacity = isNight ? 0.25 + (1 - moonPower) * 0.6 : 0;
 
   const STARS = [
-    [8, 12, 1.1], [18, 6, 0.8], [30, 15, 1.2], [42, 8, 0.7], [55, 13, 1.0], [67, 5, 0.9],
-    [78, 11, 1.3], [88, 7, 0.7], [94, 16, 1.0], [12, 24, 0.8], [25, 21, 0.6], [37, 26, 0.9],
-    [61, 22, 0.8], [73, 25, 1.1], [86, 21, 0.7], [97, 24, 0.9], [48, 18, 0.6], [69, 15, 0.7],
+    [6, 14, 1.2], [14, 6, 0.9], [22, 18, 1.3], [28, 8, 0.8], [36, 16, 1.1], [44, 6, 0.7],
+    [52, 14, 1.0], [60, 5, 0.9], [68, 16, 1.3], [76, 8, 0.8], [84, 15, 1.0], [92, 6, 0.7],
+    [10, 28, 0.8], [20, 34, 0.7], [32, 26, 0.9], [46, 32, 0.8], [58, 26, 0.9], [70, 34, 1.0],
+    [82, 26, 0.8], [94, 30, 1.1], [40, 12, 0.6], [55, 20, 0.7],
   ] as const;
 
   // Velocidad de giro del rotor proporcional al viento
@@ -325,15 +421,15 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
 
   // ==== ANEMÓMETRO: escala 0–35 nudos ====
   const ANEMO_MAX = 35;
-  const anemoStart = 225; // ángulo inicial (abajo-izquierda)
+  const anemoStart = 225;
   const anemoSweep = 270;
   const anemoValue = Math.max(0, Math.min(ANEMO_MAX, telemetry.windKnots));
   const anemoAngle = anemoStart + (anemoValue / ANEMO_MAX) * anemoSweep;
   const anemoScaleTicks = Array.from({ length: ANEMO_MAX + 1 }, (_, i) => i).filter((v) => v % 5 === 0);
 
   // ==== Gráfica 24h ====
-  const chartW = 240;
-  const chartH = 52;
+  const chartW = 260;
+  const chartH = 56;
   const temps = hourly.temps;
   let polyPoints = '';
   let lastDot = { x: 0, y: chartH - 6 };
@@ -353,14 +449,6 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       y: chartH - 6 - ((temps[temps.length - 1] - min) / span) * (chartH - 14),
     };
   }
-
-  const stateLabel = marine.waveHeight !== null
-    ? marine.waveHeight < 0.5 ? 'Mar en calma'
-      : marine.waveHeight < 1.25 ? 'Oleaje moderado'
-        : marine.waveHeight < 2.5 ? 'Mar movido'
-          : 'Fuerte marejada'
-    : '—';
-  const waveFrac = marine.waveHeight !== null ? Math.min(1, marine.waveHeight / 3) : 0;
 
   return (
     <div id="puente-de-mando" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950 p-4 sm:p-8">
@@ -391,396 +479,330 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             border: '1px solid rgba(212,160,23,0.35)',
           }}
         >
-          {/* Luz de la escena: día dorado / noche con luz de luna real */}
-          <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
-            style={{
-              opacity: isNight ? 0 : 1,
-              background: 'radial-gradient(110% 90% at 50% 0%, rgba(212,160,23,0.12) 0%, rgba(212,160,23,0.03) 40%, transparent 65%)',
-            }} />
+          {/* ===== ILUMINACIÓN DE LA ESCENA: la luz nace del astro ===== */}
+          {/* Noche: luz de luna desde el astro (arriba a la derecha), baña todo el panel */}
           <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
             style={{
               opacity: isNight ? 1 : 0,
-              background: `radial-gradient(90% 75% at 74% 6%, rgba(198,214,240,${(0.10 + moonPower * 0.22).toFixed(3)}) 0%, rgba(198,214,240,0.03) 45%, transparent 70%)`,
+              background: `radial-gradient(42% 34% at 72% 10%, rgba(203,218,242,${(0.22 + moonPower * 0.34).toFixed(3)}) 0%, rgba(203,218,242,${(0.08 + moonPower * 0.12).toFixed(3)}) 35%, rgba(203,218,242,0.02) 60%, transparent 78%)`,
             }} />
-          {/* Estrellas nocturnas (más visibles con menos luna) */}
-          <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]" style={{ opacity: starsOpacity }}>
-            {STARS.map(([x, y, r], i) => (
-              <span
-                key={i}
-                className="absolute rounded-full bg-[#EBE6DD]"
-                style={{
-                  left: `${x}%`, top: `${y}%`, width: r, height: r,
-                  animation: `hudPulse ${2.5 + (i % 5) * 0.9}s ease-in-out ${(i % 7) * 0.6}s infinite`,
-                }}
-              />
-            ))}
-          </div>
+          {/* Día: luz cálida del sol */}
+          <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
+            style={{
+              opacity: isNight ? 0 : 1,
+              background: 'radial-gradient(50% 40% at 30% 6%, rgba(212,160,23,0.22) 0%, rgba(212,160,23,0.07) 40%, transparent 70%)',
+            }} />
 
-          {/* Esquinas de instrumento */}
-          <span className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
-          <span className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
-          <span className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
-          <span className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
-
-          {/* Textura de cristal */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
-            style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,255,255,0.6) 3px)' }} />
-
-          <div className="relative p-5 sm:p-8">
-
-            {/* Barra superior del panel */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#A9C9DD]/15 pb-4 mb-6">
-              <div className="flex items-center gap-3">
-                <span className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full ${isLive ? 'bg-[#D4A017]' : 'bg-stone-400'}`}
-                    style={isLive ? { animation: 'hudPulse 2.2s ease-in-out infinite' } : undefined} />
-                  <span className="text-[10px] tracking-[0.3em] text-[#A9C9DD] font-medium uppercase">
-                    {isLive ? '● En vivo' : '● Respaldo local'}
-                  </span>
-                </span>
-                <span className="text-[10px] tracking-[0.2em] text-stone-400 uppercase font-mono hidden sm:inline">
-                  ESTACIÓN AGUIÑO · BOCANA DE AROUSA
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm font-mono text-[#EBE6DD] tabular-nums tracking-widest">
-                  {now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-                </span>
-                <button
-                  onClick={fetchRealWeather}
-                  disabled={isLoading}
-                  className="p-2 text-[#A9C9DD] hover:text-[#D4A017] transition-colors"
-                  title="Refrescar datos"
-                  aria-label="Refrescar datos meteorológicos"
-                >
-                  <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-                </button>
-              </div>
+          {/* ===== CIELO CON LA LUNA ===== */}
+          <div className="relative h-[240px] sm:h-[300px] overflow-hidden"
+            style={{
+              background: isNight
+                ? 'linear-gradient(180deg, #050D18 0%, #071A2B 55%, #0E2A3F 100%)'
+                : 'linear-gradient(180deg, #0D2942 0%, #16405F 55%, #1E5378 100%)',
+              transition: 'background 3s ease',
+            }}
+          >
+            {/* Estrellas */}
+            <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]" style={{ opacity: starsOpacity }}>
+              {STARS.map(([x, y, r], i) => (
+                <span
+                  key={i}
+                  className="absolute rounded-full bg-[#EBE6DD]"
+                  style={{
+                    left: `${x}%`, top: `${y}%`, width: r, height: r,
+                    animation: `hudPulse ${2.5 + (i % 5) * 0.9}s ease-in-out ${(i % 7) * 0.6}s infinite`,
+                  }}
+                />
+              ))}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* LA LUNA — protagonista del cielo */}
+            <div className="absolute right-[7%] top-[4%] sm:right-[10%] sm:top-[2%]"
+              style={{ filter: 'drop-shadow(0 0 18px rgba(169,201,221,0.25))' }}
+            >
+              {moon.phase !== null ? (
+                <MoonDisc phase={moon.phase} />
+              ) : (
+                <Moon className="w-40 h-40 text-[#A9C9DD]/40" />
+              )}
+            </div>
 
-              {/* 1 · TEMPERATURA */}
-              <div className="flex flex-col">
-                <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-3 flex items-center gap-2">
-                  <Thermometer className="w-3.5 h-3.5 text-[#D4A017]" /> Temperatura exterior
+            {/* Ficha de la luna */}
+            <div className="absolute left-4 sm:left-8 bottom-4">
+              <span className="text-[10px] tracking-[0.3em] text-[#D4A017] uppercase font-medium flex items-center gap-2">
+                <Moon className="w-3.5 h-3.5" /> La luna, hoy
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#EBE6DD] mt-1.5 drop-shadow">
+                {moon.phase !== null ? moonPhaseName(moon.phase) : '—'}
+              </h2>
+              <p className="text-xs sm:text-sm text-[#A9C9DD] mt-1 font-light">
+                {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
+                {moon.rise && moon.set ? ` · sale ${moon.rise} · se pone ${moon.set}` : ''}
+              </p>
+              <p className="text-[11px] text-[#A9C9DD]/75 font-light italic mt-1.5">
+                {isNight
+                  ? moonPower >= 0.1 ? 'Su luz baña la bocana — y este panel.' : 'Noche oscura: la Vía Láctea manda esta noche.'
+                  : 'Al caer la noche, este panel se encenderá con su luz.'}
+              </p>
+            </div>
+
+            {/* Horizonte */}
+            <div className="absolute inset-x-0 bottom-0 h-[3px]"
+              style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.55) 50%, transparent 100%)' }} />
+            <div className="absolute inset-x-0 bottom-0 h-10 pointer-events-none"
+              style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(7,21,34,0.6) 100%)' }} />
+          </div>
+
+          {/* Barra de estado del instrumento */}
+          <div className="relative flex flex-wrap items-center justify-between gap-3 px-5 sm:px-8 py-3 border-b border-[#A9C9DD]/10 bg-[#0B1D2E]/60">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${isLive ? 'bg-[#D4A017]' : 'bg-stone-400'}`}
+                  style={isLive ? { animation: 'hudPulse 2.2s ease-in-out infinite' } : undefined} />
+                <span className="text-[10px] tracking-[0.3em] text-[#A9C9DD] font-medium uppercase">
+                  {isLive ? '● En vivo' : '● Respaldo local'}
                 </span>
-                <div key={telemetry.updatedAt} className="anim-digit">
-                  <div className="text-7xl sm:text-8xl text-[#EBE6DD] leading-none tabular-nums font-sans font-bold tracking-tight">
-                    {telemetry.temp.toFixed(1)}<span className="text-3xl text-[#D4A017] align-top ml-1 font-medium">°C</span>
-                  </div>
-                  <p className="text-sm text-[#A9C9DD] mt-2 font-light">
-                    Sensación <span className="text-[#EBE6DD] font-medium tabular-nums">{telemetry.feelsLike.toFixed(1)} °C</span>
-                  </p>
-                </div>
+              </span>
+              <span className="text-[10px] tracking-[0.2em] text-stone-400 uppercase font-mono hidden sm:inline">
+                ESTACIÓN AGUIÑO · BOCANA DE AROUSA
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-mono text-[#EBE6DD] tabular-nums tracking-widest">
+                {now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </span>
+              <button
+                onClick={fetchRealWeather}
+                disabled={isLoading}
+                className="p-2 text-[#A9C9DD] hover:text-[#D4A017] transition-colors"
+                title="Refrescar datos"
+                aria-label="Refrescar datos meteorológicos"
+              >
+                <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+              </button>
+            </div>
+          </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-5">
-                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-3">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                      <Droplets className="w-3 h-3 text-[#A9C9DD]" /> Humedad
-                    </span>
-                    <span className="font-mono text-2xl text-[#EBE6DD] tabular-nums">{telemetry.humidity}%</span>
-                  </div>
-                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-3">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                      <Compass className="w-3 h-3 text-[#A9C9DD]" /> Barómetro
-                    </span>
-                    <span className="font-mono text-2xl text-[#EBE6DD] tabular-nums">{telemetry.pressure} <span className="text-xs text-[#A9C9DD]">hPa</span></span>
-                  </div>
-                </div>
+          {/* ===== CONSOLA DE INSTRUMENTOS ===== */}
+          <div className="relative px-4 sm:px-8 py-8"
+            style={{ background: 'linear-gradient(180deg, #0E2233 0%, #0B1D2E 60%, #081826 100%)' }}>
+            {/* Riel de latón sobre la consola */}
+            <div className="absolute inset-x-0 top-0 h-[2px]"
+              style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.4) 20%, rgba(212,160,23,0.6) 50%, rgba(212,160,23,0.4) 80%, transparent 100%)' }} />
 
-                {temps.length > 1 && (
-                  <div className="mt-5">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                        <Activity className="w-3 h-3 text-[#D4A017]" /> Temperatura · próximas 24 h
-                      </span>
-                      <span className="text-[10px] text-[#A9C9DD] font-mono">
-                        {Math.min(...temps).toFixed(0)}° / {Math.max(...temps).toFixed(0)}°
-                      </span>
-                    </div>
-                    <div className="relative bg-white/[0.03] border border-[#A9C9DD]/15 rounded-sm p-2 pt-3">
-                      <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-16" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
-                        <line x1="0" y1="6" x2={chartW} y2="6" stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                        <line x1="0" y1={chartH / 2} x2={chartW} y2={chartH / 2} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                        <line x1="0" y1={chartH - 6} x2={chartW} y2={chartH - 6} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
-                        <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
-                        <circle cx={lastDot.x} cy={lastDot.y} r="3" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
-                        <text x="2" y="10" fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.max(...temps).toFixed(0)}°</text>
-                        <text x="2" y={chartH / 2 + 4} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{((Math.max(...temps) + Math.min(...temps)) / 2).toFixed(0)}°</text>
-                        <text x="2" y={chartH - 2} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.min(...temps).toFixed(0)}°</text>
-                        <text x="0" y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[0] || ''}</text>
-                        <text x={chartW / 2 - 14} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[Math.floor(temps.length / 2)] || ''}</text>
-                        <text x={chartW - 28} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
-                      </svg>
-                    </div>
-                  </div>
-                )}
-
-                <div className="mt-auto pt-5">
-                  <div className="flex items-center justify-between bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm px-3 py-2.5">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                      <Sunrise className="w-3 h-3 text-[#D4A017]" /> Amanecer
-                    </span>
-                    <span className="font-mono text-sm text-[#EBE6DD] tabular-nums">{fmtTime(sun.sunriseD)}</span>
-                  </div>
-                  <div className="flex items-center justify-between bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm px-3 py-2.5 mt-2">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
-                      <Sunset className="w-3 h-3 text-[#D4A017]" /> Anochecer
-                    </span>
-                    <span className="font-mono text-sm text-[#EBE6DD] tabular-nums">{fmtTime(sun.sunsetD)}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2 · ANEMÓMETRO DE PRECISIÓN */}
-              <div className="flex flex-col items-center justify-center">
-                <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-4 flex items-center gap-2 self-start lg:self-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+              {/* ANEMÓMETRO */}
+              <div className="flex flex-col items-center">
+                <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-4 flex items-center gap-2">
                   <Wind className="w-3.5 h-3.5 text-[#D4A017]" /> Anemómetro · bocana
                 </span>
+                <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 300 300" role="img" aria-label="Anemómetro náutico con escala de nudos">
+                  <defs>
+                    <linearGradient id="brassRing" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="#F5D780" />
+                      <stop offset="25%" stopColor="#D4A017" />
+                      <stop offset="50%" stopColor="#B8860B" />
+                      <stop offset="75%" stopColor="#D4A017" />
+                      <stop offset="100%" stopColor="#F5D780" />
+                    </linearGradient>
+                    <radialGradient id="bezelInner" cx="45%" cy="40%" r="80%">
+                      <stop offset="0%" stopColor="#1A3A5C" />
+                      <stop offset="85%" stopColor="#071522" />
+                      <stop offset="100%" stopColor="#0B1D2E" />
+                    </radialGradient>
+                    <radialGradient id="glassDome" cx="38%" cy="32%" r="75%">
+                      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.20" />
+                      <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.05" />
+                      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                    </radialGradient>
+                    <linearGradient id="specular" x1="0.3" y1="0" x2="0.7" y2="0.5">
+                      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.24" />
+                      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                    </linearGradient>
+                    <radialGradient id="cupMetal" cx="35%" cy="30%" r="80%">
+                      <stop offset="0%" stopColor="#F5F7FA" stopOpacity="0.8" />
+                      <stop offset="35%" stopColor="#A9C9DD" stopOpacity="0.3" />
+                      <stop offset="70%" stopColor="#123350" stopOpacity="0.35" />
+                      <stop offset="100%" stopColor="#071522" stopOpacity="0.7" />
+                    </radialGradient>
+                  </defs>
 
-                <div className="relative">
-                  <svg className="w-64 h-64 sm:w-72 sm:h-72" viewBox="0 0 300 300" role="img" aria-label="Anemómetro náutico con escala de nudos">
-                    <defs>
-                      <linearGradient id="brassRing" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#F5D780" />
-                        <stop offset="25%" stopColor="#D4A017" />
-                        <stop offset="50%" stopColor="#B8860B" />
-                        <stop offset="75%" stopColor="#D4A017" />
-                        <stop offset="100%" stopColor="#F5D780" />
-                      </linearGradient>
-                      <radialGradient id="bezelInner" cx="45%" cy="40%" r="80%">
-                        <stop offset="0%" stopColor="#1A3A5C" />
-                        <stop offset="85%" stopColor="#071522" />
-                        <stop offset="100%" stopColor="#0B1D2E" />
-                      </radialGradient>
-                      <radialGradient id="glassDome" cx="38%" cy="32%" r="75%">
-                        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.20" />
-                        <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.05" />
-                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-                      </radialGradient>
-                      <linearGradient id="specular" x1="0.3" y1="0" x2="0.7" y2="0.5">
-                        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.24" />
-                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-                      </linearGradient>
-                      <radialGradient id="cupMetal" cx="35%" cy="30%" r="80%">
-                        <stop offset="0%" stopColor="#F5F7FA" stopOpacity="0.8" />
-                        <stop offset="35%" stopColor="#A9C9DD" stopOpacity="0.3" />
-                        <stop offset="70%" stopColor="#123350" stopOpacity="0.35" />
-                        <stop offset="100%" stopColor="#071522" stopOpacity="0.7" />
-                      </radialGradient>
-                    </defs>
+                  <circle cx="152" cy="156" r="132" fill="#000" opacity="0.45" />
+                  <circle cx="150" cy="150" r="138" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1.2" />
+                  <circle cx="150" cy="150" r="132" fill="none" stroke="#F5D780" strokeOpacity="0.35" strokeWidth="1" />
+                  <circle cx="150" cy="150" r="124" fill="url(#bezelInner)" />
 
-                    {/* Sombra proyectada del instrumento */}
-                    <circle cx="152" cy="156" r="132" fill="#000" opacity="0.45" />
+                  {Array.from({ length: 36 }).map((_, i) => {
+                    const v = i;
+                    const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
+                    const major = v % 5 === 0;
+                    const r1 = major ? 104 : 110;
+                    const r2 = 116;
+                    return (
+                      <line
+                        key={v}
+                        x1={150 + Math.sin(a) * r1} y1={150 - Math.cos(a) * r1}
+                        x2={150 + Math.sin(a) * r2} y2={150 - Math.cos(a) * r2}
+                        stroke={major ? '#D4A017' : '#A9C9DD'}
+                        strokeOpacity={major ? 0.85 : 0.3}
+                        strokeWidth={major ? 2 : 0.8}
+                      />
+                    );
+                  })}
+                  {anemoScaleTicks.map((v) => {
+                    const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
+                    return (
+                      <text key={v} x={150 + Math.sin(a) * 90} y={150 - Math.cos(a) * 90 + 3.5}
+                        textAnchor="middle" fill="#EBE6DD" opacity="0.8" fontSize="10" fontFamily="monospace">
+                        {v}
+                      </text>
+                    );
+                  })}
+                  <text x="150" y="56" textAnchor="middle" fill="#D4A017" fontSize="12" fontWeight="bold" fontFamily="serif">N</text>
+                  <text x="238" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">E</text>
+                  <text x="150" y="252" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">S</text>
+                  <text x="62" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">W</text>
 
-                    {/* Aro de latón biselado */}
-                    <circle cx="150" cy="150" r="138" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1.2" />
-                    <circle cx="150" cy="150" r="132" fill="none" stroke="#F5D780" strokeOpacity="0.35" strokeWidth="1" />
-                    {/* Esfera interior profunda */}
-                    <circle cx="150" cy="150" r="124" fill="url(#bezelInner)" />
+                  <g
+                    style={{
+                      transform: `rotate(${telemetry.windDeg}deg)`,
+                      transformOrigin: '150px 150px',
+                      transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    <polygon points="150,74 154.5,150 145.5,150" fill="#EBE6DD" opacity="0.85" />
+                  </g>
 
-                    {/* Escala grabada 0–35 nudos */}
-                    {Array.from({ length: 36 }).map((_, i) => {
-                      const v = i;
-                      const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
-                      const major = v % 5 === 0;
-                      const r1 = major ? 104 : 110;
-                      const r2 = 116;
-                      return (
-                        <line
-                          key={v}
-                          x1={150 + Math.sin(a) * r1} y1={150 - Math.cos(a) * r1}
-                          x2={150 + Math.sin(a) * r2} y2={150 - Math.cos(a) * r2}
-                          stroke={major ? '#D4A017' : '#A9C9DD'}
-                          strokeOpacity={major ? 0.85 : 0.3}
-                          strokeWidth={major ? 2 : 0.8}
-                        />
-                      );
-                    })}
-                    {anemoScaleTicks.map((v) => {
-                      const a = ((anemoStart + (v / ANEMO_MAX) * anemoSweep) * Math.PI) / 180;
-                      return (
-                        <text key={v} x={150 + Math.sin(a) * 90} y={150 - Math.cos(a) * 90 + 3.5}
-                          textAnchor="middle" fill="#EBE6DD" opacity="0.8" fontSize="10" fontFamily="monospace">
-                          {v}
-                        </text>
-                      );
-                    })}
-                    {/* Puntos cardinales de referencia */}
-                    <text x="150" y="56" textAnchor="middle" fill="#D4A017" fontSize="12" fontWeight="bold" fontFamily="serif">N</text>
-                    <text x="238" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">E</text>
-                    <text x="150" y="252" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">S</text>
-                    <text x="62" y="154" textAnchor="middle" fill="#A9C9DD" fontSize="10" fontFamily="serif" opacity="0.7">W</text>
+                  <g style={{ animation: `spin360 ${spinDuration}s linear infinite`, transformOrigin: '150px 150px' }}>
+                    {[0, 120, 240].map((deg) => (
+                      <g key={deg} transform={`rotate(${deg} 150 150)`}>
+                        <line x1="150" y1="150" x2="150" y2="112" stroke="#8B6914" strokeWidth="2" strokeOpacity="0.9" />
+                        <circle cx="150" cy="104" r="13" fill="url(#cupMetal)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8" />
+                        <circle cx="146" cy="100" r="4" fill="#FFFFFF" opacity="0.35" />
+                      </g>
+                    ))}
+                    <circle cx="150" cy="150" r="10" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1" />
+                  </g>
 
-                    {/* Aguja de dirección (viento) */}
-                    <g
-                      style={{
-                        transform: `rotate(${telemetry.windDeg}deg)`,
-                        transformOrigin: '150px 150px',
-                        transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                    >
-                      <polygon points="150,74 154.5,150 145.5,150" fill="#EBE6DD" opacity="0.85" />
-                    </g>
+                  <g
+                    style={{
+                      transform: `rotate(${anemoAngle}deg)`,
+                      transformOrigin: '150px 150px',
+                      transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    <line x1="151.5" y1="153" x2="151.5" y2="62" stroke="#071522" strokeOpacity="0.6" strokeWidth="4" strokeLinecap="round" />
+                    <line x1="150" y1="150" x2="150" y2="60" stroke="url(#brassRing)" strokeWidth="3" strokeLinecap="round" />
+                    <polygon points="150,52 155.5,72 144.5,72" fill="#D4A017" />
+                  </g>
+                  <circle cx="150" cy="150" r="6" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="0.8" />
 
-                    {/* Rotor de cazoletas metálico */}
-                    <g style={{ animation: `spin360 ${spinDuration}s linear infinite`, transformOrigin: '150px 150px' }}>
-                      {[0, 120, 240].map((deg) => (
-                        <g key={deg} transform={`rotate(${deg} 150 150)`}>
-                          <line x1="150" y1="150" x2="150" y2="112" stroke="#8B6914" strokeWidth="2" strokeOpacity="0.9" />
-                          <circle cx="150" cy="104" r="13" fill="url(#cupMetal)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.8" />
-                          <circle cx="146" cy="100" r="4" fill="#FFFFFF" opacity="0.35" />
-                        </g>
-                      ))}
-                      <circle cx="150" cy="150" r="10" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="1" />
-                    </g>
+                  <text x="150" y="178" textAnchor="middle" fill="#EBE6DD" fontSize="24" fontWeight="bold" fontFamily="serif">
+                    {telemetry.windKnots.toFixed(1)}
+                  </text>
+                  <text x="150" y="194" textAnchor="middle" fill="#D4A017" fontSize="8" letterSpacing="2.5" fontFamily="monospace">
+                    NUDOS
+                  </text>
 
-                    {/* Aguja de velocidad con sombra proyectada */}
-                    <g
-                      style={{
-                        transform: `rotate(${anemoAngle}deg)`,
-                        transformOrigin: '150px 150px',
-                        transition: 'transform 1.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                    >
-                      <line x1="151.5" y1="153" x2="151.5" y2="62" stroke="#071522" strokeOpacity="0.6" strokeWidth="4" strokeLinecap="round" />
-                      <line x1="150" y1="150" x2="150" y2="60" stroke="url(#brassRing)" strokeWidth="3" strokeLinecap="round" />
-                      <polygon points="150,52 155.5,72 144.5,72" fill="#D4A017" />
-                    </g>
-                    <circle cx="150" cy="150" r="6" fill="url(#brassRing)" stroke="#8B6914" strokeWidth="0.8" />
-
-                    {/* Lectura central */}
-                    <text x="150" y="178" textAnchor="middle" fill="#EBE6DD" fontSize="24" fontWeight="bold" fontFamily="serif">
-                      {telemetry.windKnots.toFixed(1)}
-                    </text>
-                    <text x="150" y="194" textAnchor="middle" fill="#D4A017" fontSize="8" letterSpacing="2.5" fontFamily="monospace">
-                      NUDOS
-                    </text>
-
-                    {/* Cúpula de cristal + reflejo especular */}
-                    <circle cx="150" cy="150" r="124" fill="url(#glassDome)" />
-                    <ellipse cx="108" cy="92" rx="46" ry="18" fill="url(#specular)" transform="rotate(-25 108 92)" opacity="0.85" />
-                  </svg>
-                </div>
-
+                  <circle cx="150" cy="150" r="124" fill="url(#glassDome)" />
+                  <ellipse cx="108" cy="92" rx="46" ry="18" fill="url(#specular)" transform="rotate(-25 108 92)" opacity="0.85" />
+                </svg>
                 <p className="font-mono text-sm text-[#EBE6DD] tabular-nums mt-1">
                   {telemetry.windDeg}° {getWindBearingName(telemetry.windDeg)}
                   <span className="text-[#A9C9DD]"> · {(telemetry.windKnots * 1.852).toFixed(1)} km/h</span>
                 </p>
-                <p className="text-[10px] text-[#A9C9DD] mt-1 font-light tracking-wide">
-                  Fuerza {beaufortName(telemetry.windKnots)} · el rotor gira a la velocidad real del viento
+                <p className="text-[10px] text-[#A9C9DD]/80 font-light mt-1 tracking-wide">
+                  Fuerza {beaufortName(telemetry.windKnots)} · rotor a la velocidad real del viento
                 </p>
-
-                {/* BRÚJULA REAL (DeviceOrientation en móvil) */}
-                <div className="mt-6 pt-6 border-t border-[#A9C9DD]/10 w-full">
-                  <CompassNautico />
-                </div>
               </div>
 
-              {/* 3 · ESTADO DEL MAR (medidor de metros, sin olas animadas) */}
-              <div className="flex flex-col">
-                <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-3 flex items-center gap-2">
-                  <Activity className="w-3.5 h-3.5 text-[#D4A017]" /> Estado del mar
-                </span>
-
-                {/* Medidor de altura de ola (0–3 m) */}
-                <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-4">
-                  <div className="flex items-baseline justify-between mb-3">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase">Altura de ola</span>
-                    <span className="font-mono text-3xl text-[#EBE6DD] tabular-nums">
-                      {marine.waveHeight !== null ? marine.waveHeight.toFixed(1) : '--'}<span className="text-sm text-[#A9C9DD]"> m</span>
-                    </span>
-                  </div>
-                  <div className="relative h-9">
-                    {/* Regla graduada */}
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[3px] bg-[#A9C9DD]/15 rounded-full" />
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[3px] rounded-full bg-gradient-to-r from-[#A9C9DD]/60 via-[#D4A017]/80 to-[#D4A017]"
-                      style={{ width: `${Math.max(2, waveFrac * 100)}%`, transition: 'width 1.4s cubic-bezier(0.4, 0, 0.2, 1)' }} />
-                    {[0, 0.5, 1, 1.5, 2, 2.5, 3].map((v) => (
-                      <span
-                        key={v}
-                        className="absolute top-1/2 -translate-y-1/2 w-[2px] h-3.5 bg-[#A9C9DD]/50"
-                        style={{ left: `${(v / 3) * 100}%` }}
-                      />
-                    ))}
-                    {/* Marcador del dato real */}
-                    <span
-                      className="absolute top-1/2 -translate-y-1/2 w-[3px] h-6 bg-[#EBE6DD] shadow-[0_0_8px_rgba(235,230,221,0.9)]"
-                      style={{ left: `${waveFrac * 100}%`, transition: 'left 1.4s cubic-bezier(0.4, 0, 0.2, 1)' }}
-                    />
-                    <span className="absolute left-0 -bottom-0.5 text-[9px] text-[#A9C9DD] font-mono">0</span>
-                    <span className="absolute right-0 -bottom-0.5 text-[9px] text-[#A9C9DD] font-mono">3 m</span>
-                  </div>
-                  <p className="text-xs text-[#D4A017] mt-2">{stateLabel}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mt-4">
-                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-3 text-center">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase block">Temperatura del mar</span>
-                    <span className="font-mono text-2xl text-[#EBE6DD] tabular-nums">
-                      {marine.seaTemp !== null ? marine.seaTemp.toFixed(1) : '--'}<span className="text-xs text-[#A9C9DD]"> °C</span>
-                    </span>
-                    <span className="text-[10px] text-[#A9C9DD] block mt-0.5">bocana de Arousa</span>
-                  </div>
-                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-3 text-center">
-                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase block">Salida / puesta de sol</span>
-                    <span className="font-mono text-sm text-[#EBE6DD] tabular-nums block mt-1.5">
-                      {fmtTime(sun.sunriseD)}<span className="text-[#A9C9DD]">→</span>{fmtTime(sun.sunsetD)}
-                    </span>
-                    <span className="text-[10px] text-[#A9C9DD] block mt-0.5">hoy, hora local</span>
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-4 flex items-center justify-between text-[11px]">
-                  <span className="text-[#A9C9DD] font-light flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#D4A017]" /> Lectura {freshnessLabel}
-                  </span>
-                  <span className="text-[#A9C9DD] font-mono uppercase tracking-widest flex items-center gap-1.5">
-                    <Sun className="w-3 h-3 text-[#D4A017]" />
-                    {isNight ? 'Noche' : 'Día'}
-                  </span>
-                </div>
+              {/* BRÚJULA */}
+              <div className="flex flex-col items-center">
+                <CompassNautico />
               </div>
 
+              {/* MEDIDOR DE OLA */}
+              <WaveGauge height={marine.waveHeight} seaTemp={marine.seaTemp} />
             </div>
 
-            {/* ===== LA LUNA, PROTAGONISTA ===== */}
-            <div className="mt-8 pt-6 border-t border-[#A9C9DD]/10">
-              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                <div className="shrink-0">
-                  {moon.phase !== null ? (
-                    <MoonDisc phase={moon.phase} />
-                  ) : (
-                    <Moon className="w-28 h-28 text-[#A9C9DD]/40" />
+            {/* ===== TELEMETRÍA ===== */}
+            <div className="mt-10 pt-8 border-t border-[#A9C9DD]/10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                {/* Temperatura protagonista */}
+                <div>
+                  <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium flex items-center gap-2 mb-2">
+                    <Thermometer className="w-3.5 h-3.5 text-[#D4A017]" /> Temperatura exterior
+                  </span>
+                  <div key={telemetry.updatedAt} className="anim-digit flex items-baseline gap-3">
+                    <div className="text-7xl sm:text-8xl text-[#EBE6DD] leading-none tabular-nums font-sans font-bold tracking-tight">
+                      {telemetry.temp.toFixed(1)}<span className="text-3xl text-[#D4A017] align-top ml-1 font-medium">°C</span>
+                    </div>
+                    <span className="text-sm text-[#A9C9DD] font-light">sensación {telemetry.feelsLike.toFixed(1)} °C</span>
+                  </div>
+
+                  {temps.length > 1 && (
+                    <div className="mt-5">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
+                          <Activity className="w-3 h-3 text-[#D4A017]" /> Próximas 24 h
+                        </span>
+                        <span className="text-[10px] text-[#A9C9DD] font-mono">
+                          {Math.min(...temps).toFixed(0)}° / {Math.max(...temps).toFixed(0)}°
+                        </span>
+                      </div>
+                      <div className="relative bg-white/[0.03] border border-[#A9C9DD]/15 rounded-sm p-2 pt-3">
+                        <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-16" preserveAspectRatio="none" aria-label="Evolución de la temperatura en las próximas 24 horas">
+                          <line x1="0" y1="6" x2={chartW} y2="6" stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                          <line x1="0" y1={chartH / 2} x2={chartW} y2={chartH / 2} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                          <line x1="0" y1={chartH - 6} x2={chartW} y2={chartH - 6} stroke="#A9C9DD" strokeOpacity="0.12" strokeWidth="1" />
+                          <polyline points={polyPoints} fill="none" stroke="#D4A017" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" />
+                          <circle cx={lastDot.x} cy={lastDot.y} r="3" fill="#D4A017" style={{ animation: 'hudPulse 1.6s ease-in-out infinite' }} />
+                          <text x="2" y="10" fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.max(...temps).toFixed(0)}°</text>
+                          <text x="2" y={chartH / 2 + 4} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{((Math.max(...temps) + Math.min(...temps)) / 2).toFixed(0)}°</text>
+                          <text x="2" y={chartH - 2} fill="#A9C9DD" opacity="0.6" fontSize="7" fontFamily="monospace">{Math.min(...temps).toFixed(0)}°</text>
+                          <text x="0" y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[0] || ''}</text>
+                          <text x={chartW / 2 - 14} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[Math.floor(temps.length / 2)] || ''}</text>
+                          <text x={chartW - 28} y={chartH + 12} fill="#A9C9DD" opacity="0.7" fontSize="7.5" fontFamily="monospace">{hourly.hours[temps.length - 1] || ''}</text>
+                        </svg>
+                      </div>
+                    </div>
                   )}
                 </div>
-                <div className="flex-1 text-center md:text-left">
-                  <span className="text-[10px] tracking-[0.28em] text-[#D4A017] uppercase font-medium flex items-center gap-2 justify-center md:justify-start">
-                    <Moon className="w-4 h-4" /> La luna, hoy
-                  </span>
-                  <h2 className="font-serif text-3xl text-[#EBE6DD] mt-2">
-                    {moon.phase !== null ? moonPhaseName(moon.phase) : '—'}
-                  </h2>
-                  <p className="text-sm text-[#A9C9DD] mt-1.5">
-                    {moon.illum !== null ? `${moon.illum}% iluminada` : ''}
-                    {moon.rise && moon.set ? ` · sale ${moon.rise} · se pone ${moon.set}` : ''}
-                  </p>
-                  <p className="text-[11px] text-[#A9C9DD]/80 font-light mt-2.5 italic max-w-xl">
-                    {isNight
-                      ? moonPower >= 0.1
-                        ? 'Esta noche la luna baña la bocana — el panel lo refleja.'
-                        : 'Noche oscura: la Vía Láctea manda esta noche.'
-                      : 'Al caer la noche, este panel se iluminará con la luz real de la luna.'}
-                  </p>
+
+                {/* Celdas de datos */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-4">
+                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
+                      <Droplets className="w-3 h-3 text-[#A9C9DD]" /> Humedad
+                    </span>
+                    <span className="font-mono text-3xl text-[#EBE6DD] tabular-nums">{telemetry.humidity}%</span>
+                  </div>
+                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-4">
+                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
+                      <Compass className="w-3 h-3 text-[#A9C9DD]" /> Barómetro
+                    </span>
+                    <span className="font-mono text-3xl text-[#EBE6DD] tabular-nums">{telemetry.pressure} <span className="text-sm text-[#A9C9DD]">hPa</span></span>
+                  </div>
+                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-4">
+                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
+                      <Sunrise className="w-3 h-3 text-[#D4A017]" /> Amanecer
+                    </span>
+                    <span className="font-mono text-3xl text-[#EBE6DD] tabular-nums">{fmtTime(sun.sunriseD)}</span>
+                  </div>
+                  <div className="bg-white/[0.04] border border-[#A9C9DD]/15 rounded-sm p-4">
+                    <span className="text-[10px] tracking-[0.22em] text-[#A9C9DD] uppercase flex items-center gap-1.5">
+                      <Sunset className="w-3 h-3 text-[#D4A017]" /> Anochecer
+                    </span>
+                    <span className="font-mono text-3xl text-[#EBE6DD] tabular-nums">{fmtTime(sun.sunsetD)}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* ===== PRONÓSTICO 7 DÍAS ===== */}
             {forecast.length > 0 && (
-              <div className="mt-8 pt-6 border-t border-[#A9C9DD]/10">
-                <div className="flex items-center justify-between mb-4">
+              <div className="mt-10 pt-8 border-t border-[#A9C9DD]/10">
+                <div className="flex items-center justify-between mb-5">
                   <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium flex items-center gap-2">
                     <CloudSun className="w-4 h-4 text-[#D4A017]" /> Pronóstico · próximos 7 días
                   </span>
@@ -790,19 +812,24 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   {forecast.map((d, i) => (
                     <div
                       key={d.day + i}
-                      className={`rounded-sm p-3 pt-4 text-center border ${
-                        i === 0 ? 'bg-[#D4A017]/10 border-[#D4A017]/40' : 'bg-white/[0.04] border-[#A9C9DD]/15'
+                      className={`relative rounded-sm p-4 text-center border ${
+                        i === 0 ? 'bg-[#D4A017]/10 border-[#D4A017]/45' : 'bg-white/[0.04] border-[#A9C9DD]/15'
                       }`}
                     >
-                      <span className={`text-[10px] uppercase tracking-[0.18em] block mb-3 ${i === 0 ? 'text-[#D4A017] font-medium' : 'text-[#A9C9DD]'}`}>
-                        {i === 0 ? 'Hoy' : d.day}
+                      {i === 0 && (
+                        <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#D4A017] text-[#071522] text-[9px] font-bold uppercase tracking-[0.14em] rounded-sm">
+                          Hoy
+                        </span>
+                      )}
+                      <span className={`text-[11px] uppercase tracking-[0.18em] block mb-3 ${i === 0 ? 'text-[#D4A017] font-medium' : 'text-[#A9C9DD]'}`}>
+                        {i === 0 ? '\u00A0' : d.day}
                       </span>
-                      <div className="flex justify-center"><WeatherGlyph wmo={d.wmo} /></div>
-                      <div className="mt-2 text-[11px] text-[#A9C9DD] leading-snug min-h-[2em]">{wmoText(d.wmo)}</div>
-                      <div className="mt-1 font-mono text-lg text-[#EBE6DD] tabular-nums leading-tight">
-                        {d.tmax}° <span className="text-[#A9C9DD] text-xs">{d.tmin}°</span>
+                      <div className="flex justify-center"><WeatherGlyph wmo={d.wmo} size={52} /></div>
+                      <div className="mt-2 text-xs text-[#A9C9DD] leading-snug min-h-[2em]">{wmoText(d.wmo)}</div>
+                      <div className="mt-1.5 font-serif text-2xl text-[#EBE6DD] leading-none">
+                        {d.tmax}° <span className="text-sm text-[#A9C9DD] font-sans">{d.tmin}°</span>
                       </div>
-                      <div className="mt-2 flex items-center justify-center gap-1.5 text-[11px] border-t border-[#A9C9DD]/10 pt-2">
+                      <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#A9C9DD]/10 border border-[#A9C9DD]/20 text-[11px]">
                         <Droplets className="w-3 h-3 text-[#A9C9DD]" />
                         <span className="text-[#A9C9DD]">Lluvia</span>
                         <span className="font-mono text-[#EBE6DD] font-medium tabular-nums">{d.pop !== null ? `${d.pop}%` : '—'}</span>
@@ -814,9 +841,12 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             )}
 
             {/* Nota de honestidad */}
-            <p className="mt-6 pt-4 border-t border-[#A9C9DD]/10 text-[10px] text-[#A9C9DD]/70 font-light leading-relaxed">
-              Meteorología y estado del mar en vivo (Open-Meteo y Open-Meteo Marine, coordenadas reales de Aguiño).
-              Para salir al mar, consulta siempre el parte oficial de Salvamento Marítimo.
+            <p className="mt-6 pt-4 border-t border-[#A9C9DD]/10 text-[10px] text-[#A9C9DD]/70 font-light leading-relaxed flex items-center gap-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#D4A017] shrink-0" />
+              <span>
+                Lectura {freshnessLabel}. Meteorología y estado del mar en vivo (Open-Meteo y Open-Meteo Marine, coordenadas reales de Aguiño).
+                Para salir al mar, consulta siempre el parte oficial de Salvamento Marítimo.
+              </span>
             </p>
           </div>
         </div>
