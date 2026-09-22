@@ -131,7 +131,7 @@ export const SPACES_DATA: Space[] = [
   {
     id: 'despacho-workspace',
     name: 'Despacho Workspace',
-    subtitle: 'Zona de teletrabajo de alta velocidad y privacidad',
+    subtitle: 'Tu oficina frente al mar: alta velocidad y silencio',
     area: '14 m²',
     tag: 'Workation & Focus',
     coverImage: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1600&q=85',
@@ -162,7 +162,7 @@ export const SPACES_DATA: Space[] = [
   {
     id: 'cocina-gourmet',
     name: 'Cocina Gourmet',
-    subtitle: 'Totalmente equipada e integrada',
+    subtitle: 'Luz marina y todo lo necesario para estancias largas',
     area: '20 m²',
     tag: 'Alta Gastronomía',
     coverImage: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',

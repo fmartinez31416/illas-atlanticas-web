@@ -91,10 +91,13 @@ export function Hero({ onOpenBooking }: HeroProps) {
           </p>
         </div>
 
-        {/* Los 4 pilares de valor real */}
+        {/* Los pilares de valor real — el primero, el precio ancla honesto */}
         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
+          <div className="px-4 py-2 bg-[#D4A017] border border-[#D4A017] shadow-md">
+            <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">Desde 70 €/noche en temporada baja</span>
+          </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">230 m² Construidos</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">230 m² de luz y horizonte</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Terraza Privada 48 m²</span>
