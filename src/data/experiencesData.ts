@@ -6,7 +6,7 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
     title: 'Lonja de Aguiño & Capturas del Día',
     subtitle: 'La cuna del mejor percebe del mundo y el marisco salvaje de la ría',
     category: 'lonja',
-    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1600&q=85',
+    image: '/fotos/cocina_percebes_01.jpg',
     description: 'El puerto y la Lonja de Aguiño, situados a tan solo unos minutos a pie del ático, son universalmente reconocidos por la bravura del Atlántico en los bajíos de Sálvora y Sagres, donde se extrae el cotizado Percebe de Aguiño con Denominación de Origen. Como huésped, dispondrás de asesoramiento personalizado matutino para encargar o seleccionar las mejores piezas recién desembarcadas: centollos de la ría, nécoras de roca, pulpo fresco, navajas de buceo y pescados nobles.',
     highlights: [
       'Asesoramiento directo para acceder al producto más selecto de la subasta diaria',
@@ -21,7 +21,7 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
     title: 'Enología & Maridajes de las Rías Baixas',
     subtitle: 'Albariños de guarda, vinos atlánticos de autor y cata en la terraza',
     category: 'enologia',
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=85',
+    image: '/fotos/cocina_bogavante_centollas_14.jpg',
     description: 'La costa de las Rías Baixas alberga un microclima atlántico único donde la uva Albariño alcanza su máxima expresión mineral y salina. En la vinoteca del ático encontrarás una selección de añadas especiales y pequeños viticultores de las subzonas Val do Salnés, O Rosal y Ribeira do Ulla, así como tintos atlánticos ancestrales (Caíño Tinto, Espadeiro, Sousón) de escasa producción.',
     highlights: [
       'Vinoteca multitemperatura provista con referencias de autor y bodegas singulares',
@@ -36,7 +36,7 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
     title: 'Parque Nacional de Sálvora & Senderos Costeros',
     subtitle: 'Navegación exclusiva al archipiélago, dunas milenarias y calas protegidas',
     category: 'nautica',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85',
+    image: '/fotos/pedra_da_ra_pueblo_51.jpg',
     description: 'La Isla de Sálvora preside el horizonte frente al ventanal del ático. Este enclave del Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia conserva un misticismo indómito: su aldea abandonada, el castillo y faro legendario, y su colonia de aves marinas. Gestionamos autorizaciones oficiales y embarcación privada para desembarcar en sus arenales.',
     highlights: [
       'Salidas en embarcación privada desde el puerto de Aguiño (a 300 m)',

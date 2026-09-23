@@ -7,11 +7,11 @@ export const SPACES_DATA: Space[] = [
     subtitle: '48 m² abiertos a la ría y puesta de sol',
     area: '48 m²',
     tag: 'Exterior Exclusivo',
-    coverImage: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/vistas_terraza_17.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/vistas_terraza_19.jpg',
+      '/fotos/terraza_nocturna_05.jpg',
+      '/fotos/terraza_dron.jpg'
     ],
     description: 'Un mirador privado de 48 metros cuadrados con barandillas de cristal continuo que enmarcan la entrada de la Ría de Arousa y la silueta del archipiélago de Sálvora. Diseñado para disfrutar de puestas de sol doradas con mobiliario exterior de teca y zona chillout.',
     highlights: [
@@ -39,11 +39,11 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Chimenea de ambiente y Smart TV 75"',
     area: '42 m²',
     tag: 'Estar & Confort',
-    coverImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/salon_01.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/salon_03.jpg',
+      '/fotos/comedor_04.jpg',
+      '/fotos/comedor_15.jpg'
     ],
     description: 'Espacio diáfano bañado por la luz del Atlántico a través de amplios ventanales. Combina un diseño contemporáneo en tonos pétreos con una chimenea de bioetanol de llama visible y sistema audiovisual de cine en casa.',
     highlights: [
@@ -71,11 +71,11 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Iluminación cenital regulable y atmósfera relajante',
     area: '32 m²',
     tag: 'Descanso Supremo',
-    coverImage: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/dormitorio_principal_01.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/dormitorio_principal_02.jpg',
+      '/fotos/dormitorio_principal_03.jpg',
+      '/fotos/bano_principal_02.jpg'
     ],
     description: 'Santuario de descanso diseñado para la desconexión total. Cuenta con un lucernario cenital motorizado que permite contemplar el cielo estrellado del Parque Nacional desde una suntuosa cama King Size, con persiana domótica de oscurecimiento 100%.',
     highlights: [
@@ -103,10 +103,10 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Bañera de hidromasaje privada y spa atlántico',
     area: '18 m²',
     tag: 'Spa & Bienestar',
-    coverImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/bano_principal_06.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/bano_principal_14.jpg',
+      '/fotos/bano_doble_01.jpg'
     ],
     description: 'Un espacio de regeneración inspirado en la pureza de las aguas gallegas. Incorpora una bañera de hidromasaje para dos personas con programas de hidromasaje por aire y agua, cromoterapia y una amplia ducha efecto lluvia enrasada con revestimientos en piedra natural.',
     highlights: [
@@ -134,10 +134,11 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Tu oficina frente al mar: alta velocidad y silencio',
     area: '14 m²',
     tag: 'Workation & Focus',
-    coverImage: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/despacho_04.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/despacho_05.jpg',
+      '/fotos/hall_principal_02.jpg',
+      '/fotos/vistas_despacho_43.jpg'
     ],
     description: 'Diseñado específicamente para nómadas digitales de alto nivel y directivos que necesitan compaginar el descanso con jornadas de trabajo concentrado frente al océano.',
     highlights: [
@@ -165,10 +166,11 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Luz marina y todo lo necesario para estancias largas',
     area: '20 m²',
     tag: 'Alta Gastronomía',
-    coverImage: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
+    coverImage: '/fotos/cocina_01.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
-      'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1600&q=85'
+      '/fotos/cocina_02.jpg',
+      '/fotos/cocina_percebes_01.jpg',
+      '/fotos/cocina_centollas_08.jpg'
     ],
     description: 'Isla de trabajo en piedra natural integrada con el salón para disfrutar de la preparación de mariscos de la lonja local con vistas al mar. Dotada de vinoteca multitemperatura y menaje para amantes de la cocina.',
     highlights: [
