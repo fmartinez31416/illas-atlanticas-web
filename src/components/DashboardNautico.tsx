@@ -509,22 +509,22 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const gspan = Math.max(1, gmax - gmin);
 
   return (
-    <div id="puente-de-mando" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950 p-4 sm:p-8">
+    <div id="puente-de-mando" className="min-h-screen bg-[#0B0908] text-stone-200 font-sans selection:bg-[#D4AF37]/30 selection:text-stone-950 p-4 sm:p-8">
 
       {/* Cabecera de página */}
-      <header className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 border-b border-[#1A3A5C]/15 gap-5">
+      <header className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between pb-8 border-b border-[#C5A059]/25 gap-5">
         <div>
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-white/70 hover:bg-white border border-[#1A3A5C]/20 text-[#1A3A5C] text-xs uppercase tracking-[0.18em] font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-4 bg-transparent hover:bg-[#C5A059]/10 border border-[#C5A059]/50 text-[#D9C79A] text-xs uppercase tracking-[0.18em] font-medium transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Volver a la Bitácora</span>
+            <span>Volver</span>
           </button>
-          <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#1A3A5C]">
-            Puente de Mando <span className="italic text-[#D4A017]">Atlántico</span>
+          <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#F5F3E9]">
+            Puente de Mando <span className="italic text-[#D4AF37]">Atlántico</span>
           </h1>
-          <p className="text-xs tracking-wide text-stone-500 mt-1.5">
+          <p className="text-xs tracking-wide text-[#8A6D3B] mt-1.5">
             Aguiño · 42°31&apos;24&quot;N 8°59&apos;48&quot;W · Ría de Arousa, a las puertas del Parque Nacional das Illas Atlánticas
           </p>
         </div>
@@ -533,10 +533,27 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       <main className="max-w-6xl mx-auto my-10">
         <div className="relative rounded-md overflow-hidden shadow-2xl"
           style={{
-            background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)',
-            border: '1px solid rgba(212,160,23,0.35)',
+            background: 'radial-gradient(120% 140% at 50% 0%, #26130A 0%, #150B05 55%, #0A0603 100%)',
+            border: '1px solid rgba(197,160,89,0.45)',
           }}
         >
+          {/* Lamas de caoba en penumbra (la madera del puente) */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: 'repeating-linear-gradient(90deg, rgba(255,255,255,0.014) 0px, rgba(255,255,255,0.014) 2px, transparent 2px, transparent 64px), repeating-linear-gradient(90deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 64px)',
+          }} />
+          {/* Placa de latón grabada */}
+          <div className="absolute top-5 left-1/2 -translate-x-1/2 z-20 px-5 py-2 rounded-sm pointer-events-none"
+            style={{
+              background: 'linear-gradient(180deg, #E9CE8B 0%, #D4AF37 55%, #A8862F 100%)',
+              color: '#241A08',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -2px 3px rgba(80,55,10,0.5), 0 4px 14px rgba(0,0,0,0.6)',
+              border: '1px solid rgba(120,86,22,0.6)',
+            }}
+          >
+            <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.32em] font-semibold text-center" style={{ textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}>
+              Illas Atlánticas Ático · Puente de Mando
+            </span>
+          </div>
           {/* ===== ILUMINACIÓN DE LA ESCENA: la luz nace del astro y del tiempo ===== */}
           <div className="absolute inset-0 pointer-events-none transition-opacity duration-[3000ms]"
             style={{
@@ -550,7 +567,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             }} />
 
           {/* ===== LA VENTANA: cielo y mar ===== */}
-          <div className="relative" style={{ background: '#0A1520', borderBottom: '2px solid rgba(212,160,23,0.35)' }}>
+          <div className="relative" style={{ background: '#0D0703', borderBottom: '2px solid rgba(197,160,89,0.5)' }}>
           <div className="relative h-[230px] sm:h-[290px] overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${skyTop} 0%, ${skyMid} 55%, ${skyLow} 100%)`, transition: 'background 3s ease' }}
           >
@@ -634,14 +651,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </div>
 
           {/* Cantoneras de latón de la ventana */}
-          <span className="absolute top-1.5 left-1.5 w-5 h-5 border-t-2 border-l-2 border-[#D4A017]/70 pointer-events-none z-10" />
-          <span className="absolute top-1.5 right-1.5 w-5 h-5 border-t-2 border-r-2 border-[#D4A017]/70 pointer-events-none z-10" />
-          <span className="absolute bottom-1.5 left-1.5 w-5 h-5 border-b-2 border-l-2 border-[#D4A017]/70 pointer-events-none z-10" />
-          <span className="absolute bottom-1.5 right-1.5 w-5 h-5 border-b-2 border-r-2 border-[#D4A017]/70 pointer-events-none z-10" />
+          <span className="absolute top-1.5 left-1.5 w-5 h-5 border-t-2 border-l-2 border-[#C5A059]/80 pointer-events-none z-10" />
+          <span className="absolute top-1.5 right-1.5 w-5 h-5 border-t-2 border-r-2 border-[#C5A059]/80 pointer-events-none z-10" />
+          <span className="absolute bottom-1.5 left-1.5 w-5 h-5 border-b-2 border-l-2 border-[#C5A059]/80 pointer-events-none z-10" />
+          <span className="absolute bottom-1.5 right-1.5 w-5 h-5 border-b-2 border-r-2 border-[#C5A059]/80 pointer-events-none z-10" />
           </div>
 
           {/* Barra de estado del instrumento */}
-          <div className="relative flex flex-wrap items-center justify-between gap-3 px-5 sm:px-8 py-3 border-b border-[#A9C9DD]/10 bg-[#0B1D2E]/60">
+          <div className="relative flex flex-wrap items-center justify-between gap-3 px-5 sm:px-8 py-3 border-b border-[#C5A059]/15 bg-[#170D06]/80">
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full ${isLive ? 'bg-[#D4A017]' : 'bg-stone-400'}`}
