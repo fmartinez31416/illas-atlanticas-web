@@ -14,10 +14,11 @@ import { NiaChat } from './components/NiaChat';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 import { GastroAndExperiences } from './components/GastroAndExperiences';
 import { FaqSection } from './components/FaqSection';
+import { LegalPage } from './components/LegalPage';
 import { NIA_API_URL } from './niaConfig';
 
 export function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
@@ -76,6 +77,16 @@ export function App() {
     );
   }
 
+  // VISTA 3: Legal (Aviso, Privacidad, Cookies)
+  if (currentView === 'legal') {
+    return (
+      <>
+        <LegalPage onBack={() => setCurrentView('home')} />
+        <NiaChat />
+      </>
+    );
+  }
+
   // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
@@ -114,7 +125,7 @@ export function App() {
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
       </main>
 
-      <Footer />
+      <Footer onOpenLegal={() => setCurrentView('legal')} />
       <NiaChat />
     </div>
   );

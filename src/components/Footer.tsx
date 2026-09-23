@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, ShieldCheck, ArrowUp, Instagram, Facebook } from 'lucide-react';
+import { MapPin, ShieldCheck, ArrowUp, MessageCircle, Phone, Mail } from 'lucide-react';
 import footerBg from '../../footer-bg.webp';
 
 function TikTokIcon({ className = 'w-4 h-4' }: { className?: string }) {
@@ -15,7 +15,11 @@ function TikTokIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
-export function Footer() {
+interface FooterProps {
+  onOpenLegal: () => void;
+}
+
+export function Footer({ onOpenLegal }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -79,6 +83,15 @@ export function Footer() {
               </span>
               <div className="flex items-center gap-3">
                 <a
+                  href="https://wa.me/34606025318?text=Hola,%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                </a>
+                <a
                   href="https://www.tiktok.com/@fernando.martnez517"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -86,24 +99,6 @@ export function Footer() {
                   className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
                 >
                   <TikTokIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-stone-950 flex items-center justify-center transition-all border border-white/30 shadow-sm"
-                >
-                  <Facebook className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -148,6 +143,14 @@ export function Footer() {
                 Anfitrión: <span>Fernando</span>
               </p>
               <div className="flex items-start gap-2.5">
+                <Phone className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
+                <a href="tel:+34606025318" className="hover:text-amber-200 transition-colors">+34 606 025 318</a>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Mail className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
+                <a href="mailto:reservas@illasatlanticasatico.es" className="hover:text-amber-200 transition-colors break-all">reservas@illasatlanticasatico.es</a>
+              </div>
+              <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
                 <span>Rúa Francisco Lorenzo Mariño, 93<br />15965 Aguiño (Ribeira, A Coruña)</span>
               </div>
@@ -187,9 +190,17 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.
           </p>
-          <p>
-            Licencia VUT-CO-007656 · Aguiño, Rías Baixas.
-          </p>
+          <div className="flex items-center gap-4">
+            <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
+              Aviso Legal
+            </button>
+            <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
+              Privacidad
+            </button>
+            <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
+              Cookies
+            </button>
+          </div>
         </div>
 
       </div>
