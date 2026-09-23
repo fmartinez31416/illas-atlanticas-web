@@ -149,8 +149,7 @@ function MoonDisc({ phase, size = 200 }: { phase: number; size?: number }) {
 /** Sol realista: corona, núcleo blanco-dorado y rayos suaves. Su fuerza depende del tiempo del día */
 function SunDisc({ strength, size = 190 }: { strength: number; size?: number }) {
   return (
-    <div className="relative" style={{ width: size, height: size, opacity: 0.3 + strength * 0.7, transition: 'opacity 2s ease' }}>
-      <div className="absolute inset-0 rounded-full" style={{ boxShadow: `0 0 42px 18px rgba(255,216,120,${(0.2 + strength * 0.35).toFixed(3)}), 0 0 120px 45px rgba(255,190,90,${(0.1 + strength * 0.2).toFixed(3)})` }} />
+    <div className="relative" style={{ width: size, height: size, opacity: 0.3 + strength * 0.7, transition: 'opacity 2s ease', filter: 'drop-shadow(0 0 16px rgba(255,214,120,0.35))' }}>
       <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="Sol">
         <defs>
           <radialGradient id="sunDiscGrad" cx="50%" cy="50%" r="50%">
@@ -570,9 +569,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             </div>
 
             {/* ASTRO PROTAGONISTA: sol de día, luna de noche */}
-            <div className="absolute right-[7%] top-[4%] sm:right-[10%] sm:top-[2%]"
-              style={{ filter: 'drop-shadow(0 0 18px rgba(169,201,221,0.25))' }}
-            >
+            <div className="absolute right-[7%] top-[4%] sm:right-[10%] sm:top-[2%]">
               {isNight
                 ? (moon.phase !== null ? <MoonDisc phase={moon.phase} /> : <Moon className="w-40 h-40 text-[#A9C9DD]/40" />)
                 : <SunDisc strength={dayGlow.sun} />}
@@ -621,38 +618,19 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.55) 50%, transparent 100%)' }} />
           </div>
 
-          {/* ===== EL MAR: fondo con el reflejo del astro ===== */}
+          {/* ===== EL MAR: plano, sin artificios ===== */}
           <div className="relative h-[80px] sm:h-[104px] overflow-hidden"
             style={{ background: `linear-gradient(180deg, ${seaTop} 0%, ${seaLow} 100%)`, transition: 'background 3s ease' }}
           >
-            {/* Camino de luz del astro sobre el agua */}
-            <div className="absolute top-0 h-full w-[120px]"
+            {/* Reflejo tenue del astro, estático y discreto */}
+            <div className="absolute top-0 h-full w-[110px]"
               style={{
                 left: '62%',
                 background: isNight
-                  ? `linear-gradient(180deg, rgba(203,218,242,${(0.4 + moonPower * 0.45).toFixed(3)}) 0%, rgba(203,218,242,${(0.12 + moonPower * 0.15).toFixed(3)}) 55%, transparent 100%)`
-                  : `linear-gradient(180deg, rgba(255,222,140,${(0.42 + dayGlow.warm).toFixed(3)}) 0%, rgba(255,205,110,${(0.12 + dayGlow.warm).toFixed(3)}) 55%, transparent 100%)`,
-                animation: 'hudPulse 3.4s ease-in-out infinite',
+                  ? `linear-gradient(180deg, rgba(203,218,242,0.16) 0%, transparent 80%)`
+                  : `linear-gradient(180deg, rgba(255,222,140,0.16) 0%, transparent 80%)`,
                 transition: 'background 3s ease',
               }} />
-            <div className="absolute top-0 h-full w-[64px]"
-              style={{
-                left: '70%',
-                background: isNight
-                  ? `linear-gradient(180deg, rgba(203,218,242,${(0.25 + moonPower * 0.3).toFixed(3)}) 0%, transparent 85%)`
-                  : `linear-gradient(180deg, rgba(255,222,140,${(0.25 + dayGlow.warm).toFixed(3)}) 0%, transparent 85%)`,
-                animation: 'hudPulse 2.8s ease-in-out 0.9s infinite',
-                transition: 'background 3s ease',
-              }} />
-            {/* Ondas suaves */}
-            <svg className="absolute bottom-0 left-0 w-[200%] h-6 opacity-25" viewBox="0 0 240 20" preserveAspectRatio="none"
-              style={{ animation: 'waveDrift 9s linear infinite' }}>
-              <path d="M0 10 Q 7.5 4 15 10 T 30 10 T 45 10 T 60 10 T 75 10 T 90 10 T 105 10 T 120 10 T 135 10 T 150 10 T 165 10 T 180 10 T 195 10 T 210 10 T 225 10 T 240 10 V 20 H 0 Z" fill="#A9C9DD" />
-            </svg>
-            <svg className="absolute bottom-0 left-0 w-[200%] h-8 opacity-15" viewBox="0 0 240 20" preserveAspectRatio="none"
-              style={{ animation: 'waveDrift 6s linear infinite' }}>
-              <path d="M0 10 Q 7.5 2 15 10 T 30 10 T 45 10 T 60 10 T 75 10 T 90 10 T 105 10 T 120 10 T 135 10 T 150 10 T 165 10 T 180 10 T 195 10 T 210 10 T 225 10 T 240 10 V 20 H 0 Z" fill="#EBE6DD" />
-            </svg>
           </div>
 
           {/* Cantoneras de latón de la ventana */}
