@@ -12,7 +12,7 @@ import { BitacoraPage } from './components/BitacoraPage';
 import { LonjaLens } from './components/LonjaLens';
 import { NiaChat } from './components/NiaChat';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
-import { GastroAndExperiences } from './components/GastroAndExperiences';
+
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
 import { NIA_API_URL } from './niaConfig';
@@ -114,9 +114,6 @@ export function App() {
 
         {/* Ubicación real: Aguiño, entorno y accesos */}
         <LocationAndSurroundings />
-
-        {/* Gastronomía y experiencias de la ría */}
-        <GastroAndExperiences />
 
         {/* Preguntas frecuentes (cierra objeciones antes del clic final) */}
         <FaqSection />
