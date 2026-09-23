@@ -28,7 +28,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
               </p>
               <p className="text-[#D4A017] text-sm italic font-serif mt-3">
-                «Elige tus fechas. Nosotros ponemos [ADDRESS]    </p>
+                «Elige tus fechas. Nosotros ponemos la luz sobre Sálvora.»
+              </p>
 
               {/* Garantía del mejor precio — compacta y colapsable */}
               <details className="mt-5 border-l-2 border-[#D4A017] pl-4 group">
@@ -53,6 +54,31 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     <li>• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).</li>
                     <li>• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.</li>
                     <li>• La diferencia se aplica sobre el precio total de la estancia.</li>
+                  </ul>
+                </div>
+              </details>
+
+              {/* Garantía Lluvia Gallega — derecho transferible */}
+              <details className="mt-4 border-l-2 border-[#1A3A5C] pl-4 group">
+                <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
+                  <span className="text-[#1A3A5C] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
+                  <span className="text-sm leading-relaxed">
+                    <strong className="text-[#1A3A5C]">Garantía Lluvia Gallega:</strong> si llueve
+                    más de la mitad de los días de tu estancia, te regalamos{' '}
+                    <strong className="text-[#1A3A5C]">una noche en tu próxima reserva</strong> —
+                    tuya o de quien tú elijas.{' '}
+                    <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
+                      Condiciones
+                    </span>
+                  </span>
+                </summary>
+                <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
+                  <ul className="space-y-1.5">
+                    <li>• Se activa si llueve (≥5 mm) más de la mitad de los días de tu estancia, de mínimo 3 noches.</li>
+                    <li>• Recibes un código válido 12 meses, para una próxima reserva de mínimo 3 noches en la misma época.</li>
+                    <li>• Valor: una noche a la tarifa de tu reserva lluviosa. Si la nueva reserva es más cara, descontamos ese importe; si es más barata, la noche entera es gratis.</li>
+                    <li>• El código es transferible: puedes regalarlo a familiares o amigos.</li>
+                    <li>• Solo reserva directa. Un código por estancia. No acumulable con otras ofertas. Sin valor en efectivo.</li>
                   </ul>
                 </div>
               </details>

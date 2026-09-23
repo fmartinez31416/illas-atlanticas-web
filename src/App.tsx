@@ -119,19 +119,23 @@ export function App() {
                   <span className="text-[#D4A017]">✦</span>
                   <span>Respuesta del anfitrión &lt; 2 horas</span>
                   <span className="text-[#D4A017]">✦</span>
+                  <span>Garantía Lluvia Gallega</span>
+                  <span className="text-[#D4A017]">✦</span>
                   <span>Aguiño en vivo — VUT-CO-007656</span>
                   <span className="text-[#D4A017]">✦</span>
-                </span>
-                <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
+                  </span>
+                  <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
                   <span>Tarifa oficial garantizada</span>
                   <span className="text-[#D4A017]">✦</span>
                   <span>Reserva directa sin comisiones</span>
                   <span className="text-[#D4A017]">✦</span>
                   <span>Respuesta del anfitrión &lt; 2 horas</span>
                   <span className="text-[#D4A017]">✦</span>
+                  <span>Garantía Lluvia Gallega</span>
+                  <span className="text-[#D4A017]">✦</span>
                   <span>Aguiño en vivo — VUT-CO-007656</span>
                   <span className="text-[#D4A017]">✦</span>
-                </span>
+                  </span>
               </div>
             </div>
 
