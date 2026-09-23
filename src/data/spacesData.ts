@@ -4,8 +4,7 @@ export const SPACES_DATA: Space[] = [
   {
     id: 'terraza',
     name: 'Terraza Panorámica',
-    subtitle: '48 m² abiertos a la ría y puesta de sol',
-    area: '48 m²',
+    subtitle: 'El atardecer de las Rías Baixas, en privado',
     tag: 'Exterior Exclusivo',
     coverImage: '/fotos/vistas_terraza_17.jpg',
     gallery: [
@@ -13,7 +12,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
     ],
-    description: 'Un mirador privado de 48 metros cuadrados con barandillas de cristal continuo que enmarcan la entrada de la Ría de Arousa y la silueta del archipiélago de Sálvora. Diseñado para disfrutar de puestas de sol doradas con mobiliario exterior de teca y zona chillout.',
+    description: 'Un mirador privado con barandillas de cristal continuo que enmarcan la entrada de la Ría de Arousa y la silueta del archipiélago de Sálvora. Diseñado para disfrutar de puestas de sol doradas con mobiliario exterior de teca y zona chillout.',
     highlights: [
       'Vistas directas a la Isla de Sálvora y el Parque Nacional',
       'Mesa de comedor de teca para 6 comensales al aire libre',
@@ -27,7 +26,7 @@ export const SPACES_DATA: Space[] = [
       'Ducha refrescante exterior de diseño en acero inox'
     ],
     specs: [
-      { label: 'Superficie', value: '48 m² útiles' },
+      { label: 'El mejor momento', value: 'Atardecer sobre Sálvora' },
       { label: 'Orientación', value: 'Suroeste (Atardecer Rías Baixas)' },
       { label: 'Vistas', value: 'Panorámica 180° Mar & Sálvora' },
       { label: 'Mobiliario', value: 'Teca natural & tapicería náutica Sunbrella' }
@@ -37,7 +36,6 @@ export const SPACES_DATA: Space[] = [
     id: 'salon',
     name: 'Salón Principal',
     subtitle: 'Chimenea de ambiente y Smart TV 75"',
-    area: '42 m²',
     tag: 'Estar & Confort',
     coverImage: '/fotos/salon_01.jpg',
     gallery: [
@@ -69,7 +67,6 @@ export const SPACES_DATA: Space[] = [
     id: 'master-suite',
     name: 'Master Suite',
     subtitle: 'Iluminación cenital regulable y atmósfera relajante',
-    area: '32 m²',
     tag: 'Descanso Supremo',
     coverImage: '/fotos/dormitorio_principal_01.jpg',
     gallery: [
@@ -101,7 +98,6 @@ export const SPACES_DATA: Space[] = [
     id: 'bano-hidromasaje',
     name: 'Baño de Hidromasaje',
     subtitle: 'Bañera de hidromasaje privada y spa atlántico',
-    area: '18 m²',
     tag: 'Spa & Bienestar',
     coverImage: '/fotos/bano_principal_06.jpg',
     gallery: [
@@ -132,7 +128,6 @@ export const SPACES_DATA: Space[] = [
     id: 'despacho-workspace',
     name: 'Despacho Workspace',
     subtitle: 'Tu oficina frente al mar: alta velocidad y silencio',
-    area: '14 m²',
     tag: 'Workation & Focus',
     coverImage: '/fotos/despacho_04.jpg',
     gallery: [
@@ -164,7 +159,6 @@ export const SPACES_DATA: Space[] = [
     id: 'cocina-gourmet',
     name: 'Cocina Gourmet',
     subtitle: 'Luz marina y todo lo necesario para estancias largas',
-    area: '20 m²',
     tag: 'Alta Gastronomía',
     coverImage: '/fotos/cocina_01.jpg',
     gallery: [

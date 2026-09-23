@@ -87,7 +87,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             id="hero-subtitle"
             className="text-base sm:text-lg md:text-xl text-stone-200 font-light leading-relaxed drop-shadow"
           >
-            Amplitud, luz y horizonte en Aguiño. Un ático de <span className="text-white font-medium">230 m²</span> con <span className="text-white font-medium">48 m² de terraza panorámica</span>, 3 dormitorios (dos de ellos en suite), 3 baños completos y vistas a las islas de <span className="text-white font-medium">Sálvora y Ons</span>.
+            Amplitud, luz y horizonte en Aguiño. Despierta frente a las islas de <span className="text-white font-medium">Sálvora y Ons</span>, desayuna al sol en la terraza y despídete del día con la puesta de sol sobre la ría — en un ático con tres dormitorios, dos de ellos en suite, y tres baños completos.
           </p>
         </div>
 
@@ -97,13 +97,13 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">Desde 70 €/noche en temporada baja</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">230 m² de luz y horizonte</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Despierta mirando las islas</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Terraza Privada 48 m²</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Terraza privada al mar</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">2 Suites + 1 Habitación</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Dos dormitorios en suite</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">3 Baños Completos</span>
