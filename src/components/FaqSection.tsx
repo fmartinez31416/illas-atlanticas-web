@@ -23,7 +23,7 @@ const FAQ_ITEMS = [
   },
   {
     q: '¿Qué hay cerca del ático?',
-    a: 'El puerto pesquero de Aguiño a dos minutos, playas a pocos kilómetros, las islas de Sálvora y Ons enfrente (Parque Nacional Illas Atlánticas), y Santiago de Compostela a 50 minutos por autovía. En esta web tienes la guía de gastronomía y experiencias.',
+    a: 'El puerto pesquero de Aguiño a dos minutos, playas a pocos kilómetros, las islas de Sálvora y Ons enfrente (Parque Nacional Illas Atlánticas), y Santiago de Compostela a 50 minutos por autovía. En esta web tienes LonjaLens, la guía de la lonja y los sabores de Aguiño.',
   },
 ];
 

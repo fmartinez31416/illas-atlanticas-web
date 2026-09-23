@@ -5,9 +5,10 @@ interface DirectBookingSectionProps {
   onOpenBooking: () => void;
   onOpenBitacora: () => void;
   onOpenLonja: () => void;
+  onOpenPuente: () => void;
 }
 
-export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja }: DirectBookingSectionProps) {
+export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja, onOpenPuente }: DirectBookingSectionProps) {
   return (
     <section id="reserva-directa" className="py-12 sm:py-14 bg-white border-b border-[#1A3A5C]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +69,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
                   <p className="text-[13px] font-medium text-[#1A3A5C]">Condiciones claras</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">Cancelación flexible y sin sorpresas</p>
+                  <p className="text-xs text-stone-500 mt-1 font-light">Sin cargos ocultos ni sorpresas</p>
                 </div>
               </div>
 
@@ -88,7 +89,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
               {/* Dato vivo: el Puente de Mando como gancho */}
               <button
                 type="button"
-                onClick={onOpenBitacora}
+                onClick={onOpenPuente}
                 aria-label="Abrir el Puente de Mando Atlántico"
                 className="relative rounded-md overflow-hidden shadow-xl w-full text-left cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/60 flex-1"
                 style={{ border: '1px solid rgba(26,58,92,0.15)' }}

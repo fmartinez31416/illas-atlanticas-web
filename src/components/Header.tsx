@@ -5,9 +5,10 @@ interface HeaderProps {
   onOpenBooking: () => void;
   onOpenVirtualTour?: () => void;
   onOpenBitacora?: () => void;
+  onOpenPuente?: () => void;
 }
 
-export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
+export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,6 +24,8 @@ export function Header({ onOpenBooking, onOpenBitacora }: HeaderProps) {
     { name: 'Espacios', href: '#espacios' },
         { name: 'Confort', href: '#servicios' },
         { name: 'Opiniones', href: '#opiniones' },
+        { name: 'FAQ', href: '#faq' },
+        { name: 'Puente de Mando', action: onOpenPuente },
         { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
       ];
 

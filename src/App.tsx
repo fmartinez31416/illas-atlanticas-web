@@ -15,10 +15,11 @@ import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
+import { DashboardNautico } from './components/DashboardNautico';
 import { NIA_API_URL } from './niaConfig';
 
 export function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
@@ -63,6 +64,19 @@ export function App() {
     );
   }
 
+  // VISTA: Puente de Mando Atlántico (acceso directo)
+  if (currentView === 'puente') {
+    return (
+      <>
+        <DashboardNautico
+          onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
+        />
+        <NiaChat />
+      </>
+    );
+  }
+
   // VISTA 2: LonjaLens — guía oficial de la lonja de Aguiño
   if (currentView === 'lonja') {
     return (
@@ -90,7 +104,11 @@ export function App() {
   // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
-      <Header onOpenBooking={scrollToBooking} onOpenBitacora={() => setCurrentView('bitacora')} />
+      <Header
+        onOpenBooking={scrollToBooking}
+        onOpenBitacora={() => setCurrentView('bitacora')}
+        onOpenPuente={() => setCurrentView('puente')}
+      />
       
       <main>
         <Hero onOpenBooking={scrollToBooking} />
@@ -104,6 +122,7 @@ export function App() {
           onOpenBooking={scrollToBooking}
           onOpenBitacora={() => setCurrentView('bitacora')}
           onOpenLonja={() => setCurrentView('lonja')}
+          onOpenPuente={() => setCurrentView('puente')}
         />
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
