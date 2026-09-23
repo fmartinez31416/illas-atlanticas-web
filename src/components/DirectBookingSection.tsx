@@ -17,7 +17,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
           <Reveal>
             <div>
               <span className="text-[11px] uppercase tracking-[0.28em] text-[#D4A017] font-medium">
-                Reserva directa
+                Pacto directo
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1A3A5C] tracking-tight mt-3 leading-tight">
                 El mejor precio, <span className="italic text-[#D4A017]">garantizado.</span>
@@ -27,6 +27,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <strong className="text-stone-900">atención personal del anfitrión</strong> y unas
                 condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
               </p>
+              <p className="text-[#D4A017] text-sm italic font-serif mt-3">
+                «Elige tus fechas. Nosotros ponemos [ADDRESS]    </p>
 
               {/* Garantía del mejor precio — compacta y colapsable */}
               <details className="mt-5 border-l-2 border-[#D4A017] pl-4 group">

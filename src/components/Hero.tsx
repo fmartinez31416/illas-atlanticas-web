@@ -61,6 +61,11 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span className="text-white/40">·</span>
             <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
           </div>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-stone-300 text-xs">
+            <span className="font-mono text-[11px] text-[#D4A017]">VUT-CO-007656</span>
+            <span className="text-white/30">·</span>
+            <span className="text-stone-300 text-[11px] font-light">Xunta de Galicia</span>
+          </div>
           {liveWeather && (
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ animation: 'hudPulse 2.4s ease-in-out infinite' }} />

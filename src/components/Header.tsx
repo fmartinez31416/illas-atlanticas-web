@@ -25,7 +25,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
         { name: 'Confort', href: '#servicios' },
         { name: 'Opiniones', href: '#opiniones' },
         { name: 'FAQ', href: '#faq' },
-        { name: 'Puente de Mando', action: onOpenPuente },
+        { name: 'Puente en vivo', action: onOpenPuente, dot: true },
         { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
       ];
 
@@ -83,12 +83,15 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
                 <button
                   key={link.name}
                   onClick={link.action}
-                  className={`text-[11px] uppercase tracking-[0.16em] font-medium transition-colors relative py-1 whitespace-nowrap ${
+                  className={`text-[11px] uppercase tracking-[0.16em] font-medium transition-colors relative py-1 whitespace-nowrap inline-flex items-center ${
                     isScrolled
                       ? 'text-stone-700 hover:text-stone-950'
                       : 'text-white/90 hover:text-white'
                   }`}
                 >
+                  {(link as any).dot && (
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
+                  )}
                   {link.name}
                 </button>
               ) : (
