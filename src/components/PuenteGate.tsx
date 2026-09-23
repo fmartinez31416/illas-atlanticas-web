@@ -124,7 +124,7 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
         onClick={onVolverCasa}
         className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-[10px] uppercase tracking-[0.3em] text-[#8A6D3B]/80 hover:text-[#D4AF37] transition-colors"
       >
-        Volver a la casa
+        Volver
       </button>
 
       <style>{`

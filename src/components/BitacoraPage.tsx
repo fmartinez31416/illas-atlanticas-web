@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Clock, Compass, Tag, MapPin, Gauge } from 'lucide-react';
 import { ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
-import { DashboardNautico } from './DashboardNautico';
+import { PuenteView } from './PuenteView';
 
 interface BitacoraPageProps {
   onBack: () => void;
@@ -24,11 +24,11 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Si el usuario activa el Puente de Mando, mostramos la consola interactiva
+  // Si el usuario activa el Puente de Mando, la puerta primero (con sonido / en silencio)
   if (showDashboard) {
     return (
-      <DashboardNautico
-        onBack={() => setShowDashboard(false)}
+      <PuenteView
+        onBackHome={() => setShowDashboard(false)}
         onOpenBooking={onOpenBooking}
       />
     );
