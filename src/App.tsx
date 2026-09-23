@@ -15,7 +15,7 @@ import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
-import { DashboardNautico } from './components/DashboardNautico';
+import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
 
 export function App() {
@@ -64,15 +64,14 @@ export function App() {
     );
   }
 
-  // VISTA: Puente de Mando Atlántico (acceso directo)
+  // VISTA: Puente de Mando Atlántico (puerta + consola)
   if (currentView === 'puente') {
     return (
       <>
-        <DashboardNautico
-          onBack={() => setCurrentView('home')}
+        <PuenteView
+          onBackHome={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
         />
-        <NiaChat />
       </>
     );
   }
