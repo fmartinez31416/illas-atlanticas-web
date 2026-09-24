@@ -44,6 +44,17 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const [playing, setPlaying] = X.useState(false);
   const [soundOn, setSoundOn] = X.useState(() => isOceanOn());
   const [lampMode, setLampMode] = X.useState<'roja' | 'ambar'>('roja');
+  const [brightness, setBrightness] = X.useState<number>(() => {
+    try {
+      const v = Number(window.localStorage.getItem('puenteBrillo'));
+      if (v >= 1 && v <= 2.2) return v;
+    } catch { /* sin almacenamiento */ }
+    return 1;
+  });
+  const onBrightness = (v: number) => {
+    setBrightness(v);
+    try { window.localStorage.setItem('puenteBrillo', String(v)); } catch { /* sin almacenamiento */ }
+  };
 
   const dayKey = Qx(now);
   const dayStart = X.useMemo(() => xh(now).getTime(), [dayKey]);
@@ -240,7 +251,10 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   );
 
   return (
-    <div className="bridge min-h-screen bg-[#050609]" style={bridgeVars}>
+    <div
+      className="bridge min-h-screen bg-[#050609]"
+      style={{ ...bridgeVars, filter: brightness === 1 ? undefined : `brightness(${brightness.toFixed(2)})` }}
+    >
       <Ventana sky={sky} lighting={lighting} cond={model} header={header} />
 
       {/* Falsarriba de caoba con los pomos de latón */}
@@ -338,6 +352,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                 bells={bells.bells}
                 lampMode={lampMode}
                 onLampMode={setLampMode}
+                brightness={brightness}
+                onBrightness={onBrightness}
                 compassSupported={heading.supported}
                 compassOn={heading.enabled}
                 onCompass={toggleCompass}

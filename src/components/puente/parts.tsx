@@ -195,6 +195,16 @@ export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.up
           }{
           <Th on={s.compassOn} onChange={s.onCompass} label="Brújula del dispositivo" />
           }</div>
+        }{
+        <div className="pt-1">{
+          <div className="flex items-center justify-between gap-3">{
+            <Vi>LUMINOSIDAD</Vi>
+            }{
+            <span className="font-serif text-[12px] tabular-nums text-[#b9a47a]">{Math.round(s.brightness*100)}%</span>
+            }</div>
+          }{
+          <input type="range" min={1} max={2.2} step={0.05} value={s.brightness} onChange={r=>s.onBrightness(Number(r.target.value))} className="brass-range relative z-[1] w-full" aria-label="Luminosidad del puente" />
+          }</div>
         }</div>
       }</div>
     }{
