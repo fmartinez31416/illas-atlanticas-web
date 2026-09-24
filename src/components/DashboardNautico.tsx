@@ -43,7 +43,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   const [scrub, setScrub] = X.useState<number | null>(null);
   const [playing, setPlaying] = X.useState(false);
   const [soundOn, setSoundOn] = X.useState(() => isOceanOn());
-  const [lampMode, setLampMode] = X.useState<'roja' | 'ambar'>('roja');
+  const [lampMode, setLampMode] = X.useState<'roja' | 'ambar'>('ambar');
   const [brightness, setBrightness] = X.useState<number>(() => {
     try {
       const v = Number(window.localStorage.getItem('puenteBrillo'));
