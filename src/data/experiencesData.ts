@@ -22,11 +22,11 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
     subtitle: 'Ruta del Albariño y cata en la terraza',
     category: 'enologia',
     image: '/fotos/cocina_bogavante_centollas_14.jpg',
-    description: 'La costa de las Rías Baixas cría un Albariño con una salinidad que no se encuentra en otros viñedos. En la casa, la vinoteca a dos temperaturas guarda las botellas que compres en la ruta, y te pasamos la lista de bodegas de la zona que merecen la visita: Val do Salnés, O Rosal y Ribeira do Ulla, con tintos atlánticos como el Caíño o el Espadeiro para quien quiera salir del blanco.',
+    description: 'La costa de las Rías Baixas cría un Albariño con una salinidad que no se encuentra en otros viñedos. Te pasamos la lista de bodegas de la zona que merecen la visita: Val do Salnés, O Rosal y Ribeira do Ulla, con tintos atlánticos como el Caíño o el Espadeiro para quien quiera salir del blanco.',
     highlights: [
-      'Vinoteca a dos temperaturas para tus botellas',
       'Lista de bodegas de la zona que te pasamos al reservar',
-      'Copas adecuadas para blanco y tinto',
+      'En la casa, copas adecuadas para blanco y tinto',
+      'Frigorífico para enfriar tus botellas al punto',
       'Maridajes sugeridos con el marisco de la lonja'
     ],
     curatorTip: 'Prueba un Albariño con crianza sobre lías para acompañar los mariscos de concha cocidos en su punto.'

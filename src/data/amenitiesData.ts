@@ -5,43 +5,43 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     category: 'Vistas & Exteriores',
     items: [
       {
-        name: 'Terraza Panorámica 48 m²',
-        description: 'Vistas frontales ininterrumpidas a la Isla de Sálvora y puesta de sol atlántica.',
+        name: 'Terraza Panorámica Privada',
+        description: 'Vistas frontales a la isla de Sálvora y puesta de sol atlántica.',
         icon: 'Sun'
       },
       {
-        name: 'Mobiliario de Diseño Exterior',
-        description: 'Mesa de comedor de teca, tumbonas reclinables y zona chillout.',
+        name: 'Mesa y Tumbonas en la Terraza',
+        description: 'Mesa para comer al aire libre, tumbonas y agua en la terraza.',
         icon: 'Armchair'
       },
       {
-        name: 'Ducha Solar Exterior',
-        description: 'Ducha de diseño en acero inoxidable en la terraza para días soleados.',
+        name: 'Puerto y Lonja a 5 Minutos',
+        description: 'A pie desde la casa: lonja de Aguiño, puerto y barcos a Sálvora y Ons.',
         icon: 'Sparkles'
       }
     ]
   },
   {
-    category: 'Confort & Domótica',
+    category: 'Confort & Calidez',
     items: [
       {
-        name: 'Lucernario Cenital Motorizado',
-        description: 'Apertura eléctrica y oscurecimiento 100% sobre la cama king size.',
+        name: 'Ventanas de Techo Velux',
+        description: 'En los dormitorios: cielo estrellado sobre la cama y luz natural todo el día.',
         icon: 'Moon'
       },
       {
-        name: 'Climatización por Aerotermia',
-        description: 'Suelo radiante y refrescante silencioso de alta eficiencia energética.',
+        name: 'Calefacción en Toda la Casa',
+        description: 'Ambiente cálido para los meses de invierno.',
         icon: 'Flame'
       },
       {
-        name: 'Chimenea Ecológica de Bioetanol',
-        description: 'Llama viva limpia y sin humos para veladas acogedoras.',
+        name: 'Chimenea de Ambiente',
+        description: 'Llama viva para las veladas de invierno.',
         icon: 'FlameKindling'
       },
       {
-        name: 'Smart Lock & Check-in 24/7',
-        description: 'Apertura mediante código numérico o smartphone sin necesidad de llaves.',
+        name: 'Check-in Personal',
+        description: 'Entrada a las 17:00 con explicación de la casa, y salida a las 12:00.',
         icon: 'Key'
       }
     ]
@@ -50,18 +50,18 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     category: 'Conectividad & Teletrabajo',
     items: [
       {
-        name: 'Fibra Óptica 1.000 Mbps',
-        description: 'Velocidad simétrica con red Wi-Fi 6 de cobertura total en el ático y terraza.',
+        name: 'Fibra de Alta Velocidad',
+        description: 'Conexión estable con Wi-Fi en toda la casa.',
         icon: 'Wifi'
       },
       {
-        name: 'Monitor 4K 32" USB-C PD',
-        description: 'Conexión con un solo cable para vídeo, datos y carga de portátil de hasta 90W.',
+        name: 'Monitor Externo',
+        description: 'Para conectar tu portátil y trabajar a gusto.',
         icon: 'Monitor'
       },
       {
-        name: 'Puesto de Trabajo Ergonómico',
-        description: 'Mesa amplia de madera noble, silla ergonómica y aislamiento acústico.',
+        name: 'Puesto de Trabajo Cómodo',
+        description: 'Despacho independiente con mesa amplia y silla ergonómica.',
         icon: 'Laptop'
       }
     ]
@@ -75,19 +75,14 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
         icon: 'Bath'
       },
       {
-        name: 'Vinoteca Multitemperatura',
-        description: 'Control independiente de temperatura para blancos gallegos y tintos.',
-        icon: 'Wine'
-      },
-      {
-        name: 'Cocina de Inducción & Neff',
-        description: 'Equipamiento completo con menaje Le Creuset y cafetera de especialidad.',
+        name: 'Cocina Equipada',
+        description: 'Cocina abierta al salón, completa: horno, lavavajillas y nevera amplia.',
         icon: 'UtensilsCrossed'
       },
       {
-        name: 'Garaje Privado con Cargador VE',
-        description: 'Plaza interior reservada con cargador de vehículo eléctrico Tipo 2 (hasta 22kW).',
-        icon: 'Zap'
+        name: 'Café de Bienvenida',
+        description: 'Cafetera con café para el primer desayuno frente al mar.',
+        icon: 'Coffee'
       }
     ]
   }

@@ -166,9 +166,9 @@ export const SPACES_DATA: Space[] = [
       '/fotos/cocina_percebes_01.jpg',
       '/fotos/cocina_centollas_08.jpg'
     ],
-    description: 'Cocina abierta al salón, con isla de piedra y vistas al mar. Pensada para la lonja: cazuelas grandes, todo el menaje y una vinoteca a dos temperaturas para tus Albariños, tras la puerta junto a la cocina.',
+    description: 'Cocina abierta al salón, con isla de piedra y vistas al mar. Pensada para la lonja: cazuelas grandes, todo el menaje y una nevera amplia para guardar lo que compres en la subasta.',
     highlights: [
-      'Vinoteca a dos temperaturas (blancos y tintos)',
+      'Nevera amplia y congelador para la compra de la lonja',
       'Placa de inducción y campana extractora',
       'Cafetera con café de bienvenida',
       'Menaje completo: cazuelas grandes, ollas y sartenes'
@@ -180,7 +180,7 @@ export const SPACES_DATA: Space[] = [
       'Copas para vino blanco y tinto, y vasos de todo tipo'
     ],
     specs: [
-      { label: 'Vinoteca', value: 'Dos temperaturas, junto a la cocina' },
+      { label: 'Nevera', value: 'Amplia, con congelador' },
       { label: 'Electrodomésticos', value: 'Completos (Bosch, AEG y más)' },
       { label: 'Café', value: 'Cafetera y café de bienvenida' },
       { label: 'Menaje', value: 'Completo para cocinar marisco' }

@@ -19,7 +19,7 @@ export function GastroAndExperiences() {
     const query = customSeafoodQuery.toLowerCase();
     if (query.includes('ostra') || query.includes('almeja') || query.includes('zamburiña')) {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Recomendamos un Albariño de suelo granítico con fermentación espontánea (Subzona O Salnés). Su marcada acidez cítrica y notas salinas potenciarán el yodo natural sin opacar el molusco. Servir a 9°C en copa Borgoña o Riedel Albariño.`
+        `Para ${customSeafoodQuery}: Recomendamos un Albariño de suelo granítico (Subzona Val do Salnés). Su marcada acidez cítrica y notas salinas potenciarán el yodo natural sin opacar el molusco. Servir a 9°C en copa de vino blanco.`
       );
     } else if (query.includes('pescado') || query.includes('rodaballo') || query.includes('lubina') || query.includes('sargo')) {
       setAiRecommendation(
@@ -216,7 +216,7 @@ export function GastroAndExperiences() {
                 <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
                   <span className="flex items-center gap-1.5">
                     <Award className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Para acompañar con tu Albariño de la vinoteca</span>
+                    <span>Para acompañar con un Albariño bien frío</span>
                   </span>
                   <span className="text-zinc-500 italic">Servicio a 8°C - 10°C</span>
                 </div>
