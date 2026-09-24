@@ -1,4 +1,13 @@
 @import "tailwindcss";
+@import "./puente.css";
+
+/* Tipografías del Puente de Mando: Cinzel para rótulos grabados, Cormorant Garamond
+   para textos de bitácora y Plus Jakarta Sans para la interfaz. */
+@theme {
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
 
 @layer base {
   @keyframes marquee {
