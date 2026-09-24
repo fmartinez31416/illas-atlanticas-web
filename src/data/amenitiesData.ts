@@ -70,8 +70,8 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     category: 'Bienestar & Gastronomía',
     items: [
       {
-        name: 'Bañera Hidromasaje Privada',
-        description: 'Sistema doble de hidromasaje y cromoterapia relajante.',
+        name: 'Bañera de Hidromasaje Privada',
+        description: 'Bañera grande de piedra con chorros de agua para dos.',
         icon: 'Bath'
       },
       {

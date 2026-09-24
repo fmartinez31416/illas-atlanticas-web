@@ -31,7 +31,7 @@ export function GastroAndExperiences() {
       );
     } else {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Excelente elección en la comarca de Ribeira. Recomendamos maridarlo con un Albariño de autor cosecha tardía de las Rías Baixas, bien frío a 8-10°C, y consultar en la lonja matutina de Aguiño la frescura de la captura.`
+        `Para ${customSeafoodQuery}: Excelente elección en la comarca de Ribeira. Te lo maridamos con un Albariño de la zona, bien frío a 8-10°C, y recuerda que en la lonja de Aguiño lo encontrarás recién capturado.`
       );
     }
   };
@@ -49,7 +49,7 @@ export function GastroAndExperiences() {
             Experiencias de Ría & <span className="italic font-light text-amber-100">Asistente Gastro</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Nuestra ubicación privilegiada en Aguiño te abre las puertas a la mayor riqueza marisquera del Atlántico, con asesoramiento exclusivo y maridajes de autor.
+            Nuestra ubicación en Aguiño te abre las puertas a la mayor riqueza marisquera del Atlántico, con asesoramiento cercano y maridajes de la casa.
           </p>
         </div>
 
@@ -216,7 +216,7 @@ export function GastroAndExperiences() {
                 <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
                   <span className="flex items-center gap-1.5">
                     <Award className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Disponible en la vinoteca del ático</span>
+                    <span>Para acompañar con tu Albariño de la vinoteca</span>
                   </span>
                   <span className="text-zinc-500 italic">Servicio a 8°C - 10°C</span>
                 </div>
