@@ -43,24 +43,24 @@ export const SPACES_DATA: Space[] = [
       '/fotos/comedor_04.jpg',
       '/fotos/comedor_15.jpg'
     ],
-    description: 'Espacio abierto bañado por la luz del Atlántico a través de grandes ventanales. Chimenea de ambiente, televisor de 75" con Netflix y Movistar+, y sistema de sonido para las noches de película.',
+    description: 'Espacio abierto bañado por la luz del Atlántico a través de grandes ventanales. Chimenea de leña o briquetas, televisor de 75" con Netflix y Movistar+, y sistema de sonido para las noches de película.',
     highlights: [
       'Smart TV de 75" con Netflix y Movistar+',
       'Sistema de sonido para cine en casa',
-      'Chimenea de ambiente para el invierno',
+      'Chimenea de leña o briquetas para el invierno',
       'Gran sofá con mesa de comedor integrada en el espacio'
     ],
     features: [
       'Acceso directo sin peldaños a la terraza',
-      'Suelo radiante para los días fríos',
+      'Climatización frío/calor con temperatura por estancia',
       'Libros de arte, arquitectura y literatura gallega',
       'Ventanas con buen aislamiento acústico'
     ],
     specs: [
       { label: 'Pantalla', value: '75" Smart TV' },
-      { label: 'Ambiente', value: 'Chimenea de llama viva' },
+      { label: 'Ambiente', value: 'Chimenea de leña o briquetas' },
       { label: 'Materiales', value: 'Lino y madera natural' },
-      { label: 'Invierno', value: 'Suelo radiante' }
+      { label: 'Climatización', value: 'Frío/calor por estancia' }
     ]
   },
   {

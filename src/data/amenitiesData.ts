@@ -30,18 +30,18 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
         icon: 'Moon'
       },
       {
-        name: 'Calefacción en Toda la Casa',
-        description: 'Ambiente cálido para los meses de invierno.',
+        name: 'Climatización Frío/Calor',
+        description: 'Bomba de calor con temperatura independiente en cada estancia.',
         icon: 'Flame'
       },
       {
-        name: 'Chimenea de Ambiente',
-        description: 'Llama viva para las veladas de invierno.',
+        name: 'Chimenea de Leña',
+        description: 'De leña o briquetas en el salón, para las veladas de invierno.',
         icon: 'FlameKindling'
       },
       {
-        name: 'Check-in Personal',
-        description: 'Entrada a las 17:00 con explicación de la casa, y salida a las 12:00.',
+        name: 'Garaje Privado & Ascensor',
+        description: 'Plaza nº 12 frente al ascensor, que sube hasta la planta ático.',
         icon: 'Key'
       }
     ]

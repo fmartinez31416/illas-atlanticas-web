@@ -75,8 +75,8 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
       },
       {
         icon: Sparkles,
-        name: 'Cafetera y Café de Bienvenida',
-        description: 'Café para el primer desayuno frente al mar.'
+        name: 'Cafeteras & Café de Bienvenida',
+        description: 'De cápsulas, de filtro e italiana, con café para el primer desayuno.'
       },
       {
         icon: Zap,
@@ -90,13 +90,13 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
     items: [
       {
         icon: Key,
-        name: 'Ascensor hasta el Ático',
-        description: 'Acceso cómodo a la planta ático sin subir escaleras.'
+        name: 'Garaje Privado & Ascensor',
+        description: 'Plaza nº 12 frente al ascensor, que sube hasta la planta ático.'
       },
       {
         icon: Flame,
-        name: 'Chimenea & Calefacción',
-        description: 'Chimenea en el salón y calefacción en toda la casa para el invierno.'
+        name: 'Chimenea de Leña & Climatización',
+        description: 'Chimenea de leña o briquetas en el salón, y bomba de calor frío/calor con temperatura independiente en cada estancia.'
       },
       {
         icon: Bath,
