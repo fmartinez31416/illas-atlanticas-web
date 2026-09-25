@@ -71,7 +71,7 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     items: [
       {
         name: 'Bañera de Hidromasaje Privada',
-        description: 'Bañera grande de piedra con chorros de agua para dos.',
+        description: 'Bañera de hidromasaje con chorros de agua en el dormitorio principal.',
         icon: 'Bath'
       },
       {

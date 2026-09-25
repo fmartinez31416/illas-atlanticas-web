@@ -96,30 +96,28 @@ export const SPACES_DATA: Space[] = [
   },
   {
     id: 'bano-hidromasaje',
-    name: 'Baño de Hidromasaje',
-    subtitle: 'Bañera grande de piedra con chorros de agua',
+    name: 'Bañera de Hidromasaje',
+    subtitle: 'Bañera de hidromasaje con chorros de agua',
     tag: 'Bienestar',
     coverImage: '/fotos/bano_principal_06.jpg',
     gallery: [
       '/fotos/bano_principal_14.jpg',
       '/fotos/bano_doble_01.jpg'
     ],
-    description: 'La pieza con más carácter de la casa: una bañera grande tallada en piedra, con hidromasaje de agua para dos. Junto a ella, ducha amplia y espacio para deshacer la maleta sin prisas.',
+    description: 'La pieza que todos recuerdan de la casa: una bañera de hidromasaje con chorros de agua en el dormitorio principal. Tres baños completos, así que por la mañana nadie hace cola.',
     highlights: [
-      'Bañera de piedra con hidromasaje para dos',
-      'Ducha amplia con efecto lluvia',
+      'Bañera de hidromasaje con chorros en el dormitorio principal',
+      'Tres baños completos',
       'Gel, champú y jabón de manos a tu disposición',
-      'Toallas grandes y suaves para todos los baños'
+      'Toallas para toda la casa'
     ],
     features: [
-      'Revestimientos de piedra natural',
-      'Secador de pelo',
-      'Dos lavabos',
-      'Espacio para tus productos personales'
+      'Espacio para tus productos personales',
+      'Toallas grandes para todos los baños'
     ],
     specs: [
-      { label: 'Bañera', value: 'Piedra tallada con hidromasaje' },
-      { label: 'Ducha', value: 'Amplia, efecto lluvia' },
+      { label: 'Bañera', value: 'Hidromasaje, en el dormitorio principal' },
+      { label: 'Baños', value: 'Tres completos' },
       { label: 'Amenities', value: 'Gel, champú y jabón de manos' },
       { label: 'Toallas', value: 'Incluidas para toda la casa' }
     ]
