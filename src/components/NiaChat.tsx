@@ -43,11 +43,20 @@ export function NiaChat() {
     const pedir = () => {
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 30000);
+      // Identificador de sesión estable por navegador: permite reconstruir la conversación íntegra en el registro del servidor
+      let sid = '';
+      try {
+        sid = localStorage.getItem('nia_sid_v1') || '';
+        if (!sid) {
+          sid = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+          localStorage.setItem('nia_sid_v1', sid);
+        }
+      } catch { /* ignore */ }
       return fetch(NIA_API_URL, {
         method: 'POST',
         signal: ctrl.signal,
         headers: { 'Content-Type': 'application/json', 'X-Nia-Token': NIA_TOKEN },
-        body: JSON.stringify({ messages: mensajes.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
+        body: JSON.stringify({ sessionId: sid, messages: mensajes.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
       }).finally(() => clearTimeout(timer));
     };
     let r = await pedir();
