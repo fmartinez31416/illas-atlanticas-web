@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { X, Send, MessageCircle } from 'lucide-react';
 import { NIA_API_URL, NIA_TOKEN } from '../niaConfig';
-import { t } from '../i18n/translate';
+import { t, getLang } from '../i18n/translate';
 
 interface Mensaje {
   rol: 'nia' | 'usuario';
@@ -57,7 +57,7 @@ export function NiaChat() {
         method: 'POST',
         signal: ctrl.signal,
         headers: { 'Content-Type': 'application/json', 'X-Nia-Token': NIA_TOKEN },
-        body: JSON.stringify({ sessionId: sid, messages: mensajes.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
+        body: JSON.stringify({ sessionId: sid, lang: getLang(), messages: mensajes.map((m) => ({ role: m.rol === 'usuario' ? 'user' : 'assistant', content: m.texto })) }),
       }).finally(() => clearTimeout(timer));
     };
     let r = await pedir();

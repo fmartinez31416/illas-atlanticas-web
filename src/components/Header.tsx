@@ -190,7 +190,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="md:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
+          className="md:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg max-h-[calc(100vh-72px)] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
         >
           <div className="flex justify-center pb-4 border-b border-stone-100">
             <LanguageSwitcher />
