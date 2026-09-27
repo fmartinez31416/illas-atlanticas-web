@@ -47,7 +47,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               Ático Singular · Aguiño (Ribeira)
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-tight drop-shadow-lg">
-              Despertar frente al <span className="italic font-serif text-amber-100">Atlántico</span>
+              {t("Despertar frente al")} <span className="italic font-serif text-amber-100">{t("Atlántico")}</span>
             </h2>
           </div>
 
@@ -113,7 +113,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             <ul className="space-y-3 text-xs text-stone-100 font-light">
               <li>
                 <a href="#espacios" className="hover:text-amber-200 transition-colors">
-                  Distribución & Espacios
+                  {t("Distribución & Espacios")}
                 </a>
               </li>
               <li>
@@ -123,7 +123,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </li>
               <li>
                 <a href="#opiniones" className="hover:text-amber-200 transition-colors">
-                  Opiniones de Huéspedes
+                  {t("Opiniones de Huéspedes")}
                 </a>
               </li>
               <li>
@@ -141,7 +141,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             </h3>
             <div className="space-y-3 text-xs text-stone-100 font-light">
               <p className="text-white font-medium">
-                Anfitrión: <span>Fernando</span>
+                {t("Anfitrión:")} <span>Fernando</span>
               </p>
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
@@ -156,7 +156,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
                 <span>{t("Rúa Francisco Lorenzo Mariño, 93")}<br />{t("15965 Aguiño (Ribeira, A Coruña)")}</span>
               </div>
               <p className="text-xs text-stone-200 pt-1 leading-relaxed">
-                Atención personalizada y trato directo sin intermediarios.
+                {t("Atención personalizada y trato directo sin intermediarios.")}
               </p>
             </div>
           </div>

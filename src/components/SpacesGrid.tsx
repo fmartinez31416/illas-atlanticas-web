@@ -129,10 +129,10 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
         <div className="mt-14 p-8 sm:p-10 bg-white border border-stone-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="text-center lg:text-left max-w-2xl">
             <span className="text-xs uppercase tracking-[0.25em] text-stone-400 font-semibold block mb-2">
-              Resumen de la Propiedad
+              {t("Resumen de la Propiedad")}
             </span>
             <h4 className="text-2xl font-serif text-stone-900 font-normal">
-              230 m² en planta ático con ascensor y garaje privado
+              {t("230 m² en planta ático con ascensor y garaje privado")}
             </h4>
             <p className="text-stone-600 text-sm font-light mt-2 leading-relaxed">
               {t("Terraza exterior de 48 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica y 3 cuartos de baño completos (dos en suite y uno común situado junto al salón).")}

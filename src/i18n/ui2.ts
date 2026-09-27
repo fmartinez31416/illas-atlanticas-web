@@ -151,4 +151,8 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "tuya o de quien tú elijas.": { es: "tuya o de quien tú elijas.", en: "yours or whoever you choose.", gl: "túa ou de quen ti elixas." },
   "Crónicas del": { es: "Crónicas del", en: "Chronicles of the", gl: "Crónicas do" },
   "Atlántico": { es: "Atlántico", en: "Atlantic", gl: "Atlántico" },
+  "Cerrar reserva": { es: "Cerrar reserva", en: "Close booking", gl: "Pechar reserva" },
+  "Ver precio y reservar": { es: "Ver precio y reservar", en: "See price and book", gl: "Ver prezo e reservar" },
+  "Resumen de la Propiedad": { es: "Resumen de la Propiedad", en: "Property Summary", gl: "Resumo da Propiedade" },
+  "Despertar frente al": { es: "Despertar frente al", en: "Waking up facing the", gl: "Espertar fronte ao" },
 };

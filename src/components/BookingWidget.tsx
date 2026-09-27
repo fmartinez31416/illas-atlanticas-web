@@ -135,7 +135,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                 onClick={() => setMotorAbierto(!motorAbierto)}
                 className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
-                <span>{motorAbierto ? 'Cerrar reserva' : 'Ver precio y reservar'}</span>
+                <span>{motorAbierto ? t('Cerrar reserva') : t('Ver precio y reservar')}</span>
                 <ArrowRight className={`w-3.5 h-3.5 text-amber-300 transition-transform ${motorAbierto ? 'rotate-90' : ''}`} />
               </button>
 
