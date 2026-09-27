@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { POINTS_OF_INTEREST } from '../data/locationData';
+import { getPointsOfInterest } from '../data/locationData';
 import { PointOfInterest } from '../types';
 import { MapPin, ExternalLink, Car, Plane } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 export function LocationAndSurroundings() {
-  const [activePoi, setActivePoi] = useState<PointOfInterest>(POINTS_OF_INTEREST[0]);
+  const { lang } = useI18n();
+  const pois = getPointsOfInterest(lang);
+  const [activePoiId, setActivePoiId] = useState<string>(pois[0]?.id || '');
+  const activePoi = pois.find((p) => p.id === activePoiId) || pois[0];
 
   const handleOpenGoogleMaps = () => {
     window.open(
@@ -41,10 +45,10 @@ export function LocationAndSurroundings() {
               Lugares Destacados
             </h3>
 
-            {POINTS_OF_INTEREST.map((poi) => (
+            {pois.map((poi) => (
               <div
                 key={poi.id}
-                onClick={() => setActivePoi(poi)}
+                onClick={() => setActivePoiId(poi.id)}
                 className={`p-4 cursor-pointer transition-all duration-300 border flex items-start gap-4 ${
                   activePoi.id === poi.id
                     ? 'bg-[#FAF8F5] border-stone-800 shadow-sm'

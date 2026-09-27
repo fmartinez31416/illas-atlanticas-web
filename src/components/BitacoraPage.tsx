@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Clock, Compass, Tag, MapPin, Gauge } from 'lucide-react';
-import { ARTICLES, Article } from '../data/articles';
+import { getArticles, ARTICLES as RAW_ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
 import { PuenteView } from './PuenteView';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 interface BitacoraPageProps {
   onBack: () => void;
@@ -12,6 +13,8 @@ interface BitacoraPageProps {
 }
 
 export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: BitacoraPageProps) {
+  const { lang } = useI18n();
+  const articles = getArticles(lang);
   const [selectedCategory, setSelectedCategory] = useState<string>('Todas');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
@@ -19,7 +22,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
   useEffect(() => {
     window.scrollTo(0, 0);
     if (initialArticleSlug) {
-      const art = ARTICLES.find((a) => a.slug === initialArticleSlug);
+      const art = getArticles(lang).find((a) => a.slug === initialArticleSlug);
       if (art) setSelectedArticle(art);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,11 +38,11 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     );
   }
 
-  const categories = ['Todas', t('Historia & Navegación'), t('Cartografía & Territorio'), 'Tratado de Producto & Lonja', t('Oceanografía & Ría')];
+  const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría'];
 
   const filteredArticles = selectedCategory === 'Todas'
-    ? ARTICLES
-    : ARTICLES.filter(a => a.category.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase().includes(a.category.toLowerCase()));
+    ? articles
+    : articles.filter((a, i) => RAW_ARTICLES[i]?.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 selection:bg-amber-200 selection:text-stone-950 font-sans">
@@ -104,7 +107,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
         <div className="flex flex-wrap items-center gap-2 pb-6 border-b border-stone-800/80">
           <span className="text-xs uppercase tracking-[0.2em] text-stone-400 mr-2 flex items-center gap-1.5">
             <Tag className="w-3.5 h-3.5" />
-            <span>Filtrar:</span>
+            <span>{t('Filtrar:')}</span>
           </span>
           {categories.map((cat) => (
             <button
@@ -116,7 +119,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                   : 'bg-stone-900/90 text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
               }`}
             >
-              {cat}
+              {t(cat)}
             </button>
           ))}
         </div>

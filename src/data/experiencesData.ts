@@ -141,3 +141,23 @@ export function getExperiences(lang: Lang): GastroExperience[] {
     curatorTip: trc(`exp.${e.id}.curatorTip`, lang, e.curatorTip),
   }));
 }
+
+export function getGastroRestaurants(lang: Lang) {
+  return GASTRO_RESTAURANTS.map((r, i) => ({
+    ...r,
+    type: trc(`gastro.r${i}.type`, lang, r.type),
+    highlight: trc(`gastro.r${i}.highlight`, lang, r.highlight),
+    recommended: trc(`gastro.r${i}.recommended`, lang, r.recommended),
+  }));
+}
+
+export function getWinePairings(lang: Lang) {
+  return WINE_PAIRINGS.map((p, i) => ({
+    ...p,
+    dish: trc(`wine.p${i}.dish`, lang, p.dish),
+    product: trc(`wine.p${i}.product`, lang, p.product),
+    wineName: trc(`wine.p${i}.name`, lang, p.wineName),
+    variety: trc(`wine.p${i}.variety`, lang, p.variety),
+    notes: trc(`wine.p${i}.notes`, lang, p.notes),
+  }));
+}

@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
 import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info } from 'lucide-react';
-import { ESPECIES, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
+import { getEspecies, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
 import { CREDITOS_FOTOS } from '../data/creditosEspecies';
 import { Reveal } from './Reveal';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
+import { trc } from '../i18n/dataTranslations';
 
 interface LonjaLensProps {
   onBack: () => void;
@@ -20,9 +22,10 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
   const [query, setQuery] = useState('');
   const [filtro, setFiltro] = useState<'todos' | 'marisco' | 'pescado' | 'cefalopodo'>('todos');
   const [seleccionada, setSeleccionada] = useState<Especie | null>(null);
+  const { lang } = useI18n();
 
   const especies = useMemo(() => {
-    return ESPECIES.filter((e) => {
+    return getEspecies(lang).filter((e) => {
       if (filtro !== 'todos' && e.tipo !== filtro) return false;
       const q = query.trim().toLowerCase();
       if (!q) return true;
@@ -32,7 +35,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         e.cientifico.toLowerCase().includes(q)
       );
     });
-  }, [query, filtro]);
+  }, [query, filtro, lang]);
 
   return (
     <div id="lonjalens" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950">
@@ -88,7 +91,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             </div>
             <p className="text-xs text-stone-500 mt-3 flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-[#D4A017] shrink-0 mt-0.5" />
-              {FUENTE_TALLAS}
+              {trc('lonja.fuenteTallas', lang, FUENTE_TALLAS)}
             </p>
           </div>
         </Reveal>
@@ -136,7 +139,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                     : 'bg-white border-[#1A3A5C]/20 text-stone-600 hover:border-[#1A3A5C]/50'
                 }`}
               >
-                {label}
+                {t(label)}
               </button>
             ))}
           </div>
@@ -162,7 +165,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline gap-2">
                     <span className="font-serif text-lg text-[#1A3A5C] truncate">{e.nombreES}</span>
-                    <span className="text-xs italic text-stone-400 truncate">{e.nombreGL}</span>
+                    {lang !== 'gl' && <span className="text-xs italic text-stone-400 truncate">{e.nombreGL}</span>}
                   </div>
                   <p className="text-[11px] text-stone-500 font-mono truncate">{e.cientifico}</p>
                   <div className="flex items-center gap-2 mt-1.5">
@@ -170,7 +173,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                       e.tipo === 'marisco' ? 'bg-[#1A3A5C]/5 text-[#1A3A5C]' : e.tipo === 'cefalopodo' ? 'bg-[#0B5D5D]/10 text-[#0B5D5D]' : 'bg-[#D4A017]/10 text-[#A06A00]'
                     }`}>
                       {e.tipo === 'marisco' ? <Waves className="w-3 h-3" /> : e.tipo === 'cefalopodo' ? <Shell className="w-3 h-3" /> : <Fish className="w-3 h-3" />}
-                      {e.tipo}
+                      {t(e.tipo)}
                     </span>
                     <span className="text-[11px] text-stone-500">Talla mín: <strong className="text-stone-700">{e.talla}</strong></span>
                   </div>
@@ -181,7 +184,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         </div>
 
         {especies.length === 0 && (
-          <p className="text-center text-stone-500 py-12 font-light">No hay especies que coincidan con «{query}».</p>
+          <p className="text-center text-stone-500 py-12 font-light">{t('No hay especies que coincidan con «{query}».', { query })}</p>
         )}
 
         {/* Nota honesta */}
@@ -215,7 +218,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 />
                 {CREDITOS_FOTOS[seleccionada.id] && (
                   <p className="absolute bottom-0 inset-x-0 bg-stone-950/70 text-white text-[10px] px-3 py-1.5 font-light">
-                    Foto: {CREDITOS_FOTOS[seleccionada.id].autor} · {CREDITOS_FOTOS[seleccionada.id].licencia}
+                    {t('Foto:')} {CREDITOS_FOTOS[seleccionada.id].autor} · {CREDITOS_FOTOS[seleccionada.id].licencia}
                     {CREDITOS_FOTOS[seleccionada.id].fuente ? (
                       <>
                         {' · '}
@@ -252,11 +255,11 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                   {seleccionada.tallaDetalle && <p className="text-[11px] text-stone-500 mt-1 font-light">{seleccionada.tallaDetalle}</p>}
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-white p-4">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">Mejor momento</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">{t('Mejor momento')}</p>
                   <p className="text-sm text-stone-700 mt-1.5 font-light">{seleccionada.temporada}</p>
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-white p-4">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">Origen</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">{t('Origen')}</p>
                   <p className="text-sm text-stone-700 mt-1.5 font-light">{seleccionada.origen}</p>
                 </div>
               </div>
@@ -267,13 +270,13 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                   <p className="text-stone-600 mt-1.5 leading-relaxed font-light">{seleccionada.curiosidad}</p>
                 </div>
                 <div>
-                  <h3 className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">En la cocina</h3>
+                  <h3 className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">{t('En la cocina')}</h3>
                   <p className="text-stone-600 mt-1.5 leading-relaxed font-light">{seleccionada.cocina}</p>
                 </div>
               </div>
 
               <p className="mt-6 pt-4 border-t border-stone-100 text-[10px] text-stone-400 font-light">
-                Tallas oficiales de la Xunta de Galicia · temporadas orientativas · consulta las vedas vigentes.
+                {t('Tallas oficiales de la Xunta de Galicia · temporadas orientativas · consulta las vedas vigentes.')}
               </p>
 
               {onOpenArticle && ARTICULOS_POR_ESPECIE[seleccionada.id] && (
@@ -282,7 +285,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                   className="mt-4 w-full text-left px-4 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white transition-colors flex items-center justify-between group"
                 >
                   <span className="text-[11px] uppercase tracking-[0.16em] font-medium">
-                    Leer la historia completa en el Cuaderno de Bitácora
+                    {t('Leer la historia completa en el Cuaderno de Bitácora')}
                   </span>
                   <ArrowLeft className="w-4 h-4 rotate-180 text-[#D4A017] group-hover:translate-x-1 transition-transform" />
                 </button>

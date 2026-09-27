@@ -1,9 +1,12 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { Star, ShieldCheck, CalendarCheck, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { REVIEWS, REVIEW_STATS } from '../data/reviews';
+import { getReviews, REVIEW_STATS } from '../data/reviews';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 export function ReviewsAndPress() {
+  const { lang } = useI18n();
+  const reviews = getReviews(lang);
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
@@ -101,7 +104,7 @@ export function ReviewsAndPress() {
             className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {REVIEWS.map((rev) => (
+            {reviews.map((rev) => (
               <article
                 key={rev.name + rev.date}
                 data-review-card

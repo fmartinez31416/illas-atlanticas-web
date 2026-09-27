@@ -1,16 +1,20 @@
 import { useState, type FormEvent } from 'react';
-import { EXPERIENCES_DATA, WINE_PAIRINGS, GASTRO_RESTAURANTS } from '../data/experiencesData';
+import { EXPERIENCES_DATA, WINE_PAIRINGS, GASTRO_RESTAURANTS, getExperiences, getWinePairings, getGastroRestaurants } from '../data/experiencesData';
 import { WinePairing } from '../types';
 import { Anchor, Wine, Compass, Fish, Sparkles, ChefHat, Check, ArrowUpRight, Flame, MapPin, GlassWater, Clock, Award } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 export function GastroAndExperiences() {
+  const { lang } = useI18n();
+  const pairings = getWinePairings(lang);
   const [activeCategory, setActiveCategory] = useState<'lonja' | 'enologia' | 'nautica'>('lonja');
-  const [selectedPairing, setSelectedPairing] = useState<WinePairing>(WINE_PAIRINGS[0]);
+  const [selectedPairingIdx, setSelectedPairingIdx] = useState<number>(0);
   const [customSeafoodQuery, setCustomSeafoodQuery] = useState('');
+  const selectedPairing = pairings[selectedPairingIdx] || pairings[0];
   const [aiRecommendation, setAiRecommendation] = useState<string | null>(null);
 
-  const activeExp = EXPERIENCES_DATA.find((e) => e.category === activeCategory) || EXPERIENCES_DATA[0];
+  const activeExp = getExperiences(lang).find((e) => e.category === activeCategory) || getExperiences(lang)[0];
 
   const handleCustomQuery = (e: FormEvent) => {
     e.preventDefault();
@@ -159,11 +163,11 @@ export function GastroAndExperiences() {
 
           {/* Dish / Seafood Selector Pills */}
           <div className="flex flex-wrap gap-2.5 mb-8">
-            {WINE_PAIRINGS.map((pairing) => (
+            {pairings.map((pairing, idx) => (
               <button
                 key={pairing.dish}
                 onClick={() => {
-                  setSelectedPairing(pairing);
+                  setSelectedPairingIdx(idx);
                   setAiRecommendation(null);
                 }}
                 className={`px-4 py-2 rounded-sm text-xs sm:text-sm transition-all duration-300 border ${
@@ -260,7 +264,7 @@ export function GastroAndExperiences() {
               Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {GASTRO_RESTAURANTS.map((resto, idx) => (
+              {getGastroRestaurants(lang).map((resto, idx) => (
                 <div key={idx} className="p-4 rounded-sm bg-zinc-950 border border-zinc-800 hover:border-amber-500/40 transition-colors flex flex-col justify-between">
                   <div>
                     <span className="text-[11px] text-amber-400 font-bold block">{resto.type}</span>

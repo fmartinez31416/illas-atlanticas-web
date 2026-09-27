@@ -10,9 +10,14 @@ import {
   Zap,
   Key,
   Flame,
-  Bath
+  Bath,
+  Moon,
+  FlameKindling,
+  Coffee
 } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
+import { getAmenities } from '../data/amenitiesData';
 
 interface AmenityItem {
   icon: React.ElementType;
@@ -25,90 +30,12 @@ interface AmenityCategory {
   items: AmenityItem[];
 }
 
-function getAmenitiesCats(): AmenityCategory[] { return [
-  {
-    category: 'Terraza & Vistas',
-    items: [
-      {
-        icon: Sun,
-        name: t('Vistas a Sálvora y Ons'),
-        description: t('Panorámica abierta a la ría y a las islas del Parque Nacional desde la terraza privada.')
-      },
-      {
-        icon: Armchair,
-        name: 'Terraza Privada',
-        description: t('Mesa y tumbonas para desayunar al sol o cenar al aire libre con el horizonte de fondo.')
-      },
-      {
-        icon: Sparkles,
-        name: t('Puesta de Sol sobre la Ría'),
-        description: t('Orientada a la ría: el atardecer se ve desde la terraza, sin moverte de casa.')
-      }
-    ]
-  },
-  {
-    category: 'Conectividad & Confort',
-    items: [
-      {
-        icon: Wifi,
-        name: 'Fibra de Alta Velocidad',
-        description: t('Conexión estable con cobertura en toda la casa, ideal para teletrabajo y videollamadas.')
-      },
-      {
-        icon: Laptop,
-        name: 'Despacho Independiente',
-        description: 'Estancia separada con mesa amplia de trabajo, luz natural y vistas al mar.'
-      },
-      {
-        icon: Monitor,
-        name: 'Smart TV de 75 Pulgadas',
-        description: t('Gran pantalla en el salón con Netflix y Movistar+ para cine y series.')
-      }
-    ]
-  },
-  {
-    category: 'Cocina & Equipamiento',
-    items: [
-      {
-        icon: UtensilsCrossed,
-        name: 'Cocina Completa',
-        description: 'Placa, horno, microondas, lavavajillas y vajilla completa.'
-      },
-      {
-        icon: Sparkles,
-        name: t('Cafeteras & Café de Bienvenida'),
-        description: t('De cápsulas, de filtro e italiana, con café para el primer desayuno.')
-      },
-      {
-        icon: Zap,
-        name: 'Lavadora Integrada',
-        description: t('Lavadora en la propia casa para total autonomía en estancias largas.')
-      }
-    ]
-  },
-  {
-    category: 'Accesibilidad & Estancia',
-    items: [
-      {
-        icon: Key,
-        name: 'Garaje Privado & Ascensor',
-        description: t('Plaza nº 12 frente al ascensor, que sube hasta la planta ático.')
-      },
-      {
-        icon: Flame,
-        name: t('Chimenea de Leña & Climatización'),
-        description: t('Chimenea de leña o briquetas en el salón, y bomba de calor frío/calor con temperatura independiente en cada estancia.')
-      },
-      {
-        icon: Bath,
-        name: t('3 Baños Completos'),
-        description: t('Dos baños en los dormitorios (uno con bañera y otro con ducha) más un tercer baño completo.')
-      }
-    ]
-  }
-]; }
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Sun, Armchair, Sparkles, Moon, Flame, FlameKindling, Key, Wifi, Monitor, Laptop, Bath, UtensilsCrossed, Coffee,
+};
 
 export function AmenitiesSection() {
+  const { lang } = useI18n();
   return (
     <section id="servicios" className="py-24 bg-white text-stone-900 border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,7 +55,7 @@ export function AmenitiesSection() {
 
         {/* Rejilla de Categorías Reales */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {getAmenitiesCats().map((cat) => (
+          {getAmenities(lang).map((cat) => (
             <div
               key={cat.category}
               className="bg-[#FAF8F5] border border-stone-200 p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-stone-400 transition-all duration-300"
@@ -140,7 +67,7 @@ export function AmenitiesSection() {
 
                 <div className="space-y-6">
                   {cat.items.map((item) => {
-                    const IconComponent = item.icon;
+                    const IconComponent = (ICON_MAP as Record<string, React.ComponentType<{ className?: string }>>)[item.icon as string] || Sun;
                     return (
                       <div key={item.name} className="flex items-start gap-3.5">
                         <div className="p-2 bg-white border border-stone-200 text-stone-800 shrink-0 mt-0.5 shadow-sm">

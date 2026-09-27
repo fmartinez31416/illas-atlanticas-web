@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Clock, ArrowRight, Compass, BookOpen } from 'lucide-react';
-import { ARTICLES, Article } from '../data/articles';
+import { getArticles, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 interface BlogSectionProps {
   onOpenBitacora?: () => void;
@@ -12,7 +13,9 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
   // La portada queda estrictamente limitada a 3 tarjetas fijas (NUNCA crece ni se expande aquí)
-  const featuredArticles = ARTICLES.filter(a => a.featured).slice(0, 3);
+  const { lang } = useI18n();
+  const articles = getArticles(lang);
+  const featuredArticles = articles.filter(a => a.featured).slice(0, 3);
 
   const handleOpenBooking = () => {
     const bookingSection = document.getElementById('reservas');
@@ -101,7 +104,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-stone-700 bg-stone-950/80 hover:bg-stone-800 text-stone-200 hover:text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-md group"
           >
             <BookOpen className="w-4 h-4 text-amber-300 group-hover:scale-110 transition-transform" />
-            <span>Explorar Bitácora Completa ({ARTICLES.length} Crónicas)</span>
+            <span>{t('Explorar Bitácora Completa ({n} Crónicas)', { n: articles.length })}</span>
           </button>
         </div>
 

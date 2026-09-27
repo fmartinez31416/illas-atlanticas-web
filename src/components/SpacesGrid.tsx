@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Space } from '../types';
 import { Reveal } from './Reveal';
 import { Maximize2, Check, ChevronRight, X, ArrowLeft, ArrowRight } from 'lucide-react';
-import { SPACES_DATA } from '../data/spacesData';
+import { getSpacesData } from '../data/spacesData';
+import { useI18n } from '../i18n/LangContext';
 
 interface SpacesGridProps {
   onSelectSpaceForTour?: (spaceId: string) => void;
@@ -13,7 +14,8 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
   const [activeSpaceModal, setActiveSpaceModal] = useState<Space | null>(null);
   const [modalImageIndex, setModalImageIndex] = useState<number>(0);
 
-  const spaces = SPACES_DATA;
+  const { lang } = useI18n();
+  const spaces = getSpacesData(lang);
 
   const openSpaceDetails = (space: Space) => {
     setActiveSpaceModal(space);

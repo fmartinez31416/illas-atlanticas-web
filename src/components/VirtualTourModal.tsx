@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { SPACES_DATA } from '../data/spacesData';
+import { getSpacesData } from '../data/spacesData';
 import { X, Compass, Maximize2, Sparkles, ChevronLeft, ChevronRight, Eye, Volume2, CalendarCheck, Check } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 interface VirtualTourModalProps {
   initialSpaceId?: string;
@@ -15,7 +16,8 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
   const [panOffset, setPanOffset] = useState<number>(0);
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
 
-  const activeSpace = SPACES_DATA.find((s) => s.id === selectedSpaceId) || SPACES_DATA[0];
+  const { lang } = useI18n();
+  const activeSpace = getSpacesData(lang).find((s) => s.id === selectedSpaceId) || getSpacesData(lang)[0];
 
   useEffect(() => {
     let animationFrameId: number;
@@ -148,7 +150,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
         {/* Bottom Space Switcher Strip */}
         <div className="p-4 bg-zinc-950 border-t border-zinc-800 flex items-center justify-between gap-4 overflow-x-auto">
           <div className="flex items-center gap-2 overflow-x-auto py-1">
-            {SPACES_DATA.map((space) => (
+            {getSpacesData(lang).map((space) => (
               <button
                 key={space.id}
                 onClick={() => {
