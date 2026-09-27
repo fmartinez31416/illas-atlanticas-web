@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
-import { ArrowLeft, Search, Camera, X, Fish, Waves, ShieldCheck, Info } from 'lucide-react';
+import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info } from 'lucide-react';
 import { ESPECIES, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
+import { CREDITOS_FOTOS } from '../data/creditosEspecies';
 import { Reveal } from './Reveal';
 
 interface LonjaLensProps {
@@ -16,7 +17,7 @@ const ARTICULOS_POR_ESPECIE: Record<string, string> = {
 
 export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensProps) {
   const [query, setQuery] = useState('');
-  const [filtro, setFiltro] = useState<'todos' | 'marisco' | 'pescado'>('todos');
+  const [filtro, setFiltro] = useState<'todos' | 'marisco' | 'pescado' | 'cefalopodo'>('todos');
   const [seleccionada, setSeleccionada] = useState<Especie | null>(null);
 
   const especies = useMemo(() => {
@@ -125,7 +126,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             />
           </div>
           <div className="flex gap-2">
-            {([['todos', 'Todo'], ['marisco', 'Marisco'], ['pescado', 'Pescado']] as const).map(([k, label]) => (
+            {([['todos', 'Todo'], ['marisco', 'Marisco'], ['pescado', 'Pescado'], ['cefalopodo', 'Cefalópodos']] as const).map(([k, label]) => (
               <button
                 key={k}
                 onClick={() => setFiltro(k)}
@@ -149,12 +150,14 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 onClick={() => setSeleccionada(e)}
                 className="w-full text-left group bg-white border border-[#1A3A5C]/10 hover:border-[#D4A017]/60 hover:shadow-lg transition-all duration-300 p-4 flex items-center gap-4 h-full"
               >
-                <div className={`shrink-0 w-14 h-14 flex items-center justify-center font-serif text-2xl border ${
-                  e.tipo === 'marisco'
-                    ? 'text-[#1A3A5C] border-[#1A3A5C]/20 bg-[#EBE6DD]/60'
-                    : 'text-[#D4A017] border-[#D4A017]/30 bg-[#D4A017]/5'
-                }`}>
-                  {e.nombreES.charAt(0)}
+                <div className="shrink-0 w-16 h-16 overflow-hidden border border-[#1A3A5C]/15 bg-[#EBE6DD]/40">
+                  <img
+                    src={`/especies/${e.id}.jpg`}
+                    alt={e.nombreES}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline gap-2">
@@ -164,9 +167,9 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                   <p className="text-[11px] text-stone-500 font-mono truncate">{e.cientifico}</p>
                   <div className="flex items-center gap-2 mt-1.5">
                     <span className={`inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.12em] font-medium px-2 py-0.5 ${
-                      e.tipo === 'marisco' ? 'bg-[#1A3A5C]/5 text-[#1A3A5C]' : 'bg-[#D4A017]/10 text-[#A06A00]'
+                      e.tipo === 'marisco' ? 'bg-[#1A3A5C]/5 text-[#1A3A5C]' : e.tipo === 'cefalopodo' ? 'bg-[#0B5D5D]/10 text-[#0B5D5D]' : 'bg-[#D4A017]/10 text-[#A06A00]'
                     }`}>
-                      {e.tipo === 'marisco' ? <Waves className="w-3 h-3" /> : <Fish className="w-3 h-3" />}
+                      {e.tipo === 'marisco' ? <Waves className="w-3 h-3" /> : e.tipo === 'cefalopodo' ? <Shell className="w-3 h-3" /> : <Fish className="w-3 h-3" />}
                       {e.tipo}
                     </span>
                     <span className="text-[11px] text-stone-500">Talla mín: <strong className="text-stone-700">{e.talla}</strong></span>
@@ -202,9 +205,32 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               <X className="w-4 h-4" />
             </button>
             <div className="p-6 sm:p-8">
+              {/* Foto de la especie */}
+              <div className="relative -mt-6 -mx-6 sm:-mt-8 sm:-mx-8 mb-6">
+                <img
+                  src={`/especies/${seleccionada.id}.jpg`}
+                  alt={seleccionada.nombreES}
+                  className="w-full h-52 sm:h-64 object-cover"
+                  onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                />
+                {CREDITOS_FOTOS[seleccionada.id] && (
+                  <p className="absolute bottom-0 inset-x-0 bg-stone-950/70 text-white text-[10px] px-3 py-1.5 font-light">
+                    Foto: {CREDITOS_FOTOS[seleccionada.id].autor} · {CREDITOS_FOTOS[seleccionada.id].licencia} ·{' '}
+                    <a
+                      href={CREDITOS_FOTOS[seleccionada.id].fuente}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-[#D4A017]"
+                      onClick={(ev) => ev.stopPropagation()}
+                    >
+                      Wikimedia Commons
+                    </a>
+                  </p>
+                )}
+              </div>
               <div className="flex items-center gap-4">
                 <div className={`shrink-0 w-16 h-16 flex items-center justify-center font-serif text-3xl border ${
-                  seleccionada.tipo === 'marisco' ? 'text-[#1A3A5C] border-[#1A3A5C]/20 bg-[#EBE6DD]/60' : 'text-[#D4A017] border-[#D4A017]/30 bg-[#D4A017]/5'
+                  seleccionada.tipo === 'marisco' ? 'text-[#1A3A5C] border-[#1A3A5C]/20 bg-[#EBE6DD]/60' : seleccionada.tipo === 'cefalopodo' ? 'text-[#0B5D5D] border-[#0B5D5D]/25 bg-[#0B5D5D]/5' : 'text-[#D4A017] border-[#D4A017]/30 bg-[#D4A017]/5'
                 }`}>
                   {seleccionada.nombreES.charAt(0)}
                 </div>
