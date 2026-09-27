@@ -47,7 +47,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           <a
             href="#"
             id="header-brand-link"
-            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink-0 min-w-0"
+            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink min-w-0 overflow-hidden"
           >
             <img
               src={isScrolled ? "/logo_transparent.png" : "/logo_white.png"}
@@ -56,7 +56,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             />
             <div className="flex flex-col min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className={`text-sm sm:text-lg font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-colors whitespace-nowrap ${
+                <span className={`text-sm sm:text-lg font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-colors whitespace-nowrap truncate max-w-[45vw] ${
                   isScrolled ? 'text-stone-900' : 'text-white'
                 }`}>
                   Illas Atlánticas
@@ -162,7 +162,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           </div>
 
           {/* Menú Móvil */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center space-x-2 shrink-0">
             <button
               onClick={onOpenBooking}
               className={`px-3 py-1.5 rounded-sm text-xs font-medium uppercase tracking-wider ${
