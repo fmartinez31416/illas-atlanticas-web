@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # URLs antiguas que ya tienen posiciones en Google -> consolidar en la portada
+  RewriteRule ^ubicacion/?$ / [R=301,L]
+  RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
+  RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies)$ / [R=301,L]
+
+  # SPA: cualquier otra ruta sin archivo real sirve la app
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
