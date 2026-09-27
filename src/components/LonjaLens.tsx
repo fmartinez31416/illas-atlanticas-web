@@ -215,16 +215,21 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 />
                 {CREDITOS_FOTOS[seleccionada.id] && (
                   <p className="absolute bottom-0 inset-x-0 bg-stone-950/70 text-white text-[10px] px-3 py-1.5 font-light">
-                    Foto: {CREDITOS_FOTOS[seleccionada.id].autor} · {CREDITOS_FOTOS[seleccionada.id].licencia} ·{' '}
-                    <a
-                      href={CREDITOS_FOTOS[seleccionada.id].fuente}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-[#D4A017]"
-                      onClick={(ev) => ev.stopPropagation()}
-                    >
-                      Wikimedia Commons
-                    </a>
+                    Foto: {CREDITOS_FOTOS[seleccionada.id].autor} · {CREDITOS_FOTOS[seleccionada.id].licencia}
+                    {CREDITOS_FOTOS[seleccionada.id].fuente ? (
+                      <>
+                        {' · '}
+                        <a
+                          href={CREDITOS_FOTOS[seleccionada.id].fuente}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-[#D4A017]"
+                          onClick={(ev) => ev.stopPropagation()}
+                        >
+                          Wikimedia Commons
+                        </a>
+                      </>
+                    ) : null}
                   </p>
                 )}
               </div>
