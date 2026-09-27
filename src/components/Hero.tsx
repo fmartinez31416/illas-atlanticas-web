@@ -60,7 +60,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
               <span className="italic font-serif text-stone-200">Excepcional</span>
             </div>
             <span className="text-white/40">·</span>
-            <span className="text-stone-200 text-xs font-light">54 opiniones en Booking.com</span>
+            <span className="text-stone-200 text-xs font-light">{t("54 opiniones en Booking.com")}</span>
           </div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-stone-300 text-xs">
             <span className="font-mono text-[11px] text-[#D4A017]">VUT-CO-007656</span>
@@ -83,7 +83,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
           id="hero-main-title"
           className="text-4xl sm:text-6xl md:text-7xl font-serif text-white font-normal tracking-tight leading-[1.1] max-w-4xl mb-6 drop-shadow-md"
         >
-          El Atlántico <br className="hidden sm:inline" />
+          {t("El Atlántico")} <br className="hidden sm:inline" />
           <span className="italic font-light text-stone-200">a tus pies.</span>
         </h1>
 
@@ -93,23 +93,23 @@ export function Hero({ onOpenBooking }: HeroProps) {
             id="hero-subtitle"
             className="text-base sm:text-lg md:text-xl text-stone-200 font-light leading-relaxed drop-shadow"
           >
-            Amplitud, luz y horizonte en Aguiño. Despierta frente a las islas de <span className="text-white font-medium">{t("Sálvora y Ons")}</span>, desayuna al sol en la terraza y despídete del día con la puesta de sol sobre la ría — en un ático con tres dormitorios, dos de ellos en suite, y tres baños completos.
+            {t("Amplitud, luz y horizonte en Aguiño. Despierta frente a las islas de")} <span className="text-white font-medium">{t("Sálvora y Ons")}</span>{t(", desayuna al sol en la terraza y despídete del día con la puesta de sol sobre la ría — en un ático con tres dormitorios, dos de ellos en suite, y tres baños completos.")}
           </p>
         </div>
 
         {/* Los pilares de valor real — el primero, el precio ancla honesto */}
         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
           <div className="px-4 py-2 bg-[#D4A017] border border-[#D4A017] shadow-md">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">Desde 70 €/noche en temporada baja</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">{t("Desde 70 €/noche en temporada baja")}</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Despierta mirando las islas</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("Despierta mirando las islas")}</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Terraza privada al mar</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("Terraza privada al mar")}</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Dos dormitorios en suite</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("Dos dormitorios en suite")}</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("3 Baños Completos")}</span>
@@ -123,7 +123,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             onClick={onOpenBooking}
             className="w-full sm:w-auto px-9 py-4 bg-white hover:bg-stone-100 text-stone-900 text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
           >
-            <span>Consultar Disponibilidad</span>
+            <span>{t("Consultar Disponibilidad")}</span>
             <ArrowRight className="w-4 h-4 text-stone-600" />
           </button>
 
@@ -135,7 +135,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             className="w-full sm:w-auto px-8 py-4 border border-white/30 hover:border-white/60 text-white text-xs uppercase tracking-[0.25em] font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-4 h-4 text-emerald-300" />
-            <span>Contactar por WhatsApp</span>
+            <span>{t("Contactar por WhatsApp")}</span>
           </a>
         </div>
 

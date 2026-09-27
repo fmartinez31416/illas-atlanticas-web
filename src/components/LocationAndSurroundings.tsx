@@ -29,10 +29,10 @@ export function LocationAndSurroundings() {
             Ubicación & Entorno
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
-            Aguiño y la Ría de Arousa: <span className="italic font-serif text-stone-600">autenticidad marinera</span>
+            {t("Aguiño y la Ría de Arousa: autenticidad marinera")}
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            Situado en el extremo sur de la península del Barbanza (Ribeira), Aguiño conserva el ritmo tranquilo de un pueblo marinero frente a las islas de Sálvora y Ons, con calas serenas y naturaleza abierta al Atlántico.
+            {t("Situado en el extremo sur de la península del Barbanza (Ribeira), Aguiño conserva el ritmo tranquilo de un pueblo marinero frente a las islas de Sálvora y Ons, con calas serenas y naturaleza abierta al Atlántico.")}
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export function LocationAndSurroundings() {
           {/* Lista Selectora */}
           <div className="lg:col-span-5 space-y-3">
             <h3 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-4">
-              Lugares Destacados
+              {t("Lugares Destacados")}
             </h3>
 
             {pois.map((poi) => (
@@ -96,7 +96,7 @@ export function LocationAndSurroundings() {
                   onClick={handleOpenGoogleMaps}
                   className="px-3.5 py-1.5 bg-white/95 text-stone-900 border border-stone-200 text-xs uppercase tracking-wider font-medium backdrop-blur-md hover:bg-white flex items-center gap-1.5 transition-colors shadow-sm"
                 >
-                  <span>Abrir en Google Maps</span>
+                  <span>{t("Abrir en Google Maps")}</span>
                   <ExternalLink className="w-3 h-3" />
                 </button>
               </div>
@@ -139,7 +139,7 @@ export function LocationAndSurroundings() {
               <Plane className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aeropuerto de Santiago (SCQ)</h5>
+              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">{t("Aeropuerto de Santiago (SCQ)")}</h5>
               <p className="text-sm font-serif text-stone-900 font-normal">{t("50 minutos por autovía AG-11")}</p>
             </div>
           </div>
@@ -149,8 +149,8 @@ export function LocationAndSurroundings() {
               <Plane className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aeropuerto de Vigo (VGO)</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">58 minutos por AP-9 / AG-11</p>
+              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">{t("Aeropuerto de Vigo (VGO)")}</h5>
+              <p className="text-sm font-serif text-stone-900 font-normal">{t("58 minutos por AP-9 / AG-11")}</p>
             </div>
           </div>
 
@@ -159,8 +159,8 @@ export function LocationAndSurroundings() {
               <Car className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aparcamiento</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">Plaza de garaje privada en el edificio incluida</p>
+              <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">{t("Aparcamiento")}</h5>
+              <p className="text-sm font-serif text-stone-900 font-normal">{t("Plaza de garaje privada en el edificio incluida")}</p>
             </div>
           </div>
         </div>

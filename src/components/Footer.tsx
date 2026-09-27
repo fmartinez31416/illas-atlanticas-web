@@ -56,7 +56,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             aria-label="Volver arriba"
             className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white hover:text-amber-200 transition-colors group bg-black/50 hover:bg-black/70 px-4 py-2.5 rounded-full border border-white/30 shadow-md backdrop-blur-sm"
           >
-            <span>Subir al inicio</span>
+            <span>{t("Subir al inicio")}</span>
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
@@ -71,7 +71,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
                 Illas Atlánticas
               </span>
               <span className="text-xs text-stone-200 uppercase tracking-[0.15em] block">
-                Ático Privado · 230 m²
+                {t("Ático Privado · 230 m²")}
               </span>
             </div>
             <p className="text-xs text-stone-100 font-light leading-relaxed">
@@ -105,7 +105,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             </div>
           </div>
 
-          {/* Columna 2: Navegación */}
+          {/* Columna 2: {t("Navegación")} */}
           <div className="bg-black/45 backdrop-blur-sm p-6 rounded-sm border border-white/20 shadow-md space-y-4">
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
               Navegación
@@ -171,7 +171,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <div className="bg-black/60 border border-amber-200/40 p-3 rounded-sm space-y-1">
                 <div className="flex items-center gap-2 text-white font-medium">
                   <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-[11px] uppercase tracking-wider">Registro Oficial Turismo</span>
+                  <span className="text-[11px] uppercase tracking-wider">{t("Registro Oficial Turismo")}</span>
                 </div>
                 <p className="text-xs font-mono font-bold text-amber-200 pl-6">
                   VUT-CO-007656
@@ -193,13 +193,13 @@ export function Footer({ onOpenLegal }: FooterProps) {
           </p>
           <div className="flex items-center gap-4">
             <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
-              Aviso Legal
+              {t("Aviso Legal")}
             </button>
             <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
-              Privacidad
+              {t("Privacidad")}
             </button>
             <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
-              Cookies
+              {t("Cookies")}
             </button>
           </div>
         </div>

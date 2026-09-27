@@ -61,10 +61,10 @@ export function ReviewsAndPress() {
                 ))}
               </div>
               <h3 className="text-xl sm:text-2xl font-serif text-stone-900 font-normal">
-                Calificación oficial: <span className="italic font-serif text-stone-700">Excepcional</span>
+                {t("Calificación oficial:")} <span className="italic font-serif text-stone-700">{t("Excepcional")}</span>
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-light mt-0.5">
-                {REVIEW_STATS.total} comentarios verificados de huéspedes tras completar su estancia.
+                {t("{total} comentarios verificados de huéspedes tras completar su estancia.", { total: REVIEW_STATS.total })}
               </p>
             </div>
           </div>
@@ -127,7 +127,7 @@ export function ReviewsAndPress() {
                 <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
                   <div>
                     <span className="font-serif font-medium text-stone-900 block">
-                      {rev.name} ({rev.country})
+                      {rev.name} ({t(rev.country)})
                     </span>
                     <span className="text-[11px] text-stone-500 font-light">
                       {rev.details} · {rev.date}

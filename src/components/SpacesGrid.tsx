@@ -4,6 +4,7 @@ import { Reveal } from './Reveal';
 import { Maximize2, Check, ChevronRight, X, ArrowLeft, ArrowRight } from 'lucide-react';
 import { getSpacesData } from '../data/spacesData';
 import { useI18n } from '../i18n/LangContext';
+import { t } from '../i18n/translate';
 
 interface SpacesGridProps {
   onSelectSpaceForTour?: (spaceId: string) => void;
@@ -42,10 +43,10 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
             Distribución & Estancias
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
-            230 m² concebidos para <span className="italic font-serif text-stone-600">vivir con amplitud</span>
+            {t("230 m² concebidos para vivir con amplitud")}
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            Una planta ático con luz marina, 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 48 m² de terraza abierta a la ría y a las islas de Sálvora y Ons.
+            {t("Una planta ático con luz marina, 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 48 m² de terraza abierta a la ría y a las islas de Sálvora y Ons.")}
           </p>
         </div>
 
@@ -134,7 +135,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
               230 m² en planta ático con ascensor y garaje privado
             </h4>
             <p className="text-stone-600 text-sm font-light mt-2 leading-relaxed">
-              Terraza exterior de 48 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica y 3 cuartos de baño completos (dos en suite y uno común situado junto al salón).
+              {t("Terraza exterior de 48 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica y 3 cuartos de baño completos (dos en suite y uno común situado junto al salón).")}
             </p>
           </div>
 

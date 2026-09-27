@@ -37,12 +37,12 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-white tracking-tight">
               <button type="button" onClick={onOpenBitacora} className="text-left hover:text-amber-100 transition-colors cursor-pointer" aria-label={t("Abrir el Cuaderno de Bitácora")}>
-                Crónicas del <span className="italic font-serif text-stone-300">Atlántico</span>
+                {t("Crónicas del")} <span className="italic font-serif text-stone-300">{t("Atlántico")}</span>
               </button>
             </h2>
           </div>
           <p className="text-stone-400 text-xs sm:text-sm font-light max-w-md leading-relaxed">
-            Documentación rigurosa sobre el Parque Nacional, la cultura náutica, la oceanografía de la Ría de Arousa y la gastronomía de lonja.
+            {t("Documentación rigurosa sobre el Parque Nacional, la cultura náutica, la oceanografía de la Ría de Arousa y la gastronomía de lonja.")}
           </p>
         </div>
 

@@ -156,7 +156,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             <div className="mt-4 border border-stone-200 bg-white">
               <div className="flex items-center justify-between px-4 py-2.5 bg-stone-50 border-b border-stone-200">
                 <p className="text-[11px] text-stone-600 font-medium uppercase tracking-[0.14em]">
-                  Reserva segura · precio y disponibilidad reales
+                  {t("Reserva segura · precio y disponibilidad reales")}
                 </p>
                 <div className="flex items-center gap-3">
                   <a
@@ -165,7 +165,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                     rel="noopener noreferrer"
                     className="text-[11px] text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]"
                   >
-                    Abrir en ventana nueva ↗
+                    {t("Abrir en ventana nueva ↗")}
                   </a>
                   <button
                     onClick={() => setMotorAbierto(false)}
@@ -187,11 +187,11 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           {/* Línea de confianza */}
           <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-            <span>Plaza de garaje incluida</span>
+            <span>{t("Plaza de garaje incluida")}</span>
             <span className="text-stone-300">·</span>
             <span>{nights} {nights === 1 ? 'noche' : 'noches'} · {adults} {adults === 1 ? 'adulto' : 'adultos'}{children > 0 ? ` + ${children}` : ''}</span>
             <span className="text-stone-300">·</span>
-            <span className="text-[#1A3A5C]">Mejor precio garantizado: lo igualamos +5%</span>
+            <span className="text-[#1A3A5C]">{t("Mejor precio garantizado: lo igualamos +5%")}</span>
           </p>
         </div>
 

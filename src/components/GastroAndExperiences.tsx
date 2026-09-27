@@ -51,7 +51,7 @@ export function GastroAndExperiences() {
             Módulo Diferencial
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-zinc-50 tracking-tight mb-5">
-            Experiencias de Ría & <span className="italic font-light text-amber-100">Asistente Gastro</span>
+            Experiencias de Ría & <span className="italic font-light text-amber-100">{t("Asistente Gastro")}</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
             Nuestra ubicación en Aguiño te abre las puertas a la mayor riqueza marisquera del Atlántico, con asesoramiento cercano y maridajes de la casa.
@@ -197,11 +197,11 @@ export function GastroAndExperiences() {
                     <span className="text-amber-400 font-medium">{selectedPairing.dop}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Variedad de Uva:</span>
+                    <span className="text-zinc-400">{t("Variedad de Uva:")}</span>
                     <span className="text-zinc-200">{selectedPairing.variety}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Bodega / Estilo:</span>
+                    <span className="text-zinc-400">{t("Bodega / Estilo:")}</span>
                     <span className="text-zinc-200">{selectedPairing.winery}</span>
                   </div>
                 </div>
@@ -223,7 +223,7 @@ export function GastroAndExperiences() {
                     <Award className="w-3.5 h-3.5 text-amber-500" />
                     <span>{t("Para acompañar con un Albariño bien frío")}</span>
                   </span>
-                  <span className="text-zinc-500 italic">Servicio a 8°C - 10°C</span>
+                  <span className="text-zinc-500 italic">{t("Servicio a 8°C - 10°C")}</span>
                 </div>
               </div>
             </div>
@@ -243,7 +243,7 @@ export function GastroAndExperiences() {
                 type="submit"
                 className="px-6 py-3 rounded-sm bg-amber-600 text-zinc-950 hover:bg-amber-500 transition-colors text-xs uppercase tracking-wider font-bold whitespace-nowrap shadow-md"
               >
-                Consultar Sumiller
+                {t("Consultar Sumiller")}
               </button>
             </form>
 
@@ -251,7 +251,7 @@ export function GastroAndExperiences() {
               <div className="mt-4 p-4 rounded-sm bg-zinc-950 border border-amber-600/40 text-xs sm:text-sm text-amber-200 font-light leading-relaxed animate-fadeIn">
                 <div className="flex items-center gap-2 font-medium text-amber-300 mb-1">
                   <Sparkles className="w-4 h-4 text-amber-500" />
-                  <span>Sugerencia del Asistente Gastro</span>
+                  <span>{t("Sugerencia del Asistente Gastro")}</span>
                 </div>
                 <p>{aiRecommendation}</p>
               </div>

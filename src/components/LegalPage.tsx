@@ -24,7 +24,7 @@ export function LegalPage({ onBack }: LegalPageProps) {
         <div className="space-y-12 text-stone-300 font-light leading-relaxed text-sm sm:text-base">
 
           <section>
-            <h2 className="text-xl font-serif text-white mb-4">1. Aviso Legal</h2>
+            <h2 className="text-xl font-serif text-white mb-4">{t("1. Aviso Legal")}</h2>
             <p className="mb-3">
               Titular: <span className="text-white">{t("Fernando Martínez Piñeiro")}</span>, anfitrión y responsable de la Vivienda de Uso Turístico <span className="text-white">{t("«Illas Atlánticas Ático»")}</span>, inscrita en el Registro de Empresas y Actividades Turísticas de la Xunta de Galicia con el código <span className="text-white">VUT-CO-007656</span>.
             </p>
@@ -37,7 +37,7 @@ export function LegalPage({ onBack }: LegalPageProps) {
           </section>
 
           <section>
-            <h2 className="text-xl font-serif text-white mb-4">2. Privacidad (RGPD)</h2>
+            <h2 className="text-xl font-serif text-white mb-4">{t("2. Privacidad (RGPD)")}</h2>
             <p className="mb-3">
               Los datos personales que nos facilitas (nombre, contacto y datos de identidad de los viajeros) se tratan únicamente para:
             </p>
@@ -52,14 +52,14 @@ export function LegalPage({ onBack }: LegalPageProps) {
               Conservamos los datos el tiempo exigido por la normativa (los registros de viajeros, tres años conforme al RD 933/2021).
             </p>
             <p>
-              Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <span className="text-white">reservas@illasatlanticasatico.es</span> o llamando al <span className="text-white">+34 606 025 318</span>. Si consideras que el tratamiento no es conforme, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).
+              Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <span className="text-white">reservas@illasatlanticasatico.es</span> {t("o llamando al")} <span className="text-white">+34 606 025 318</span>. Si consideras que el tratamiento no es conforme, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-serif text-white mb-4">3. Cookies</h2>
             <p className="mb-3">
-              Esta web <span className="text-white">no utiliza cookies de publicidad ni de seguimiento</span>. Medimos las visitas con una baliza propia de un píxel, anónima y sin cookies.
+              Esta web <span className="text-white">{t("no utiliza cookies de publicidad ni de seguimiento")}</span>. Medimos las visitas con una baliza propia de un píxel, anónima y sin cookies.
             </p>
             <p className="mb-3">
               Únicamente se emplean los recursos técnicos imprescindibles: las tipografías de Google Fonts, que cargan recursos desde servidores de Google, y el motor de reservas de Beds24 para mostrar disponibilidad y procesar pagos de forma segura (cifrado HTTPS).

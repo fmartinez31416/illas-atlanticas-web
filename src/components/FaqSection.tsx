@@ -35,13 +35,13 @@ export function FaqSection() {
         {/* Cabecera editorial */}
         <div className="text-center mb-14">
           <span className="text-[#D4A017] uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
-            Preguntas frecuentes
+            {t("Preguntas frecuentes")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal tracking-tight mb-5">
             Respuestas honestas, <span className="italic font-light text-stone-300">{t("sin letra pequeña")}</span>
           </h2>
           <p className="text-stone-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Lo que suelen preguntarnos antes de reservar. Si no encuentras tu respuesta, te la damos por WhatsApp en menos de dos horas.
+            {t("Lo que suelen preguntarnos antes de reservar. Si no encuentras tu respuesta, te la damos por WhatsApp en menos de dos horas.")}
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export function FaqSection() {
             className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-stone-700 hover:border-stone-500 text-stone-200 text-xs uppercase tracking-[0.2em] font-medium bg-stone-900/40 transition-all duration-300"
           >
             <MessageCircle className="w-4 h-4 text-emerald-400" />
-            <span>Preguntar por WhatsApp</span>
+            <span>{t("Preguntar por WhatsApp")}</span>
           </a>
         </div>
       </div>

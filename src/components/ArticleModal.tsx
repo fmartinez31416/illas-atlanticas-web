@@ -133,7 +133,7 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
             <div className="mt-14 p-8 bg-stone-900 text-white rounded-sm space-y-4 shadow-xl">
               <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.2em] font-semibold">
                 <MapPin className="w-4 h-4 text-amber-300" />
-                <span>Experiencia Directa desde el Ático</span>
+                <span>{t("Experiencia Directa desde el Ático")}</span>
               </div>
               
               <h3 className="font-serif text-xl sm:text-2xl font-light text-white leading-snug">

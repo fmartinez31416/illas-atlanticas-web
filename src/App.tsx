@@ -19,6 +19,7 @@ import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
 import { LangProvider, useI18n, PAGE_META } from './i18n/LangContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { t } from './i18n/translate';
 
 export function App() {
   return (
@@ -131,27 +132,27 @@ function AppInner() {
             <div className="w-full bg-[#06131F] border-b border-[#D4A017]/20 overflow-hidden" style={{ height: '26px' }}>
               <div className="flex items-center h-full whitespace-nowrap" style={{ animation: 'marquee 28s linear infinite' }}>
                 <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
-                  <span>Tarifa oficial garantizada</span>
+                  <span>{t("Tarifa oficial garantizada")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Reserva directa sin comisiones</span>
+                  <span>{t("Reserva directa sin comisiones")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Respuesta del anfitrión &lt; 2 horas</span>
+                  <span>{t("Respuesta del anfitrión < 2 horas")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Garantía Lluvia Gallega</span>
+                  <span>{t("Garantía Lluvia Gallega")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Aguiño en vivo — VUT-CO-007656</span>
+                  <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
                   <span className="text-[#D4A017]">✦</span>
                   </span>
                   <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
-                  <span>Tarifa oficial garantizada</span>
+                  <span>{t("Tarifa oficial garantizada")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Reserva directa sin comisiones</span>
+                  <span>{t("Reserva directa sin comisiones")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Respuesta del anfitrión &lt; 2 horas</span>
+                  <span>{t("Respuesta del anfitrión < 2 horas")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Garantía Lluvia Gallega</span>
+                  <span>{t("Garantía Lluvia Gallega")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>Aguiño en vivo — VUT-CO-007656</span>
+                  <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
                   <span className="text-[#D4A017]">✦</span>
                   </span>
               </div>

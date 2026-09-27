@@ -66,7 +66,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-950/70 hover:bg-white hover:text-stone-950 backdrop-blur-md border border-stone-700/60 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Volver al Ático</span>
+            <span>{t("Volver al Ático")}</span>
           </button>
 
           <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500/20 hover:bg-amber-400 hover:text-stone-950 backdrop-blur-md border border-amber-400/60 text-amber-200 text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-xl group"
             >
               <Gauge className="w-4 h-4 text-amber-300 group-hover:text-stone-950 transition-colors" />
-              <span>Puente de Mando</span>
+              <span>{t("Puente de Mando")}</span>
             </button>
 
             <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
@@ -188,7 +188,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
               onClick={() => setShowDashboard(true)}
               className="px-6 py-3.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-400 hover:text-stone-950 text-amber-200 text-xs uppercase tracking-[0.18em] transition-all text-center"
             >
-              Abrir Puente de Mando
+              {t("Abrir Puente de Mando")}
             </button>
             <button
               onClick={() => {
@@ -197,7 +197,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
               }}
               className="px-6 py-3.5 rounded-full bg-white hover:bg-stone-200 text-stone-950 text-xs font-semibold uppercase tracking-[0.18em] transition-all text-center shadow-lg"
             >
-              Consultar Fechas
+              {t("Consultar Fechas")}
             </button>
           </div>
         </section>

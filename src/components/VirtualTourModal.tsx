@@ -49,7 +49,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-serif text-zinc-100 flex items-center gap-2">
-                <span>Recorrido Virtual 360°</span>
+                <span>{t("Recorrido Virtual 360°")}</span>
                 <span className="text-[10px] font-sans text-amber-400 font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-amber-600/10 border border-amber-600/30">
                   {activeSpace.name}
                 </span>
@@ -130,7 +130,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 p-3.5 rounded-sm bg-zinc-950 border border-amber-500/50 text-zinc-100 text-xs shadow-2xl backdrop-blur-md animate-fadeIn z-30">
                       <div className="flex items-center gap-1 text-amber-400 font-bold uppercase tracking-wider text-[10px] mb-1">
                         <Sparkles className="w-3.5 h-3.5" />
-                        <span>Detalle de Estancia</span>
+                        <span>{t("Detalle de Estancia")}</span>
                       </div>
                       <p className="text-zinc-300 font-light leading-relaxed">{hl}</p>
                     </div>
@@ -176,7 +176,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
             }}
             className="px-6 py-2.5 rounded-sm bg-amber-600 hover:bg-amber-500 text-zinc-950 text-xs font-bold uppercase tracking-widest whitespace-nowrap shadow-lg shadow-black/50 transition-all shrink-0"
           >
-            Reservar Este Ático
+            {t("Reservar Este Ático")}
           </button>
         </div>
       </div>

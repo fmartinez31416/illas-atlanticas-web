@@ -48,7 +48,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               className="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-stone-50 border border-[#1A3A5C]/20 text-[#1A3A5C] text-[11px] uppercase tracking-[0.16em] font-medium transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              Volver
+              {t("Volver")}
             </button>
             <div>
               <h1 className="font-serif text-2xl sm:text-3xl text-[#1A3A5C] tracking-tight">
@@ -83,10 +83,10 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             <div className="mt-4 bg-white border border-[#1A3A5C]/10 p-4 sm:p-5">
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">{t("Cómo funciona, sin rodeos")}</p>
               <ul className="mt-2 space-y-1.5 text-sm text-stone-600 font-light leading-relaxed">
-                <li>· <strong className="font-normal text-[#1A3A5C]">La subasta se puede ver</strong> desde la lonja — el espectáculo es público.</li>
-                <li>· <strong className="font-normal text-[#1A3A5C]">{t("La lonja no vende al público")}</strong>: el pescado se compra después en la <strong className="font-normal text-[#1A3A5C]">plaza de abastos de Ribeira</strong>.</li>
-                <li>· Visitas guiadas a la lonja de Ribeira: <span className="font-mono text-stone-700">881 076 880</span>.</li>
-                <li>· En julio, no te pierdas la <strong className="font-normal text-[#1A3A5C]">{t("Festa do Percebe de Aguiño")}</strong> (Fiesta de Interés Turístico de Galicia).</li>
+                <li>{t("La subasta se puede ver desde la lonja — el espectáculo es público.")}</li>
+                <li>· <strong className="font-normal text-[#1A3A5C]">{t("La lonja no vende al público")}</strong>: {t(": el pescado se compra después en la")} <strong className="font-normal text-[#1A3A5C]">{t("plaza de abastos de Ribeira")}</strong>.</li>
+                <li>{t("· Visitas guiadas a la lonja de Ribeira:")} <span className="font-mono text-stone-700">881 076 880</span>.</li>
+                <li>{t("· En julio, no te pierdas la")} <strong className="font-normal text-[#1A3A5C]">{t("Festa do Percebe de Aguiño")}</strong> {t("(Fiesta de Interés Turístico de Galicia).")}</li>
               </ul>
             </div>
             <p className="text-xs text-stone-500 mt-3 flex items-start gap-2">
@@ -111,7 +111,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               </p>
             </div>
             <span className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1 shrink-0">
-              Próximamente
+              {t("Próximamente")}
             </span>
           </div>
         </Reveal>

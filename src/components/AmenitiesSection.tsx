@@ -46,10 +46,10 @@ export function AmenitiesSection() {
             Equipamiento & Confort
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
-            Comodidades pensadas para una <span className="italic font-serif text-stone-600">estancia plena</span>
+            {t("Comodidades pensadas para una estancia plena")}
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            Equipamiento real, sin artificios. Espacios amplios y dotación completa tanto para el descanso vacacional como para estancias de media duración o teletrabajo frente al mar.
+            {t("Equipamiento real, sin artificios. Espacios amplios y dotación completa tanto para el descanso vacacional como para estancias de media duración o teletrabajo frente al mar.")}
           </p>
         </div>
 
@@ -92,7 +92,7 @@ export function AmenitiesSection() {
 
         {/* Nota de Garantía */}
         <div className="mt-12 text-center text-xs text-stone-500 font-light">
-          <span>Apartamento completamente equipado · Ropa de cama, toallas y menaje de cocina incluidos para toda la estancia.</span>
+          <span>{t("Apartamento completamente equipado · Ropa de cama, toallas y menaje de cocina incluidos para toda la estancia.")}</span>
         </div>
 
       </div>

@@ -18,18 +18,16 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
           <Reveal>
             <div>
               <span className="text-[11px] uppercase tracking-[0.28em] text-[#D4A017] font-medium">
-                Pacto directo
+                {t("Pacto directo")}
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1A3A5C] tracking-tight mt-3 leading-tight">
-                El mejor precio, <span className="italic text-[#D4A017]">garantizado.</span>
+                {t("El mejor precio, garantizado.")}
               </h2>
               <p className="text-stone-600 mt-4 leading-relaxed max-w-xl">
-                La <strong className="text-stone-900">mejor tarifa</strong>, la{' '}
-                <strong className="text-stone-900">{t("atención personal del anfitrión")}</strong> y unas
-                condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
+                {t("La mejor tarifa, la atención personal del anfitrión y unas condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.")}
               </p>
               <p className="text-[#D4A017] text-sm italic font-serif mt-3">
-                «Elige tus fechas. Nosotros ponemos la luz sobre Sálvora.»
+                {t("«Elige tus fechas. Nosotros ponemos la luz sobre Sálvora.»")}
               </p>
 
               {/* Garantía del mejor precio — compacta y colapsable */}
@@ -37,24 +35,19 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#D4A017] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> si está más
-                    barato en otra web, lo igualamos y añadimos un{' '}
-                    <strong className="text-[#1A3A5C]">5% extra</strong>.{' '}
-                    <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
-                      ¿Cómo funciona?
-                    </span>
+                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> {t("si está más barato en otra web, lo igualamos y añadimos un 5% extra. ¿Cómo funciona?")}
                   </span>
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
                   <p className="text-xs text-stone-500 font-light">
-                    Condiciones:
+                    {t("Condiciones:")}
                   </p>
                   <ul className="space-y-1.5">
                     <li>{t("• Mismo alojamiento, mismas fechas y mismo número de huéspedes.")}</li>
                     <li>{t("• Mismas condiciones de reserva y cancelación.")}</li>
                     <li>{t("• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).")}</li>
                     <li>{t("• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.")}</li>
-                    <li>• La diferencia se aplica sobre el precio total de la estancia.</li>
+                    <li>{t("• La diferencia se aplica sobre el precio total de la estancia.")}</li>
                   </ul>
                 </div>
               </details>
@@ -64,10 +57,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#1A3A5C] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">{t("Garantía Lluvia Gallega:")}</strong> si llueve
-                    más de la mitad de los días de tu estancia, te regalamos{' '}
-                    <strong className="text-[#1A3A5C]">{t("una noche en tu próxima reserva")}</strong> —
-                    tuya o de quien tú elijas.{' '}
+                    <strong className="text-[#1A3A5C]">{t("Garantía Lluvia Gallega:")}</strong> {t("si llueve más de la mitad de los días de tu estancia, te regalamos")}{' '}
+                    <strong className="text-[#1A3A5C]">{t("una noche en tu próxima reserva")}</strong> — {t("tuya o de quien tú elijas.")}{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
                       Condiciones
                     </span>
@@ -87,8 +78,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <BadgeEuro className="w-5 h-5 text-[#D4A017] mb-2" />
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">Sin comisiones</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">Sin tarifas ocultas ni sorpresas</p>
+                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Sin comisiones")}</p>
+                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin tarifas ocultas ni sorpresas")}</p>
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
@@ -97,8 +88,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">Condiciones claras</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">Sin cargos ocultos ni sorpresas</p>
+                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Condiciones claras")}</p>
+                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin cargos ocultos ni sorpresas")}</p>
                 </div>
               </div>
 
@@ -106,7 +97,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 onClick={onOpenBooking}
                 className="mt-7 px-8 py-4 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-xs uppercase tracking-[0.2em] font-medium shadow-md transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2.5"
               >
-                Reservar Directo
+                {t("Reservar Directo")}
                 <ArrowRight className="w-4 h-4 text-[#D4A017]" />
               </button>
             </div>
@@ -130,14 +121,13 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                   <span className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
                   <div className="p-6 text-center">
                     <span className="text-[10px] tracking-[0.3em] text-[#A9C9DD] font-medium uppercase">
-                      El mar de Aguiño, en directo
+                      {t("El mar de Aguiño, en directo")}
                     </span>
                     <p className="font-serif text-xl text-[#EBE6DD] mt-3 italic">
-                      «El tiempo, el mar y las mareas, como si miraras por la ventana»
+                      {t("«El tiempo, el mar y las mareas, como si miraras por la ventana»")}
                     </p>
                     <p className="text-xs text-[#A9C9DD] mt-3 font-light">
-                      Pronóstico a 7 días · estado del mar · amanecer y anochecer ·
-                      fases lunares · todo con datos reales
+                      {t("Pronóstico a 7 días · estado del mar · amanecer y anochecer · fases lunares · todo con datos reales")}
                     </p>
                     <div className="flex items-center justify-center gap-2 mt-4">
                       <span className="w-2 h-2 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
@@ -157,10 +147,10 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 >
                   <span className="font-serif text-2xl text-[#D4A017] leading-none select-none">✦</span>
                   <p className="font-serif text-lg text-[#1A3A5C] tracking-tight mt-2">
-                    Cuaderno de <span className="italic">Bitácora</span>
+                    {t("Cuaderno de")} <span className="italic">{t("Bitácora")}</span>
                   </p>
                   <p className="text-xs text-stone-600 mt-1.5 font-light leading-relaxed">
-                    Historias de la ría: Sálvora, la lonja, las mareas y las rutas que se ven desde la terraza.
+                    {t("Historias de la ría: Sálvora, la lonja, las mareas y las rutas que se ven desde la terraza.")}
                   </p>
                 </button>
                 <button
@@ -174,7 +164,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     Lonja<span className="italic text-[#D4A017]">Lens</span>
                   </p>
                   <p className="text-xs text-stone-600 mt-1.5 font-light leading-relaxed">
-                    La guía de la lonja: 27 especies, tallas mínimas y cómo se cocinan en Aguiño.
+                    {t("La guía de la lonja: 45 especies, tallas mínimas y cómo se cocinan en Aguiño.")}
                   </p>
                 </button>
               </div>
