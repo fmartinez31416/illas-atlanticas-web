@@ -16,7 +16,7 @@ export const POINTS_OF_INTEREST: PointOfInterest[] = [
     distance: 'Frente al ático · Salida en lancha a 400 m',
     type: 'naturaleza',
     description: 'Archipiélago virgen del Parque Nacional de las Islas Atlánticas con playas desiertas y faro histórico.',
-    image: '/fotos/pedra_da_ra_aguino_salvora_69.jpg',
+    image: '/fotos/salvora_panorama.jpg',
     coordinates: { lat: 42.4772, lng: -9.0133 }
   },
   {
