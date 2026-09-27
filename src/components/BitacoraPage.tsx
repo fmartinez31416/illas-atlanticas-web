@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Compass, Tag, MapPin, Gauge } from 'lucide-react';
 import { ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
 import { PuenteView } from './PuenteView';
+import { t } from '../i18n/translate';
 
 interface BitacoraPageProps {
   onBack: () => void;
@@ -34,7 +35,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     );
   }
 
-  const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría'];
+  const categories = ['Todas', t('Historia & Navegación'), t('Cartografía & Territorio'), 'Tratado de Producto & Lonja', t('Oceanografía & Ría')];
 
   const filteredArticles = selectedCategory === 'Todas'
     ? ARTICLES
@@ -47,7 +48,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
       <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
         <img
           src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
-          alt="Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico"
+          alt={t("Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico")}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center 78%' }}
         />
@@ -85,7 +86,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-12 sm:pb-16 w-full space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-950/80 border border-amber-400/40 text-amber-200 text-xs uppercase tracking-[0.25em] backdrop-blur-md shadow-lg">
             <Compass className="w-3.5 h-3.5 text-amber-300" />
-            <span>Archivo Territorial & Crónicas de Mar</span>
+            <span>{t("Archivo Territorial & Crónicas de Mar")}</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
@@ -169,7 +170,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2 text-amber-300 text-xs uppercase tracking-[0.2em] font-semibold">
               <MapPin className="w-4 h-4" />
-              <span>Observatorio Privado en Aguiño</span>
+              <span>{t("Observatorio Privado en Aguiño")}</span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-light">
               Descubre este horizonte desde la terraza de Illas Atlánticas Ático

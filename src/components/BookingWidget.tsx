@@ -1,5 +1,6 @@
 import { useState, useId } from 'react';
 import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -46,7 +47,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
   const handleWhatsAppBooking = () => {
     const text = encodeURIComponent(
-      `Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático:\n- Fechas: del ${checkIn} al ${checkOut} (${nights} noches)\n- Ocupantes: ${adults} adultos, ${children} niños\n\n¿Tienen disponibilidad confirmada para estas fechas?`
+      t("Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático:\\n- Fechas: del {checkIn} al {checkOut} ({nights} noches)\\n- Ocupantes: {adults} adultos, {children} niños\\n\\n¿Tienen disponibilidad confirmada para estas fechas?", { checkIn, checkOut, nights, adults, children })
     );
     window.open(`https://wa.me/34606025318?text=${text}`, '_blank', 'noopener,noreferrer');
   };
@@ -120,9 +121,9 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                   onChange={(e) => setChildren(Number(e.target.value))}
                   className="w-full px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500"
                 >
-                  <option value={0}>Sin niños</option>
-                  <option value={1}>1 niño</option>
-                  <option value={2}>2 niños</option>
+                  <option value={0}>{t("Sin niños")}</option>
+                  <option value={1}>{t("1 niño")}</option>
+                  <option value={2}>{t("2 niños")}</option>
                 </select>
               </div>
             </div>
@@ -177,7 +178,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               </div>
               <iframe
                 src={beds24Url}
-                title="Motor de reservas — Illas Atlánticas Ático"
+                title={t("Motor de reservas — Illas Atlánticas Ático")}
                 className="w-full h-[720px]"
                 loading="lazy"
               />

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageCircle, CalendarCheck, ShieldCheck } from 'lucide-react';
+import { t } from '../i18n/translate';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -21,12 +23,12 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
   }, []);
 
   const navLinks = [
-    { name: 'Espacios', href: '#espacios' },
-        { name: 'Confort', href: '#servicios' },
-        { name: 'Opiniones', href: '#opiniones' },
-        { name: 'FAQ', href: '#faq' },
-        { name: 'Puente en vivo', action: onOpenPuente, dot: true },
-        { name: 'Bitácora', href: '#bitacora-nav', action: onOpenBitacora },
+    { name: t('Espacios'), href: '#espacios' },
+        { name: t('Confort'), href: '#servicios' },
+        { name: t('Opiniones'), href: '#opiniones' },
+        { name: t('FAQ'), href: '#faq' },
+        { name: t('Puente en vivo'), action: onOpenPuente, dot: true },
+        { name: t('Bitácora'), href: '#bitacora-nav', action: onOpenBitacora },
       ];
 
   return (
@@ -49,7 +51,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           >
             <img
               src={isScrolled ? "/logo_transparent.png" : "/logo_white.png"}
-              alt="Logo Illas Atlánticas Ático"
+              alt={t("Logo Illas Atlánticas Ático")}
               className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-all duration-300 shrink-0"
             />
             <div className="flex flex-col min-w-0">
@@ -77,7 +79,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           </a>
 
           {/* Menú Central Limpio */}
-          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label="Navegación principal">
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label={t("Navegación principal")}>
             {navLinks.map((link) =>
               link.action ? (
                 <button
@@ -121,7 +123,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
                   ? 'text-stone-700 hover:text-stone-950 bg-stone-50 border-stone-200'
                   : 'text-white hover:text-white/80 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
-              title="Llamar al anfitrión: 606 02 53 18"
+              title={t("Llamar al anfitrión: 606 02 53 18")}
             >
               <Phone className="w-3.5 h-3.5" />
             </a>
@@ -142,6 +144,8 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
               <MessageCircle className="w-3.5 h-3.5" />
             </a>
 
+            <LanguageSwitcher />
+
             {/* Botón de Reserva */}
             <button
               id="header-booking-cta-btn"
@@ -153,7 +157,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
               }`}
             >
               <CalendarCheck className="w-3.5 h-3.5" />
-              <span>Reservar</span>
+              <span>{t("Reservar")}</span>
             </button>
           </div>
 
@@ -165,7 +169,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
                 isScrolled ? 'bg-stone-900 text-white' : 'bg-white text-stone-950'
               }`}
             >
-              Reservar
+              {t("Reservar")}
             </button>
 
             <button
@@ -173,7 +177,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
               className={`p-2 rounded-sm ${
                 isScrolled ? 'text-stone-900' : 'text-white'
               }`}
-              aria-label="Abrir menú"
+              aria-label={t("Abrir menú")}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -219,7 +223,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-sm border border-emerald-300 text-emerald-800 text-xs uppercase tracking-widest font-medium bg-emerald-50"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp Directo</span>
+              <span>{t("WhatsApp Directo")}</span>
             </a>
 
             <button
@@ -234,10 +238,14 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             </button>
           </div>
 
+          <div className="pt-3 flex justify-center">
+            <LanguageSwitcher />
+          </div>
+
           <div className="pt-2 flex items-center justify-between text-xs text-stone-500 font-light">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-stone-700" />
-              <span>Trato directo con el anfitrión</span>
+              <span>{t("Trato directo con el anfitrión")}</span>
             </span>
             <span className="text-stone-500 italic font-mono text-[10px]">VUT-CO-007656</span>
           </div>

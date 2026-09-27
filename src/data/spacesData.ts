@@ -185,3 +185,23 @@ export const SPACES_DATA: Space[] = [
     ]
   }
 ];
+
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getSpacesData(lang: Lang): Space[] {
+  return SPACES_DATA.map((s) => ({
+    ...s,
+    name: trc(`spaces.${s.id}.name`, lang, s.name),
+    subtitle: trc(`spaces.${s.id}.subtitle`, lang, s.subtitle),
+    tag: trc(`spaces.${s.id}.tag`, lang, s.tag),
+    description: trc(`spaces.${s.id}.description`, lang, s.description),
+    highlights: s.highlights.map((h, i) => trc(`spaces.${s.id}.h${i}`, lang, h)),
+    features: (s.features ?? []).map((f, i) => trc(`spaces.${s.id}.feat${i}`, lang, f)),
+    specs: s.specs.map((sp, i) => ({
+      label: trc(`spaces.${s.id}.spec${i}.label`, lang, sp.label),
+      value: trc(`spaces.${s.id}.spec${i}.value`, lang, sp.value),
+    })),
+  }));
+}

@@ -1,4 +1,5 @@
 import { ArrowLeft } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 interface LegalPageProps {
   onBack: () => void;
@@ -25,7 +26,7 @@ export function LegalPage({ onBack }: LegalPageProps) {
           <section>
             <h2 className="text-xl font-serif text-white mb-4">1. Aviso Legal</h2>
             <p className="mb-3">
-              Titular: <span className="text-white">Fernando Martínez Piñeiro</span>, anfitrión y responsable de la Vivienda de Uso Turístico <span className="text-white">«Illas Atlánticas Ático»</span>, inscrita en el Registro de Empresas y Actividades Turísticas de la Xunta de Galicia con el código <span className="text-white">VUT-CO-007656</span>.
+              Titular: <span className="text-white">{t("Fernando Martínez Piñeiro")}</span>, anfitrión y responsable de la Vivienda de Uso Turístico <span className="text-white">{t("«Illas Atlánticas Ático»")}</span>, inscrita en el Registro de Empresas y Actividades Turísticas de la Xunta de Galicia con el código <span className="text-white">VUT-CO-007656</span>.
             </p>
             <p className="mb-3">
               Domicilio: Rúa Francisco Lorenzo Mariño 93, Ático F · 15965 Aguiño, Ribeira (A Coruña).
@@ -41,8 +42,8 @@ export function LegalPage({ onBack }: LegalPageProps) {
               Los datos personales que nos facilitas (nombre, contacto y datos de identidad de los viajeros) se tratan únicamente para:
             </p>
             <ul className="list-disc pl-6 space-y-2 mb-3">
-              <li>gestionar tu reserva y la comunicación contigo;</li>
-              <li>cumplir obligaciones legales, incluida la comunicación de viajeros a las Fuerzas y Cuerpos de Seguridad (Real Decreto 933/2021) y las obligaciones fiscales.</li>
+              <li>{t("gestionar tu reserva y la comunicación contigo;")}</li>
+              <li>{t("cumplir obligaciones legales, incluida la comunicación de viajeros a las Fuerzas y Cuerpos de Seguridad (Real Decreto 933/2021) y las obligaciones fiscales.")}</li>
             </ul>
             <p className="mb-3">
               No cedemos tus datos a terceros salvo obligación legal (SES-Hospedajes, Administración tributaria) o proveedores necesarios para el pago (Stripe, PayPal), que actúan como encargados del tratamiento.

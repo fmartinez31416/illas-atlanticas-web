@@ -7,6 +7,7 @@ import * as X from 'react';
 import { kt } from '../data';
 import { At, Wt, ce, me } from '../astro';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export const Ya=s=>-80+(Math.min(41,Math.max(-11,s))+10)/50*160,ha=s=>260-Math.min(100,Math.max(0,s))/100*160;
 
@@ -35,7 +36,7 @@ export const yy=X.memo(function(){const u=[];for(let r=-10;r<=40;r++){const o=Ya
     }{
     <text x="100" y="61" textAnchor="middle" fontSize="4.3" letterSpacing="1.4" fontFamily="Cinzel" fill="#3a3024">TEMPERATURA</text>
     }{
-    <text x="100" y="121" textAnchor="middle" fontSize="5.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">Illas Atlánticas</text>
+    <text x="100" y="121" textAnchor="middle" fontSize="5.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">{t("Illas Atlánticas")}</text>
     }{
     <text x="100" y="141" textAnchor="middle" fontSize="4.3" letterSpacing="1.4" fontFamily="Cinzel" fill="#3a3024">HUMEDAD</text>
     }{

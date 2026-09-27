@@ -5,6 +5,7 @@
 // Rl = tornillo · $n = esfera con bisel de latón · il = placa grabada · Ga = panel de caoba · wc = tarjeta marfil · th = interruptor · Vi = rótulo · iy = mandos del puente
 import { cn } from './util';
 import { At, Fe, V1, ap, np } from './astro';
+import { t } from '../../i18n/translate';
 
 export function mr({id:s = undefined,r:u = undefined,fraction:r = undefined,limbAngle:o = undefined,earthshine:d=.85,litOpacity:m=1}){const y=np(o),g=ap(u,r);return <g>{
     <defs>{
@@ -105,7 +106,7 @@ export function th({on:s = undefined,onChange:u = undefined,label:r = undefined}
 export function Vi({children:s = undefined}){return <div className="font-display text-[9.5px] font-semibold tracking-[0.3em] text-[#d9bb73]">{s}</div>
   }
 
-export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.updatedAt?Fe(new Date(s.updatedAt)):""}`:s.status==="partial"?"Datos parciales · reintentando":s.status==="loading"?"Conectando con la estación…":"Sin conexión · valores de referencia";return <div className="flex h-full flex-col gap-4">{
+export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.updatedAt?Fe(new Date(s.updatedAt)):""}`:s.status==="partial"?"Datos parciales · reintentando":s.status==="loading"?t("Conectando con la estación…"):t("Sin conexión · valores de referencia");return <div className="flex h-full flex-col gap-4">{
     <div className="relative isolate flex-1 overflow-hidden rounded-[14px] border border-black/60 bg-[linear-gradient(160deg,#1b1712_0%,#0b0907_55%,#15110c_100%)] p-4 shadow-[inset_0_1px_0_rgba(255,230,170,.12),inset_0_0_30px_rgba(0,0,0,.8)] sm:p-5">{
       <div className="lacquer" />
       }{
@@ -133,7 +134,7 @@ export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.up
         <Vi>HORA DE A BORDO</Vi>
         }{
         <div className="relative mt-1">{
-          <input type="range" min={0} max={1439} step={1} value={Math.round(s.minutes)} onChange={r=>s.onScrub(Number(r.target.value))} className="brass-range relative z-[1]" aria-label="Hora del día a simular" />
+          <input type="range" min={0} max={1439} step={1} value={Math.round(s.minutes)} onChange={r=>s.onScrub(Number(r.target.value))} className="brass-range relative z-[1]" aria-label={t("Hora del día a simular")} />
           }{[s.sunriseMin,s.sunsetMin].map((r,o)=>r!=null?
           <span className="pointer-events-none absolute -top-2.5 -translate-x-1/2 text-[11px] leading-none text-[#f3c33c]" style={{left:`calc(12px + ${r/1439*100}% - ${r/1439*24}px)`}}>☉</span>
           :null)}</div>
@@ -190,10 +191,10 @@ export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.up
           <div>{
             <Vi>BRÚJULA DEL MÓVIL</Vi>
             }{
-            <p className="font-serif text-[12px] italic text-[#9f8b62]">gire el teléfono: la rosa le sigue</p>
+            <p className="font-serif text-[12px] italic text-[#9f8b62]">{t("gire el teléfono: la rosa le sigue")}</p>
             }</div>
           }{
-          <Th on={s.compassOn} onChange={s.onCompass} label="Brújula del dispositivo" />
+          <Th on={s.compassOn} onChange={s.onCompass} label={t("Brújula del dispositivo")} />
           }</div>
         }{
         <div className="pt-1">{
@@ -208,7 +209,7 @@ export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.up
         }</div>
       }</div>
     }{
-    <Il title="MANDOS DEL PUENTE">Deslice la hora y vea cómo cambia la luz</Il>
+    <Il title="MANDOS DEL PUENTE">{t("Deslice la hora y vea cómo cambia la luz")}</Il>
     }</div>
   }
 const Il=il, Th=th;

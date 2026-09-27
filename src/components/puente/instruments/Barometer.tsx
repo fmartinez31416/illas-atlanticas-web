@@ -7,6 +7,7 @@ import * as X from 'react';
 import { kt, wx } from '../data';
 import { At, me } from '../astro';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export const Fi=950,_c=1060,Dc=-135,yr=135,or=.750062,We=s=>Dc+(Math.min(_c+4,Math.max(Fi-4,s))-Fi)/(_c-Fi)*(yr-Dc),ry=[["TEMPESTAD",960],["LLUVIA",985],["VARIABLE",1005],["BUEN TIEMPO",1025],["MUY SECO",1045]];
 
@@ -48,7 +49,7 @@ export const dy=X.memo(function(){const u=[];for(let d=Fi;d<=_c;d++){const m=We(
     }{
     <text x="100" y="158" textAnchor="middle" fontSize="6" letterSpacing="1.3" fontFamily="Cinzel" fontWeight={600} fill="#17120c">ILLAS ATLÁNTICAS</text>
     }{
-    <text x="100" y="165" textAnchor="middle" fontSize="4.5" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">Barómetro aneroide · Aguiño</text>
+    <text x="100" y="165" textAnchor="middle" fontSize="4.5" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">{t("Barómetro aneroide · Aguiño")}</text>
     }</g>
   });
 

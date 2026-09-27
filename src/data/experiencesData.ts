@@ -126,3 +126,18 @@ export const GASTRO_RESTAURANTS = [
     recommended: 'Menú degustación con maridaje de pequeños viticultores gallegos.'
   }
 ];
+
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getExperiences(lang: Lang): GastroExperience[] {
+  return EXPERIENCES_DATA.map((e) => ({
+    ...e,
+    title: trc(`exp.${e.id}.title`, lang, e.title),
+    subtitle: trc(`exp.${e.id}.subtitle`, lang, e.subtitle),
+    description: trc(`exp.${e.id}.description`, lang, e.description),
+    highlights: e.highlights.map((h, i) => trc(`exp.${e.id}.h${i}`, lang, h)),
+    curatorTip: trc(`exp.${e.id}.curatorTip`, lang, e.curatorTip),
+  }));
+}

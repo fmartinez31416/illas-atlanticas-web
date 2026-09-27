@@ -17,10 +17,28 @@ import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
 import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
+import { LangProvider, useI18n, PAGE_META } from './i18n/LangContext';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 export function App() {
+  return (
+    <LangProvider>
+      <AppInner />
+    </LangProvider>
+  );
+}
+
+function AppInner() {
+  const { lang } = useI18n();
   const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
+
+  // Título y meta por idioma
+  useEffect(() => {
+    document.title = PAGE_META[lang].title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', PAGE_META[lang].description);
+  }, [lang]);
 
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
   // cuenta visitas y de dónde vienen (TikTok, Google, directo...) para medir qué funciona.

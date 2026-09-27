@@ -1,5 +1,6 @@
 import { BadgeEuro, ShieldCheck, HandHeart, ArrowRight } from 'lucide-react';
 import { Reveal } from './Reveal';
+import { t } from '../i18n/translate';
 
 interface DirectBookingSectionProps {
   onOpenBooking: () => void;
@@ -24,7 +25,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
               </h2>
               <p className="text-stone-600 mt-4 leading-relaxed max-w-xl">
                 La <strong className="text-stone-900">mejor tarifa</strong>, la{' '}
-                <strong className="text-stone-900">atención personal del anfitrión</strong> y unas
+                <strong className="text-stone-900">{t("atención personal del anfitrión")}</strong> y unas
                 condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.
               </p>
               <p className="text-[#D4A017] text-sm italic font-serif mt-3">
@@ -36,7 +37,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#D4A017] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">Garantía del mejor precio:</strong> si está más
+                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> si está más
                     barato en otra web, lo igualamos y añadimos un{' '}
                     <strong className="text-[#1A3A5C]">5% extra</strong>.{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
@@ -49,10 +50,10 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     Condiciones:
                   </p>
                   <ul className="space-y-1.5">
-                    <li>• Mismo alojamiento, mismas fechas y mismo número de huéspedes.</li>
-                    <li>• Mismas condiciones de reserva y cancelación.</li>
-                    <li>• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).</li>
-                    <li>• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.</li>
+                    <li>{t("• Mismo alojamiento, mismas fechas y mismo número de huéspedes.")}</li>
+                    <li>{t("• Mismas condiciones de reserva y cancelación.")}</li>
+                    <li>{t("• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).")}</li>
+                    <li>{t("• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.")}</li>
                     <li>• La diferencia se aplica sobre el precio total de la estancia.</li>
                   </ul>
                 </div>
@@ -63,9 +64,9 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#1A3A5C] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">Garantía Lluvia Gallega:</strong> si llueve
+                    <strong className="text-[#1A3A5C]">{t("Garantía Lluvia Gallega:")}</strong> si llueve
                     más de la mitad de los días de tu estancia, te regalamos{' '}
-                    <strong className="text-[#1A3A5C]">una noche en tu próxima reserva</strong> —
+                    <strong className="text-[#1A3A5C]">{t("una noche en tu próxima reserva")}</strong> —
                     tuya o de quien tú elijas.{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
                       Condiciones
@@ -74,11 +75,11 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
                   <ul className="space-y-1.5">
-                    <li>• Se activa si llueve (≥5 mm) más de la mitad de los días de tu estancia, de mínimo 3 noches.</li>
-                    <li>• Recibes un código válido 12 meses, para una próxima reserva de mínimo 3 noches en la misma época.</li>
-                    <li>• Valor: una noche a la tarifa de tu reserva lluviosa. Si la nueva reserva es más cara, descontamos ese importe; si es más barata, la noche entera es gratis.</li>
-                    <li>• El código es transferible: puedes regalarlo a familiares o amigos.</li>
-                    <li>• Solo reserva directa. Un código por estancia. No acumulable con otras ofertas. Sin valor en efectivo.</li>
+                    <li>{t("• Se activa si llueve (≥5 mm) más de la mitad de los días de tu estancia, de mínimo 3 noches.")}</li>
+                    <li>{t("• Recibes un código válido 12 meses, para una próxima reserva de mínimo 3 noches en la misma época.")}</li>
+                    <li>{t("• Valor: una noche a la tarifa de tu reserva lluviosa. Si la nueva reserva es más cara, descontamos ese importe; si es más barata, la noche entera es gratis.")}</li>
+                    <li>{t("• El código es transferible: puedes regalarlo a familiares o amigos.")}</li>
+                    <li>{t("• Solo reserva directa. Un código por estancia. No acumulable con otras ofertas. Sin valor en efectivo.")}</li>
                   </ul>
                 </div>
               </details>
@@ -91,8 +92,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">Atención directa</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">Hablas con Fernando, el anfitrión</p>
+                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Atención directa")}</p>
+                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Hablas con Fernando, el anfitrión")}</p>
                 </div>
                 <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
                   <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
@@ -118,7 +119,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
               <button
                 type="button"
                 onClick={onOpenPuente}
-                aria-label="Abrir el Puente de Mando Atlántico"
+                aria-label={t("Abrir el Puente de Mando Atlántico")}
                 className="relative rounded-md overflow-hidden shadow-xl w-full text-left cursor-pointer transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/60 flex-1"
                 style={{ border: '1px solid rgba(26,58,92,0.15)' }}
               >
@@ -140,7 +141,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     </p>
                     <div className="flex items-center justify-center gap-2 mt-4">
                       <span className="w-2 h-2 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
-                      <span className="text-[11px] tracking-[0.22em] text-[#D4A017] uppercase font-medium">Puente de Mando Atlántico</span>
+                      <span className="text-[11px] tracking-[0.22em] text-[#D4A017] uppercase font-medium">{t("Puente de Mando Atlántico")}</span>
                     </div>
                   </div>
                 </div>
@@ -151,7 +152,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <button
                   type="button"
                   onClick={onOpenBitacora}
-                  aria-label="Abrir el Cuaderno de Bitácora"
+                  aria-label={t("Abrir el Cuaderno de Bitácora")}
                   className="text-left bg-[#EBE6DD]/60 border border-[#1A3A5C]/10 p-4 rounded-md cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
                 >
                   <span className="font-serif text-2xl text-[#D4A017] leading-none select-none">✦</span>

@@ -82,3 +82,15 @@ export const REVIEWS: Review[] = [
       'Apartamento enorme, luminoso y con todo lo necesario para venir con niños. La plaza de garaje es un puntazo y la playa está a un paseo. El anfitrión nos recomendó rutas por las islas que fueron lo mejor de las vacaciones.'
   },
 ];
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getReviews(lang: Lang): Review[] {
+  return REVIEWS.map((r, i) => ({
+    ...r,
+    title: trc(`rev.r${i}.title`, lang, r.title),
+    details: trc(`rev.r${i}.details`, lang, r.details),
+    comment: trc(`rev.r${i}.comment`, lang, r.comment),
+  }));
+}

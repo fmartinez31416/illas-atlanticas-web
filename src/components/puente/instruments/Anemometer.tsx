@@ -7,6 +7,7 @@ import * as X from 'react';
 import { Ax, kt, qn, xa, zx } from '../data';
 import { At, me } from '../astro';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export const gr=-125,Oh=125,vr=60,ma=s=>gr+Math.min(vr+2,Math.max(0,s))/vr*(Oh-gr),ka="#dcbc6e",rr="#f1e5c4",my=X.memo(function(){const u=[];for(let d=0;d<360;d+=5){const m=d%30===0,y=d%10===0,[g,h]=At(100,100,94,d),[p,b]=At(100,100,m?85.5:y?88:90.5,d);u.push(
   <line x1={g} y1={h} x2={p} y2={b} stroke={ka} strokeWidth={m?1.2:y?.7:.4} />
@@ -30,7 +31,7 @@ export const gr=-125,Oh=125,vr=60,ma=s=>gr+Math.min(vr+2,Math.max(0,s))/vr*(Oh-g
     }{o}{
     <text x="100" y="121" textAnchor="middle" fontSize="4.6" letterSpacing="1.5" fontFamily="Cinzel" fill={ka}>NUDOS</text>
     }{
-    <text x="100" y="160" textAnchor="middle" fontSize="4.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill={ka} opacity="0.85">Illas Atlánticas · Aguiño</text>
+    <text x="100" y="160" textAnchor="middle" fontSize="4.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill={ka} opacity="0.85">{t("Illas Atlánticas · Aguiño")}</text>
     }</g>
   });
 

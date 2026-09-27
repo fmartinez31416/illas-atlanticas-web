@@ -7,6 +7,7 @@ import * as X from 'react';
 import { Ie, ah, dr } from '../config';
 import { kt, qn, xa } from '../data';
 import { il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export function nh(s,u,r=0){const o=s.reduce((m,y)=>m+y,0);let d=((u+r)%o+o)%o;for(let m=0;m<s.length;m++){if(d<s[m])return m%2===0;d-=s[m]}return!1}
 
@@ -60,10 +61,10 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
     }{
     <text transform={`translate(${Kt(42.52,-9.126).join(" ")}) rotate(-90)`} textAnchor="middle" fontSize="7.4" letterSpacing="4" fontFamily="IM Fell English" fill="#35556e">OCÉANO ATLÁNTICO</text>
     }{
-    <text x={Kt(42.386,-8.748)[0]} y={Kt(42.386,-8.748)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="IM Fell English" fill="#35556e">Ría de Pontevedra</text>
+    <text x={Kt(42.386,-8.748)[0]} y={Kt(42.386,-8.748)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="IM Fell English" fill="#35556e">{t("Ría de Pontevedra")}</text>
     }{
-    <text x={Kt(42.432,-8.99)[0]} y={Kt(42.432,-8.99)[1]} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="IM Fell English" fill="#3f6b48">P. N. Illas Atlánticas</text>
-    }{[["I. de Sálvora",42.479,-8.982],["I. de Ons",42.39,-8.905],["I. de Arousa",42.547,-8.905],["Rúa",42.556,-8.95]].map(([g,h,p])=>
+    <text x={Kt(42.432,-8.99)[0]} y={Kt(42.432,-8.99)[1]} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="IM Fell English" fill="#3f6b48">{t("P. N. Illas Atlánticas")}</text>
+    }{[[t("I. de Sálvora"),42.479,-8.982],["I. de Ons",42.39,-8.905],["I. de Arousa",42.547,-8.905],["Rúa",42.556,-8.95]].map(([g,h,p])=>
     <text x={Kt(h,p)[0]} y={Kt(h,p)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">{g}</text>
     )}{qy.map(([g,h,p])=>{const[b,A]=Kt(h,p);return <text x={b} y={A} textAnchor="middle" fontSize="6.6" fontStyle="italic" fontFamily="IM Fell English" fill="#3b2c1a">{g}</text>
     })}{
@@ -98,7 +99,7 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
       }{
       <text x="62" y="11" textAnchor="middle" fontSize="5" letterSpacing="2" fontFamily="Cinzel" fontWeight={700} fill="#2c2419">CARTA NÁUTICA</text>
       }{
-      <text x="62" y="22" textAnchor="middle" fontSize="10" fontStyle="italic" fontFamily="IM Fell English" fill="#1a3a5c">Ría de Arousa</text>
+      <text x="62" y="22" textAnchor="middle" fontSize="10" fontStyle="italic" fontFamily="IM Fell English" fill="#1a3a5c">{t("Ría de Arousa")}</text>
       }{
       <text x="62" y="30.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">De Corrubedo a la Isla de Ons</text>
       }{
@@ -110,7 +111,7 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
       )}{[0,1,2,3].map(g=>
       <text x={g*16.67} y="8.5" textAnchor="middle" fontSize="4.4" fontFamily="IM Fell English" fill="#2c2419">{g}</text>
       )}{
-      <text x="25" y="-2.5" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">millas náuticas</text>
+      <text x="25" y="-2.5" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">{t("millas náuticas")}</text>
       }</g>
     }{
     <g opacity="0.92">{
@@ -140,7 +141,7 @@ export function Xy({windDir:s = undefined,windSpeed:u = undefined,currentVel:r =
       <div className="shade rounded-[12px]" />
       }{
       <div className="relative isolate z-[6] overflow-hidden rounded-[3px] shadow-[inset_0_0_0_1px_rgba(0,0,0,.4)]">{
-        <svg viewBox={`0 0 ${Dh} ${Rh}`} className="block h-auto w-full" aria-label="Carta náutica de la Ría de Arousa">{
+        <svg viewBox={`0 0 ${Dh} ${Rh}`} className="block h-auto w-full" aria-label={t("Carta náutica de la Ría de Arousa")}>{
           <Yy />
           }{dr.map(L=>{const[D,q]=Kt(L.lat,L.lon),[V,et,ct]=Zy[L.id]??[5,0,"start"];return <g>{
             <path d={`M${D} ${q} C ${D+3} ${q-4} ${D+7} ${q-8} ${D+9} ${q-10} C ${D+8} ${q-6} ${D+5} ${q-2} ${D} ${q} Z`} fill="#b0307a" opacity="0.8" />
@@ -179,7 +180,7 @@ export function Xy({windDir:s = undefined,windSpeed:u = undefined,currentVel:r =
         }</div>
       }</div>
     }{
-    <Il title="CARTA NÁUTICA" className="mt-auto">Faros en servicio con su característica real · Sálvora GpD(3+1) B 20s</Il>
+    <Il title="CARTA NÁUTICA" className="mt-auto">{t("Faros en servicio con su característica real · Sálvora GpD(3+1) B 20s")}</Il>
     }</div>
   }
 const Il=il;

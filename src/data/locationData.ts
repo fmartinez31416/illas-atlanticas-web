@@ -47,3 +47,16 @@ export const POINTS_OF_INTEREST: PointOfInterest[] = [
     coordinates: { lat: 42.6931, lng: -9.0319 }
   }
 ];
+
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getPointsOfInterest(lang: Lang): PointOfInterest[] {
+  return POINTS_OF_INTEREST.map((p) => ({
+    ...p,
+    name: trc(`loc.${p.id}.name`, lang, p.name),
+    distance: trc(`loc.${p.id}.distance`, lang, p.distance),
+    description: trc(`loc.${p.id}.description`, lang, p.description),
+  }));
+}

@@ -7,6 +7,7 @@ import * as X from 'react';
 import { ah, vc } from '../config';
 import { Ft, qn, xa } from '../data';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export function Mc({a:s = undefined,L:u = undefined,w:r = undefined,dark:o = undefined,light:d = undefined}){const m=r*.95;return <g transform={`rotate(${s} 100 100)`}>{
     <path d={`M100 100 L${100-r} ${100-m} L100 ${100-u} Z`} fill={o} />
@@ -123,7 +124,7 @@ export function by({sunAz:s = undefined,sunAlt:u = undefined,moonAz:r = undefine
       <span ref={b}>{String(vc).padStart(3,"0")}°</span>
       } · {
       <span ref={A}>S</span>
-      } · {h?"brújula del dispositivo":"proa a Sálvora"}{
+      } · {h?t("brújula del dispositivo"):t("proa a Sálvora")}{
       <span className="block text-[12px] not-italic tracking-wide opacity-80">Dm {ah} · ☉ {Math.round(s)}° · ☾ {Math.round(r)}°</span>
       }</Il>
     }</div>

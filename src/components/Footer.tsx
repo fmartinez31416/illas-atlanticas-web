@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, ShieldCheck, ArrowUp, MessageCircle, Phone, Mail } from 'lucide-react';
 import footerBg from '../../footer-bg.webp';
+import { t } from '../i18n/translate';
 
 function TikTokIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -30,7 +31,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
       {/* Fotografía de la ría al 100% de luminosidad */}
       <img
         src={footerBg}
-        alt="Vistas a la ría y las bateas desde Aguiño"
+        alt={t("Vistas a la ría y las bateas desde Aguiño")}
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
       
@@ -152,7 +153,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </div>
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
-                <span>Rúa Francisco Lorenzo Mariño, 93<br />15965 Aguiño (Ribeira, A Coruña)</span>
+                <span>{t("Rúa Francisco Lorenzo Mariño, 93")}<br />{t("15965 Aguiño (Ribeira, A Coruña)")}</span>
               </div>
               <p className="text-xs text-stone-200 pt-1 leading-relaxed">
                 Atención personalizada y trato directo sin intermediarios.

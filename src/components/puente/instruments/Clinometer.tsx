@@ -6,6 +6,7 @@
 import * as X from 'react';
 import { Ft, Nx, kt, qn, xa } from '../data';
 import { Rl, il, wc } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export const ll=120,al=12,nl=104,Ii=(s,u)=>[ll+u*Math.sin(s*Math.PI/180),al+u*Math.cos(s*Math.PI/180)],Nc={borderRadius:"18px 18px 50% 50% / 18px 18px 100% 100%"};
 
@@ -28,7 +29,7 @@ export const Ey=X.memo(function(){const u=[];for(let r=-40;r<=40;r++){const o=r%
     }{
     <text x="120" y="58" textAnchor="middle" fontSize="5.4" letterSpacing="1.4" fontFamily="Cinzel" fill="#3a3024">ILLAS ATLÁNTICAS</text>
     }{
-    <text x="120" y="65" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">Clinómetro de péndulo</text>
+    <text x="120" y="65" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">{t("Clinómetro de péndulo")}</text>
     }</g>
   });
 

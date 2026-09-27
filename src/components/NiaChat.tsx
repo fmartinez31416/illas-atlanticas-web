@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { X, Send, MessageCircle } from 'lucide-react';
 import { NIA_API_URL, NIA_TOKEN } from '../niaConfig';
+import { t } from '../i18n/translate';
 
 interface Mensaje {
   rol: 'nia' | 'usuario';
@@ -8,9 +9,9 @@ interface Mensaje {
 }
 
 const SUGERENCIAS = [
-  '¿Qué tiempo hace hoy?',
-  '¿Dónde comprar marisco?',
-  '¿Cómo se cocina el percebe?',
+  t('¿Qué tiempo hace hoy?'),
+  t('¿Dónde comprar marisco?'),
+  t('¿Cómo se cocina el percebe?'),
   'Precios y reservas',
 ];
 
@@ -84,7 +85,7 @@ export function NiaChat() {
       setFallo(true);
       setMensajes([
         ...nuevo,
-        { rol: 'nia', texto: 'Estoy momentáneamente sin línea. Escríbeme en un rato o dile a Fernando que Nía se ha quedado muda.' },
+        { rol: 'nia', texto: t("Estoy momentáneamente sin línea. Escríbeme en un rato o dile a Fernando que Nía se ha quedado muda.") },
       ]);
     } finally {
       setEscribiendo(false);
@@ -96,7 +97,7 @@ export function NiaChat() {
       {/* Burbuja */}
       <button
         onClick={() => setAbierto(!abierto)}
-        aria-label={abierto ? 'Cerrar chat con Nía' : 'Abrir chat con Nía'}
+        aria-label={abierto ? t("Cerrar chat con Nía") : t("Abrir chat con Nía")}
         className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#1A3A5C] border-2 border-[#D4A017] shadow-xl flex items-center justify-center text-[#EBE6DD] hover:scale-105 active:scale-95 transition-transform"
       >
         {abierto ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
@@ -109,7 +110,7 @@ export function NiaChat() {
       {abierto && (
         <div className="fixed bottom-24 right-4 sm:right-5 z-50 w-[calc(100vw-2rem)] max-w-[380px] bg-[#EBE6DD] border border-[#1A3A5C]/20 shadow-2xl flex flex-col overflow-hidden rounded-md"
           style={{ maxHeight: 'min(70vh, 560px)' }}
-          role="dialog" aria-label="Chat con Nía">
+          role="dialog" aria-label={t("Chat con Nía")}>
           {/* Cabecera */}
           <div className="px-4 py-3 bg-[#1A3A5C] flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-[#D4A017]/15 border border-[#D4A017]/50 flex items-center justify-center">
@@ -153,7 +154,7 @@ export function NiaChat() {
                 </div>
               </div>
             )}
-            {fallo && <p className="text-[10px] text-stone-400 text-center">Sin conexión — reintenta en un rato.</p>}
+            {fallo && <p className="text-[10px] text-stone-400 text-center">{t("Sin conexión — reintenta en un rato.")}</p>}
             <div ref={finRef} />
           </div>
 
@@ -180,10 +181,10 @@ export function NiaChat() {
             <input
               value={entrada}
               onChange={(e) => setEntrada(e.target.value)}
-              placeholder="Escribe a Nía…"
+              placeholder={t("Escribe a Nía…")}
               className="flex-1 px-2 py-1.5 text-sm text-stone-800 bg-transparent focus:outline-none placeholder-stone-400 caret-[#D4A017]"
               style={{ color: '#292524' }}
-              aria-label="Mensaje para Nía"
+              aria-label={t("Mensaje para Nía")}
             />
             <button
               type="submit"

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { EXPERIENCES_DATA, WINE_PAIRINGS, GASTRO_RESTAURANTS } from '../data/experiencesData';
 import { WinePairing } from '../types';
 import { Anchor, Wine, Compass, Fish, Sparkles, ChefHat, Check, ArrowUpRight, Flame, MapPin, GlassWater, Clock, Award } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 export function GastroAndExperiences() {
   const [activeCategory, setActiveCategory] = useState<'lonja' | 'enologia' | 'nautica'>('lonja');
@@ -19,19 +20,19 @@ export function GastroAndExperiences() {
     const query = customSeafoodQuery.toLowerCase();
     if (query.includes('ostra') || query.includes('almeja') || query.includes('zamburiña')) {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Recomendamos un Albariño de suelo granítico (Subzona Val do Salnés). Su marcada acidez cítrica y notas salinas potenciarán el yodo natural sin opacar el molusco. Servir a 9°C en copa de vino blanco.`
+        t("Para {q}: Recomendamos un Albariño de suelo granítico (Subzona Val do Salnés). Su marcada acidez cítrica y notas salinas potenciarán el yodo natural sin opacar el molusco. Servir a 9°C en copa de vino blanco.", { q: customSeafoodQuery })
       );
     } else if (query.includes('pescado') || query.includes('rodaballo') || query.includes('lubina') || query.includes('sargo')) {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Recomendamos un Albariño plurivarietal con Loureira y Treixadura o un blanco de guarda con 12 meses sobre lías. La untuosidad envolverá la textura gelatinosa y grasa del pescado noble de la ría a la brasa.`
+        t("Para {q}: Recomendamos un Albariño plurivarietal con Loureira y Treixadura o un blanco de guarda con 12 meses sobre lías. La untuosidad envolverá la textura gelatinosa y grasa del pescado noble de la ría a la brasa.", { q: customSeafoodQuery })
       );
     } else if (query.includes('carne') || query.includes('vaca') || query.includes('ternera')) {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Recomendamos un tinto atlántico de uvas Caíño Tinto y Sousón de las laderas de Ribeira do Ulla. Fresco, con recuerdos a pimienta negra y frutos silvestres, equilibrará la intensidad sin resultar pesado.`
+        t("Para {q}: Recomendamos un tinto atlántico de uvas Caíño Tinto y Sousón de las laderas de Ribeira do Ulla. Fresco, con recuerdos a pimienta negra y frutos silvestres, equilibrará la intensidad sin resultar pesado.", { q: customSeafoodQuery })
       );
     } else {
       setAiRecommendation(
-        `Para ${customSeafoodQuery}: Excelente elección en la comarca de Ribeira. Te lo maridamos con un Albariño de la zona, bien frío a 8-10°C, y recuerda que en la lonja de Aguiño lo encontrarás recién capturado.`
+        t("Para {q}: Excelente elección en la comarca de Ribeira. Te lo maridamos con un Albariño de la zona, bien frío a 8-10°C, y recuerda que en la lonja de Aguiño lo encontrarás recién capturado.", { q: customSeafoodQuery })
       );
     }
   };
@@ -65,7 +66,7 @@ export function GastroAndExperiences() {
               }`}
             >
               <Fish className="w-4 h-4" />
-              <span>Lonja de Aguiño</span>
+              <span>{t("Lonja de Aguiño")}</span>
             </button>
 
             <button
@@ -77,7 +78,7 @@ export function GastroAndExperiences() {
               }`}
             >
               <Wine className="w-4 h-4" />
-              <span>Enología Rías Baixas</span>
+              <span>{t("Enología Rías Baixas")}</span>
             </button>
 
             <button
@@ -89,7 +90,7 @@ export function GastroAndExperiences() {
               }`}
             >
               <Anchor className="w-4 h-4" />
-              <span>Sálvora & Rutas Náuticas</span>
+              <span>{t("Sálvora & Rutas Náuticas")}</span>
             </button>
           </div>
         </div>
@@ -145,7 +146,7 @@ export function GastroAndExperiences() {
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-500 mb-1">
                 <GlassWater className="w-4 h-4" />
-                <span>Sumillería & Maridaje Interactivo</span>
+                <span>{t("Sumillería & Maridaje Interactivo")}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-serif text-zinc-50">
                 Guía de Maridajes de la Ría de Arousa
@@ -181,14 +182,14 @@ export function GastroAndExperiences() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-zinc-950 p-6 sm:p-8 rounded-sm border border-zinc-800">
               <div className="lg:col-span-5 space-y-4">
                 <div>
-                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 block">Producto de la Ría</span>
+                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 block">{t("Producto de la Ría")}</span>
                   <h4 className="text-lg font-serif text-amber-200 mt-0.5">{selectedPairing.dish}</h4>
                   <p className="text-xs text-zinc-400 mt-1 font-light">{selectedPairing.product}</p>
                 </div>
 
                 <div className="p-3.5 rounded-sm bg-zinc-900 border border-zinc-800 space-y-1.5 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Denominación:</span>
+                    <span className="text-zinc-400">{t("Denominación:")}</span>
                     <span className="text-amber-400 font-medium">{selectedPairing.dop}</span>
                   </div>
                   <div className="flex justify-between">
@@ -216,7 +217,7 @@ export function GastroAndExperiences() {
                 <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
                   <span className="flex items-center gap-1.5">
                     <Award className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Para acompañar con un Albariño bien frío</span>
+                    <span>{t("Para acompañar con un Albariño bien frío")}</span>
                   </span>
                   <span className="text-zinc-500 italic">Servicio a 8°C - 10°C</span>
                 </div>
@@ -231,7 +232,7 @@ export function GastroAndExperiences() {
                 type="text"
                 value={customSeafoodQuery}
                 onChange={(e) => setCustomSeafoodQuery(e.target.value)}
-                placeholder="¿Deseas consultar otro marisco, pescado o plato? (ej. Zamburiñas, Rodaballo salvaje, Ostras...)"
+                placeholder={t("¿Deseas consultar otro marisco, pescado o plato? (ej. Zamburiñas, Rodaballo salvaje, Ostras...)")}
                 className="flex-grow px-4 py-3 rounded-sm bg-zinc-950 border border-zinc-800 text-zinc-200 placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-amber-500"
               />
               <button
@@ -271,7 +272,7 @@ export function GastroAndExperiences() {
                       <MapPin className="w-3 h-3 text-amber-500" />
                       <span>{resto.distance}</span>
                     </span>
-                    <span className="text-amber-400 font-medium">★ Selección</span>
+                    <span className="text-amber-400 font-medium">{t("★ Selección")}</span>
                   </div>
                 </div>
               ))}

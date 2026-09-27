@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { POINTS_OF_INTEREST } from '../data/locationData';
 import { PointOfInterest } from '../types';
 import { MapPin, ExternalLink, Car, Plane } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 export function LocationAndSurroundings() {
   const [activePoi, setActivePoi] = useState<PointOfInterest>(POINTS_OF_INTEREST[0]);
@@ -113,7 +114,7 @@ export function LocationAndSurroundings() {
               <div className="pt-4 border-t border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-stone-600">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-stone-800" />
-                  <span>Porto de Aguiño, 15965 Ribeira (A Coruña)</span>
+                  <span>{t("Porto de Aguiño, 15965 Ribeira (A Coruña)")}</span>
                 </span>
                 <button
                   onClick={handleOpenGoogleMaps}
@@ -135,7 +136,7 @@ export function LocationAndSurroundings() {
             </div>
             <div>
               <h5 className="text-[11px] uppercase tracking-wider text-stone-500 font-semibold">Aeropuerto de Santiago (SCQ)</h5>
-              <p className="text-sm font-serif text-stone-900 font-normal">50 minutos por autovía AG-11</p>
+              <p className="text-sm font-serif text-stone-900 font-normal">{t("50 minutos por autovía AG-11")}</p>
             </div>
           </div>
 

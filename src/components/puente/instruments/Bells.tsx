@@ -7,6 +7,7 @@ import * as X from 'react';
 import { qn } from '../data';
 import { At, Xn, me } from '../astro';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export const cy=["XII","I","II","III","IIII","V","","VII","VIII","IX","X","XI"],ur="#1d1812",uy=X.memo(function(){const u=[];for(let d=0;d<60;d++){const m=d%5===0,[y,g]=At(100,100,91,d*6),[h,p]=At(100,100,m?83:87.2,d*6);u.push(
   <line x1={y} y1={g} x2={h} y2={p} stroke={ur} strokeWidth={m?1.7:.6} strokeLinecap="round" />
@@ -28,7 +29,7 @@ export const cy=["XII","I","II","III","IIII","V","","VII","VIII","IX","X","XI"],
     }{
     <text x="100" y="115.5" textAnchor="middle" fontSize="6.1" letterSpacing="1.3" fontFamily="Cinzel" fontWeight={600} fill="#17120c">ILLAS ATLÁNTICAS</text>
     }{
-    <text x="100" y="122.6" textAnchor="middle" fontSize="4.7" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3b3226">Cronómetro de marina · Nº 007656</text>
+    <text x="100" y="122.6" textAnchor="middle" fontSize="4.7" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3b3226">{t("Cronómetro de marina · Nº 007656")}</text>
     }{
     <circle cx="100" cy="146" r="19" fill="rgba(60,40,10,0.05)" stroke="#2a241a" strokeWidth="0.5" />
     }{[4,7,10].map(d=>

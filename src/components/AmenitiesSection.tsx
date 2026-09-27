@@ -12,6 +12,7 @@ import {
   Flame,
   Bath
 } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 interface AmenityItem {
   icon: React.ElementType;
@@ -24,24 +25,24 @@ interface AmenityCategory {
   items: AmenityItem[];
 }
 
-const AMENITIES_CATEGORIES: AmenityCategory[] = [
+function getAmenitiesCats(): AmenityCategory[] { return [
   {
     category: 'Terraza & Vistas',
     items: [
       {
         icon: Sun,
-        name: 'Vistas a Sálvora y Ons',
-        description: 'Panorámica abierta a la ría y a las islas del Parque Nacional desde la terraza privada.'
+        name: t('Vistas a Sálvora y Ons'),
+        description: t('Panorámica abierta a la ría y a las islas del Parque Nacional desde la terraza privada.')
       },
       {
         icon: Armchair,
         name: 'Terraza Privada',
-        description: 'Mesa y tumbonas para desayunar al sol o cenar al aire libre con el horizonte de fondo.'
+        description: t('Mesa y tumbonas para desayunar al sol o cenar al aire libre con el horizonte de fondo.')
       },
       {
         icon: Sparkles,
-        name: 'Puesta de Sol sobre la Ría',
-        description: 'Orientada a la ría: el atardecer se ve desde la terraza, sin moverte de casa.'
+        name: t('Puesta de Sol sobre la Ría'),
+        description: t('Orientada a la ría: el atardecer se ve desde la terraza, sin moverte de casa.')
       }
     ]
   },
@@ -51,7 +52,7 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
       {
         icon: Wifi,
         name: 'Fibra de Alta Velocidad',
-        description: 'Conexión estable con cobertura en toda la casa, ideal para teletrabajo y videollamadas.'
+        description: t('Conexión estable con cobertura en toda la casa, ideal para teletrabajo y videollamadas.')
       },
       {
         icon: Laptop,
@@ -61,7 +62,7 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
       {
         icon: Monitor,
         name: 'Smart TV de 75 Pulgadas',
-        description: 'Gran pantalla en el salón con Netflix y Movistar+ para cine y series.'
+        description: t('Gran pantalla en el salón con Netflix y Movistar+ para cine y series.')
       }
     ]
   },
@@ -75,13 +76,13 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
       },
       {
         icon: Sparkles,
-        name: 'Cafeteras & Café de Bienvenida',
-        description: 'De cápsulas, de filtro e italiana, con café para el primer desayuno.'
+        name: t('Cafeteras & Café de Bienvenida'),
+        description: t('De cápsulas, de filtro e italiana, con café para el primer desayuno.')
       },
       {
         icon: Zap,
         name: 'Lavadora Integrada',
-        description: 'Lavadora en la propia casa para total autonomía en estancias largas.'
+        description: t('Lavadora en la propia casa para total autonomía en estancias largas.')
       }
     ]
   },
@@ -91,21 +92,21 @@ const AMENITIES_CATEGORIES: AmenityCategory[] = [
       {
         icon: Key,
         name: 'Garaje Privado & Ascensor',
-        description: 'Plaza nº 12 frente al ascensor, que sube hasta la planta ático.'
+        description: t('Plaza nº 12 frente al ascensor, que sube hasta la planta ático.')
       },
       {
         icon: Flame,
-        name: 'Chimenea de Leña & Climatización',
-        description: 'Chimenea de leña o briquetas en el salón, y bomba de calor frío/calor con temperatura independiente en cada estancia.'
+        name: t('Chimenea de Leña & Climatización'),
+        description: t('Chimenea de leña o briquetas en el salón, y bomba de calor frío/calor con temperatura independiente en cada estancia.')
       },
       {
         icon: Bath,
-        name: '3 Baños Completos',
-        description: 'Dos baños en los dormitorios (uno con bañera y otro con ducha) más un tercer baño completo.'
+        name: t('3 Baños Completos'),
+        description: t('Dos baños en los dormitorios (uno con bañera y otro con ducha) más un tercer baño completo.')
       }
     ]
   }
-];
+]; }
 
 export function AmenitiesSection() {
   return (
@@ -127,7 +128,7 @@ export function AmenitiesSection() {
 
         {/* Rejilla de Categorías Reales */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AMENITIES_CATEGORIES.map((cat) => (
+          {getAmenitiesCats().map((cat) => (
             <div
               key={cat.category}
               className="bg-[#FAF8F5] border border-stone-200 p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:border-stone-400 transition-all duration-300"

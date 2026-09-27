@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, Clock, Calendar, ArrowLeft, ShieldCheck, MapPin } from 'lucide-react';
 import { Article } from '../data/articles';
+import { t } from '../i18n/translate';
 
 interface ArticleModalProps {
   article: Article | null;
@@ -88,12 +89,12 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
               className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-stone-600 hover:text-stone-950 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Volver a la bitácora</span>
+              <span>{t("Volver a la bitácora")}</span>
             </button>
             
             <button
               onClick={onClose}
-              aria-label="Cerrar artículo"
+              aria-label={t("Cerrar artículo")}
               className="p-1.5 rounded-full text-stone-500 hover:text-stone-950 hover:bg-stone-200/60 transition-colors"
             >
               <X className="w-5 h-5" />
@@ -140,13 +141,13 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
               </h3>
 
               <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-                Desde el salón y la terraza privada de <em>Illas Atlánticas Ático</em> en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.
+                Desde el salón y la terraza privada de <em>{t("Illas Atlánticas Ático")}</em> en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stone-800">
                 <div className="flex items-center gap-2 text-xs text-stone-400">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Reserva directa con anfitrión · Licencia VUT-CO-007656</span>
+                  <span>{t("Reserva directa con anfitrión · Licencia VUT-CO-007656")}</span>
                 </div>
 
                 <button

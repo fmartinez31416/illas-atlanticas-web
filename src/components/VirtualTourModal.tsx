@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { SPACES_DATA } from '../data/spacesData';
 import { X, Compass, Maximize2, Sparkles, ChevronLeft, ChevronRight, Eye, Volume2, CalendarCheck, Check } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 interface VirtualTourModalProps {
   initialSpaceId?: string;
@@ -66,7 +67,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
                   : 'bg-zinc-900 border-zinc-800 text-zinc-400'
               }`}
             >
-              {isRotating ? 'Auto-Pan Activo' : 'Pausar Rotación'}
+              {isRotating ? 'Auto-Pan Activo' : t("Pausar Rotación")}
             </button>
 
             <button

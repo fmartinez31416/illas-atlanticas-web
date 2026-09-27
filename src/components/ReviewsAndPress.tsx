@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { Star, ShieldCheck, CalendarCheck, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { REVIEWS, REVIEW_STATS } from '../data/reviews';
+import { t } from '../i18n/translate';
 
 export function ReviewsAndPress() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -141,7 +142,7 @@ export function ReviewsAndPress() {
           <button
             onClick={() => scrollByCard(-1)}
             disabled={!canPrev}
-            aria-label="Opinión anterior"
+            aria-label={t("Opinión anterior")}
             className="hidden md:flex absolute top-1/2 -left-3 -translate-y-1/2 w-10 h-10 items-center justify-center bg-white border border-stone-200 text-stone-700 hover:text-stone-950 shadow-md transition-all disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -149,7 +150,7 @@ export function ReviewsAndPress() {
           <button
             onClick={() => scrollByCard(1)}
             disabled={!canNext}
-            aria-label="Opinión siguiente"
+            aria-label={t("Opinión siguiente")}
             className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 w-10 h-10 items-center justify-center bg-white border border-stone-200 text-stone-700 hover:text-stone-950 shadow-md transition-all disabled:opacity-30 disabled:cursor-not-allowed"
           >
             <ChevronRight className="w-5 h-5" />
@@ -160,9 +161,9 @@ export function ReviewsAndPress() {
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs text-stone-500 font-light">
           <span className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-stone-700" />
-            <span>Opiniones reales extraídas de valoraciones de huéspedes en plataformas oficiales tras estancia completada.</span>
+            <span>{t("Opiniones reales extraídas de valoraciones de huéspedes en plataformas oficiales tras estancia completada.")}</span>
           </span>
-          <span className="lg:hidden text-[11px] text-stone-400">· Desliza para ver más →</span>
+          <span className="lg:hidden text-[11px] text-stone-400">{t("· Desliza para ver más →")}</span>
         </div>
 
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Compass as CompassIcon } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 /**
  * Brújula náutica realista.
@@ -87,7 +88,7 @@ export function CompassNautico() {
       </span>
 
       <div className="relative w-52 h-52 sm:w-60 sm:h-60">
-        <svg viewBox="0 0 240 240" className="w-full h-full" role="img" aria-label="Brújula náutica">
+        <svg viewBox="0 0 240 240" className="w-full h-full" role="img" aria-label={t("Brújula náutica")}>
           <defs>
             <linearGradient id="compBrass" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#F5D780" />
@@ -207,8 +208,8 @@ export function CompassNautico() {
       )}
       <p className="text-[11px] text-[#A9C9DD] font-light mt-1.5 text-center max-w-[230px]">
         {isMobile
-          ? 'En el móvil, la brújula gira contigo: apunta al norte real con el sensor del teléfono.'
-          : 'En el móvil, la brújula gira contigo. En este ordenador queda fija al norte.'}
+          ? t("En el móvil, la brújula gira contigo: apunta al norte real con el sensor del teléfono.")
+          : t("En el móvil, la brújula gira contigo. En este ordenador queda fija al norte.")}
       </p>
     </div>
   );

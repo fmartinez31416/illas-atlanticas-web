@@ -184,7 +184,7 @@ Comprender el microclima de Aguiño no es solo una curiosidad técnica; es una d
 
 Sentarse en la terraza frente a las bateas al atardecer, bajo un cielo abierto que los telediarios daban por perdido, es el mejor recordatorio de que en el Atlántico, la verdad meteorológica siempre la dicta el mar.
     `
-  },,
+  },
   {
     id: '6',
     slug: 'guia-aguino-parque-nacional-illas-atlanticas',
@@ -222,3 +222,21 @@ La despensa marina de Aguiño no admite intermediarios:
 * **Marisco y lonja de proximidad:** Pulpo de roca, nécoras, almejas y el indiscutible mejillón de batea de la ría, directos del barco a la mesa.`
   }
 ];
+
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getArticles(lang: Lang): Article[] {
+  return ARTICLES.map((a) => ({
+    ...a,
+    category: trc(`art.${a.id}.category`, lang, a.category),
+    title: trc(`art.${a.id}.title`, lang, a.title),
+    excerpt: trc(`art.${a.id}.excerpt`, lang, a.excerpt),
+    readTime: trc(`art.${a.id}.readTime`, lang, a.readTime),
+    date: trc(`art.${a.id}.date`, lang, a.date),
+    author: a.author ? trc(`art.${a.id}.author`, lang, a.author) : a.author,
+    tags: a.tags.map((t, i) => trc(`art.${a.id}.tag${i}`, lang, t)),
+    content: trc(`art.${a.id}.content`, lang, a.content),
+  }));
+}

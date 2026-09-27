@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ShieldCheck, ChevronDown, ArrowRight, MessageCircle, Star } from 'lucide-react';
+import { t } from '../i18n/translate';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -9,7 +10,7 @@ interface HeroProps {
 export function Hero({ onOpenBooking }: HeroProps) {
   const [liveWeather, setLiveWeather] = useState<{ temp: number; waves: number | null } | null>(null);
 
-  // Chip de "Aguiño ahora" con datos reales (Open-Meteo)
+  // Chip de t("Aguiño ahora") con datos reales (Open-Meteo)
   useEffect(() => {
     let alive = true;
     const load = async () => {
@@ -40,7 +41,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src="/01_hero_portada.webp"
-          alt="Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño"
+          alt={t("Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño")}
           className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
           loading="eager"
         />
@@ -92,7 +93,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             id="hero-subtitle"
             className="text-base sm:text-lg md:text-xl text-stone-200 font-light leading-relaxed drop-shadow"
           >
-            Amplitud, luz y horizonte en Aguiño. Despierta frente a las islas de <span className="text-white font-medium">Sálvora y Ons</span>, desayuna al sol en la terraza y despídete del día con la puesta de sol sobre la ría — en un ático con tres dormitorios, dos de ellos en suite, y tres baños completos.
+            Amplitud, luz y horizonte en Aguiño. Despierta frente a las islas de <span className="text-white font-medium">{t("Sálvora y Ons")}</span>, desayuna al sol en la terraza y despídete del día con la puesta de sol sobre la ría — en un ático con tres dormitorios, dos de ellos en suite, y tres baños completos.
           </p>
         </div>
 
@@ -111,7 +112,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">Dos dormitorios en suite</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">3 Baños Completos</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("3 Baños Completos")}</span>
           </div>
         </div>
 
@@ -141,14 +142,14 @@ export function Hero({ onOpenBooking }: HeroProps) {
         {/* Garantía de trato directo */}
         <div className="mt-8 flex items-center justify-center gap-2 text-xs text-stone-300/90 font-light">
           <ShieldCheck className="w-4 h-4 text-stone-300" />
-          <span>Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones</span>
+          <span>{t("Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones")}</span>
         </div>
 
       </div>
 
       {/* Licencia Oficial Xunta de Galicia */}
       <div className="absolute right-6 sm:right-10 bottom-6 sm:bottom-8 hidden md:flex flex-col items-end gap-0.5 pointer-events-none z-10 text-right">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">Vivienda de Uso Turístico</span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">{t("Vivienda de Uso Turístico")}</span>
         <span className="text-xs font-serif italic text-stone-200">VUT-CO-007656</span>
       </div>
 

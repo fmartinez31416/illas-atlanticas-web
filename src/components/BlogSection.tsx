@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Clock, ArrowRight, Compass, BookOpen } from 'lucide-react';
 import { ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
+import { t } from '../i18n/translate';
 
 interface BlogSectionProps {
   onOpenBitacora?: () => void;
@@ -29,10 +30,10 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
           <div>
             <div className="flex items-center gap-2 text-amber-200 text-xs uppercase tracking-[0.25em] font-semibold mb-3">
               <Compass className="w-4 h-4 text-amber-300" />
-              <span>Cuaderno de Bitácora · Divulgación & Territorio</span>
+              <span>{t("Cuaderno de Bitácora · Divulgación & Territorio")}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-white tracking-tight">
-              <button type="button" onClick={onOpenBitacora} className="text-left hover:text-amber-100 transition-colors cursor-pointer" aria-label="Abrir el Cuaderno de Bitácora">
+              <button type="button" onClick={onOpenBitacora} className="text-left hover:text-amber-100 transition-colors cursor-pointer" aria-label={t("Abrir el Cuaderno de Bitácora")}>
                 Crónicas del <span className="italic font-serif text-stone-300">Atlántico</span>
               </button>
             </h2>
@@ -82,7 +83,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
 
                 <button
                   type="button"
-                  aria-label={`Leer artículo: ${article.title}`}
+                  aria-label={t("Leer artículo: {title}", { title: article.title })}
                   className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-stone-300 group-hover:text-amber-200 font-medium transition-colors"
                 >
                   <span>Leer</span>

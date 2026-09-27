@@ -259,3 +259,20 @@ export const ESPECIES: Especie[] = [
     curiosidad: 'Cefalópodo oceánico, más musculoso y firme que la lura. Se pesca de noche con poteras de luz, la misma flota que ilumina la ría en otoño.',
     cocina: 'Guisada con cebolla y pimentón, o en su tinta con arroz.' },
 ];
+
+// --- Traducciones (ES fuente de verdad; GL usa nombreGL nativo) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getEspecies(lang: Lang): Especie[] {
+  return ESPECIES.map((s) => ({
+    ...s,
+    nombreES: lang === 'gl' ? s.nombreGL : trc(`esp.${s.id}.nombreEN`, lang, s.nombreES),
+    talla: trc(`esp.${s.id}.talla`, lang, s.talla),
+    tallaDetalle: s.tallaDetalle ? trc(`esp.${s.id}.tallaDetalle`, lang, s.tallaDetalle) : s.tallaDetalle,
+    temporada: trc(`esp.${s.id}.temporada`, lang, s.temporada),
+    origen: trc(`esp.${s.id}.origen`, lang, s.origen),
+    curiosidad: trc(`esp.${s.id}.curiosidad`, lang, s.curiosidad),
+    cocina: trc(`esp.${s.id}.cocina`, lang, s.cocina),
+  }));
+}

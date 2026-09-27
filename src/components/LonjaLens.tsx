@@ -3,6 +3,7 @@ import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info } f
 import { ESPECIES, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
 import { CREDITOS_FOTOS } from '../data/creditosEspecies';
 import { Reveal } from './Reveal';
+import { t } from '../i18n/translate';
 
 interface LonjaLensProps {
   onBack: () => void;
@@ -74,16 +75,15 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               Cada mañana, la subasta de la lonja de Aguiño es un espectáculo: pescado y marisco recién
               descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos.
               Esta guía te da lo que importa de cada especie:{' '}
-              <strong className="text-[#1A3A5C]">su talla mínima oficial, cuándo está en su mejor momento
-              y cómo se cocina aquí</strong>.
+              <strong className="text-[#1A3A5C]">{t("su talla mínima oficial, cuándo está en su mejor momento y cómo se cocina aquí")}</strong>.
             </p>
             <div className="mt-4 bg-white border border-[#1A3A5C]/10 p-4 sm:p-5">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">Cómo funciona, sin rodeos</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">{t("Cómo funciona, sin rodeos")}</p>
               <ul className="mt-2 space-y-1.5 text-sm text-stone-600 font-light leading-relaxed">
                 <li>· <strong className="font-normal text-[#1A3A5C]">La subasta se puede ver</strong> desde la lonja — el espectáculo es público.</li>
-                <li>· <strong className="font-normal text-[#1A3A5C]">La lonja no vende al público</strong>: el pescado se compra después en la <strong className="font-normal text-[#1A3A5C]">plaza de abastos de Ribeira</strong>.</li>
+                <li>· <strong className="font-normal text-[#1A3A5C]">{t("La lonja no vende al público")}</strong>: el pescado se compra después en la <strong className="font-normal text-[#1A3A5C]">plaza de abastos de Ribeira</strong>.</li>
                 <li>· Visitas guiadas a la lonja de Ribeira: <span className="font-mono text-stone-700">881 076 880</span>.</li>
-                <li>· En julio, no te pierdas la <strong className="font-normal text-[#1A3A5C]">Festa do Percebe de Aguiño</strong> (Fiesta de Interés Turístico de Galicia).</li>
+                <li>· En julio, no te pierdas la <strong className="font-normal text-[#1A3A5C]">{t("Festa do Percebe de Aguiño")}</strong> (Fiesta de Interés Turístico de Galicia).</li>
               </ul>
             </div>
             <p className="text-xs text-stone-500 mt-3 flex items-start gap-2">
@@ -101,7 +101,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               <Camera className="w-5 h-5 text-[#D4A017]" />
             </div>
             <div className="flex-1">
-              <p className="text-[#EBE6DD] font-medium">Identificación con foto — muy pronto</p>
+              <p className="text-[#EBE6DD] font-medium">{t("Identificación con foto — muy pronto")}</p>
               <p className="text-sm text-[#A9C9DD]/80 font-light mt-1">
                 Haz una foto a lo que estás mirando en la lonja y te diremos qué es, su talla legal y
                 cómo cocinarlo. Estamos afinando el ojo artificial de LonjaLens.
@@ -242,7 +242,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
                 <div className="border border-[#D4A017]/40 bg-[#D4A017]/5 p-4">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">Talla mínima oficial</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-medium">{t("Talla mínima oficial")}</p>
                   <p className="font-serif text-2xl text-[#1A3A5C] mt-1">{seleccionada.talla}</p>
                   {seleccionada.tallaDetalle && <p className="text-[11px] text-stone-500 mt-1 font-light">{seleccionada.tallaDetalle}</p>}
                 </div>
@@ -258,7 +258,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
 
               <div className="mt-6 space-y-4">
                 <div>
-                  <h3 className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">La historia de la ría</h3>
+                  <h3 className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">{t("La historia de la ría")}</h3>
                   <p className="text-stone-600 mt-1.5 leading-relaxed font-light">{seleccionada.curiosidad}</p>
                 </div>
                 <div>

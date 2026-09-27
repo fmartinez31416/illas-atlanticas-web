@@ -1,5 +1,5 @@
 // Créditos de las fotos de especies (Wikimedia Commons). Generado automáticamente.
-export interface CreditoFoto { id: string; autor: string; licencia: string; licenciaUrl: string; fuente: string; }
+export interface CreditoFoto { autor: string; licencia: string; licenciaUrl: string; fuente: string; }
 export const CREDITOS_FOTOS: Record<string, CreditoFoto> = {
   abadejo: { autor: "Tylwyth Eldar", licencia: "CC BY-SA 4.0", licenciaUrl: "https://creativecommons.org/licenses/by-sa/4.0", fuente: "https://commons.wikimedia.org/wiki/File%3AGrand_Aquarium_Saint-Malo_-_Pollachius_pollachius_01.jpg" },
   almeja: { autor: "H. Zell", licencia: "CC BY-SA 3.0", licenciaUrl: "https://creativecommons.org/licenses/by-sa/3.0", fuente: "https://commons.wikimedia.org/wiki/File%3ARuditapes_decussatus_01.jpg" },

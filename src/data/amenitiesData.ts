@@ -87,3 +87,19 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     ]
   }
 ];
+
+// --- Traducciones (ES fuente de verdad) ---
+import { trc } from '../i18n/dataTranslations';
+import { Lang } from '../i18n/types';
+
+export function getAmenities(lang: Lang): AmenityCategory[] {
+  return AMENITIES_CATEGORIES.map((c, ci) => ({
+    ...c,
+    category: trc(`amenities.cat${ci}`, lang, c.category),
+    items: c.items.map((it, ii) => ({
+      ...it,
+      name: trc(`amenities.cat${ci}.i${ii}.name`, lang, it.name),
+      description: trc(`amenities.cat${ci}.i${ii}.d`, lang, it.description),
+    })),
+  }));
+}

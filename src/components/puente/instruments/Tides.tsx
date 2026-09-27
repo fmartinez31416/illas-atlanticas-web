@@ -8,6 +8,7 @@ import { Tc } from '../config';
 import { kt, xx } from '../data';
 import { At, Fe, me, tp, yh } from '../astro';
 import { $n, il } from '../parts';
+import { t } from '../../../i18n/translate';
 
 export function _h(s,u){let r=[];for(let o=1;o<u.length-1;o++){const d=u[o-1],m=u[o],y=u[o+1];if(!isFinite(d)||!isFinite(m)||!isFinite(y))continue;const g=m>d&&m>=y,h=m<d&&m<=y;if(!g&&!h)continue;const p=d-2*m+y,b=p!==0?Math.max(-.5,Math.min(.5,.5*(d-y)/p)):0;r.push({t:s[o]+b*(s[o+1]-s[o]),h:m-.25*(d-y)*b,type:g?"high":"low"})}for(let o=0;o<4;o++){const d=[];for(const m of r){const y=d[d.length-1];if(y&&y.type===m.type){(m.type==="high"&&m.h>y.h||m.type==="low"&&m.h<y.h)&&(d[d.length-1]=m);continue}if(y&&Math.abs(m.h-y.h)<.1){d.pop();continue}d.push(m)}if(d.length===r.length){r=d;break}r=d}return r}
 
@@ -48,7 +49,7 @@ export const My=X.memo(function(){const u=[];for(let o=.5;o<6.21;o+=.5){const d=
     }{
     <Zc id="td-ll" text="LLENANTE" angle={270} r={82} size={5.6} />
     }{
-    <text x="100" y="152" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill={Xa} opacity="0.85">horas hasta la próxima</text>
+    <text x="100" y="152" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill={Xa} opacity="0.85">{t("horas hasta la próxima")}</text>
     }</g>
   }),fl=20,Qi=292,fa=100,$i=19;
 
@@ -91,7 +92,7 @@ export function zy({model:s = undefined,state:u = undefined,at:r = undefined,day
     }{
     <div className="relative isolate w-full max-w-[340px] overflow-hidden rounded-[7px] p-[5px] brass-flat inst-shadow">{
       <div className="relative overflow-hidden rounded-[4px]">{
-        <svg viewBox="0 0 300 122" className="block h-auto w-full" aria-label="Curva de marea del día">{
+        <svg viewBox="0 0 300 122" className="block h-auto w-full" aria-label={t("Curva de marea del día")}>{
           <rect x="0" y="0" width="300" height="122" fill="#f4ecd6" />
           }{Array.from({length:25},(D,q)=>
           <line x1={fl+q*(Qi-fl)/24} y1={fa-4.9*$i} x2={fl+q*(Qi-fl)/24} y2={fa+3} stroke="#b89c6a" strokeWidth={q%3===0?.55:.22} />
@@ -117,7 +118,7 @@ export function zy({model:s = undefined,state:u = undefined,at:r = undefined,day
           }{
           <circle cx={O} cy={B} r="2.3" fill="#b3261e" stroke="#fff" strokeWidth="0.5" />
           }{
-          <text x="296" y="9" textAnchor="end" fontSize="5" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#5a4526">m s/ cero hidrográfico</text>
+          <text x="296" y="9" textAnchor="end" fontSize="5" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#5a4526">{t("m s/ cero hidrográfico")}</text>
           }</svg>
         }{
         <div className="pointer-events-none absolute inset-0" style={{background:"linear-gradient(180deg, rgba(40,25,5,.38) 0%, rgba(255,255,255,.06) 42%, rgba(255,255,255,0) 58%, rgba(40,25,5,.42) 100%)"}} />
@@ -127,7 +128,7 @@ export function zy({model:s = undefined,state:u = undefined,at:r = undefined,day
       }</div>
     }{
     <Il title="MAREÓGRAFO">{u.rising?"Llenante":"Vaciante"} · {kt(u.hCD,2)} m · Coef. {u.coef??"—"}{L&&
-      <span className="block text-[12px] not-italic tracking-wide opacity-80">Próxima {L.type==="high"?"pleamar":"bajamar"} {Fe(new Date(L.t))} · {kt(L.h+Tc,2)} m · {s.source==="modelo"?"modelo oceánico":"estimación astronómica"}</span>
+      <span className="block text-[12px] not-italic tracking-wide opacity-80">Próxima {L.type==="high"?"pleamar":"bajamar"} {Fe(new Date(L.t))} · {kt(L.h+Tc,2)} m · {s.source==="modelo"?t("modelo oceánico"):t("estimación astronómica")}</span>
       }</Il>
     }</div>
   }
