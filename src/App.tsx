@@ -17,7 +17,7 @@ import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
 import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
-import { LangProvider, useI18n, PAGE_META } from './i18n/LangContext';
+import { LangProvider, useI18n, PAGE_META, VIEW_META } from './i18n/LangContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { t } from './i18n/translate';
 
@@ -41,23 +41,43 @@ function AppInner() {
     if (meta) meta.setAttribute('content', PAGE_META[lang].description);
   }, [lang]);
 
-  // Rutas con hash: cada servicio con su URL propia (#puente, #lonja, #bitacora, #legal)
-  const VIEW_BY_HASH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'> = {
-    '#puente': 'puente',
-    '#bitacora': 'bitacora',
-    '#lonja': 'lonja',
-    '#legal': 'legal',
+  // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'> = {
+    puente: 'puente',
+    lonja: 'lonja',
+    bitacora: 'bitacora',
+    legal: 'legal',
   };
   useEffect(() => {
-    const vista = VIEW_BY_HASH[window.location.hash.toLowerCase()];
-    if (vista) setCurrentView(vista);
+    const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+    const vista = VIEW_BY_PATH[partes[0]] || 'home';
+    setCurrentView(vista);
+    if (vista === 'bitacora' && partes[1]) setPendingArticle(decodeURIComponent(partes[1]));
+    const onPop = () => {
+      const p = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+      setCurrentView(VIEW_BY_PATH[p[0]] || 'home');
+      if ((VIEW_BY_PATH[p[0]] || 'home') === 'bitacora' && p[1]) setPendingArticle(decodeURIComponent(p[1]));
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const HASH_BY_VIEW: Record<string, string> = { home: '', bitacora: '#bitacora', lonja: '#lonja', legal: '#legal', puente: '#puente' };
-    if (window.location.hash !== HASH_BY_VIEW[currentView]) {
-      window.history.replaceState(null, '', HASH_BY_VIEW[currentView]);
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', puente: '/puente' };
+    const objetivo = PATH_BY_VIEW[currentView];
+    if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
+      window.history.pushState(null, '', objetivo);
     }
   }, [currentView]);
+
+  // Título y meta por idioma y por página (SEO)
+  useEffect(() => {
+    const meta = VIEW_META[lang][currentView];
+    if (meta) {
+      document.title = meta.title;
+      const d = document.querySelector('meta[name="description"]');
+      if (d) d.setAttribute('content', meta.description);
+    }
+  }, [lang, currentView]);
 
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
   // cuenta visitas y de dónde vienen (TikTok, Google, directo...) para medir qué funciona.
