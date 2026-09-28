@@ -7,6 +7,10 @@
   RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
   RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies)$ / [R=301,L]
 
+  # Rutas de servicio: servir la SPA directamente (evita el 301 de LiteSpeed por el directorio /puente)
+  RewriteRule ^(puente|lonja|legal)/?$ /index.html [L]
+  RewriteRule ^bitacora(/.*)?$ /index.html [L]
+
   # SPA: cualquier otra ruta sin archivo real sirve la app
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
