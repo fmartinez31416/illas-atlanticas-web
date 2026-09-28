@@ -41,6 +41,24 @@ function AppInner() {
     if (meta) meta.setAttribute('content', PAGE_META[lang].description);
   }, [lang]);
 
+  // Rutas con hash: cada servicio con su URL propia (#puente, #lonja, #bitacora, #legal)
+  const VIEW_BY_HASH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'> = {
+    '#puente': 'puente',
+    '#bitacora': 'bitacora',
+    '#lonja': 'lonja',
+    '#legal': 'legal',
+  };
+  useEffect(() => {
+    const vista = VIEW_BY_HASH[window.location.hash.toLowerCase()];
+    if (vista) setCurrentView(vista);
+  }, []);
+  useEffect(() => {
+    const HASH_BY_VIEW: Record<string, string> = { home: '', bitacora: '#bitacora', lonja: '#lonja', legal: '#legal', puente: '#puente' };
+    if (window.location.hash !== HASH_BY_VIEW[currentView]) {
+      window.history.replaceState(null, '', HASH_BY_VIEW[currentView]);
+    }
+  }, [currentView]);
+
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
   // cuenta visitas y de dónde vienen (TikTok, Google, directo...) para medir qué funciona.
   useEffect(() => {
