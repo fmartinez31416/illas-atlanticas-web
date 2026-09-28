@@ -138,6 +138,7 @@ El mejillón (*Mytilus galloprovincialis*) filtra hasta 8 litros de agua por hor
   },
 {
     id: 'la-falacia-del-mapa-del-tiempo-microclima-aguiño',
+    slug: 'falacia-mapa-tiempo-modelos-neuronales-aguino',
     title: 'La falacia del mapa del tiempo: por qué los modelos neuronales de 1 km dan la razón al marinero de Aguiño',
     category: 'Oceanografía & Ría',
     readTime: '8 min de lectura',

@@ -28,6 +28,15 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // URL y meta propios por artículo (SEO): /bitacora/<slug>
+  useEffect(() => {
+    if (selectedArticle && selectedArticle.slug) {
+      document.title = `${selectedArticle.title} · Illas Atlánticas Ático`;
+      window.history.pushState(null, '', `/bitacora/${selectedArticle.slug}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedArticle]);
+
   // Si el usuario activa el Puente de Mando, la puerta primero (con sonido / en silencio)
   if (showDashboard) {
     return (
