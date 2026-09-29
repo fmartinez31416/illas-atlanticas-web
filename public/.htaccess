@@ -8,7 +8,7 @@
   RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies)$ / [R=301,L]
 
   # Rutas de servicio: servir la SPA directamente (evita el 301 de LiteSpeed por el directorio /puente)
-  RewriteRule ^(puente|lonja|legal)/?$ /index.html [L]
+  RewriteRule ^(puente|lonja|legal|planificador)/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
 
   # SPA: cualquier otra ruta sin archivo real sirve la app

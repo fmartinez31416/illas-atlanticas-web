@@ -10,6 +10,7 @@ import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
 import { BitacoraPage } from './components/BitacoraPage';
 import { LonjaLens } from './components/LonjaLens';
+import { PlanificadorPage } from './components/PlanificadorPage';
 import { NiaChat } from './components/NiaChat';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
@@ -31,7 +32,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'puente' | 'planificador'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -42,11 +43,12 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente' | 'planificador'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
     legal: 'legal',
+    planificador: 'planificador',
   };
   useEffect(() => {
     const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
@@ -62,7 +64,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', puente: '/puente' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', puente: '/puente', planificador: '/planificador' };
     const objetivo = PATH_BY_VIEW[currentView];
     if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
       window.history.pushState(null, '', objetivo);
@@ -141,6 +143,20 @@ function AppInner() {
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenArticle={openBitacoraArticle}
+        />
+        <NiaChat />
+      </>
+    );
+  }
+
+  // VISTA 5: Planificador de Viajes — de puerta a puerta
+  if (currentView === 'planificador') {
+    return (
+      <>
+        <PlanificadorPage
+          onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
+          onOpenLonja={() => setCurrentView('lonja')}
         />
         <NiaChat />
       </>
