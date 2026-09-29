@@ -98,15 +98,32 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
     return [...items];
   }, [plan, inicio]);
 
-  const guardar = () => {
+  const guardar = async () => {
     if (!email) return;
+    const payload = {
+      email,
+      origen,
+      llegada: inicio,
+      salida: fin,
+      personas,
+      ritmo,
+      intereses,
+      plan,
+      presupuesto,
+      lang: 'es',
+      created: new Date().toISOString(),
+    };
     try {
-      fetch('/api/plan', {
+      const r = await fetch('https://api.illasatlanticasatico.es/api/plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, origen, inicio, fin, personas, ritmo, intereses, presupuesto }),
-      }).catch(() => undefined);
-    } catch { /* sin backend aún: se ignora */ }
+        body: JSON.stringify(payload),
+      });
+      if (!r.ok) throw new Error('api');
+    } catch {
+      // Fallback: mientras no exista el DNS de la API, el plan queda en local
+      try { localStorage.setItem('plan_illas_atlanticas', JSON.stringify(payload)); } catch { /* nada */ }
+    }
     setGuardado(true);
   };
 
