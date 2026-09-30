@@ -73,10 +73,11 @@ function Glifo({ wmo }: { wmo: number }) {
 
 export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
   if (!daily || !daily.t || daily.t.length === 0) return null;
+  const hoyMs = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); })();
   const n = Math.min(7, daily.t.length);
   const dias = Array.from({ length: n }, (_, i) => {
     const d = new Date(daily.t[i]);
-    const hoy = i === 0;
+    const hoy = daily.t[i] >= hoyMs;
     const nombre = hoy
       ? 'Hoy'
       : d.toLocaleDateString('es-ES', { weekday: 'short' }).replace('.', '');
@@ -89,7 +90,7 @@ export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
       tmin: daily.tMin?.[i],
       pop: daily.pop?.[i],
     };
-  });
+  }).filter((_, i) => daily.t[i] >= hoyMs).slice(0, 7);
   return (
     <div className="relative">
       <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
