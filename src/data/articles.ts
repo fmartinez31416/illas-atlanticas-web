@@ -255,7 +255,7 @@ De vuelta en Aguiño, la noche recupera otra velocidad. La ría ya no se contemp
 
 La tercera jornada puede dedicarse a la isla de Sálvora, con barcos desde Aguiño durante la temporada. Las plazas son limitadas y la visita requiere la autorización correspondiente del parque, de modo que conviene comprobar con antelación la disponibilidad, las condiciones de embarque y la previsión marítima. Si el mar impide la salida, la alternativa no es una renuncia, sino otra forma de permanecer junto al agua: recorrer el litoral, observar las bateas y acercarse al mundo del mejillón desde la costa y los puertos de la ría.
 
-Como colofón, el anfitrión puede ofrecer a sus huéspedes una experiencia de marisqueo nocturno, siempre según disponibilidad y mareas. Es una actividad que exige atender al entorno y aceptar sus límites, pero también una manera directa de comprender el territorio.
+Como colofón, en una bajamar de día se puede ver a las mariscadoras trabajar los bancos desde el paseo del puerto: una manera directa de comprender el territorio, sin pisar la arena.
 
 La diferencia entre visitar Aguiño y dormir en Aguiño está en esa continuidad: la ría al alba, el silencio de la noche y la lonja a diez metros. El ático no funciona como refugio al margen del pueblo, sino como su observatorio sereno, abierto a los ritmos que hacen de cada día una navegación distinta.`
   },
@@ -298,40 +298,36 @@ Quien llega de noche encuentra la ría encendida.`
   },
   {
     id: '9',
-    slug: 'marisqueo-nocturno-oficio-luna',
+    slug: 'marisqueo-aguino-oficio-bajamar',
     category: 'Experiencias atlánticas',
-    title: 'Marisqueo nocturno: el oficio que sale con la luna',
-    excerpt: 'Una salida de madrugada en Aguiño para comprender las mareas, las artes tradicionales y el marco legal de un oficio unido a la lonja y a la ría.',
+    title: 'El marisqueo en Aguiño: un oficio de bajamar',
+    excerpt: 'El trabajo de las mariscadoras de Aguiño sigue el reloj de las mareas: bajamar de día, lonja al alba y una ley que reserva la ría a quien tiene permiso.',
     readTime: '6 min de lectura',
     date: 'Otoño 2026',
     author: 'Cuaderno Atlántico',
     tags: ['Aguiño', 'Marisqueo', 'Ría de Arousa', 'Mareas', 'Tradición marinera'],
     featured: false,
-    content: `Cuando la luz se retira de la ría, la planicie intermareal deja de parecer un paisaje vacío. Bajo la arena húmeda permanecen las señales de una vida discreta: pequeños orificios, surcos, cambios de textura que el ojo acostumbrado reconoce como quien lee una carta náutica. El marisqueo nocturno comienza ahí, en esa conversación silenciosa entre la marea, el oficio y una costa que solo entrega sus frutos a quien conoce sus límites.
+    content: `Quien mira la ría desde el paseo de Aguiño descubre pronto que aquí el reloj importa menos que la marea. Hay horas en que la lámina de agua se retira y deja al descubierto una planicie de arena mojada que recorre la costa como un camino. Es entonces, de día, cuando bajan a trabajar las mariscadoras: el oficio más antiguo de la ría no se rige por horarios de oficina, sino por las tablas de mareas.
 
-### I. La ría de noche
+### I. La ría que se abre en bajamar
 
-No todo el marisco se captura de noche, ni la oscuridad constituye por sí sola una garantía de calidad. Son las mareas las que gobiernan el trabajo. Cuando una bajamar favorable coincide con la madrugada, los bancos quedan accesibles y la jornada puede enlazarse con la llegada del producto a la lonja. En Aguiño, la subasta se celebra de madrugada en días laborables, aunque su actividad y horarios deben confirmarse en cada momento.
+El marisqueo a pie se trabaja en las horas de bajamar, cuando los bancos de arena quedan al descubierto. La marea no pregunta la hora: según el ciclo, la bajamar cae por la mañana, al mediodía o por la tarde, siempre con luz natural. Las mariscadoras bajan a los bancos con el raño, el rastrillo y las cestas, y trabajan las horas que la marea concede, atentas a que el agua vuelva.
 
-Esa proximidad entre extracción, clasificación y venta ayuda a preservar la frescura. El marisco recorre un trayecto breve desde la arena hasta los circuitos de comercialización, siempre sometido a controles, tallas mínimas, cupos y normas sanitarias. La noche añade otra dimensión: hay menos tránsito, el viento parece ensanchar la ría y cada sonido adquiere nitidez. Las botas hundiéndose en el limo, el agua retirándose por los canales y el roce de las herramientas componen la música sobria de un trabajo antiguo.
+Desde el puerto y el paseo de Aguiño, en los días de faena, se distingue perfectamente esa estampa: figuras dobladas sobre la arena, la línea de la costa y, detrás, la lonja esperando el producto. No hace falta acercarse ni molestar: el oficio se ve desde la orilla, y se entiende mejor cuanto menos se invade.
 
-La luna orienta, pero no manda. Quien fija el rumbo es la tabla de mareas, junto con el estado del banco y los planes de explotación aprobados para cada zona.
+### II. Un oficio con permiso
 
-### II. Las artes y las mareas
+El marisqueo profesional es una actividad regulada. Solo pueden extraer marisco las mariscadoras y mariscadores con permiso, y lo hacen conforme a planes de explotación que fijan especies, jornadas, zonas autorizadas, tallas y cupos. Para cualquier otra persona, coger marisco está prohibido, de día y de noche, y la zona está vigilada.
 
-El marisqueo profesional es una actividad regulada. Requiere los permisos correspondientes y se desarrolla conforme a planes de explotación que determinan especies, jornadas, zonas autorizadas, cantidades y medidas. No es una recolección libre, sino un oficio organizado para proteger tanto el sustento de quienes lo ejercen como la continuidad biológica de los bancos.
+La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere la oscuridad, y por eso la Guardacostas, la Policía Autonómica y las cofradías vigilan también de madrugada. Que en Aguiño no se vea a nadie coger marisco de noche no es un misterio: es la prueba de que la ley funciona. La ría nocturna pertenece al silencio, no a la faena.
 
-A pie, las personas mariscadoras trabajan sobre la superficie descubierta por la bajamar. El raño y el rastrillo permiten remover o peinar la arena con precisión, buscando indicios sin arrasar el fondo. Cada herramienta responde a una especie, un sustrato y una forma de trabajar aprendida durante años. A flote, la faena se realiza desde embarcaciones y utiliza artes adaptadas a fondos que no quedan al descubierto.
+### III. Ver el oficio sin estorbarlo
 
-Conviene decirlo con toda claridad: la extracción de marisco está reservada en exclusiva a las mariscadoras y mariscadores con permiso. Para cualquier otra persona está prohibida, de día y de noche, y vigilada. La salida que ofrece el anfitrión del ático de Aguiño es de observación: acompañarlo de madrugada para ver trabajar el oficio, aprender a leer la arena y entender por qué una pieza se selecciona y otra debe permanecer donde está. Se observa y se respeta; no se coge nada.
+El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas, sin pisar la arena. La primera, el propio puerto: en bajamar y de día, el trabajo se observa desde el paseo, a la distancia justa para no entorpecer. La segunda, la lonja al alba: el producto de la jornada anterior llega allí, se clasifica y se subasta de madrugada, en días laborables.
 
-### III. De la arena a la mesa
+Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
 
-El regreso tiene algo de entrada en puerto. Tras la humedad de la ría, la casa espera sobre Aguiño: un ático de 230 metros cuadrados, tres habitaciones y una terraza abierta hacia Sálvora. El marisco que llega a su mesa no se recoge en la playa: se compra en la lonja, donde el trabajo de las mariscadoras se vende al alba con su trazabilidad intacta.
-
-La lección continúa mientras se limpia, se observa y se cocina. Importa distinguir tamaños, entender la depuración cuando resulte exigible y respetar el camino completo del producto: de la arena a la lonja, de la lonja a las tabernas y a las mesas de la comarca.
-
-La experiencia está sujeta a las mareas, a la disponibilidad del anfitrión y a las condiciones de cada jornada. Debe solicitarse al reservar. Solo entonces, si la ría abre la derrota adecuada, la noche permitirá salir, observar el oficio en su hora y regresar con la lección aprendida.`
+La verdad de la ría es más interesante que cualquier leyenda: de día, la arena se llena de oficio; de noche, la vigilancia lo protege. Dormir a diez metros del puerto permite comprobarlo cada mañana, con la lonja despierta y la marea cumpliendo, como siempre, su hora.`
   }
 ];
 
