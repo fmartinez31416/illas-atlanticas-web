@@ -317,7 +317,9 @@ Desde el puerto y el paseo de Aguiño, en los días de faena, se distingue perfe
 
 ### II. Un oficio con permiso
 
-El marisqueo profesional es una actividad regulada. Solo pueden extraer marisco las mariscadoras y mariscadores con permiso, y lo hacen conforme a planes de explotación que fijan especies, jornadas, zonas autorizadas, tallas y cupos. Para cualquier otra persona, coger marisco está prohibido, de día y de noche, y la zona está vigilada.
+El marisqueo profesional es una actividad regulada. Solo pueden extraer marisco las mariscadoras y mariscadores con permiso, y lo hacen conforme a planes de gestión que fijan especies, jornadas, zonas autorizadas, tallas y cupos. Para cualquier otra persona, coger marisco está prohibido, de día y de noche, y la zona está vigilada.
+
+En la ría de Arousa, el Plan Xeral de Explotación Marisqueira 2024-2026 autoriza en las zonas de libre marisqueo la extracción de moluscos en ventanas concretas: en 2026, del 2 de enero al 31 de marzo y del 1 de octubre al 31 de diciembre. Las cofradías amplían ese calendario con sus propios planes en las zonas de autorización, donde se fijan los días probables de faena, los bancos exactos y las especies. La cofradía de Aguiño, junto a la de Ribeira, trabaja la almeja fina, la babosa y la japónica, el berberecho, y mantiene planes específicos de percebe, erizo de mar y poliquetos. En Rianxo, la cofradía trabaja a pie bancos como Bodión, Agüeiros, A Torre o Tanxil.
 
 La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere la oscuridad, y por eso la Guardacostas, la Policía Autonómica y las cofradías vigilan también de madrugada. Que en Aguiño no se vea a nadie coger marisco de noche no es un misterio: es la prueba de que la ley funciona. La ría nocturna pertenece al silencio, no a la faena.
 
@@ -325,11 +327,13 @@ La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere l
 
 El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas, sin pisar la arena. La primera, el propio puerto: en bajamar y de día, el trabajo se observa desde el paseo, a la distancia justa para no entorpecer. La segunda, la lonja al alba: el producto de la jornada anterior llega allí, se clasifica y se subasta de madrugada, en días laborables.
 
-Cerca del paseo de O Carreiro —esa pasarela que parece adentrarse en la ría, entre las bateas y el horizonte de Sálvora—, en determinadas épocas se ven además pequeños barcos faenando a flote: el otro marisqueo, el que no pisa la arena. No ocurre todos los días, y por eso verlo tiene algo de regalo de la marea.
+Cerca del paseo de O Carreiro —esa pasarela que parece adentrarse en la ría, entre las bateas y el horizonte de Sálvora—, en temporada se ven además pequeños barcos faenando a flote: la flota marisquera de la cofradía de Aguiño trabaja desde punta Castro hasta el río Sieira, y desde la orilla se distinguen los aparejos al agua y las cestas de almeja. No faenan todos los días —los planes fijan jornadas concretas—, y por eso verlos tiene algo de regalo de la marea.
 
-Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar es Rianxo: sus bancos se distinguen desde el paseo y a veces se ven incluso sin salir del coche. No hay horario fijo: la faena sigue a la bajamar y a la apertura del banco, que depende de los planes de explotación, de las vedas y del estado del marisco. El consejo es sencillo: consultar la tabla de mareas, elegir una mañana de marea baja en día laborable y dejarse caer.
+Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar es Rianxo: sus bancos se distinguen desde el paseo y a veces se ven incluso sin salir del coche. No hay horario fijo: la faena sigue a la bajamar y a la apertura del banco, que depende de los planes de gestión, de las vedas y del estado del marisco. El consejo es sencillo: consultar la tabla de mareas, elegir una mañana de marea baja en día laborable y dejarse caer.
 
-Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
+Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; la normativa las reconoce —el turismo marinero ejercido por las mariscadoras es compatible con el marisqueo— y conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
+
+*Fuentes: Plan Xeral de Explotación Marisqueira 2024-2026 (Orden de 21 de diciembre de 2023, DOG n.º 246, de 29 de diciembre de 2023) y planes de gestión de las cofradías de Aguiño, Ribeira y Rianxo.*
 
 La verdad de la ría es más interesante que cualquier leyenda: de día, la arena se llena de oficio; de noche, la vigilancia lo protege. Dormir a diez metros del puerto permite comprobarlo cada mañana, con la lonja despierta y la marea cumpliendo, como siempre, su hora.`
   }
