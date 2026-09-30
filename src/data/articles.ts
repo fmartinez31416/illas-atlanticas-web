@@ -329,6 +329,8 @@ El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas
 
 Cerca del paseo de O Carreiro —esa pasarela que parece adentrarse en la ría, entre las bateas y el horizonte de Sálvora—, en temporada se ven además pequeños barcos faenando a flote: la flota marisquera de la cofradía de Aguiño trabaja desde punta Castro hasta el río Sieira, y desde la orilla se distinguen los aparejos al agua y las cestas de almeja. No faenan todos los días —los planes fijan jornadas concretas—, y por eso verlos tiene algo de regalo de la marea.
 
+![O Carreiro, Aguiño. Fotografía del anfitrión.](/fotos/o_carreiro_25.jpg)
+
 Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar es Rianxo: sus bancos se distinguen desde el paseo y a veces se ven incluso sin salir del coche. No hay horario fijo: la faena sigue a la bajamar y a la apertura del banco, que depende de los planes de gestión, de las vedas y del estado del marisco. El consejo es sencillo: consultar la tabla de mareas, elegir una mañana de marea baja en día laborable y dejarse caer.
 
 Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; la normativa las reconoce —el turismo marinero ejercido por las mariscadoras es compatible con el marisqueo— y conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
