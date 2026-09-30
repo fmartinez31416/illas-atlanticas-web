@@ -27,6 +27,7 @@ import { by as Bitacora } from './puente/instruments/Bitacora';
 import { zy as Mareografo, jy as tideModelOf, Ay as tideStateOf } from './puente/instruments/Tides';
 import { Ny as EsferaCeleste } from './puente/instruments/Celestial';
 import { wy as Clinometro } from './puente/instruments/Clinometer';
+import { Pronostico } from './puente/instruments/Forecast';
 import { iy as Mandos } from './puente/parts';
 import { mp as Ventana } from './puente/instruments/Window';
 
@@ -312,6 +313,11 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               {Ex(model.code)} en Aguiño · la misma vista que tiene un capitán fondeado frente a Sálvora
             </Plaque>
           </div>
+
+          {/* Previsión a 7 días */}
+          <Panel className="mb-6">
+            <Pronostico daily={weather?.daily ?? null} />
+          </Panel>
 
           {/* Fila 1 — campanas, barómetro, anemómetro y termohigrómetro */}
           <Panel className="mb-6">
