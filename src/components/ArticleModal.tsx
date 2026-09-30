@@ -90,7 +90,8 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
   const formatInline = (text: string) => {
     return text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-stone-900 underline underline-offset-2 decoration-stone-400 hover:decoration-stone-900">$1</a>');
   };
 
   return (
