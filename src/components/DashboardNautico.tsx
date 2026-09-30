@@ -191,6 +191,22 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   };
 
   const llueve = (model.precip ?? 0) > 0.05 || Tx(model.code);
+  const [avisos, setAvisos] = X.useState<{ titulo: string; texto: string; enlace: string }[]>([]);
+  X.useEffect(() => {
+    let vivo = true;
+    const cargar = async () => {
+      try {
+        const r = await fetch('https://api.illasatlanticasatico.es/api/avisos');
+        if (!r.ok) return;
+        const d = await r.json();
+        if (vivo && Array.isArray(d.avisos) && d.avisos.length) {
+          setAvisos(d.avisos.slice(0, 3));
+        }
+      } catch { /* sin avisos: silencio */ }
+    };
+    cargar();
+    return () => { vivo = false; };
+  }, []);
   const lightLine =
     llueve
       ? 'AHORA MISMO: LLUVIA SOBRE LA RÍA'
@@ -259,6 +275,17 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       style={{ ...bridgeVars, filter: brightness === 1 ? undefined : `brightness(${brightness.toFixed(2)})` }}
     >
       <Ventana sky={sky} lighting={lighting} cond={model} header={header} />
+
+      {avisos.length > 0 && (
+        <div className="relative z-[5] border-b border-[#8a2f22]/60 bg-[#2a0f0a]/92 px-3 py-2 sm:px-6">
+          {avisos.map((a, i) => (
+            <p key={i} className="mx-auto flex max-w-[1520px] items-baseline gap-2 font-serif text-[12px] italic leading-snug text-[#f0c9a0] sm:text-[13.5px]">
+              <span className="shrink-0 font-display text-[9px] font-bold not-italic tracking-[0.24em] text-[#d97a5c]">AVISO AEMET</span>
+              <span className="min-w-0">{a.titulo}{a.texto ? ` — ${a.texto}` : ''}</span>
+            </p>
+          ))}
+        </div>
+      )}
 
       {/* Falsarriba de caoba con los pomos de latón */}
       <div className="relative z-[3]">
