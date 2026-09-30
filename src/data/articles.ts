@@ -221,6 +221,117 @@ La despensa marina de Aguiño no admite intermediarios:
 
 * **El percebe de las rompientes:** Extraído en las piedras más batidas por los percebeiros de la lonja local, reconocido por su sabor concentrado y yodado.
 * **Marisco y lonja de proximidad:** Pulpo de roca, nécoras, almejas y el indiscutible mejillón de batea de la ría, directos del barco a la mesa.`
+  },
+  {
+    id: '7',
+    slug: 'que-hacer-en-aguino-72-horas',
+    category: 'Guías & Entorno',
+    title: 'Qué hacer en Aguiño en 72 horas',
+    excerpt: 'Una guía práctica para vivir Aguiño al ritmo de la ría: lonja al alba, puerto al mediodía, Corrubedo, Sálvora y marisqueo nocturno.',
+    readTime: '6 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Aguiño', 'Ribeira', 'Sálvora', 'Corrubedo', 'Barbanza', 'Marisqueo'],
+    featured: true,
+    content: `En Aguiño, tres días no se miden por la sucesión de visitas, sino por la respiración de la ría. El alba pertenece a la lonja, el mediodía al puerto y la tarde a la rúa, cuando la luz cae sobre Sálvora y el pueblo recupera su cadencia marinera. Desde el ático, en el puerto y frente a la isla, la estancia permite seguir ese compás sin convertirlo en una agenda: basta con dejar que la marea ordene las horas.
+
+### I. Día 1. La lonja al alba y el puerto a media luz
+
+La primera mañana conviene comenzar muy temprano en la lonja de Aguiño. En días laborables se celebra una subasta de madrugada, aunque los horarios y las condiciones de acceso pueden variar; lo sensato es confirmarlos en el momento y acudir con margen. No se trata solo de observar la llegada del producto del mar, sino de entender de dónde nace la cocina de la ría: el movimiento de las embarcaciones, las voces de quienes trabajan y la precisión silenciosa de una actividad que todavía marca el pulso local.
+
+Después, el puerto pide una pausa sin itinerario. El paseo entre embarcaciones, almacenes y muelles permite reconocer la escala real de Aguiño, mientras las tabernas de la zona ofrecen un lugar natural para acercarse al marisco y al pescado de la jornada. Las disponibilidades dependen de la temporada y de la lonja, como corresponde a una cocina gobernada por las mareas y no por el calendario.
+
+La tarde puede reservarse para caminar por la rúa y regresar al ático antes del ocaso. La terraza se convierte entonces en una atalaya doméstica sobre Sálvora: una puesta de sol sin desplazamiento, con la ría entrando lentamente en silencio.
+
+### II. Día 2. Dunas, faro y costa del Barbanza
+
+El segundo día se abre hacia el Parque Natural de Corrubedo, situado aproximadamente a media hora en coche desde Aguiño. Sus dunas, su paisaje litoral y el entorno del faro ofrecen una lectura distinta de la costa: aquí el océano aparece menos ligado al trabajo portuario y más expuesto a la intemperie, al viento y a la arena.
+
+Conviene dedicar la mañana y parte de la tarde al parque, sin forzar una ruta cerrada. La visita depende de las condiciones del día, de los accesos habilitados y del tiempo disponible, por lo que es recomendable consultar la información vigente antes de salir. El regreso puede hacerse por la costa del Barbanza, dejando que el trayecto sea parte de la jornada y no un simple enlace entre dos puntos.
+
+De vuelta en Aguiño, la noche recupera otra velocidad. La ría ya no se contempla como paisaje, sino como presencia: una línea oscura detrás de los cristales, el rumor lejano del puerto y la certeza de que el día siguiente volverá a empezar antes que el reloj.
+
+### III. Día 3. Sálvora, bateas y la noche del marisqueo
+
+La tercera jornada puede dedicarse a la isla de Sálvora, con barcos desde Aguiño durante la temporada. Las plazas son limitadas y la visita requiere la autorización correspondiente del parque, de modo que conviene comprobar con antelación la disponibilidad, las condiciones de embarque y la previsión marítima. Si el mar impide la salida, la alternativa no es una renuncia, sino otra forma de permanecer junto al agua: recorrer el litoral, observar las bateas y acercarse al mundo del mejillón desde la costa y los puertos de la ría.
+
+Como colofón, el anfitrión puede ofrecer a sus huéspedes una experiencia de marisqueo nocturno, siempre según disponibilidad y mareas. Es una actividad que exige atender al entorno y aceptar sus límites, pero también una manera directa de comprender el territorio.
+
+La diferencia entre visitar Aguiño y dormir en Aguiño está en esa continuidad: la ría al alba, el silencio de la noche y la lonja a diez metros. El ático no funciona como refugio al margen del pueblo, sino como su observatorio sereno, abierto a los ritmos que hacen de cada día una navegación distinta.`
+  },
+  {
+    id: '8',
+    slug: 'como-llegar-a-aguino',
+    category: 'Guías & Entorno',
+    title: 'Cómo llegar a Aguiño: la derrota terrestre y aérea',
+    excerpt: 'Las rutas por aire, tren, autobús y coche para llegar a Aguiño desde Santiago, con Ribeira como última escala antes de la carretera del mar.',
+    readTime: '5 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Aguiño', 'Ribeira', 'Ría de Arousa', 'Santiago de Compostela', 'Cómo llegar'],
+    featured: false,
+    content: `Llegar a Aguiño no exige vencer una distancia remota, sino leer bien el mapa. La Ría de Arousa se abre en el extremo occidental de Galicia como una navegación terrestre: primero Santiago, después la carretera que desciende hacia el mar y, al final, Ribeira y Aguiño, donde el paisaje deja de ser fondo para convertirse en destino.
+
+### I. Por aire: Santiago y lo que queda después
+
+El aeropuerto de Santiago de Compostela, SCQ, es la puerta aérea más práctica para alcanzar Aguiño. Cuenta con conexiones directas desde distintas ciudades españolas y europeas, aunque las rutas, frecuencias y temporadas pueden variar, por lo que conviene confirmarlas en el momento de organizar el viaje. Desde la terminal hasta Aguiño hay aproximadamente una hora por carretera, según el tráfico y el itinerario elegido.
+
+A partir del aeropuerto, la opción más flexible es alquilar un coche y tomar dirección hacia la costa de Barbanza. La carretera conduce desde el entorno compostelano hacia la AP-9 y, después, hacia la AG-11, que aproxima el viaje a Ribeira. También es posible continuar hacia Santiago y enlazar desde allí con transporte público, aunque el último tramo requerirá atención a los horarios y a las correspondencias.
+
+La escala compostelana no es una frontera entre el aire y el mar, sino una transición. En poco tiempo, la ciudad histórica cede el paso a los montes bajos, a las rías y a una luz más abierta. Aguiño aparece entonces como una prolongación natural de esa llegada atlántica.
+
+### II. Por tierra: tren, autobús y coche
+
+El tren llega hasta Santiago de Compostela. Desde la estación, quienes no alquilen un vehículo pueden continuar en autobús hacia Ribeira, donde operan servicios de Alsa y Monbus. Las frecuencias y los tiempos de trayecto son orientativos y pueden cambiar según el día, la temporada o la compañía, de modo que es recomendable consultar la información actualizada antes de salir.
+
+Para quienes viajan en coche propio, el itinerario habitual pasa por la AP-9 y enlaza después con la AG-11 en dirección a la península de Barbanza. La ruta es sencilla en su estructura, pero conviene revisar el estado del tráfico y las indicaciones del navegador, especialmente en periodos de mayor afluencia. Desde Santiago, el trayecto hasta la zona de Ribeira ronda una hora por carretera, y desde allí comienza el último tramo hacia Aguiño.
+
+La alternativa terrestre tiene una virtud que no aparece en los tiempos estimados: permite entender la geografía antes de llegar. La carretera deja atrás el interior y va ganando horizonte. No se trata únicamente de cubrir kilómetros, sino de aproximarse gradualmente a una ría cuyo paisaje se revela por capas, como una carta náutica que solo termina de leerse al borde del agua.
+
+### III. El último tramo: de Ribeira a Aguiño, la carretera del mar
+
+Ribeira queda a unos diez minutos de Aguiño. El tramo final bordea la ría y conduce hacia el puerto entre cambios de luz, viviendas abiertas al litoral y pequeñas perspectivas sobre las aguas de Arousa. Es una distancia breve, pero forma parte esencial del viaje: no es un peaje entre la llegada y la estancia, sino la primera experiencia del lugar.
+
+En Aguiño, el ático dispone de garaje privado, una comodidad especialmente útil para quienes llegan en coche y desean moverse después con libertad por la costa. Desde la terraza, la vista alcanza la isla de Sálvora y sitúa al huésped en el centro de ese paisaje marítimo que la carretera ha ido anunciando.
+
+Quien llega de noche encuentra la ría encendida.`
+  },
+  {
+    id: '9',
+    slug: 'marisqueo-nocturno-oficio-luna',
+    category: 'Experiencias atlánticas',
+    title: 'Marisqueo nocturno: el oficio que sale con la luna',
+    excerpt: 'Una salida de madrugada en Aguiño para comprender las mareas, las artes tradicionales y el marco legal de un oficio unido a la lonja y a la ría.',
+    readTime: '6 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Aguiño', 'Marisqueo', 'Ría de Arousa', 'Mareas', 'Tradición marinera'],
+    featured: false,
+    content: `Cuando la luz se retira de la ría, la planicie intermareal deja de parecer un paisaje vacío. Bajo la arena húmeda permanecen las señales de una vida discreta: pequeños orificios, surcos, cambios de textura que el ojo acostumbrado reconoce como quien lee una carta náutica. El marisqueo nocturno comienza ahí, en esa conversación silenciosa entre la marea, el oficio y una costa que solo entrega sus frutos a quien conoce sus límites.
+
+### I. La ría de noche
+
+No todo el marisco se captura de noche, ni la oscuridad constituye por sí sola una garantía de calidad. Son las mareas las que gobiernan el trabajo. Cuando una bajamar favorable coincide con la madrugada, los bancos quedan accesibles y la jornada puede enlazarse con la llegada del producto a la lonja. En Aguiño, la subasta se celebra de madrugada en días laborables, aunque su actividad y horarios deben confirmarse en cada momento.
+
+Esa proximidad entre extracción, clasificación y venta ayuda a preservar la frescura. El marisco recorre un trayecto breve desde la arena hasta los circuitos de comercialización, siempre sometido a controles, tallas mínimas, cupos y normas sanitarias. La noche añade otra dimensión: hay menos tránsito, el viento parece ensanchar la ría y cada sonido adquiere nitidez. Las botas hundiéndose en el limo, el agua retirándose por los canales y el roce de las herramientas componen la música sobria de un trabajo antiguo.
+
+La luna orienta, pero no manda. Quien fija el rumbo es la tabla de mareas, junto con el estado del banco y los planes de explotación aprobados para cada zona.
+
+### II. Las artes y las mareas
+
+El marisqueo profesional es una actividad regulada. Requiere los permisos correspondientes y se desarrolla conforme a planes de explotación que determinan especies, jornadas, zonas autorizadas, cantidades y medidas. No es una recolección libre, sino un oficio organizado para proteger tanto el sustento de quienes lo ejercen como la continuidad biológica de los bancos.
+
+A pie, las personas mariscadoras trabajan sobre la superficie descubierta por la bajamar. El raño y el rastrillo permiten remover o peinar la arena con precisión, buscando indicios sin arrasar el fondo. Cada herramienta responde a una especie, un sustrato y una forma de trabajar aprendida durante años. A flote, la faena se realiza desde embarcaciones y utiliza artes adaptadas a fondos que no quedan al descubierto.
+
+La experiencia ofrecida por el anfitrión del ático del puerto de Aguiño debe entenderse dentro de ese marco. Los huéspedes salen con él de madrugada para observar el oficio, aprender a leer la arena y comprender cómo se selecciona una pieza y por qué otras deben permanecer donde están. Cualquier recogida se limita a lo legalmente permitido y se realiza bajo su dirección, nunca por iniciativa propia. En una zona de producción marisquera no debe extraerse marisco sin la habilitación aplicable: acompañar no convierte el banco en un espacio de libre acceso.
+
+### III. De la arena a la mesa
+
+El regreso tiene algo de entrada en puerto. Tras la humedad de la ría, la casa espera sobre Aguiño: un ático de 230 metros cuadrados, tres habitaciones y una terraza abierta hacia Sálvora. Allí, lo recogido legalmente puede pasar de la explicación al fogón, en una cocina sencilla que conserve su carácter y no oculte el sabor mineral del Atlántico.
+
+La lección continúa mientras se limpia, se observa y se cocina. Importa distinguir tamaños, entender la depuración cuando resulte exigible y respetar la trazabilidad del producto. Más que una excursión, la salida muestra la cadena completa que une la marea con la lonja, las tabernas y las mesas de la comarca.
+
+La experiencia está sujeta a las mareas, a la disponibilidad del anfitrión y a las condiciones legales y marítimas de cada jornada. Debe solicitarse al reservar. Solo entonces, si la ría abre la derrota adecuada, la noche permitirá salir, aprender y regresar con lo justo.`
   }
 ];
 

@@ -144,6 +144,9 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                 Planificador <span className="italic text-[#D4A017]">de Viajes</span>
               </h1>
               <p className="text-[11px] tracking-[0.22em] uppercase text-[#A9C9DD] font-medium">De tu casa a Aguiño, sin cabos sueltos</p>
+              <p className="text-sm text-stone-400 max-w-xl mx-auto leading-relaxed">
+                Antes de reservar, conviene imaginar la ruta: el origen, las fechas, los días que se abrirán ante la ría. Cada decisión hace el viaje un poco más tuyo. No somos una agencia, sino una carta náutica que se traza contigo, punto a punto, hasta fondear en Aguiño.
+              </p>
             </div>
           </div>
           {onOpenBooking && (
