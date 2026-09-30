@@ -327,7 +327,9 @@ La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere l
 
 El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas, sin pisar la arena. La primera, el propio puerto: en bajamar y de día, el trabajo se observa desde el paseo, a la distancia justa para no entorpecer. La segunda, la lonja al alba: el producto de la jornada anterior llega allí, se clasifica y se subasta de madrugada, en días laborables.
 
-Cerca del paseo de O Carreiro —esa pasarela que parece adentrarse en la ría, entre las bateas y el horizonte de Sálvora—, en temporada se ven además pequeños barcos faenando a flote: la flota marisquera de la cofradía de Aguiño trabaja desde punta Castro hasta el río Sieira, y desde la orilla se distinguen los aparejos al agua y las cestas de almeja. No faenan todos los días —los planes fijan jornadas concretas—, y por eso verlos tiene algo de regalo de la marea.
+Cerca del paseo de O Carreiro —ese conjunto de islotes unidos por un paseo que se adentra en la ría, entre las bateas y el horizonte de Sálvora, puerta del primer paisaje cultural declarado BIC en Galicia en 2018—, en temporada se ven además pequeños barcos faenando a flote: la flota marisquera de la cofradía de Aguiño trabaja desde punta Castro hasta el río Sieira, y desde la orilla se distinguen los aparejos al agua y las cestas de almeja. No faenan todos los días —los planes fijan jornadas concretas—, y por eso verlos tiene algo de regalo de la marea.
+
+El paseo se recorre con marea baja y merece caminarlo entero: desde la terraza del ático se ve de principio a fin, y su acceso queda a dos minutos andando de la casa. Es el mirador natural de la flota y, a la vez, el paseo que en Aguiño llaman el camino al paraíso.
 
 ![O Carreiro, Aguiño. Fotografía del anfitrión.](/fotos/o_carreiro_25.jpg)
 
@@ -335,7 +337,7 @@ Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar 
 
 Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; la normativa las reconoce —el turismo marinero ejercido por las mariscadoras es compatible con el marisqueo— y conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
 
-*Fuentes: Plan Xeral de Explotación Marisqueira 2024-2026 (Orden de 21 de diciembre de 2023, DOG n.º 246, de 29 de diciembre de 2023) y planes de gestión de las cofradías de Aguiño, Ribeira y Rianxo.*
+*Fuentes: Plan Xeral de Explotación Marisqueira 2024-2026 (Orden de 21 de diciembre de 2023, DOG n.º 246, de 29 de diciembre de 2023), planes de gestión de las cofradías de Aguiño, Ribeira y Rianxo, y Decreto 49/2018, de 26 de abril (BIC, categoría de paisaje cultural, del archipiélago de Sálvora).*
 
 La verdad de la ría es más interesante que cualquier leyenda: de día, la arena se llena de oficio; de noche, la vigilancia lo protege. Dormir a diez metros del puerto permite comprobarlo cada mañana, con la lonja despierta y la marea cumpliendo, como siempre, su hora.`
   }

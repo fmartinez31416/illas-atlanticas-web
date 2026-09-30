@@ -141,6 +141,17 @@ export const ACTIVIDADES: Actividad[] = [
     desc: 'Desde el paseo del puerto se ve trabajar a las mariscadoras con permiso: raño, rastrillo y cestas sobre la arena. Se observa y se respeta: coger marisco está prohibido y vigilado.',
   },
   {
+    id: 'o_carreiro',
+    nombre: 'Paseo de O Carreiro',
+    lugar: 'Aguiño',
+    lat: 42.4600, lng: -9.0185,
+    tipo: 'naturaleza', franjas: ['manana', 'tarde'], duracion: '45 min',
+    precio: 0, fiabilidad: 'confirmado',
+    nota: 'Solo con marea baja: el sendero de piedra se adentra en la ría. A 2 minutos andando de la casa; se ve entero desde la terraza.',
+    lluvia: 'evitar',
+    desc: 'El sendero de piedra de O Carreiro se adentra en la ría hacia las bateas y Sálvora. Obligado con marea baja: la terraza del ático lo vigila de principio a fin.',
+  },
+  {
     id: 'terraza',
     nombre: 'Puesta de sol desde la terraza del ático',
     lugar: 'Illas Atlánticas Ático',
