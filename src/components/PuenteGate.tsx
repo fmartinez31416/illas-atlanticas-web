@@ -5,18 +5,18 @@ interface PuenteGateProps {
   onVolverCasa: () => void;
 }
 
-const LAT = 42.5233;
-const LON = -9.0294;
+const LAT = 42.4608;
+const LON = -9.015;
 
 export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
-  const [astro, setAstro] = useState<{ isNight: boolean; illum: number | null } | null>(null);
+  const [astro, setAstro] = useState<{ isNight: boolean; illum: number | null; raining: boolean; overcast: boolean } | null>(null);
 
   useEffect(() => {
     let alive = true;
     const load = async () => {
       try {
         const r = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=sunrise,sunset,moon_phase&timezone=Europe%2FMadrid&forecast_days=1`
+          `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=sunrise,sunset,moon_phase&current=temperature_2m,weather_code,precipitation,cloud_cover&timezone=Europe%2FMadrid&forecast_days=1`
         );
         const d = await r.json();
         if (!alive || !d.daily) return;
@@ -26,7 +26,12 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
         const now = new Date();
         const isNight = sunrise && sunset ? now >= sunset || now < sunrise : now.getHours() >= 21 || now.getHours() < 7;
         const illum = typeof phase === 'number' ? Math.round(((1 - Math.cos(2 * Math.PI * phase)) / 2) * 100) : null;
-        setAstro({ isNight, illum });
+        const c = d.current ?? {};
+        const code = typeof c.weather_code === 'number' ? c.weather_code : -1;
+        const raining = (typeof c.precipitation === 'number' && c.precipitation > 0.05) ||
+          (code >= 51 && code <= 67) || (code >= 80 && code <= 82) || code === 95;
+        const overcast = typeof c.cloud_cover === 'number' ? c.cloud_cover >= 70 : false;
+        setAstro({ isNight, illum, raining, overcast });
       } catch { /* la puerta se abre igual */ }
     };
     load();
@@ -34,9 +39,13 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
   }, []);
 
   const lineaViva = astro
-    ? astro.isNight
-      ? `LUNA ${astro.illum ?? '…'} % SOBRE SÁLVORA`
-      : 'SOL SOBRE SÁLVORA'
+    ? astro.raining
+      ? 'LLUVIA SOBRE LA RÍA'
+      : astro.isNight
+        ? `LUNA ${astro.illum ?? '…'} % SOBRE SÁLVORA`
+        : astro.overcast
+          ? 'NUBES BAJAS SOBRE SÁLVORA'
+          : 'SOL SOBRE SÁLVORA'
     : 'LA RÍA, EN ESTE INSTANTE';
 
   return (
@@ -127,7 +136,7 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
 
         {/* Coordenadas */}
         <p className="mt-14 text-[11px] italic tracking-[0.1em] text-[#635133]">
-          42°31'19" N · 9°01'09" W — la terraza del ático, convertida en el puente de un clíper
+          42°27'39" N · 9°00'54" W — la terraza del ático, convertida en el puente de un clíper
         </p>
       </div>
 

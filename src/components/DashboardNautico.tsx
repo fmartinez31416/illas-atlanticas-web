@@ -6,13 +6,13 @@
  * mismos rótulos literales y misma geometría de diales que el DOM de referencia.
  *
  * Datos reales: Open-Meteo (api.open-meteo.com + marine-api.open-meteo.com) para Aguiño
- * (42°31′19″ N · 9°01′09″ W) — ver puente/data.ts. El reloj se actualiza cada segundo.
+ * (42°27′39″ N · 9°00′54″ W — la terraza del ático) — ver puente/data.ts. El reloj se actualiza cada segundo.
  */
 
 import * as X from 'react';
 
 import { Ie } from './puente/config';
-import { gx, vx as usePuenteData, Sx as useDeviceHeading, yx, Ex, Ft } from './puente/data';
+import { gx, vx as usePuenteData, Sx as useDeviceHeading, yx, Ex, Ft, Tx } from './puente/data';
 import { Dn, Qx, xh, Px, yh, Ux, $1, ce, Fx, ph } from './puente/astro';
 import { da as bridgeSound, lh } from './puente/sound';
 import { isOceanOn, stopOcean } from '../lib/oceanSound';
@@ -190,14 +190,17 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     '--lit': lit.toFixed(3),
   };
 
+  const llueve = (model.precip ?? 0) > 0.05 || Tx(model.code);
   const lightLine =
-    lighting.source === 'sun'
-      ? `AHORA MISMO: SOL · ${lighting.value.toUpperCase()} SOBRE LA RÍA`
-      : lighting.source === 'moon'
-        ? `AHORA MISMO: LUNA ${Math.round(sky.moonFraction * 100)} % SOBRE SÁLVORA`
-        : lighting.source === 'twilight'
-          ? 'AHORA MISMO: CREPÚSCULO SOBRE LA RÍA'
-          : 'AHORA MISMO: NOCHE CERRADA · FAROS ENCENDIDOS';
+    llueve
+      ? 'AHORA MISMO: LLUVIA SOBRE LA RÍA'
+      : lighting.source === 'sun'
+        ? `AHORA MISMO: SOL · ${lighting.value.toUpperCase()} SOBRE LA RÍA`
+        : lighting.source === 'moon'
+          ? `AHORA MISMO: LUNA ${Math.round(sky.moonFraction * 100)} % SOBRE SÁLVORA`
+          : lighting.source === 'twilight'
+            ? 'AHORA MISMO: CREPÚSCULO SOBRE LA RÍA'
+            : 'AHORA MISMO: NOCHE CERRADA · FAROS ENCENDIDOS';
 
   const header = (
     <div className="relative h-[60px] wood-h shadow-[0_10px_22px_rgba(0,0,0,.6)] sm:h-[68px]">
