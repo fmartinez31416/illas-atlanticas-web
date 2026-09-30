@@ -47,7 +47,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     );
   }
 
-  const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría'];
+  const categories = ['Todas', 'Historia & Navegación', 'Cartografía & Territorio', 'Tratado de Producto & Lonja', 'Oceanografía & Ría', 'Guías & Entorno', 'Experiencias atlánticas'];
 
   const filteredArticles = selectedCategory === 'Todas'
     ? articles
