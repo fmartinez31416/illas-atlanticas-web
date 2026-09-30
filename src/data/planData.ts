@@ -131,14 +131,14 @@ export const ACTIVIDADES: Actividad[] = [
   },
   {
     id: 'marisqueo',
-    nombre: 'Marisqueo nocturno con el anfitrión',
+    nombre: 'Marisqueo nocturno: observar el oficio',
     lugar: 'Aguiño',
     lat: 42.4610, lng: -9.0160,
     tipo: 'marisco', franjas: ['noche'], duracion: '2 h',
     precio: [20, 35], fiabilidad: 'estimacion',
     nota: 'Sujeto a mareas y condiciones. Se coordina con Fernando.',
     lluvia: 'ok',
-    desc: 'La experiencia de Aguiño: linterna frontal, salitre y la ría por la noche. Solo con marea y guía local.',
+    desc: 'Salir de madrugada para ver trabajar a las mariscadoras con permiso: lectura de la arena, artes y lonja al alba. El marisco es solo de ellas: se observa y se respeta.',
   },
   {
     id: 'terraza',

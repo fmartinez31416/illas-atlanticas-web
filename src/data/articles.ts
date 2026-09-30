@@ -323,15 +323,15 @@ El marisqueo profesional es una actividad regulada. Requiere los permisos corres
 
 A pie, las personas mariscadoras trabajan sobre la superficie descubierta por la bajamar. El raño y el rastrillo permiten remover o peinar la arena con precisión, buscando indicios sin arrasar el fondo. Cada herramienta responde a una especie, un sustrato y una forma de trabajar aprendida durante años. A flote, la faena se realiza desde embarcaciones y utiliza artes adaptadas a fondos que no quedan al descubierto.
 
-La experiencia ofrecida por el anfitrión del ático del puerto de Aguiño debe entenderse dentro de ese marco. Los huéspedes salen con él de madrugada para observar el oficio, aprender a leer la arena y comprender cómo se selecciona una pieza y por qué otras deben permanecer donde están. Cualquier recogida se limita a lo legalmente permitido y se realiza bajo su dirección, nunca por iniciativa propia. En una zona de producción marisquera no debe extraerse marisco sin la habilitación aplicable: acompañar no convierte el banco en un espacio de libre acceso.
+Conviene decirlo con toda claridad: la extracción de marisco está reservada en exclusiva a las mariscadoras y mariscadores con permiso. Para cualquier otra persona está prohibida, de día y de noche, y vigilada. La salida que ofrece el anfitrión del ático de Aguiño es de observación: acompañarlo de madrugada para ver trabajar el oficio, aprender a leer la arena y entender por qué una pieza se selecciona y otra debe permanecer donde está. Se observa y se respeta; no se coge nada.
 
 ### III. De la arena a la mesa
 
-El regreso tiene algo de entrada en puerto. Tras la humedad de la ría, la casa espera sobre Aguiño: un ático de 230 metros cuadrados, tres habitaciones y una terraza abierta hacia Sálvora. Allí, lo recogido legalmente puede pasar de la explicación al fogón, en una cocina sencilla que conserve su carácter y no oculte el sabor mineral del Atlántico.
+El regreso tiene algo de entrada en puerto. Tras la humedad de la ría, la casa espera sobre Aguiño: un ático de 230 metros cuadrados, tres habitaciones y una terraza abierta hacia Sálvora. El marisco que llega a su mesa no se recoge en la playa: se compra en la lonja, donde el trabajo de las mariscadoras se vende al alba con su trazabilidad intacta.
 
-La lección continúa mientras se limpia, se observa y se cocina. Importa distinguir tamaños, entender la depuración cuando resulte exigible y respetar la trazabilidad del producto. Más que una excursión, la salida muestra la cadena completa que une la marea con la lonja, las tabernas y las mesas de la comarca.
+La lección continúa mientras se limpia, se observa y se cocina. Importa distinguir tamaños, entender la depuración cuando resulte exigible y respetar el camino completo del producto: de la arena a la lonja, de la lonja a las tabernas y a las mesas de la comarca.
 
-La experiencia está sujeta a las mareas, a la disponibilidad del anfitrión y a las condiciones legales y marítimas de cada jornada. Debe solicitarse al reservar. Solo entonces, si la ría abre la derrota adecuada, la noche permitirá salir, aprender y regresar con lo justo.`
+La experiencia está sujeta a las mareas, a la disponibilidad del anfitrión y a las condiciones de cada jornada. Debe solicitarse al reservar. Solo entonces, si la ría abre la derrota adecuada, la noche permitirá salir, observar el oficio en su hora y regresar con la lección aprendida.`
   }
 ];
 

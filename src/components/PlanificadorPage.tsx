@@ -307,7 +307,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               <p className="text-stone-600 mb-8">Todo opcional — pero cada respuesta hace tu plan más tuyo.</p>
               <div className="space-y-5 mb-10">
                 {[
-                  { icon: Waves, q: '¿Marisqueo nocturno? Es la experiencia de Aguiño (según mareas).' },
+                  { icon: Waves, q: '¿Ver el marisqueo nocturno? Se observa el oficio de las mariscadoras (según mareas).' },
                   { icon: Ship, q: '¿Os apetece barco a las islas (Sálvora en temporada, Ons en verano)?' },
                   { icon: Sparkles, q: '¿Alguna celebración durante la estancia? Lo preparamos.' },
                   { icon: Umbrella, q: '¿Alguna alergia o intolerancia a tener en cuenta en las recomendaciones?' },
