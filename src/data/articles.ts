@@ -325,6 +325,10 @@ La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere l
 
 El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas, sin pisar la arena. La primera, el propio puerto: en bajamar y de día, el trabajo se observa desde el paseo, a la distancia justa para no entorpecer. La segunda, la lonja al alba: el producto de la jornada anterior llega allí, se clasifica y se subasta de madrugada, en días laborables.
 
+Cerca del paseo de O Carreiro —esa pasarela que parece adentrarse en la ría, entre las bateas y el horizonte de Sálvora—, en determinadas épocas se ven además pequeños barcos faenando a flote: el otro marisqueo, el que no pisa la arena. No ocurre todos los días, y por eso verlo tiene algo de regalo de la marea.
+
+Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar es Rianxo: sus bancos se distinguen desde el paseo y a veces se ven incluso sin salir del coche. No hay horario fijo: la faena sigue a la bajamar y a la apertura del banco, que depende de los planes de explotación, de las vedas y del estado del marisco. El consejo es sencillo: consultar la tabla de mareas, elegir una mañana de marea baja en día laborable y dejarse caer.
+
 Existen además experiencias marineras organizadas en la ría de Arousa que muestran el oficio de la mano de las propias profesionales; conviene informarse de fechas y condiciones antes del viaje. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
 
 La verdad de la ría es más interesante que cualquier leyenda: de día, la arena se llena de oficio; de noche, la vigilancia lo protege. Dormir a diez metros del puerto permite comprobarlo cada mañana, con la lonja despierta y la marea cumpliendo, como siempre, su hora.`

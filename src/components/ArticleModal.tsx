@@ -31,6 +31,21 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
     const blocks = content.split(/\n\n+/);
     return blocks.map((block, index) => {
       const trimmed = block.trim();
+
+      // Imagen: ![pie de foto](/ruta.jpg)
+      const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+      if (imgMatch) {
+        return (
+          <figure key={index} className="my-6">
+            <img src={imgMatch[2]} alt={imgMatch[1]} className="w-full rounded-sm" loading="lazy" />
+            {imgMatch[1] && (
+              <figcaption className="text-xs text-stone-500 mt-2 italic">
+                {imgMatch[1]}
+              </figcaption>
+            )}
+          </figure>
+        );
+      }
       
       if (trimmed.startsWith('### ')) {
         return (
