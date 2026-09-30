@@ -141,6 +141,17 @@ export const ACTIVIDADES: Actividad[] = [
     desc: 'Desde el paseo del puerto se ve trabajar a las mariscadoras con permiso: raño, rastrillo y cestas sobre la arena. Se observa y se respeta: coger marisco está prohibido y vigilado.',
   },
   {
+    id: 'travesia_marisco',
+    nombre: 'Travesía del Rey del Marisco (Mar de Aguiño)',
+    lugar: 'Puerto de Aguiño',
+    lat: 42.4596, lng: -9.0136,
+    tipo: 'marisco', franjas: ['manana'], duracion: '3 h',
+    precio: [42, 42], fiabilidad: 'estimacion',
+    nota: 'Visita en barco a las zonas de extracción del percebe. Guía y seguro incluidos; máximo 12 plazas. Reservar con el operador.',
+    lluvia: 'evitar',
+    desc: 'Barco desde el puerto de Aguiño hasta los percebeiros: Prageiros, O Forcado, Insalonca, Os Fornos. Se ve trabajar el oficio más peligroso del mar, desde el agua.',
+  },
+  {
     id: 'o_carreiro',
     nombre: 'Paseo de O Carreiro',
     lugar: 'Aguiño',
