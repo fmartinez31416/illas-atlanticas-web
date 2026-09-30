@@ -74,11 +74,11 @@ function Glifo({ wmo }: { wmo: number }) {
 export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
   if (!daily || !daily.t || daily.t.length === 0) return null;
   const hoyMs = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); })();
-  const n = Math.min(7, daily.t.length);
-  const dias = Array.from({ length: n }, (_, i) => {
-    const d = new Date(daily.t[i]);
-    const hoy = daily.t[i] >= hoyMs;
-    const nombre = hoy
+  const dias = Array.from({ length: daily.t.length }, (_, i) => {
+    const t = daily.t[i];
+    const d = new Date(t);
+    const esHoy = t >= hoyMs && t < hoyMs + 86400000;
+    const nombre = esHoy
       ? 'Hoy'
       : d.toLocaleDateString('es-ES', { weekday: 'short' }).replace('.', '');
     const diaMes = d.toLocaleDateString('es-ES', { day: 'numeric', month: 'numeric' });
