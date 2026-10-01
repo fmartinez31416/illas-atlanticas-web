@@ -181,6 +181,17 @@ export function Footer({ onOpenLegal }: FooterProps) {
               <p className="text-xs text-stone-200 leading-relaxed font-light">
                 Vivienda de Uso Turístico reglamentada conforme a la normativa oficial de la Xunta de Galicia. Plaza de garaje cerrada y ascensor directo.
               </p>
+
+              <div className="pt-2 border-t border-white/15">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-stone-300 font-semibold mb-2">Enlaces oficiales</p>
+                <ul className="space-y-1.5 text-xs text-stone-200 font-light">
+                  <li><a href="https://www.turismo.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Turismo de Galicia</a></li>
+                  <li><a href="https://illasatlanticas.gal/es" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Parque Nacional das Illas Atlánticas</a></li>
+                  <li><a href="https://ribeira.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Concello de Ribeira</a></li>
+                  <li><a href="https://www.dacoruna.gal/turismo" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Deputación da Coruña · Turismo</a></li>
+                  <li><a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/ribeira-id15073" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">AEMET · Predicción de Ribeira</a></li>
+                </ul>
+              </div>
             </div>
           </div>
 
