@@ -75,7 +75,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         <Reveal>
           <div className="max-w-3xl">
             <p className="text-stone-600 leading-relaxed">
-              Cada mañana, la subasta de la lonja de Aguiño es un espectáculo: pescado y marisco recién
+              La lonja de Aguiño vive cuando regresa la flota del marisqueo —según la especie del día y las vedas—, y la de Ribeira subasta por la tarde, tras la llegada de los barcos: pescado y marisco recién
               descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos.
               Esta guía te da lo que importa de cada especie:{' '}
               <strong className="text-[#1A3A5C]">{t("su talla mínima oficial, cuándo está en su mejor momento y cómo se cocina aquí")}</strong>.

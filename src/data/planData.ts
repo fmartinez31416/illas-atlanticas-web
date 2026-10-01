@@ -25,14 +25,14 @@ export interface Actividad {
 export const ACTIVIDADES: Actividad[] = [
   {
     id: 'lonja',
-    nombre: 'Subasta en la lonja de Aguiño',
+    nombre: 'La lonja de Aguiño: la vuelta de la flota',
     lugar: 'Lonja de Aguiño',
     lat: 42.4615, lng: -9.0158,
-    tipo: 'marisco', franjas: ['manana'], duracion: '1 h',
+    tipo: 'marisco', franjas: ['manana', 'tarde'], duracion: '1 h',
     precio: 0, fiabilidad: 'confirmado',
-    nota: 'Laborables, sobre las 7:30. Conviene confirmar el día antes.',
+    nota: 'Sin horario fijo: la hora la marca la vuelta de la flota del marisqueo. Conviene preguntar en el puerto el día antes.',
     lluvia: 'cubierto',
-    desc: 'El pescado y el marisco de la ría, en subasta, recién descargados. El espectáculo diario de Aguiño.',
+    desc: 'Cuando los barcos del marisqueo regresan, la lonja cobra vida: percebe, almeja y pescado recién descargado, según la especie del día y las vedas.',
   },
   {
     id: 'percebes',
