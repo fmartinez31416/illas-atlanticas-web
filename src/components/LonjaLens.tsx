@@ -75,8 +75,8 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         <Reveal>
           <div className="max-w-3xl">
             <p className="text-stone-600 leading-relaxed">
-              La lonja de Aguiño vive cuando regresa la flota del marisqueo —según la especie del día y las vedas—, y la de Ribeira subasta por la tarde, tras la llegada de los barcos: pescado y marisco recién
-              descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos.
+              La lonja de Aguiño vive cuando regresa la flota del marisqueo —según la especie del día y las vedas—, y la de Ribeira subasta por la tarde, tras la llegada de los barcos. Allí compran los profesionales
+              —cadenas de supermercados, restaurantes, envíos a Mercamadrid y Mercabarcelona, puestos de la plaza de Ribeira—: pescado y marisco recién descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos.
               Esta guía te da lo que importa de cada especie:{' '}
               <strong className="text-[#1A3A5C]">{t("su talla mínima oficial, cuándo está en su mejor momento y cómo se cocina aquí")}</strong>.
             </p>
@@ -84,7 +84,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               <p className="text-[11px] uppercase tracking-[0.2em] text-[#D4A017] font-medium">{t("Cómo funciona, sin rodeos")}</p>
               <ul className="mt-2 space-y-1.5 text-sm text-stone-600 font-light leading-relaxed">
                 <li>{t("La subasta se puede ver desde la lonja — el espectáculo es público.")}</li>
-                <li>· <strong className="font-normal text-[#1A3A5C]">{t("La lonja no vende al público")}</strong>: {t(": el pescado se compra después en la")} <strong className="font-normal text-[#1A3A5C]">{t("plaza de abastos de Ribeira")}</strong>.</li>
+                <li>· <strong className="font-normal text-[#1A3A5C]">{t("La lonja no vende al público")}</strong>: {t("para comprar, la")} <strong className="font-normal text-[#1A3A5C]">{t("plaza de abastos de Ribeira")}</strong>{t(" — conviene madrugar, antes de que se vendan las buenas piezas")}.</li>
                 <li>{t("· Visitas guiadas a la lonja de Ribeira:")} <span className="font-mono text-stone-700">881 076 880</span>.</li>
                 <li>{t("· En julio, no te pierdas la")} <strong className="font-normal text-[#1A3A5C]">{t("Festa do Percebe de Aguiño")}</strong> {t("(Fiesta de Interés Turístico de Galicia).")}</li>
               </ul>

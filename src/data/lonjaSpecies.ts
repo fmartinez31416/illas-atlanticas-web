@@ -105,7 +105,7 @@ export const ESPECIES: Especie[] = [
     curiosidad: 'El boi es la prima grande y tranquila de la nécora: pinzas negras, mucha carne y mucha paciencia. En Galicia se come más en caldeirada y empanada.',
     cocina: 'En empanada de buey, o cocido y desmenuzado en ensalada.' },
 
-  // ===== PESCADO (subasta de madrugada) =====
+  // ===== PESCADO (subasta, a la llegada de los barcos) =====
   { id: 'lubina', nombreES: 'Lubina', nombreGL: 'Robaliza', cientifico: 'Dicentrarchus labrax', tipo: 'pescado',
     talla: '36 cm', tallaDetalle: 'Longitud total',
     temporada: 'todo el año', origen: 'Autóctono',

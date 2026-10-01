@@ -104,7 +104,7 @@ export const ACTIVIDADES: Actividad[] = [
     lat: 42.5542, lng: -8.9897,
     tipo: 'marisco', franjas: ['manana'], duracion: '1 h',
     precio: [10, 40], fiabilidad: 'confirmado',
-    nota: 'Por la mañana, de lunes a sábado.',
+    nota: 'Por la mañana, de lunes a sábado. Conviene madrugar: las buenas piezas se venden pronto.',
     lluvia: 'cubierto',
     desc: 'Puestos de pescado, marisco y huerta local. El sitio justo para comprar lo que cenarás.',
   },
