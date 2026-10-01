@@ -227,7 +227,7 @@ La despensa marina de Aguiño no admite intermediarios:
     slug: 'que-hacer-en-aguino-72-horas',
     category: 'Guías & Entorno',
     title: 'Qué hacer en Aguiño en 72 horas',
-    excerpt: 'Una guía práctica para vivir Aguiño al ritmo de la ría: lonja al alba, puerto al mediodía, Corrubedo, Sálvora y marisqueo nocturno.',
+    excerpt: 'Una guía práctica para vivir Aguiño al ritmo de la ría: lonja al alba, puerto al mediodía, Corrubedo, Sálvora y las mariscadoras en la bajamar.',
     readTime: '6 min de lectura',
     date: 'Otoño 2026',
     author: 'Cuaderno Atlántico',
@@ -251,7 +251,7 @@ Conviene dedicar la mañana y parte de la tarde al parque, sin forzar una ruta c
 
 De vuelta en Aguiño, la noche recupera otra velocidad. La ría ya no se contempla como paisaje, sino como presencia: una línea oscura detrás de los cristales, el rumor lejano del puerto y la certeza de que el día siguiente volverá a empezar antes que el reloj.
 
-### III. Día 3. Sálvora, bateas y la noche del marisqueo
+### III. Día 3. Sálvora, bateas y la bajamar de las mariscadoras
 
 La tercera jornada puede dedicarse a la isla de Sálvora, con barcos desde Aguiño durante la temporada. Las plazas son limitadas y la visita requiere la autorización correspondiente del parque, de modo que conviene comprobar con antelación la disponibilidad, las condiciones de embarque y la previsión marítima. Si el mar impide la salida, la alternativa no es una renuncia, sino otra forma de permanecer junto al agua: recorrer el litoral, observar las bateas y acercarse al mundo del mejillón desde la costa y los puertos de la ría.
 
@@ -296,51 +296,6 @@ En Aguiño, el ático dispone de garaje privado, una comodidad especialmente út
 
 Quien llega de noche encuentra la ría encendida.`
   },
-  {
-    id: '9',
-    slug: 'marisqueo-aguino-oficio-bajamar',
-    category: 'Experiencias atlánticas',
-    title: 'El marisqueo en Aguiño: un oficio de bajamar',
-    excerpt: 'El trabajo de las mariscadoras de Aguiño sigue el reloj de las mareas: bajamar de día, lonja al alba y una ley que reserva la ría a quien tiene permiso.',
-    readTime: '6 min de lectura',
-    date: 'Otoño 2026',
-    author: 'Cuaderno Atlántico',
-    tags: ['Aguiño', 'Marisqueo', 'Ría de Arousa', 'Mareas', 'Tradición marinera'],
-    featured: false,
-    content: `Quien mira la ría desde el paseo de Aguiño descubre pronto que aquí el reloj importa menos que la marea. Hay horas en que la lámina de agua se retira y deja al descubierto una planicie de arena mojada que recorre la costa como un camino. Es entonces, de día, cuando bajan a trabajar las mariscadoras: el oficio más antiguo de la ría no se rige por horarios de oficina, sino por las tablas de mareas.
-
-### I. La ría que se abre en bajamar
-
-El marisqueo a pie se trabaja en las horas de bajamar, cuando los bancos de arena quedan al descubierto. La marea no pregunta la hora: según el ciclo, la bajamar cae por la mañana, al mediodía o por la tarde, siempre con luz natural. Las mariscadoras bajan a los bancos con el raño, el rastrillo y las cestas, y trabajan las horas que la marea concede, atentas a que el agua vuelva.
-
-Desde el puerto y el paseo de Aguiño, en los días de faena, se distingue perfectamente esa estampa: figuras dobladas sobre la arena, la línea de la costa y, detrás, la lonja esperando el producto. No hace falta acercarse ni molestar: el oficio se ve desde la orilla, y se entiende mejor cuanto menos se invade.
-
-### II. Un oficio con permiso
-
-El marisqueo profesional es una actividad regulada. Solo pueden extraer marisco las mariscadoras y mariscadores con permiso, y lo hacen conforme a planes de gestión que fijan especies, jornadas, zonas autorizadas, tallas y cupos. Para cualquier otra persona, coger marisco está prohibido, de día y de noche, y la zona está vigilada.
-
-En la ría de Arousa, el Plan Xeral de Explotación Marisqueira 2024-2026 autoriza en las zonas de libre marisqueo la extracción de moluscos en ventanas concretas: en 2026, del 2 de enero al 31 de marzo y del 1 de octubre al 31 de diciembre. Las cofradías amplían ese calendario con sus propios planes en las zonas de autorización, donde se fijan los días probables de faena, los bancos exactos y las especies. La cofradía de Aguiño, junto a la de Ribeira, trabaja la almeja fina, la babosa y la japónica, el berberecho, y mantiene planes específicos de percebe, erizo de mar y poliquetos. En Rianxo, la cofradía trabaja a pie bancos como Bodión, Agüeiros, A Torre o Tanxil.
-
-La noche, de hecho, es asunto del furtivismo: quien faena sin permiso prefiere la oscuridad, y por eso la Guardacostas, la Policía Autonómica y las cofradías vigilan también de madrugada. Que en Aguiño no se vea a nadie coger marisco de noche no es un misterio: es la prueba de que la ley funciona. La ría nocturna pertenece al silencio, no a la faena.
-
-### III. Ver el oficio sin estorbarlo
-
-El viajero que quiera conocer el marisqueo de verdad tiene dos ventanas honestas, sin pisar la arena. La primera, el propio puerto: en bajamar y de día, el trabajo se observa desde el paseo, a la distancia justa para no entorpecer. La segunda, la lonja al alba: el producto de la jornada anterior llega allí, se clasifica y se subasta de madrugada, en días laborables.
-
-Cerca del paseo de O Carreiro —ese conjunto de islotes unidos por un paseo que se adentra en la ría, entre las bateas y el horizonte de Sálvora, puerta del primer paisaje cultural declarado BIC en Galicia en 2018—, en temporada se ven además pequeños barcos faenando a flote: la flota marisquera de la cofradía de Aguiño trabaja desde punta Castro hasta el río Sieira, y desde la orilla se distinguen los aparejos al agua y las cestas de almeja. No faenan todos los días —los planes fijan jornadas concretas—, y por eso verlos tiene algo de regalo de la marea.
-
-El paseo se recorre con marea baja y merece caminarlo entero: desde la terraza del ático se ve de principio a fin, y su acceso queda a dos minutos andando de la casa. Es el mirador natural de la flota y, a la vez, el paseo que en Aguiño llaman el camino al paraíso.
-
-![O Carreiro, Aguiño. Fotografía del anfitrión.](/fotos/o_carreiro_25.jpg)
-
-Y para ver a las mariscadoras a pie, escarbando la arena con el raño, el lugar es Rianxo: sus bancos se distinguen desde el paseo y a veces se ven incluso sin salir del coche. No hay horario fijo: la faena sigue a la bajamar y a la apertura del banco, que depende de los planes de gestión, de las vedas y del estado del marisco. El consejo es sencillo: consultar la tabla de mareas, elegir una mañana de marea baja en día laborable y dejarse caer.
-
-Existen además experiencias marineras organizadas: en el propio puerto, [Mar de Aguiño](https://www.mardeaguiño.es/travesia-del-rey-del-marisco.html) ofrece la Travesía del Rey del Marisco, una visita en barco a las zonas de extracción del percebe con guía y seguro incluidos. La normativa las reconoce —el turismo marinero ejercido por las mariscadoras es compatible con el marisqueo— y conviene reservar con antelación. En cualquier caso, la regla es sencilla: se mira, no se toca. Las herramientas ajenas no se cogen, los bancos no se pisan y el marisco que llega a la mesa se compra en la lonja.
-
-*Fuentes: Plan Xeral de Explotación Marisqueira 2024-2026 (Orden de 21 de diciembre de 2023, DOG n.º 246, de 29 de diciembre de 2023), planes de gestión de las cofradías de Aguiño, Ribeira y Rianxo, y Decreto 49/2018, de 26 de abril (BIC, categoría de paisaje cultural, del archipiélago de Sálvora).*
-
-La verdad de la ría es más interesante que cualquier leyenda: de día, la arena se llena de oficio; de noche, la vigilancia lo protege. Dormir a diez metros del puerto permite comprobarlo cada mañana, con la lonja despierta y la marea cumpliendo, como siempre, su hora.`
-  }
 ];
 
 // --- Traducciones (ES fuente de verdad) ---
