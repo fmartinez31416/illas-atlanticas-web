@@ -222,6 +222,45 @@ La despensa marina de Aguiño no admite intermediarios:
 * **El percebe de las rompientes:** Extraído en las piedras más batidas por los percebeiros de la lonja local, reconocido por su sabor concentrado y yodado.
 * **Marisco y lonja de proximidad:** Pulpo de roca, nécoras, almejas y el indiscutible mejillón de batea de la ría, directos del barco a la mesa.`
   },
+  {
+    id: '7',
+    slug: 'casa-lee-el-mar-ingenieria-interna-alojamiento-salvora',
+    category: 'El Oficio & la Casa',
+    title: 'La casa que lee el mar: ingeniería interna de un alojamiento frente a Sálvora',
+    excerpt: 'Qué sostiene una estancia frente a la ría: motor de reservas, guardianes automáticos, un puente de mando meteorológico y un agente de a bordo. La capa invisible de un alojamiento independiente.',
+    readTime: '6 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Digital', 'Oficio', 'Puente de Mando', 'Aguiño'],
+    featured: true,
+    content: `Un huésped llega al atardecer, sube en el ascensor y abre la terraza. Enfrente, Sálvora y la bocana de la ría. Lo que no ve —porque no debe verlo— es la capa de ingeniería que sostiene esa estancia: sistemas de reserva, guardianes automáticos, un puente de mando meteorológico y un agente de a bordo que trabaja en silencio.
+
+### I. La capa invisible de la reserva
+
+Detrás de cada reserva opera un motor profesional de alojamiento (Beds24) conectado a un sistema de precios dinámicos (PriceLabs) que ajusta la tarifa a la demanda real de la ría, con suelo, base y techo definidos por estación. La estancia mínima sigue un calendario estacional firmado: dos noches en invierno, tres en temporada media, cuatro en junio y septiembre, cinco en julio y hasta siete en agosto, con reglas propias para puentes, Navidad y Semana Santa.
+
+La reserva directa se paga con tarjeta (Stripe) o PayPal: una señal del 30 % y el resto antes de la llegada. El registro de huéspedes es digital (Partee) y genera los partes oficiales obligatorios para las fuerzas de seguridad. Cada noche de ocupación queda registrada conforme a la normativa de viviendas de uso turístico de Galicia.
+
+### II. El Puente de Mando: la casa que lee el mar
+
+En Aguiño el tiempo decide el día: si salen los barcos a Sálvora, si trabaja la flota del marisqueo, si se puede pasear la costa. Por eso el alojamiento publica su propio puente de mando, abierto y gratuito: meteorología local, mareas y avisos oficiales (AEMET) en tiempo real. Lo consultan los huéspedes y también los vecinos.
+
+### III. Los guardianes silenciosos
+
+El sistema se revisa solo para que el anfitrión pueda dedicarse a los huéspedes: un vigía comprueba el calendario tres veces al día, un guardián verifica la estancia mínima cada seis horas frente a cualquier sincronización externa, y el correo se recoge cada diez minutos. Cada mañana, un parte resume el estado de la casa: reservas, precios y tareas.
+
+### IV. La escritura del cuaderno
+
+La bitácora de la web se escribe con una regla propia: ningún dato sin fuente, y antes una ausencia que una imprecisión. Los artículos sobre la ría, Sálvora o el percebe citan fuentes primarias —de la normativa oficial al conocimiento de la lonja— y se publican en tres idiomas: español, inglés y gallego.
+
+### V. Un agente de a bordo
+
+La pieza más nueva del sistema es un agente de inteligencia artificial, Hermes, integrado en la operación diaria: redacta y envía las colaboraciones con instituciones y prensa local, audita las facturas de los servicios, vigila la normativa y prepara los informes de la casa. Nada se ejecuta sin la revisión del anfitrión: el agente hace, la persona manda.
+
+### Lo que el huésped ve
+
+Al final, el huésped solo ve la terraza, el mar y Sálvora al fondo. Que no vea el resto es la señal de que el sistema funciona. El mar se lee; la casa lo traduce.`
+  },
 ];
 
 // --- Traducciones (ES fuente de verdad) ---
