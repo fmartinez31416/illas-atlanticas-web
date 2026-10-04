@@ -192,7 +192,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   };
 
   const llueve = (model.precip ?? 0) > 0.05 || Tx(model.code);
-  const [avisos, setAvisos] = X.useState<{ titulo: string; texto: string; enlace: string }[]>([]);
+  const [avisos, setAvisos] = X.useState<{ titulo: string; texto: string; enlace: string; fuente?: string }[]>([]);
   X.useEffect(() => {
     let vivo = true;
     const cargar = async () => {
@@ -281,7 +281,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         <div className="relative z-[5] border-b border-[#8a2f22]/60 bg-[#2a0f0a]/92 px-3 py-2 sm:px-6">
           {avisos.map((a, i) => (
             <p key={i} className="mx-auto flex max-w-[1520px] items-baseline gap-2 font-serif text-[12px] italic leading-snug text-[#f0c9a0] sm:text-[13.5px]">
-              <span className="shrink-0 font-display text-[9px] font-bold not-italic tracking-[0.24em] text-[#d97a5c]">AVISO AEMET</span>
+              <span className="shrink-0 font-display text-[9px] font-bold not-italic tracking-[0.24em] text-[#d97a5c]">AVISO {a.fuente || 'AEMET'}</span>
               <span className="min-w-0">{a.titulo}{a.texto ? ` — ${a.texto}` : ''}</span>
             </p>
           ))}
