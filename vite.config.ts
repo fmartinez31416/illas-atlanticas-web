@@ -19,8 +19,8 @@ export default defineConfig(() => {
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
     preview: {
-      // Revisión previa de Fernando: servir bajo previa.illasatlanticasatico.es (Caddy → 4173)
-      allowedHosts: ['previa.illasatlanticasatico.es'],
+      // Revisión previa de Fernando: previa.illasatlanticasatico.es y nia.illasatlanticasatico.es/previa/
+      allowedHosts: ['previa.illasatlanticasatico.es', 'nia.illasatlanticasatico.es'],
     },
   };
 });
