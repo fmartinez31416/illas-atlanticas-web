@@ -2,6 +2,8 @@
  * instruments/Forecast.tsx · Puente de Mando — Illas Atlánticas Ático
  * Previsión de 7 días: glifos dibujados a mano, temperaturas máx/mín y
  * probabilidad de lluvia. Datos reales de Open-Meteo para la terraza del ático.
+ * Rediseño 4-oct-2026: placa de marfil y latón, texto a plena tinta (sin
+ * atenuaciones), fila con scroll en móvil + indicador de que continúa.
  */
 import * as X from 'react';
 import { Ex } from '../data';
@@ -14,14 +16,16 @@ export interface DailyForecast {
   tMin: number[];
 }
 
-const DORADO = '#D4A017';
-const CREMA = '#E8DCC0';
-const CIELO = '#A9C9DD';
+const DORADO = '#8f6100';
+const NAVY = '#1A3A5C';
+const TINTA = '#332612';
+const MEDIO = '#5a4524';
+const CIELO = '#1d5a7a';
 
 function Glifo({ wmo }: { wmo: number }) {
   const sol = (
-    <g stroke={DORADO} strokeWidth="1.6" strokeLinecap="round">
-      <circle cx="11" cy="10" r="4.6" fill={DORADO} fillOpacity="0.22" />
+    <g stroke={DORADO} strokeWidth="1.7" strokeLinecap="round">
+      <circle cx="11" cy="10" r="4.6" fill={DORADO} fillOpacity="0.42" />
       {Array.from({ length: 8 }).map((_, i) => {
         const a = (i * Math.PI) / 4;
         return (
@@ -39,14 +43,15 @@ function Glifo({ wmo }: { wmo: number }) {
   const nube = (
     <path
       d="M8 21 a5 5 0 0 1 0.6 -9.9 a6.6 6.6 0 0 1 12.9 -0.9 a4.4 4.4 0 0 1 0.9 8.7 Z"
-      fill={CREMA}
-      fillOpacity="0.8"
-      stroke={CREMA}
-      strokeWidth="0.8"
+      fill={NAVY}
+      fillOpacity="0.3"
+      stroke={NAVY}
+      strokeWidth="1.2"
+      strokeLinecap="round"
     />
   );
   const gotas = (n: number) => (
-    <g stroke={CIELO} strokeWidth="1.6" strokeLinecap="round">
+    <g stroke={CIELO} strokeWidth="1.8" strokeLinecap="round">
       {[0, 1, 2].slice(0, n).map((i) => (
         <line key={i} x1={11 + i * 5} y1={25} x2={9.5 + i * 5} y2={28.5} />
       ))}
@@ -57,21 +62,31 @@ function Glifo({ wmo }: { wmo: number }) {
   else if (wmo === 2) cuerpo = (<>{<g transform="translate(14 -2) scale(0.72)">{sol}</g>}{nube}</>);
   else if (wmo === 3) cuerpo = nube;
   else if (wmo === 45 || wmo === 48)
-    cuerpo = (<>{nube}<line x1="7" y1="26.5" x2="25" y2="26.5" stroke={CIELO} strokeOpacity="0.7" strokeWidth="1.4" strokeLinecap="round" /><line x1="9" y1="29.5" x2="23" y2="29.5" stroke={CIELO} strokeOpacity="0.5" strokeWidth="1.4" strokeLinecap="round" /></>);
+    cuerpo = (<>{nube}<line x1="7" y1="26.5" x2="25" y2="26.5" stroke={CIELO} strokeOpacity="0.8" strokeWidth="1.5" strokeLinecap="round" /><line x1="9" y1="29.5" x2="23" y2="29.5" stroke={CIELO} strokeOpacity="0.6" strokeWidth="1.5" strokeLinecap="round" /></>);
   else if (wmo <= 57) cuerpo = (<>{nube}{gotas(2)}</>);
   else if (wmo <= 67 || (wmo >= 80 && wmo <= 82)) cuerpo = (<>{nube}{gotas(3)}</>);
   else if (wmo <= 77 || wmo === 85 || wmo === 86)
-    cuerpo = (<>{nube}<g fill={CIELO}><circle cx="11" cy="26" r="1.1" /><circle cx="16" cy="28" r="1.1" /><circle cx="21" cy="26" r="1.1" /></g></>);
+    cuerpo = (<>{nube}<g fill={CIELO}><circle cx="11" cy="26" r="1.2" /><circle cx="16" cy="28" r="1.2" /><circle cx="21" cy="26" r="1.2" /></g></>);
   else
-    cuerpo = (<>{nube}<path d="M15.5 22.5 L13 27.5 L15.8 27.5 L14.2 31.5" fill="none" stroke={DORADO} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></>);
+    cuerpo = (<>{nube}<path d="M15.5 22.5 L13 27.5 L15.8 27.5 L14.2 31.5" fill="none" stroke={DORADO} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></>);
   return (
-    <svg width="38" height="38" viewBox="0 0 32 32" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 32 32" aria-hidden="true">
       {cuerpo}
     </svg>
   );
 }
 
 export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
+  const filaRef = X.useRef<HTMLDivElement>(null);
+  const [fin, setFin] = X.useState(false);
+  const comprobar = () => {
+    const el = filaRef.current;
+    if (!el) return;
+    setFin(el.scrollLeft + el.clientWidth >= el.scrollWidth - 10);
+  };
+  X.useEffect(() => {
+    comprobar();
+  }, []);
   if (!daily || !daily.t || daily.t.length === 0) return null;
   const hoyMs = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); })();
   const dias = Array.from({ length: daily.t.length }, (_, i) => {
@@ -92,61 +107,76 @@ export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
     };
   }).filter((_, i) => daily.t[i] >= hoyMs).slice(0, 7);
   return (
-    <div className="relative">
-      <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-display text-[11px] font-bold tracking-[0.3em] text-[#f1d58f]">
-          PREVISIÓN · PRÓXIMOS 7 DÍAS
+    <div className="card-ivory relative rounded-md px-3 py-3 shadow-[0_10px_22px_rgba(0,0,0,.45)] sm:px-4 sm:py-4">
+      <div className="lacquer" />
+      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-[#8a6a45]/40 pb-2">
+        <h3 className="font-sans text-[12px] font-bold tracking-[0.24em] text-[#4a3208] sm:text-[13px]">
+          PREVISIÓN · 7 DÍAS
         </h3>
-        <span className="font-serif text-[12px] italic text-[#e6d3a8]/70">
+        <span className="font-serif text-[12px] font-medium italic text-[#4a3a1e] sm:text-[13px]">
           Aguiño · la terraza del ático · Open-Meteo
         </span>
       </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
-        {dias.map((d, i) => (
-          <div
-            key={i}
-            className={`relative flex flex-col items-center rounded-sm border px-2 pb-3 pt-3 text-center ${
-              i === 0
-                ? 'border-[#D4A017]/45 bg-[#D4A017]/[0.07]'
-                : 'border-[#a08060]/25 bg-white/[0.03]'
-            }`}
-          >
-            <span
-              className={`block font-display text-[9.5px] uppercase tracking-[0.2em] ${
-                i === 0 ? 'text-[#D4A017]' : 'text-[#e6d3a8]/85'
-              }`}
+      <div className="relative">
+        <div
+          ref={filaRef}
+          onScroll={comprobar}
+          className="flex snap-x gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-7 sm:gap-0 sm:overflow-visible sm:pb-0"
+        >
+          {dias.map((d, i) => (
+            <div
+              key={i}
+              className={`relative flex min-w-[108px] snap-start flex-col items-center rounded-sm border px-2 py-2.5 text-center sm:min-w-0 sm:rounded-none sm:border-0 sm:border-l ${
+                i === 0
+                  ? 'border-[#8f6100] bg-[#c98a00]/[0.18]'
+                  : 'border-[#8a6a45]/40 bg-transparent'
+              } ${i === 0 ? '' : 'sm:border-[#8a6a45]/35'}`}
             >
-              {d.nombre}
-            </span>
-            <span className="mt-0.5 block font-serif text-[10px] italic text-[#e6d3a8]/55">
-              {d.diaMes}
-            </span>
-            <div className="mt-1.5">
-              <Glifo wmo={d.wmo} />
-            </div>
-            <span className="mt-1 block min-h-[1.9em] font-serif text-[11.5px] italic leading-snug text-[#e6d3a8]/90">
-              {Ex(d.wmo)}
-            </span>
-            <span className="mt-1 font-serif text-[19px] font-semibold tabular-nums text-[#f4ead4]">
-              {d.tmax == null ? '—' : `${Math.round(d.tmax)}°`}
-              <span className="text-[12px] font-normal text-[#e6d3a8]/60">
-                {' '}
-                {d.tmin == null ? '—' : `${Math.round(d.tmin)}°`}
+              {i === 0 && <div className="lacquer" />}
+              <span
+                className={`block font-sans text-[13px] font-bold uppercase tracking-[0.06em] ${
+                  i === 0 ? 'text-[#4a3208]' : 'text-[#14324d]'
+                }`}
+              >
+                {d.nombre}
               </span>
-            </span>
-            <span className="mt-2 flex w-full items-center justify-center gap-1.5 border-t border-[#a08060]/20 pt-2 font-serif text-[11px] italic text-[#a9c9dd]">
-              <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true">
-                <path
-                  d="M5 1.2 C2.4 3.8 1.6 5.4 1.6 7.3 a3.4 3.4 0 0 0 6.8 0 C8.4 5.4 7.6 3.8 5 1.2 Z"
-                  fill="none"
-                  stroke={CIELO}
-                  strokeWidth="1.1"
-                />
-              </svg>
-              {d.pop == null ? '—' : `${Math.round(d.pop)} %`}
+              <span className="mt-0.5 block font-serif text-[13px] font-medium italic text-[#4a3a1e]">
+                {d.diaMes}
+              </span>
+              <div className="mt-1">
+                <Glifo wmo={d.wmo} />
+              </div>
+              <span className="mt-0.5 block min-h-[2.4em] font-serif text-[13px] font-semibold leading-snug text-[#2a1f0e]">
+                {Ex(d.wmo)}
+              </span>
+              <span className="mt-1 font-serif text-[23px] font-bold tabular-nums leading-none text-[#14324d]">
+                {d.tmax == null ? '—' : `${Math.round(d.tmax)}°`}
+                <span className="ml-1.5 text-[15px] font-semibold text-[#4a3a1e]">
+                  {d.tmin == null ? '' : `${Math.round(d.tmin)}°`}
+                </span>
+              </span>
+              <span className="mt-1.5 flex w-full items-center justify-center gap-1 border-t border-[#8a6a45]/40 pt-1.5 font-serif text-[13px] font-semibold text-[#174a66]">
+                <svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true">
+                  <path
+                    d="M5 1.2 C2.4 3.8 1.6 5.4 1.6 7.3 a3.4 3.4 0 0 0 6.8 0 C8.4 5.4 7.6 3.8 5 1.2 Z"
+                    fill="none"
+                    stroke={CIELO}
+                    strokeWidth="1.3"
+                  />
+                </svg>
+                {d.pop == null ? '—' : `${Math.round(d.pop)} %`}
+              </span>
+            </div>
+          ))}
+        </div>
+        {!fin && (
+          <div className="mt-1.5 flex justify-end sm:hidden">
+            <span className="flex items-center gap-1 font-sans text-[12px] font-bold uppercase tracking-[0.1em] text-[#4a3208]">
+              Desliza
+              <span className="animate-pulse text-[17px] leading-none">›</span>
             </span>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

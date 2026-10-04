@@ -12,6 +12,7 @@ import { BitacoraPage } from './components/BitacoraPage';
 import { LonjaLens } from './components/LonjaLens';
 import { PlanificadorPage } from './components/PlanificadorPage';
 import { NiaChat } from './components/NiaChat';
+import { NiaSection } from './components/NiaSection';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
 import { FaqSection } from './components/FaqSection';
@@ -241,6 +242,7 @@ function AppInner() {
 
         {/* Acceso elegante a la Bitácora */}
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
+        <NiaSection />
       </main>
 
       <Footer onOpenLegal={() => setCurrentView('legal')} />

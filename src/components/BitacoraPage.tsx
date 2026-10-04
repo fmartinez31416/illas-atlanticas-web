@@ -59,7 +59,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
       {/* CABECERA CON TIRO BAJO: ENFOCADA AL MAR Y A PEDRA DA RÁ */}
       <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
         <img
-          src="/mirador-pedra-da-ra-ribeira-atlantico.webp"
+          src="mirador-pedra-da-ra-ribeira-atlantico.webp"
           alt={t("Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico")}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center 78%' }}

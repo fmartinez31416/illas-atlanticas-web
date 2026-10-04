@@ -50,7 +50,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink min-w-0 overflow-hidden"
           >
             <img
-              src={isScrolled ? "/logo_transparent.png" : "/logo_white.png"}
+              src={isScrolled ? "logo_transparent.png" : "logo_white.png"}
               alt={t("Logo Illas Atlánticas Ático")}
               className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-all duration-300 shrink-0"
             />

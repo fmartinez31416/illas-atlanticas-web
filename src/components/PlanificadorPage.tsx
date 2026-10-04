@@ -61,7 +61,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
       const tarde = elegir('tarde', [...porInteres('naturaleza'), ...porInteres('cultura'), ...porInteres('marisco')])
         ?? ACTIVIDADES.find((a) => a.id === 'dunas_paseo')!;
       franjas.push({ franja: 'tarde', act: tarde });
-      // Noche: cena / marisqueo / terraza
+      // Noche: cena / terraza
       const noche = elegir('noche', [...porInteres('marisco'), ...porInteres('celebracion')])
         ?? (d === dias ? ACTIVIDADES.find((a) => a.id === 'terraza')! : ACTIVIDADES.find((a) => a.id === 'cena')!);
       franjas.push({ franja: 'noche', act: noche });

@@ -29,7 +29,7 @@ import { Ny as EsferaCeleste } from './puente/instruments/Celestial';
 import { wy as Clinometro } from './puente/instruments/Clinometer';
 import { Pronostico } from './puente/instruments/Forecast';
 import { iy as Mandos } from './puente/parts';
-import { mp as Ventana } from './puente/instruments/Window';
+import { Ventana } from './puente/instruments/VentanaFoto';
 
 interface DashboardNauticoProps {
   onBack: () => void;
@@ -400,19 +400,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
           </div>
         </div>
 
-        {/* Luz que entra por las ventanas */}
+        {/* Profundidad de la escena (sin efectos de luz solar: retirados 4-oct por decisión del anfitrión) */}
         <div className="pointer-events-none absolute inset-0 z-[20] overflow-hidden">
-          <div className="light-pool" />
-          <div className="shafts soft">
-            {lh.map(([left, width]) => (
-              <div key={left} className="shaft" style={{ left: `${left}%`, width: `${width}%` }} />
-            ))}
-          </div>
-          <div className="shafts hot">
-            {lh.map(([left, width]) => (
-              <div key={left} className="shaft" style={{ left: `${left}%`, width: `${width}%` }} />
-            ))}
-          </div>
           <div
             className="absolute inset-0"
             style={{ background: 'radial-gradient(ellipse 90% 70% at 50% 0%, rgba(0,0,0,0) 55%, rgba(0,0,0,.38) 100%)' }}

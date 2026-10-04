@@ -17,11 +17,33 @@ const SUGERENCIAS = [
 
 export function NiaChat() {
   const [abierto, setAbierto] = useState(false);
+  const [saludo, setSaludo] = useState(false);
   const [mensajes, setMensajes] = useState<Mensaje[]>([]);
   const [entrada, setEntrada] = useState('');
   const [escribiendo, setEscribiendo] = useState(false);
   const [fallo, setFallo] = useState(false);
   const finRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const abrir = () => setAbierto(true);
+    window.addEventListener('nia:open', abrir);
+    // El bocadillo de saludo NO aparece al cargar: solo tras la primera interacción (scroll).
+    let mostrado = false;
+    const alHacerScroll = () => {
+      if (mostrado) return;
+      try { if (localStorage.getItem('nia_saludo_v1')) { mostrado = true; return; } } catch { /* ignore */ }
+      if (window.scrollY > 200) {
+        mostrado = true;
+        setSaludo(true);
+        window.removeEventListener('scroll', alHacerScroll);
+      }
+    };
+    window.addEventListener('scroll', alHacerScroll, { passive: true });
+    return () => {
+      window.removeEventListener('nia:open', abrir);
+      window.removeEventListener('scroll', alHacerScroll);
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -94,17 +116,35 @@ export function NiaChat() {
 
   return (
     <>
-      {/* Burbuja */}
-      <button
-        onClick={() => setAbierto(!abierto)}
-        aria-label={abierto ? t("Cerrar chat con Nía") : t("Abrir chat con Nía")}
-        className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#1A3A5C] border-2 border-[#D4A017] shadow-xl flex items-center justify-center text-[#EBE6DD] hover:scale-105 active:scale-95 transition-transform"
-      >
-        {abierto ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
-        {!abierto && (
-          <span className="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white animate-pulse" aria-hidden />
+      {/* Burbuja con nombre + saludo de primera visita */}
+      <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
+        {saludo && (
+          <div className="relative max-w-[240px] bg-[#1A3A5C] text-[#EBE6DD] text-[13px] leading-snug rounded-lg rounded-br-none px-4 py-3 shadow-xl border border-[#D4A017]/60 animate-[fadeIn_.4s_ease]">
+            <button
+              onClick={() => { setSaludo(false); try { localStorage.setItem('nia_saludo_v1', '1'); } catch {} }}
+              aria-label="Cerrar aviso"
+              className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-[#D4A017] text-stone-950 text-[10px] flex items-center justify-center hover:bg-[#B88A10]"
+            >✕</button>
+            <p>
+              Hola, soy <span className="font-serif text-[#D4A017]">Nía</span>, la voz de la casa.
+              Pregúntame lo que quieras.
+            </p>
+          </div>
         )}
-      </button>
+        <button
+          onClick={() => { setAbierto(!abierto); setSaludo(false); try { localStorage.setItem('nia_saludo_v1', '1'); } catch {} }}
+          aria-label={abierto ? t("Cerrar chat con Nía") : t("Abrir chat con Nía")}
+          className="flex items-center gap-2 pl-3 pr-4 h-14 rounded-full bg-[#1A3A5C] border-2 border-[#D4A017] shadow-xl text-[#EBE6DD] hover:scale-105 active:scale-95 transition-transform"
+        >
+          {abierto ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
+          {!abierto && (
+            <span className="font-serif text-base tracking-wide">Nía</span>
+          )}
+          {!abierto && (
+            <span className="absolute top-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#1A3A5C] animate-pulse" aria-hidden />
+          )}
+        </button>
+      </div>
 
       {/* Panel */}
       {abierto && (
@@ -128,8 +168,8 @@ export function NiaChat() {
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#EBE6DD]">
             {mensajes.length === 0 && !escribiendo && (
               <p className="text-sm text-stone-600 font-light leading-relaxed">
-                Soy Nía, la anfitriona de Illas Atlánticas. Pregúntame por el tiempo, la lonja,
-                la cocina… o por las fechas que tengáis en mente.
+                Soy Nía, la voz de la casa. Pregúntame por el tiempo, la lonja, la cocina…
+                o dime tus fechas y te digo disponibilidad y precios reales.
               </p>
             )}
             {mensajes.map((m, i) => (

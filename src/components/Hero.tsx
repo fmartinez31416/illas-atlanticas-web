@@ -40,7 +40,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
       {/* Imagen de Portada Real */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/01_hero_portada.webp"
+          src="01_hero_portada.webp"
           alt={t("Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño")}
           className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
           loading="eager"
