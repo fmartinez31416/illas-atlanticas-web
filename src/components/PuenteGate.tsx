@@ -5,8 +5,8 @@ interface PuenteGateProps {
   onVolverCasa: () => void;
 }
 
-const LAT = 42.4608;
-const LON = -9.015;
+const LAT = 42.5222;
+const LON = -9.0194;
 
 export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
   const [astro, setAstro] = useState<{ isNight: boolean; illum: number | null; raining: boolean; overcast: boolean } | null>(null);

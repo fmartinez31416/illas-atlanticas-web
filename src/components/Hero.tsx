@@ -16,8 +16,8 @@ export function Hero({ onOpenBooking }: HeroProps) {
     const load = async () => {
       try {
         const [w, m] = await Promise.all([
-          fetch('https://api.open-meteo.com/v1/forecast?latitude=42.5233&longitude=-9.0294&current=temperature_2m&timezone=Europe%2FMadrid'),
-          fetch('https://marine-api.open-meteo.com/v1/marine?latitude=42.5233&longitude=-9.0294&hourly=wave_height&forecast_days=1&timezone=Europe%2FMadrid'),
+          fetch('https://api.open-meteo.com/v1/forecast?latitude=42.5222&longitude=-9.0194&current=temperature_2m&timezone=Europe%2FMadrid'),
+          fetch('https://marine-api.open-meteo.com/v1/marine?latitude=42.516&longitude=-9.028&hourly=wave_height&forecast_days=1&timezone=Europe%2FMadrid'),
         ]);
         const wj = await w.json();
         let waves: number | null = null;
