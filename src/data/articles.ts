@@ -243,7 +243,7 @@ La reserva directa se paga con tarjeta (Stripe) o PayPal: una señal del 30 % y 
 
 ### II. El Puente de Mando: la casa que lee el mar
 
-En Aguiño el tiempo decide el día: si salen los barcos a Sálvora, si trabaja la flota del marisqueo, si se puede pasear la costa. Por eso el alojamiento publica su propio puente de mando, abierto y gratuito: meteorología local, mareas y avisos oficiales (AEMET y Google Weather) en tiempo real. Lo consultan los huéspedes y también los vecinos.
+En Aguiño el tiempo decide el día: si salen los barcos a Sálvora, si trabaja la flota del marisqueo, si se puede pasear la costa. Por eso el alojamiento publica su propio [puente de mando](https://illasatlanticasatico.es/puente), abierto y gratuito: meteorología local, mareas y avisos oficiales (AEMET y Google Weather) en tiempo real. Lo consultan los huéspedes y también los vecinos.
 
 ### III. Los guardianes silenciosos
 
@@ -259,7 +259,7 @@ La pieza más nueva del sistema es un agente de inteligencia artificial, Hermes,
 
 ### VI. La arquitectura, pieza a pieza
 
-El sistema no cabe en una sola máquina. El agente y los servicios internos —la puerta de entrada, los vigilantes programados, el cerebro del agente de a bordo— corren en un servidor propio de Contabo, la firma alemana de alojamiento. La web pública se sirve desde Hostinger, con despliegue automático desde el repositorio del código en GitHub: cada cambio pasa antes por una versión previa y solo sube a producción tras la revisión del anfitrión.
+El sistema no cabe en una sola máquina. El agente y los servicios internos —la puerta de entrada, los vigilantes programados, el cerebro del [agente de a bordo](https://nia.illasatlanticasatico.es/)— corren en un servidor propio de Contabo, la firma alemana de alojamiento. La web pública se sirve desde Hostinger, con despliegue automático desde el [repositorio del código en GitHub](https://github.com/fmartinez31416/illas-atlanticas-web): cada cambio pasa antes por una versión previa y solo sube a producción tras la revisión del anfitrión.
 
 Sobre esa base se apilan las piezas: Beds24 como motor de reservas; PriceLabs para el precio dinámico, con suelo, base y techo; Partee para el registro legal de huéspedes; Stripe y PayPal para el cobro; un bot propio en Telegram que informa al anfitrión; y una analítica privada, sin rastreadores de terceros. La meteorología del Puente cruza tres fuentes —AEMET, Google Weather y Open-Meteo— y el agente de a bordo conversa con los huéspedes mediante un modelo de lenguaje servido a través de una pasarela propia, con OpenRouter como respaldo multimodal.
 

@@ -131,6 +131,31 @@ export function Footer({ onOpenLegal }: FooterProps) {
                   Consultar Disponibilidad
                 </a>
               </li>
+              <li>
+                <a href="/puente" className="hover:text-amber-200 transition-colors">
+                  {t("Puente de Mando")}
+                </a>
+              </li>
+              <li>
+                <a href="/planificador" className="hover:text-amber-200 transition-colors">
+                  {t("Planificador de viajes")}
+                </a>
+              </li>
+              <li>
+                <a href="/bitacora" className="hover:text-amber-200 transition-colors">
+                  {t("Bitácora")}
+                </a>
+              </li>
+              <li>
+                <a href="/lonja" className="hover:text-amber-200 transition-colors">
+                  {t("Lonja en vivo")}
+                </a>
+              </li>
+              <li>
+                <a href="https://nia.illasatlanticasatico.es/" className="hover:text-amber-200 transition-colors">
+                  {t("Nía, tu agente de a bordo")}
+                </a>
+              </li>
             </ul>
           </div>
 

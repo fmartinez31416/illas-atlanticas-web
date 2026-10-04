@@ -138,8 +138,14 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
             <article
               key={article.id}
               onClick={() => setSelectedArticle(article)}
-              className="group bg-stone-900/40 border border-stone-800/90 hover:border-amber-200/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:bg-stone-900/70 cursor-pointer shadow-xl"
+              className="group relative bg-stone-900/40 border border-stone-800/90 hover:border-amber-200/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:bg-stone-900/70 cursor-pointer shadow-xl"
             >
+              <a
+                href={`/bitacora/${article.slug}`}
+                onClick={(e) => { e.preventDefault(); setSelectedArticle(article); }}
+                aria-label={article.title}
+                className="absolute inset-0 z-10"
+              />
               <div className="space-y-4">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-400">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
