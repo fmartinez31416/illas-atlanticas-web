@@ -9,6 +9,7 @@ interface Mensaje {
 }
 
 const SUGERENCIAS = [
+  t('¿A cuánto se subasta el marisco hoy?'),
   t('¿Qué tiempo hace hoy?'),
   t('¿Dónde comprar marisco?'),
   t('¿Cómo se cocina el percebe?'),
