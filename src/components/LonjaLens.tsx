@@ -117,11 +117,14 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
           <div className="mt-8 rounded-md p-5 sm:p-6"
             style={{ background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)', border: '1px solid rgba(212,160,23,0.35)' }}>
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="font-serif text-xl text-[#EBE6DD]">{t('Subasta de hoy en las lonjas de la ría')}</h2>
+              <h2 className="font-serif text-xl text-[#EBE6DD]">{t('La poxa de hoy en las lonjas de la ría')}</h2>
               <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4A017] animate-pulse" /> {t('en directo')}
+                {t('actualizado')} {lonja?.actualizado?.split(' ')[1]?.slice(0, 5) || '…'}
               </span>
             </div>
+            <p className="mt-2 text-[11px] text-[#A9C9DD]/70 font-light max-w-2xl">
+              {t('Los lotes se anuncian antes de la poxa; los precios son los resultados de las últimas subastas.')}
+            </p>
             {lonja?.error === 'no-disponible' ? (
               <p className="mt-3 text-sm text-[#A9C9DD]/85 font-light">
                 {t('Los datos de la lonja no están disponibles ahora mismo. Vuelve en un rato.')}
@@ -144,19 +147,19 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                           <div key={j} className="flex items-center justify-between gap-3 px-3 py-2 bg-white/5 border border-white/5">
                             <span className="text-[#EBE6DD] font-medium text-sm">{h.especie}</span>
                             <span className="text-xs text-[#A9C9DD]">
-                              {h.kg} {t('kg disponibles')}{h.tipo && h.tipo !== '-' ? ` · ${h.tipo}` : ''}
+                              {h.kg} {t('kg anunciados para la poxa')}{h.tipo && h.tipo !== '-' ? ` · ${h.tipo}` : ''}
                             </span>
                           </div>
                         ))}
                       </div>
                     ) : (
                       <p className="mt-2 text-sm text-[#A9C9DD]/70 font-light">
-                        {t('La lonja publica la subasta del día tras la poxa (13:30 – 15:00). Vuelve esta tarde.')}
+                        {t('Aún no hay lotes anunciados para la poxa de hoy.')}
                       </p>
                     )}
                     {bl.precios.length > 0 && (
                       <div className="mt-3 pt-3 border-t border-white/10">
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017]">{t('Últimos precios en subasta (€/kg)')}</p>
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017]">{t('Últimos resultados de subasta (€/kg)')}</p>
                         <div className="mt-1.5 space-y-1">
                           {bl.precios.map((p, j) => {
                             const ult = p.serie[p.serie.length - 1];
