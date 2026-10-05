@@ -193,7 +193,7 @@ function AppInner() {
                   <span className="text-[#D4A017]">✦</span>
                   <span>{t("Respuesta del anfitrión < 2 horas")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Garantía Lluvia Gallega")}</span>
+                  <span>{t("Garantía Sol")}</span>
                   <span className="text-[#D4A017]">✦</span>
                   <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
                   <span className="text-[#D4A017]">✦</span>
@@ -205,7 +205,7 @@ function AppInner() {
                   <span className="text-[#D4A017]">✦</span>
                   <span>{t("Respuesta del anfitrión < 2 horas")}</span>
                   <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Garantía Lluvia Gallega")}</span>
+                  <span>{t("Garantía Sol")}</span>
                   <span className="text-[#D4A017]">✦</span>
                   <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
                   <span className="text-[#D4A017]">✦</span>
