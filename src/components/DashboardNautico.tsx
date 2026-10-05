@@ -208,6 +208,15 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     cargar();
     return () => { vivo = false; };
   }, []);
+  const [trafico, setTrafico] = X.useState<{ nombre: string; km: number; min_con_trafico: number; min_sin_trafico: number; retraso_min: number }[]>([]);
+  X.useEffect(() => {
+    let vivo = true;
+    fetch('https://api.illasatlanticasatico.es/api/trafico')
+      .then((r) => r.json())
+      .then((d) => { if (vivo && Array.isArray(d.rutas) && d.rutas.length) setTrafico(d.rutas); })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, []);
   const lightLine =
     llueve
       ? 'AHORA MISMO: LLUVIA SOBRE LA RÍA'
@@ -285,6 +294,23 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               <span className="min-w-0">{a.titulo}{a.texto ? ` — ${a.texto}` : ''}</span>
             </p>
           ))}
+        </div>
+      )}
+
+      {trafico.length > 0 && (
+        <div className="relative z-[5] border-b border-[#123350]/70 bg-[#071522]/92 px-3 py-2 sm:px-6">
+          <div className="mx-auto flex max-w-[1520px] flex-wrap items-baseline gap-x-6 gap-y-1">
+            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#D4A017]">TRÁFICO EN VIVO</span>
+            {trafico.map((t, i) => (
+              <span key={i} className="font-serif text-[12px] italic text-[#A9C9DD] sm:text-[13px]">
+                {t.nombre}: <span className="not-italic font-mono text-[#EBE6DD]">{t.min_con_trafico} min</span>
+                {t.retraso_min > 0 && (
+                  <span className="not-italic text-[11px] text-[#d97a5c]"> (+{t.retraso_min}′ tráfico)</span>
+                )}
+                <span className="not-italic text-[10px] text-[#A9C9DD]/60"> · {t.km} km</span>
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
