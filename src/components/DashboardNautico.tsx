@@ -217,6 +217,15 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       .catch(() => {});
     return () => { vivo = false; };
   }, []);
+  const [polen, setPolen] = X.useState<{ fecha: string; tipos: { nombre: string; categoria: string; color: { red?: number; green?: number; blue?: number } }[] }[]>([]);
+  X.useEffect(() => {
+    let vivo = true;
+    fetch('https://api.illasatlanticasatico.es/api/polen')
+      .then((r) => r.json())
+      .then((d) => { if (vivo && Array.isArray(d.dias) && d.dias.length) setPolen(d.dias); })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, []);
   const lightLine =
     llueve
       ? 'AHORA MISMO: LLUVIA SOBRE LA RÍA'
@@ -308,6 +317,31 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
                   <span className="not-italic text-[11px] text-[#d97a5c]"> (+{t.retraso_min}′ tráfico)</span>
                 )}
                 <span className="not-italic text-[10px] text-[#A9C9DD]/60"> · {t.km} km</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {polen.length > 0 && (
+        <div className="relative z-[5] border-b border-[#123350]/70 bg-[#071522]/92 px-3 py-2 sm:px-6">
+          <div className="mx-auto flex max-w-[1520px] flex-wrap items-baseline gap-x-6 gap-y-1">
+            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#7fb069]">POLEN · ÍNDICE UPI</span>
+            {polen.map((d, i) => (
+              <span key={i} className="font-serif text-[12px] italic text-[#A9C9DD] sm:text-[13px]">
+                <span className="not-italic text-[10px] text-[#A9C9DD]/70">{d.fecha.slice(5).replace('-', '/')}</span>{' '}
+                {d.tipos.map((t, j) => (
+                  <span key={j} className="inline-flex items-center gap-1">
+                    {j > 0 && <span className="text-[#A9C9DD]/40">·</span>}
+                    <span
+                      className="inline-block h-[7px] w-[7px] rounded-full align-middle"
+                      style={{
+                        background: `rgba(${Math.round((t.color?.red ?? 0) * 255)}, ${Math.round((t.color?.green ?? 0) * 255)}, ${Math.round((t.color?.blue ?? 0) * 255)}, 0.9)`,
+                      }}
+                    />
+                    {t.nombre}: <span className="not-italic text-[#EBE6DD]">{t.categoria}</span>
+                  </span>
+                ))}
               </span>
             ))}
           </div>

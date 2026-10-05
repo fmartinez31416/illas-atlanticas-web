@@ -44,6 +44,8 @@ export function Hero({ onOpenBooking }: HeroProps) {
           alt={t("Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño")}
           className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
           loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/30 to-stone-950/40"></div>
       </div>

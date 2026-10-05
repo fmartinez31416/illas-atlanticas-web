@@ -55,18 +55,18 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
     <ellipse cx={Kt(42.625,-8.785)[0]} cy={Kt(42.625,-8.785)[1]} rx="3" ry="1.8" fill="#eadcb6" stroke="#4d3a24" strokeWidth="0.5" />
     }{
     <line x1={Kt(42.559,-8.849)[0]} y1={Kt(42.559,-8.849)[1]} x2={Kt(42.56,-8.832)[0]} y2={Kt(42.56,-8.832)[1]} stroke="#4d3a24" strokeWidth="0.9" />
-    }{ky.map(([g,h,p],b)=>{const[A,O]=Kt(g,h);return <text x={A} y={O} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="IM Fell English" fill="#3f5d74">{p}</text>
+    }{ky.map(([g,h,p],b)=>{const[A,O]=Kt(g,h);return <text x={A} y={O} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3f5d74">{p}</text>
     })}{
-    <text transform={`translate(${Kt(42.574,-8.905).join(" ")}) rotate(-38)`} textAnchor="middle" fontSize="9" letterSpacing="3.2" fontFamily="IM Fell English" fill="#35556e">RÍA DE AROUSA</text>
+    <text transform={`translate(${Kt(42.574,-8.905).join(" ")}) rotate(-38)`} textAnchor="middle" fontSize="9" letterSpacing="3.2" fontFamily="Cormorant Garamond" fill="#35556e">RÍA DE AROUSA</text>
     }{
-    <text transform={`translate(${Kt(42.52,-9.126).join(" ")}) rotate(-90)`} textAnchor="middle" fontSize="7.4" letterSpacing="4" fontFamily="IM Fell English" fill="#35556e">OCÉANO ATLÁNTICO</text>
+    <text transform={`translate(${Kt(42.52,-9.126).join(" ")}) rotate(-90)`} textAnchor="middle" fontSize="7.4" letterSpacing="4" fontFamily="Cormorant Garamond" fill="#35556e">OCÉANO ATLÁNTICO</text>
     }{
-    <text x={Kt(42.386,-8.748)[0]} y={Kt(42.386,-8.748)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="IM Fell English" fill="#35556e">{t("Ría de Pontevedra")}</text>
+    <text x={Kt(42.386,-8.748)[0]} y={Kt(42.386,-8.748)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#35556e">{t("Ría de Pontevedra")}</text>
     }{
-    <text x={Kt(42.432,-8.99)[0]} y={Kt(42.432,-8.99)[1]} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="IM Fell English" fill="#3f6b48">{t("P. N. Illas Atlánticas")}</text>
+    <text x={Kt(42.432,-8.99)[0]} y={Kt(42.432,-8.99)[1]} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3f6b48">{t("P. N. Illas Atlánticas")}</text>
     }{[[t("I. de Sálvora"),42.479,-8.982],["I. de Ons",42.39,-8.905],["I. de Arousa",42.547,-8.905],["Rúa",42.556,-8.95]].map(([g,h,p])=>
-    <text x={Kt(h,p)[0]} y={Kt(h,p)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">{g}</text>
-    )}{qy.map(([g,h,p])=>{const[b,A]=Kt(h,p);return <text x={b} y={A} textAnchor="middle" fontSize="6.6" fontStyle="italic" fontFamily="IM Fell English" fill="#3b2c1a">{g}</text>
+    <text x={Kt(h,p)[0]} y={Kt(h,p)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2c2419">{g}</text>
+    )}{qy.map(([g,h,p])=>{const[b,A]=Kt(h,p);return <text x={b} y={A} textAnchor="middle" fontSize="6.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3b2c1a">{g}</text>
     })}{
     <circle cx="28" cy="30" r="22" fill="none" stroke="#6b3a55" strokeWidth="0.5" />
     }{
@@ -76,11 +76,11 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
     }{
     <text x="28" y="6.6" textAnchor="middle" fontSize="5" fontFamily="Cinzel" fontWeight={700} fill="#6b3a55">N</text>
     }{
-    <text x="28" y="61" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="IM Fell English" fill="#6b3a55">Dm {ah}</text>
+    <text x="28" y="61" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#6b3a55">Dm {ah}</text>
     }{
     <line x1={o} y1={d} x2={o-.8} y2={d+9} stroke="#55514a" strokeWidth="0.55" strokeDasharray="2 1.4" />
     }{
-    <text x={o+4} y={d+2} fontSize="4.4" fontStyle="italic" fontFamily="IM Fell English" fill="#55514a">Rv 175°</text>
+    <text x={o+4} y={d+2} fontSize="4.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#55514a">Rv 175°</text>
     }{
     <path d={`M${o} ${d-3.4} L${o+1.7} ${d+2.4} L${o-1.7} ${d+2.4} Z`} fill="#1a3a5c" transform={`rotate(175 ${o} ${d})`} />
     }{
@@ -99,19 +99,19 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
       }{
       <text x="62" y="11" textAnchor="middle" fontSize="5" letterSpacing="2" fontFamily="Cinzel" fontWeight={700} fill="#2c2419">CARTA NÁUTICA</text>
       }{
-      <text x="62" y="22" textAnchor="middle" fontSize="10" fontStyle="italic" fontFamily="IM Fell English" fill="#1a3a5c">{t("Ría de Arousa")}</text>
+      <text x="62" y="22" textAnchor="middle" fontSize="10" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#1a3a5c">{t("Ría de Arousa")}</text>
       }{
-      <text x="62" y="30.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">De Corrubedo a la Isla de Ons</text>
+      <text x="62" y="30.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2c2419">De Corrubedo a la Isla de Ons</text>
       }{
-      <text x="62" y="38.5" textAnchor="middle" fontSize="3.9" fontFamily="IM Fell English" fill="#4d3a24">Escala aprox. 1:150 000 · Sondas en metros</text>
+      <text x="62" y="38.5" textAnchor="middle" fontSize="3.9" fontFamily="Cormorant Garamond" fill="#4d3a24">Escala aprox. 1:150 000 · Sondas en metros</text>
       }</g>
     }{
     <g transform="translate(258 334)">{[0,1,2].map(g=>
       <rect x={g*16.67} y="0" width="16.67" height="2.4" fill={g%2?"#f4efdd":"#2c2419"} stroke="#2c2419" strokeWidth="0.3" />
       )}{[0,1,2,3].map(g=>
-      <text x={g*16.67} y="8.5" textAnchor="middle" fontSize="4.4" fontFamily="IM Fell English" fill="#2c2419">{g}</text>
+      <text x={g*16.67} y="8.5" textAnchor="middle" fontSize="4.4" fontFamily="Cormorant Garamond" fill="#2c2419">{g}</text>
       )}{
-      <text x="25" y="-2.5" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="IM Fell English" fill="#2c2419">{t("millas náuticas")}</text>
+      <text x="25" y="-2.5" textAnchor="middle" fontSize="4.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2c2419">{t("millas náuticas")}</text>
       }</g>
     }{
     <g opacity="0.92">{
@@ -150,7 +150,7 @@ export function Xy({windDir:s = undefined,windSpeed:u = undefined,currentVel:r =
             }{
             <circle cx={D} cy={q} r="1.3" fill="#2c2419" />
             }{
-            <text x={D+V} y={q+et} textAnchor={ct} fontSize="4.5" fontFamily="IM Fell English" fill="#6b1f4f">{L.char} {L.range}</text>
+            <text x={D+V} y={q+et} textAnchor={ct} fontSize="4.5" fontFamily="Cormorant Garamond" fill="#6b1f4f">{L.char} {L.range}</text>
             }</g>
           })}{s!=null&&
           <g transform={`translate(${m} ${y}) rotate(${s})`}>{
@@ -159,7 +159,7 @@ export function Xy({windDir:s = undefined,windSpeed:u = undefined,currentVel:r =
             <circle r="2" fill="none" stroke="#1a3a5c" strokeWidth="0.7" />
             }</g>
           }{
-          <text x={m+4} y={y+8} fontSize="4.4" fontStyle="italic" fontFamily="IM Fell English" fill="#1a3a5c">viento {kt(u,0)} kn {xa(s)}</text>
+          <text x={m+4} y={y+8} fontSize="4.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#1a3a5c">viento {kt(u,0)} kn {xa(s)}</text>
           }{o!=null&&
           <g transform={`translate(${A} ${O}) rotate(${o})`}>{
             <line x1="0" y1={B/2} x2="0" y2={-B/2} stroke="#2f6f8a" strokeWidth="0.9" />
@@ -167,7 +167,7 @@ export function Xy({windDir:s = undefined,windSpeed:u = undefined,currentVel:r =
             <path d={`M0 ${-B/2-3} L-2.2 ${-B/2+1} L2.2 ${-B/2+1} Z`} fill="#2f6f8a" />
             }</g>
           }{
-          <text x={A} y={O+14} textAnchor="middle" fontSize="4.4" fontStyle="italic" fontFamily="IM Fell English" fill="#2f6f8a">corriente {kt(r,1)} kn</text>
+          <text x={A} y={O+14} textAnchor="middle" fontSize="4.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2f6f8a">corriente {kt(r,1)} kn</text>
           }</svg>
         }{
         <div className="pointer-events-none absolute inset-0 mix-blend-multiply" style={{opacity:.55,backgroundImage:`url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.42  0 0 0 0 0.22  0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`}} />
