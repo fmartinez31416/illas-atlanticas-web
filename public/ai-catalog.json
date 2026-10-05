@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Illas Atlánticas Ático",
+    "url": "https://illasatlanticasatico.es/"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:illasatlanticasatico.es:agent:nia",
+      "displayName": "Nía — asistente virtual del alojamiento",
+      "type": "application/agent-card+json",
+      "url": "https://nia.illasatlanticasatico.es/agent-card.json",
+      "description": "Asistente conversacional del ático vacacional Illas Atlánticas (Aguiño, Ribeira, Galicia). Responde en español, gallego, inglés y portugués sobre la casa, la disponibilidad real de reservas, la lonja de Aguiño, el tráfico hasta el aeropuerto de Santiago, servicios cercanos y la ría de Arousa.",
+      "tags": ["alojamiento", "asistente", "galicia", "turismo"],
+      "representativeQueries": [
+        "¿Qué días hay libres en junio para reservar el ático?",
+        "¿Cuánto se tarda desde el aeropuerto de Santiago a Aguiño?",
+        "¿Qué se subasta hoy en la lonja de Aguiño?"
+      ]
+    }
+  ]
+}
