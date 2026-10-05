@@ -35,7 +35,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#D4A017] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> {t("si está más barato en otra web, lo igualamos y añadimos un 5% extra. ¿Cómo funciona?")}
+                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> {t("si está más barato en un portal oficial de reservas, lo igualamos y añadimos un 5 % extra. ¿Cómo funciona?")}
                   </span>
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
@@ -46,19 +46,20 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     <li>{t("• Mismo alojamiento, mismas fechas y mismo número de huéspedes.")}</li>
                     <li>{t("• Mismas condiciones de reserva y cancelación.")}</li>
                     <li>{t("• Precio público y reservable en el momento de la comparación (quedan fuera errores manifiestos, tarifas de puntos o programas cerrados).")}</li>
+                    <li>{t("• Solo se compara con portales oficiales de reservas (Booking, Airbnb, Vrbo, Expedia, HomeToGo…); no cuentan páginas particulares ni precios sin verificar.")}</li>
                     <li>{t("• Solicítala dentro de las 24 h siguientes a tu reserva directa, antes de la llegada.")}</li>
                     <li>{t("• La diferencia se aplica sobre el precio total de la estancia.")}</li>
                   </ul>
                 </div>
               </details>
 
-              {/* Garantía Lluvia Gallega — derecho transferible */}
+              {/* Garantía Sol — por días, mayo–septiembre */}
               <details className="mt-4 border-l-2 border-[#1A3A5C] pl-4 group">
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#1A3A5C] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">{t("Garantía Lluvia Gallega:")}</strong> {t("si llueve más de la mitad de los días de tu estancia, te regalamos")}{' '}
-                    <strong className="text-[#1A3A5C]">{t("una noche en tu próxima reserva")}</strong> — {t("tuya o de quien tú elijas.")}{' '}
+                    <strong className="text-[#1A3A5C]">{t("Garantía Sol:")}</strong> {t("si en un día de tu estancia (mayo–septiembre) la lluvia acumula más de 5 horas entre las 10:00 y las 20:00, te compensamos")}{' '}
+                    <strong className="text-[#1A3A5C]">{t("el 15 % del precio de ese día")}</strong> {t("como crédito para tu próxima visita.")}{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
                       Condiciones
                     </span>
@@ -66,11 +67,11 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
                   <ul className="space-y-1.5">
-                    <li>{t("• Se activa si llueve (≥5 mm) más de la mitad de los días de tu estancia, de mínimo 3 noches.")}</li>
-                    <li>{t("• Recibes un código válido 12 meses, para una próxima reserva de mínimo 3 noches en la misma época.")}</li>
-                    <li>{t("• Valor: una noche a la tarifa de tu reserva lluviosa. Si la nueva reserva es más cara, descontamos ese importe; si es más barata, la noche entera es gratis.")}</li>
-                    <li>{t("• El código es transferible: puedes regalarlo a familiares o amigos.")}</li>
-                    <li>{t("• Solo reserva directa. Un código por estancia. No acumulable con otras ofertas. Sin valor en efectivo.")}</li>
+                    <li>{t("• Se aplica a estancias entre mayo y septiembre (temporada de sol).")}</li>
+                    <li>{t("• Se mide por días: cada día con más de 5 horas de lluvia entre las 10:00 y las 20:00 cuenta.")}</li>
+                    <li>{t("• Compensación: el 15 % del precio de ese día, como crédito para tu próxima reserva (no en metálico).")}</li>
+                    <li>{t("• Lo comprobamos con el registro meteorológico de las coordenadas exactas de la casa, sin estaciones lejanas.")}</li>
+                    <li>{t("• Solo reserva directa. El crédito se aplica en tu próxima estancia y no es acumulable con otras ofertas.")}</li>
                   </ul>
                 </div>
               </details>

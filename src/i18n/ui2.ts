@@ -141,7 +141,7 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Tarifa oficial garantizada": { es: "Tarifa oficial garantizada", en: "Official rate guaranteed", gl: "Tarifa oficial garantizada" },
   "Reserva directa sin comisiones": { es: "Reserva directa sin comisiones", en: "Direct booking with no commissions", gl: "Reserva directa sen comisións" },
   "Respuesta del anfitrión < 2 horas": { es: "Respuesta del anfitrión < 2 horas", en: "Host response < 2 hours", gl: "Resposta do anfitrión < 2 horas" },
-  "Garantía Lluvia Gallega": { es: "Garantía Lluvia Gallega", en: "Galician Rain Guarantee", gl: "Garantía Choiva Galega" },
+  "Garantía Sol": { es: "Garantía Sol", en: "Sun Guarantee", gl: "Garantía Sol" },
   "Aguiño en vivo — VUT-CO-007656": { es: "Aguiño en vivo — VUT-CO-007656", en: "Aguiño live — VUT-CO-007656", gl: "Aguiño en vivo — VUT-CO-007656" },
   "1. Aviso Legal": { es: "1. Aviso Legal", en: "1. Legal Notice", gl: "1. Aviso Legal" },
   "2. Privacidad (RGPD)": { es: "2. Privacidad (RGPD)", en: "2. Privacy (GDPR)", gl: "2. Privacidade (RXPD)" },
