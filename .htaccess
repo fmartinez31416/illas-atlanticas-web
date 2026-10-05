@@ -17,6 +17,14 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+# Tipos MIME para descubrimiento agéntico
+<Files "llms.txt">
+  ForceType text/markdown
+</Files>
+<Files "ai-catalog.json">
+  ForceType application/ai-catalog+json
+</Files>
+
 # --- Rendimiento: caché de navegador (los assets llevan hash -> inmutables) ---
 <IfModule mod_expires.c>
   ExpiresActive On

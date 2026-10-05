@@ -1,16 +1,14 @@
 # Illas Atlánticas Ático
 
-> Alquiler vacacional de 230 m² en primera línea del puerto de Aguiño (Ribeira, Rías Baixas, Galicia). Terraza privada de 48 m² frente a las islas de Sálvora y Ons. 3 dormitorios (2 en suite), 3 baños, garaje, fibra 1 Gbps. Licencia VUT-CO-007656. Reserva directa sin comisiones de plataforma.
-
-Datos verificados con fuentes oficiales (DOG, Xunta de Galicia, cofradías) y por el anfitrión, residente local. Nada de lo publicado aquí es inventado: cada artículo cita sus fuentes.
+> Alquiler vacacional de 230 m² en primera línea del puerto de Aguiño (Ribeira, Rías Baixas, Galicia). Terraza privada de 48 m² frente a las islas de Sálvora y Ons. 3 dormitorios (2 en suite), 3 baños, garaje, fibra 1 Gbps. Licencia VUT-CO-007656. Reserva directa sin comisiones de plataforma. Datos verificados con fuentes oficiales (DOG, Xunta de Galicia, cofradías) y por el anfitrión, residente local: cada artículo cita sus fuentes.
 
 ## Páginas principales
-- https://illasatlanticasatico.es/: El ático, reserva directa y experiencias (ES/EN/GL)
-- https://illasatlanticasatico.es/puente: Puente de Mando — meteorología local en tiempo real, mareas y avisos AEMET
-- https://illasatlanticasatico.es/lonja: LonjaLens — guía de la lonja de Aguiño y las especies de la ría
-- https://illasatlanticasatico.es/planificador: Planificador de viaje personalizado
-- https://illasatlanticasatico.es/bitacora: Cuaderno de Bitácora — artículos documentados sobre la ría de Arousa, Sálvora, cartografía y gastronomía
-- https://illasatlanticasatico.es/legal: Aviso legal, privacidad y términos
+- [Portada y reserva directa](https://illasatlanticasatico.es/): El ático, reserva directa y experiencias (ES/EN/GL)
+- [Puente de Mando](https://illasatlanticasatico.es/puente): Meteorología local en tiempo real, mareas y avisos AEMET
+- [LonjaLens](https://illasatlanticasatico.es/lonja): Guía de la lonja de Aguiño y las especies de la ría
+- [Planificador](https://illasatlanticasatico.es/planificador): Planificador de viaje personalizado
+- [Cuaderno de Bitácora](https://illasatlanticasatico.es/bitacora): Artículos documentados sobre la ría de Arousa, Sálvora, cartografía y gastronomía
+- [Aviso legal](https://illasatlanticasatico.es/legal): Aviso legal, privacidad y términos
 
 ## Datos clave del alojamiento
 - Dirección: Rúa Francisco Lorenzo Mariño 93, Ático F, 15965 Aguiño (Ribeira, A Coruña)
@@ -18,6 +16,9 @@ Datos verificados con fuentes oficiales (DOG, Xunta de Galicia, cofradías) y po
 - Capacidad: 8 plazas legales, 6 comerciales; 230 m² + terraza 48 m²
 - Registro: VUT-CO-007656 · Entrada 17:00, salida 12:00
 - Contacto: contacto@illasatlanticasatico.es
+
+## Asistente virtual
+- [Nía](https://nia.illasatlanticasatico.es/): Asistente conversacional del alojamiento (ES/GL/EN/PT) — disponibilidad real de reservas, lonja, tráfico y servicios cercanos
 
 ## Contexto de la zona
 - Aguiño es el puerto de embarque hacia la isla de Sálvora (Parque Nacional Marítimo-Terrestre das Illas Atlánticas; cupo limitado de visitantes por día).
