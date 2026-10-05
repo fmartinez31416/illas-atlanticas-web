@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info } from 'lucide-react';
 import { getEspecies, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
 import { CREDITOS_FOTOS } from '../data/creditosEspecies';
@@ -18,11 +18,27 @@ const ARTICULOS_POR_ESPECIE: Record<string, string> = {
   percebe: 'percebe-bravura-rompiente-aguiño-tabla-salmuera',
 };
 
+// Datos en vivo de la lonja (lonxasgalegas40.gal)
+interface LonjaHoyItem { especie: string; kg: string; tipo: string; horario?: string; fao?: string | null }
+interface LonjaSerieItem { fecha: string; medio: string; min: string; max: string; kg: string }
+interface LonjaBloque { nombre: string; codigo: string; hoy: LonjaHoyItem[]; precios: { especie: string; fao: string; serie: LonjaSerieItem[] }[] }
+interface LonjaData { actualizado?: string; lonjas?: LonjaBloque[]; horario?: Record<string, string>; error?: string | null }
+
 export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensProps) {
   const [query, setQuery] = useState('');
   const [filtro, setFiltro] = useState<'todos' | 'marisco' | 'pescado' | 'cefalopodo'>('todos');
   const [seleccionada, setSeleccionada] = useState<Especie | null>(null);
+  const [lonja, setLonja] = useState<LonjaData | null>(null);
   const { lang } = useI18n();
+
+  useEffect(() => {
+    let vivo = true;
+    fetch('https://nia.illasatlanticasatico.es/api/lonja')
+      .then((r) => r.json())
+      .then((d) => { if (vivo) setLonja(d as LonjaData); })
+      .catch(() => { if (vivo) setLonja({ error: 'no-disponible' }); });
+    return () => { vivo = false; };
+  }, []);
 
   const especies = useMemo(() => {
     return getEspecies(lang).filter((e) => {
@@ -92,6 +108,82 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             <p className="text-xs text-stone-500 mt-3 flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-[#D4A017] shrink-0 mt-0.5" />
               {trc('lonja.fuenteTallas', lang, FUENTE_TALLAS)}
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Subasta en vivo — datos reales de lonxasgalegas40.gal */}
+        <Reveal delay={60}>
+          <div className="mt-8 rounded-md p-5 sm:p-6"
+            style={{ background: 'radial-gradient(120% 140% at 50% 0%, #123350 0%, #0B1D2E 55%, #071522 100%)', border: '1px solid rgba(212,160,23,0.35)' }}>
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <h2 className="font-serif text-xl text-[#EBE6DD]">{t('Subasta de hoy en las lonjas de la ría')}</h2>
+              <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4A017] animate-pulse" /> {t('en directo')}
+              </span>
+            </div>
+            {lonja?.error === 'no-disponible' ? (
+              <p className="mt-3 text-sm text-[#A9C9DD]/85 font-light">
+                {t('Los datos de la lonja no están disponibles ahora mismo. Vuelve en un rato.')}
+              </p>
+            ) : (
+              <div className="mt-4 space-y-4">
+                {(lonja?.lonjas || []).map((bl, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 p-4">
+                    <div className="flex items-baseline justify-between flex-wrap gap-2">
+                      <p className="font-serif text-lg text-[#EBE6DD]">{bl.nombre}</p>
+                      {lonja?.horario?.[bl.nombre] && (
+                        <p className="text-[11px] text-[#A9C9DD]/80 font-light">
+                          {t('poxa')} · {lonja.horario[bl.nombre]} · {t('presencial y en línea')}
+                        </p>
+                      )}
+                    </div>
+                    {bl.hoy.length > 0 ? (
+                      <div className="mt-3 space-y-1.5">
+                        {bl.hoy.map((h, j) => (
+                          <div key={j} className="flex items-center justify-between gap-3 px-3 py-2 bg-white/5 border border-white/5">
+                            <span className="text-[#EBE6DD] font-medium text-sm">{h.especie}</span>
+                            <span className="text-xs text-[#A9C9DD]">
+                              {h.kg} {t('kg disponibles')}{h.tipo && h.tipo !== '-' ? ` · ${h.tipo}` : ''}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="mt-2 text-sm text-[#A9C9DD]/70 font-light">
+                        {t('La lonja publica la subasta del día tras la poxa (13:30 – 15:00). Vuelve esta tarde.')}
+                      </p>
+                    )}
+                    {bl.precios.length > 0 && (
+                      <div className="mt-3 pt-3 border-t border-white/10">
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017]">{t('Últimos precios en subasta (€/kg)')}</p>
+                        <div className="mt-1.5 space-y-1">
+                          {bl.precios.map((p, j) => {
+                            const ult = p.serie[p.serie.length - 1];
+                            const ant = p.serie.length > 1 ? p.serie[p.serie.length - 2] : null;
+                            const dif = ant ? parseFloat(String(ult.medio).replace(',', '.')) - parseFloat(String(ant.medio).replace(',', '.')) : 0;
+                            return (
+                              <div key={j} className="text-sm text-[#EBE6DD]/90 font-light flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                                <span className="font-medium">{p.especie}</span>
+                                <span className="text-[#D4A017] font-mono">{ult.medio} €/kg</span>
+                                <span className="text-[10px] text-[#A9C9DD]/60">({ult.fecha})</span>
+                                {ant && dif !== 0 && (
+                                  <span className={`text-[10px] font-medium ${dif > 0 ? 'text-emerald-300/90' : 'text-red-300/90'}`}>
+                                    {dif > 0 ? '▲' : '▼'} {Math.abs(dif).toFixed(2).replace('.', ',')} € {t(dif > 0 ? 'sube' : 'baja')}
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+            <p className="mt-4 pt-3 border-t border-white/10 text-[10px] text-[#A9C9DD]/60 font-light">
+              {t('Fuente:')} lonxasgalegas40.gal · {t('actualizado')} {lonja?.actualizado || '…'} · {t('la lonja no vende al público')}: {t('compra en la plaza de abastos de Ribeira')}.
             </p>
           </div>
         </Reveal>
