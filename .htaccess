@@ -2,19 +2,27 @@
   RewriteEngine On
   RewriteBase /
 
-  # URLs antiguas que ya tienen posiciones en Google -> consolidar en la portada
+  # --- 1. URLs antiguas que ya tienen posiciones en Google -> consolidar en la portada ---
   RewriteRule ^ubicacion/?$ / [R=301,L]
   RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
-  RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies)$ / [R=301,L]
+  RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies|gastronomia|faq)$ / [R=301,L]
+  RewriteRule ^index\.html$ / [R=301,L]
 
-  # Rutas de servicio: servir la SPA directamente (evita el 301 de LiteSpeed por el directorio /puente)
+  # /en /es /gl no son páginas reales (la web traduce en el cliente) -> consolidar
+  RewriteRule ^(en|es|gl)/?$ / [R=301,L]
+
+  # --- 2. Ficheros reales (assets, fotos, favicon, ical, llms.txt...) se sirven tal cual ---
+  # (los directorios NO pasan: /puente es directorio real y debe servir la SPA, no el índice)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # --- 3. Rutas de la SPA ---
   RewriteRule ^(puente|lonja|legal|planificador)/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
+  RewriteRule ^$ /index.html [L]
 
-  # SPA: cualquier otra ruta sin archivo real sirve la app
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  # --- 4. Cualquier otra cosa no existe: 404 real (sin páginas fantasma para Google) ---
+  RewriteRule ^ - [R=404,L]
 </IfModule>
 
 # Tipos MIME para descubrimiento agéntico
