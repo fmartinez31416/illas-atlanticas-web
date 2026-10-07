@@ -83,15 +83,27 @@ function AppInner() {
   }, [lang, currentView]);
 
   // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
-  // cuenta visitas y de dónde vienen (TikTok, Google, directo...) para medir qué funciona.
+  // cuenta visitas, de dónde vienen (TikTok, Google, directo...) y CUÁNTO DURAN
+  // (pulso al entrar + pulso al salir con la duración) para medir qué funciona.
   useEffect(() => {
     if (sessionStorage.getItem('hit_enviado')) return;
     sessionStorage.setItem('hit_enviado', '1');
+    sessionStorage.setItem('t0', String(Date.now()));
     try {
       const referer = document.referrer || 'directo';
       const fuente = new URLSearchParams(window.location.search).get('fuente') || '';
       fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=${encodeURIComponent(referer)}&s=${encodeURIComponent(fuente)}`)
         .catch(() => {});
+      const despedir = () => {
+        const t0 = Number(sessionStorage.getItem('t0') || 0);
+        const seg = t0 ? Math.round((Date.now() - t0) / 1000) : 0;
+        if (seg > 0) {
+          fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=cierre&s=${encodeURIComponent(fuente)}&d=${seg}`, { keepalive: true })
+            .catch(() => {});
+        }
+      };
+      window.addEventListener('pagehide', despedir);
+      return () => window.removeEventListener('pagehide', despedir);
     } catch { /* silencioso: nunca bloquea la web */ }
   }, []);
 
