@@ -2,6 +2,10 @@
   RewriteEngine On
   RewriteBase /
 
+  # www -> sin www (consolidar; solo actúa cuando el certificado cubre www)
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://illasatlanticasatico.es%{REQUEST_URI} [R=301,L]
+
   # --- 1. URLs antiguas que ya tienen posiciones en Google -> consolidar en la portada ---
   RewriteRule ^ubicacion/?$ / [R=301,L]
   RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
