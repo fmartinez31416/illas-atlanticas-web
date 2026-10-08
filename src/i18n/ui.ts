@@ -127,6 +127,8 @@ export const UI: Record<string, Record<Lang, string>> = {
   "Leer la historia completa en el Cuaderno de Bitácora": { es: "Leer la historia completa en el Cuaderno de Bitácora", en: "Read the full story in the Logbook", gl: "Ler a historia completa no Caderno de Bitácora" },
   "Llamar al anfitrión: 606 02 53 18": { es: "Llamar al anfitrión: 606 02 53 18", en: "Call the host: 606 02 53 18", gl: "Chamar ao anfitrión: 606 02 53 18" },
   "Logo Illas Atlánticas Ático": { es: "Logo Illas Atlánticas Ático", en: "Illas Atlánticas Penthouse Logo", gl: "Logo Illas Atlánticas Ático" },
+  "La foto del día": { es: "La foto del día", en: "Today's snapshot", gl: "A foto do día" },
+  "foto del día": { es: "foto del día", en: "today's snapshot", gl: "foto do día" },
   "Lonja de Aguiño": { es: "Lonja de Aguiño", en: "Aguiño Fish Market", gl: "Lonxa de Aguiño" },
   "Puente de Mando": { es: "Puente de Mando", en: "Command Bridge", gl: "Ponte de Mando" },
   "Planificador de viajes": { es: "Planificador de viajes", en: "Trip Planner", gl: "Planificador de viaxes" },

@@ -70,6 +70,9 @@ function AppInner() {
     if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
       window.history.pushState(null, '', objetivo);
     }
+    // Al cambiar de vista, siempre al principio de la página (evita aterrizar
+    // en el listado de especies u otra sección intermedia).
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
   }, [currentView]);
 
   // Título y meta por idioma y por página (SEO)

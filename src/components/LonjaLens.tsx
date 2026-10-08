@@ -22,7 +22,7 @@ const ARTICULOS_POR_ESPECIE: Record<string, string> = {
 interface LonjaHoyItem { especie: string; kg: string; tipo: string; horario?: string; fao?: string | null }
 interface LonjaSerieItem { fecha: string; medio: string; min: string; max: string; kg: string }
 interface LonjaBloque { nombre: string; codigo: string; hoy: LonjaHoyItem[]; precios: { especie: string; fao: string; serie: LonjaSerieItem[] }[] }
-interface LonjaData { actualizado?: string; lonjas?: LonjaBloque[]; horario?: Record<string, string>; error?: string | null }
+interface LonjaData { actualizado?: string; lonjas?: LonjaBloque[]; horario?: Record<string, string>; foto?: Record<string, { hora?: string; hoy: LonjaHoyItem[]; precios: LonjaBloque['precios'] }>; error?: string | null }
 
 export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensProps) {
   const [query, setQuery] = useState('');
@@ -131,7 +131,12 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               </p>
             ) : (
               <div className="mt-4 space-y-4">
-                {(lonja?.lonjas || []).map((bl, i) => (
+                {(lonja?.lonjas || []).map((bl, i) => {
+                  const f = lonja?.foto?.[bl.nombre];
+                  const hoyMostrar = bl.hoy.length > 0 ? bl.hoy : (f?.hoy || []);
+                  const fotoModo = bl.hoy.length === 0 && (f?.hoy?.length ?? 0) > 0;
+                  const preciosMostrar = bl.precios.length > 0 ? bl.precios : (f?.precios || []);
+                  return (
                   <div key={i} className="bg-white/5 border border-white/10 p-4">
                     <div className="flex items-baseline justify-between flex-wrap gap-2">
                       <p className="font-serif text-lg text-[#EBE6DD]">{bl.nombre}</p>
@@ -141,9 +146,14 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                         </p>
                       )}
                     </div>
-                    {bl.hoy.length > 0 ? (
+                    {fotoModo && (
+                      <p className="mt-2 inline-flex items-center gap-2 text-[10px] tracking-[0.16em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1">
+                        📸 {t('La foto del día')} · {f?.hora?.split(' ')[1]?.slice(0, 5) || '…'}
+                      </p>
+                    )}
+                    {hoyMostrar.length > 0 ? (
                       <div className="mt-3 space-y-1.5">
-                        {bl.hoy.map((h, j) => (
+                        {hoyMostrar.map((h, j) => (
                           <div key={j} className="flex items-center justify-between gap-3 px-3 py-2 bg-white/5 border border-white/5">
                             <span className="text-[#EBE6DD] font-medium text-sm">{h.especie}</span>
                             <span className="text-xs text-[#A9C9DD]">
@@ -157,11 +167,13 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                         {t('Aún no hay lotes anunciados para la poxa de hoy.')}
                       </p>
                     )}
-                    {bl.precios.length > 0 && (
+                    {preciosMostrar.length > 0 && (
                       <div className="mt-3 pt-3 border-t border-white/10">
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017]">{t('Últimos resultados de subasta (€/kg)')}</p>
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017]">
+                          {t('Últimos resultados de subasta (€/kg)')}{fotoModo ? ` · ${t('foto del día')}` : ''}
+                        </p>
                         <div className="mt-1.5 space-y-1">
-                          {bl.precios.map((p, j) => {
+                          {preciosMostrar.map((p, j) => {
                             const ult = p.serie[p.serie.length - 1];
                             const ant = p.serie.length > 1 ? p.serie[p.serie.length - 2] : null;
                             const dif = ant ? parseFloat(String(ult.medio).replace(',', '.')) - parseFloat(String(ant.medio).replace(',', '.')) : 0;
@@ -182,7 +194,8 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                       </div>
                     )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             <p className="mt-4 pt-3 border-t border-white/10 text-[10px] text-[#A9C9DD]/60 font-light">
