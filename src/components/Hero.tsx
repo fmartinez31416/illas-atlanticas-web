@@ -131,7 +131,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
           <a
             id="hero-whatsapp-btn"
-            href="https://wa.me/34606025318?text=Hola,%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+            href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, me gustaría consultar disponibilidad para el Ático Illas Atlánticas."))}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 border border-white/30 hover:border-white/60 text-white text-xs uppercase tracking-[0.25em] font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2"

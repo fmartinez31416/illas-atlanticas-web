@@ -47,7 +47,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
   const handleWhatsAppBooking = () => {
     const text = encodeURIComponent(
-      t("Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático:\\n- Fechas: del {checkIn} al {checkOut} ({nights} noches)\\n- Ocupantes: {adults} adultos, {children} niños\\n\\n¿Tienen disponibilidad confirmada para estas fechas?", { checkIn, checkOut, nights, adults, children })
+      t("Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático. Fechas: del {checkIn} al {checkOut} ({nights} noches). Ocupantes: {adults} adultos, {children} niños. ¿Tienen disponibilidad confirmada para estas fechas?", { checkIn, checkOut, nights, adults, children })
     );
     window.open(`https://wa.me/34606025318?text=${text}`, '_blank', 'noopener,noreferrer');
   };
@@ -66,7 +66,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               <div className="space-y-1">
                 <label htmlFor={checkInId} className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
                   <Calendar className="w-3 h-3 text-stone-600" />
-                  <span>Entrada</span>
+                  <span>{t("Entrada")}</span>
                 </label>
                 <input
                   id={checkInId}
@@ -81,7 +81,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               <div className="space-y-1">
                 <label htmlFor={checkOutId} className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
                   <Calendar className="w-3 h-3 text-stone-600" />
-                  <span>Salida</span>
+                  <span>{t("Salida")}</span>
                 </label>
                 <input
                   id={checkOutId}
@@ -96,7 +96,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               <div className="space-y-1">
                 <label htmlFor={adultsId} className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
                   <Users className="w-3 h-3 text-stone-600" />
-                  <span>Adultos</span>
+                  <span>{t("Adultos")}</span>
                 </label>
                 <select
                   id={adultsId}
@@ -105,7 +105,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                   className="w-full px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500"
                 >
                   {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <option key={n} value={n}>{n} {n === 1 ? 'adulto' : 'adultos'}</option>
+                    <option key={n} value={n}>{n} {n === 1 ? t("adulto") : t("adultos")}</option>
                   ))}
                 </select>
               </div>
@@ -113,7 +113,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               <div className="space-y-1">
                 <label htmlFor={childrenId} className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
                   <Users className="w-3 h-3 text-stone-600" />
-                  <span>Niños</span>
+                  <span>{t("Niños")}</span>
                 </label>
                 <select
                   id={childrenId}

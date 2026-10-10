@@ -173,7 +173,7 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-white hover:bg-stone-200 text-stone-950 text-xs font-semibold uppercase tracking-[0.15em] transition-all shadow-md"
                 >
-                  Consultar Disponibilidad
+                  {t("Consultar Disponibilidad")}
                 </button>
               </div>
             </div>

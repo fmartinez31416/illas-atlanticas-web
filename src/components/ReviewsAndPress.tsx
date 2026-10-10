@@ -76,15 +76,15 @@ export function ReviewsAndPress() {
             </div>
             <div>
               <span className="block text-lg font-serif font-semibold text-stone-900">{REVIEW_STATS.servicios}</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Servicios</span>
+              <span className="text-[10px] uppercase tracking-widest text-stone-500">{t("Servicios")}</span>
             </div>
             <div>
               <span className="block text-lg font-serif font-semibold text-stone-900">{REVIEW_STATS.confort}</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Confort</span>
+              <span className="text-[10px] uppercase tracking-widest text-stone-500">{t("Confort")}</span>
             </div>
             <div>
               <span className="block text-lg font-serif font-semibold text-stone-900">{REVIEW_STATS.ubicacion}</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Ubicación</span>
+              <span className="text-[10px] uppercase tracking-widest text-stone-500">{t("Ubicación")}</span>
             </div>
           </div>
 

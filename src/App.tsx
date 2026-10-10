@@ -21,6 +21,7 @@ import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
 import { LangProvider, useI18n, PAGE_META, VIEW_META } from './i18n/LangContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { LanguageHint } from './components/LanguageHint';
 import { t } from './i18n/translate';
 
 export function App() {
@@ -262,6 +263,7 @@ function AppInner() {
 
       <Footer onOpenLegal={() => setCurrentView('legal')} />
       <NiaChat />
+      <LanguageHint />
     </div>
   );
 }

@@ -131,7 +131,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             {/* WhatsApp directo */}
             <a
               id="header-whatsapp-link"
-              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20Ático%20Illas%20Atlánticas."
+              href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, deseo consultar disponibilidad para el Ático Illas Atlánticas."))}`}
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-sm transition-colors border shadow-sm ${
@@ -139,7 +139,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
                   ? 'text-stone-700 hover:text-emerald-700 bg-stone-50 border-stone-200 hover:bg-emerald-50'
                   : 'text-white hover:text-emerald-300 bg-white/10 border-white/20 backdrop-blur-sm'
               }`}
-              title="WhatsApp directo"
+              title={t("WhatsApp directo")}
             >
               <MessageCircle className="w-3.5 h-3.5" />
             </a>
@@ -221,7 +221,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
 
           <div className="flex flex-col space-y-2 pt-2">
             <a
-              href="https://wa.me/34606025318?text=Hola,%20deseo%20consultar%20disponibilidad%20para%20el%20Ático%20Illas%20Atlánticas."
+              href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, deseo consultar disponibilidad para el Ático Illas Atlánticas."))}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-sm border border-emerald-300 text-emerald-800 text-xs uppercase tracking-widest font-medium bg-emerald-50"
@@ -238,7 +238,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
               className="w-full flex items-center justify-center gap-2 py-3 rounded-sm bg-stone-900 text-white text-xs uppercase tracking-widest font-medium"
             >
               <CalendarCheck className="w-4 h-4" />
-              <span>Consultar Disponibilidad</span>
+              <span>{t("Consultar Disponibilidad")}</span>
             </button>
           </div>
 

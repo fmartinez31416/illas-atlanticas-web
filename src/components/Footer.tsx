@@ -84,7 +84,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </span>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://wa.me/34606025318?text=Hola,%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+                  href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, me gustaría consultar disponibilidad para el Ático Illas Atlánticas."))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -118,7 +118,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </li>
               <li>
                 <a href="#servicios" className="hover:text-amber-200 transition-colors">
-                  Equipamiento & Confort
+                  {t("Equipamiento & Confort")}
                 </a>
               </li>
               <li>
@@ -128,7 +128,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </li>
               <li>
                 <a href="#reservas" className="hover:text-amber-200 transition-colors">
-                  Consultar Disponibilidad
+                  {t("Consultar Disponibilidad")}
                 </a>
               </li>
               <li>

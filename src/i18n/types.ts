@@ -8,15 +8,17 @@ export const LANGS: { code: Lang; label: string; native: string }[] = [
 
 export function detectLang(): Lang {
   try {
+    // 1. URL explícita de idioma (/en/ /gl/; /es/ redirige a /): rutas reales para hreflang
+    const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+    const path = window.location.pathname.replace(new RegExp('^' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), '');
+    const m = path.match(/^\/(es|en|gl)\/?$/);
+    if (m) return m[1] as Lang;
+    // 2. Preferencia guardada (el selector la persiste)
     const saved = localStorage.getItem('illa_lang');
     if (saved === 'es' || saved === 'en' || saved === 'gl') return saved;
-    const nav = (navigator.language || 'es').toLowerCase();
-    if (nav.startsWith('gl')) return 'gl';
-    if (nav.startsWith('en')) return 'en';
-    if (nav.startsWith('pt')) return 'en';
-    if (nav.startsWith('fr')) return 'en';
-    if (nav.startsWith('de')) return 'en';
-    if (nav.startsWith('nl')) return 'en';
+    // 3. Determinista para crawlers y primera visita: español.
+    //    (sin detección por navigator.language: Googlebot reporta en-US y pintaría / en inglés,
+    //     rompiendo la coherencia con hreflang es → /)
   } catch { /* SSR / entorno restringido */ }
   return 'es';
 }
