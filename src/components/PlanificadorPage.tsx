@@ -3,6 +3,7 @@ import { Compass, Anchor, Ship, Bus, Car, Plane, Train, MapPin, Clock, Wallet, C
 import { ACTIVIDADES, INTERESES, PARTIDAS, CHECKLIST, googleMapsLink, googleMapsRoute, Interes, Actividad, Franja } from '../data/planData';
 import { Reveal } from './Reveal';
 import { t } from '../i18n/translate';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface PlanificadorPageProps {
   onBack: () => void;
@@ -140,6 +141,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
             <button onClick={onBack} className="inline-flex items-center gap-2 px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors">
               <ChevronLeft className="w-3.5 h-3.5" /> {t("Volver")}
             </button>
+            <LanguageSwitcher dark />
             <div>
               <h1 className="font-serif text-2xl sm:text-3xl text-white tracking-tight">
                 {t("Planificador")} <span className="italic text-[#D4A017]">{t("de Viajes")}</span>
