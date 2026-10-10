@@ -1,3 +1,5 @@
+AddDefaultCharset utf-8
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -12,8 +14,10 @@
   RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies|gastronomia|faq)$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
-  # /en /es /gl no son páginas reales (la web traduce en el cliente) -> consolidar
-  RewriteRule ^(en|es|gl)/?$ / [R=301,L]
+  # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
+  # El español vive en la portada /: /es/ se consolida en / para no duplicar contenido.
+  RewriteRule ^(en|gl)/?$ /index.html [L]
+  RewriteRule ^es/?$ / [R=301,L]
 
   # --- 2. Ficheros reales (assets, fotos, favicon, ical, llms.txt...) se sirven tal cual ---
   # (los directorios NO pasan: /puente es directorio real y debe servir la SPA, no el índice)
