@@ -167,7 +167,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                 {p}
               </span>
               <span className={paso >= p ? 'text-[#1A3A5C]' : ''}>
-                {p === 1 ? 'Origen' : p === 2 ? 'Tu viaje' : p === 3 ? 'Detalles' : 'Tu plan'}
+                {t(p === 1 ? "Origen" : p === 2 ? "Tu viaje" : p === 3 ? "Detalles" : "Tu plan")}
               </span>
               {p < 4 && <span className="w-8 h-px bg-stone-400/50" />}
             </div>
@@ -185,7 +185,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               <div className="grid sm:grid-cols-3 gap-4 mb-10">
                 <label className="block">
                   <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Ciudad de salida")}</span>
-                  <input value={origen} onChange={(e) => setOrigen(e.target.value)} placeholder="Madrid, Ourense…"
+                  <input value={origen} onChange={(e) => setOrigen(e.target.value)} placeholder={t("Madrid, Ourense…")}
                     className="mt-1 w-full px-4 py-3 bg-white border border-[#1A3A5C]/20 focus:border-[#D4A017] outline-none text-sm" />
                 </label>
                 <label className="block">
@@ -203,7 +203,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">{t("Cómo llegar")}</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { icon: Plane, label: 'Vuelos', url: `https://www.google.com/travel/flights?q=Vuelos%20de%20${encodeURIComponent(ciudadAeropuerto)}%20a%20Santiago%20de%20Compostela&curr=EUR`, nota: 'Buscador: Google Flights. Aeropuerto: Santiago (SCQ), a 1 h de Aguiño.' },
+                  { icon: Plane, label: 'Vuelos', url: `https://www.google.com/travel/flights?q=${encodeURIComponent(t("Vuelos de {origen} a Santiago de Compostela", { origen: ciudadAeropuerto }))}&curr=EUR`, nota: 'Buscador: Google Flights. Aeropuerto: Santiago (SCQ), a 1 h de Aguiño.' },
                   { icon: Car, label: 'Coche de alquiler', url: `https://www.rentalcars.com/es/airport/es/scq/?dropLocationName=Aeropuerto%20de%20Santiago`, nota: 'Recogida en SCQ. En el ático tienes garaje privado (plaza 12).' },
                   { icon: Train, label: 'Tren', url: `https://www.omio.es/search/${encodeURIComponent(ciudadAeropuerto)}/Santiago%20de%20Compostela/train`, nota: 'Estación de Santiago. Luego coche o autobús a Ribeira.' },
                   { icon: Bus, label: 'Autobús', url: 'https://www.alsa.es/', nota: 'Alsa y Monbus llegan a Ribeira, a 10 min de Aguiño.' },
@@ -212,7 +212,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                     className="group block p-5 bg-white border border-[#1A3A5C]/15 hover:border-[#D4A017] transition-colors">
                     <div className="flex items-center gap-3 mb-2">
                       <c.icon className="w-5 h-5 text-[#D4A017]" />
-                      <span className="font-serif text-lg text-[#1A3A5C] group-hover:text-[#020817]">{c.label}</span>
+                      <span className="font-serif text-lg text-[#1A3A5C] group-hover:text-[#020817]">{t(c.label)}</span>
                       <ExternalLink className="w-3.5 h-3.5 text-stone-400 ml-auto" />
                     </div>
                     <p className="text-xs text-stone-500 leading-relaxed">{t(c.nota)}</p>
