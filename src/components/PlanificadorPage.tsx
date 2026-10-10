@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Compass, Anchor, Ship, Bus, Car, Plane, Train, MapPin, Clock, Wallet, Check, ChevronLeft, ChevronRight, Umbrella, Waves, Sparkles, Mail, ArrowRight, ExternalLink } from 'lucide-react';
 import { ACTIVIDADES, INTERESES, PARTIDAS, CHECKLIST, googleMapsLink, googleMapsRoute, Interes, Actividad, Franja } from '../data/planData';
 import { Reveal } from './Reveal';
+import { t } from '../i18n/translate';
 
 interface PlanificadorPageProps {
   onBack: () => void;
@@ -127,7 +128,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
     setGuardado(true);
   };
 
-  const ciudadAeropuerto = origen.trim() || 'Tu ciudad';
+  const ciudadAeropuerto = origen.trim() || t("Tu ciudad");
   const btnBase = 'px-6 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold transition-all';
 
   return (
@@ -137,21 +138,21 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <button onClick={onBack} className="inline-flex items-center gap-2 px-3.5 py-2 bg-white/10 hover:bg-white/20 text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors">
-              <ChevronLeft className="w-3.5 h-3.5" /> Volver
+              <ChevronLeft className="w-3.5 h-3.5" /> {t("Volver")}
             </button>
             <div>
               <h1 className="font-serif text-2xl sm:text-3xl text-white tracking-tight">
-                Planificador <span className="italic text-[#D4A017]">de Viajes</span>
+                {t("Planificador")} <span className="italic text-[#D4A017]">{t("de Viajes")}</span>
               </h1>
-              <p className="text-[11px] tracking-[0.22em] uppercase text-[#A9C9DD] font-medium">De tu casa a Aguiño, sin cabos sueltos</p>
+              <p className="text-[11px] tracking-[0.22em] uppercase text-[#A9C9DD] font-medium">{t("De tu casa a Aguiño, sin cabos sueltos")}</p>
               <p className="text-sm text-stone-400 max-w-xl mx-auto leading-relaxed">
-                Antes de reservar, conviene imaginar la ruta: el origen, las fechas, los días que se abrirán ante la ría. Cada decisión hace el viaje un poco más tuyo. No somos una agencia, sino una carta náutica que se traza contigo, punto a punto, hasta fondear en Aguiño.
+                {t("Antes de reservar, conviene imaginar la ruta: el origen, las fechas, los días que se abrirán ante la ría. Cada decisión hace el viaje un poco más tuyo. No somos una agencia, sino una carta náutica que se traza contigo, punto a punto, hasta fondear en Aguiño.")}
               </p>
             </div>
           </div>
           {onOpenBooking && (
             <button onClick={onOpenBooking} className="px-5 py-2.5 bg-[#D4A017] hover:bg-[#b88a12] text-[#020817] text-[11px] uppercase tracking-[0.16em] font-semibold transition-colors">
-              Reservar
+              {t("Reservar")}
             </button>
           )}
         </div>
@@ -179,27 +180,27 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
         {paso === 1 && (
           <Reveal>
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">¿Desde dónde viajas?</h2>
-              <p className="text-stone-600 mb-8">Tu derrota empieza en tu casa. Cuéntanos el origen y montamos el trayecto.</p>
+              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">{t("¿Desde dónde viajas?")}</h2>
+              <p className="text-stone-600 mb-8">{t("Tu derrota empieza en tu casa. Cuéntanos el origen y montamos el trayecto.")}</p>
               <div className="grid sm:grid-cols-3 gap-4 mb-10">
                 <label className="block">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Ciudad de salida</span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Ciudad de salida")}</span>
                   <input value={origen} onChange={(e) => setOrigen(e.target.value)} placeholder="Madrid, Ourense…"
                     className="mt-1 w-full px-4 py-3 bg-white border border-[#1A3A5C]/20 focus:border-[#D4A017] outline-none text-sm" />
                 </label>
                 <label className="block">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Llegada</span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Fecha de llegada")}</span>
                   <input type="date" value={inicio} onChange={(e) => setInicio(e.target.value)}
                     className="mt-1 w-full px-4 py-3 bg-white border border-[#1A3A5C]/20 focus:border-[#D4A017] outline-none text-sm" />
                 </label>
                 <label className="block">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Salida</span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Fecha de salida")}</span>
                   <input type="date" value={fin} onChange={(e) => setFin(e.target.value)}
                     className="mt-1 w-full px-4 py-3 bg-white border border-[#1A3A5C]/20 focus:border-[#D4A017] outline-none text-sm" />
                 </label>
               </div>
 
-              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">Cómo llegar</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">{t("Cómo llegar")}</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   { icon: Plane, label: 'Vuelos', url: `https://www.google.com/travel/flights?q=Vuelos%20de%20${encodeURIComponent(ciudadAeropuerto)}%20a%20Santiago%20de%20Compostela&curr=EUR`, nota: 'Buscador: Google Flights. Aeropuerto: Santiago (SCQ), a 1 h de Aguiño.' },
@@ -207,18 +208,18 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   { icon: Train, label: 'Tren', url: `https://www.omio.es/search/${encodeURIComponent(ciudadAeropuerto)}/Santiago%20de%20Compostela/train`, nota: 'Estación de Santiago. Luego coche o autobús a Ribeira.' },
                   { icon: Bus, label: 'Autobús', url: 'https://www.alsa.es/', nota: 'Alsa y Monbus llegan a Ribeira, a 10 min de Aguiño.' },
                 ].map((c) => (
-                  <a key={c.label} href={c.url} target="_blank" rel="noopener noreferrer"
+                  <a key={t(c.label)} href={c.url} target="_blank" rel="noopener noreferrer"
                     className="group block p-5 bg-white border border-[#1A3A5C]/15 hover:border-[#D4A017] transition-colors">
                     <div className="flex items-center gap-3 mb-2">
                       <c.icon className="w-5 h-5 text-[#D4A017]" />
                       <span className="font-serif text-lg text-[#1A3A5C] group-hover:text-[#020817]">{c.label}</span>
                       <ExternalLink className="w-3.5 h-3.5 text-stone-400 ml-auto" />
                     </div>
-                    <p className="text-xs text-stone-500 leading-relaxed">{c.nota}</p>
+                    <p className="text-xs text-stone-500 leading-relaxed">{t(c.nota)}</p>
                   </a>
                 ))}
               </div>
-              <p className="text-xs text-stone-400 mt-3">Los billetes se contratan en el proveedor — aquí solo te orientamos.</p>
+              <p className="text-xs text-stone-400 mt-3">{t("Los billetes se contratan en el proveedor — aquí solo te orientamos.")}</p>
 
               {origen && (
                 <a href={googleMapsRoute(origen, 'Aguiño, Ribeira, A Coruña')} target="_blank" rel="noopener noreferrer"
@@ -229,7 +230,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
 
               <div className="mt-10 flex justify-end">
                 <button onClick={() => setPaso(2)} className={`${btnBase} bg-[#1A3A5C] text-white hover:bg-[#132B44] inline-flex items-center gap-2`}>
-                  Siguiente: tu viaje <ChevronRight className="w-4 h-4" />
+                  {t("Siguiente: tu viaje")} <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -240,12 +241,12 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
         {paso === 2 && (
           <Reveal>
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">Cuéntanos quién viaja</h2>
-              <p className="text-stone-600 mb-8">Cuanto más sepamos, mejor afinaremos tu plan. Tú decides qué compartir.</p>
+              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">{t("Cuéntanos quién viaja")}</h2>
+              <p className="text-stone-600 mb-8">{t("Cuanto más sepamos, mejor afinaremos tu plan. Tú decides qué compartir.")}</p>
 
               <div className="grid sm:grid-cols-2 gap-6 mb-10">
                 <label className="block">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Personas</span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Personas")}</span>
                   <div className="mt-1 flex items-center gap-3">
                     <button onClick={() => setPersonas(Math.max(1, personas - 1))} className="w-9 h-9 border border-[#1A3A5C]/30 text-[#1A3A5C] font-bold">−</button>
                     <span className="text-xl font-serif text-[#1A3A5C] w-8 text-center">{personas}</span>
@@ -253,46 +254,46 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   </div>
                 </label>
                 <div>
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">Ritmo</span>
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-stone-500 font-semibold">{t("Ritmo")}</span>
                   <div className="mt-1 flex gap-2">
                     {(['tranquilo', 'activo'] as const).map((r) => (
                       <button key={r} onClick={() => setRitmo(r)}
                         className={`px-4 py-2.5 text-sm border transition-colors ${ritmo === r ? 'bg-[#1A3A5C] border-[#1A3A5C] text-white' : 'bg-white border-[#1A3A5C]/25 text-[#1A3A5C] hover:border-[#1A3A5C]'}`}>
-                        {r === 'tranquilo' ? 'Tranquilo' : 'Activo'}
+                        {t(r === "tranquilo" ? "Tranquilo" : "Activo")}
                       </button>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">¿Qué os llama?</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">{t("¿Qué os llama?")}</p>
               <div className="flex flex-wrap gap-2 mb-10">
                 {INTERESES.map((i) => (
                   <button key={i.id} onClick={() =>
                     setIntereses((prev) => prev.includes(i.id) ? prev.filter((x) => x !== i.id) : [...prev, i.id])
                   }
                     className={`px-4 py-2.5 text-sm border transition-colors ${intereses.includes(i.id) ? 'bg-[#D4A017]/15 border-[#D4A017] text-[#8a6a10] font-semibold' : 'bg-white border-[#1A3A5C]/25 text-[#1A3A5C] hover:border-[#1A3A5C]'}`}>
-                    {i.label}
+                    {t(i.label)}
                   </button>
                 ))}
               </div>
 
-              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">Presupuesto orientativo</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">{t("Presupuesto orientativo")}</p>
               <div className="flex gap-2 mb-10">
                 {(['ajustado', 'medio', 'holgado'] as const).map((p) => (
                   <button key={p} onClick={() => setPresupuesto(p)}
                     className={`px-4 py-2.5 text-sm border transition-colors ${presupuesto === p ? 'bg-[#1A3A5C] border-[#1A3A5C] text-white' : 'bg-white border-[#1A3A5C]/25 text-[#1A3A5C]'}`}>
-                    {p === 'ajustado' ? 'Ajustado' : p === 'medio' ? 'Medio' : 'Holgado'}
+                    {t(p === "ajustado" ? "Ajustado" : p === "medio" ? "Medio" : "Holgado")}
                   </button>
                 ))}
               </div>
 
               <div className="flex justify-between">
                 <button onClick={() => setPaso(1)} className={`${btnBase} text-[#1A3A5C] border border-[#1A3A5C]/30 hover:border-[#1A3A5C] inline-flex items-center gap-2`}>
-                  <ChevronLeft className="w-4 h-4" /> Atrás
+                  <ChevronLeft className="w-4 h-4" /> {t("Atrás")}
                 </button>
                 <button onClick={() => setPaso(3)} className={`${btnBase} bg-[#1A3A5C] text-white hover:bg-[#132B44] inline-flex items-center gap-2`}>
-                  Siguiente: detalles <ChevronRight className="w-4 h-4" />
+                  {t("Siguiente: detalles")} <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -303,8 +304,8 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
         {paso === 3 && (
           <Reveal>
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">Los detalles que marcan el viaje</h2>
-              <p className="text-stone-600 mb-8">Todo opcional — pero cada respuesta hace tu plan más tuyo.</p>
+              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">{t("Los detalles que marcan el viaje")}</h2>
+              <p className="text-stone-600 mb-8">{t("Todo opcional — pero cada respuesta hace tu plan más tuyo.")}</p>
               <div className="space-y-5 mb-10">
                 {[
                   { icon: Waves, q: '¿Ver a las mariscadoras en la bajamar? Se observa el oficio de día, desde el puerto.' },
@@ -315,22 +316,22 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   <div key={d.q} className="flex items-start gap-3 p-4 bg-white border border-[#1A3A5C]/15">
                     <d.icon className="w-4 h-4 text-[#D4A017] mt-1 shrink-0" />
                     <div className="flex-1">
-                      <p className="text-sm text-stone-700 mb-2">{d.q}</p>
+                      <p className="text-sm text-stone-700 mb-2">{t(d.q)}</p>
                       <div className="flex gap-3">
-                        <label className="text-sm flex items-center gap-2"><input type="radio" name={d.q} className="accent-[#1A3A5C]" /> Sí</label>
-                        <label className="text-sm flex items-center gap-2"><input type="radio" name={d.q} defaultChecked className="accent-[#1A3A5C]" /> Indiferente</label>
+                        <label className="text-sm flex items-center gap-2"><input type="radio" name={d.q} className="accent-[#1A3A5C]" /> {t("Sí")}</label>
+                        <label className="text-sm flex items-center gap-2"><input type="radio" name={d.q} defaultChecked className="accent-[#1A3A5C]" /> {t("Indiferente")}</label>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-stone-400 mb-8">Estas respuestas nos ayudan a preparar tu llegada. Nunca se comparten con nadie.</p>
+              <p className="text-xs text-stone-400 mb-8">{t("Estas respuestas nos ayudan a preparar tu llegada. Nunca se comparten con nadie.")}</p>
               <div className="flex justify-between">
                 <button onClick={() => setPaso(2)} className={`${btnBase} text-[#1A3A5C] border border-[#1A3A5C]/30 hover:border-[#1A3A5C] inline-flex items-center gap-2`}>
-                  <ChevronLeft className="w-4 h-4" /> Atrás
+                  <ChevronLeft className="w-4 h-4" /> {t("Atrás")}
                 </button>
                 <button onClick={() => setPaso(4)} className={`${btnBase} bg-[#D4A017] text-[#020817] hover:bg-[#b88a12] inline-flex items-center gap-2`}>
-                  <Compass className="w-4 h-4" /> Trazar mi derrota
+                  <Compass className="w-4 h-4" /> {t("Trazar mi derrota")}
                 </button>
               </div>
             </div>
@@ -341,38 +342,38 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
         {paso === 4 && (
           <Reveal>
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">Tu derrota por la Ría de Arousa</h2>
-              <p className="text-stone-600 mb-2">{dias} {dias === 1 ? 'día' : 'días'} · {personas} {personas === 1 ? 'persona' : 'personas'} · ritmo {ritmo} · desde {origen || 'tu casa'}</p>
-              <p className="text-xs text-stone-400 mb-10">Etiquetas: verde = horario estable · dorado = estimación a confirmar · azul = nuestra recomendación. Cada plan se afina al reservar.</p>
+              <h2 className="font-serif text-3xl text-[#1A3A5C] mb-2">{t("Tu derrota por la Ría de Arousa")}</h2>
+              <p className="text-stone-600 mb-2">{dias} {dias === 1 ? t("día") : t("días")} · {personas} {personas === 1 ? t("persona") : t("personas")} · {t("ritmo")} {t(ritmo)} · {t("desde")} {origen || t("tu casa")}</p>
+              <p className="text-xs text-stone-400 mb-10">{t("Etiquetas: verde = horario estable · dorado = estimación a confirmar · azul = nuestra recomendación. Cada plan se afina al reservar.")}</p>
 
               <div className="space-y-8">
                 {plan.map((d) => (
                   <div key={d.dia} className="border border-[#1A3A5C]/15 bg-white">
                     <div className="px-5 py-3 bg-[#1A3A5C] text-white flex items-center gap-3">
                       <Anchor className="w-4 h-4 text-[#D4A017]" />
-                      <span className="font-serif text-lg">Día {d.dia}</span>
+                      <span className="font-serif text-lg">{t("Día {dia}", { dia: d.dia })}</span>
                       <span className="text-[10px] uppercase tracking-[0.2em] text-[#A9C9DD] ml-auto">{inicio ? new Date(new Date(inicio + 'T00:00:00').getTime() + (d.dia - 1) * 86400000).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) : ''}</span>
                     </div>
                     <div className="divide-y divide-[#1A3A5C]/8">
                       {d.franjas.map((f) => (
                         <div key={f.franja} className="p-5 flex flex-wrap items-start gap-4">
-                          <span className="w-16 text-[10px] uppercase tracking-[0.18em] text-stone-400 font-semibold pt-1">{FRANJA_LABEL[f.franja]}</span>
+                          <span className="w-16 text-[10px] uppercase tracking-[0.18em] text-stone-400 font-semibold pt-1">{t(FRANJA_LABEL[f.franja])}</span>
                           <div className="flex-1 min-w-[220px]">
-                            <p className="font-medium text-[#1A3A5C]">{f.act.nombre}</p>
+                            <p className="font-medium text-[#1A3A5C]">{t(f.act.nombre)}</p>
                             <p className="text-xs text-stone-500 mt-1 flex items-center gap-2">
-                              <MapPin className="w-3 h-3 text-[#D4A017]" /> {f.act.lugar} · <Clock className="w-3 h-3 text-[#D4A017]" /> {f.act.duracion}
+                              <MapPin className="w-3 h-3 text-[#D4A017]" /> {t(f.act.lugar)} · <Clock className="w-3 h-3 text-[#D4A017]" /> {t(f.act.duracion)}
                             </p>
-                            {f.act.nota && <p className="text-[11px] text-stone-400 mt-1 italic">{f.act.nota}</p>}
+                            {f.act.nota && <p className="text-[11px] text-stone-400 mt-1 italic">{t(f.act.nota)}</p>}
                           </div>
                           <div className="flex flex-col items-end gap-2">
-                            <span className={`text-[10px] uppercase tracking-[0.14em] font-bold px-2.5 py-1 border ${FIAB_CLASS[f.act.fiabilidad]}`}>{FIAB_LABEL[f.act.fiabilidad]}</span>
+                            <span className={`text-[10px] uppercase tracking-[0.14em] font-bold px-2.5 py-1 border ${FIAB_CLASS[f.act.fiabilidad]}`}>{t(FIAB_LABEL[f.act.fiabilidad])}</span>
                             <span className="text-xs text-stone-500 flex items-center gap-1.5">
                               <Wallet className="w-3 h-3 text-[#D4A017]" />
                               {f.act.precio === 0 ? 'Gratis' : `${f.act.precio[0]}–${f.act.precio[1]} €/p`}
                             </span>
                             <a href={googleMapsLink(f.act.lat, f.act.lng)} target="_blank" rel="noopener noreferrer"
                               className="text-[11px] font-semibold text-[#1A3A5C] underline decoration-[#D4A017] decoration-2 underline-offset-2 inline-flex items-center gap-1">
-                              <MapPin className="w-3 h-3" /> Abrir en Google Maps
+                              <MapPin className="w-3 h-3" /> {t("Abrir en Google Maps")}
                             </a>
                           </div>
                         </div>
@@ -384,25 +385,25 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
 
               {/* Presupuesto */}
               <div className="mt-10 p-6 border border-[#D4A017]/40 bg-white">
-                <h3 className="font-serif text-xl text-[#1A3A5C] mb-4 flex items-center gap-2"><Wallet className="w-5 h-5 text-[#D4A017]" /> Presupuesto orientativo</h3>
+                <h3 className="font-serif text-xl text-[#1A3A5C] mb-4 flex items-center gap-2"><Wallet className="w-5 h-5 text-[#D4A017]" /> {t("Presupuesto orientativo")}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between"><span className="text-stone-600">Excursiones y barcos</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.excursiones[0]}–{presupuestoTotal.excursiones[1]} €</span></div>
-                  <div className="flex justify-between"><span className="text-stone-600">Comidas y marisco ({dias} d × {personas} p)</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.comida[0]}–{presupuestoTotal.comida[1]} €</span></div>
-                  <div className="flex justify-between"><span className="text-stone-600">Transporte ida y vuelta</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.transporte[0]}–{presupuestoTotal.transporte[1]} €</span></div>
-                  <div className="flex justify-between"><span className="text-stone-600">Extras</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.extras[0]}–{presupuestoTotal.extras[1]} €</span></div>
+                  <div className="flex justify-between"><span className="text-stone-600">{t("Excursiones y barcos")}</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.excursiones[0]}–{presupuestoTotal.excursiones[1]} €</span></div>
+                  <div className="flex justify-between"><span className="text-stone-600">{t("Comidas y marisco ({dias} d × {personas} p)", { dias, personas })}</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.comida[0]}–{presupuestoTotal.comida[1]} €</span></div>
+                  <div className="flex justify-between"><span className="text-stone-600">{t("Transporte ida y vuelta")}</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.transporte[0]}–{presupuestoTotal.transporte[1]} €</span></div>
+                  <div className="flex justify-between"><span className="text-stone-600">{t("Extras")}</span><span className="font-semibold text-[#1A3A5C]">{presupuestoTotal.extras[0]}–{presupuestoTotal.extras[1]} €</span></div>
                   <div className="flex justify-between pt-2 border-t border-[#1A3A5C]/15 text-base">
-                    <span className="font-semibold text-[#1A3A5C]">Total estimado</span>
+                    <span className="font-semibold text-[#1A3A5C]">{t("Total estimado")}</span>
                     <span className="font-serif font-bold text-[#1A3A5C]">
                       {Object.values(presupuestoTotal).reduce((a, b) => a + b[0], 0)}–{Object.values(presupuestoTotal).reduce((a, b) => a + b[1], 0)} €
                     </span>
                   </div>
                 </div>
-                <p className="text-[11px] text-stone-400 mt-3">Estimación, no presupuesto cerrado. La casa va aparte. Los rangos se ajustan a tu ritmo y época.</p>
+                <p className="text-[11px] text-stone-400 mt-3">{t("Estimación, no presupuesto cerrado. La casa va aparte. Los rangos se ajustan a tu ritmo y época.")}</p>
               </div>
 
               {/* Maleta contextual */}
               <div className="mt-6 p-6 bg-[#1A3A5C] text-white">
-                <h3 className="font-serif text-xl mb-4">Qué llevar — según tu plan</h3>
+                <h3 className="font-serif text-xl mb-4">{t("Qué llevar — según tu plan")}</h3>
                 <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                   {checklist.map((i) => (
                     <li key={i} className="flex items-center gap-2 text-[#EBE6DD]">
@@ -414,16 +415,16 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
 
               {/* Aviso pre-llegada */}
               <div className="mt-6 p-6 bg-white border border-[#1A3A5C]/15">
-                <h3 className="font-serif text-xl text-[#1A3A5C] mb-2 flex items-center gap-2"><Mail className="w-5 h-5 text-[#D4A017]" /> Una semana antes, te avisamos</h3>
-                <p className="text-sm text-stone-600 mb-4">Te mandamos el pronóstico real de tus rutas y tu lista final. Y si tu ruta es de mojarse, te lo decimos.</p>
+                <h3 className="font-serif text-xl text-[#1A3A5C] mb-2 flex items-center gap-2"><Mail className="w-5 h-5 text-[#D4A017]" /> {t("Una semana antes, te avisamos")}</h3>
+                <p className="text-sm text-stone-600 mb-4">{t("Te mandamos el pronóstico real de tus rutas y tu lista final. Y si tu ruta es de mojarse, te lo decimos.")}</p>
                 {guardado ? (
-                  <p className="text-sm font-semibold text-emerald-800 flex items-center gap-2"><Check className="w-4 h-4" /> Guardado. Una semana antes de tu llegada recibirás el aviso.</p>
+                  <p className="text-sm font-semibold text-emerald-800 flex items-center gap-2"><Check className="w-4 h-4" /> {t("Guardado. Una semana antes de tu llegada recibirás el aviso.")}</p>
                 ) : (
                   <div className="flex flex-wrap gap-3">
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="tu@correo.com"
                       className="flex-1 min-w-[220px] px-4 py-3 bg-white border border-[#1A3A5C]/25 focus:border-[#D4A017] outline-none text-sm" />
                     <button onClick={guardar} className={`${btnBase} bg-[#1A3A5C] text-white hover:bg-[#132B44] inline-flex items-center gap-2`}>
-                      <ArrowRight className="w-4 h-4" /> Guardar mi plan
+                      <ArrowRight className="w-4 h-4" /> {t("Guardar mi plan")}
                     </button>
                   </div>
                 )}
@@ -433,20 +434,20 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               <div className="mt-10 text-center space-y-4">
                 {onOpenBooking && (
                   <button onClick={onOpenBooking} className={`${btnBase} bg-[#D4A017] text-[#020817] hover:bg-[#b88a12] w-full sm:w-auto px-10 py-4 text-sm`}>
-                    Reservar el ático con este plan
+                    {t("Reservar el ático con este plan")}
                   </button>
                 )}
                 <p className="text-xs text-stone-500">
                   ¿Quieres identificar lo que veas en la lonja?{' '}
-                  <button onClick={onOpenLonja} className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">Abre el LonjaLens</button>
+                  <button onClick={onOpenLonja} className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">{t("Abre el LonjaLens")}</button>
                   {' · '}
-                  <a href="https://ilg.usc.es/tradutor/" target="_blank" rel="noopener noreferrer" className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">Traductor de gallego</a>
+                  <a href="https://ilg.usc.es/tradutor/" target="_blank" rel="noopener noreferrer" className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">{t("Traductor de gallego")}</a>
                 </p>
               </div>
 
               <div className="mt-8 flex justify-between">
                 <button onClick={() => setPaso(3)} className={`${btnBase} text-[#1A3A5C] border border-[#1A3A5C]/30 hover:border-[#1A3A5C] inline-flex items-center gap-2`}>
-                  <ChevronLeft className="w-4 h-4" /> Atrás
+                  <ChevronLeft className="w-4 h-4" /> {t("Atrás")}
                 </button>
               </div>
             </div>

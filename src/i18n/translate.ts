@@ -2,9 +2,10 @@
 // incluso en arrays de datos a nivel de módulo (se resuelve en render).
 import { UI } from './ui';
 import { UI2 } from './ui2';
+import { PLANDICT } from './planDict';
 import { Lang, detectLang } from './types';
 
-const ALL_UI: Record<string, Record<Lang, string>> = { ...UI, ...UI2 };
+const ALL_UI: Record<string, Record<Lang, string>> = { ...UI, ...UI2, ...PLANDICT };
 
 let currentLang: Lang = detectLang();
 
