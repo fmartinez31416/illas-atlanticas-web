@@ -46,7 +46,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
             {t("230 m² concebidos para vivir con amplitud")}
           </h2>
           <p className="text-stone-600 text-base sm:text-lg font-light leading-relaxed">
-            {t("Una planta ático con luz marina, 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 48 m² de terraza abierta a la ría y a las islas de Sálvora y Ons.")}
+            {t("Una planta ático con luz marina, 3 dormitorios (dos de ellos con baño en suite), 3 baños completos, despacho independiente y 50 m² de terraza abierta a la ría y a las islas de Sálvora y Ons.")}
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
               {t("230 m² en planta ático con ascensor y garaje privado")}
             </h4>
             <p className="text-stone-600 text-sm font-light mt-2 leading-relaxed">
-              {t("Terraza exterior de 48 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica y 3 cuartos de baño completos (dos en suite y uno común situado junto al salón).")}
+              {t("Terraza exterior de 50 m² orientada al nordeste, chimenea de leña, splits de climatización frío/calor, fibra óptica y 3 cuartos de baño completos (dos en suite y uno común situado junto al salón).")}
             </p>
           </div>
 
