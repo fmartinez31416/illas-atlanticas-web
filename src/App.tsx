@@ -13,6 +13,7 @@ import { LonjaLens } from './components/LonjaLens';
 import { PlanificadorPage } from './components/PlanificadorPage';
 import { NiaChat } from './components/NiaChat';
 import { NiaSection } from './components/NiaSection';
+import { ConsentBanner } from './components/ConsentBanner';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
 import { FaqSection } from './components/FaqSection';
@@ -264,6 +265,7 @@ function AppInner() {
       <Footer onOpenLegal={() => setCurrentView('legal')} />
       <NiaChat />
       <LanguageHint />
+      <ConsentBanner />
     </div>
   );
 }

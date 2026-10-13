@@ -57,15 +57,17 @@ export function LegalPage({ onBack }: LegalPageProps) {
           </section>
 
           <section>
-            <h2 className="text-xl font-serif text-white mb-4">3. Cookies</h2>
+            <h2 className="text-xl font-serif text-white mb-4">3. Cookies y medición de audiencia</h2>
             <p className="mb-3">
-              Esta web <span className="text-white">{t("no utiliza cookies de publicidad ni de seguimiento")}</span>. Medimos las visitas con una baliza propia de un píxel, anónima y sin cookies.
+              {t("legal.cookies.text")}
             </p>
-            <p className="mb-3">
-              Únicamente se emplean los recursos técnicos imprescindibles: las tipografías de Google Fonts, que cargan recursos desde servidores de Google, y el motor de reservas de Beds24 para mostrar disponibilidad y procesar pagos de forma segura (cifrado HTTPS).
-            </p>
+            <ul className="list-disc pl-6 space-y-2 mb-3">
+              <li>{t("legal.cookies.umami")}</li>
+              <li>{t("legal.cookies.baliza")}</li>
+              <li>{t("legal.cookies.clarity")}</li>
+            </ul>
             <p>
-              Puedes desactivar las cookies de tu navegador en cualquier momento; la web seguirá funcionando con normalidad.
+              {t("legal.cookies.salida")}
             </p>
           </section>
 
