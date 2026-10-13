@@ -1,5 +1,5 @@
-// Datos de opiniones — actualizados manualmente desde Booking.com
-// Última actualización: 2026-09-15 (fuente: ficha Booking.com del propietario)
+// Datos de opiniones — fuentes: Booking.com y Google (reseñas verificadas por el propietario)
+// Última actualización: 2026-10-13 (añadidas reseñas de Google: Gonzalo y Esther)
 
 export const REVIEW_STATS = {
   score: '9,5',
@@ -80,6 +80,26 @@ export const REVIEWS: Review[] = [
     details: 'Familia con niños · 4 noches',
     comment:
       'Apartamento enorme, luminoso y con todo lo necesario para venir con niños. La plaza de garaje es un puntazo y la playa está a un paseo. El anfitrión nos recomendó rutas por las islas que fueron lo mejor de las vacaciones.'
+  },
+  {
+    name: 'Gonzalo',
+    country: 'Google',
+    score: '10',
+    title: 'Experiencia inmejorable e indescriptible',
+    date: 'Septiembre 2026',
+    details: 'Reseña de Google',
+    comment:
+      'Experiencia inmejorable e indescriptible. En primer lugar destacar la amabilidad del anfitrión, que está siempre disponible y atento para solventar y facilitar cualquier necesidad que surja. El ático está equipado de todo lo que uno puede necesitar, sea para unos días sueltos o una estancia más larga: incluye cualquier equipación y detalle que uno pueda imaginarse (y más). Cuidadas hasta el último detalle, cada una de las estancias está elegantemente decorada, es altamente espaciosa y permite el descanso, el disfrute y la desconexión. Las vistas desde la gran terraza son inigualables; no hay ruidos ni molestias nocturnas que puedan enturbiar el descanso. El alojamiento tiene todo lo indispensable alrededor (playa, restaurantes, comercio, banco…) y está comunicado fácilmente con las localidades aledañas y con la autopista AG11. Sin duda, una experiencia para recordar y repetir en cuanto sea posible. ¡5 estrellas se quedan MUY cortas!'
+  },
+  {
+    name: 'Esther',
+    country: 'Google',
+    score: '10',
+    title: 'Un 20, no un 10',
+    date: 'Abril 2026',
+    details: 'Reseña de Google',
+    comment:
+      'Un apartamento de lujo en Aguiño con vistas al mar. Levantarte por la mañana y ver el amanecer desde la terraza, con las islas Cíes y Ons de fondo, NO TIENE PRECIO. El apartamento es una maravilla: unas habitaciones enormes, camas cómodas, salón comedor muy grande y la cocina totalmente equipada, con todo tipo de utensilios y electrodomésticos. Plaza de parking con acceso directo al ático por el ascensor. Qué decir del anfitrión Fernando, encantador y muy atento. Conclusión: este apartamento, para nosotros, un 20, no un 10.'
   },
 ];
 // --- Traducciones (ES fuente de verdad) ---
