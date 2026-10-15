@@ -60,8 +60,18 @@ for nombre, ruta in rutas.items():
     check(f"ruta {nombre}", status == 200, f"HTTP {status}")
 
 # /condiciones y /apartamento: expectativa tras despliegue (301 / 200)
-status, h, body = http(BASE + "/apartamento", follow=False)
-check("301 /apartamento -> /", status == 301, f"HTTP {status}")
+import http.client as hc, urllib.parse as _up
+def status_sin_redirect(url):
+    p = _up.urlsplit(url)
+    conn = hc.HTTPSConnection(p.netloc, timeout=30)
+    conn.request("GET", p.path or "/", headers={"User-Agent": "AuditoriaInterna/1.0", "Host": p.netloc})
+    r = conn.getresponse()
+    s = r.status
+    r.read()
+    conn.close()
+    return s
+st_apart = status_sin_redirect(BASE + "/apartamento")
+check("301 /apartamento -> /", st_apart == 301, f"HTTP {st_apart}")
 
 # --- 2. HTML de portada: título + JSON-LD ---
 html_portada = bajar(BASE + "/")
