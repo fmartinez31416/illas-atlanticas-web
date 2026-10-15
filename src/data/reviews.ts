@@ -1,8 +1,8 @@
 // Datos de opiniones — fuentes: Booking.com y Google (reseñas verificadas por el propietario)
-// Última actualización: 2026-10-13 (añadidas reseñas de Google: Gonzalo y Esther)
+// Última actualización: 2026-10-15 (puntuación Booking: 9,4 — vía espejo Amimir y caché de Google; listado Booking temporalmente desactivado)
 
 export const REVIEW_STATS = {
-  score: '9,5',
+  score: '9,4',
   total: 54,
   personal: '9,8',
   servicios: '9,6',
