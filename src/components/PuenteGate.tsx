@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { t } from '../i18n/translate';
 
 interface PuenteGateProps {
   onEnter: (conSonido: boolean) => void;
@@ -40,13 +41,13 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
 
   const lineaViva = astro
     ? astro.raining
-      ? 'LLUVIA SOBRE LA RÍA'
+      ? t('LLUVIA SOBRE LA RÍA')
       : astro.isNight
-        ? `LUNA ${astro.illum ?? '…'} % SOBRE SÁLVORA`
+        ? t('LUNA {illum} % SOBRE SÁLVORA', { illum: astro.illum ?? '…' })
         : astro.overcast
-          ? 'NUBES BAJAS SOBRE SÁLVORA'
-          : 'SOL SOBRE SÁLVORA'
-    : 'LA RÍA, EN ESTE INSTANTE';
+          ? t('NUBES BAJAS SOBRE SÁLVORA')
+          : t('SOL SOBRE SÁLVORA')
+    : t('LA RÍA, EN ESTE INSTANTE');
 
   return (
     <div
@@ -97,19 +98,17 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
             paddingBottom: '0.09em',
           }}
         >
-          El puente <em className="font-normal">de mando</em>
+          {t("El puente")} <em className="font-normal">{t("de mando")}</em>
         </h1>
 
         {/* Manifiesto — kaki oliva, 4 líneas */}
         <p className="mt-8 text-[17px] italic font-light leading-[1.55] text-[#9a9a78] max-w-[560px] mx-auto">
-          Caoba, raíz de nogal y latón frente a Sálvora. Cada instrumento marca el estado real de
-          la Ría de Arousa en este instante, y la luz de hoy —sol o luna— bañará el panel con su
-          intensidad exacta.
+          {t("Caoba, raíz de nogal y latón frente a Sálvora. Cada instrumento marca el estado real de la Ría de Arousa en este instante, y la luz de hoy —sol o luna— bañará el panel con su intensidad exacta.")}
         </p>
 
         {/* Dato vivo */}
         <p className="mt-9 text-[10.5px] uppercase tracking-[0.28em] text-[#8a6a40]">
-          Ahora mismo: <span className="text-[#b08a4a]">{lineaViva}</span>
+          {t("Ahora mismo:")} <span className="text-[#b08a4a]">{lineaViva}</span>
         </p>
 
         {/* Acciones */}
@@ -123,20 +122,20 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
               boxShadow: '0 6px 18px rgba(0,0,0,0.5)',
             }}
           >
-            Subir al puente · Con sonido
+            {t("Subir al puente · Con sonido")}
           </button>
           <button
             onClick={() => onEnter(false)}
             className="px-6 py-3.5 rounded-full text-[13px] uppercase tracking-[0.18em] font-medium font-serif text-[#a08a6a] border border-[#a08020] transition-all duration-300 hover:bg-[#e0c080]/10 hover:border-[#c0a040] focus:outline-none focus:ring-2 focus:ring-[#c0a040]/40"
             style={{ background: 'rgba(10,8,5,0.4)' }}
           >
-            En silencio
+            {t("En silencio")}
           </button>
         </div>
 
         {/* Coordenadas */}
         <p className="mt-14 text-[11px] italic tracking-[0.1em] text-[#635133]">
-          42°27'39" N · 9°00'54" W — la terraza del ático, convertida en el puente de un clíper
+          {t("42°27'39\" N · 9°00'54\" W — la terraza del ático, convertida en el puente de un clíper")}
         </p>
       </div>
 
@@ -145,7 +144,7 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
         onClick={onVolverCasa}
         className="absolute top-5 left-6 z-10 text-[10px] uppercase tracking-[0.32em] text-[#635133] hover:text-[#c9a050] transition-colors"
       >
-        Volver
+        {t("Volver")}
       </button>
 
       <style>{`

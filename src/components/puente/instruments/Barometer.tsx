@@ -45,7 +45,7 @@ export const dy=X.memo(function(){const u=[];for(let d=Fi;d<=_c;d++){const m=We(
     }{
     <text x="100" y="125.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3a3024">mm Hg</text>
     }{
-    <text x="100" y="148" textAnchor="middle" fontSize="4.3" letterSpacing="1.6" fontFamily="Cinzel" fill="#3a3024">COMPENSADO</text>
+    <text x="100" y="148" textAnchor="middle" fontSize="4.3" letterSpacing="1.6" fontFamily="Cinzel" fill="#3a3024"> {t("COMPENSADO")}</text>
     }{
     <text x="100" y="158" textAnchor="middle" fontSize="6" letterSpacing="1.3" fontFamily="Cinzel" fontWeight={600} fill="#17120c">ILLAS ATLÁNTICAS</text>
     }{

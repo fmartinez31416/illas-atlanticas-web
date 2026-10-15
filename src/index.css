@@ -122,3 +122,9 @@
   box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.2);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  div[style*="marquee"] {
+    animation: none !important;
+  }
+}

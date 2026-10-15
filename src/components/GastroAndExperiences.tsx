@@ -48,13 +48,13 @@ export function GastroAndExperiences() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-amber-500 uppercase tracking-[0.4em] text-xs font-bold mb-3 block">
-            Módulo Diferencial
+            {t("Módulo Diferencial")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-zinc-50 tracking-tight mb-5">
             Experiencias de Ría & <span className="italic font-light text-amber-100">{t("Asistente Gastro")}</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed">
-            Nuestra ubicación en Aguiño te abre las puertas a la mayor riqueza marisquera del Atlántico, con asesoramiento cercano y maridajes de la casa.
+            {t("Nuestra ubicación en Aguiño te abre las puertas a la mayor riqueza marisquera del Atlántico, con asesoramiento cercano y maridajes de la casa.")}
           </p>
         </div>
 
@@ -153,11 +153,11 @@ export function GastroAndExperiences() {
                 <span>{t("Sumillería & Maridaje Interactivo")}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-serif text-zinc-50">
-                Guía de Maridajes de la Ría de Arousa
+                {t("Guía de Maridajes de la Ría de Arousa")}
               </h3>
             </div>
             <span className="text-xs text-zinc-400 font-light max-w-xs text-left md:text-right">
-              Selecciona una captura autóctona para descubrir el vino y nota de cata perfecta.
+              {t("Selecciona una captura autóctona para descubrir el vino y nota de cata perfecta.")}
             </span>
           </div>
 
@@ -211,7 +211,7 @@ export function GastroAndExperiences() {
                 <div>
                   <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-amber-500">
                     <Wine className="w-4 h-4" />
-                    <span>Vino Recomendado: {selectedPairing.wineName}</span>
+                    <span>{t("Vino Recomendado:")} {selectedPairing.wineName}</span>
                   </div>
                   <p className="text-zinc-300 text-xs sm:text-sm font-light leading-relaxed">
                     {selectedPairing.notes}
@@ -261,7 +261,7 @@ export function GastroAndExperiences() {
           {/* Local Restaurants Mini Guide */}
           <div className="mt-12">
             <h4 className="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">
-              Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira
+              {t("Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira")}
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {getGastroRestaurants(lang).map((resto, idx) => (

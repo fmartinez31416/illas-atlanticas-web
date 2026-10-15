@@ -89,7 +89,7 @@ export function BlogSection({ onOpenBitacora }: BlogSectionProps) {
                   aria-label={t("Leer artículo: {title}", { title: article.title })}
                   className="flex items-center gap-1.5 text-xs uppercase tracking-[0.15em] text-stone-300 group-hover:text-amber-200 font-medium transition-colors"
                 >
-                  <span>Leer</span>
+                  <span>{t("Leer")}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>

@@ -16,6 +16,7 @@ import { gx, vx as usePuenteData, Sx as useDeviceHeading, yx, Ex, Ft, Tx } from 
 import { Dn, Qx, xh, Px, yh, Ux, $1, ce, Fx, ph } from './puente/astro';
 import { da as bridgeSound, lh } from './puente/sound';
 import { isOceanOn, stopOcean } from '../lib/oceanSound';
+import { t } from '../i18n/translate';
 
 import { il as Plaque, Ga as Panel } from './puente/parts';
 import { oy as Campanas } from './puente/instruments/Bells';
@@ -136,15 +137,15 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       if (sun && sun.alt < -8 && moon.alt > 8 && (!best || moon.alt > best.alt)) best = { t: moon.t, alt: moon.alt };
     });
     const found = best as { t: number; alt: number } | null;
-    if (found) return { label: 'Luna', minutes: Dn(new Date(found.t)) };
+    if (found) return { label: t('Luna'), minutes: Dn(new Date(found.t)) };
     const nauticalDusk = almanac.nauticalDusk ? new Date(almanac.nauticalDusk.getTime() + 90 * 6e4) : null;
-    return { label: 'Noche', minutes: nauticalDusk && nauticalDusk.getTime() < almanac.dayEnd ? Dn(nauticalDusk) : 1410 };
+    return { label: t('Noche'), minutes: nauticalDusk && nauticalDusk.getTime() < almanac.dayEnd ? Dn(nauticalDusk) : 1410 };
   }, [almanac]);
 
   const presets = [
-    { label: 'Alba', minutes: almanac.sunrise ? minOf(new Date(almanac.sunrise.getTime() - 12 * 6e4)) : null },
-    { label: 'Mediodía', minutes: minOf(almanac.solarNoon) },
-    { label: 'Ocaso', minutes: almanac.sunset ? minOf(new Date(almanac.sunset.getTime() + 4 * 6e4)) : null },
+    { label: t('Alba'), minutes: almanac.sunrise ? minOf(new Date(almanac.sunrise.getTime() - 12 * 6e4)) : null },
+    { label: t('Mediodía'), minutes: minOf(almanac.solarNoon) },
+    { label: t('Ocaso'), minutes: almanac.sunset ? minOf(new Date(almanac.sunset.getTime() + 4 * 6e4)) : null },
     lunarPreset,
   ];
 
@@ -228,14 +229,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
   }, []);
   const lightLine =
     llueve
-      ? 'AHORA MISMO: LLUVIA SOBRE LA RÍA'
+      ? t('AHORA MISMO: LLUVIA SOBRE LA RÍA')
       : lighting.source === 'sun'
-        ? `AHORA MISMO: SOL · ${lighting.value.toUpperCase()} SOBRE LA RÍA`
+        ? t('AHORA MISMO: SOL · {v} SOBRE LA RÍA', { v: lighting.value.toUpperCase() })
         : lighting.source === 'moon'
-          ? `AHORA MISMO: LUNA ${Math.round(sky.moonFraction * 100)} % SOBRE SÁLVORA`
+          ? t('AHORA MISMO: LUNA {n} % SOBRE SÁLVORA', { n: Math.round(sky.moonFraction * 100) })
           : lighting.source === 'twilight'
-            ? 'AHORA MISMO: CREPÚSCULO SOBRE LA RÍA'
-            : 'AHORA MISMO: NOCHE CERRADA · FAROS ENCENDIDOS';
+            ? t('AHORA MISMO: CREPÚSCULO SOBRE LA RÍA')
+            : t('AHORA MISMO: NOCHE CERRADA · FAROS ENCENDIDOS');
 
   const header = (
     <div className="relative h-[60px] wood-h shadow-[0_10px_22px_rgba(0,0,0,.6)] sm:h-[68px]">
@@ -252,14 +253,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               ILLAS ATLÁNTICAS
             </span>
             <span className="block truncate font-serif text-[12px] italic text-[#e6d3a8]/85 sm:text-[13.5px]">
-              Puente de mando · Aguiño, Ría de Arousa
+              {t("Puente de mando · Aguiño, Ría de Arousa")}
             </span>
           </span>
         </button>
 
         <div className="relative isolate hidden items-center gap-3 rounded-md px-4 py-1.5 plaque lg:flex">
           <span className={`jewel ${live ? 'green' : 'amber'}`} />
-          <span className="font-display text-[10px] font-semibold tracking-[0.3em] engraved">{live ? 'EN VIVO' : 'SIMULACIÓN'}</span>
+          <span className="font-display text-[10px] font-semibold tracking-[0.3em] engraved">{live ? t('EN VIVO') : t('SIMULACIÓN')}</span>
           <span className="font-serif text-[18px] font-bold tabular-nums engraved">{Fx(shown)}</span>
           <span className="font-serif text-[14px] italic capitalize engraved-soft">{ph(shown)}</span>
           <div className="shade shade-lamp-soft rounded-md" />
@@ -274,14 +275,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             onClick={onBack}
             className="hidden rounded-full border border-[#f1d58f]/40 px-4 py-2 font-display text-[10px] tracking-[0.22em] text-[#f1d58f] transition hover:bg-white/5 sm:inline-flex"
           >
-            ← EL ÁTICO
+            {t("← EL ÁTICO")}
           </button>
           <button
             type="button"
             onClick={() => onOpenBooking?.()}
             className="brass-btn rounded-full px-4 py-2 font-display text-[10px] font-bold tracking-[0.22em]"
           >
-            RESERVAR
+            {t("RESERVAR")}
           </button>
         </div>
       </div>
@@ -299,7 +300,7 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         <div className="relative z-[5] border-b border-[#8a2f22]/60 bg-[#2a0f0a]/92 px-3 py-2 sm:px-6">
           {avisos.map((a, i) => (
             <p key={i} className="mx-auto flex max-w-[1520px] items-baseline gap-2 font-serif text-[12px] italic leading-snug text-[#f0c9a0] sm:text-[13.5px]">
-              <span className="shrink-0 font-display text-[9px] font-bold not-italic tracking-[0.24em] text-[#d97a5c]">AVISO {a.fuente || 'AEMET'}</span>
+              <span className="shrink-0 font-display text-[9px] font-bold not-italic tracking-[0.24em] text-[#d97a5c]">{t("AVISO")} {a.fuente || 'AEMET'}</span>
               <span className="min-w-0">{a.titulo}{a.texto ? ` — ${a.texto}` : ''}</span>
             </p>
           ))}
@@ -309,14 +310,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       {trafico.length > 0 && (
         <div className="relative z-[5] border-b border-[#123350]/70 bg-[#071522]/92 px-3 py-2 sm:px-6">
           <div className="mx-auto flex max-w-[1520px] flex-wrap items-baseline gap-x-6 gap-y-1">
-            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#D4A017]">TRÁFICO EN VIVO</span>
-            {trafico.map((t, i) => (
+            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#D4A017]">{t("TRÁFICO EN VIVO")}</span>
+            {trafico.map((tf, i) => (
               <span key={i} className="font-serif text-[12px] italic text-[#A9C9DD] sm:text-[13px]">
-                {t.nombre}: <span className="not-italic font-mono text-[#EBE6DD]">{t.min_con_trafico} min</span>
-                {t.retraso_min > 0 && (
-                  <span className="not-italic text-[11px] text-[#d97a5c]"> (+{t.retraso_min}′ tráfico)</span>
+                {tf.nombre}: <span className="not-italic font-mono text-[#EBE6DD]">{tf.min_con_trafico} min</span>
+                {tf.retraso_min > 0 && (
+                  <span className="not-italic text-[11px] text-[#d97a5c]"> (+{tf.retraso_min}′ {t("tráfico")})</span>
                 )}
-                <span className="not-italic text-[10px] text-[#A9C9DD]/60"> · {t.km} km</span>
+                <span className="not-italic text-[10px] text-[#A9C9DD]/60"> · {tf.km} km</span>
               </span>
             ))}
           </div>
@@ -326,20 +327,20 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
       {polen.length > 0 && (
         <div className="relative z-[5] border-b border-[#123350]/70 bg-[#071522]/92 px-3 py-2 sm:px-6">
           <div className="mx-auto flex max-w-[1520px] flex-wrap items-baseline gap-x-6 gap-y-1">
-            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#7fb069]">POLEN · ÍNDICE UPI</span>
+            <span className="font-display text-[9px] font-bold tracking-[0.24em] text-[#7fb069]">{t("POLEN · ÍNDICE UPI")}</span>
             {polen.map((d, i) => (
               <span key={i} className="font-serif text-[12px] italic text-[#A9C9DD] sm:text-[13px]">
                 <span className="not-italic text-[10px] text-[#A9C9DD]/70">{d.fecha.slice(5).replace('-', '/')}</span>{' '}
-                {d.tipos.map((t, j) => (
+                {d.tipos.map((tp, j) => (
                   <span key={j} className="inline-flex items-center gap-1">
                     {j > 0 && <span className="text-[#A9C9DD]/40">·</span>}
                     <span
                       className="inline-block h-[7px] w-[7px] rounded-full align-middle"
                       style={{
-                        background: `rgba(${Math.round((t.color?.red ?? 0) * 255)}, ${Math.round((t.color?.green ?? 0) * 255)}, ${Math.round((t.color?.blue ?? 0) * 255)}, 0.9)`,
+                        background: `rgba(${Math.round((tp.color?.red ?? 0) * 255)}, ${Math.round((tp.color?.green ?? 0) * 255)}, ${Math.round((tp.color?.blue ?? 0) * 255)}, 0.9)`,
                       }}
                     />
-                    {t.nombre}: <span className="not-italic text-[#EBE6DD]">{t.categoria}</span>
+                    {tp.nombre}: <span className="not-italic text-[#EBE6DD]">{tp.categoria}</span>
                   </span>
                 ))}
               </span>
@@ -369,8 +370,8 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         <div className="shade" />
         <div className="relative z-[7] mx-auto max-w-[1520px] px-3 pb-16 pt-8 sm:px-6 lg:px-10">
           <div className="mb-7 flex flex-col items-center gap-2 text-center">
-            <Plaque title="PUENTE DE MANDO · ILLAS ATLÁNTICAS" className="px-10 py-2.5">
-              {Ex(model.code)} en Aguiño · la misma vista que tiene un capitán fondeado frente a Sálvora
+            <Plaque title={t("PUENTE DE MANDO · ILLAS ATLÁNTICAS")} className="px-10 py-2.5">
+              {Ex(model.code)} {t("en Aguiño · la misma vista que tiene un capitán fondeado frente a Sálvora")}
             </Plaque>
           </div>
 
@@ -476,12 +477,10 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
         <div className="relative z-[7] mx-auto max-w-[1520px] px-4 py-9 text-center">
           <div className="relative isolate mx-auto max-w-3xl rounded-md px-6 py-4 plaque">
             <p className="font-display text-[10px] font-semibold tracking-[0.32em] engraved">
-              ILLAS ATLÁNTICAS ÁTICO · AGUIÑO · VUT-CO-007656
+              {t("ILLAS ATLÁNTICAS ÁTICO · AGUIÑO · VUT-CO-007656")}
             </p>
             <p className="mt-1.5 font-serif text-[14px] italic leading-snug engraved-soft">
-              Meteorología y mar en tiempo real: Open-Meteo.com (CC BY 4.0) — modelos DWD, Météo-France y ECMWF. Efemérides
-              calculadas para {Ie.latLabel} · {Ie.lonLabel}. Características de los faros según el Libro de Faros. Instrumentos
-              ilustrativos: no aptos para la navegación.
+              {t("Meteorología y mar en tiempo real: Open-Meteo.com (CC BY 4.0) — modelos DWD, Météo-France y ECMWF. Efemérides calculadas para")} {Ie.latLabel} · {Ie.lonLabel}{t(". Características de los faros según el Libro de Faros. Instrumentos ilustrativos: no aptos para la navegación.")}
             </p>
             <div className="shade shade-lamp-soft rounded-md" />
           </div>
@@ -491,14 +490,14 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
               onClick={onBack}
               className="rounded-full border border-[#f1d58f]/40 px-5 py-2.5 font-display text-[10.5px] tracking-[0.24em] text-[#f1d58f] transition hover:bg-white/5"
             >
-              ← VOLVER AL ÁTICO
+              {t("← VOLVER AL ÁTICO")}
             </button>
             <button
               type="button"
               onClick={() => onOpenBooking?.()}
               className="brass-btn rounded-full px-5 py-2.5 font-display text-[10.5px] font-bold tracking-[0.24em]"
             >
-              RESERVAR ESTE PUENTE
+              {t("RESERVAR ESTE PUENTE")}
             </button>
           </div>
         </div>

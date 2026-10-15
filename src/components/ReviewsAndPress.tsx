@@ -52,7 +52,7 @@ export function ReviewsAndPress() {
           <div className="flex items-center gap-5 text-center sm:text-left">
             <div className="w-20 h-20 bg-stone-900 text-white flex flex-col items-center justify-center shrink-0 shadow-sm">
               <span className="text-3xl font-serif font-bold leading-none">{REVIEW_STATS.score}</span>
-              <span className="text-[10px] uppercase tracking-wider text-stone-300 mt-1">de 10</span>
+              <span className="text-[10px] uppercase tracking-wider text-stone-300 mt-1">{t("de 10")}</span>
             </div>
             <div>
               <div className="flex items-center justify-center sm:justify-start gap-1 text-amber-500 mb-1">
@@ -72,7 +72,7 @@ export function ReviewsAndPress() {
           <div className="grid grid-cols-4 gap-4 text-center lg:border-l border-stone-200 lg:pl-8 w-full lg:w-auto">
             <div>
               <span className="block text-lg font-serif font-semibold text-stone-900">{REVIEW_STATS.personal}</span>
-              <span className="text-[10px] uppercase tracking-widest text-stone-500">Personal</span>
+              <span className="text-[10px] uppercase tracking-widest text-stone-500">{t("Personal")}</span>
             </div>
             <div>
               <span className="block text-lg font-serif font-semibold text-stone-900">{REVIEW_STATS.servicios}</span>
@@ -93,7 +93,7 @@ export function ReviewsAndPress() {
             className="hidden lg:inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all shadow-sm shrink-0"
           >
             <CalendarCheck className="w-3.5 h-3.5" />
-            <span>Reservar Directo</span>
+            <span>{t("Reservar Directo")}</span>
           </button>
         </div>
 
@@ -114,7 +114,7 @@ export function ReviewsAndPress() {
                   <div className="flex items-center justify-between mb-4">
                     <Quote className="w-6 h-6 text-stone-300 stroke-1" />
                     <span className="px-2 py-0.5 bg-stone-900 text-white text-xs font-serif font-bold">
-                      {rev.score}
+                      {rev.country === 'Google' ? '5/5' : rev.score}
                     </span>
                   </div>
                   <h4 className="text-base font-serif font-semibold text-stone-900 mb-2 leading-snug">
@@ -134,7 +134,7 @@ export function ReviewsAndPress() {
                     </span>
                   </div>
                   <span className="text-[9px] uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-1 rounded font-medium border border-emerald-200 shrink-0">
-                    Verificada
+                    {t("Verificada")}
                   </span>
                 </div>
               </article>

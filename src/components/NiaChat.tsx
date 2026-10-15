@@ -13,7 +13,7 @@ const SUGERENCIAS = [
   t('¿Qué tiempo hace hoy?'),
   t('¿Dónde comprar marisco?'),
   t('¿Cómo se cocina el percebe?'),
-  'Precios y reservas',
+  t('Precios y reservas'),
 ];
 
 export function NiaChat() {
@@ -123,12 +123,11 @@ export function NiaChat() {
           <div className="relative max-w-[240px] bg-[#1A3A5C] text-[#EBE6DD] text-[13px] leading-snug rounded-lg rounded-br-none px-4 py-3 shadow-xl border border-[#D4A017]/60 animate-[fadeIn_.4s_ease]">
             <button
               onClick={() => { setSaludo(false); try { localStorage.setItem('nia_saludo_v1', '1'); } catch {} }}
-              aria-label="Cerrar aviso"
+              aria-label={t("Cerrar aviso")}
               className="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-[#D4A017] text-stone-950 text-[10px] flex items-center justify-center hover:bg-[#B88A10]"
             >✕</button>
             <p>
-              Hola, soy <span className="font-serif text-[#D4A017]">Nía</span>, la voz de la casa.
-              Pregúntame lo que quieras.
+              {t("Hola, soy")} <span className="font-serif text-[#D4A017]">Nía</span>{t(", la voz de la casa. Pregúntame lo que quieras.")}
             </p>
           </div>
         )}
@@ -160,7 +159,7 @@ export function NiaChat() {
             <div className="min-w-0">
               <p className="font-serif text-base text-[#EBE6DD] leading-tight">Nía</p>
               <p className="text-[10px] uppercase tracking-[0.16em] text-[#A9C9DD]">
-                Anfitriona · Aguiño en directo
+                {t("Anfitriona · Aguiño en directo")}
               </p>
             </div>
           </div>
@@ -169,8 +168,7 @@ export function NiaChat() {
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#EBE6DD]">
             {mensajes.length === 0 && !escribiendo && (
               <p className="text-sm text-stone-600 font-light leading-relaxed">
-                Soy Nía, la voz de la casa. Pregúntame por el tiempo, la lonja, la cocina…
-                o dime tus fechas y te digo disponibilidad y precios reales.
+                {t("Soy Nía, la voz de la casa. Pregúntame por el tiempo, la lonja, la cocina… o dime tus fechas y te digo disponibilidad y precios reales.")}
               </p>
             )}
             {mensajes.map((m, i) => (
@@ -230,7 +228,7 @@ export function NiaChat() {
             <button
               type="submit"
               disabled={!entrada.trim() || escribiendo}
-              aria-label="Enviar"
+              aria-label={t("Enviar")}
               className="w-9 h-9 flex items-center justify-center bg-[#D4A017] disabled:opacity-40 hover:bg-[#B88A10] text-stone-950 transition-colors"
             >
               <Send className="w-4 h-4" />
@@ -238,7 +236,7 @@ export function NiaChat() {
           </form>
 
           <p className="px-4 py-1.5 text-[9px] text-stone-400 bg-white border-t border-stone-100">
-            Si Nía no puede ayudarte, te deriva con Fernando, el anfitrión.
+            {t("Si Nía no puede ayudarte, te deriva con Fernando, el anfitrión.")}
           </p>
         </div>
       )}

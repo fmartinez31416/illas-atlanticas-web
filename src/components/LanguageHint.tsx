@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { t } from '../i18n/translate';
 import { useI18n } from '../i18n/LangContext';
 
 /**
@@ -62,7 +63,7 @@ export function LanguageHint() {
         <button
           type="button"
           onClick={dismiss}
-          aria-label="Cerrar"
+          aria-label={t("Cerrar")}
           className="ml-auto text-[#EBE6DD]/60 hover:text-[#EBE6DD] text-[16px] leading-none px-1"
         >
           ✕

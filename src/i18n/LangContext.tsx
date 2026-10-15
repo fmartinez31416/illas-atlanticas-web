@@ -90,6 +90,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Aviso legal · Illas Atlánticas Ático, Aguiño',
       description: 'Aviso legal, privacidad y condiciones de Illas Atlánticas Ático, alojamiento vacacional en Aguiño (Ribeira, Rías Baixas).',
     },
+    condiciones: {
+      title: 'Condiciones de reserva · Illas Atlánticas Ático, Aguiño',
+      description: 'Condiciones de reserva de Illas Atlánticas Ático: precios, pagos, cancelación flexible y normas de la casa en Aguiño (Ribeira, Rías Baixas).',
+    },
   },
   en: {
     puente: {
@@ -108,6 +112,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Legal notice · Illas Atlánticas Ático, Aguiño',
       description: 'Legal notice, privacy and terms of Illas Atlánticas Ático, vacation rental in Aguiño (Ribeira, Rías Baixas).',
     },
+    condiciones: {
+      title: 'Booking conditions · Illas Atlánticas Ático, Aguiño',
+      description: 'Booking conditions for Illas Atlánticas Ático: prices, payments, flexible cancellation and house rules in Aguiño (Ribeira, Rías Baixas).',
+    },
   },
   gl: {
     puente: {
@@ -125,6 +133,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     legal: {
       title: 'Aviso legal · Illas Atlánticas Ático, Aguiño',
       description: 'Aviso legal, privacidade e condicións de Illas Atlánticas Ático, aloxamento vacacional en Aguiño (Ribeira, Rías Baixas).',
+    },
+    condiciones: {
+      title: 'Condicións de reserva · Illas Atlánticas Ático, Aguiño',
+      description: 'Condicións de reserva de Illas Atlánticas Ático: prezos, pagamentos, cancelación flexible e normas da casa en Aguiño (Ribeira, Rías Baixas).',
     },
   },
 };

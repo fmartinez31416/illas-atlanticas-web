@@ -1,10 +1,11 @@
 import { useI18n } from '../i18n/LangContext';
+import { t } from '../i18n/translate';
 import { LANGS } from '../i18n/types';
 
 export function LanguageSwitcher({ className = '', dark = false }: { className?: string; dark?: boolean }) {
   const { lang, setLang } = useI18n();
   return (
-    <div className={`inline-flex items-center border overflow-hidden ${dark ? 'border-white/30' : 'border-[#1A3A5C]/20'} ${className}`} role="group" aria-label="Idioma">
+    <div className={`inline-flex items-center border overflow-hidden ${dark ? 'border-white/30' : 'border-[#1A3A5C]/20'} ${className}`} role="group" aria-label={t("Idioma")}>
       {LANGS.map((l) => (
         <button
           key={l.code}

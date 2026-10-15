@@ -40,7 +40,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
         {/* Cabecera Editorial */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-stone-500 uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
-            Distribución & Estancias
+            {t("Distribución & Estancias")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
             {t("230 m² concebidos para vivir con amplitud")}
@@ -114,7 +114,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                       {space.specs[0].label}: <strong className="text-stone-800 font-normal">{space.specs[0].value}</strong>
                     </span>
                     <span className="inline-flex items-center gap-1 text-stone-900 text-xs font-medium uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                      <span>Ver detalle</span>
+                      <span>{t("Ver detalle")}</span>
                       <ChevronRight className="w-3.5 h-3.5 text-stone-500" />
                     </span>
                   </div>
@@ -144,7 +144,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
               onClick={onOpenBooking}
               className="px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium bg-stone-900 hover:bg-stone-800 text-white transition-colors shadow-sm"
             >
-              Consultar Disponibilidad
+              {t("Consultar Disponibilidad")}
             </button>
           </div>
         </div>
@@ -164,7 +164,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
             <button
               onClick={() => setActiveSpaceModal(null)}
               className="absolute top-5 right-5 p-2 bg-white text-stone-400 hover:text-stone-900 border border-stone-200 transition-colors z-20"
-              aria-label="Cerrar modal"
+              aria-label={t("Cerrar modal")}
             >
               <X className="w-5 h-5" />
             </button>
@@ -196,14 +196,14 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                     <button
                       onClick={prevModalImage}
                       className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 text-stone-800 hover:bg-white transition-colors border border-stone-200 shadow-sm"
-                      aria-label="Imagen anterior"
+                      aria-label={t("Imagen anterior")}
                     >
                       <ArrowLeft className="w-4 h-4" />
                     </button>
                     <button
                       onClick={nextModalImage}
                       className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 text-stone-800 hover:bg-white transition-colors border border-stone-200 shadow-sm"
-                      aria-label="Imagen siguiente"
+                      aria-label={t("Imagen siguiente")}
                     >
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -220,7 +220,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
 
               <div className="pt-6 border-t border-stone-200">
                 <h4 className="text-xs uppercase tracking-[0.2em] text-stone-500 font-semibold mb-4">
-                  Cualidades del Espacio
+                  {t("Cualidades del Espacio")}
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {activeSpaceModal.highlights.map((item, idx) => (
@@ -237,7 +237,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                   onClick={() => setActiveSpaceModal(null)}
                   className="px-6 py-3 border border-stone-300 text-stone-700 hover:text-stone-950 text-xs uppercase tracking-[0.2em] font-medium bg-white"
                 >
-                  Volver a Espacios
+                  {t("Volver a Espacios")}
                 </button>
                 <button
                   onClick={() => {
@@ -246,7 +246,7 @@ export function SpacesGrid({ onOpenBooking }: SpacesGridProps) {
                   }}
                   className="px-7 py-3 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium shadow-sm"
                 >
-                  Consultar Disponibilidad
+                  {t("Consultar Disponibilidad")}
                 </button>
               </div>
             </div>

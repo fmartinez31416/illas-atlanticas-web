@@ -84,7 +84,7 @@ export function CompassNautico() {
   return (
     <div className="flex flex-col items-center">
       <span className="text-[10px] tracking-[0.28em] text-[#A9C9DD] uppercase font-medium mb-4 flex items-center gap-2">
-        <CompassIcon className="w-3.5 h-3.5 text-[#D4A017]" /> Brújula
+        <CompassIcon className="w-3.5 h-3.5 text-[#D4A017]" /> {t("Brújula")}
       </span>
 
       <div className="relative w-52 h-52 sm:w-60 sm:h-60">
@@ -185,7 +185,7 @@ export function CompassNautico() {
       {/* Lectura digital */}
       <p className="font-mono text-sm text-[#EBE6DD] tabular-nums mt-1">
         {deg}° <span className="text-[#D4A017]">{cardinalOf(deg)}</span>
-        <span className="text-[#A9C9DD]"> · {active ? 'rumbo en vivo' : 'rumbo norte'}</span>
+        <span className="text-[#A9C9DD]"> · {active ? t('rumbo en vivo') : t('rumbo norte')}</span>
       </p>
 
       {needPermission && !active && (
@@ -194,7 +194,7 @@ export function CompassNautico() {
           onClick={requestAndStart}
           className="mt-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.16em] border border-[#D4A017]/60 text-[#D4A017] hover:bg-[#D4A017]/10 transition-colors rounded-sm"
         >
-          Activar brújula en vivo
+          {t("Activar brújula en vivo")}
         </button>
       )}
       {!active && !needPermission && (
@@ -203,7 +203,7 @@ export function CompassNautico() {
           onClick={requestAndStart}
           className="mt-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.16em] border border-[#A9C9DD]/40 text-[#A9C9DD] hover:bg-[#A9C9DD]/10 transition-colors rounded-sm"
         >
-          Probar brújula
+          {t("Probar brújula")}
         </button>
       )}
       <p className="text-[11px] text-[#A9C9DD] font-light mt-1.5 text-center max-w-[230px]">

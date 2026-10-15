@@ -44,7 +44,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-white/30 gap-8">
           <div>
             <span className="text-stone-100 uppercase tracking-[0.25em] text-xs font-semibold block mb-3 drop-shadow-md">
-              Ático Singular · Aguiño (Ribeira)
+              {t("Ático Singular · Aguiño (Ribeira)")}
             </span>
             <h2 className="text-3xl sm:text-4xl font-serif font-light text-white tracking-tight drop-shadow-lg">
               {t("Despertar frente al")} <span className="italic font-serif text-amber-100">{t("Atlántico")}</span>
@@ -53,7 +53,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
           <button
             onClick={scrollToTop}
-            aria-label="Volver arriba"
+            aria-label={t("Subir al inicio")}
             className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white hover:text-amber-200 transition-colors group bg-black/50 hover:bg-black/70 px-4 py-2.5 rounded-full border border-white/30 shadow-md backdrop-blur-sm"
           >
             <span>{t("Subir al inicio")}</span>
@@ -75,12 +75,12 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </span>
             </div>
             <p className="text-xs text-stone-100 font-light leading-relaxed">
-              Exclusivo ático en primera línea sobre el puerto de Aguiño. Calificación 9,5 sobre 10 con terraza panorámica frente a Sálvora y Ons.
+              {t("Exclusivo ático en primera línea sobre el puerto de Aguiño. Calificación 9,5 sobre 10 con terraza panorámica frente a Sálvora y Ons.")}
             </p>
 
             <div className="pt-2">
               <span className="text-[11px] uppercase tracking-[0.15em] text-stone-200 font-medium block mb-3">
-                Síguenos en redes
+                {t("Síguenos en redes")}
               </span>
               <div className="flex items-center gap-3">
                 <a
@@ -108,7 +108,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
           {/* Columna 2: {t("Navegación")} */}
           <div className="bg-black/45 backdrop-blur-sm p-6 rounded-sm border border-white/20 shadow-md space-y-4">
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
-              Navegación
+              {t("Navegación")}
             </h3>
             <ul className="space-y-3 text-xs text-stone-100 font-light">
               <li>
@@ -162,7 +162,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
           {/* Columna 3: Atención y Ubicación */}
           <div className="bg-black/45 backdrop-blur-sm p-6 rounded-sm border border-white/20 shadow-md space-y-4">
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
-              Atención Directa
+              {t("Atención Directa")}
             </h3>
             <div className="space-y-3 text-xs text-stone-100 font-light">
               <p className="text-white font-medium">
@@ -189,7 +189,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
           {/* Columna 4: Garantías Oficiales & Licencia VUT */}
           <div className="bg-black/45 backdrop-blur-sm p-6 rounded-sm border border-white/20 shadow-md space-y-4">
             <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-amber-200 drop-shadow-sm">
-              Garantía & Registro
+              {t("Garantía & Registro")}
             </h3>
             <div className="space-y-3 text-xs text-stone-100 font-light">
               
@@ -204,17 +204,17 @@ export function Footer({ onOpenLegal }: FooterProps) {
               </div>
 
               <p className="text-xs text-stone-200 leading-relaxed font-light">
-                Vivienda de Uso Turístico reglamentada conforme a la normativa oficial de la Xunta de Galicia. Plaza de garaje cerrada y ascensor directo.
+                {t("Vivienda de Uso Turístico reglamentada conforme a la normativa oficial de la Xunta de Galicia. Plaza de garaje cerrada y ascensor directo.")}
               </p>
 
               <div className="pt-2 border-t border-white/15">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-stone-300 font-semibold mb-2">Enlaces oficiales</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-stone-300 font-semibold mb-2">{t("Enlaces oficiales")}</p>
                 <ul className="space-y-1.5 text-xs text-stone-200 font-light">
-                  <li><a href="https://www.turismo.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Turismo de Galicia</a></li>
-                  <li><a href="https://illasatlanticas.gal/es" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Parque Nacional das Illas Atlánticas</a></li>
-                  <li><a href="https://ribeira.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Concello de Ribeira</a></li>
-                  <li><a href="https://www.dacoruna.gal/turismo" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">Deputación da Coruña · Turismo</a></li>
-                  <li><a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/ribeira-id15073" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">AEMET · Predicción de Ribeira</a></li>
+                  <li><a href="https://www.turismo.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">{t("Turismo de Galicia")}</a></li>
+                  <li><a href="https://illasatlanticas.gal/es" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">{t("Parque Nacional das Illas Atlánticas")}</a></li>
+                  <li><a href="https://ribeira.gal/" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">{t("Concello de Ribeira")}</a></li>
+                  <li><a href="https://www.dacoruna.gal/turismo" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">{t("Deputación da Coruña · Turismo")}</a></li>
+                  <li><a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/ribeira-id15073" target="_blank" rel="noopener" className="hover:text-amber-200 transition-colors">{t("AEMET · Predicción de Ribeira")}</a></li>
                 </ul>
               </div>
             </div>
@@ -225,7 +225,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
         {/* Créditos y Legal */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-stone-100 drop-shadow-md">
           <p>
-            © {new Date().getFullYear()} Illas Atlánticas Ático. Todos los derechos reservados.
+            © {new Date().getFullYear()} Illas Atlánticas Ático. {t("Todos los derechos reservados.")}
           </p>
           <div className="flex items-center gap-4">
             <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
@@ -237,6 +237,9 @@ export function Footer({ onOpenLegal }: FooterProps) {
             <button onClick={onOpenLegal} className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
               {t("Cookies")}
             </button>
+            <a href="/condiciones" className="hover:text-amber-200 transition-colors uppercase tracking-wider text-[11px]">
+              {t("Condiciones de reserva")}
+            </a>
           </div>
         </div>
 

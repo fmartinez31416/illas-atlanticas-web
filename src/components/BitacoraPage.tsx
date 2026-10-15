@@ -59,7 +59,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
       {/* CABECERA CON TIRO BAJO: ENFOCADA AL MAR Y A PEDRA DA RÁ */}
       <header className="relative h-[75vh] min-h-[560px] max-h-[750px] w-full bg-stone-950 flex items-end overflow-hidden border-b border-stone-800">
         <img
-          src="mirador-pedra-da-ra-ribeira-atlantico.webp"
+          src={`${import.meta.env.BASE_URL}mirador-pedra-da-ra-ribeira-atlantico.webp`}
           alt={t("Mirador da Pedra da Rá en Ribeira con vistas al Océano Atlántico")}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: 'center 78%' }}
@@ -89,7 +89,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
             </button>
 
             <span className="hidden md:inline-block text-[11px] uppercase tracking-[0.2em] text-white/90 bg-stone-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-700/50 shadow-lg">
-              Mirador da Pedra da Rá · Ribeira
+              {t("Mirador da Pedra da Rá · Ribeira")}
             </span>
           </div>
         </div>
@@ -102,11 +102,11 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-light text-white tracking-tight max-w-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            Cuaderno de <span className="italic font-serif text-amber-100">Bitácora</span>
+            {t("Cuaderno de")} <span className="italic font-serif text-amber-100">{t("Bitácora")}</span>
           </h1>
 
           <p className="text-stone-200 text-sm sm:text-base font-light max-w-2xl leading-relaxed drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
-            Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.
+            {t("Monográficos documentados con rigor científico e histórico sobre la Ría de Arousa, el Parque Nacional de Sálvora, la cartografía náutica y la verdad gastronómica de lonja.")}
           </p>
         </div>
       </header>
@@ -177,7 +177,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                 </div>
 
                 <span className="text-xs uppercase tracking-[0.18em] text-amber-200 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                  Leer Crónica →
+                  {t("Leer Crónica →")}
                 </span>
               </div>
             </article>
@@ -191,10 +191,10 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
               <span>{t("Observatorio Privado en Aguiño")}</span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-light">
-              Descubre este horizonte desde la terraza de Illas Atlánticas Ático
+              {t("Descubre este horizonte desde la terraza de Illas Atlánticas Ático")}
             </h3>
             <p className="text-stone-400 text-xs sm:text-sm font-light leading-relaxed">
-              Un refugio frente al océano y a las bateas de la ría para quienes valoran la autenticidad, la calma y el conocimiento del territorio sin intermediarios.
+              {t("Un refugio frente al océano y a las bateas de la ría para quienes valoran la autenticidad, la calma y el conocimiento del territorio sin intermediarios.")}
             </p>
           </div>
 

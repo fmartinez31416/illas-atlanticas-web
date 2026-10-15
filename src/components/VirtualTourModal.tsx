@@ -69,13 +69,13 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
                   : 'bg-zinc-900 border-zinc-800 text-zinc-400'
               }`}
             >
-              {isRotating ? 'Auto-Pan Activo' : t("Pausar Rotación")}
+              {isRotating ? t('Auto-Pan Activo') : t("Pausar Rotación")}
             </button>
 
             <button
               onClick={onClose}
               className="p-2 rounded-sm bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 border border-zinc-800 transition-colors"
-              aria-label="Cerrar tour"
+              aria-label={t("Cerrar tour")}
             >
               <X className="w-5 h-5" />
             </button>

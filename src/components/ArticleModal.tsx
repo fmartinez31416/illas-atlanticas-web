@@ -153,11 +153,11 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
               </div>
               
               <h3 className="font-serif text-xl sm:text-2xl font-light text-white leading-snug">
-                Vive el Atlántico en primera línea desde nuestra terraza privada
+                {t("Vive el Atlántico en primera línea desde nuestra terraza privada")}
               </h3>
 
               <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-                Desde el salón y la terraza privada de <em>{t("Illas Atlánticas Ático")}</em> en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.
+                {t("Desde el salón y la terraza privada de")} <em>{t("Illas Atlánticas Ático")}</em>{t("en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.")}
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stone-800">

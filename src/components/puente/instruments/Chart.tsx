@@ -57,9 +57,9 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
     <line x1={Kt(42.559,-8.849)[0]} y1={Kt(42.559,-8.849)[1]} x2={Kt(42.56,-8.832)[0]} y2={Kt(42.56,-8.832)[1]} stroke="#4d3a24" strokeWidth="0.9" />
     }{ky.map(([g,h,p],b)=>{const[A,O]=Kt(g,h);return <text x={A} y={O} textAnchor="middle" fontSize="5.4" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#3f5d74">{p}</text>
     })}{
-    <text transform={`translate(${Kt(42.574,-8.905).join(" ")}) rotate(-38)`} textAnchor="middle" fontSize="9" letterSpacing="3.2" fontFamily="Cormorant Garamond" fill="#35556e">RÍA DE AROUSA</text>
+    <text transform={`translate(${Kt(42.574,-8.905).join(" ")}) rotate(-38)`} textAnchor="middle" fontSize="9" letterSpacing="3.2" fontFamily="Cormorant Garamond" fill="#35556e"> {t("RÍA DE AROUSA")}</text>
     }{
-    <text transform={`translate(${Kt(42.52,-9.126).join(" ")}) rotate(-90)`} textAnchor="middle" fontSize="7.4" letterSpacing="4" fontFamily="Cormorant Garamond" fill="#35556e">OCÉANO ATLÁNTICO</text>
+    <text transform={`translate(${Kt(42.52,-9.126).join(" ")}) rotate(-90)`} textAnchor="middle" fontSize="7.4" letterSpacing="4" fontFamily="Cormorant Garamond" fill="#35556e"> {t("OCÉANO ATLÁNTICO")}</text>
     }{
     <text x={Kt(42.386,-8.748)[0]} y={Kt(42.386,-8.748)[1]} textAnchor="middle" fontSize="6.2" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#35556e">{t("Ría de Pontevedra")}</text>
     }{
@@ -97,13 +97,13 @@ export const Ly=[[42.76,-9.02],[42.7,-9.028],[42.693,-9.034],[42.675,-9.045],[42
       }{
       <rect x="2" y="2" width="120" height="42" fill="none" stroke="#4d3a24" strokeWidth="0.3" />
       }{
-      <text x="62" y="11" textAnchor="middle" fontSize="5" letterSpacing="2" fontFamily="Cinzel" fontWeight={700} fill="#2c2419">CARTA NÁUTICA</text>
+      <text x="62" y="11" textAnchor="middle" fontSize="5" letterSpacing="2" fontFamily="Cinzel" fontWeight={700} fill="#2c2419"> {t("CARTA NÁUTICA")}</text>
       }{
       <text x="62" y="22" textAnchor="middle" fontSize="10" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#1a3a5c">{t("Ría de Arousa")}</text>
       }{
-      <text x="62" y="30.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2c2419">De Corrubedo a la Isla de Ons</text>
+      <text x="62" y="30.5" textAnchor="middle" fontSize="4.6" fontStyle="italic" fontFamily="Cormorant Garamond" fill="#2c2419"> {t("De Corrubedo a la Isla de Ons")}</text>
       }{
-      <text x="62" y="38.5" textAnchor="middle" fontSize="3.9" fontFamily="Cormorant Garamond" fill="#4d3a24">Escala aprox. 1:150 000 · Sondas en metros</text>
+      <text x="62" y="38.5" textAnchor="middle" fontSize="3.9" fontFamily="Cormorant Garamond" fill="#4d3a24"> {t("Escala aprox. 1:150 000 · Sondas en metros")}</text>
       }</g>
     }{
     <g transform="translate(258 334)">{[0,1,2].map(g=>

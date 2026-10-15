@@ -24,7 +24,7 @@ function getFaqItems() { return [
   },
   {
     q: t('¿Qué hay cerca del ático?'),
-    a: t('El puerto pesquero de Aguiño a dos minutos, playas a pocos kilómetros, las islas de Sálvora y Ons enfrente (Parque Nacional Illas Atlánticas), y Santiago de Compostela a 50 minutos por autovía. En esta web tienes LonjaLens, la guía de la lonja y los sabores de Aguiño.'),
+    a: t('El puerto pesquero de Aguiño a cuatro minutos a pie (350 m), playas a pocos kilómetros, las islas de Sálvora y Ons enfrente (Parque Nacional Illas Atlánticas), y Santiago de Compostela a 50 minutos por autovía. En esta web tienes LonjaLens, la guía de la lonja y los sabores de Aguiño.'),
   },
 ] };
 
@@ -38,7 +38,7 @@ export function FaqSection() {
             {t("Preguntas frecuentes")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-white font-normal tracking-tight mb-5">
-            Respuestas honestas, <span className="italic font-light text-stone-300">{t("sin letra pequeña")}</span>
+            {t("Respuestas honestas,")} <span className="italic font-light text-stone-300">{t("sin letra pequeña")}</span>
           </h2>
           <p className="text-stone-400 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
             {t("Lo que suelen preguntarnos antes de reservar. Si no encuentras tu respuesta, te la damos por WhatsApp en menos de dos horas.")}
@@ -70,7 +70,7 @@ export function FaqSection() {
         {/* Cierre con WhatsApp */}
         <div className="mt-12 text-center">
           <a
-            href="https://wa.me/34606025318?text=Hola,%20tengo%20una%20pregunta%20sobre%20el%20%C3%81tico%20Illas%20Atl%C3%A1nticas."
+            href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, tengo una pregunta sobre el Ático Illas Atlánticas."))}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-stone-700 hover:border-stone-500 text-stone-200 text-xs uppercase tracking-[0.2em] font-medium bg-stone-900/40 transition-all duration-300"

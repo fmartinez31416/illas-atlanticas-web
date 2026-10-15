@@ -40,7 +40,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
       {/* Imagen de Portada Real */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="01_hero_portada.webp"
+          src={`${import.meta.env.BASE_URL}01_hero_portada.webp`}
           alt={t("Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño")}
           className="absolute inset-0 w-full h-full object-cover object-center anim-kenburns"
           loading="eager"
@@ -59,7 +59,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <div className="flex items-center gap-1 text-white font-medium text-xs">
               <Star className="w-3.5 h-3.5 fill-white text-white" />
               <span className="font-semibold">9,5 / 10</span>
-              <span className="italic font-serif text-stone-200">Excepcional</span>
+              <span className="italic font-serif text-stone-200">{t("Excepcional")}</span>
             </div>
             <span className="text-white/40">·</span>
             <span className="text-stone-200 text-xs font-light">{t("54 opiniones en Booking.com")}</span>
@@ -67,14 +67,14 @@ export function Hero({ onOpenBooking }: HeroProps) {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-stone-300 text-xs">
             <span className="font-mono text-[11px] text-[#D4A017]">VUT-CO-007656</span>
             <span className="text-white/30">·</span>
-            <span className="text-stone-300 text-[11px] font-light">Xunta de Galicia</span>
+            <span className="text-stone-300 text-[11px] font-light">{t("Xunta de Galicia")}</span>
           </div>
           {liveWeather && (
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ animation: 'hudPulse 2.4s ease-in-out infinite' }} />
               <span className="text-stone-100 text-xs font-light">
-                Aguiño ahora · <span className="font-medium text-white">{liveWeather.temp.toFixed(0)}°</span>
-                {liveWeather.waves != null && <> · mar {liveWeather.waves.toFixed(1)} m</>}
+                {t("Aguiño ahora ·")} <span className="font-medium text-white">{liveWeather.temp.toFixed(0)}°</span>
+                {liveWeather.waves != null && <> · {t("mar")} {liveWeather.waves.toFixed(1)} m</>}
               </span>
             </div>
           )}
@@ -86,7 +86,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
           className="text-4xl sm:text-6xl md:text-7xl font-serif text-white font-normal tracking-tight leading-[1.1] max-w-4xl mb-6 drop-shadow-md"
         >
           {t("El Atlántico")} <br className="hidden sm:inline" />
-          <span className="italic font-light text-stone-200">a tus pies.</span>
+          <span className="italic font-light text-stone-200">{t("a tus pies.")}</span>
         </h1>
 
         {/* Subtítulo sobrio y descriptivo */}
@@ -102,7 +102,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
         {/* Los pilares de valor real — el primero, el precio ancla honesto */}
         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
           <div className="px-4 py-2 bg-[#D4A017] border border-[#D4A017] shadow-md">
-            <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">{t("Desde 70 €/noche en temporada baja")}</span>
+            <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">{t("Desde 95 €/noche en temporada baja")}</span>
           </div>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("Despierta mirando las islas")}</span>
@@ -160,9 +160,9 @@ export function Hero({ onOpenBooking }: HeroProps) {
         href="#espacios"
         id="hero-scroll-indicator"
         className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-stone-300 hover:text-white transition-colors flex flex-col items-center gap-1.5"
-        aria-label="Desplazarse a los espacios"
+        aria-label={t("Desplazarse a los espacios")}
       >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-medium">Descubrir</span>
+        <span className="text-[10px] uppercase tracking-[0.25em] text-stone-400 font-medium">{t("Descubrir")}</span>
         <ChevronDown className="w-4 h-4 animate-bounce text-stone-300" />
       </a>
     </section>

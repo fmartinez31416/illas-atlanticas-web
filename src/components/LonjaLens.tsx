@@ -71,7 +71,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 Lonja<span className="italic text-[#D4A017]">Lens</span>
               </h1>
               <p className="text-[11px] tracking-[0.22em] uppercase text-stone-500 font-medium">
-                La lonja de Aguiño, descifrada
+                {t("La lonja de Aguiño, descifrada")}
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               onClick={onOpenBooking}
               className="px-5 py-2.5 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors"
             >
-              Reservar
+              {t("Reservar")}
             </button>
           )}
         </div>
@@ -91,9 +91,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         <Reveal>
           <div className="max-w-3xl">
             <p className="text-stone-600 leading-relaxed">
-              La lonja de Aguiño vive cuando regresa la flota del marisqueo —según la especie del día y las vedas—, y la de Ribeira subasta por la tarde, tras la llegada de los barcos. Allí compran los profesionales
-              —cadenas de supermercados, restaurantes, envíos a Mercamadrid y Mercabarcelona, puestos de la plaza de Ribeira—: pescado y marisco recién descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos.
-              Esta guía te da lo que importa de cada especie:{' '}
+              {t("La lonja de Aguiño vive cuando regresa la flota del marisqueo —según la especie del día y las vedas—, y la de Ribeira subasta por la tarde, tras la llegada de los barcos. Allí compran los profesionales —cadenas de supermercados, restaurantes, envíos a Mercamadrid y Mercabarcelona, puestos de la plaza de Ribeira—: pescado y marisco recién descargado, nombres en gallego que suenan a salitre, y precios que cambian en segundos. Esta guía te da lo que importa de cada especie:")}{' '}
               <strong className="text-[#1A3A5C]">{t("su talla mínima oficial, cuándo está en su mejor momento y cómo se cocina aquí")}</strong>.
             </p>
             <div className="mt-4 bg-white border border-[#1A3A5C]/10 p-4 sm:p-5">
@@ -214,8 +212,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             <div className="flex-1">
               <p className="text-[#EBE6DD] font-medium">{t("Identificación con foto — muy pronto")}</p>
               <p className="text-sm text-[#A9C9DD]/80 font-light mt-1">
-                Haz una foto a lo que estás mirando en la lonja y te diremos qué es, su talla legal y
-                cómo cocinarlo. Estamos afinando el ojo artificial de LonjaLens.
+                {t("Haz una foto a lo que estás mirando en la lonja y te diremos qué es, su talla legal y cómo cocinarlo. Estamos afinando el ojo artificial de LonjaLens.")}
               </p>
             </div>
             <span className="text-[10px] tracking-[0.2em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1 shrink-0">
@@ -232,7 +229,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Busca: percebe, centola, robaliza…"
+              placeholder={t("Busca: percebe, centola, robaliza…")}
               className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#1A3A5C]/20 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#D4A017] transition-colors"
             />
           </div>
@@ -283,7 +280,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                       {e.tipo === 'marisco' ? <Waves className="w-3 h-3" /> : e.tipo === 'cefalopodo' ? <Shell className="w-3 h-3" /> : <Fish className="w-3 h-3" />}
                       {t(e.tipo)}
                     </span>
-                    <span className="text-[11px] text-stone-500">Talla mín: <strong className="text-stone-700">{e.talla}</strong></span>
+                    <span className="text-[11px] text-stone-500">{t("Talla mín:")} <strong className="text-stone-700">{e.talla}</strong></span>
                   </div>
                 </div>
               </button>
@@ -298,8 +295,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
         {/* Nota honesta */}
         <p className="mt-10 text-[11px] text-stone-500 font-light flex items-start gap-2 max-w-3xl">
           <Info className="w-3.5 h-3.5 text-[#D4A017] shrink-0 mt-0.5" />
-          Las tallas mínimas son las oficiales de extracción y comercialización en Galicia. Antes de comprar,
-          consulta el estado de las vedas de cada especie: cambian cada año según los planes de gestión.
+          {t("Las tallas mínimas son las oficiales de extracción y comercialización en Galicia. Antes de comprar, consulta el estado de las vedas de cada especie: cambian cada año según los planes de gestión.")}
         </p>
       </main>
 
@@ -311,7 +307,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             <button
               onClick={() => setSeleccionada(null)}
               className="absolute top-4 right-4 w-9 h-9 bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600 transition-colors z-10"
-              aria-label="Cerrar"
+              aria-label={t("Cerrar")}
             >
               <X className="w-4 h-4" />
             </button>

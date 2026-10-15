@@ -26,7 +26,7 @@ export function LocationAndSurroundings() {
         {/* Cabecera Editorial */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-stone-500 uppercase tracking-[0.25em] text-xs font-semibold mb-3 block">
-            Ubicación & Entorno
+            {t("Ubicación & Entorno")}
           </span>
           <h2 className="text-3xl sm:text-5xl font-serif text-stone-900 font-normal tracking-tight mb-5">
             {t("Aguiño y la Ría de Arousa: autenticidad marinera")}
@@ -124,7 +124,7 @@ export function LocationAndSurroundings() {
                   onClick={handleOpenGoogleMaps}
                   className="text-stone-900 hover:text-stone-600 font-medium uppercase tracking-wider text-[11px] underline underline-offset-4 self-start sm:self-auto"
                 >
-                  Cómo llegar
+                  {t("Cómo llegar")}
                 </button>
               </div>
             </div>

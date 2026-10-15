@@ -53,6 +53,11 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </div>
               </details>
 
+              {/* Condiciones completas */}
+              <p className="mt-4 text-xs text-stone-500 font-light">
+                <a href="/condiciones" className="text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]">{t("Condiciones de reserva")} →</a>
+              </p>
+
               {/* Garantía Sol — por días, mayo–septiembre */}
               <details className="mt-4 border-l-2 border-[#1A3A5C] pl-4 group">
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
@@ -61,7 +66,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     <strong className="text-[#1A3A5C]">{t("Garantía Sol:")}</strong> {t("si en un día de tu estancia (mayo–septiembre) la lluvia acumula más de 5 horas entre las 10:00 y las 20:00, te compensamos")}{' '}
                     <strong className="text-[#1A3A5C]">{t("el 15 % del precio de ese día")}</strong> {t("como crédito para tu próxima visita.")}{' '}
                     <span className="text-xs text-stone-500 underline decoration-dotted underline-offset-4">
-                      Condiciones
+                      {t("Condiciones")}
                     </span>
                   </span>
                 </summary>
@@ -157,7 +162,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <button
                   type="button"
                   onClick={onOpenLonja}
-                  aria-label="Abrir LonjaLens"
+                  aria-label={t("Abrir LonjaLens")}
                   className="text-left bg-white border border-[#1A3A5C]/10 p-4 rounded-md cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
                 >
                   <span className="font-serif text-2xl text-[#1A3A5C] leading-none select-none">⚓</span>

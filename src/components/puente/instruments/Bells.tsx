@@ -25,7 +25,7 @@ export const cy=["XII","I","II","III","IIII","V","","VII","VIII","IX","X","XI"],
     })}{
     <path d={me(100,76,18,-60,60)} fill="none" stroke="#2a241a" strokeWidth="0.5" />
     }{o}{
-    <text x="100" y="84.6" textAnchor="middle" fontSize="3.9" letterSpacing="0.9" fontFamily="Cinzel" fill="#3b3226">CAMPANAS</text>
+    <text x="100" y="84.6" textAnchor="middle" fontSize="3.9" letterSpacing="0.9" fontFamily="Cinzel" fill="#3b3226"> {t("CAMPANAS")}</text>
     }{
     <text x="100" y="115.5" textAnchor="middle" fontSize="6.1" letterSpacing="1.3" fontFamily="Cinzel" fontWeight={600} fill="#17120c">ILLAS ATLÁNTICAS</text>
     }{

@@ -1,6 +1,7 @@
-import { useState, useId } from 'react';
+import { useState, useEffect, useId } from 'react';
 import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { NIA_API_URL } from '../niaConfig';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -28,6 +29,30 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
   const [motorAbierto, setMotorAbierto] = useState(false);
+  const [avail, setAvail] = useState<{ checkIn: string; checkOut: string; price: number } | null>(null);
+  const [availLoading, setAvailLoading] = useState(true);
+
+  // Primera ventana libre con precio: el buscador nunca abre en fechas «No disponible».
+  useEffect(() => {
+    let vivo = true;
+    const buscar = async () => {
+      try {
+        const r = await fetch(`${NIA_API_URL}api/proxima-libre?n=${nights}`, { signal: AbortSignal.timeout(9000) });
+        if (!r.ok) return;
+        const d = await r.json();
+        if (!vivo) return;
+        if (d && d.checkIn && d.checkOut) {
+          setCheckIn(d.checkIn);
+          setCheckOut(d.checkOut);
+          setAvail({ checkIn: d.checkIn, checkOut: d.checkOut, price: Number(d.price) || 0 });
+        }
+      } catch { /* silencioso: si no hay respuesta, quedan las fechas por defecto */ }
+      finally { if (vivo) setAvailLoading(false); }
+    };
+    buscar();
+    return () => { vivo = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const nights = Math.max(
     1,
@@ -169,7 +194,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                   </a>
                   <button
                     onClick={() => setMotorAbierto(false)}
-                    aria-label="Cerrar motor de reservas"
+                    aria-label={t("Cerrar motor de reservas")}
                     className="text-[11px] text-stone-500 hover:text-stone-800"
                   >
                     ✕
@@ -185,13 +210,26 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             </div>
           )}
 
+          {/* Primera ventana libre con precio (si la API responde) */}
+          {(availLoading || avail) && (
+            <p className="mt-3 text-[11px] text-stone-500 text-center">
+              {availLoading
+                ? t("disponibilidad.buscando")
+                : avail
+                  ? t("disponibilidad.hint", { a: avail.checkIn, b: avail.checkOut, p: avail.price })
+                  : ''}
+            </p>
+          )}
+
           {/* Línea de confianza */}
           <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             <span>{t("Plaza de garaje incluida")}</span>
             <span className="text-stone-300">·</span>
-            <span>{nights} {nights === 1 ? 'noche' : 'noches'} · {adults} {adults === 1 ? 'adulto' : 'adultos'}{children > 0 ? ` + ${children}` : ''}</span>
+            <span>{nights} {nights === 1 ? t("noche") : t("noches")} · {adults} {adults === 1 ? t("adulto") : t("adultos")}{children > 0 ? ` + ${children}` : ''}</span>
             <span className="text-stone-300">·</span>
             <span className="text-[#1A3A5C]">{t("Mejor precio garantizado: lo igualamos +5%")}</span>
+            <span className="text-stone-300">·</span>
+            <a href="/condiciones" className="underline underline-offset-2 hover:text-stone-700">{t("Condiciones de reserva")}</a>
           </p>
         </div>
 

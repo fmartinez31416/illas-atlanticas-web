@@ -23,9 +23,9 @@ export const Ey=X.memo(function(){const u=[];for(let r=-40;r<=40;r++){const o=r%
     }{
     <path d={fr(nl+3.4,1,40)} fill="none" stroke="#2f6f4a" strokeWidth="3.2" opacity="0.85" />
     }{u}{
-    <text x="58" y="44" textAnchor="middle" fontSize="7.4" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#a3342a">BABOR</text>
+    <text x="58" y="44" textAnchor="middle" fontSize="7.4" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#a3342a"> {t("BABOR")}</text>
     }{
-    <text x="182" y="44" textAnchor="middle" fontSize="7.4" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#2f6f4a">ESTRIBOR</text>
+    <text x="182" y="44" textAnchor="middle" fontSize="7.4" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#2f6f4a"> {t("ESTRIBOR")}</text>
     }{
     <text x="120" y="58" textAnchor="middle" fontSize="5.4" letterSpacing="1.4" fontFamily="Cinzel" fill="#3a3024">ILLAS ATLÁNTICAS</text>
     }{

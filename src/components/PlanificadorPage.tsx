@@ -205,7 +205,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               <p className="text-[11px] uppercase tracking-[0.18em] text-stone-500 font-semibold mb-4">{t("Cómo llegar")}</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { icon: Plane, label: 'Vuelos', url: `https://www.google.com/travel/flights?q=${encodeURIComponent(t("Vuelos de {origen} a Santiago de Compostela", { origen: ciudadAeropuerto }))}&curr=EUR`, nota: 'Buscador: Google Flights. Aeropuerto: Santiago (SCQ), a 1 h de Aguiño.' },
+                  { icon: Plane, label: 'Vuelos', url: `https://www.google.com/travel/flights?q=${encodeURIComponent(t("Vuelos de {origen} a Santiago de Compostela", { origen: ciudadAeropuerto }))}&curr=EUR`, nota: 'Buscador: Google Flights. Aeropuerto: Santiago (SCQ), a 58 min de Aguiño.' },
                   { icon: Car, label: 'Coche de alquiler', url: `https://www.rentalcars.com/es/airport/es/scq/?dropLocationName=Aeropuerto%20de%20Santiago`, nota: 'Recogida en SCQ. En el ático tienes garaje privado (plaza 12).' },
                   { icon: Train, label: 'Tren', url: `https://www.omio.es/search/${encodeURIComponent(ciudadAeropuerto)}/Santiago%20de%20Compostela/train`, nota: 'Estación de Santiago. Luego coche o autobús a Ribeira.' },
                   { icon: Bus, label: 'Autobús', url: 'https://www.alsa.es/', nota: 'Alsa y Monbus llegan a Ribeira, a 10 min de Aguiño.' },
@@ -226,7 +226,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
               {origen && (
                 <a href={googleMapsRoute(origen, 'Aguiño, Ribeira, A Coruña')} target="_blank" rel="noopener noreferrer"
                   className="mt-6 inline-flex items-center gap-2 text-[#1A3A5C] text-sm font-semibold underline decoration-[#D4A017] decoration-2 underline-offset-4">
-                  <MapPin className="w-4 h-4 text-[#D4A017]" /> Ver la ruta en Google Maps: {origen} → Aguiño
+                  <MapPin className="w-4 h-4 text-[#D4A017]" /> {t("Ver la ruta en Google Maps:")} {origen} → Aguiño
                 </a>
               )}
 
@@ -423,7 +423,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   <p className="text-sm font-semibold text-emerald-800 flex items-center gap-2"><Check className="w-4 h-4" /> {t("Guardado. Una semana antes de tu llegada recibirás el aviso.")}</p>
                 ) : (
                   <div className="flex flex-wrap gap-3">
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="tu@correo.com"
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("tu@correo.com")}
                       className="flex-1 min-w-[220px] px-4 py-3 bg-white border border-[#1A3A5C]/25 focus:border-[#D4A017] outline-none text-sm" />
                     <button onClick={guardar} className={`${btnBase} bg-[#1A3A5C] text-white hover:bg-[#132B44] inline-flex items-center gap-2`}>
                       <ArrowRight className="w-4 h-4" /> {t("Guardar mi plan")}
@@ -440,7 +440,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   </button>
                 )}
                 <p className="text-xs text-stone-500">
-                  ¿Quieres identificar lo que veas en la lonja?{' '}
+                  {t("¿Quieres identificar lo que veas en la lonja?")}{' '}
                   <button onClick={onOpenLonja} className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">{t("Abre el LonjaLens")}</button>
                   {' · '}
                   <a href="https://ilg.usc.es/tradutor/" target="_blank" rel="noopener noreferrer" className="text-[#1A3A5C] font-semibold underline decoration-[#D4A017] underline-offset-2">{t("Traductor de gallego")}</a>

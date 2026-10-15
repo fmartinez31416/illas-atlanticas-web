@@ -50,7 +50,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink min-w-0 overflow-hidden"
           >
             <img
-              src={isScrolled ? "logo_transparent.png" : "logo_white.png"}
+              src={isScrolled ? `${import.meta.env.BASE_URL}logo_transparent.png` : `${import.meta.env.BASE_URL}logo_white.png`}
               alt={t("Logo Illas Atlánticas Ático")}
               className="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-all duration-300 shrink-0"
             />
@@ -67,13 +67,13 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
                 <span className={`hidden sm:block text-[10px] uppercase tracking-[0.25em] font-medium ${
                   isScrolled ? 'text-stone-600' : 'text-stone-200'
                 }`}>
-                  Ático
+                  {t("Ático")}
                 </span>
               </div>
               <span className={`text-[9px] uppercase tracking-[0.3em] font-light hidden sm:block ${
                 isScrolled ? 'text-stone-500' : 'text-stone-300'
               }`}>
-                Aguiño · Ribeira
+                {t("Aguiño · Ribeira")}
               </span>
             </div>
           </a>

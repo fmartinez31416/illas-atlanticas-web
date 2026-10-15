@@ -18,6 +18,7 @@ import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
+import { CondicionesPage } from './components/CondicionesPage';
 import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
 import { LangProvider, useI18n, PAGE_META, VIEW_META } from './i18n/LangContext';
@@ -35,7 +36,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'puente' | 'planificador'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -46,11 +47,12 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'puente' | 'planificador'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
     legal: 'legal',
+    condiciones: 'condiciones',
     planificador: 'planificador',
   };
   useEffect(() => {
@@ -67,8 +69,10 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', puente: '/puente', planificador: '/planificador' };
-    const objetivo = PATH_BY_VIEW[currentView];
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador' };
+    const objetivo = currentView === 'home'
+      ? (lang === 'en' ? '/en/' : lang === 'gl' ? '/gl/' : '/')
+      : PATH_BY_VIEW[currentView];
     if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
       window.history.pushState(null, '', objetivo);
     }
@@ -176,6 +180,16 @@ function AppInner() {
           onOpenBooking={scrollToBooking}
           onOpenLonja={() => setCurrentView('lonja')}
         />
+        <NiaChat />
+      </>
+    );
+  }
+
+  // VISTA 3b: Condiciones de reserva (cancelación, pagos, normas)
+  if (currentView === 'condiciones') {
+    return (
+      <>
+        <CondicionesPage onBack={() => setCurrentView('home')} />
         <NiaChat />
       </>
     );
