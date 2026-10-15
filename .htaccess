@@ -12,6 +12,7 @@ AddDefaultCharset utf-8
   RewriteRule ^ubicacion/?$ / [R=301,L]
   RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
   RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies|gastronomia|faq)$ / [R=301,L]
+  RewriteRule ^apartamento/?$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
   # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
@@ -25,7 +26,7 @@ AddDefaultCharset utf-8
   RewriteRule ^ - [L]
 
   # --- 3. Rutas de la SPA ---
-  RewriteRule ^(puente|lonja|legal|planificador)/?$ /index.html [L]
+  RewriteRule ^(puente|lonja|legal|condiciones|planificador)/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
   RewriteRule ^$ /index.html [L]
 
