@@ -189,7 +189,7 @@ export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.up
         }{s.compassSupported&&
         <div className="flex items-center justify-between gap-3">{
           <div>{
-            <Vi>BRÚJULA DEL MÓVIL</Vi>
+            <Vi>{t("BRÚJULA DEL MÓVIL")}</Vi>
             }{
             <p className="font-serif text-[12px] italic text-[#9f8b62]">{t("gire el teléfono: la rosa le sigue")}</p>
             }</div>

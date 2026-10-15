@@ -6,6 +6,7 @@
 import { Ec, qa } from '../config';
 import { kt } from '../data';
 import { Fe, Ix, X1, ep, lp, ph } from '../astro';
+import { t } from '../../../i18n/translate';
 import { il, mr, wc } from '../parts';
 
 export const Un=s=>{const u=((s-Ec)%360+360)%360;return u>qa?null:14+u/qa*332},Yt=s=>128-Math.max(-22,s)*1.45;
@@ -82,7 +83,7 @@ export function Ny({almanac:s = undefined,sky:u = undefined,lighting:r = undefin
               <circle r="5.6" fill="#f3c33c" stroke="#8a6120" strokeWidth="0.7" />
               }</g>
             }{
-            <text x="16" y="12" fontSize="6" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#5a4526">ESFERA CELESTE · AGUIÑO</text>
+            <text x="16" y="12" fontSize="6" letterSpacing="1.6" fontFamily="Cinzel" fontWeight={700} fill="#5a4526"> {t("ESFERA CELESTE · AGUIÑO")}</text>
             }</svg>
           }</div>
         }{
@@ -131,7 +132,7 @@ export function Ny({almanac:s = undefined,sky:u = undefined,lighting:r = undefin
         <div className="flex items-center gap-2">{
           <span className="text-xl leading-none text-[#8a6120]">{O}</span>
           }{
-          <span className="font-display text-[10px] tracking-[0.3em] text-[#5a4526]">LUZ QUE BAÑA EL PUENTE</span>
+          <span className="font-display text-[10px] tracking-[0.3em] text-[#5a4526]"> {t("LUZ QUE BAÑA EL PUENTE")}</span>
           }</div>
         }{
         <span className="font-serif text-[15px] font-semibold text-[#1f1810]">{r.title} · {r.value}</span>
@@ -150,11 +151,11 @@ export function Ny({almanac:s = undefined,sky:u = undefined,lighting:r = undefin
         }</div>
       }{(m!=null||y!=null)&&
       <div className="mt-1 border-t border-[#8a6a3a]/20 pt-1.5 font-serif text-[13px] text-[#2c2216]">{
-        <span className="font-display text-[9px] tracking-[0.2em] text-[#5a4526]">INTENSIDAD DEL DÍA · </span>
+        <span className="font-display text-[9px] tracking-[0.2em] text-[#5a4526]"> {t("INTENSIDAD DEL DÍA")}</span>
         }{m!=null&&
-        <span>{Math.floor(m/3600)} h {String(Math.round(m%3600/60)).padStart(2,"0")} min de sol efectivo</span>
+        <span>{Math.floor(m/3600)} h {String(Math.round(m%3600/60)).padStart(2,"0")} {t("min de sol efectivo")}</span>
         }{y!=null&&
-        <span> · {kt(y,1)} MJ/m² de radiación</span>
+        <span> · {kt(y,1)} MJ/m² {t("de radiación")}</span>
         }</div>
       }</Wc>
     }{

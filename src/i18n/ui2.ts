@@ -304,6 +304,13 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Cerrar motor de reservas": { es: "Cerrar motor de reservas", en: "Close booking engine", gl: "Pechar motor de reservas" },
 
   "CAMPANAS": { es: "CAMPANAS", en: "BELLS", gl: "CAMPÁS" },
+
+  "ESFERA CELESTE · AGUIÑO": { es: "ESFERA CELESTE · AGUIÑO", en: "CELESTIAL SPHERE · AGUIÑO", gl: "ESFERA CELESTE · AGUIÑO" },
+  "LUZ QUE BAÑA EL PUENTE": { es: "LUZ QUE BAÑA EL PUENTE", en: "LIGHT BATHING THE BRIDGE", gl: "LUZ QUE BAÑA A PONTE" },
+  "INTENSIDAD DEL DÍA": { es: "INTENSIDAD DEL DÍA · ", en: "DAY INTENSITY · ", gl: "INTENSIDADE DO DÍA · " },
+  "min de sol efectivo": { es: "min de sol efectivo", en: "min of effective sun", gl: "min de sol efectivo" },
+  "de radiación": { es: "de radiación", en: "of radiation", gl: "de radiación" },
+  "BRÚJULA DEL MÓVIL": { es: "BRÚJULA DEL MÓVIL", en: "MOBILE COMPASS", gl: "BRÚXULA DO MÓBIL" },
   "COMPENSADO": { es: "COMPENSADO", en: "COMPENSATED", gl: "COMPENSADO" },
   "BABOR": { es: "BABOR", en: "PORT", gl: "BABOR" },
   "ESTRIBOR": { es: "ESTRIBOR", en: "STARBOARD", gl: "ESTRIBOR" },

@@ -27,10 +27,13 @@ def check(nombre, ok, detalle=""):
     resultados.append((estado, nombre, detalle))
     print(f"{estado}  {nombre}  {detalle}")
 
-def http(url, timeout=30, headers=None):
+def http(url, timeout=30, headers=None, follow=True):
     req = urllib.request.Request(url, headers=headers or {"User-Agent": "AuditoriaInterna/1.0"})
+    opener = urllib.request.build_opener()
+    if not follow:
+        opener = urllib.request.build_opener(urllib.request.HTTPRedirectHandler.__new__(urllib.request.HTTPRedirectHandler))
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
+        with opener.open(req, timeout=timeout) as r:
             body = r.read()
             return r.status, dict(r.headers), body
     except urllib.error.HTTPError as e:
@@ -57,7 +60,7 @@ for nombre, ruta in rutas.items():
     check(f"ruta {nombre}", status == 200, f"HTTP {status}")
 
 # /condiciones y /apartamento: expectativa tras despliegue (301 / 200)
-status, h, body = http(BASE + "/apartamento")
+status, h, body = http(BASE + "/apartamento", follow=False)
 check("301 /apartamento -> /", status == 301, f"HTTP {status}")
 
 # --- 2. HTML de portada: título + JSON-LD ---
@@ -96,6 +99,7 @@ salida = subprocess.run(
 lineas = [l for l in salida.splitlines()
           if "t(" not in l.split(": ", 1)[1] if ": " in l]
 lineas = [l for l in lineas if "ILLAS ATLÁNTICAS" not in l and "ILLAS ATLANTICAS" not in l]  # marca, igual en todos los idiomas
+lineas = [l for l in lineas if ">Nía<" not in l and ">Nia<" not in l]  # nombre del bot (marca)
 check("componentes sin texto ES suelto", len(lineas) == 0, f"{len(lineas)} líneas a revisar")
 for l in lineas[:5]:
     print("     ", l[:110])
