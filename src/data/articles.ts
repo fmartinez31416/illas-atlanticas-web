@@ -217,10 +217,9 @@ A escasas millas náuticas de Aguiño emerge Sálvora, la joya salvaje del Parqu
 
 ### Identidad gastronómica: el sabor del mar bravo
 
-La despensa marina de Aguiño no admite intermediarios:
+La despensa marina de Aguiño no admite intermediarios: el percebe de las rompientes, extraído en las piedras más batidas por los percebeiros de la lonja local, y el marisco de proximidad —pulpo de roca, nécoras, almejas y el mejillón de batea—, directos del barco a la mesa.
 
-* **El percebe de las rompientes:** Extraído en las piedras más batidas por los percebeiros de la lonja local, reconocido por su sabor concentrado y yodado.
-* **Marisco y lonja de proximidad:** Pulpo de roca, nécoras, almejas y el indiscutible mejillón de batea de la ría, directos del barco a la mesa.`
+Dónde probarlos, sitio a sitio y con reseñas verificadas: la guía Dónde comer en Aguiño (/gastronomia), a un paso del ático.`
   },
   {
     id: '7',

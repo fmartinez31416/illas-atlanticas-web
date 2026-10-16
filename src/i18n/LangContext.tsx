@@ -94,6 +94,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Condiciones de reserva · Illas Atlánticas Ático, Aguiño',
       description: 'Condiciones de reserva de Illas Atlánticas Ático: precios, pagos, cancelación flexible y normas de la casa en Aguiño (Ribeira, Rías Baixas).',
     },
+    gastronomia: {
+      title: 'Dónde comer en Aguiño · Gastronomía de la ría · Illas Atlánticas Ático',
+      description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
+    },
   },
   en: {
     puente: {
@@ -116,6 +120,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Booking conditions · Illas Atlánticas Ático, Aguiño',
       description: 'Booking conditions for Illas Atlánticas Ático: prices, payments, flexible cancellation and house rules in Aguiño (Ribeira, Rías Baixas).',
     },
+    gastronomia: {
+      title: 'Where to eat in Aguiño · Ría gastronomy · Illas Atlánticas Ático',
+      description: 'Where to eat in Aguiño within walking distance of the penthouse: raciones bars, a restaurant, the beach bar and the historic O Furón. Fish-market seafood, octopus, percebes and albariño in the Ría de Arousa.',
+    },
   },
   gl: {
     puente: {
@@ -137,6 +145,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     condiciones: {
       title: 'Condicións de reserva · Illas Atlánticas Ático, Aguiño',
       description: 'Condicións de reserva de Illas Atlánticas Ático: prezos, pagamentos, cancelación flexible e normas da casa en Aguiño (Ribeira, Rías Baixas).',
+    },
+    gastronomia: {
+      title: 'Onde comer en Aguiño · Gastronomía da ría · Illas Atlánticas Ático',
+      description: 'Onde comer en Aguiño a pé do ático: tascas de ración, restaurante, chiringuito e o histórico O Furón. Marisco da lonxa, polbo, percebe e albariño na Ría de Arousa.',
     },
   },
 };

@@ -15,6 +15,7 @@ import { NiaChat } from './components/NiaChat';
 import { NiaSection } from './components/NiaSection';
 import { ConsentBanner } from './components/ConsentBanner';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
+import { GastronomiaPage } from './components/GastronomiaPage';
 
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
@@ -35,7 +36,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -46,13 +47,14 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
     legal: 'legal',
     condiciones: 'condiciones',
     planificador: 'planificador',
+    gastronomia: 'gastronomia',
   };
   useEffect(() => {
     const leer = () => {
@@ -69,7 +71,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia' };
     const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
@@ -175,6 +177,19 @@ function AppInner() {
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenArticle={openBitacoraArticle}
+        />
+        <NiaChat />
+      </>
+    );
+  }
+
+  // VISTA: Gastronomía — dónde comer, por anillos de distancia
+  if (currentView === 'gastronomia') {
+    return (
+      <>
+        <GastronomiaPage
+          onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
         />
         <NiaChat />
       </>

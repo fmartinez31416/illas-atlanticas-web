@@ -29,6 +29,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
         { name: t('FAQ'), href: '#faq' },
         { name: t('Puente en vivo'), action: onOpenPuente, dot: true },
         { name: t('Bitácora'), href: '#bitacora-nav', action: onOpenBitacora },
+        { name: t('Gastronomía'), href: '/gastronomia' },
       ];
 
   return (

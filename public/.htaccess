@@ -10,7 +10,7 @@ AddDefaultCharset utf-8
 
   # --- 1. URLs antiguas que ya tienen posiciones en Google -> cada una a su equivalente nuevo ---
   # (datos Search Console 3m: /ubicacion/gastronomia 60 clics · /ubicacion 27 · parque-nacional 3 · preguntas-frecuentes 2 · contacto 1)
-  RewriteRule ^ubicacion/gastronomia/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^ubicacion/gastronomia/?$ /gastronomia [R=301,L]
   RewriteRule ^ubicacion/parque-nacional/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
   RewriteRule ^ubicacion/cultura/?$ /bitacora [R=301,L]
   RewriteRule ^ubicacion/excursiones/?$ /planificador [R=301,L]
@@ -26,7 +26,7 @@ AddDefaultCharset utf-8
   # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
   # El español vive en la portada /: /es/ se consolida en / para no duplicar contenido.
   RewriteRule ^(en|gl)/?$ /index.html [L]
-  RewriteRule ^(en|gl)/(puente|lonja|legal|condiciones|planificador)/?$ /index.html [L]
+  RewriteRule ^(en|gl)/(puente|lonja|legal|condiciones|planificador|gastronomia)/?$ /index.html [L]
   RewriteRule ^(en|gl)/bitacora(/.*)?$ /index.html [L]
   RewriteRule ^es/?$ / [R=301,L]
 
@@ -36,7 +36,7 @@ AddDefaultCharset utf-8
   RewriteRule ^ - [L]
 
   # --- 3. Rutas de la SPA ---
-  RewriteRule ^(puente|lonja|legal|condiciones|planificador)/?$ /index.html [L]
+  RewriteRule ^(puente|lonja|legal|condiciones|planificador|gastronomia)/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
   RewriteRule ^$ /index.html [L]
 

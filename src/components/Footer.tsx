@@ -150,6 +150,9 @@ export function Footer({ onOpenLegal }: FooterProps) {
                 <a href="/lonja" className="hover:text-amber-200 transition-colors">
                   {t("Lonja en vivo")}
                 </a>
+                <a href="/gastronomia" className="hover:text-amber-200 transition-colors">
+                  {t("Gastronomía")}
+                </a>
               </li>
               <li>
                 <a href="https://nia.illasatlanticasatico.es/" className="hover:text-amber-200 transition-colors">
