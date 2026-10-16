@@ -138,9 +138,10 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
   useEffect(() => {
     if (!mapDiv.current || mapRef.current) return;
     const map = L.map(mapDiv.current, { scrollWheelZoom: false, zoomControl: true });
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-      attribution: '&copy; Esri, HERE, Garmin, FAO, NOAA, USGS &amp; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
+      className: 'tiles-oscuras',
     }).addTo(map);
     pinsLayer.current = L.layerGroup().addTo(map);
     mapRef.current = map;
