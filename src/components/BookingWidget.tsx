@@ -31,7 +31,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
   const [motorAbierto, setMotorAbierto] = useState(false);
-  const [avail, setAvail] = useState<{ checkIn: string; checkOut: string; price: number } | null>(null);
+  const [avail, setAvail] = useState<{ checkIn: string; checkOut: string; price: number; total?: number; noches?: number } | null>(null);
   const [availLoading, setAvailLoading] = useState(true);
 
   // Primera ventana libre con precio: el buscador nunca abre en fechas «No disponible».
@@ -46,7 +46,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
         if (d && d.checkIn && d.checkOut) {
           setCheckIn(d.checkIn);
           setCheckOut(d.checkOut);
-          setAvail({ checkIn: d.checkIn, checkOut: d.checkOut, price: Number(d.price) || 0 });
+          setAvail({ checkIn: d.checkIn, checkOut: d.checkOut, price: Number(d.price) || 0, total: Number(d.total) || 0, noches: Number(d.noches) || 0 });
         }
       } catch { /* silencioso: si no hay respuesta, quedan las fechas por defecto */ }
       finally { if (vivo) setAvailLoading(false); }
@@ -71,6 +71,8 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const beds24Url = (() => {
     const params = new URLSearchParams({
       propid: PROP_ID,
+      // Beds24 no tiene gallego: en GL se muestra el motor en español (peor sería en inglés)
+      lang: lang === 'en' ? 'en' : 'es',
       numadult: String(adults),
       numchild: String(children),
       ...(checkIn ? { firstnight: checkIn } : {}),
@@ -185,6 +187,18 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           </div>
 
+          {/* Pago y cancelación: dentro del formulario, visible sin abrir el motor */}
+          <div className="mt-4 px-4 py-3 bg-amber-50/80 border border-amber-200/70 rounded-md text-[12px] leading-relaxed text-stone-700">
+            <p className="font-medium text-stone-800">{t("Al reservar:")}</p>
+            <p>{t("booking.pago.resumen")}</p>
+            <a
+              href="/condiciones"
+              className="inline-block mt-1 text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]"
+            >
+              {t("Condiciones de reserva completas")} →
+            </a>
+          </div>
+
           {/* Motor de reservas embebido (Beds24, sin salir de la web) */}
           {motorAbierto && (
             <div className="mt-4 border border-stone-200 bg-white">
@@ -221,11 +235,11 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           {/* Primera ventana libre con precio (si la API responde) */}
           {(availLoading || avail) && (
-            <p className="mt-3 text-[11px] text-stone-500 text-center">
+            <p className="mt-3 min-h-[2rem] text-[11px] text-stone-500 text-center">
               {availLoading
                 ? t("disponibilidad.buscando")
                 : avail
-                  ? t("disponibilidad.hint", { a: formatearFecha(avail.checkIn), b: formatearFecha(avail.checkOut), p: avail.price })
+                  ? t("disponibilidad.hint", { a: formatearFecha(avail.checkIn), b: formatearFecha(avail.checkOut), n: avail.noches || nights, total: avail.total || Math.round((avail.price || 0) * nights), p: avail.price })
                   : ''}
             </p>
           )}

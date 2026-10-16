@@ -31,7 +31,7 @@ export function gx(s=1e3){const[u,r]=X.useState(()=>new Date);return X.useEffect
 
 export function vx(){const[s,u]=X.useState(null),[r,o]=X.useState(null),[d,m]=X.useState("loading"),[y,g]=X.useState(null);return X.useEffect(()=>{let h=!0;const p=new AbortController,b=async()=>{const[O,B]=await Promise.allSettled([hx(p.signal),mx(p.signal)]);if(!h)return;const L=O.status==="fulfilled",D=B.status==="fulfilled";L&&u(O.value),D&&o(B.value),m(q=>L&&D?"live":L||D?"partial":q==="loading"?"offline":q),g(Date.now())};b();const A=window.setInterval(b,10*6e4);return()=>{h=!1,p.abort(),window.clearInterval(A)}},[]),{weather:s,marine:r,status:d,updatedAt:y}}
 
-export function qn(s,u=!0){const r=X.useRef(s);X.useLayoutEffect(()=>{r.current=s}),X.useEffect(()=>{if(!u)return;let o=0,d=performance.now();const m=y=>{const g=Math.min(.1,(y-d)/1e3);d=y,r.current(y/1e3,g),o=requestAnimationFrame(m)};return o=requestAnimationFrame(m),()=>cancelAnimationFrame(o)},[u])}
+export function qn(s,u=!0){const r=X.useRef(s);X.useLayoutEffect(()=>{r.current=s}),X.useEffect(()=>{if(!u)return;let o=0,d=performance.now();const m=y=>{const g=Math.min(.1,(y-d)/1e3);d=y;if(!document.documentElement.classList.contains('user-zooming'))r.current(y/1e3,g);o=requestAnimationFrame(m)};return o=requestAnimationFrame(m),()=>cancelAnimationFrame(o)},[u])}
 
 export function bx(){const s=X.useRef(null),[u,r]=X.useState({w:0,h:0});return X.useLayoutEffect(()=>{const o=s.current;if(!o)return;const d=()=>r({w:o.clientWidth,h:o.clientHeight});d();const m=new ResizeObserver(d);return m.observe(o),()=>m.disconnect()},[]),[s,u]}
 

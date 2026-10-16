@@ -85,6 +85,31 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
     return () => cancelAnimationFrame(raf);
   }, [playing]);
 
+  // Pinch-zoom: mientras el usuario amplía con los dedos, congelar las animaciones del
+  // puente (deriva, oleaje, destellos, parpadeos JS) — si no, las capas animadas saltan
+  // y se descuadran al hacer zoom. La clase .user-zooming la pausa el CSS y el bucle qn.
+  X.useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    let timer = 0;
+    let scale = vv.scale;
+    const onVp = () => {
+      if (vv.scale === scale) return;
+      scale = vv.scale;
+      document.documentElement.classList.add('user-zooming');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => document.documentElement.classList.remove('user-zooming'), 600);
+    };
+    vv.addEventListener('resize', onVp);
+    vv.addEventListener('scroll', onVp);
+    return () => {
+      window.clearTimeout(timer);
+      document.documentElement.classList.remove('user-zooming');
+      vv.removeEventListener('resize', onVp);
+      vv.removeEventListener('scroll', onVp);
+    };
+  }, []);
+
   const almanac = X.useMemo(() => Px(new Date(dayStart + 12 * 36e5)), [dayStart]);
   const sky = X.useMemo(() => yh(new Date(shownMs)), [shownMs]);
   const model = X.useMemo(() => yx(shownMs, weather, marine, live), [shownMs, weather, marine, live]);

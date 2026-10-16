@@ -56,6 +56,15 @@
 .shafts.soft { mix-blend-mode: soft-light; }
 .stringing { box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 6px inset, rgba(232, 200, 130, 0.55) 0px 0px 0px 7px inset, rgba(40, 20, 5, 0.6) 0px 0px 0px 8px inset; }
 .swell { animation: swell var(--sd,9s)ease-in-out infinite; }
+
+/* Pausa de las animaciones del puente mientras el usuario hace zoom con los dedos
+   (pinch): las capas animadas (deriva, oleaje, destellos, parpadeos JS) saltan y se
+   descuadran al ampliar. La clase la pone DashboardNautico al detectar cambio de
+   visualViewport.scale y se quita ~600 ms después del último cambio. */
+.user-zooming *, .user-zooming *::before, .user-zooming *::after {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
 .toggle { background: linear-gradient(rgb(21, 14, 6), rgb(58, 39, 16)); border-radius: 12px; flex: 0 0 auto; width: 46px; height: 24px; position: relative; box-shadow: rgba(0, 0, 0, 0.75) 0px 2px 4px inset, rgba(255, 220, 150, 0.22) 0px 1px; }
 .toggle > span { background: radial-gradient(circle at 35% 30%, rgb(255, 244, 207), rgb(216, 176, 96) 45%, rgb(107, 74, 20)); border-radius: 50%; width: 20px; height: 20px; transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1); position: absolute; top: 2px; left: 2px; box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 3px; }
 .toggle[data-on="true"] > span { transform: translate(22px); }

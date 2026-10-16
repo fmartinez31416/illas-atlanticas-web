@@ -4,6 +4,7 @@ import { ACTIVIDADES, INTERESES, PARTIDAS, CHECKLIST, googleMapsLink, googleMaps
 import { Reveal } from './Reveal';
 import { t } from '../i18n/translate';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useI18n } from '../i18n/LangContext';
 
 interface PlanificadorPageProps {
   onBack: () => void;
@@ -22,6 +23,8 @@ const FIAB_CLASS: Record<Actividad['fiabilidad'], string> = {
 };
 
 export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: PlanificadorPageProps) {
+  const { lang } = useI18n();
+  const loc = lang === 'en' ? 'en-GB' : lang === 'gl' ? 'gl-ES' : 'es-ES';
   const [paso, setPaso] = useState(1);
   const [origen, setOrigen] = useState('');
   const [inicio, setInicio] = useState('');
@@ -354,7 +357,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                     <div className="px-5 py-3 bg-[#1A3A5C] text-white flex items-center gap-3">
                       <Anchor className="w-4 h-4 text-[#D4A017]" />
                       <span className="font-serif text-lg">{t("Día {dia}", { dia: d.dia })}</span>
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#A9C9DD] ml-auto">{inicio ? new Date(new Date(inicio + 'T00:00:00').getTime() + (d.dia - 1) * 86400000).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) : ''}</span>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#A9C9DD] ml-auto">{inicio ? new Date(new Date(inicio + 'T00:00:00').getTime() + (d.dia - 1) * 86400000).toLocaleDateString(loc, { weekday: 'long', day: 'numeric', month: 'long' }) : ''}</span>
                     </div>
                     <div className="divide-y divide-[#1A3A5C]/8">
                       {d.franjas.map((f) => (

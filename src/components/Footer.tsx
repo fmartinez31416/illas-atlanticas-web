@@ -222,8 +222,8 @@ export function Footer({ onOpenLegal }: FooterProps) {
 
         </div>
 
-        {/* Créditos y Legal */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-stone-100 drop-shadow-md">
+        {/* Créditos y Legal (pb móvil: deja aire bajo el enlace de condiciones para que la burbuja de Nía no lo tape) */}
+        <div className="pt-8 pb-20 sm:pb-0 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-stone-100 drop-shadow-md">
           <p>
             © {new Date().getFullYear()} Illas Atlánticas Ático. {t("Todos los derechos reservados.")}
           </p>
