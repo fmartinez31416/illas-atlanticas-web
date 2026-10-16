@@ -53,7 +53,7 @@ export const GASTRO_META: Record<string, { lat: number; lon: number; placeName: 
   tasca: { lat: 42.522810, lon: -9.016363, placeName: 'Chiringuito Praia da Tasca, Aguiño', criterios: { abierto_invierno: false, terraza: true, vistas_mar: true },
     nota_invierno: { es: "Solo temporada de verano", en: "Summer season only", gl: "Só tempada de verán" } },
   tiaelisa: { lat: 42.522483, lon: -9.019268, placeName: 'A Casa da Tía Elisa, Aguiño', criterios: { marisco: true, terraza: true },
-    nota_invierno: { es: "⚠️ Google lo marca cerrado temporalmente (oct-2026) — verificar antes de ir", en: "⚠️ Google shows temporarily closed (Oct 2026) — check before going", gl: "⚠️ Google márcao pechado temporalmente (out-2026) — verificar antes de ir" } },
+    nota_invierno: { es: 'Abierta (vista por el anfitrión, oct-2026) · invierno sin confirmar', en: 'Open (seen by the host, Oct 2026) · winter not confirmed', gl: 'Aberta (vista polo anfitrión, out-2026) · inverno sen confirmar' } },
   vinoteca: { lat: 42.553914, lon: -8.989995, placeName: 'Vinoteca Abuela Gloria, Ribeira', criterios: { abierto_invierno: true, marisco: true, terraza: true },
     nota_invierno: { es: "Todo el año · mediodías, domingo cerrado", en: "All year · lunchtimes, closed Sundays", gl: "Todo o ano · mediodías, domingo pechado" } },
 };
