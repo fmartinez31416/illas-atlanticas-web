@@ -19,7 +19,7 @@ AddDefaultCharset utf-8
   RewriteRule ^experiencias/?$ /planificador [R=301,L]
   RewriteRule ^preguntas-frecuentes/?$ /condiciones [R=301,L]
   RewriteRule ^cookies/?$ /legal [R=301,L]
-  RewriteRule ^(contacto|gastronomia|faq)/?$ / [R=301,L]
+  RewriteRule ^(contacto|faq)/?$ / [R=301,L]
   RewriteRule ^apartamento/?$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
