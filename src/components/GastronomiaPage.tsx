@@ -366,6 +366,12 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
                           {f.nota[lang]}
                         </p>
                       )}
+                      {GASTRO_META[f.id]?.nota_invierno?.[lang] && (
+                        <p className="mt-2 text-sm text-[#C5A059]">
+                          ❄️ {lang === 'en' ? 'Winter: ' : lang === 'gl' ? 'Inverno: ' : 'Invierno: '}
+                          {GASTRO_META[f.id]!.nota_invierno![lang]}
+                        </p>
+                      )}
                     </article>
                   ))}
                 </div>
