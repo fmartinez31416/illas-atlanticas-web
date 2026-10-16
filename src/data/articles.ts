@@ -269,6 +269,47 @@ Desde la terraza no se ve nada de esto. Esa es la idea.
 
 Al final, el huésped solo ve la terraza, el mar y Sálvora al fondo. Que no vea el resto es la señal de que el sistema funciona. El mar se lee; la casa lo traduce.`
   },
+  {
+    id: '8',
+    slug: 'faros-boca-ria-salvora-corrubedo-ons',
+    category: 'Historia & Navegación',
+    title: 'Los faros de la boca de la ría: Sálvora, Corrubedo y Ons, la señal que ordena el mar',
+    excerpt: 'Tres luces guardan la entrada de la Ría de Arousa: su historia, sus firmas de destellos y desde dónde se ven —dos desde la terraza de Aguiño, tres desde A Pedra da Ra.',
+    readTime: '7 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Faros', 'Navegación', 'Sálvora', 'Aguiño'],
+    featured: false,
+    content: `Quien mira de noche hacia la bocana de la Ría de Arousa desde Aguiño ve luces que parpadean con ritmos distintos. No parpadean por azar: cada una es una firma, un patrón de destellos pensado para que el navegante identifique de qué faro se trata sin ver la costa. Son los centinelas de la entrada de la ría —Sálvora, Corrubedo y Ons—, cada uno con su historia, su altura y su manera de hablar en la oscuridad. Desde la terraza de la casa se ven dos; desde el mirador de A Pedra da Ra, los tres. Y esa diferencia también es parte de su historia.
+
+### Sálvora: el centinela que nació de una tragedia
+
+El primer faro de Sálvora se levantó a mediados del siglo XIX, pero su posición y su potencia resultaron insuficientes para una de las bocanas más traicioneras del Atlántico gallego. La noche del 2 de enero de 1921, con niebla cerrada y mar de fondo, el vapor Santa Isabel se partió contra los bajos de Pegar con más de doscientas víctimas: el desastre que esta casa ha contado con detalle en su bitácora.
+
+La respuesta llegó el mismo año: el faro actual, en Punta Besugueiros, inaugurado en 1921. Torre octogonal blanca con una franja roja, elevada sobre el granito de la isla. Su historia posterior no es menos curiosa: durante la Segunda Guerra Mundial sirvió como observatorio de tráfico marítimo de la Armada, y hubo que volar toneladas de roca del sector noroeste porque estorbaban al haz de luz. Habitado por fareros durante décadas, hoy funciona automatizado con energía solar, bajo la Autoridad Portuaria de Vilagarcía. Desde la terraza de esta casa, su luz es la primera referencia nocturna de la ría.
+
+### Corrubedo: el faro que fue una maravilla universal
+
+El faro de Corrubedo se encendió el 20 de febrero de 1854, obra del ingeniero Celedonio de Uribe, en el punto más occidental de la península del Barbanza. Su edificio semicircular de sillería, con la torre en el centro, fue lo bastante notable para que en 1867 se exhibiera como una de las maravillas del mundo en la Exposición Universal de París, inaugurada por Napoleón III.
+
+Su firma luminosa es de las más elegantes del litoral: dos destellos y tres destellos alternados, en blanco y rojo, cada veinte segundos. El sector rojo no es decorativo: señala el cuadrante de peligro, el que cubre las agujas y los bajos de roca que hicieron de este cabo un cementerio de naves. A su lado queda la torre de la sirena de niebla, hoy en desuso: durante un siglo, cuando la niebla apagaba la luz, el faro gritaba. Desde la terraza su luz no se alcanza: queda detrás del Barbanza. Hay que subir al mirador de A Pedra da Ra, en lo alto del pueblo, para verla asomar por encima de la península.
+
+### Ons: la luz en el punto más alto
+
+Al sur de la bocana, el faro de la isla de Ons se encendió por primera vez el 13 de abril de 1865. Su torre mide solo 12 metros —la menor de los tres—, pero está plantada en el punto más alto de la isla: el plano focal queda a unos 127 metros sobre el mar. Resultado: un alcance que ronda las 25 millas náuticas, uno de los más altos de los faros gallegos. Desde Bueu hasta la entrada de la ría, su luz blanca barre el horizonte como un reloj.
+
+### Cómo se lee un faro
+
+Los faros no dicen «aquí estoy» una sola vez por noche: repiten su patrón sin descanso, y ese patrón es su identidad. Un faro con destellos en grupos (como el 2+3 de Corrubedo), otro de luz blanca de barrido (como Ons visto desde lejos) y otro con su cadencia propia (Sálvora) permiten a un marinero saber en qué punto de la costa está sin GPS, solo contando segundos. Los sectores de color —el rojo de Corrubedo— marcan zonas prohibidas. Y cuando la niebla mata la luz, históricamente entraban las sirenas: la de Corrubedo sigue en pie como testigo mudo de aquella época.
+
+En el Puente de esta web, la carta náutica de la ría reproduce estas firmas: cada faro con su cadencia real de destellos, para que se pueda contrastar lo que se lee con lo que se ve desde la costa.
+
+### Verlas desde Aguiño
+
+No hace falta barco: en una noche despejada, desde la terraza de la casa se distinguen dos luces —Sálvora al frente y, hacia el sur, Ons—. Para ver la tercera hay que subir al mirador de A Pedra da Ra, en lo alto del pueblo: desde allí, Corrubedo asoma por encima del Barbanza y se ven los tres faros de la bocana a la vez.
+
+El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún conserva luz y las linternas ya han encendido. Un té en la terraza y los faros contando sus destellos: la manera más barata y más antigua de entender este mar.`,
+  },
 ];
 
 // --- Traducciones (ES fuente de verdad) ---
