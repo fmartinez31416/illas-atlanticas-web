@@ -23,6 +23,7 @@
     {
       "@context": "https://schema.org",
       "@type": "VacationRental",
+      "additionalType": "https://schema.org/VacationRental",
       "name": "Illas Atlánticas Ático",
       "description": "Ático vacacional de 230 m² con terraza panorámica privada de 50 m² frente a las islas de Sálvora y Ons, en Aguiño (Ribeira, A Coruña). 3 dormitorios, 3 baños, garaje privado y WiFi de fibra de 1 Gbps. VUT-CO-007656.",
       "url": "https://illasatlanticasatico.es/",
@@ -36,7 +37,31 @@
         "https://illasatlanticasatico.es/fotos/cocina_01.jpg",
         "https://illasatlanticasatico.es/fotos/comedor_04.jpg"
       ],
-      "containsPlace": { "@type": "Accommodation", "occupancy": { "@type": "QuantitativeValue", "value": 6 } },
+      "containsPlace": {
+        "@type": "Accommodation",
+        "additionalType": "https://schema.org/Apartment",
+        "occupancy": { "@type": "QuantitativeValue", "value": 6 },
+        "numberOfBedrooms": 3,
+        "numberOfBathroomsTotal": 3,
+        "floorSize": { "@type": "QuantitativeValue", "value": 230, "unitCode": "MTK" },
+        "image": [
+          "https://illasatlanticasatico.es/01_hero_portada.webp",
+          "https://illasatlanticasatico.es/fotos/vistas_terraza_17.jpg",
+          "https://illasatlanticasatico.es/fotos/salon_01.jpg",
+          "https://illasatlanticasatico.es/fotos/dormitorio_principal_01.jpg",
+          "https://illasatlanticasatico.es/fotos/dormitorio_principal_02.jpg",
+          "https://illasatlanticasatico.es/fotos/bano_principal_06.jpg",
+          "https://illasatlanticasatico.es/fotos/cocina_01.jpg",
+          "https://illasatlanticasatico.es/fotos/comedor_04.jpg"
+        ],
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Terraza panorámica privada de 50 m²", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "WiFi de fibra 1 Gbps", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Plaza de garaje privada", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Vistas a las islas de Sálvora y Ons", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Dos dormitorios en suite", "value": true }
+        ]
+      },
       "identifier": "VUT-CO-007656",
       "telephone": "+34606025318",
       "checkinTime": "17:00",
@@ -52,7 +77,7 @@
         "postalCode": "15965",
         "addressCountry": "ES"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 42.4608, "longitude": -9.015 },
+      "geo": { "@type": "GeoCoordinates", "latitude": 42.5222, "longitude": -9.0194 },
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Terraza panorámica privada de 50 m²", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "WiFi de fibra 1 Gbps", "value": true },
@@ -65,6 +90,13 @@
         "ratingValue": "9.5",
         "bestRating": "10",
         "reviewCount": "54"
+      },
+      "review": {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "10", "bestRating": "10" },
+        "author": { "@type": "Person", "name": "Manuel" },
+        "datePublished": "2026-04",
+        "reviewBody": "La ubicación permite visitas directas a las islas, el apartamento en buenas condiciones, con muy buenos accesorios. Las habitaciones de 10, amplias. Con baños totalmente equipados. Con parking y acceso directo al apartamento. El trato con el dueño Fernando excelente."
       },
       "priceRange": "Desde 95 €/noche en temporada baja"
     }
