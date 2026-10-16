@@ -97,6 +97,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://illasatlanticasatico.es/gastronomia</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://illasatlanticasatico.es/legal</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>yearly</changefreq>
