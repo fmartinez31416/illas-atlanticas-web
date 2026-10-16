@@ -26,7 +26,7 @@ export function LegalPage({ onBack }: LegalPageProps) {
           <section>
             <h2 className="text-xl font-serif text-white mb-4">{t("1. Aviso Legal")}</h2>
             <p className="mb-3">
-              Titular: <span className="text-white">{t("Fernando Martínez Piñeiro")}</span> <span className="text-stone-500">({t("legal.nif")} 35444540E)</span>, {t("anfitrión y responsable de la Vivienda de Uso Turístico")} <span className="text-white">{t("«Illas Atlánticas Ático»")}</span>, {t("inscrita en el Registro de Empresas y Actividades Turísticas de la Xunta de Galicia con el código")} <span className="text-white">VUT-CO-007656</span>.
+              Titular: <span className="text-white">{t("Fernando Martínez Piñeiro")}</span>, {t("anfitrión y responsable de la Vivienda de Uso Turístico")} <span className="text-white">{t("«Illas Atlánticas Ático»")}</span>, {t("inscrita en el Registro de Empresas y Actividades Turísticas de la Xunta de Galicia con el código")} <span className="text-white">VUT-CO-007656</span>.
             </p>
             <p className="mb-3">
               {t("Domicilio: Rúa Francisco Lorenzo Mariño 93, Ático F · 15965 Aguiño, Ribeira (A Coruña).")}

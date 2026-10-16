@@ -635,6 +635,14 @@ export const TR: Record<string, { en?: string; gl?: string }> = {
   "art.7.tag2": {"en": "Command Bridge", "gl": "Ponte de Mando"},
   "art.7.tag3": {"en": "Aguiño", "gl": "Aguiño"},
   "art.7.title": {"en": "The House that Reads the Sea: the Inner Engineering of a Stay Facing Sálvora", "gl": "A casa que le o mar: enxeñaría interna dun aloxamento fronte a Sálvora"},
+  "rev.r0.date": {"en": "April 2026", "gl": "Abril 2026"},
+  "rev.r1.date": {"en": "August 2026", "gl": "Agosto 2026"},
+  "rev.r2.date": {"en": "August 2026", "gl": "Agosto 2026"},
+  "rev.r3.date": {"en": "July 2026", "gl": "Xullo 2026"},
+  "rev.r4.date": {"en": "June 2026", "gl": "Xuño 2026"},
+  "rev.r5.date": {"en": "May 2026", "gl": "Maio 2026"},
+  "rev.r6.date": {"en": "September 2026", "gl": "Setembro 2026"},
+  "rev.r7.date": {"en": "April 2026", "gl": "Abril 2026"},
 };
 export function trc(key: string, lang: Lang, fallback: string): string {
   if (lang === 'es') return fallback;

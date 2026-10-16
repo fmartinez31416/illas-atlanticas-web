@@ -101,9 +101,14 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
         {/* Los pilares de valor real — el primero, el precio ancla honesto */}
         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-10 text-xs text-stone-200">
-          <div className="px-4 py-2 bg-[#D4A017] border border-[#D4A017] shadow-md">
+          <button
+            id="hero-price-anchor"
+            onClick={onOpenBooking}
+            title={t("Ver disponibilidad y precio para tus fechas")}
+            className="px-4 py-2 bg-[#D4A017] border border-[#D4A017] shadow-md cursor-pointer hover:bg-[#e6b52e] transition-colors"
+          >
             <span className="uppercase tracking-[0.15em] text-[11px] font-semibold text-[#071522]">{t("Desde 95 €/noche en temporada baja")}</span>
-          </div>
+          </button>
           <div className="px-4 py-2 bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
             <span className="uppercase tracking-[0.15em] text-[11px] font-medium">{t("Despierta mirando las islas")}</span>
           </div>

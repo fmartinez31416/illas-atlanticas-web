@@ -2,21 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { X, Send, MessageCircle } from 'lucide-react';
 import { NIA_API_URL, NIA_TOKEN } from '../niaConfig';
 import { t, getLang } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 
 interface Mensaje {
   rol: 'nia' | 'usuario';
   texto: string;
 }
 
-const SUGERENCIAS = [
-  t('¿A cuánto se subasta el marisco hoy?'),
-  t('¿Qué tiempo hace hoy?'),
-  t('¿Dónde comprar marisco?'),
-  t('¿Cómo se cocina el percebe?'),
-  t('Precios y reservas'),
-];
-
 export function NiaChat() {
+  useI18n(); // suscripción al contexto: re-renderiza al cambiar de idioma
   const [abierto, setAbierto] = useState(false);
   const [saludo, setSaludo] = useState(false);
   const [mensajes, setMensajes] = useState<Mensaje[]>([]);
@@ -24,6 +18,16 @@ export function NiaChat() {
   const [escribiendo, setEscribiendo] = useState(false);
   const [fallo, setFallo] = useState(false);
   const finRef = useRef<HTMLDivElement>(null);
+
+  // Sugerencias POR IDIOMA en cada render (antes era una constante de módulo:
+  // quedaba congelada en el idioma del primer render y salía en inglés en la web en español).
+  const sugerencias = [
+    t('¿A cuánto se subasta el marisco hoy?'),
+    t('¿Qué tiempo hace hoy?'),
+    t('¿Dónde comprar marisco?'),
+    t('¿Cómo se cocina el percebe?'),
+    t('Precios y reservas'),
+  ];
 
   useEffect(() => {
     const abrir = () => setAbierto(true);
@@ -66,7 +70,9 @@ export function NiaChat() {
   const llamar = async (mensajes: Mensaje[]): Promise<string> => {
     const pedir = () => {
       const ctrl = new AbortController();
-      const timer = setTimeout(() => ctrl.abort(), 30000);
+      // El agente con herramientas (precios reales, disponibilidad) puede tardar ~60-90 s:
+      // el servidor responde, el navegador no debe rendirse antes (75 s, 2 intentos).
+      const timer = setTimeout(() => ctrl.abort(), 75000);
       // Identificador de sesión estable por navegador: permite reconstruir la conversación íntegra en el registro del servidor
       let sid = '';
       try {
@@ -200,7 +206,7 @@ export function NiaChat() {
           {/* Sugerencias */}
           {mensajes.length === 0 && !escribiendo && (
             <div className="px-4 pb-2 flex flex-wrap gap-2 bg-[#EBE6DD]">
-              {SUGERENCIAS.map((s) => (
+              {sugerencias.map((s) => (
                 <button
                   key={s}
                   onClick={() => enviar(s)}

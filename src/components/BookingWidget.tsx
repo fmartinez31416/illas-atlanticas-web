@@ -1,6 +1,7 @@
 import { useState, useEffect, useId } from 'react';
 import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
 import { t } from '../i18n/translate';
+import { useI18n } from '../i18n/LangContext';
 import { NIA_API_URL } from '../niaConfig';
 
 interface BookingWidgetProps {
@@ -9,6 +10,7 @@ interface BookingWidgetProps {
 }
 
 export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidgetProps) {
+  const { lang } = useI18n();
   const checkInId = useId();
   const checkOutId = useId();
   const adultsId = useId();
@@ -58,6 +60,13 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
     1,
     Math.round((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / 86400000)
   );
+
+  const formatearFecha = (iso: string) => {
+    const d = new Date(iso + 'T12:00:00');
+    if (isNaN(d.getTime())) return iso;
+    const loc = lang === 'en' ? 'en-GB' : lang === 'gl' ? 'gl-ES' : 'es-ES';
+    return d.toLocaleDateString(loc, { day: 'numeric', month: 'short', year: 'numeric' });
+  };
 
   const beds24Url = (() => {
     const params = new URLSearchParams({
@@ -216,7 +225,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               {availLoading
                 ? t("disponibilidad.buscando")
                 : avail
-                  ? t("disponibilidad.hint", { a: avail.checkIn, b: avail.checkOut, p: avail.price })
+                  ? t("disponibilidad.hint", { a: formatearFecha(avail.checkIn), b: formatearFecha(avail.checkOut), p: avail.price })
                   : ''}
             </p>
           )}
@@ -230,6 +239,14 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             <span className="text-[#1A3A5C]">{t("Mejor precio garantizado: lo igualamos +5%")}</span>
             <span className="text-stone-300">·</span>
             <a href="/condiciones" className="underline underline-offset-2 hover:text-stone-700">{t("Condiciones de reserva")}</a>
+          </p>
+
+          {/* Pago y precio: lo que el huésped necesita saber antes de pulsar */}
+          <p className="mt-2 text-[11px] text-stone-500 text-center leading-relaxed">
+            {t("booking.pago.resumen")}
+          </p>
+          <p className="mt-1 text-[11px] text-stone-400 text-center">
+            {t("booking.precio.nota")}
           </p>
         </div>
 

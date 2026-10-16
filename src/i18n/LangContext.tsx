@@ -26,14 +26,14 @@ export function LangProvider({ children }: { children: ReactNode }) {
     setCurrentLang(l);
     try { localStorage.setItem('illa_lang', l); } catch { /* */ }
     document.documentElement.lang = l;
-    // Sincronizar la URL cuando estamos en la portada (/, /en/ o /gl/): el idioma vive en la ruta
+    // Sincronizar la URL: el idioma vive en la ruta (/, /en/, /gl/), también en vistas SPA
     try {
       const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
       const path = window.location.pathname.replace(new RegExp('^' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), '');
-      if (/^\/(es|en|gl)?\/?$/.test(path)) {
-        const newPath = base + (l === 'es' ? '/' : '/' + l + '/');
-        window.history.replaceState(null, '', newPath);
-      }
+      const m = path.match(/^\/(?:es|en|gl)?\/?(.*)$/);
+      const rest = m ? m[1] : '';
+      const newPath = base + (l === 'es' ? '/' : '/' + l + '/') + rest;
+      window.history.replaceState(null, '', newPath);
     } catch { /* */ }
   };
 

@@ -11,7 +11,7 @@ export function detectLang(): Lang {
     // 1. URL explícita de idioma (/en/ /gl/; /es/ redirige a /): rutas reales para hreflang
     const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
     const path = window.location.pathname.replace(new RegExp('^' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), '');
-    const m = path.match(/^\/(es|en|gl)\/?$/);
+    const m = path.match(/^\/(es|en|gl)(\/.*)?$/);
     if (m) return m[1] as Lang;
     // 2. Preferencia guardada (el selector la persiste)
     const saved = localStorage.getItem('illa_lang');

@@ -1,8 +1,10 @@
 // Datos de opiniones — fuentes: Booking.com y Google (reseñas verificadas por el propietario)
-// Última actualización: 2026-10-15 (puntuación Booking: 9,4 — vía espejo Amimir y caché de Google; listado Booking temporalmente desactivado)
+// Última actualización: 2026-10-15 (puntuación Booking: 9,5 — la que muestra el listado público;
+// tras la reseña de Magnolia el agregado real ronda 9,4, pero Booking está cerrado a la venta y
+// el público solo ve 9,5. Decisión de Fernando: mantener la cifra visible en Booking)
 
 export const REVIEW_STATS = {
-  score: '9,4',
+  score: '9,5',
   total: 54,
   personal: '9,8',
   servicios: '9,6',
@@ -111,6 +113,7 @@ export function getReviews(lang: Lang): Review[] {
     ...r,
     title: trc(`rev.r${i}.title`, lang, r.title),
     details: trc(`rev.r${i}.details`, lang, r.details),
+    date: trc(`rev.r${i}.date`, lang, r.date),
     comment: trc(`rev.r${i}.comment`, lang, r.comment),
   }));
 }

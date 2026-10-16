@@ -23,7 +23,6 @@ import { PuenteView } from './components/PuenteView';
 import { NIA_API_URL } from './niaConfig';
 import { LangProvider, useI18n, PAGE_META, VIEW_META } from './i18n/LangContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
-import { LanguageHint } from './components/LanguageHint';
 import { t } from './i18n/translate';
 
 export function App() {
@@ -56,23 +55,25 @@ function AppInner() {
     planificador: 'planificador',
   };
   useEffect(() => {
-    const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
-    const vista = VIEW_BY_PATH[partes[0]] || 'home';
-    setCurrentView(vista);
-    if (vista === 'bitacora' && partes[1]) setPendingArticle(decodeURIComponent(partes[1]));
-    const onPop = () => {
-      const p = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
-      setCurrentView(VIEW_BY_PATH[p[0]] || 'home');
-      if ((VIEW_BY_PATH[p[0]] || 'home') === 'bitacora' && p[1]) setPendingArticle(decodeURIComponent(p[1]));
+    const leer = () => {
+      const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+      let i = 0;
+      if (partes[0] === 'es' || partes[0] === 'en' || partes[0] === 'gl') i = 1;
+      const vista = VIEW_BY_PATH[partes[i]] || 'home';
+      setCurrentView(vista);
+      if (vista === 'bitacora' && partes[i + 1]) setPendingArticle(decodeURIComponent(partes[i + 1]));
     };
+    leer();
+    const onPop = () => leer();
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
     const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador' };
+    const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
-      ? (lang === 'en' ? '/en/' : lang === 'gl' ? '/gl/' : '/')
-      : PATH_BY_VIEW[currentView];
+      ? (prefijo || '/')
+      : `${prefijo}${PATH_BY_VIEW[currentView]}`;
     if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
       window.history.pushState(null, '', objetivo);
     }
@@ -88,6 +89,15 @@ function AppInner() {
       document.title = meta.title;
       const d = document.querySelector('meta[name="description"]');
       if (d) d.setAttribute('content', meta.description);
+    }
+  }, [lang, currentView]);
+
+  // Canonical autorreferente por página e idioma (coherente con hreflang)
+  useEffect(() => {
+    const link = document.querySelector('link[rel="canonical"]');
+    if (link) {
+      const limpio = window.location.pathname.replace(/\/+$/, '') || '/';
+      link.setAttribute('href', 'https://illasatlanticasatico.es' + limpio);
     }
   }, [lang, currentView]);
 
@@ -278,7 +288,6 @@ function AppInner() {
 
       <Footer onOpenLegal={() => setCurrentView('legal')} />
       <NiaChat />
-      <LanguageHint />
       <ConsentBanner />
     </div>
   );

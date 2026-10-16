@@ -12,6 +12,7 @@ const SECCIONES: { h: string; p: string }[] = [
   { h: 'condiciones.tarifas.h', p: 'condiciones.tarifas.p' },
   { h: 'condiciones.entrada.h', p: 'condiciones.entrada.p' },
   { h: 'condiciones.normas.h', p: 'condiciones.normas.p' },
+  { h: 'condiciones.fianza.h', p: 'condiciones.fianza.p' },
   { h: 'condiciones.registro.h', p: 'condiciones.registro.p' },
   { h: 'condiciones.garantias.h', p: 'condiciones.garantias.p' },
   { h: 'condiciones.juridica.h', p: 'condiciones.juridica.p' },
