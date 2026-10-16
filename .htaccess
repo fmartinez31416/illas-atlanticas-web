@@ -18,6 +18,8 @@ AddDefaultCharset utf-8
   # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
   # El español vive en la portada /: /es/ se consolida en / para no duplicar contenido.
   RewriteRule ^(en|gl)/?$ /index.html [L]
+  RewriteRule ^(en|gl)/(puente|lonja|legal|condiciones|planificador)/?$ /index.html [L]
+  RewriteRule ^(en|gl)/bitacora(/.*)?$ /index.html [L]
   RewriteRule ^es/?$ / [R=301,L]
 
   # --- 2. Ficheros reales (assets, fotos, favicon, ical, llms.txt...) se sirven tal cual ---
