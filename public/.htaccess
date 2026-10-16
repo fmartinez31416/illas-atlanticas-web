@@ -8,10 +8,18 @@ AddDefaultCharset utf-8
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://illasatlanticasatico.es%{REQUEST_URI} [R=301,L]
 
-  # --- 1. URLs antiguas que ya tienen posiciones en Google -> consolidar en la portada ---
-  RewriteRule ^ubicacion/?$ / [R=301,L]
-  RewriteRule ^ubicacion/(gastronomia|parque-nacional|cultura|excursiones)$ / [R=301,L]
-  RewriteRule ^(blog|experiencias|contacto|preguntas-frecuentes|cookies|gastronomia|faq)$ / [R=301,L]
+  # --- 1. URLs antiguas que ya tienen posiciones en Google -> cada una a su equivalente nuevo ---
+  # (datos Search Console 3m: /ubicacion/gastronomia 60 clics · /ubicacion 27 · parque-nacional 3 · preguntas-frecuentes 2 · contacto 1)
+  RewriteRule ^ubicacion/gastronomia/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^ubicacion/parque-nacional/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^ubicacion/cultura/?$ /bitacora [R=301,L]
+  RewriteRule ^ubicacion/excursiones/?$ /planificador [R=301,L]
+  RewriteRule ^ubicacion/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^blog/?$ /bitacora [R=301,L]
+  RewriteRule ^experiencias/?$ /planificador [R=301,L]
+  RewriteRule ^preguntas-frecuentes/?$ /condiciones [R=301,L]
+  RewriteRule ^cookies/?$ /legal [R=301,L]
+  RewriteRule ^(contacto|gastronomia|faq)/?$ / [R=301,L]
   RewriteRule ^apartamento/?$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
