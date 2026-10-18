@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { CheckCircle2, Send } from 'lucide-react';
 
 type Lang = 'es' | 'en' | 'gl';
@@ -51,7 +51,7 @@ export default function FormularioCuracion({ venueId, venueName, lang }: { venue
 
   const t = (k: string) => (T[k]?.[lang] ?? T[k]?.es ?? k).replace('{v}', venueName);
 
-  function submit(e: React.FormEvent) {
+  function submit(e: FormEvent) {
     e.preventDefault();
     if (!value.trim()) return;
     const fieldLabel = FIELDS.find((f) => f.key === field)?.label.es ?? field;

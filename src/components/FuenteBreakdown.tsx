@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type Key } from 'react';
 import { ChevronDown, ExternalLink } from 'lucide-react';
 import type { ScoreBreakdown } from '../lib/scoring';
 import { MODEL } from '../lib/scoring';
@@ -135,12 +135,14 @@ export default function FuenteBreakdown({ breakdown, lang }: { breakdown: ScoreB
 }
 
 function FragmentRow({
+  key,
   open,
   onToggle,
   s,
   lang,
   t,
 }: {
+  key?: Key;
   open: boolean;
   onToggle: () => void;
   s: ScoreBreakdown['sources'][number];
