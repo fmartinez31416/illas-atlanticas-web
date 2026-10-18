@@ -1,14 +1,18 @@
 import { useMemo, useRef, useState, useEffect, ReactNode, Key } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ArrowLeft, CalendarCheck, MapPin, Star, Euro, Filter, Route } from 'lucide-react';
+import { ArrowLeft, CalendarCheck, MapPin, Star, Euro, Filter, Route, FileText } from 'lucide-react';
 import { useI18n } from '../i18n/LangContext';
 import { ANILLOS, GastroFicha } from '../data/gastroRings';
 import { GASTRO_META, ATICO, CriteriosGastro } from '../data/gastroMeta';
+import { indiceDe } from '../lib/indiceAtlantico';
+import ScoreDial from './ScoreDial';
+import FichaGastro from './FichaGastro';
 
 interface GastroPageProps {
   onBack: () => void;
   onOpenBooking: () => void;
+  onOpenMetodologia: () => void;
 }
 
 const G: Record<string, { es: string; en: string; gl: string }> = {
@@ -58,6 +62,14 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
     gl: 'O marisco, a dous minutos da mesa: reserva e téno todo a un paso.',
   },
   quePedir: { es: 'Qué pedir:', en: 'What to order:', gl: 'Que pedir:' },
+  fichaCompleta: { es: 'Ficha completa', en: 'Full listing', gl: 'Ficha completa' },
+  indiceAtlantico: { es: 'Índice Atlántico', en: 'Atlantic Index', gl: 'Índice Atlántico' },
+  metodologia: { es: 'Metodología', en: 'Methodology', gl: 'Metodoloxía' },
+  notaIndice: {
+    es: 'Cada ficha abre con su Índice Atlántico: una puntuación estadística sobre 100 (modelo v1.3) que pondera cada fuente por fiabilidad y vigencia, encoge muestras pequeñas hacia la media del corredor y aplica la cota de Wilson. La fórmula completa, en ',
+    en: 'Every listing opens with its Atlantic Index: a statistical score out of 100 (model v1.3) that weights each source by reliability and freshness, shrinks small samples towards the corridor mean and applies the Wilson bound. The full formula, under ',
+    gl: 'Cada ficha abre co seu Índice Atlántico: unha puntuación estatística sobre 100 (modelo v1.3) que pondera cada fonte por fiabilidade e vixencia, encolle mostras pequenas cara á media do corredor e aplica a cota de Wilson. A fórmula completa, en ',
+  },
 };
 
 const CRIT_KEYS: { key: keyof CriteriosGastro; label: string }[] = [
@@ -96,13 +108,20 @@ function Chip({ activo, onClick, children }: { key?: Key; activo: boolean; onCli
   );
 }
 
-export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
+export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: GastroPageProps) {
   const { lang } = useI18n();
   const g = (k: string) => G[k]?.[lang] ?? G[k]?.es ?? k;
 
   const [catSel, setCatSel] = useState<Set<string>>(new Set());
   const [precioSel, setPrecioSel] = useState<Set<string>>(new Set());
   const [critSel, setCritSel] = useState<Set<string>>(new Set());
+  const [fichaAbierta, setFichaAbierta] = useState<GastroFicha | null>(null);
+
+  const indices = useMemo(() => {
+    const m = new Map<string, ReturnType<typeof indiceDe>>();
+    for (const f of TODAS) m.set(f.id, indiceDe(f.id));
+    return m;
+  }, []);
 
   const categorias = useMemo(() => Array.from(new Set(TODAS.map((f) => f.categoria.es))).sort(), []);
   const precios = useMemo(() => Array.from(new Set(TODAS.map((f) => f.precio).filter(Boolean) as string[])).sort(), []);
@@ -317,49 +336,60 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
                   {anillo.titulo[lang]}
                 </h2>
                 <div className="space-y-4">
-                  {fichasAnillo.map((f) => (
+                  {fichasAnillo.map((f) => {
+                    const idx = indices.get(f.id);
+                    return (
                     <article
                       key={f.id}
                       className="bg-[#0A1A2A] border border-[#D4A017]/15 rounded-xl p-5 sm:p-6 hover:border-[#D4A017]/40 transition-colors"
                     >
-                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-                        <h3 className="font-serif text-xl text-stone-50">{f.nombre[lang]}</h3>
-                        <span className="text-xs text-stone-400">{f.lugar[lang]}</span>
-                      </div>
-                      <div className="flex flex-wrap items-center gap-2 mb-3">
-                        <span className="text-[10px] uppercase tracking-[0.14em] text-[#C5A059] border border-[#D4A017]/30 rounded-full px-2.5 py-0.5">
-                          {f.categoria[lang]}
-                        </span>
-                        {f.precio && (
-                          <span className="inline-flex items-center gap-0.5 text-xs text-stone-300 border border-stone-600/60 rounded-full px-2 py-0.5">
-                            <Euro className="w-3 h-3" />
-                            {f.precio}
-                          </span>
-                        )}
-                        {f.estrellas && (
-                          <span className="inline-flex items-center gap-1 text-xs text-[#D4A017]">
-                            <Star className="w-3.5 h-3.5 fill-current" />
-                            {f.estrellas}
-                            {f.nResenas && (
-                              <span className="text-stone-500">
-                                ({f.nResenas}{/reseñas|TheFork/.test(f.nResenas) ? '' : ' reseñas'})
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+                            <h3 className="font-serif text-xl text-stone-50">{f.nombre[lang]}</h3>
+                            <span className="text-xs text-stone-400">{f.lugar[lang]}</span>
+                          </div>
+                          <div className="flex flex-wrap items-center gap-2 mb-3">
+                            <span className="text-[10px] uppercase tracking-[0.14em] text-[#C5A059] border border-[#D4A017]/30 rounded-full px-2.5 py-0.5">
+                              {f.categoria[lang]}
+                            </span>
+                            {f.precio && (
+                              <span className="inline-flex items-center gap-0.5 text-xs text-stone-300 border border-stone-600/60 rounded-full px-2 py-0.5">
+                                <Euro className="w-3 h-3" />
+                                {f.precio}
                               </span>
                             )}
-                          </span>
+                            {f.estrellas && (
+                              <span className="inline-flex items-center gap-1 text-xs text-[#D4A017]">
+                                <Star className="w-3.5 h-3.5 fill-current" />
+                                {f.estrellas}
+                                {f.nResenas && (
+                                  <span className="text-stone-500">
+                                    ({f.nResenas}{/reseñas|TheFork/.test(f.nResenas) ? '' : ' reseñas'})
+                                  </span>
+                                )}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        {idx && (
+                          <div className="shrink-0 -mt-1 -mr-1">
+                            <ScoreDial score={idx.score} confidence={idx.confidence} size={76} compact label={g('indiceAtlantico')} />
+                          </div>
                         )}
-                        <a
-                          href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Illas Atlánticas Ático, Aguiño')}&destination=${encodeURIComponent(GASTRO_META[f.id]?.placeName || f.nombre.es)}&travelmode=driving`}
-                          target="_blank"
-                          rel="noopener"
-                          className="ml-auto inline-flex items-center gap-1 text-xs text-[#2BA8A8] hover:text-[#4DD0D0] transition-colors"
-                        >
-                          <Route className="w-3.5 h-3.5" />
-                          {g('llegar')}
-                        </a>
                       </div>
                       <p className="text-stone-300 leading-relaxed text-[15px]">
                         <span className="text-stone-200 font-medium">{g('quePedir')} </span>
                         {f.quePedir[lang]}
+                        <a
+                          href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Illas Atlánticas Ático, Aguiño')}&destination=${encodeURIComponent(GASTRO_META[f.id]?.placeName || f.nombre.es)}&travelmode=driving`}
+                          target="_blank"
+                          rel="noopener"
+                          className="ml-3 inline-flex items-center gap-1 text-xs text-[#2BA8A8] hover:text-[#4DD0D0] transition-colors align-baseline"
+                        >
+                          <Route className="w-3.5 h-3.5" />
+                          {g('llegar')}
+                        </a>
                       </p>
                       {f.nota && (
                         <p className="mt-3 text-sm text-stone-400 border-l-2 border-[#D4A017]/40 pl-3 italic">
@@ -372,8 +402,16 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
                           {GASTRO_META[f.id]!.nota_invierno![lang]}
                         </p>
                       )}
+                      <button
+                        onClick={() => setFichaAbierta(f)}
+                        className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1.5 hover:bg-[#D4A017] hover:text-stone-950 transition-colors font-semibold"
+                      >
+                        <FileText className="w-3.5 h-3.5" />
+                        {g('fichaCompleta')}
+                      </button>
                     </article>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -392,7 +430,14 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
           </div>
 
           {/* Nota de método */}
-          <p className="text-xs text-stone-500 leading-relaxed mb-12">{g('nota')}</p>
+          <p className="text-xs text-stone-500 leading-relaxed mb-3">{g('nota')}</p>
+          <p className="text-xs text-stone-500 leading-relaxed mb-12">
+            {g('notaIndice')}
+            <button onClick={onOpenMetodologia} className="text-[#2BA8A8] hover:underline">
+              {g('metodologia')}
+            </button>
+            .
+          </p>
 
           {/* CTA */}
           <div className="text-center">
@@ -407,6 +452,10 @@ export function GastronomiaPage({ onBack, onOpenBooking }: GastroPageProps) {
           </div>
         </div>
       </section>
+
+      {fichaAbierta && (
+        <FichaGastro ficha={fichaAbierta} onClose={() => setFichaAbierta(null)} onOpenBooking={onOpenBooking} />
+      )}
     </div>
   );
 }

@@ -17,6 +17,7 @@ import { ConsentBanner } from './components/ConsentBanner';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 import { GastronomiaPage } from './components/GastronomiaPage';
 import { MusicaPage } from './components/MusicaPage';
+import { MetodologiaPage } from './components/MetodologiaPage';
 
 import { FaqSection } from './components/FaqSection';
 import { LegalPage } from './components/LegalPage';
@@ -37,7 +38,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'musica'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -48,7 +49,7 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'musica'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
@@ -63,6 +64,10 @@ function AppInner() {
       const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
       let i = 0;
       if (partes[0] === 'es' || partes[0] === 'en' || partes[0] === 'gl') i = 1;
+      if (partes[i] === 'gastronomia' && partes[i + 1] === 'metodologia') {
+        setCurrentView('metodologia');
+        return;
+      }
       const vista = VIEW_BY_PATH[partes[i]] || 'home';
       setCurrentView(vista);
       if (vista === 'bitacora' && partes[i + 1]) setPendingArticle(decodeURIComponent(partes[i + 1]));
@@ -73,7 +78,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', musica: '/musica' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica' };
     const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
@@ -191,6 +196,20 @@ function AppInner() {
       <>
         <GastronomiaPage
           onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
+          onOpenMetodologia={() => setCurrentView('metodologia')}
+        />
+        <NiaChat />
+      </>
+    );
+  }
+
+  // VISTA: Metodología del Índice Atlántico
+  if (currentView === 'metodologia') {
+    return (
+      <>
+        <MetodologiaPage
+          onBack={() => setCurrentView('gastronomia')}
           onOpenBooking={scrollToBooking}
         />
         <NiaChat />

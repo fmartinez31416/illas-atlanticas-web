@@ -1,0 +1,235 @@
+// Datos de ficha ampliada del buscador gastronómico — extracción 17-oct-2026.
+// factConfidence: "alta" = contrastado con 2+ fuentes independientes; "pendiente" =
+// pendiente de verificar (nunca se rellena con estimaciones).
+
+export interface HoraSlot { open: string; close: string }
+export interface HorarioDia { day: number; slots: HoraSlot[]; note?: string }
+export interface PlatoFicha { nameEs: string; nameEn?: string; nameGl?: string; price?: number; isSignature?: boolean; note?: string; sourceId?: string }
+export interface DistincionFicha { sourceId: string; label: string; year?: number; note?: string; url?: string }
+export interface DatosFicha {
+  contacto: { phone?: string; whatsapp?: string; email?: string; website?: string; address?: string };
+  verificado?: { fecha: string; por: string } | null;
+  factConfidence: string;
+  hechos: { horario?: HorarioDia[]; cierraDias?: number[]; mesas?: number; terraza?: boolean; vistasMar?: boolean; reservas?: boolean; admiteTarjeta?: boolean; paraLlevar?: boolean; sinGluten?: boolean; vegetariano?: boolean; vegano?: boolean; parking?: string; precioMedio?: number };
+  platos: PlatoFicha[];
+  distinciones: DistincionFicha[];
+}
+
+export const DATOS_FICHA: Record<string, DatosFicha> = {
+  "tiaelisa": {
+    contacto: {"phone": "+34 981 841 842", "whatsapp": "+34 666 820 865", "email": "info@acasadatiaelisa.com", "website": "https://www.acasadatiaelisa.com", "address": "Rúa Francisco Lorenzo Mariño, 120 · Puerto de Aguiño"},
+    verificado: { fecha: "2026-10-17T09:00:00.000Z", por: "Anfitrión + Turismo Ribeira + web del local" },
+    factConfidence: "alta",
+    hechos: {"horario": [{"day": 0, "slots": [], "note": null}, {"day": 1, "slots": [{"open": "12:00", "close": "16:00"}], "note": null}, {"day": 2, "slots": [{"open": "12:00", "close": "16:00"}], "note": null}, {"day": 3, "slots": [{"open": "12:00", "close": "16:00"}], "note": null}, {"day": 4, "slots": [{"open": "12:00", "close": "16:00"}, {"open": "19:30", "close": "23:30"}], "note": null}, {"day": 5, "slots": [{"open": "12:00", "close": "16:00"}, {"open": "19:30", "close": "23:30"}], "note": null}, {"day": 6, "slots": [{"open": "12:00", "close": "16:00"}], "note": "Domingo solo mediodía"}], "cierraDias": [0], "precioMedio": 25.0, "terraza": true, "vistasMar": true, "reservas": true, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": true, "vegetariano": true, "vegano": false, "parking": "Aparcamiento en el muelle de Aguiño"},
+    platos: [{"nameEs": "Robaliza al tajine", "nameEn": "Sea bass in the tajine", "isSignature": true, "note": "Horno de barro que llega a la mesa", "sourceId": "anfitrion"}, {"nameEs": "Carrilleras al mencía", "nameEn": "Braised cheeks with mencía", "sourceId": "anfitrion"}, {"nameEs": "Chopos en su tinta", "nameEn": "Cuttlefish in its ink", "sourceId": "anfitrion"}, {"nameEs": "Croquetas de ibérico", "nameEn": "Iberico croquettes", "sourceId": "tripadvisor"}, {"nameEs": "Helado casero", "nameEn": "Homemade ice cream", "sourceId": "tripadvisor"}],
+    distinciones: [{"sourceId": "turismo_gal", "label": "1 tenedor · 4ª categoría", "note": "Catálogo oficial de recursos turísticos de la Xunta de Galicia.", "url": "https://www.turismo.gal/recurso/-/detalle/191115000124/-a-casa-da-tia-elisa-"}, {"sourceId": "tripadvisor", "label": "Travellers' Choice", "year": 2025.0, "note": "Top 3 de Ribeira de forma sostenida en el ranking de TripAdvisor."}, {"sourceId": "turismo_ribeira", "label": "Directorio municipal de restauración", "note": "Dirección, teléfono y correo verificados por el Concello de Ribeira.", "url": "https://turismo.ribeira.gal/restauraci%C3%B3n/-/asset_publisher/7KwlUkGoUq87/content/id/109221"}],
+  },
+  "bodegon": {
+    contacto: {"address": "Rúa do Porto, 1 · Aguiño"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [1], "precioMedio": 15.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Bocadillo de calamares", "nameEn": "Calamari sandwich", "isSignature": true}, {"nameEs": "Ración de pulpo", "nameEn": "Octopus ración"}, {"nameEs": "Jamón asado", "nameEn": "Roast ham"}, {"nameEs": "Pimientos de Padrón", "nameEn": "Padrón peppers"}, {"nameEs": "Croquetas", "nameEn": "Croquettes"}],
+    distinciones: [],
+  },
+  "chefa": {
+    contacto: {"address": "Rúa Mestre Xosé Sans, 4 · Aguiño"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [0], "precioMedio": 18.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Bocadillo de pulpo", "nameEn": "Octopus sandwich", "isSignature": true}, {"nameEs": "Bocadillo de calamares", "nameEn": "Calamari sandwich"}, {"nameEs": "Jamón asado", "nameEn": "Roast ham"}, {"nameEs": "Tortilla", "nameEn": "Spanish omelette"}],
+    distinciones: [],
+  },
+  "portoaguino": {
+    contacto: {"address": "Rúa do Porto, 8 · Puerto de Aguiño"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [1, 2], "precioMedio": 25.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false, "parking": "En el propio puerto"},
+    platos: [{"nameEs": "Navajas", "nameEn": "Razor clams", "isSignature": true}, {"nameEs": "Zamburiñas", "nameEn": "Scallops"}, {"nameEs": "Almejas", "nameEn": "Clams"}, {"nameEs": "Mejillón", "nameEn": "Mussels"}, {"nameEs": "Percebe (según lonja)", "nameEn": "Percebes (market dependent)"}],
+    distinciones: [],
+  },
+  "tasca": {
+    contacto: {"address": "Porto, s/n · a pie de playa"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Fritura de pescado", "nameEn": "Fried fish", "isSignature": true}, {"nameEs": "Ensaladas", "nameEn": "Salads"}, {"nameEs": "Cócteles", "nameEn": "Cocktails"}],
+    distinciones: [],
+  },
+  "furon": {
+    contacto: {"address": "Porto, s/n · Aguiño (local histórico de O Furón)"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 22.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Tosta de pulpo gallego", "nameEn": "Galician octopus tosta", "isSignature": true}, {"nameEs": "Ración de pulpo á feira", "nameEn": "Pulpo á feira ración", "price": 25.0}],
+    distinciones: [],
+  },
+  "beizos": {
+    contacto: {"phone": "+34 604 080 224", "whatsapp": "+34 604 080 224", "website": "https://beizosgastrobar.com", "address": "Rúa Diego Delicado, 4 bajo B · Ribeira"},
+    verificado: null,
+    factConfidence: "alta",
+    hechos: {"horario": [{"day": 0, "slots": [], "note": null}, {"day": 1, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "00:30"}], "note": null}, {"day": 2, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "00:30"}], "note": null}, {"day": 3, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "00:30"}], "note": null}, {"day": 4, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "01:30"}], "note": null}, {"day": 5, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "01:30"}], "note": null}, {"day": 6, "slots": [{"open": "12:00", "close": "17:00"}, {"open": "19:30", "close": "00:30"}], "note": "Horario de cocina: 13:15–15:30 y 20:30–23:30"}], "cierraDias": [0], "precioMedio": 30.0, "terraza": true, "vistasMar": false, "reservas": true, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": true, "vegano": true, "parking": "Aparcamiento libre en la calle"},
+    platos: [{"nameEs": "Tacos de cochinita pibil", "nameEn": "Cochinita pibil tacos", "isSignature": true}, {"nameEs": "Tartar de salmón", "nameEn": "Salmon tartare"}, {"nameEs": "Entrecot de vaca", "nameEn": "Beef entrecote"}, {"nameEs": "Picaña de ternera", "nameEn": "Veal picaña"}, {"nameEs": "Nachos Cancún", "nameEn": "Cancún nachos"}],
+    distinciones: [],
+  },
+  "fontao": {
+    contacto: {"phone": "+34 981 872 992", "whatsapp": "+34 618 610 171", "email": "casafontao@hotmail.com", "website": "https://www.casafontao.com", "address": "Avda. da Coruña, 149 · Ribeira"},
+    verificado: null,
+    factConfidence: "alta",
+    hechos: {"horario": [{"day": 0, "slots": [], "note": "Lunes cerrado (horario de invierno)"}, {"day": 1, "slots": [{"open": "12:30", "close": "16:00"}], "note": null}, {"day": 2, "slots": [{"open": "12:30", "close": "16:00"}], "note": null}, {"day": 3, "slots": [{"open": "12:30", "close": "16:00"}], "note": null}, {"day": 4, "slots": [{"open": "12:30", "close": "16:00"}], "note": null}, {"day": 5, "slots": [{"open": "12:30", "close": "16:00"}, {"open": "20:30", "close": "23:00"}], "note": null}, {"day": 6, "slots": [{"open": "12:30", "close": "16:00"}, {"open": "20:30", "close": "23:00"}], "note": null}], "cierraDias": [0], "precioMedio": 40.0, "terraza": true, "vistasMar": false, "reservas": true, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": true, "vegetariano": true, "vegano": true, "parking": "Fácil aparcamiento en la avenida"},
+    platos: [{"nameEs": "Pulpo á feira", "nameEn": "Pulpo á feira", "price": 19.0, "isSignature": true, "sourceId": "web_propia"}, {"nameEs": "Helado de queso", "nameEn": "Cheese ice cream", "isSignature": true, "sourceId": "web_propia"}, {"nameEs": "Merluza a la gallega", "nameEn": "Galician-style hake", "sourceId": "web_propia"}, {"nameEs": "Pimientos rellenos de grelos", "nameEn": "Grelos-stuffed peppers", "sourceId": "web_propia"}, {"nameEs": "Croquetas de jamón ibérico", "nameEn": "Iberico ham croquettes", "price": 16.0, "sourceId": "web_propia"}, {"nameEs": "Almejas a la marinera", "nameEn": "Marinera clams", "price": 20.0, "sourceId": "web_propia"}, {"nameEs": "Menú del día (laborables)", "nameEn": "Set lunch menu (weekdays)", "price": 10.0, "sourceId": "web_propia"}, {"nameEs": "Menú vegetariano", "nameEn": "Vegetarian menu", "price": 30.0, "sourceId": "web_propia"}],
+    distinciones: [{"sourceId": "turismo_ribeira", "label": "Directorio municipal de restauración", "note": "Dirección, teléfono y correo verificados por el Concello de Ribeira.", "url": "https://turismo.ribeira.gal/es/restauraci%C3%B3n/-/asset_publisher/7KwlUkGoUq87/content/id/109890"}],
+  },
+  "nautico": {
+    contacto: {"phone": "+34 981 835 389", "website": "https://restaurantenauticoribeira.es", "address": "Puerto deportivo de Ribeira, s/n · planta 1ª"},
+    verificado: null,
+    factConfidence: "alta",
+    hechos: {"horario": [{"day": 0, "slots": [{"open": "10:00", "close": "17:00"}, {"open": "20:00", "close": "23:00"}], "note": null}, {"day": 1, "slots": [{"open": "10:00", "close": "17:00"}, {"open": "20:00", "close": "23:00"}], "note": null}, {"day": 2, "slots": [{"open": "10:00", "close": "17:00"}], "note": "Martes solo mediodía"}, {"day": 3, "slots": [], "note": "Miércoles cerrado por descanso"}, {"day": 4, "slots": [{"open": "10:00", "close": "17:00"}, {"open": "19:30", "close": "23:00"}], "note": null}, {"day": 5, "slots": [{"open": "10:00", "close": "17:00"}, {"open": "19:30", "close": "23:00"}], "note": null}, {"day": 6, "slots": [{"open": "10:00", "close": "17:00"}, {"open": "20:00", "close": "23:00"}], "note": null}], "cierraDias": [3], "precioMedio": 40.0, "terraza": true, "vistasMar": true, "reservas": true, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": false, "vegano": false, "parking": "Parking del puerto deportivo"},
+    platos: [{"nameEs": "Arroz con bogavante", "nameEn": "Lobster rice", "isSignature": true}, {"nameEs": "Parrillada de marisco", "nameEn": "Seafood grill platter", "price": 100.0, "note": "80–120 € según tamaño", "sourceId": "anfitrion"}, {"nameEs": "Pulpo", "nameEn": "Octopus", "price": 20.0, "sourceId": "anfitrion"}, {"nameEs": "Zamburiñas", "nameEn": "Scallops"}, {"nameEs": "Menú del día", "nameEn": "Set lunch menu", "price": 12.0, "sourceId": "paxinas"}],
+    distinciones: [],
+  },
+  "abodega": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 30.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": true, "vegano": false},
+    platos: [{"nameEs": "Pulpo", "nameEn": "Octopus", "isSignature": true}, {"nameEs": "Zamburiñas", "nameEn": "Scallops"}, {"nameEs": "Croquetas caseras", "nameEn": "Homemade croquettes"}, {"nameEs": "Empanada casera", "nameEn": "Homemade empanada"}],
+    distinciones: [{"sourceId": "tripadvisor", "label": "Travellers' Choice", "year": 2025.0, "note": "Reconocimiento por volumen y consistencia de reseñas."}],
+  },
+  "castelao": {
+    contacto: {"phone": "+34 981 873 635", "address": "Avda. do Malecón, 43 · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [0, 1], "precioMedio": 30.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": true, "vegano": false, "parking": "Paseo del Malecón"},
+    platos: [{"nameEs": "Pulpo", "nameEn": "Octopus", "isSignature": true}, {"nameEs": "Almejas al vapor", "nameEn": "Steamed clams"}, {"nameEs": "Mejillones al vapor", "nameEn": "Steamed mussels"}, {"nameEs": "Navajas", "nameEn": "Razor clams"}, {"nameEs": "Zamburiñas", "nameEn": "Scallops"}],
+    distinciones: [],
+  },
+  "recoveira": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Tostas", "nameEn": "Tostas", "isSignature": true}, {"nameEs": "Langostinos", "nameEn": "Langoustines"}, {"nameEs": "Pinchos", "nameEn": "Pinchos"}],
+    distinciones: [],
+  },
+  "albarino": {
+    contacto: {"address": "Entrada de Ribeira · Avda. da Coruña"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 30.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": false, "vegano": false, "parking": "Aparcamiento en la entrada de Ribeira"},
+    platos: [{"nameEs": "Churrasco a la brasa", "nameEn": "Charcoal-grilled churrasco", "isSignature": true}, {"nameEs": "Vieiras", "nameEn": "Scallops"}, {"nameEs": "Menú del día", "nameEn": "Set lunch menu"}],
+    distinciones: [],
+  },
+  "oporto": {
+    contacto: {"address": "Muelle pesquero · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": false, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false, "parking": "Muelle pesquero"},
+    platos: [{"nameEs": "Pescado del día", "nameEn": "Fish of the day", "isSignature": true}, {"nameEs": "Pulpo", "nameEn": "Octopus"}, {"nameEs": "Calamares", "nameEn": "Calamari"}],
+    distinciones: [],
+  },
+  "golimbreo": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [1], "precioMedio": 28.0, "terraza": true, "vistasMar": false, "reservas": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Croquetas de pulpo", "nameEn": "Octopus croquettes", "isSignature": true}, {"nameEs": "Platos de autor", "nameEn": "Author dishes"}, {"nameEs": "Menú del día", "nameEn": "Set lunch menu"}],
+    distinciones: [],
+  },
+  "vinoteca": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [6], "precioMedio": 22.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": true, "sinGluten": false, "vegetariano": true, "vegano": false},
+    platos: [{"nameEs": "Tabla de quesos", "nameEn": "Cheese board", "isSignature": true}, {"nameEs": "Croquetas con mencía", "nameEn": "Croquettes with mencía"}, {"nameEs": "Conservas gallegas", "nameEn": "Galician preserves"}],
+    distinciones: [],
+  },
+  "morgan": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Embutidos de León", "nameEn": "León cured meats", "isSignature": true}, {"nameEs": "Cecina", "nameEn": "Cecina"}],
+    distinciones: [],
+  },
+  "casapatron": {
+    contacto: {"phone": "+34 626 002 272", "address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 20.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Mejillones al vapor", "nameEn": "Steamed mussels", "isSignature": true}, {"nameEs": "Xoubas", "nameEn": "Xoubas (anchovies)"}, {"nameEs": "Sardinas frescas", "nameEn": "Fresh sardines"}],
+    distinciones: [],
+  },
+  "oparque": {
+    contacto: {"address": "Ribeira · zona centro"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 22.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Menú del día", "nameEn": "Set lunch menu", "isSignature": true}, {"nameEs": "Tapas y raciones", "nameEn": "Tapas and raciones"}],
+    distinciones: [],
+  },
+  "afonte": {
+    contacto: {"address": "Castiñeiras · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [0], "precioMedio": 18.0, "terraza": false, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Raxo", "nameEn": "Raxo (pork with potatoes)", "isSignature": true}, {"nameEs": "Zorza", "nameEn": "Zorza (shredded pork)"}, {"nameEs": "Croquetas", "nameEn": "Croquettes"}, {"nameEs": "Tortilla", "nameEn": "Spanish omelette"}, {"nameEs": "Churrasco", "nameEn": "Grilled pork"}, {"nameEs": "Calamares", "nameEn": "Calamari"}],
+    distinciones: [],
+  },
+  "otimon": {
+    contacto: {"address": "Castiñeiras · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 18.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Tapas y raciones", "nameEn": "Tapas and raciones", "isSignature": true}],
+    distinciones: [],
+  },
+  "pedrapateira": {
+    contacto: {"address": "Zona de A Pedra Pateira · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Tapas y raciones", "nameEn": "Tapas and raciones", "isSignature": true}, {"nameEs": "Cócteles", "nameEn": "Cocktails"}],
+    distinciones: [],
+  },
+  "barbecho": {
+    contacto: {"address": "Palmeira · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 30.0, "terraza": false, "vistasMar": false, "reservas": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Ensaladilla", "nameEn": "Ensaladilla", "isSignature": true}, {"nameEs": "Cocina gallega contemporánea", "nameEn": "Contemporary Galician cooking"}],
+    distinciones: [],
+  },
+  "garsan": {
+    contacto: {"address": "Palmeira · Ribeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [0, 1], "precioMedio": 45.0, "terraza": false, "vistasMar": true, "reservas": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": true, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Arroz con pulpo y mariscos", "nameEn": "Octopus-and-seafood rice", "isSignature": true}, {"nameEs": "Parrilladas", "nameEn": "Grill platters"}],
+    distinciones: [],
+  },
+  "bardoporto": {
+    contacto: {"address": "Puerto de Corrubedo · frente a la playa de A Robeira"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [0], "precioMedio": 35.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false, "parking": "Aparcamiento del puerto de Corrubedo"},
+    platos: [{"nameEs": "Pulpo a la brasa con puré", "nameEn": "Grilled octopus with mash", "isSignature": true}, {"nameEs": "Coruxo a la parrilla", "nameEn": "Grilled coruxo"}, {"nameEs": "Calamar a la parrilla", "nameEn": "Grilled calamari"}],
+    distinciones: [{"sourceId": "repsol", "label": "Recomendada · Guía Repsol", "year": 2025.0, "note": "Mencionada en la Guía Repsol dentro de la ruta del Barbanza."}],
+  },
+  "osecreto": {
+    contacto: {"address": "Casco antiguo de Corrubedo"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"cierraDias": [1], "precioMedio": 30.0, "terraza": true, "vistasMar": false, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": false, "vegano": false},
+    platos: [{"nameEs": "Pescado a la plancha", "nameEn": "Grilled fish", "isSignature": true}, {"nameEs": "Navajas", "nameEn": "Razor clams"}, {"nameEs": "Pulpo á feira", "nameEn": "Pulpo á feira"}, {"nameEs": "Arroz con vieiras", "nameEn": "Rice with scallops"}],
+    distinciones: [],
+  },
+  "anosa": {
+    contacto: {"address": "Local histórico de Benboa · Corrubedo"},
+    verificado: null,
+    factConfidence: "pendiente",
+    hechos: {"precioMedio": 25.0, "terraza": true, "vistasMar": true, "admiteTarjeta": true, "paraLlevar": false, "sinGluten": false, "vegetariano": true, "vegano": false},
+    platos: [{"nameEs": "Empanada", "nameEn": "Empanada", "isSignature": true}, {"nameEs": "Croquetas Benboa", "nameEn": "Benboa croquettes", "isSignature": true}, {"nameEs": "Bocadillo de calamares", "nameEn": "Calamari sandwich"}, {"nameEs": "Bocadillo de jamón asado", "nameEn": "Roast ham sandwich"}, {"nameEs": "Pulpo", "nameEn": "Octopus"}],
+    distinciones: [],
+  },
+};

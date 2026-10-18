@@ -98,6 +98,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Dónde comer en Aguiño · Gastronomía de la ría · Illas Atlánticas Ático',
       description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
     },
+    metodologia: {
+      title: 'Metodología del Índice Atlántico · Cómo puntuamos · Illas Atlánticas Ático',
+      description: 'Cómo se calcula el Índice Atlántico de cada restaurante: normalización de escalas, fiabilidad por fuente, encogimiento bayesiano, cota de Wilson y penalización por heterogeneidad. Fórmulas completas, en abierto.',
+    },
     musica: {
       title: 'La música de la casa · Banda sonora original · Illas Atlánticas Ático',
       description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
@@ -128,6 +132,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Where to eat in Aguiño · Ría gastronomy · Illas Atlánticas Ático',
       description: 'Where to eat in Aguiño within walking distance of the penthouse: raciones bars, a restaurant, the beach bar and the historic O Furón. Fish-market seafood, octopus, percebes and albariño in the Ría de Arousa.',
     },
+    metodologia: {
+      title: 'Atlantic Index methodology · How we score · Illas Atlánticas Ático',
+      description: 'How the Atlantic Index is computed for every restaurant: scale normalisation, per-source reliability, Bayesian shrinkage, Wilson lower bound and heterogeneity penalty. Full formulas, in the open.',
+    },
     musica: {
       title: 'The music of the house · Original soundtrack · Illas Atlánticas Ático',
       description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of your stay.',
@@ -157,6 +165,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     gastronomia: {
       title: 'Onde comer en Aguiño · Gastronomía da ría · Illas Atlánticas Ático',
       description: 'Onde comer en Aguiño a pé do ático: tascas de ración, restaurante, chiringuito e o histórico O Furón. Marisco da lonxa, polbo, percebe e albariño na Ría de Arousa.',
+    },
+    metodologia: {
+      title: 'Metodoloxía do Índice Atlántico · Como puntuamos · Illas Atlánticas Ático',
+      description: 'Como se calcula o Índice Atlántico de cada restaurante: normalización de escalas, fiabilidade por fonte, encollemento bayesiano, cota de Wilson e penalización por heteroxeneidade. Fórmulas completas, en aberto.',
     },
     musica: {
       title: 'A música da casa · Banda sonora orixinal · Illas Atlánticas Ático',
