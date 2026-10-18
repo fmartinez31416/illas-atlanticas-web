@@ -1,4 +1,4 @@
-import { BadgeEuro, ShieldCheck, HandHeart, ArrowRight } from 'lucide-react';
+import { BadgeEuro, ShieldCheck, HandHeart, ArrowRight, UtensilsCrossed } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { t } from '../i18n/translate';
 
@@ -8,9 +8,10 @@ interface DirectBookingSectionProps {
   onOpenLonja: () => void;
   onOpenPuente: () => void;
   onOpenCondiciones: () => void;
+  onOpenGastronomia: () => void;
 }
 
-export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja, onOpenPuente, onOpenCondiciones }: DirectBookingSectionProps) {
+export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja, onOpenPuente, onOpenCondiciones, onOpenGastronomia }: DirectBookingSectionProps) {
   return (
     <section id="reserva-directa" className="py-12 sm:py-14 bg-white border-b border-[#1A3A5C]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -175,8 +176,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </div>
               </button>
 
-              {/* Cuaderno de Bitácora y LonjaLens en la misma columna */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Cuaderno de Bitácora, LonjaLens y Gastronomía en la misma columna */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <button
                   type="button"
                   onClick={onOpenBitacora}
@@ -203,6 +204,20 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                   </p>
                   <p className="text-xs text-stone-600 mt-1.5 font-light leading-relaxed">
                     {t("La guía de la lonja: 45 especies, tallas mínimas y cómo se cocinan en Aguiño.")}
+                  </p>
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenGastronomia}
+                  aria-label={t("Abrir la guía gastronómica")}
+                  className="text-left bg-[#EBE6DD]/60 border border-[#1A3A5C]/10 p-4 rounded-md cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
+                >
+                  <UtensilsCrossed className="w-6 h-6 text-[#1A3A5C]" />
+                  <p className="font-serif text-lg text-[#1A3A5C] tracking-tight mt-2">
+                    {t("Gastronomía de la ría")}
+                  </p>
+                  <p className="text-xs text-stone-600 mt-1.5 font-light leading-relaxed">
+                    {t("Dónde comer a pie del ático: 27 sitios con su Índice Atlántico, mapa y ruta a la mesa.")}
                   </p>
                 </button>
               </div>

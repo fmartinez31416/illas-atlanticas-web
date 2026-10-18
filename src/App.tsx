@@ -317,6 +317,7 @@ function AppInner() {
           onOpenLonja={() => setCurrentView('lonja')}
           onOpenPuente={() => setCurrentView('puente')}
           onOpenCondiciones={() => setCurrentView('condiciones')}
+          onOpenGastronomia={() => setCurrentView('gastronomia')}
         />
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
