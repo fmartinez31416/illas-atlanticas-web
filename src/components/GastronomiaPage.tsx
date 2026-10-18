@@ -123,6 +123,30 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
     return m;
   }, []);
 
+  // Enlace directo por local: /gastronomia?local=<id> abre su ficha al llegar
+  // (cada local recibe SU enlace en la campaña de correos).
+  useEffect(() => {
+    const local = new URLSearchParams(window.location.search).get('local');
+    if (local) {
+      const f = TODAS.find((x) => x.id === local);
+      if (f) setFichaAbierta(f);
+    }
+  }, []);
+
+  const abrirFicha = (f: GastroFicha) => {
+    setFichaAbierta(f);
+    const url = new URL(window.location.href);
+    url.searchParams.set('local', f.id);
+    window.history.pushState(null, '', `${url.pathname}?local=${f.id}`);
+  };
+
+  const cerrarFicha = () => {
+    setFichaAbierta(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('local');
+    window.history.pushState(null, '', url.pathname + url.search);
+  };
+
   const categorias = useMemo(() => Array.from(new Set(TODAS.map((f) => f.categoria.es))).sort(), []);
   const precios = useMemo(() => Array.from(new Set(TODAS.map((f) => f.precio).filter(Boolean) as string[])).sort(), []);
 
@@ -403,7 +427,7 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
                         </p>
                       )}
                       <button
-                        onClick={() => setFichaAbierta(f)}
+                        onClick={() => abrirFicha(f)}
                         className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1.5 hover:bg-[#D4A017] hover:text-stone-950 transition-colors font-semibold"
                       >
                         <FileText className="w-3.5 h-3.5" />
@@ -454,7 +478,7 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
       </section>
 
       {fichaAbierta && (
-        <FichaGastro ficha={fichaAbierta} onClose={() => setFichaAbierta(null)} onOpenBooking={onOpenBooking} />
+        <FichaGastro ficha={fichaAbierta} onClose={cerrarFicha} onOpenBooking={onOpenBooking} />
       )}
     </div>
   );
