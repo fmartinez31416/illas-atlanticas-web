@@ -162,9 +162,7 @@ export default function FichaGastro({
                 <div>
                   <p className="font-serif text-2xl text-amber-200">
                     {gradeFor(indice.score)}
-                    <span className="ml-2 text-sm font-sans text-stone-400">
-                      · {t('confianzaT')}
-                    </span>
+                    <span className="ml-2 text-sm font-sans text-stone-400">· {t('confianzaT')}</span>
                   </p>
                   <p className="mt-2 text-[13px] leading-relaxed text-stone-400">{t('notaMetodo')}</p>
                   <p className="mt-2 text-xs text-stone-500">
