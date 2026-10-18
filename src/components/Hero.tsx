@@ -13,6 +13,12 @@ export function Hero({ onOpenBooking }: HeroProps) {
   // Chip de t("Aguiño ahora") con datos reales (Open-Meteo)
   useEffect(() => {
     let alive = true;
+    // Si se aterriza directamente en una ruta interna (deep link), el Hero solo
+    // monta un instante durante el arranque de la SPA: no pedimos el tiempo para
+    // no disparar fetches inútiles (y el renderizador de GSC los marca como CORS).
+    const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+    const seg = partes[0] === 'es' || partes[0] === 'en' || partes[0] === 'gl' ? partes[1] : partes[0];
+    if (seg && seg !== '') return;
     const load = async () => {
       try {
         const [w, m] = await Promise.all([
