@@ -7,9 +7,10 @@ interface DirectBookingSectionProps {
   onOpenBitacora: () => void;
   onOpenLonja: () => void;
   onOpenPuente: () => void;
+  onOpenCondiciones: () => void;
 }
 
-export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja, onOpenPuente }: DirectBookingSectionProps) {
+export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonja, onOpenPuente, onOpenCondiciones }: DirectBookingSectionProps) {
   return (
     <section id="reserva-directa" className="py-12 sm:py-14 bg-white border-b border-[#1A3A5C]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,21 +83,43 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
               </details>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
-                <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
-                  <BadgeEuro className="w-5 h-5 text-[#D4A017] mb-2" />
+                <button
+                  type="button"
+                  onClick={onOpenCondiciones}
+                  className="group text-left border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 cursor-pointer transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
+                >
+                  <div className="flex items-start justify-between">
+                    <BadgeEuro className="w-5 h-5 text-[#D4A017] mb-2" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                   <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Sin comisiones")}</p>
                   <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin tarifas ocultas ni sorpresas")}</p>
-                </div>
-                <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
-                  <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
+                </button>
+                <a
+                  href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, deseo consultar disponibilidad para el Ático Illas Atlánticas."))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
+                >
+                  <div className="flex items-start justify-between">
+                    <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                   <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Atención directa")}</p>
                   <p className="text-xs text-stone-500 mt-1 font-light">{t("Hablas con Fernando, el anfitrión")}</p>
-                </div>
-                <div className="border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4">
-                  <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
+                </a>
+                <button
+                  type="button"
+                  onClick={onOpenCondiciones}
+                  className="group text-left border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 cursor-pointer transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
+                >
+                  <div className="flex items-start justify-between">
+                    <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                   <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Condiciones claras")}</p>
                   <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin cargos ocultos ni sorpresas")}</p>
-                </div>
+                </button>
               </div>
 
               <button
@@ -125,7 +148,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                   <span className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
                   <span className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#D4A017]/80 pointer-events-none" />
                   <span className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#D4A017]/80 pointer-events-none" />
-                  <div className="p-6 text-center">
+                  <div className="p-6 h-full flex flex-col items-center justify-center text-center">
                     <span className="text-[10px] tracking-[0.3em] text-[#A9C9DD] font-medium uppercase">
                       {t("El mar de Aguiño, en directo")}
                     </span>
@@ -138,6 +161,15 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     <div className="flex items-center justify-center gap-2 mt-4">
                       <span className="w-2 h-2 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
                       <span className="text-[11px] tracking-[0.22em] text-[#D4A017] uppercase font-medium">{t("Puente de Mando Atlántico")}</span>
+                    </div>
+                    {/* Radar en vivo: llena el bloque y refuerza el gancho */}
+                    <div className="relative mt-6 w-28 h-28 rounded-full border border-[#D4A017]/25" aria-hidden="true">
+                      <div className="absolute inset-3 rounded-full border border-[#D4A017]/20" />
+                      <div className="absolute inset-6 rounded-full border border-[#D4A017]/15" />
+                      <div className="absolute inset-0 rounded-full overflow-hidden" style={{ background: 'conic-gradient(from 0deg, rgba(212,160,23,0.32), transparent 70deg)', animation: 'hudSweep 4s linear infinite' }} />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.2s ease-in-out infinite' }} />
+                      </div>
                     </div>
                   </div>
                 </div>

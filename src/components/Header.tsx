@@ -49,7 +49,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           <a
             href="#"
             id="header-brand-link"
-            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink min-w-0 overflow-hidden"
+            className="group flex items-center gap-2.5 sm:gap-3 focus:outline-none shrink-0"
           >
             <img
               src={isScrolled ? `${import.meta.env.BASE_URL}logo_transparent.png` : `${import.meta.env.BASE_URL}logo_white.png`}
@@ -58,7 +58,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
             />
             <div className="flex flex-col min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className={`text-sm sm:text-lg font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-colors whitespace-nowrap truncate max-w-[45vw] ${
+                <span className={`text-sm sm:text-lg font-serif uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-colors whitespace-nowrap ${
                   isScrolled ? 'text-stone-900' : 'text-white'
                 }`}>
                   Illas Atlánticas
@@ -81,7 +81,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           </a>
 
           {/* Menú Central Limpio */}
-          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label={t("Navegación principal")}>
+          <nav className="hidden xl:flex items-center space-x-4 2xl:space-x-6" aria-label={t("Navegación principal")}>
             {navLinks.map((link) =>
               link.action ? (
                 <button
@@ -115,7 +115,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           </nav>
 
           {/* Acciones de Contacto & Reserva */}
-          <div className="hidden md:flex items-center space-x-3 shrink-0">
+          <div className="hidden xl:flex items-center space-x-3 shrink-0">
             {/* Llamada directa */}
             <a
               id="header-phone-link"
@@ -164,7 +164,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
           </div>
 
           {/* Menú Móvil */}
-          <div className="flex md:hidden items-center space-x-2 shrink-0">
+          <div className="flex xl:hidden items-center space-x-2 shrink-0">
             <LanguageSwitcher compact dark={!isScrolled} className={isScrolled ? '' : 'border-white/40'} />
             <button
               onClick={onOpenBooking}
@@ -193,7 +193,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="md:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg max-h-[calc(100vh-72px)] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
+          className="xl:hidden border-b border-stone-200 px-6 py-6 space-y-4 bg-white/95 backdrop-blur-xl shadow-lg max-h-[calc(100vh-72px)] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
         >
           <div className="flex justify-center pb-4 border-b border-stone-100">
             <LanguageSwitcher />

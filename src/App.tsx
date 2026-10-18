@@ -297,6 +297,7 @@ function AppInner() {
           onOpenBitacora={() => setCurrentView('bitacora')}
           onOpenLonja={() => setCurrentView('lonja')}
           onOpenPuente={() => setCurrentView('puente')}
+          onOpenCondiciones={() => setCurrentView('condiciones')}
         />
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
