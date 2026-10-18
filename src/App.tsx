@@ -83,7 +83,16 @@ function AppInner() {
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
       : `${prefijo}${PATH_BY_VIEW[currentView]}`;
-    if (window.location.pathname !== objetivo && currentView !== 'bitacora') {
+    // Guard: si la ruta ACTUAL ya resuelve a una vista conocida (arranque directo en
+    // /gastronomia?local=X, /en/musica…), NO la reescribimos — el push de arranque
+    // (home → vista) se comería la query (?local=) y los deep links.
+    const seg = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+    let vistaActual: string | undefined;
+    if (seg[0] === 'es' || seg[0] === 'en' || seg[0] === 'gl') vistaActual = seg[1];
+    else vistaActual = seg[0];
+    const rutaConocida = !!VIEW_BY_PATH[vistaActual ?? ''] ||
+      (vistaActual === 'gastronomia' && seg[1] === 'metodologia');
+    if (window.location.pathname !== objetivo && currentView !== 'bitacora' && !rutaConocida) {
       window.history.pushState(null, '', objetivo);
     }
     // Al cambiar de vista, siempre al principio de la página (evita aterrizar
