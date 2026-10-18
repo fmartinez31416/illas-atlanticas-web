@@ -98,6 +98,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Dónde comer en Aguiño · Gastronomía de la ría · Illas Atlánticas Ático',
       description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
     },
+    musica: {
+      title: 'La música de la casa · Banda sonora original · Illas Atlánticas Ático',
+      description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
+    },
   },
   en: {
     puente: {
@@ -124,6 +128,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'Where to eat in Aguiño · Ría gastronomy · Illas Atlánticas Ático',
       description: 'Where to eat in Aguiño within walking distance of the penthouse: raciones bars, a restaurant, the beach bar and the historic O Furón. Fish-market seafood, octopus, percebes and albariño in the Ría de Arousa.',
     },
+    musica: {
+      title: 'The music of the house · Original soundtrack · Illas Atlánticas Ático',
+      description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of your stay.',
+    },
   },
   gl: {
     puente: {
@@ -149,6 +157,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     gastronomia: {
       title: 'Onde comer en Aguiño · Gastronomía da ría · Illas Atlánticas Ático',
       description: 'Onde comer en Aguiño a pé do ático: tascas de ración, restaurante, chiringuito e o histórico O Furón. Marisco da lonxa, polbo, percebe e albariño na Ría de Arousa.',
+    },
+    musica: {
+      title: 'A música da casa · Banda sonora orixinal · Illas Atlánticas Ático',
+      description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo anfitrión para cada estación e cada momento da estadía.',
     },
   },
 };

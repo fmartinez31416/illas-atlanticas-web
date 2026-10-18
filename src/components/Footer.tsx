@@ -153,6 +153,9 @@ export function Footer({ onOpenLegal }: FooterProps) {
                 <a href="/gastronomia" className="hover:text-amber-200 transition-colors">
                   {t("Gastronomía")}
                 </a>
+                <a href="/musica" className="hover:text-amber-200 transition-colors">
+                  {t("Música")}
+                </a>
               </li>
               <li>
                 <a href="https://nia.illasatlanticasatico.es/" className="hover:text-amber-200 transition-colors">
