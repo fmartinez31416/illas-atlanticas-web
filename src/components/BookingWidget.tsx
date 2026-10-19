@@ -175,41 +175,6 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               </div>
             </div>
 
-            {/* Código de socio (Club de Huéspedes) */}
-            <div className="flex items-center gap-2.5 shrink-0">
-              <div className="space-y-1 flex-1">
-                <label htmlFor="codigo-club" className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
-                  <Ticket className="w-3 h-3 text-stone-600" />
-                  <span>{t("Código de socio (opcional)")}</span>
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    id="codigo-club"
-                    type="text"
-                    value={codigo}
-                    onChange={(e) => setCodigo(e.target.value.toUpperCase())}
-                    placeholder=""
-                    maxLength={20}
-                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500 uppercase"
-                  />
-                  <button
-                    type="button"
-                    onClick={copiarCodigo}
-                    disabled={!codigo.trim()}
-                    className="px-3 py-2 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 text-[10px] uppercase tracking-wider font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
-                  >
-                    {codigoCopiado ? t("¡Copiado!") : t("Copiar")}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {codigo && (
-              <p className="text-[11px] text-stone-500 leading-snug">
-                {t("Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.")}
-              </p>
-            )}
-
             {/* Botones de acción */}
             <div className="flex items-center gap-2.5 shrink-0">
               <button
@@ -231,6 +196,38 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               </button>
             </div>
 
+          </div>
+
+          {/* Código de socio (Club de Huéspedes) — línea propia, no compite con las fechas */}
+          <div className="mt-3">
+            <label htmlFor="codigo-club" className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1 mb-1">
+              <Ticket className="w-3 h-3 text-stone-600" />
+              <span>{t("Código de socio (opcional)")}</span>
+            </label>
+            <div className="flex gap-2 max-w-md">
+              <input
+                id="codigo-club"
+                type="text"
+                value={codigo}
+                onChange={(e) => setCodigo(e.target.value.toUpperCase())}
+                placeholder=""
+                maxLength={20}
+                className="flex-1 px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500 uppercase"
+              />
+              <button
+                type="button"
+                onClick={copiarCodigo}
+                disabled={!codigo.trim()}
+                className="px-3 py-2 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 text-[10px] uppercase tracking-wider font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
+              >
+                {codigoCopiado ? t("¡Copiado!") : t("Copiar")}
+              </button>
+            </div>
+            {codigo && (
+              <p className="text-[11px] text-stone-500 leading-snug mt-1">
+                {t("Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.")}
+              </p>
+            )}
           </div>
 
           {/* Pago y cancelación: dentro del formulario, visible sin abrir el motor */}
