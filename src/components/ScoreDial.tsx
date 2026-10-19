@@ -29,8 +29,8 @@ export default function ScoreDial({ score, confidence, size = 132, label, sublab
     const r = size / 2 - (compact ? 7 : 10);
     const cx = size / 2;
     const cy = size / 2;
-    // Arco de 260° comenzando en 140°
-    const start = 140;
+    // Arco de 260° con el hueco abajo (velocímetro): de 7:30 a 4:30 pasando por 9, 12 y 3
+    const start = 225;
     const sweep = 260;
     const toXY = (deg: number, radius: number) => {
       const rad = ((deg - 90) * Math.PI) / 180;
@@ -111,8 +111,6 @@ export default function ScoreDial({ score, confidence, size = 132, label, sublab
           filter={`url(#glow-${size}-${score.toFixed(0)})`}
           style={{ transition: 'stroke-dashoffset 1.1s cubic-bezier(.22,1,.36,1)' }}
         />
-        {/* aguja */}
-        <circle cx={geo.cx} cy={geo.cy} r={compact ? 2.5 : 3.5} fill={tone.stroke} />
       </svg>
 
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
