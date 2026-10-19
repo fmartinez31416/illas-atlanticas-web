@@ -335,5 +335,5 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Código de socio (opcional)": { es: "Código de socio (opcional)", en: "Member code (optional)", gl: "Código de socio (opcional)" },
   "Copiar": { es: "Copiar", en: "Copy", gl: "Copiar" },
   "¡Copiado!": { es: "¡Copiado!", en: "Copied!", gl: "¡Copiado!" },
-  "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).": { es: "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).", en: "Your member code is applied in the next step: paste it into the booking engine's Voucher field (5 % Basic Club).", gl: "O teu código de socio descóntase no seguinte paso: pégao no campo Voucher do motor de reservas (5 % Club Básico)." },
+  "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.": { es: "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.", en: "Your member code is applied in the next step: paste it into the booking engine's Voucher field.", gl: "O teu código de socio descóntase no seguinte paso: pégao no campo Voucher do motor de reservas." },
 };

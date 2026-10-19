@@ -188,7 +188,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                     type="text"
                     value={codigo}
                     onChange={(e) => setCodigo(e.target.value.toUpperCase())}
-                    placeholder="CLUB5"
+                    placeholder="CLUB·5
                     maxLength={20}
                     className="w-full px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500 uppercase"
                   />
@@ -206,7 +206,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
             {codigo && (
               <p className="text-[11px] text-stone-500 leading-snug">
-                {t("Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).")}
+                {t("Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.")}
               </p>
             )}
 

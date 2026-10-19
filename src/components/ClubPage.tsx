@@ -74,7 +74,7 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
     cuota: '1',
     requisito: { es: 'Solo registro', en: 'Sign-up only', gl: 'Só rexistro' },
     ventajas: [
-      { es: '5 % garantizado en tu primera reserva directa con tu código CLUB5', en: 'Guaranteed 5 % off your first direct booking with your CLUB5 code', gl: '5 % garantido na túa primeira reserva directa co teu código CLUB5' },
+      { es: '5 % garantizado en tu primera reserva directa con tu código de socio', en: 'Guaranteed 5 % off your first direct booking with your member code', gl: '5 % garantido na túa primeira reserva directa co teu código de socio' },
       { es: 'Acceso anticipado a las fechas de verano', en: 'Early access to summer dates', gl: 'Acceso anticipado ás datas de verán' },
       { es: 'Contenido exclusivo: recetas de la casa y playlist oficial', en: 'Exclusive content: house recipes and the official playlist', gl: 'Contido exclusivo: receitas da casa e playlist oficial' },
     ],
