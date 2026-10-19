@@ -165,7 +165,9 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
 
           {/* Menú Móvil */}
           <div className="flex xl:hidden items-center space-x-2 shrink-0">
-            <LanguageSwitcher compact dark={!isScrolled} className={isScrolled ? '' : 'border-white/40'} />
+            <div className="hidden sm:block">
+              <LanguageSwitcher compact dark={!isScrolled} className={isScrolled ? '' : 'border-white/40'} />
+            </div>
             <button
               onClick={onOpenBooking}
               className={`px-3 py-1.5 rounded-sm text-xs font-medium uppercase tracking-wider ${
@@ -177,8 +179,10 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-sm ${
-                isScrolled ? 'text-stone-900' : 'text-white'
+              className={`p-2 rounded-sm transition-colors ${
+                isScrolled
+                  ? 'text-stone-900'
+                  : 'text-white bg-white/10 border border-white/20 backdrop-blur-sm'
               }`}
               aria-label={t("Abrir menú")}
             >
