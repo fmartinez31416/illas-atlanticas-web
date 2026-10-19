@@ -17,6 +17,7 @@ import { ConsentBanner } from './components/ConsentBanner';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 import { GastronomiaPage } from './components/GastronomiaPage';
 import { MusicaPage } from './components/MusicaPage';
+import ClubPage from './components/ClubPage';
 import { MetodologiaPage } from './components/MetodologiaPage';
 
 import { FaqSection } from './components/FaqSection';
@@ -38,7 +39,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -49,7 +50,7 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
@@ -58,6 +59,7 @@ function AppInner() {
     planificador: 'planificador',
     gastronomia: 'gastronomia',
     musica: 'musica',
+    club: 'club',
   };
   useEffect(() => {
     const leer = () => {
@@ -78,7 +80,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica', club: '/club' };
     const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
@@ -231,6 +233,19 @@ function AppInner() {
     return (
       <>
         <MusicaPage
+          onBack={() => setCurrentView('home')}
+          onOpenBooking={scrollToBooking}
+        />
+        <NiaChat />
+      </>
+    );
+  }
+
+  // VISTA: Club de huéspedes — niveles, tarjeta virtual y alta de socio
+  if (currentView === 'club') {
+    return (
+      <>
+        <ClubPage
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
         />

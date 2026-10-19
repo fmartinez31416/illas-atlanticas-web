@@ -331,4 +331,5 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "CARTA NÁUTICA": { es: "CARTA NÁUTICA", en: "NAUTICAL CHART", gl: "CARTA NÁUTICA" },
   "De Corrubedo a la Isla de Ons": { es: "De Corrubedo a la Isla de Ons", en: "From Corrubedo to Ons Island", gl: "De Corrubedo á Illa de Ons" },
   "Escala aprox. 1:150 000 · Sondas en metros": { es: "Escala aprox. 1:150 000 · Sondas en metros", en: "Scale approx. 1:150 000 · Soundings in metres", gl: "Escala aprox. 1:150 000 · Sondas en metros" },
+  "Club de Huéspedes": { es: "Club de Huéspedes", en: "Guest Club", gl: "Club de Hóspedes" },
 };

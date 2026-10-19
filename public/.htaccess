@@ -37,7 +37,7 @@ AddDefaultCharset utf-8
   RewriteRule ^ - [L]
 
   # --- 3. Rutas de la SPA ---
-  RewriteRule ^(puente|lonja|legal|condiciones|planificador|gastronomia|musica)/?$ /index.html [L]
+  RewriteRule ^(puente|lonja|legal|condiciones|planificador|gastronomia|musica|club)/?$ /index.html [L]
   RewriteRule ^gastronomia/metodologia/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
   RewriteRule ^$ /index.html [L]

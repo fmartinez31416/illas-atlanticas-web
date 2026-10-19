@@ -106,6 +106,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       title: 'La música de la casa · Banda sonora original · Illas Atlánticas Ático',
       description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
     },
+    club: {
+      title: 'Club de Huéspedes · Niveles, tarjeta virtual y ventajas · Illas Atlánticas Ático',
+      description: 'El club de huéspedes del ático de Aguiño: niveles Básico, Plata, Oro y Platino, tarjeta virtual de socio y 10 % por cada amigo que traigas. Únete gratis.',
+    },
   },
   en: {
     puente: {
@@ -138,7 +142,11 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     musica: {
       title: 'The music of the house · Original soundtrack · Illas Atlánticas Ático',
-      description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of your stay.',
+      description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of the stay.',
+    },
+    club: {
+      title: 'Guest Club · Levels, virtual card and perks · Illas Atlánticas Ático',
+      description: 'The guest club of the Aguiño penthouse: Basic, Silver, Gold and Platinum levels, a virtual membership card and 10 % for every friend you bring. Join for free.',
     },
   },
   gl: {
@@ -173,6 +181,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     musica: {
       title: 'A música da casa · Banda sonora orixinal · Illas Atlánticas Ático',
       description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo anfitrión para cada estación e cada momento da estadía.',
+    },
+    club: {
+      title: 'Club de Hóspedes · Niveis, tarxeta virtual e vantaxes · Illas Atlánticas Ático',
+      description: 'O club de hóspedes do ático de Aguiño: niveis Básico, Prata, Ouro e Platino, tarxeta virtual de socio e 10 % por cada amigo que tragas. Únete gratis.',
     },
   },
 };
