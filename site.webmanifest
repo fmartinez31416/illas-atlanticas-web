@@ -1,0 +1,33 @@
+{
+  "name": "Illas Atlánticas Ático",
+  "short_name": "Illas Atlánticas",
+  "description": "Ático vacacional frente a las islas de Sálvora y Ons, en Aguiño (Ribeira). Guía gastronómica, ría en vivo y reserva directa.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B1524",
+  "theme_color": "#1A3A5C",
+  "categories": ["travel", "lodging", "food"],
+  "icons": [
+    {
+      "src": "/favicon_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
