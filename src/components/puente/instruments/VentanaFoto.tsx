@@ -20,6 +20,7 @@ export function Ventana({
   return (
     <section className="relative h-[48vh] max-h-[540px] min-h-[320px] w-full select-none overflow-hidden bg-black">
       <img
+        loading="lazy"
         src={`${import.meta.env.BASE_URL}puente_vista.webp`}
         alt=""
         className="absolute inset-0 z-0 h-full w-full object-cover"

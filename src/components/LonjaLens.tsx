@@ -317,6 +317,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
                 <img
                   src={`/especies/${seleccionada.id}.jpg`}
                   alt={seleccionada.nombreES}
+                  loading="lazy"
                   className="w-full h-52 sm:h-64 object-cover"
                   onError={(ev) => { (ev.currentTarget as HTMLImageElement).style.display = 'none'; }}
                 />

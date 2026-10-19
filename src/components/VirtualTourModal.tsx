@@ -95,6 +95,7 @@ export function VirtualTourModal({ initialSpaceId = 'terraza', onClose, onOpenBo
               src={activeSpace.coverImage}
               alt={activeSpace.name}
               referrerPolicy="no-referrer"
+              loading="lazy"
               className="w-full h-full object-cover brightness-[0.75] grayscale-[10%]"
             />
           </div>

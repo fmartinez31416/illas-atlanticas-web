@@ -30,6 +30,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
       
       {/* Fotografía de la ría al 100% de luminosidad */}
       <img
+      loading="lazy"
         src={footerBg}
         alt={t("Vistas a la ría y las bateas desde Aguiño")}
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
