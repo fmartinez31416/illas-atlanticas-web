@@ -12,9 +12,14 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Club de huéspedes', en: 'Guest club', gl: 'Club de hóspedes' },
   titulo: { es: 'Club Illas Atlánticas', en: 'Illas Atlánticas Club', gl: 'Club Illas Atlánticas' },
   claim: {
-    es: 'Ser miembro otorga ventajas. Cuatro niveles según tus estancias, una tarjeta virtual y un 10 % de regalo por cada amigo que traigas.',
-    en: 'Membership has its privileges. Four levels by number of stays, a virtual card, and 10 % back for every friend you bring.',
-    gl: 'Ser membro outorga vantaxes. Catro niveis segundo as túas estadías, unha tarxeta virtual e un 10 % de agasallo por cada amigo que tragas.',
+    es: 'Ser miembro otorga ventajas. El nivel Básico se obtiene solo con registrarte: 5 % garantizado en tu primera reserva directa. Plata, Oro y Platino se ganan con estancias completadas. Y hay un 10 % por cada amigo que traigas.',
+    en: 'Membership has its privileges. The Basic level is yours just for signing up: a guaranteed 5 % off your first direct booking. Silver, Gold and Platinum are earned with completed stays. Plus 10 % for every friend you bring.',
+    gl: 'Ser membro outorga vantaxes. O nivel Básico obtense só con rexistrarte: 5 % garantido na túa primeira reserva directa. Prata, Ouro e Platino gáñanse con estadías completadas. E hai un 10 % por cada amigo que tragas.',
+  },
+  soloRegistro: {
+    es: 'Solo registro',
+    en: 'Sign-up only',
+    gl: 'Só rexistro',
   },
   niveles: { es: 'Los niveles', en: 'The levels', gl: 'Os niveis' },
   estancia: { es: 'estancia', en: 'stay', gl: 'estadía' },
@@ -62,13 +67,14 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
 
 const NIVELES = ['basico', 'plata', 'oro', 'platino'] as const;
 
-const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: string; gl: string }; estilo: string; ventajas: { es: string; en: string; gl: string }[]; cuota: string }> = {
+const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: string; gl: string }; estilo: string; ventajas: { es: string; en: string; gl: string }[]; cuota: string; requisito: { es: string; en: string; gl: string } }> = {
   basico: {
     badge: { es: 'Básico', en: 'Basic', gl: 'Básico' },
     estilo: 'from-slate-400 to-slate-600',
     cuota: '1',
+    requisito: { es: 'Solo registro', en: 'Sign-up only', gl: 'Só rexistro' },
     ventajas: [
-      { es: '5 % de descuento en tu próxima estancia directa', en: '5 % off your next direct stay', gl: '5 % de desconto na túa próxima estadía directa' },
+      { es: '5 % garantizado en tu primera reserva directa con tu código CLUB5', en: 'Guaranteed 5 % off your first direct booking with your CLUB5 code', gl: '5 % garantido na túa primeira reserva directa co teu código CLUB5' },
       { es: 'Acceso anticipado a las fechas de verano', en: 'Early access to summer dates', gl: 'Acceso anticipado ás datas de verán' },
       { es: 'Contenido exclusivo: recetas de la casa y playlist oficial', en: 'Exclusive content: house recipes and the official playlist', gl: 'Contido exclusivo: receitas da casa e playlist oficial' },
     ],
@@ -77,6 +83,7 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
     badge: { es: 'Plata', en: 'Silver', gl: 'Prata' },
     estilo: 'from-gray-300 to-gray-500',
     cuota: '2',
+    requisito: { es: '2 estancias completadas', en: '2 completed stays', gl: '2 estadías completadas' },
     ventajas: [
       { es: '10 % de descuento en tu próxima estancia directa', en: '10 % off your next direct stay', gl: '10 % de desconto na túa próxima estadía directa' },
       { es: 'Late checkout sin coste, si la casa está libre', en: 'Free late checkout when available', gl: 'Late checkout sen custo, se a casa está libre' },
@@ -87,6 +94,7 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
     badge: { es: 'Oro', en: 'Gold', gl: 'Ouro' },
     estilo: 'from-amber-400 to-yellow-600',
     cuota: '3',
+    requisito: { es: '3 estancias completadas', en: '3 completed stays', gl: '3 estadías completadas' },
     ventajas: [
       { es: '10 % de descuento en tu próxima estancia directa', en: '10 % off your next direct stay', gl: '10 % de desconto na túa próxima estadía directa' },
       { es: 'Botella de albariño del pazo en tu llegada', en: 'A bottle of pazo albariño on arrival', gl: 'Botella de albariño do pazo á túa chegada' },
@@ -97,6 +105,7 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
     badge: { es: 'Platino', en: 'Platinum', gl: 'Platino' },
     estilo: 'from-cyan-300 via-white to-slate-400',
     cuota: '4+',
+    requisito: { es: '4 o más estancias completadas', en: '4 or more completed stays', gl: '4 ou máis estadías completadas' },
     ventajas: [
       { es: '15 % de descuento en tu próxima estancia directa', en: '15 % off your next direct stay', gl: '15 % de desconto na túa próxima estadía directa' },
       { es: 'Early check-in y late checkout, si la casa está libre', en: 'Early check-in and late checkout when available', gl: 'Early check-in e late checkout, se a casa está libre' },
@@ -211,7 +220,7 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
                 <div key={n} className="bg-white/5 border border-white/15 rounded-xl p-6 hover:border-amber-200/40 transition-colors">
                   <div className="flex items-center justify-between mb-4">
                     <span className={`bg-gradient-to-r ${m.estilo} text-[#0B1524] text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider`}>{m.badge[lang] ?? m.badge.es}</span>
-                    <span className="text-white/50 text-sm">{m.cuota} {Number(m.cuota) === 1 ? g('estancia') : g('estancias')}</span>
+                    <span className="text-white/50 text-sm">{m.requisito[lang] ?? m.requisito.es}</span>
                   </div>
                   <ul className="space-y-2">
                     {m.ventajas.map((v, i) => (

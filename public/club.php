@@ -35,10 +35,12 @@ mail('info@illasatlanticasatico.es', $asunto, $cuerpo, $cabeceras);
 
 $asuntoB = 'Bienvenido al Club Illas Atlánticas';
 $cuerpoB = "Hola $nombre,\n\n"
-  . "Bienvenido al Club Illas Atlánticas. Tu tarjeta de socio es el nivel Básico: "
-  . "5 % de descuento en tu próxima estancia directa, acceso anticipado a las fechas "
-  . "de verano y contenido exclusivo de la casa.\n\n"
-  . "Tu número de socio: $socio\n\n"
+  . "Bienvenido al Club Illas Atlánticas. Tu tarjeta de socio es el nivel Básico, "
+  . "que se obtiene solo con registrarse: 5 % GARANTIZADO en tu primera reserva directa. "
+  . "Para aplicarlo, introduce tu código de socio en el campo Voucher del motor de reservas.\n\n"
+  . "Tu código de socio: CLUB5\n"
+  . "Tu número de tarjeta: $socio\n\n"
+  . "Además: acceso anticipado a las fechas de verano y contenido exclusivo de la casa.\n\n"
   . "Y el motor del club: por cada amigo que reserve por recomendación tuya y complete "
   . "su estancia, ganas un 10 % (acumulable hasta el 30 %) en tu próxima reserva directa.\n\n"
   . "Todo en illasatlanticasatico.es/club\n\n"

@@ -1,5 +1,5 @@
 import { useState, useEffect, useId } from 'react';
-import { Calendar, Users, ArrowRight, MessageCircle } from 'lucide-react';
+import { Calendar, Users, ArrowRight, MessageCircle, Ticket } from 'lucide-react';
 import { t } from '../i18n/translate';
 import { useI18n } from '../i18n/LangContext';
 import { NIA_API_URL } from '../niaConfig';
@@ -31,6 +31,8 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   const [adults, setAdults] = useState<number>(2);
   const [children, setChildren] = useState<number>(0);
   const [motorAbierto, setMotorAbierto] = useState(false);
+  const [codigo, setCodigo] = useState('');
+  const [codigoCopiado, setCodigoCopiado] = useState(false);
   const [avail, setAvail] = useState<{ checkIn: string; checkOut: string; price: number; total?: number; noches?: number } | null>(null);
   const [availLoading, setAvailLoading] = useState(true);
 
@@ -80,6 +82,15 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
     });
     return `https://beds24.com/booking2.php?${params.toString()}`;
   })();
+
+  const copiarCodigo = () => {
+    if (!codigo.trim()) return;
+    try {
+      navigator.clipboard.writeText(codigo.trim());
+      setCodigoCopiado(true);
+      setTimeout(() => setCodigoCopiado(false), 4000);
+    } catch { /* clipboard no disponible: el texto del campo queda para copiar a mano */ }
+  };
 
   const handleWhatsAppBooking = () => {
     const text = encodeURIComponent(
@@ -163,6 +174,41 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                 </select>
               </div>
             </div>
+
+            {/* Código de socio (Club de Huéspedes) */}
+            <div className="flex items-center gap-2.5 shrink-0">
+              <div className="space-y-1 flex-1">
+                <label htmlFor="codigo-club" className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1">
+                  <Ticket className="w-3 h-3 text-stone-600" />
+                  <span>{t("Código de socio (opcional)")}</span>
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    id="codigo-club"
+                    type="text"
+                    value={codigo}
+                    onChange={(e) => setCodigo(e.target.value.toUpperCase())}
+                    placeholder="CLUB5"
+                    maxLength={20}
+                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 text-stone-900 text-xs focus:outline-none focus:border-stone-500 uppercase"
+                  />
+                  <button
+                    type="button"
+                    onClick={copiarCodigo}
+                    disabled={!codigo.trim()}
+                    className="px-3 py-2 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 text-[10px] uppercase tracking-wider font-medium transition-colors disabled:opacity-50 whitespace-nowrap"
+                  >
+                    {codigoCopiado ? t("¡Copiado!") : t("Copiar")}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {codigo && (
+              <p className="text-[11px] text-stone-500 leading-snug">
+                {t("Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).")}
+              </p>
+            )}
 
             {/* Botones de acción */}
             <div className="flex items-center gap-2.5 shrink-0">

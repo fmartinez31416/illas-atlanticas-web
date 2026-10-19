@@ -332,4 +332,8 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "De Corrubedo a la Isla de Ons": { es: "De Corrubedo a la Isla de Ons", en: "From Corrubedo to Ons Island", gl: "De Corrubedo á Illa de Ons" },
   "Escala aprox. 1:150 000 · Sondas en metros": { es: "Escala aprox. 1:150 000 · Sondas en metros", en: "Scale approx. 1:150 000 · Soundings in metres", gl: "Escala aprox. 1:150 000 · Sondas en metros" },
   "Club de Huéspedes": { es: "Club de Huéspedes", en: "Guest Club", gl: "Club de Hóspedes" },
+  "Código de socio (opcional)": { es: "Código de socio (opcional)", en: "Member code (optional)", gl: "Código de socio (opcional)" },
+  "Copiar": { es: "Copiar", en: "Copy", gl: "Copiar" },
+  "¡Copiado!": { es: "¡Copiado!", en: "Copied!", gl: "¡Copiado!" },
+  "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).": { es: "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas (5 % Club Básico).", en: "Your member code is applied in the next step: paste it into the booking engine's Voucher field (5 % Basic Club).", gl: "O teu código de socio descóntase no seguinte paso: pégao no campo Voucher do motor de reservas (5 % Club Básico)." },
 };
