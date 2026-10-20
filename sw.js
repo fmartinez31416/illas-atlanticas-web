@@ -1,5 +1,5 @@
 /* Service worker Illas Atlánticas Ático — offline shell + caché de estáticos */
-const CACHE = 'illas-v1';
+const CACHE = 'illas-v2';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
