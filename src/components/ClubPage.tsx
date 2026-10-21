@@ -12,9 +12,9 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Club de huéspedes', en: 'Guest club', gl: 'Club de hóspedes' },
   titulo: { es: 'Club Illas Atlánticas', en: 'Illas Atlánticas Club', gl: 'Club Illas Atlánticas' },
   claim: {
-    es: 'Ser miembro otorga ventajas. El nivel Básico se obtiene solo con registrarte: 5 % garantizado en tu primera reserva directa. Plata, Oro y Platino se ganan con estancias completadas. Y hay un 10 % por cada amigo que traigas.',
-    en: 'Membership has its privileges. The Basic level is yours just for signing up: a guaranteed 5 % off your first direct booking. Silver, Gold and Platinum are earned with completed stays. Plus 10 % for every friend you bring.',
-    gl: 'Ser membro outorga vantaxes. O nivel Básico obtense só con rexistrarte: 5 % garantido na túa primeira reserva directa. Prata, Ouro e Platino gáñanse con estadías completadas. E hai un 10 % por cada amigo que tragas.',
+    es: 'Ser miembro otorga ventajas. El nivel Básico se obtiene solo con registrarte: 5 % garantizado en tu primera reserva directa. Plata, Oro y Platino se ganan con noches completadas. Y un 5 % por cada amigo que traigas, sin límite. Los descuentos no aplican en julio, agosto ni Navidad/Nochevieja.',
+    en: 'Membership has its privileges. The Basic level is yours just for signing up: a guaranteed 5 % off your first direct booking. Silver, Gold and Platinum are earned with completed nights. Plus 5 % for every friend you bring, with no limit. Discounts do not apply in July, August or Christmas/New Year.',
+    gl: 'Ser membro outorga vantaxes. O nivel Básico obtense só con rexistrarte: 5 % garantido na túa primeira reserva directa. Prata, Ouro e Platino gáñanse con noites completadas. E un 5 % por cada amigo que tragas, sen límite. Os descontos non aplican en xullo, agosto nin Nadal/Aninovo.',
   },
   soloRegistro: {
     es: 'Solo registro',
@@ -26,9 +26,9 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   estancias: { es: 'estancias', en: 'stays', gl: 'estadías' },
   referidos: { es: 'Motor de recomendación', en: 'Referral engine', gl: 'Motor de recomendación' },
   referidosTexto: {
-    es: 'Por cada amigo que reserve por recomendación tuya y complete su estancia, ganas un 10 % de descuento en tu próxima reserva directa. Acumulable hasta un 30 %. Sin letra pequeña.',
-    en: 'For every friend who books on your recommendation and completes their stay, you earn 10 % off your next direct booking. Stackable up to 30 %. No fine print.',
-    gl: 'Por cada amigo que reserve por recomendación túa e complete a súa estadía, gañas un 10 % de desconto na túa próxima reserva directa. Acumulable ata un 30 %. Sen letra pequena.',
+    es: 'Por cada amigo que reserve por recomendación tuya y complete una estancia de al menos 3 noches, ganas un 5 % en tu próxima reserva directa. Sin límite: puedes llegar a una estancia gratis. Se redime fuera de temporada alta y caduca a los 12 meses.',
+    en: 'For every friend who books on your recommendation and completes a stay of at least 3 nights, you earn 5 % off your next direct booking. No limit: you can earn a free stay. Redeemable outside high season, valid for 12 months.',
+    gl: 'Por cada amigo que reserve por recomendación túa e complete unha estadía de polo menos 3 noites, gañas un 5 % na túa próxima reserva directa. Sen límite: podes chegar a unha estadía gratis. Redímese fóra da tempada alta e caduca aos 12 meses.',
   },
   tarjeta: { es: 'Tu tarjeta virtual', en: 'Your virtual card', gl: 'A túa tarxeta virtual' },
   tarjetaTexto: {
@@ -82,10 +82,10 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
   plata: {
     badge: { es: 'Plata', en: 'Silver', gl: 'Prata' },
     estilo: 'from-gray-300 to-gray-500',
-    cuota: '2',
-    requisito: { es: '2 estancias completadas', en: '2 completed stays', gl: '2 estadías completadas' },
+    cuota: '7',
+    requisito: { es: '7 noches completadas', en: '7 completed nights', gl: '7 noites completadas' },
     ventajas: [
-      { es: '10 % de descuento en tu próxima estancia directa', en: '10 % off your next direct stay', gl: '10 % de desconto na túa próxima estadía directa' },
+      { es: '8 % de descuento en tu próxima estancia directa', en: '8 % off your next direct stay', gl: '8 % de desconto na túa próxima estadía directa' },
       { es: 'Late checkout sin coste, si la casa está libre', en: 'Free late checkout when available', gl: 'Late checkout sen custo, se a casa está libre' },
       { es: 'Acceso anticipado a las fechas de verano', en: 'Early access to summer dates', gl: 'Acceso anticipado ás datas de verán' },
     ],
@@ -93,8 +93,8 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
   oro: {
     badge: { es: 'Oro', en: 'Gold', gl: 'Ouro' },
     estilo: 'from-amber-400 to-yellow-600',
-    cuota: '3',
-    requisito: { es: '3 estancias completadas', en: '3 completed stays', gl: '3 estadías completadas' },
+    cuota: '15',
+    requisito: { es: '15 noches completadas', en: '15 completed nights', gl: '15 noites completadas' },
     ventajas: [
       { es: '10 % de descuento en tu próxima estancia directa', en: '10 % off your next direct stay', gl: '10 % de desconto na túa próxima estadía directa' },
       { es: 'Botella de albariño del pazo en tu llegada', en: 'A bottle of pazo albariño on arrival', gl: 'Botella de albariño do pazo á túa chegada' },
@@ -104,10 +104,10 @@ const NIVEL_META: Record<(typeof NIVELES)[number], { badge: { es: string; en: st
   platino: {
     badge: { es: 'Platino', en: 'Platinum', gl: 'Platino' },
     estilo: 'from-cyan-300 via-white to-slate-400',
-    cuota: '4+',
-    requisito: { es: '4 o más estancias completadas', en: '4 or more completed stays', gl: '4 ou máis estadías completadas' },
+    cuota: '30',
+    requisito: { es: '30 noches completadas', en: '30 completed nights', gl: '30 noites completadas' },
     ventajas: [
-      { es: '15 % de descuento en tu próxima estancia directa', en: '15 % off your next direct stay', gl: '15 % de desconto na túa próxima estadía directa' },
+      { es: '12 % de descuento en tu próxima estancia directa', en: '12 % off your next direct stay', gl: '12 % de desconto na túa próxima estadía directa' },
       { es: 'Early check-in y late checkout, si la casa está libre', en: 'Early check-in and late checkout when available', gl: 'Early check-in e late checkout, se a casa está libre' },
       { es: 'Sorpresa de la casa: marisco o producto local en tu llegada', en: 'House surprise: seafood or a local treat on arrival', gl: 'Sorpresa da casa: marisco ou produto local á túa chegada' },
     ],
