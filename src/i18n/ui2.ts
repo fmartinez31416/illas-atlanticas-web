@@ -332,6 +332,8 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "De Corrubedo a la Isla de Ons": { es: "De Corrubedo a la Isla de Ons", en: "From Corrubedo to Ons Island", gl: "De Corrubedo á Illa de Ons" },
   "Escala aprox. 1:150 000 · Sondas en metros": { es: "Escala aprox. 1:150 000 · Sondas en metros", en: "Scale approx. 1:150 000 · Soundings in metres", gl: "Escala aprox. 1:150 000 · Sondas en metros" },
   "Club de Huéspedes": { es: "Club de Huéspedes", en: "Guest Club", gl: "Club de Hóspedes" },
+  "Abrir el Club de Huéspedes": { es: "Abrir el Club de Huéspedes", en: "Open the Guest Club", gl: "Abrir o Club de Hóspedes" },
+  "club.tile.desc": { es: "Hazte socio en 2 minutos: 5 % en tu primera reserva directa, niveles y referidos.", en: "Become a member in 2 minutes: 5% off your first direct booking, levels and referrals.", gl: "Faite socio en 2 minutos: 5 % na túa primeira reserva directa, niveis e referidos." },
   "Código de socio (opcional)": { es: "Código de socio (opcional)", en: "Member code (optional)", gl: "Código de socio (opcional)" },
   "Copiar": { es: "Copiar", en: "Copy", gl: "Copiar" },
   "¡Copiado!": { es: "¡Copiado!", en: "Copied!", gl: "¡Copiado!" },

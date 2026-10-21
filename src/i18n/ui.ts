@@ -136,6 +136,7 @@ export const UI: Record<string, Record<Lang, string>> = {
   "Lonja en vivo": { es: "Lonja en vivo", en: "Fish Market Live", gl: "Lonxa en vivo" },
   "Gastronomía": { es: "Gastronomía", en: "Food & drink", gl: "Gastronomía" },
   "Música": { es: "Música", en: "Music", gl: "Música" },
+  "Club": { es: "Club", en: "Club", gl: "Club" },
   "Nía, tu agente de a bordo": { es: "Nía, tu agente de a bordo", en: "Nía, your on-board agent", gl: "Nía, o teu axente de a bordo" },
   "Los datos personales que nos facilitas (nombre, contacto y datos de identidad de los viajeros) se tratan únicamente para:": { es: "Los datos personales que nos facilitas (nombre, contacto y datos de identidad de los viajeros) se tratan únicamente para:", en: "The personal data you provide us (name, contact, and identity details of the travellers) are processed solely for:", gl: "Os datos persoais que nos facilitas (nome, contacto e datos de identidade dos viaxeiros) trátanse unicamente para:" },
   "Mensaje para Nía": { es: "Mensaje para Nía", en: "Message for Nía", gl: "Mensaxe para Nía" },

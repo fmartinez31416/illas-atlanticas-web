@@ -176,8 +176,8 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </div>
               </button>
 
-              {/* Cuaderno de Bitácora, LonjaLens y Gastronomía en la misma columna */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* Cuaderno de Bitácora, LonjaLens, Gastronomía y Club en la misma columna */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <button
                   type="button"
                   onClick={onOpenBitacora}
@@ -220,6 +220,19 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                     {t("Dónde comer a pie del ático: 27 sitios con su Índice Atlántico, mapa y ruta a la mesa.")}
                   </p>
                 </button>
+                <a
+                  href="/club"
+                  aria-label={t("Abrir el Club de Huéspedes")}
+                  className="text-left bg-[#EBE6DD]/60 border border-[#1A3A5C]/10 p-4 rounded-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
+                >
+                  <span className="font-serif text-2xl text-[#D4A017] leading-none select-none">◆</span>
+                  <p className="font-serif text-lg text-[#1A3A5C] tracking-tight mt-2">
+                    {t("Club de Huéspedes")}
+                  </p>
+                  <p className="text-xs text-stone-600 mt-1.5 font-light leading-relaxed">
+                    {t("club.tile.desc")}
+                  </p>
+                </a>
               </div>
             </div>
           </Reveal>
