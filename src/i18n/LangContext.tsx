@@ -108,7 +108,11 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Club de Huéspedes · Niveles, tarjeta virtual y ventajas · Illas Atlánticas Ático',
-      description: 'El club de huéspedes del ático de Aguiño: niveles Básico, Plata, Oro y Platino, tarjeta virtual de socio y 10 % por cada amigo que traigas. Únete gratis.',
+      description: 'El club de huéspedes del ático de Aguiño: niveles Básico, Plata, Oro y Platino, tarjeta virtual de socio y 5 % por cada amigo que traigas, sin límite. Únete gratis.',
+    },
+    colaboraciones: {
+      title: 'Colaboraciones · Medios y blogs que cuentan Aguiño · Illas Atlánticas Ático',
+      description: 'Escaparate de colaboraciones de Illas Atlánticas Ático: medios y blogs que cuentan Aguiño, con intercambio de enlaces y contenidos. ¿Escribes sobre el Barbanza? Hablamos.',
     },
   },
   en: {
@@ -145,8 +149,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of the stay.',
     },
     club: {
-      title: 'Guest Club · Levels, virtual card and perks · Illas Atlánticas Ático',
-      description: 'The guest club of the Aguiño penthouse: Basic, Silver, Gold and Platinum levels, a virtual membership card and 10 % for every friend you bring. Join for free.',
+      title: 'The Guest Club · Levels, virtual card and perks · Illas Atlánticas Ático',
+      description: 'The guest club of the Aguiño penthouse: Basic, Silver, Gold and Platinum levels, a virtual membership card and 5 % for every friend you bring, no limit. Join for free.',
+    },
+    colaboraciones: {
+      title: 'Collaborations · Media and blogs telling Aguiño · Illas Atlánticas Ático',
+      description: 'The collaboration showcase of Illas Atlánticas Ático: media and blogs that tell Aguiño, with link and content exchanges. Do you write about the Barbanza? Let\u2019s talk.',
     },
   },
   gl: {
@@ -184,7 +192,11 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Club de Hóspedes · Niveis, tarxeta virtual e vantaxes · Illas Atlánticas Ático',
-      description: 'O club de hóspedes do ático de Aguiño: niveis Básico, Prata, Ouro e Platino, tarxeta virtual de socio e 10 % por cada amigo que tragas. Únete gratis.',
+      description: 'O club de hóspedes do ático de Aguiño: niveis Básico, Prata, Ouro e Platino, tarxeta virtual de socio e 5 % por cada amigo que tragas, sen límite. Únete gratis.',
+    },
+    colaboraciones: {
+      title: 'Colaboracións · Medios e blogs que contan Aguiño · Illas Atlánticas Ático',
+      description: 'Escaparate de colaboracións de Illas Atlánticas Ático: medios e blogs que contan Aguiño, con intercambio de ligazóns e contidos. Escribes sobre o Barbanza? Falamos.',
     },
   },
 };

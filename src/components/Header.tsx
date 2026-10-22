@@ -31,6 +31,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
         { name: t('Bitácora'), href: '#bitacora-nav', action: onOpenBitacora },
         { name: t('Gastronomía'), href: '/gastronomia' },
         { name: t('Música'), href: '/musica' },
+        { name: t('Colaboraciones'), href: '/colaboraciones' },
         { name: t('Club'), href: '/club', dot: true },
       ];
 
