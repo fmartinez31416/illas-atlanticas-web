@@ -219,7 +219,9 @@ A escasas millas náuticas de Aguiño emerge Sálvora, la joya salvaje del Parqu
 
 La despensa marina de Aguiño no admite intermediarios: el percebe de las rompientes, extraído en las piedras más batidas por los percebeiros de la lonja local, y el marisco de proximidad —pulpo de roca, nécoras, almejas y el mejillón de batea—, directos del barco a la mesa.
 
-Dónde probarlos, sitio a sitio y con reseñas verificadas: la guía Dónde comer en Aguiño (/gastronomia), a un paso del ático.`
+Dónde probarlos, sitio a sitio y con reseñas verificadas: la guía Dónde comer en Aguiño (/gastronomia), a un paso del ático.
+
+**Web oficial del Parque Nacional Marítimo-Terrestre das Illas Atlánticas de Galicia:** [illasatlanticas.gal · Visita Sálvora](https://illasatlanticas.gal/es/visita-el-parque/visita-salvora) — autorizaciones, navieras y normas de visita, siempre actualizadas.`
   },
   {
     id: '7',
