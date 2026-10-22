@@ -9,6 +9,7 @@ interface HeroProps {
 
 export function Hero({ onOpenBooking }: HeroProps) {
   const [liveWeather, setLiveWeather] = useState<{ temp: number; waves: number | null } | null>(null);
+  const [nochesDiciembre, setNochesDiciembre] = useState<number | null>(null);
 
   // Chip de t("Aguiño ahora") con datos reales (Open-Meteo)
   useEffect(() => {
@@ -38,6 +39,23 @@ export function Hero({ onOpenBooking }: HeroProps) {
       } catch { /* sin datos: el chip no se muestra */ }
     };
     load();
+    return () => { alive = false; };
+  }, []);
+
+  // Urgencia real: noches libres en diciembre desde Beds24 (vía Nía API, solo en portada)
+  useEffect(() => {
+    let alive = true;
+    const partes = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+    const seg = partes[0] === 'es' || partes[0] === 'en' || partes[0] === 'gl' ? partes[1] : partes[0];
+    if (seg && seg !== '') return;
+    fetch('https://nia.illasatlanticasatico.es/api/disponibilidad')
+      .then(r => r.json())
+      .then(d => {
+        const n = d?.diciembre?.libres;
+        // Solo se muestra si hay escasez real (1-15 noches); sin dato o sin escasez: nada.
+        if (alive && Number.isInteger(n) && n > 0 && n <= 15) setNochesDiciembre(n);
+      })
+      .catch(() => { /* sin datos: la línea no se muestra */ });
     return () => { alive = false; };
   }, []);
 
@@ -138,7 +156,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
             onClick={onOpenBooking}
             className="w-full sm:w-auto px-9 py-4 bg-white hover:bg-stone-100 text-stone-900 text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
           >
-            <span>{t("Consultar Disponibilidad")}</span>
+            <span>{t("Ver precio y reservar")}</span>
             <ArrowRight className="w-4 h-4 text-stone-600" />
           </button>
 
@@ -153,6 +171,14 @@ export function Hero({ onOpenBooking }: HeroProps) {
             <span>{t("Contactar por WhatsApp")}</span>
           </a>
         </div>
+
+        {/* Urgencia real (solo si hay escasez verificada en Beds24) */}
+        {nochesDiciembre != null && (
+          <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-[#D4A017] font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4A017]" style={{ animation: 'hudPulse 2.4s ease-in-out infinite' }} />
+            <span>{t("Quedan")} {nochesDiciembre} {t("noches libres en diciembre")}</span>
+          </div>
+        )}
 
         {/* Garantía de trato directo */}
         <div className="mt-8 flex items-center justify-center gap-2 text-xs text-stone-300/90 font-light">
