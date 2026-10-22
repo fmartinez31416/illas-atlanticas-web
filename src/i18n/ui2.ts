@@ -258,7 +258,6 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Cerrar aviso": { es: "Cerrar aviso", en: "Close notice", gl: "Pechar aviso" },
   "Hola, soy": { es: "Hola, soy", en: "Hi, I'm", gl: "Ola, son" },
   ", la voz de la casa. Pregúntame lo que quieras.": { es: ", la voz de la casa. ¿Quieres que calcule el precio de tu estancia? Dime tus fechas.", en: ", the voice of the house. Want me to price your stay? Tell me your dates.", gl: ", a voz da casa. Queres que calcule o prezo da túa estadía? Dime as túas datas." },
-  "Ver precio y reservar": { es: "Ver precio y reservar", en: "See price and book", gl: "Ver prezo e reservar" },
   "Quedan": { es: "Quedan", en: "Only", gl: "Quedan" },
   "noches libres en diciembre": { es: "noches libres en diciembre", en: "nights left in December", gl: "noites libres en decembro" },
   "Soy Nía, la voz de la casa. Pregúntame por el tiempo, la lonja, la cocina… o dime tus fechas y te digo disponibilidad y precios reales.": { es: "Soy Nía, la voz de la casa. Pregúntame por el tiempo, la lonja, la cocina… o dime tus fechas y te digo disponibilidad y precios reales.", en: "I'm Nía, the voice of the house. Ask me about the weather, the fish market, the kitchen… or tell me your dates and I'll give you real availability and prices.", gl: "Son Nía, a voz da casa. Pregúntame polo tempo, a lonxa, a cociña… ou dime as túas datas e douche dispoñibilidade e prezos reais." },
