@@ -221,7 +221,9 @@ La despensa marina de Aguiño no admite intermediarios: el percebe de las rompie
 
 Dónde probarlos, sitio a sitio y con reseñas verificadas: la guía Dónde comer en Aguiño (/gastronomia), a un paso del ático.
 
-**Web oficial del Parque Nacional Marítimo-Terrestre das Illas Atlánticas de Galicia:** [illasatlanticas.gal · Visita Sálvora](https://illasatlanticas.gal/es/visita-el-parque/visita-salvora) — autorizaciones, navieras y normas de visita, siempre actualizadas.`
+**Web oficial del Parque Nacional Marítimo-Terrestre das Illas Atlánticas de Galicia:** [illasatlanticas.gal · Visita Sálvora](https://illasatlanticas.gal/es/visita-el-parque/visita-salvora) — autorizaciones, navieras y normas de visita, siempre actualizadas.
+
+**Para seguir leyendo:** [Comer y Viajar — Aguiño y el secreto de O Carreiro](https://www.comeryviajar.com/2026/03/aguino-y-el-secreto-de-o-carreiro.html), el paseo de O Carreiro contado por un blog de viajes y gastronomía de Galicia.`
   },
   {
     id: '7',
