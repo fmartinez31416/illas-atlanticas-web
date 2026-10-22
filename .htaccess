@@ -26,7 +26,7 @@ AddDefaultCharset utf-8
   # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
   # El español vive en la portada /: /es/ se consolida en / para no duplicar contenido.
   RewriteRule ^(en|gl)/?$ /index.html [L]
-  RewriteRule ^(en|gl)/(puente|lonja|legal|condiciones|planificador|gastronomia|musica)/?$ /index.html [L]
+  RewriteRule ^(en|gl)/(puente|lonja|legal|condiciones|planificador|gastronomia|musica|club|colaboraciones)/?$ /index.html [L]
   RewriteRule ^(en|gl)/gastronomia/metodologia/?$ /index.html [L]
   RewriteRule ^(en|gl)/bitacora(/.*)?$ /index.html [L]
   RewriteRule ^es/?$ / [R=301,L]
@@ -37,7 +37,7 @@ AddDefaultCharset utf-8
   RewriteRule ^ - [L]
 
   # --- 3. Rutas de la SPA ---
-  RewriteRule ^(puente|lonja|legal|condiciones|planificador|gastronomia|musica|club)/?$ /index.html [L]
+  RewriteRule ^(puente|lonja|legal|condiciones|planificador|gastronomia|musica|club|colaboraciones)/?$ /index.html [L]
   RewriteRule ^gastronomia/metodologia/?$ /index.html [L]
   RewriteRule ^bitacora(/.*)?$ /index.html [L]
   RewriteRule ^$ /index.html [L]
