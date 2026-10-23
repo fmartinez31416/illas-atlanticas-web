@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info } from 'lucide-react';
+import { ArrowLeft, Search, Camera, X, Fish, Waves, Shell, ShieldCheck, Info, ExternalLink } from 'lucide-react';
 import { getEspecies, FUENTE_TALLAS, Especie } from '../data/lonjaSpecies';
 import { CREDITOS_FOTOS } from '../data/creditosEspecies';
 import { Reveal } from './Reveal';
@@ -107,6 +107,31 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               <ShieldCheck className="w-4 h-4 text-[#D4A017] shrink-0 mt-0.5" />
               {trc('lonja.fuenteTallas', lang, FUENTE_TALLAS)}
             </p>
+          </div>
+        </Reveal>
+
+        {/* Lonxa de Ribeira — la lonja grande de la ría */}
+        <Reveal delay={40}>
+          <div className="mt-8 rounded-md border border-[#1A3A5C]/15 bg-white/70 p-5 sm:p-6">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <h2 className="font-serif text-xl text-[#1A3A5C]">{t("Lonxa de Ribeira")}</h2>
+              <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.18em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1">
+                {t("subasta")} · 16:30 · L-V
+              </span>
+            </div>
+            <p className="mt-2 text-sm text-stone-600 leading-relaxed">
+              <strong className="text-[#1A3A5C] font-medium">{t("Una de las lonjas más importantes de Europa en pesca de bajura")}</strong>{". "}
+              {t("La flota de Ribeira descarga por la tarde y subasta de lunes a viernes a las 16:30. Aquí abajo, los lotes y precios de hoy en tiempo real, junto con los de Aguiño.")}
+            </p>
+            <a
+              href="https://www.lonxasgalegas40.gal/portal/lonjas-pujas/detail/64?openPanel=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors"
+            >
+              {t("Panel oficial de la subasta en tiempo real")} <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+            <p className="mt-2 text-[10px] text-stone-500">{t("Fuente oficial: Xunta de Galicia")} · lonxasgalegas40.gal</p>
           </div>
         </Reveal>
 

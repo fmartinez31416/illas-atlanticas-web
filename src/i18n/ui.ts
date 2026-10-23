@@ -274,4 +274,10 @@ export const UI: Record<string, Record<Lang, string>> = {
   "Fuente:": { es: "Fuente:", en: "Source:", gl: "Fonte:" },
   "sube": { es: "sube", en: "up", gl: "sobe" },
   "baja": { es: "baja", en: "down", gl: "baixa" },
+  "subasta": { es: "subasta", en: "auction", gl: "poxa" },
+  "Lonxa de Ribeira": { es: "Lonxa de Ribeira", en: "Ribeira fish market", gl: "Lonxa de Ribeira" },
+  "Una de las lonjas más importantes de Europa en pesca de bajura": { es: "Una de las lonjas más importantes de Europa en pesca de bajura", en: "One of the most important coastal small-scale fishing markets in Europe", gl: "Unha das lonxas máis importantes de Europa en pesca de baixura" },
+  "La flota de Ribeira descarga por la tarde y subasta de lunes a viernes a las 16:30. Aquí abajo, los lotes y precios de hoy en tiempo real, junto con los de Aguiño.": { es: "La flota de Ribeira descarga por la tarde y subasta de lunes a viernes a las 16:30. Aquí abajo, los lotes y precios de hoy en tiempo real, junto con los de Aguiño.", en: "The Ribeira fleet lands in the afternoon and auctions Monday to Friday at 4:30 pm. Below, today's lots and prices in real time, together with Aguiño's.", gl: "A flota de Ribeira descarga pola tarde e poxa de luns a venres ás 16:30. Aquí abaixo, os lotes e prezos de hoxe en tempo real, xunto cos de Aguiño." },
+  "Panel oficial de la subasta en tiempo real": { es: "Panel oficial de la subasta en tiempo real", en: "Official real-time auction panel", gl: "Panel oficial da poxa en tempo real" },
+  "Fuente oficial: Xunta de Galicia": { es: "Fuente oficial: Xunta de Galicia", en: "Official source: Xunta de Galicia", gl: "Fonte oficial: Xunta de Galicia" },
 };
