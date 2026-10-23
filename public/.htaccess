@@ -23,6 +23,19 @@ AddDefaultCharset utf-8
   RewriteRule ^apartamento/?$ / [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
+  # Artículos del blog antiguo (Semrush 23-oct: seguían en el índice; sin redirect se perdía su equity)
+  RewriteRule ^blog/como-visitar-isla-salvora-guia/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^blog/72-horas-gastronomia-ria-arousa/?$ /gastronomia [R=301,L]
+  RewriteRule ^blog/festa-percebe-aguino-guia/?$ /bitacora/percebe-bravura-rompiente-aguiño-tabla-salmuera [R=301,L]
+  RewriteRule ^blog/guia-completa-playas-ribeira/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^blog/guia-parque-natural-corrubedo/?$ /bitacora/faros-boca-ria-salvora-corrubedo-ons [R=301,L]
+  RewriteRule ^blog/mejores-miradores-barbanza/?$ /bitacora/la-ilusion-de-la-linea-recta-cartografia-aguiño-salvora [R=301,L]
+  RewriteRule ^blog/ruta-albarino-desde-aguino/?$ /gastronomia [R=301,L]
+  RewriteRule ^blog/tour-castros-barbanza/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^ubicacion/naturaleza/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  RewriteRule ^ubicacion/playas/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
+  # (cuando se publique Cíes vs Sálvora: repuntar como-visitar-isla-salvora-guia a su slug)
+
   # Idiomas reales para hreflang: /en/ y /gl/ sirven la SPA (la ruta fija el idioma).
   # El español vive en la portada /: /es/ se consolida en / para no duplicar contenido.
   RewriteRule ^(en|gl)/?$ /index.html [L]
