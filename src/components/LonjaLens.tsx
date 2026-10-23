@@ -54,7 +54,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
   }, [query, filtro, lang]);
 
   return (
-    <div id="lonjalens" className="min-h-screen bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950">
+    <div id="lonjalens" className="min-h-screen overflow-x-clip bg-[#EBE6DD] text-stone-800 font-sans selection:bg-[#D4A017]/30 selection:text-stone-950">
       {/* Cabecera */}
       <header className="border-b border-[#1A3A5C]/15 bg-white/60 backdrop-blur">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-4">
@@ -258,12 +258,12 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#1A3A5C]/20 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-[#D4A017] transition-colors"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {([['todos', 'Todo'], ['marisco', 'Marisco'], ['pescado', 'Pescado'], ['cefalopodo', 'Cefalópodos']] as const).map(([k, label]) => (
               <button
                 key={k}
                 onClick={() => setFiltro(k)}
-                className={`px-4 py-2.5 text-[11px] uppercase tracking-[0.14em] font-medium border transition-colors ${
+                className={`px-3 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] font-medium border transition-colors ${
                   filtro === k
                     ? 'bg-[#1A3A5C] border-[#1A3A5C] text-white'
                     : 'bg-white border-[#1A3A5C]/20 text-stone-600 hover:border-[#1A3A5C]/50'
