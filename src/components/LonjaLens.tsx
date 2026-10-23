@@ -120,7 +120,7 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
               </span>
             </div>
             <p className="mt-2 text-sm text-stone-600 leading-relaxed">
-              <strong className="text-[#1A3A5C] font-medium">{t("Una de las lonjas más importantes de Europa en pesca de bajura")}</strong>{". "}
+              <strong className="text-[#1A3A5C] font-medium">{t("La lonja más importante de Europa en pesca de bajura")}</strong>{". "}
               {t("La flota de Ribeira descarga por la tarde y subasta de lunes a viernes a las 16:30. Aquí abajo, los lotes y precios de hoy en tiempo real, junto con los de Aguiño.")}
             </p>
             <a
