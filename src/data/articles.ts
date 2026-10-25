@@ -14,6 +14,106 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '14',
+    slug: 'cortegada-isla-rey-lauredal-europa',
+    category: 'Guías & Entorno',
+    title: 'Cortegada: la isla regalada a un rey y el mayor lauredal de Europa',
+    excerpt: 'De aldea expropiada a regalo real: la historia de Cortegada, la isla que perdió a sus 211 colonos y ganó el mayor bosque de laurel de Europa.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Cortegada', 'Naturaleza', 'Parque Nacional'],
+    featured: false,
+    content: `Hay islas que se ven desde la orilla y se confunden con el horizonte. Cortegada no: está a unos doscientos metros de la costa de Carril, en la boca de la ría de Arousa, y sin embargo ha vivido más historia que muchos lugares diez veces mayores. Fue aldea, monasterio, hospital y leprosería; fue regalo de reyes y proyecto de palacio; fue durante décadas un territorio vedado. Hoy es una de las islas del Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia y guarda en su interior el que las fuentes oficiales y académicas describen sin matices como el mayor bosque de laurel de Europa.
+
+### Una aldea frente a Carril
+
+La isla perteneció al municipio de O Carril, hoy parroquia de Vilagarcía de Arousa, y estuvo habitada hasta finales del siglo XIX. En ella hubo un monasterio, un hospital y un lazareto o leprosería: instituciones que hablan de un lugar de paso, de cultivo y también de aislamiento. De aquel mundo quedan restos visibles. Muros de casas de piedra, una capilla del siglo XVII y un muelle. No son ruinas decorativas: son la prueba física de que Cortegada fue un pueblo, no un despoblado pintoresco.
+
+### Los doscientos once colonos
+
+A comienzos del siglo XX la isla tenía doscientos once colonos, según la documentación que recoge la fuente principal. Y fue entonces cuando se decidió su destino. Cortegada fue expropiada por iniciativa de un empresario local, que la adquirió con un propósito muy concreto: levantar en ella una residencia de verano para la Corona. La operación se presentó como un regalo a Alfonso XIII.
+
+La tradición local añade que fueron los vecinos de O Carril y de Vilagarcía quienes reunieron el dinero por suscripción popular para comprar la isla y ofrecérsela al rey; otras versiones sitúan el impulso decidido en el empresario. Conviene no mezclar ambas cosas. Lo que la documentación sostiene con firmeza es el resultado: la expropiación de los colonos y el ofrecimiento de la isla al monarca, con independencia de quién pusiera el dinero y con qué intención.
+
+### El rey que vino una sola vez
+
+Alfonso XIII visitó Cortegada una única vez, en septiembre de 1907. La visita fue un acto de cortesía y de propaganda, no el inicio de las obras. El palacio real de verano nunca llegó a construirse, y el rey acabó fijando su residencia estival en el palacio de La Magdalena, en Santander. Los vaivenes políticos de los años treinta —la caída de la monarquía y la llegada de la República— cerraron definitivamente la posibilidad.
+
+La isla siguió por entonces un camino administrativo largo. En 1978 don Juan de Borbón la vendió a una empresa privada. Después pasó a manos públicas y en 2002 quedó integrada en el Parque Nacional Marítimo-Terrestre de las Islas Atlánticas, creado por la Ley 15/2002. El regalo a un rey terminó convertido en dominio público y en espacio protegido. Es una de las paradojas más limpias de esta ría.
+
+### La naturaleza que volvió
+
+Cuando los colonos se marcharon, los cultivos cesaron. Los campos dejaron de ser campos y empezaron a ser otra cosa. Sin siega, sin ganado y sin desbroce, la vegetación avanzó sobre las parcelas y los caminos, y la isla entera entró en un proceso de recolonización vegetal que hoy puede leerse como un archivo.
+
+El detalle más interesante es el de los laureles. Los ejemplares que hoy forman la masa forestal descienden de los laureles aislados que se conservaban en los huertos, plantados por los colonos para tener hoja fresca a mano. La especie encontró en Cortegada un suelo profundo, humedad constante y aire salado, y creció hasta ocupar lo que antes era cultivo. No hubo plantación ni repoblación: hubo abandono, y el laurel hizo el resto.
+
+### El mayor lauredal de Europa
+
+El laurel (Laurus nobilis) forma en Cortegada una masa cerrada, densa, de copas que se tocan y filtran la luz. El propio Parque Nacional y las fuentes turísticas oficiales de Galicia lo describen como el mayor bosque de laurel que existe en Europa. El superlativo no es una licencia literaria: es la descripción que sostienen las instituciones que gestionan la isla.
+
+Bajo el dosel el bosque tiene otra escala. Hiedra, helechos como Polypodium interjectum y Davallia canariensis, salvia de bosque y arisarum cubren el suelo y los troncos. Es un sotobosque de sombra y humedad, más atlántico que mediterráneo, que huele a hoja machacada cuando se camina despacio. En primavera el laurel florece y la isla zumba; el resto del año impone silencio.
+
+### Cómo visitarla hoy
+
+Cortegada no se visita por libre. El acceso está sujeto al régimen del Parque Nacional: solo con visitas guiadas organizadas, que son también las que explican la isla mientras se camina. La travesía es corta —la isla está a unos doscientos metros de la costa de Carril—, pero el horario y el aforo dependen de la autorización y de la temporada.
+
+Dentro hay dos senderos principales y una ruta circular de unos tres kilómetros, suficiente para atravesar el lauredal, llegar a los restos de la aldea y asomarse a la orilla. Conviene llevar calzado cerrado: el suelo del bosque es irregular y permanece húmedo. Y conviene ir con la disposición de quien visita un lugar que fue habitado, no un parque temático.
+
+Cortegada no es una isla abandonada. Es una isla que fue abandonada y volvió a crecer. Entre las piedras de las casas y las copas de los laureles hay una lección poco habitual en el turismo de islas: a veces la naturaleza no necesita que la ayuden, solo que la dejen.
+
+*Fuentes: Wikipedia (en), «Cortegada Island»; Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia, información oficial; Ley 15/2002, de 1 de julio, de creación del Parque Nacional; Turismo de Galicia, ficha oficial de la isla de Cortegada.*`
+  },
+  {
+    id: '15',
+    slug: 'sirena-salvora-leyenda-marino-o-almacen',
+    category: 'Historia & Navegación',
+    title: 'La sirena de Sálvora: leyenda de los Mariño e historia de O Almacén',
+    excerpt: 'La estatua de la playa de O Almacén, la leyenda de Mariña y la estirpe de los Mariño, junto a la historia de la fábrica de salazón que Jerónimo de Hijosa levantó en Sálvora en 1770 y que después se convirtió en pazo.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Sálvora', 'Leyendas', 'Patrimonio'],
+    featured: false,
+    content: `En la playa de O Almacén, a un lado del pazo y frente al agua, hay una figura de piedra sentada sobre una roca. No conmemora un naufragio ni a un farero: es una sirena. La escultura, costeada por los propietarios de la isla, recuerda el origen mítico de la estirpe que durante siglos administró Sálvora.
+
+### La piedra y la placa
+
+Quien desembarca en el muelle de O Almacén la encuentra pronto, en la misma orilla donde se acumulan los bolos de granito. La figura mira hacia la ría, con la cola recogida, y a sus pies una placa resume la leyenda en dos frases: «La sirena de Sálvora tuvo amores con un caballero romano naufragado en la isla. Nació un niño que se llamó Mariño…». Eso es todo lo que la piedra afirma por escrito. Lo demás —los nombres, los detalles, los finales alternativos— pertenece a la tradición oral y conviene tratarlo como tal.
+
+### Mariña, la que no hablaba
+
+La versión más difundida sitúa a un caballero llamado Froilaz —Roldán en algunas variantes recogidas— paseando por la orilla. Allí encontró a una mujer con cola de pez, de nombre Mariña, incapaz de articular palabra. La llevó consigo, se casaron y de esa unión nació un hijo al que llamaron Mariño.
+
+El silencio tenía causa: una espina clavada en la garganta que ningún remedio doméstico lograba vencer. La tradición recoge el ardid que lo resolvió. En la noche de San Juan, el caballero encendió una hoguera y fingió arrojar al niño a las llamas. La madre rompió a gritar; el grito desprendió la espina y le devolvió la voz. Las variantes discrepan en lo accesorio —el nombre del caballero, el motivo del naufragio—, pero coinciden en lo esencial: la palabra se recupera por el miedo a perder al hijo. Es un relato de fundación, no un cuento de hadas.
+
+### De la leyenda al linaje
+
+La historia de los Mariño se remonta, con documentación, a mediados del siglo XVI, cuando la Iglesia entregó la isla en aforo a Marcos Fandiño Mariño. Sus herederos la administraron bajo un régimen feudal: los pobladores entregaban al «amo» parte de las cosechas y del ganado nacido en la isla. La leyenda cumple ahí una función precisa. Una casa que hace descender su apellido de una mujer de agua y de un caballero naufragado no necesita pergaminos para justificar su preeminencia: le basta un origen imposible.
+
+El linaje se prolongó hasta 1820, cuando Isabel de Mariño, heredera de la isla, contrajo matrimonio con Ruperto Antonio de Otero. Con ellos, la saga de los Otero pasó a ser la propietaria de Sálvora. La estatua que hoy se ve en la playa no es medieval ni forma parte del patrimonio original de la isla: la colocaron los propietarios como recordatorio del origen de la estirpe.
+
+### O Almacén: la fábrica de 1770
+
+El edificio que da nombre a la playa tiene un origen muy distinto. La primera construcción la levantó en 1770 el comerciante coruñés Jerónimo de Hijosa con función de fábrica de salazón. El Parque Nacional data la factoría entre 1770 y 1779 y añade un matiz que conviene respetar: para algunos autores es la primera fábrica de salazón de Galicia; para otros es coetánea de las de las demás islas, de principios del siglo XIX. El superlativo se sostiene como atribución, no como certeza.
+
+En 1789 se autorizó una almadraba de atún con uso exclusivo de la isla y de cuatro leguas a la redonda. La concesión levantó a los marineros de la costa, que veían cerradas sus aguas de faena, y provocó pleitos. La explotación nunca llegó a instalarse. La factoría, en cambio, prosperó y atrajo población estable: las familias se agruparon en la aldea, cultivaron maíz, centeno y patatas y pescaron desde dornas sin repartir la captura con el dueño.
+
+### Del saladero al pazo
+
+Los propietarios acabaron instalándose en la antigua factoría y la rehabilitaron como pazo residencial. El edificio actual, conocido también como Pazo de Goyanes, conserva la planta del almacén de salazón y muestra varios escudos o piedras de armas que recuerdan a las familias propietarias. Las dos torres y las almenas se añadieron en 1960, en una reforma que buscaba dar al conjunto un aire señorial que nunca tuvo en su origen industrial. En la misma línea, la única taberna de la isla —junto a la fábrica, lugar donde llegaban las noticias de la costa— se transformó por esas fechas en la capilla de Santa Catalina, patrona de Sálvora según la tradición local. No hubo una capilla histórica consagrada a la santa: hubo un bar que cambió de uso.
+
+### Museo, faro y régimen de parque
+
+Hoy el pazo funciona como museo de la isla. En su interior se exponen piezas etnográficas recuperadas de la aldea y del propio edificio, junto a conchas y otros restos de la fauna del archipiélago. La protección no se limita al edificio: el archipiélago de Sálvora fue declarado bien de interés cultural en la categoría de paisaje cultural por el Decreto 49/2018, de 26 de abril.
+
+La historia moderna explica su aspecto actual. El Estado expropió Sálvora a los Otero en 1904 por motivos de defensa y la familia la recuperó en 1958. El faro actual se inauguró en 1921, después del naufragio del Santa Isabel. Los últimos habitantes abandonaron la aldea a lo largo de los años setenta. Desde 2002 la isla forma parte del Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia, y el acceso está sujeto a autorización: no se puede desembarcar ni caminar por ella sin permiso.
+
+La sirena sigue allí, mirando a la ría que trajo navegantes, salazoneros y visitantes. Una isla que fue fábrica, pazo y parque nacional conserva en su orilla una figura de piedra que dice lo que no está en los papeles: que la memoria de un lugar también se fabrica, y que a veces dura más que sus edificios.
+
+*Fuentes: Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia, «Historia y Patrimonio de Sálvora» (illasatlanticas.gal); Turismo de Galicia, ficha «Pazo de Sálvora» (turismo.gal); Decreto 49/2018, de 26 de abril, por el que se declara bien de interés cultural el archipiélago de Sálvora con la categoría de paisaje cultural (DOG núm. 95, 21/05/2018); Wikipedia, «Isla de Sálvora», para la reforma de 1960 y la taberna convertida en capilla; placa de la escultura de la Sirena de Sálvora.*`
+  },
+  {
     id: '12',
     slug: 'tesoros-rande-drake-galeon-cies',
     category: 'Historia & Navegación',

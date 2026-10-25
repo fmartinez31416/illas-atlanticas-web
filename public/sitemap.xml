@@ -361,6 +361,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/colaboraciones" />
   </url>
   <url>
+    <loc>https://illasatlanticasatico.es/bitacora/cortegada-isla-rey-lauredal-europa</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/bitacora/cortegada-isla-rey-lauredal-europa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/bitacora/cortegada-isla-rey-lauredal-europa" />
+  </url>
+  <url>
+    <loc>https://illasatlanticasatico.es/bitacora/sirena-salvora-leyenda-marino-o-almacen</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/bitacora/sirena-salvora-leyenda-marino-o-almacen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/bitacora/sirena-salvora-leyenda-marino-o-almacen" />
+  </url>
+  <url>
     <loc>https://illasatlanticasatico.es/bitacora/tesoros-rande-drake-galeon-cies</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
