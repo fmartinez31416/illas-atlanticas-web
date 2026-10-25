@@ -108,7 +108,8 @@ salida = subprocess.run(
      f"{REPO}/src/components"], capture_output=True, text=True).stdout
 lineas = [l for l in salida.splitlines()
           if "t(" not in l.split(": ", 1)[1] if ": " in l]
-lineas = [l for l in lineas if "ILLAS ATLÁNTICAS" not in l and "ILLAS ATLANTICAS" not in l]  # marca, igual en todos los idiomas
+lineas = [l for l in lineas if "ILLAS ATLÁNTICAS" not in l and "ILLAS ATLANTICAS" not in l
+          and "Illas Atlánticas" not in l and "Illas Atlanticas" not in l]  # marca, igual en todos los idiomas
 lineas = [l for l in lineas if ">Nía<" not in l and ">Nia<" not in l]  # nombre del bot (marca)
 check("componentes sin texto ES suelto", len(lineas) == 0, f"{len(lineas)} líneas a revisar")
 for l in lineas[:5]:
