@@ -14,6 +14,104 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '12',
+    slug: 'tesoros-rande-drake-galeon-cies',
+    category: 'Historia & Navegación',
+    title: 'Tesoros de Rande: corsarios, Drake y el galeón perdido en las Cíes',
+    excerpt: 'La tradición dice que bajo las Cíes duerme el Santo Cristo de Maracaibo, cargado de oro. Los documentos dicen otra cosa: el barco que se hundió al suroeste del archipiélago en 1702 iba casi vacío.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Cíes', 'Historia Marítima', 'Arqueología'],
+    featured: false,
+    content: `La ensenada que las Cíes abren por el norte es una de las mejores dársenas naturales del Atlántico ibérico: abrigo frente al oleaje del oeste, agua dulce en tierra y una entrada que exige buen tiempo. Quien controla esa rada controla el paso hacia la ría de Vigo. Esa geografía, más que ninguna otra razón, explica dos siglos de corsarios, escuadras y un naufragio que todavía se busca.
+
+### La rada de los corsarios
+
+Durante los siglos XVI y XVII el archipiélago fue base y abrigo de corsarios. No era un refugio improvisado: la rada permitía carenar cascos, hacer aguada y reparar aparejos sin exponerse a la artillería de las fortalezas de la ría. Desde allí se lanzaban golpes rápidos contra el tráfico de Vigo y se desaparecía antes de que llegara la respuesta.
+
+Sir Francis Drake conoció esa rada y la usó. Sus expediciones contra la ría de Vigo de 1585 y 1589 están documentadas, y en ambas el navegante inglés aprovechó el abrigo de las Cíes para reparar y aprovisionarse de agua antes de atacar. La historiografía local atribuye a ese acoso corsario prolongado el abandono del monasterio de San Estevo, en el propio archipiélago: una comunidad religiosa expuesta, sin defensa posible en un mar donde mandaba quien llevara más cañones.
+
+### 1702: la batalla de Rande
+
+El 23 de octubre de 1702 la armada anglo-holandesa atacó en la ensenada de San Simón a la flota de Indias franco-española. La batalla de Rande —Rande es el estrecho que cierra esa ensenada— fue un combate de horas en aguas estrechas, con fuego directo y sin espacio para maniobrar. El balance documentado por Ramón Patiño en «Los Tesoros de Rande» (2014) es el que se maneja hoy: once naves españolas y diecinueve francesas hundidas según su recuento, más un galeón que el mar se tragó en las Cíes.
+
+Ese último barco es el que alimentó tres siglos de leyenda.
+
+### El galeón perdido: la versión de la leyenda
+
+La tradición popular sostiene que el galeón hundido al suroeste del archipiélago era el Santo Cristo de Maracaibo, repleto de riquezas. Según el relato, las fuerzas anglo-holandesas lo capturaron tras la batalla y, al intentar arrastrarlo a mar abierto, encalló contra los arrecifes del suroeste y se hundió con su carga. De ahí nace la idea de un tesoro accesible, a pocos metros de agua, esperando a quien lo encuentre.
+
+### Lo que dicen los documentos
+
+La investigación documental reciente desmiente esa identificación. Ramón Patiño y Yago Abilleira, con atención recogida por ABC en 2014 y por la Revista General de Marina en diciembre de 2019, y el equipo del Proyecto Cíes dirigido por Xurxo Constela Doce, sostienen que el barco que encalló al salir de la ría el 6 de noviembre de 1702 y naufragó al suroeste de las Cíes no era el Maracaibo. Era el Nuestra Señora de los Remedios, alias San Francisco Javier: 501 toneladas, treinta cañones, construido en el País Vasco y propiedad de Pedro Méndez del Villar. Y, sobre todo, iba prácticamente vacío.
+
+El Maracaibo, en cambio, ardió durante el combate. No hubo arrastre, ni rescate de la carga, ni galeón rico esperando en el fondo.
+
+La Revista General de Marina añade la clave de por qué la leyenda se impuso: los ingleses difundieron que el barco perdido era el más rico de la flota para justificar el escaso botín obtenido. La mentira resultaba útil. Después, los buscadores de tesoros agrandaron la cifra, porque un tesoro fabuloso vende mejor que un pecio vacío.
+
+### Los bajos que explican el naufragio
+
+El suroeste de las Cíes no es un fondo inocente. La guía de arqueología subacuática del Parque Nacional, publicada en illasatlanticas.gal, documenta los bajos que jalonan el paso: el Bajo Carrumeiro, los Bajos Forcados, las Piedras Cantareira y el islote Boeiro. Son nombres que aparecen una y otra vez en los expedientes de naufragio de la zona. Un barco que sale de la ría con el casco tocado, o al que arrastra la mar de fondo contra esa costa, no necesita mala suerte: tiene el mapa en contra.
+
+### Los buscadores y el Proyecto Cíes
+
+Durante tres siglos se buscó el galeón. Hubo expediciones, permisos, detectores y promesas de sociedades extranjeras. Ninguna encontró nada que sostuviera la leyenda.
+
+En 2019 el Proyecto Cíes, con participación de la Armada y de investigadores civiles y dirección de Xurxo Constela Doce, peinó aguas profundas al suroeste del archipiélago con medios técnicos que los buscadores del pasado no tuvieron. Tampoco lo localizó. El pecio sigue sin aparecer.
+
+### Lo que queda
+
+El valor de esta historia no está en el oro. Está en el método: una tradición repetida durante generaciones, un documento que la corrige y un archivo que dice la verdad sobre un barco vacío. El galeón de las Cíes es, por ahora, un yacimiento sin localizar y una lección de rigor. Mientras no aparezca, lo único que puede afirmarse con fuente es lo que los papeles dicen: que el mar se tragó un navío de 501 toneladas, treinta cañones y casi nada dentro; y que la riqueza que le atribuyeron sirvió, primero, para tapar un botín pobre y, después, para vender leyendas.
+
+*Fuentes: Ramón Patiño, «Los Tesoros de Rande» (2014); Ramón Patiño y Yago Abilleira, investigación recogida por ABC (2014); Revista General de Marina, diciembre de 2019; Proyecto Cíes (2019), dirección de Xurxo Constela Doce, Armada y equipo civil; guía de arqueología subacuática del Parque Nacional das Illas Atlánticas (illasatlanticas.gal); historiografía local sobre el monasterio de San Estevo.*`
+  },
+  {
+    id: '13',
+    slug: 'buraco-do-inferno-furna-ons',
+    category: 'Oceanografía & Ría',
+    title: 'O Buraco do Inferno: la furna que ruge en la costa de Ons',
+    excerpt: 'La costa occidental de Ons es un frente de acantilados batidos donde el mar ha excavado decenas de furnas. Historia natural del Buraco do Inferno y las leyendas que la tradición oral le cosió encima: las ánimas del Purgatorio, la Santa Compaña, los trasnos de la Cova dos Mouros y el túnel imposible hacia O Cairo.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Ons', 'Geología', 'Leyendas'],
+    featured: false,
+    content: `Ons tiene dos costas que parecen de islas distintas. La oriental, al abrigo de la ría, se abre en playas de arena fina —Melide, Dornas, Area dos Cans, Canexol, Pereiró— y en un pueblo habitado todo el año. La occidental es la cara que la isla enseña al Atlántico abierto: un frente de acantilados de granito, batido por el oleaje, surcado por ensenadas de cantos y por cuevas marinas. Allí, en esa franja donde el mapa se vuelve vertical, está O Buraco do Inferno.
+
+### I. La costa que no perdona
+
+Ons es la única isla habitada del Parque Nacional Marítimo-Terrestre das Illas Atlánticas de Galicia. No es un jardín intocado: aquí varias generaciones han vivido del mar y de la tierra. Pero la habitación se concentra al este, al abrigo de la ría; al oeste no hay abrigo posible. La guía geológica oficial del Parque describe esa vertiente como un litoral acantilado y expuesto; la divulgación científica gallega ha llegado a catalogar hasta treinta y tres furnas en la isla. El faro de Cucorno es la referencia de quien mira desde el agua: a partir de ahí empieza la costa seria.
+
+### II. Qué es una furna y por qué brama
+
+Una furna es una cueva marina: el resultado de la erosión que el oleaje ejerce sobre la roca. En el granito esa erosión no avanza por igual. Las fracturas, los diques y las zonas de grano más débil se deshacen antes que el resto, y el mar aprovecha esas debilidades para excavar galerías, ensanchar salas y, con el tiempo, hacer caer los techos. El Buraco do Inferno es el caso extremo de ese proceso: una sima de unos cuarenta y tres metros de profundidad, de planta más o menos cruciforme, que alcanza el mar a través de un pozo y una galería. No es una grieta: es un conducto vertical que conecta la superficie de la isla con el agua.
+
+El bramido tiene una explicación física sencilla. Cuando una ola entra en una cavidad semicerrada, comprime el aire que queda dentro; al retirarse, ese aire se expande y sale por bocas y rendijas con un golpe sordo, entre el bufido y el rugido. Cuanto más cerrada es la cueva, más grave resulta el sonido. En 2003, un colapso en la boca de la galería acumuló grandes bloques y estrechó la entrada; desde entonces el agua penetra con más dificultad y el ruido ha cambiado. Lo que no ha cambiado es la geometría del lugar: el mirador superior, protegido por una barandilla, se asoma a un vacío que no se ve terminar. En el borde, una cruz blanca recuerda a un joven guardiamarina desaparecido en 1963.
+
+### III. Las ánimas del Purgatorio
+
+Aquí empieza la leyenda, y conviene decirlo desde el principio: es tradición oral, no crónica. Los relatos recogidos entre la gente de la isla cuentan que, en los días de temporal, del fondo del pozo subían gritos y lamentos. Se decía que eran las almas del Purgatorio, que se quejaban antes de ser llevadas. En esa misma tradición, el Buraco es una de las puertas por las que se dice que pasa la Santa Compaña, la procesión de ánimas que recorre los caminos de noche; una de las leyendas más extendidas de Galicia. Otra versión de la historia pone en el fondo una puerta custodiada por un toro de cuernos de oro.
+
+La explicación naturalista que se ha propuesto es menos literaria y no desmiente del todo a la anterior: aquellos lamentos podían ser el canto del arao común, un ave marina que anidaba en estos acantilados y cuya voz se parece bastante a un gemido humano. El relato oficial del Parque añade un dato que cierra el círculo: cuando estas aves desaparecieron de la isla, en los años ochenta, el agujero dejó de gritar. Una sola ave, amplificada por una chimenea de granito, bastaba para poblar un agujero de fantasmas.
+
+### IV. La Cova dos Mouros y los trasnos
+
+Al otro lado de la isla, sobre un espolón de la costa oriental, se alza el castro de Castelo dos Mouros, un recinto fortificado de la Edad del Hierro documentado por la investigación arqueológica del Parque. Cerca de allí la tradición sitúa la Cova dos Mouros, y con ella una de esas historias que nunca se cuentan sin bajar la voz: la cueva guardaría riquezas antiguas, y los trasnos —los duendes del imaginario gallego— velarían por ellas apagando las luces de quien se atreviera a excavar. De ese tesoro no hay más acta que la palabra de quienes lo cuentan; lo que sí existe, y está estudiado, es el castro, con su muralla sobre la ensenada.
+
+### V. El pasadizo de O Cairo
+
+La leyenda más ambiciosa asegura que la Cova dos Mouros está unida por un túnel subterráneo con el islote de O Cairo y que ese túnel pasa bajo el mar. No hay constancia de semejante conducto, y la geología no lo sostiene: bajo el agua no hay camino practicable, sino roca y sedimento. La imagen, sin embargo, es poderosa, y el motivo del pasadizo secreto se repite en la tradición oral de todo el litoral gallego. Quizá porque una isla se piensa siempre desde dentro: lo que en la superficie son dos peñascos separados, en el relato son dos puertas de la misma casa.
+
+### VI. Mirar sin caer
+
+La costa occidental no es una playa y no se recorre como tal. Se llega por los senderos del Parque, se camina por lo marcado y no se baja al borde del acantilado por buena que sea la luz. La boca del Buraco está protegida por una barandilla, y el descenso al interior está cerrado desde el colapso de 2003; no hay razón para buscar una excepción. Conviene mirar el parte meteorológico, llevar agua y calzado firme, y aceptar que el Atlántico de esta cara no negocia.
+
+El Buraco ya no ruge como antes, porque el derrumbe le tapó parte de la garganta. Pero el lugar sigue enseñando lo mismo: que el mar trabaja despacio, sin testigos, y que hay sitios donde el único gesto sensato es mirar desde la orilla.
+
+*Fuentes: Parque Nacional Marítimo-Terrestre das Illas Atlánticas de Galicia, ficha «Buraco do Inferno» y Guía geológica del Parque (R. Rodríguez Fernández), illasatlanticas.gal; Turismo de Galicia, «O Buraco do Inferno (The Hell Hole)», blog oficial, 2021; GCiencia, «Buraco do Inferno, a forza do mar en estado puro», 2023; Incipit-CSIC, «Ons: una isla habitada»; tradición oral de la isla de Ons, recogida en las fuentes citadas.*`
+  },
+  {
     id: '10',
     slug: 'laxe-do-crego-sepultura-roca-ons',
     category: 'Historia & Navegación',
