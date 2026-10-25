@@ -1,7 +1,7 @@
 /*
  * puente.css — El Puente de Mando · Illas Atlánticas Ático
  * Estilos del puente (caoba, ébano y latón) extraídos del CSS del diseño validado.
- * Las texturas de madera (caoba y raíz de nogal) viven en /public/puente/.
+ * Las texturas de madera (caoba y raíz de nogal) viven en /public/texturas/.
  */
 
 @layer utilities {
@@ -69,10 +69,10 @@
 .toggle > span { background: radial-gradient(circle at 35% 30%, rgb(255, 244, 207), rgb(216, 176, 96) 45%, rgb(107, 74, 20)); border-radius: 50%; width: 20px; height: 20px; transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1); position: absolute; top: 2px; left: 2px; box-shadow: rgba(0, 0, 0, 0.7) 0px 1px 3px; }
 .toggle[data-on="true"] > span { transform: translate(22px); }
 .twinkle { animation-duration: ; animation-timing-function: ; animation-iteration-count: ; animation-direction: ; animation-fill-mode: ; animation-play-state: ; animation-name: ; animation-timeline: ; animation-range-start: ; animation-range-end: ; animation-delay: var(--td,0s); }
-.wood { background-color: rgb(74, 28, 12); background-image: linear-gradient(rgba(38, 12, 4, 0.28), rgba(38, 12, 4, 0.28)), url("/puente/tex0.jpg"); background-repeat: repeat; background-size: auto, 820px; }
-.wood-burl { background-color: rgb(90, 50, 20); background-image: linear-gradient(rgba(42, 16, 4, 0.42), rgba(30, 10, 2, 0.5)), url("/puente/tex1.jpg"); background-repeat: repeat; background-size: auto, 560px; }
+.wood { background-color: rgb(74, 28, 12); background-image: linear-gradient(rgba(38, 12, 4, 0.28), rgba(38, 12, 4, 0.28)), url("/texturas/tex0.jpg"); background-repeat: repeat; background-size: auto, 820px; }
+.wood-burl { background-color: rgb(90, 50, 20); background-image: linear-gradient(rgba(42, 16, 4, 0.42), rgba(30, 10, 2, 0.5)), url("/texturas/tex1.jpg"); background-repeat: repeat; background-size: auto, 560px; }
 .wood-h { background-color: rgb(74, 28, 12); position: relative; overflow: hidden; }
-.wood-h::before { content: ""; pointer-events: none; background-image: linear-gradient(rgba(38, 12, 4, 0.34), rgba(38, 12, 4, 0.34)), url("/puente/tex2.jpg"); background-repeat: repeat; background-size: auto, 820px; width: 420px; height: 320vw; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+.wood-h::before { content: ""; pointer-events: none; background-image: linear-gradient(rgba(38, 12, 4, 0.34), rgba(38, 12, 4, 0.34)), url("/texturas/tex2.jpg"); background-repeat: repeat; background-size: auto, 820px; width: 420px; height: 320vw; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
 }
 
 /* Animaciones del cielo y del mar (equivalentes a las del diseño validado) */
