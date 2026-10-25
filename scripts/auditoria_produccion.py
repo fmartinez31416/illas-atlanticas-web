@@ -83,7 +83,7 @@ mpr = re.search(r'"priceRange"\s*:\s*"([^"]*)"', html_portada)
 check("JSON-LD priceRange = 95 €", mpr and "95" in (mpr.group(1) or ""), mpr.group(1) if mpr else "?")
 
 # --- 3. Bundle principal ---
-mjs = re.search(r'assets/(index-[A-Za-z0-9_-]+\.js)', html_portada)
+mjs = re.search(r'assets/((?:index|main)-[A-Za-z0-9_-]+\.js)', html_portada)
 if mjs:
     url_bundle = f"{BASE}/assets/{mjs.group(1)}"
     status, h, body = http(url_bundle)
@@ -93,7 +93,7 @@ if mjs:
         tam = len(body)
     check("bundle < 900 KB", tam < 900_000, f"{tam/1024:.0f} KB (hash {mjs.group(1)[:14]})")
 else:
-    check("bundle index-*.js", False, "no encontrado en el HTML")
+    check("bundle principal en HTML", False, "no encontrado en el HTML")
 
 # --- 4. Repo: .htaccess reglas críticas ---
 ht = open(f"{REPO}/public/.htaccess").read()

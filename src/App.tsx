@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BookingWidget } from './components/BookingWidget';
@@ -8,23 +8,23 @@ import { ReviewsAndPress } from './components/ReviewsAndPress';
 import { DirectBookingSection } from './components/DirectBookingSection';
 import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
-import { BitacoraPage } from './components/BitacoraPage';
-import { LonjaLens } from './components/LonjaLens';
-import { PlanificadorPage } from './components/PlanificadorPage';
+const BitacoraPage = lazy(() => import('./components/BitacoraPage').then(m => ({ default: m.BitacoraPage })));
+const LonjaLens = lazy(() => import('./components/LonjaLens').then(m => ({ default: m.LonjaLens })));
+const PlanificadorPage = lazy(() => import('./components/PlanificadorPage').then(m => ({ default: m.PlanificadorPage })));
 import { NiaChat } from './components/NiaChat';
 import { NiaSection } from './components/NiaSection';
 import { ConsentBanner } from './components/ConsentBanner';
 import { LocationAndSurroundings } from './components/LocationAndSurroundings';
-import { GastronomiaPage } from './components/GastronomiaPage';
-import { MusicaPage } from './components/MusicaPage';
-import ClubPage from './components/ClubPage';
-import { ColaboracionesPage } from './components/ColaboracionesPage';
-import { MetodologiaPage } from './components/MetodologiaPage';
+const GastronomiaPage = lazy(() => import('./components/GastronomiaPage').then(m => ({ default: m.GastronomiaPage })));
+const MusicaPage = lazy(() => import('./components/MusicaPage').then(m => ({ default: m.MusicaPage })));
+const ClubPage = lazy(() => import('./components/ClubPage'));
+const ColaboracionesPage = lazy(() => import('./components/ColaboracionesPage').then(m => ({ default: m.ColaboracionesPage })));
+const MetodologiaPage = lazy(() => import('./components/MetodologiaPage').then(m => ({ default: m.MetodologiaPage })));
 
 import { FaqSection } from './components/FaqSection';
-import { LegalPage } from './components/LegalPage';
-import { CondicionesPage } from './components/CondicionesPage';
-import { PuenteView } from './components/PuenteView';
+const LegalPage = lazy(() => import('./components/LegalPage').then(m => ({ default: m.LegalPage })));
+const CondicionesPage = lazy(() => import('./components/CondicionesPage').then(m => ({ default: m.CondicionesPage })));
+const PuenteView = lazy(() => import('./components/PuenteView').then(m => ({ default: m.PuenteView })));
 import { NIA_API_URL } from './niaConfig';
 import { LangProvider, useI18n, PAGE_META, VIEW_META } from './i18n/LangContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
@@ -167,11 +167,11 @@ function AppInner() {
   if (currentView === 'bitacora') {
     return (
       <>
-        <BitacoraPage
+        <Suspense fallback={null}><BitacoraPage
           onBack={() => { setCurrentView('home'); setPendingArticle(null); }}
           onOpenBooking={scrollToBooking}
           initialArticleSlug={pendingArticle}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -181,10 +181,10 @@ function AppInner() {
   if (currentView === 'puente') {
     return (
       <>
-        <PuenteView
+        <Suspense fallback={null}><PuenteView
           onBackHome={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
-        />
+        /></Suspense>
       </>
     );
   }
@@ -193,11 +193,11 @@ function AppInner() {
   if (currentView === 'lonja') {
     return (
       <>
-        <LonjaLens
+        <Suspense fallback={null}><LonjaLens
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenArticle={openBitacoraArticle}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -207,11 +207,11 @@ function AppInner() {
   if (currentView === 'gastronomia') {
     return (
       <>
-        <GastronomiaPage
+        <Suspense fallback={null}><GastronomiaPage
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenMetodologia={() => setCurrentView('metodologia')}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -221,10 +221,10 @@ function AppInner() {
   if (currentView === 'metodologia') {
     return (
       <>
-        <MetodologiaPage
+        <Suspense fallback={null}><MetodologiaPage
           onBack={() => setCurrentView('gastronomia')}
           onOpenBooking={scrollToBooking}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -234,10 +234,10 @@ function AppInner() {
   if (currentView === 'musica') {
     return (
       <>
-        <MusicaPage
+        <Suspense fallback={null}><MusicaPage
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -247,10 +247,10 @@ function AppInner() {
   if (currentView === 'club') {
     return (
       <>
-        <ClubPage
+        <Suspense fallback={null}><ClubPage
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -260,7 +260,7 @@ function AppInner() {
   if (currentView === 'colaboraciones') {
     return (
       <>
-        <ColaboracionesPage onBack={() => setCurrentView('home')} />
+        <Suspense fallback={null}><ColaboracionesPage onBack={() => setCurrentView('home')} /></Suspense>
         <NiaChat />
       </>
     );
@@ -270,11 +270,11 @@ function AppInner() {
   if (currentView === 'planificador') {
     return (
       <>
-        <PlanificadorPage
+        <Suspense fallback={null}><PlanificadorPage
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenLonja={() => setCurrentView('lonja')}
-        />
+        /></Suspense>
         <NiaChat />
       </>
     );
@@ -284,7 +284,7 @@ function AppInner() {
   if (currentView === 'condiciones') {
     return (
       <>
-        <CondicionesPage onBack={() => setCurrentView('home')} />
+        <Suspense fallback={null}><CondicionesPage onBack={() => setCurrentView('home')} /></Suspense>
         <NiaChat />
       </>
     );
@@ -294,7 +294,7 @@ function AppInner() {
   if (currentView === 'legal') {
     return (
       <>
-        <LegalPage onBack={() => setCurrentView('home')} />
+        <Suspense fallback={null}><LegalPage onBack={() => setCurrentView('home')} /></Suspense>
         <NiaChat />
       </>
     );

@@ -32,6 +32,14 @@ export default defineConfig(() => {
           main: path.resolve(__dirname, 'index.html'),
           ...prerender,
         },
+        output: {
+          manualChunks: {
+            react: ['react', 'react-dom'],
+            leaflet: ['leaflet'],
+            motion: ['motion'],
+            genai: ['@google/genai'],
+          },
+        },
       },
     },
     resolve: {
