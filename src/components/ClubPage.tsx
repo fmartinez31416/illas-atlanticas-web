@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { t } from '../i18n/translate';
 import { ArrowLeft, Gift, Users, CreditCard, Send, ShieldCheck, CalendarCheck } from 'lucide-react';
 import { useI18n } from '../i18n/LangContext';
 
@@ -125,7 +126,7 @@ function Tarjeta({ nombre, nivel, socio }: { nombre: string; nivel: string; soci
           <img src="/favicon_192.png" alt="" className="w-10 h-10 rounded-lg" />
           <div>
             <div className="text-amber-300 tracking-[0.25em] text-[11px] font-semibold" style={{ fontFamily: 'Georgia, serif' }}>ILLAS ATLÁNTICAS</div>
-            <div className="text-white/70 text-[10px] tracking-[0.2em]">CLUB DE HUÉSPEDES · AGUIÑO</div>
+            <div className="text-white/70 text-[10px] tracking-[0.2em]">{t("Club de Huéspedes")} · AGUIÑO</div>
           </div>
         </div>
         <span className={`bg-gradient-to-r ${meta.estilo} text-[#0B1524] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider`}>{meta.badge.es}</span>
