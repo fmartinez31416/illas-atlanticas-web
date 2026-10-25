@@ -14,6 +14,106 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '10',
+    slug: 'laxe-do-crego-sepultura-roca-ons',
+    category: 'Historia & Navegación',
+    title: 'A Laxe do Crego: la sepultura tallada en la roca de Ons',
+    excerpt: 'En la costa oriental de Ons, a poco más de cien metros de Area dos Cans, una roca guarda una sepultura antropomorfa de época altomedieval. La hipótesis del eremita, la leyenda del monasterio engullido por el mar y la lauda que se salvó de una lareira.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Ons', 'Arqueología', 'Leyendas'],
+    featured: false,
+    content: `En la costa oriental de la isla de Ons, a poco más de cien metros del arenal de Area dos Cans, emerge una roca de granito que la bajamar deja al descubierto. Sobre ella, alguien excavó hace siglos una sepultura: no un sarcófago exento, sino un hueco de planta antropomorfa abierto en el propio cantero, con paredes verticales y cabecera marcada, donde el mar rompe y se retira cada día. Se la conoce como **A Laxe do Crego** y también como **Laxe do Abade**. Por qué está ahí —y no en el suelo sagrado de una iglesia— sigue abierto.
+
+### Una tumba en la roca, frente a la rompiente
+
+La Guía geológica del Parque Nacional de las Islas Atlánticas de Galicia, en su itinerario de Ons, recoge el conjunto con esos dos nombres y lo describe como una sepultura excavada en la roca granítica. Añade una observación que vale más como pregunta: posiblemente se trata de la tumba de un eremita. La localización la confirma Turismo Rías Baixas, que sitúa la sepultura antropomorfa de A Laxe do Crego en Area dos Cans y advierte de que el acceso depende de la marea. La naviera Mar de Ons la llama «uno de los restos antiguos de Galicia más peculiares» y uno de los rincones menos conocidos de la isla.
+
+El emplazamiento no es cómodo. La roca queda al descubierto en la bajamar y el agua vuelve a visitarla cuando la marea sube; se llega con la tabla de mareas en la cabeza y el tiempo contado. Esa incomodidad es el centro del enigma: una tumba cristiana busca la proximidad de una iglesia, el amparo de una comunidad que rece por el difunto. Aquí no hay nave, ni muro, ni suelo consagrado. Solo granito, marea y una silueta humana vacía.
+
+### Quién era «o Crego»
+
+El nombre popular contiene una pista y, a la vez, una trampa. *Crego* designa al sacerdote en gallego; *abade*, al abad. Los dos apelativos conviven en la tradición y en la toponimia, y ninguno es un documento: son nombres que la gente ha ido dando a la piedra a lo largo de generaciones, sin que sepamos cuándo se fijaron ni quién los puso.
+
+La hipótesis del eremita es la más sugerente. La costa gallega conserva buen número de sepulturas antropomorfas talladas en granito, vinculadas a comunidades altomedievales sin rastro documental. El retiro eremítico buscó siempre lugares apartados, fuera del pulso de la parroquia. La Guía geológica no afirma que A Laxe do Crego sea la tumba de un anacoreta; dice que posiblemente lo sea. La diferencia entre ambas cosas es la que separa el rigor de la fábula.
+
+### El monasterio que se llevó el mar
+
+La tradición oral de la isla, recogida por escrito por Álvaro das Casas en 1934, ofrece otra lectura. Según ese relato, la costa avanzaba antiguamente más mar adentro y en el terreno que hoy cubre el agua existió un monasterio. El mar acabó por engullirlo, y la roca con su sepultura sería el último testigo de aquel conjunto perdido.
+
+Se cuenta como leyenda, y como leyenda debe leerse: no consta documento, ni ruina sumergida identificada, ni excavación que sostenga la existencia de un cenobio en este punto. Lo que sí ha hecho el mar, a lo largo de milenios, es reordenar la línea de costa de las rías, ganar terreno en unos tramos y retirarse en otros. La geología explica el escenario; no confirma el relato. Aun así, la imagen de una comunidad monástica borrada por el Atlántico explica por qué generaciones de isleños han mirado esa piedra con respeto.
+
+### La lauda que estuvo a punto de ser lareira
+
+La memoria local añade un episodio que tiene algo de novela de naufragio. Cuenta que, décadas atrás, apareció en la arena de Area dos Cans una lauda de granito labrada con cubierta en pendiente: la tapa que habría cerrado una sepultura como aquella. La pieza estuvo a punto de terminar como piedra de lareira en una vivienda de la isla. Se evitó. Al medirla, encajaba con las dimensiones de A Laxe do Crego; hoy se conserva, según ese mismo relato, en el Centro de Visitantes de Ons, fuera ya del alcance de las mareas.
+
+El episodio dice mucho: piedras que se salvan por un gesto, por alguien que se dio cuenta a tiempo de lo que tenía entre las manos.
+
+### Una isla de 414 hectáreas
+
+Ons es la única isla habitada del Parque Nacional: unas 414 hectáreas y seis kilómetros de largo, con el faro en lo alto de Cucorno, a 128 metros sobre el mar. Sus playas orientales —Melide, Dornas, Area dos Cans, Canexol, Pereiró— miran a la ría; los barrios de Caño, Curro, Canexol, Pereiró, Cucorno y Centulo reparten las casas entre el puerto y las laderas. A Laxe do Crego está en esa fachada oriental, la que recibe primero la luz y también el golpe del mar.
+
+### Mirar sin tocar
+
+A la sepultura se llega a pie, con la marea en su hora, y conviene ir con calzado que agarre la roca. El conjunto está protegido por las normas del Parque Nacional: no se pica, no se mueve piedra, no se retira arena ni se deja nada sobre la tumba. Si el agua ya cubre la roca, la visita ha terminado: volverá a descubrirse en la siguiente bajamar, como lleva haciéndolo siglos.
+
+La sepultura está vacía y no hay inscripción que nombre a su ocupante. Todo lo que sabemos de él —crego o abade, eremita o monje de un monasterio que el mar se llevó— procede de un nombre popular y de una tradición contada al oído. La piedra, en cambio, no discute: sigue ahí, con su hueco de cuerpo humano, esperando la marea.
+
+*Fuentes: Guía geológica del Parque Nacional de las Islas Atlánticas de Galicia (Xunta de Galicia, itinerario de Ons); Turismo Rías Baixas (Diputación de Pontevedra); Naviera Mar de Ons; tradición oral de Ons recogida por Álvaro das Casas (1934).*`
+  },
+  {
+    id: '11',
+    slug: 'julio-cesar-cies-leyenda-herminios',
+    category: 'Historia & Navegación',
+    title: 'Julio César en las Cíes: la leyenda de los herminios y el cerco por hambre',
+    excerpt: 'La tradición sitúa a Julio César en las Cíes persiguiendo a los herminios y rindiéndolos por hambre. Dión Casio cuenta parte del episodio; el resto lo añadió la erudición romántica del siglo XIX.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Cíes', 'Historia', 'Leyendas'],
+    featured: false,
+    content: `Hay una escena que se repite en las guías y en las sobremesas del puerto: Julio César desembarca en las Cíes al frente de dos legiones, fracasa en San Martiño bajo una lluvia de piedras y flechas, rodea el archipiélago y rinde a los herminios por hambre. La escena tiene fuerza. También tiene bastante de literatura.
+
+Conviene separar lo que cuenta la fuente antigua de lo que añadió la erudición local. Entre uno y otro hay un siglo XIX y una isla sin nombre.
+
+### La fuente antigua: dos capítulos y ninguna isla con nombre
+
+Dión Casio, senador romano de origen bitinio que escribió en griego su Historia Romana, dedica al episodio apenas dos capítulos del libro XXXVII. César, que había sido cuestor en Gades y era por entonces propretor de la Hispania Ulterior, ordenó a los habitantes del monte Herminio —la actual Serra da Estrela— que bajaran al llano. El pretexto era impedir sus correrías; el cálculo, según el historiador, era otro: sabía que no obedecerían y tendría motivo de guerra. Los venció, y cuando huyeron los persiguió hasta el océano.
+
+Al llegar al agua, los fugitivos abandonaron el continente y se pasaron a una isla. César se quedó en tierra, sin barcos suficientes; improvisó balsas y envió con ellas a parte de sus tropas. El destacamento desembarcó en un rompeolas cercano, convencido de que podría cruzar a pie, pero la marea volvió y lo dejó aislado. Casi todos murieron combatiendo; solo Publio Escevio, sin escudo y con muchas heridas, se echó al agua y se salvó nadando.
+
+Después de aquel desastre, César mandó traer naves de Gades, cruzó con el ejército completo y doblegó a los isleños sin combatir, acosados por el hambre. De allí navegó a Brigantium, en la Callaecia, y sometió a sus habitantes, que nunca habían visto una flota. El hambre, por tanto, sí está en el texto. Lo que no está es el nombre de la isla.
+
+### La leyenda: Baiona, San Martiño, Rodas
+
+La versión que se cuenta en Vigo añade puerto, playas y barcos de guerra. César zarpa de Erizana —la actual Baiona—, desembarca primero en San Martiño y es rechazado desde los acantilados; rodea el archipiélago, toma tierra en Rodas y establece un bloqueo con trirremes hasta que el hambre rinde a la tribu. Son detalles verosímiles: San Martiño mira al océano abierto por el sur, y Rodas une la isla del Norte con la del Medio por un cordón de arena. Pero ninguno figura en Dión Casio, que no nombra la isla, no menciona Erizana y habla de balsas y de naves traídas de Gades, no de una escuadra de trirremes.
+
+La identificación con las Cíes es una hipótesis razonable y nunca demostrada: encaja por situación y abrigo, pero otras islas atlánticas podrían sostener el mismo relato.
+
+### El relato que fijó la leyenda
+
+Teodosio Vesteiro Torres nació en Vigo en 1847 y murió en Madrid en 1876, con veintinueve años. Fue periodista, profesor de música y escritor; sus Monografías de Vigo aparecieron póstumamente en 1878 e incluyen el relato «Los Herminios». La erudición romántica del XIX mezclaba el dato clásico, la tradición oral y la imaginación patriótica.
+
+El propio Concello lo asume sin complejos: «no se trata de dilucidar qué es realidad y qué ficción… son parte irrenunciable de su corpus patrimonial, como bienes inmateriales». La candidatura de las Cíes a Patrimonio Mundial es más cauta: «diversas fuentes han llegado a sostener» la presencia de César durante su persecución a los herminios, un episodio anecdótico y no confirmado.
+
+### Qué se puede afirmar y qué no
+
+Lo que sostiene la fuente antigua: la campaña de César en la Hispania Ulterior en torno al 61-60 a.C. contra los pueblos del monte Herminio; la huida de estos hasta el océano y su refugio en una isla sin nombre; el primer desembarco fallido por la marea y la muerte de casi todos los soldados; la salvación de Publio Escevio; la rendición por hambre tras llevar barcos desde Gades; la posterior marcha a Brigantium.
+
+Lo que no consta en ella: que se tratara de las Cíes; el embarque en Erizana; el asalto de San Martiño con piedras y flechas; el desembarco en Rodas y el bloqueo con trirremes; las dos legiones.
+
+La arqueología tampoco cierra la pregunta. En 2024, una excavación en Casa Viladomar, junto al antiguo convento de la isla Norte, halló un asentamiento romano del cambio de era; los responsables advirtieron que aún no podía vincularse a César. El hallazgo prueba que las islas estaban habitadas e insertas en las rutas romanas, no la visita del general.
+
+### El escenario, hoy
+
+Las Cíes son tres islas: la del Norte o del Faro, con Monteagudo; la del Medio o do Faro; y la del Sur, San Martiño. La playa de Rodas, ese cordón de arena que une las dos primeras, es hoy la postal del archipiélago y el escenario del desembarco legendario. El conjunto es Parque Nacional y el acceso está regulado: se llega en barco, con autorización y aforo limitado en temporada alta.
+
+Quien suba a Monteagudo y mire al sur verá el canal, San Martiño y, detrás, la ría. No encontrará trirremes varados ni campamentos romanos. Encontrará el escenario exacto de una historia que se contó primero en griego, luego en la prosa romántica de un erudito vigués y hoy en las guías de viaje. Que sea leyenda no la hace menos valiosa: la hace más interesante, porque obliga a distinguir lo que se sabe de lo que se quiere recordar.
+
+*Fuentes: Dión Casio, «Historia Romana», XXXVII, 52-53; Teodosio Vesteiro Torres, «Monografías de Vigo» (1878), «Los Herminios»; Concello de Vigo, ciclo «El enorme patrimonio cultural de las Cíes»; candidatura de las Cíes a Patrimonio Mundial (ciespatrimonio.vigo.org); Parque Nacional das Illas Atlánticas; Vigoé (octubre de 2024); Real Academia de la Historia, ficha de Teodosio Vesteiro Torres.*`
+  },
+  {
     id: '1',
     slug: 'salvora-tragedia-santa-isabel-parque-nacional',
     category: 'Historia & Navegación',
