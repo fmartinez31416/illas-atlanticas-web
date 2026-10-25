@@ -14,6 +14,65 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '16',
+    slug: 'alquiler-vacacional-ribeira',
+    category: 'Guías & Entorno',
+    title: 'Alquiler vacacional en Ribeira: la guía para acertar con la casa',
+    excerpt: 'Ribeira no es un destino de folleto: es el puerto pesquero más vivo de la ría de Arousa, con la lonja más importante de Europa en pesca de bajura y el Parque Nacional enfrente. Guía práctica para elegir zona y casa, con los datos que de verdad importan antes de reservar.',
+    readTime: '2 min de lectura',
+    date: 'Otoño 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Ribeira', 'Aguiño', 'Alquiler Vacacional'],
+    featured: true,
+    content: `Quien busca «alquiler vacacional ribeira» no busca una casa: busca una decisión. Quiere saber en qué zona estar, qué playa le toca, si podrá comer marisco a dos minutos de la casa y si el sitio es auténtico o un decorado. Esta guía responde a eso con datos, sin humo. Y al final, con la casa que conocemos mejor: la nuestra, en Aguiño.
+
+### Qué hace distinta a Ribeira
+
+Ribeira es el municipio marinero de la península de O Barbanza, en la boca de la ría de Arousa. Aquí está la lonja más importante de Europa en pesca de bajura: cada tarde laborable, la flota descarga en Aguiño y el pescado y el marisco del día salen a la venta. Eso marca todo lo demás: los bares del puerto sirven lo que se descargó por la mañana, y el aire de la villa es el de un lugar que trabaja, no el de un parque temático.
+
+Frente a la costa quedan las islas de Sálvora y Ons, dentro del Parque Nacional Marítimo-Terrestre de las Islas Atlánticas, y al sur, las dunas y playas de Corrubedo. Santiago de Compostela está a 50 minutos por autovía. Es una de las pocas zonas de Galicia donde mar, ría, parque nacional y ciudad están a la misma distancia de una siesta.
+
+### Elegir zona: tres maneras de estar en Ribeira
+
+**Ribeira centro.** La villa, con comercio, paseo marítimo y más bullicio. Buena base si se quiere tener todo a pie de calle.
+
+**Corrubedo.** Las dunas más grandes de la costa atlántica gallega y una playa larguísima. A unos 10 minutos en coche de Aguiño. Para quien prioriza playa abierta y arena.
+
+**Aguiño.** El puerto marinero, a 4 minutos de la lonja, con el mar a 20 metros de la casa y las islas enfrente. Es el lado auténtico: casas de marineros, bateas a la vista y el bullicio de la descarga cada tarde. Nuestra casa está aquí.
+
+### La casa que te proponemos (y por qué lo decimos claro)
+
+Somos propietarios, no una agencia: Illas Atlánticas Ático es nuestra casa y la alquilamos directo. Los datos, sin adornos:
+
+- **3 dormitorios y 3 baños, hasta 6 personas** — espacio real, no un sofá cama contado como habitación.
+- **Terraza panorámica de 50 m²** frente a Sálvora y Ons, a 20 metros del agua.
+- **A 4 minutos andando de la lonja** (350 m): el marisco y el pescado del día, casi sin desplazarse.
+- **Registro oficial VUT-CO-007656** y **9,5 sobre 10 en 54 reseñas verificadas**.
+- Playas a 3 minutos andando; Corrubedo a 10 minutos en coche; Santiago a 50 minutos.
+
+La casa se reserva directa por nuestra web, sin comisiones de plataforma: señal del 30 % para confirmar y el resto antes de la entrada, con condiciones claras por escrito y atención directa del propietario.
+
+### Preguntas frecuentes
+
+**¿Qué hay justo al lado de la casa?** El puerto pesquero y la lonja de Aguiño a 350 metros, playas a 3 minutos andando, y enfrente las islas de Sálvora y Ons, dentro del Parque Nacional.
+
+**¿Cuánta gente cabe?** Hasta 6 personas en 3 dormitorios con 3 baños. Los precios publicados son para 2 personas; a partir del tercer huésped se aplica un suplemento por persona y noche que se detalla siempre en el presupuesto.
+
+**¿Se ve el mar desde la casa?** Sí: la terraza, el salón, la cocina y el dormitorio principal miran a las islas. El agua está a 20 metros.
+
+**¿Cómo funciona la reserva?** Todo desde nuestra web: eliges fechas, ves el precio cerrado y confirmas con una señal del 30 %. El resto se paga antes de la entrada, por transferencia, Bizum, PayPal o tarjeta (Stripe).
+
+**¿En qué época está más viva Aguiño?** La temporada de marisco va de noviembre a abril: es cuando la lonja trabaja a pleno rendimiento y la zona muestra su cara más auténtica. El verano es playa, islas y sobremesa larga.
+
+**¿Se puede visitar Sálvora y Ons?** Sí, con los barcos que salen del puerto de Aguiño y de la zona, siempre con autorización del Parque Nacional. En la bitácora de la web contamos la historia de ambas islas.
+
+### La decisión en un minuto
+
+Si buscas mar auténtico, marisco del día y una casa espaciosa con vistas a las islas, reserva directa y ahorra la comisión de las plataformas. Si quieres playa abierta, mira Corrubedo. Si quieres ciudad con paseo, Ribeira centro. Los tres están a diez minutos de distancia entre sí — que es otra manera de decir que desde cualquiera de ellos, la ría es tuya.
+
+*Fuentes: datos de la propia casa y del entorno publicados en illasatlanticasatico.es; Parque Nacional Marítimo-Terrestre de las Islas Atlánticas de Galicia.*`
+  },
+  {
     id: '14',
     slug: 'cortegada-isla-rey-lauredal-europa',
     category: 'Guías & Entorno',
