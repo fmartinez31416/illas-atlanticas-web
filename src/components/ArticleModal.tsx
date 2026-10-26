@@ -118,6 +118,15 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
           </div>
 
           <article className="px-6 sm:px-12 md:px-16 py-10 sm:py-14 space-y-8 max-w-3xl mx-auto pb-16">
+            {article.cover && (
+              <figure className="rounded-sm overflow-hidden border border-stone-200 shadow-sm">
+                <img
+                  src={`${import.meta.env.BASE_URL}${article.cover}`}
+                  alt={article.title}
+                  className="w-full h-64 sm:h-80 object-cover object-top"
+                />
+              </figure>
+            )}
             <header className="space-y-4 border-b border-stone-200 pb-8">
               <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-stone-500">
                 <span className="font-semibold text-amber-800">{article.category}</span>

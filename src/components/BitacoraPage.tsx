@@ -147,6 +147,17 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                 className="absolute inset-0 z-10"
               />
               <div className="space-y-4">
+                {article.cover && (
+                  <div className="relative h-44 sm:h-52 overflow-hidden rounded-sm border border-stone-800/70 mb-2">
+                    <img
+                      src={`${import.meta.env.BASE_URL}${article.cover}`}
+                      alt={article.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/10 to-transparent" />
+                  </div>
+                )}
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-400">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
                   <span className="flex items-center gap-1 text-stone-400">
