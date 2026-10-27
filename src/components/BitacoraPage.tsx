@@ -152,7 +152,6 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                     <img
                       src={`${import.meta.env.BASE_URL}${article.cover}`}
                       alt={article.title}
-                      loading="lazy"
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/10 to-transparent" />
