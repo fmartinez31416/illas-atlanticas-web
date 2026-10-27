@@ -15,7 +15,7 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
         icon: 'Armchair'
       },
       {
-        name: 'Puerto y Lonja a 5 Minutos',
+        name: 'Puerto y Lonja a 4 Minutos',
         description: 'A pie desde la casa: lonja de Aguiño, puerto y barcos a Sálvora y Ons.',
         icon: 'Sparkles'
       }

@@ -164,7 +164,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/cocina_percebes_01.jpg',
       '/fotos/cocina_centollas_08.jpg'
     ],
-    description: 'Cocina abierta al salón, con isla de piedra y vistas al mar. Pensada para la lonja: cazuelas grandes, todo el menaje y una nevera amplia para guardar lo que compres en la subasta.',
+    description: 'Cocina abierta al salón, con isla de piedra. Pensada para la lonja: cazuelas grandes, todo el menaje y una nevera amplia para guardar lo que compres en la subasta.',
     highlights: [
       'Nevera amplia y congelador para la compra de la lonja',
       'Placa de inducción y campana extractora',
