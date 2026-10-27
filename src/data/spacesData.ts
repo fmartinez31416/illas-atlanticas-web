@@ -4,7 +4,7 @@ export const SPACES_DATA: Space[] = [
   {
     id: 'terraza',
     name: 'Terraza Panorámica',
-    subtitle: 'El atardecer de las Rías Baixas, en privado',
+    subtitle: 'Amanecer y atardecer, en privado',
     tag: 'Exterior',
     coverImage: '/fotos/vistas_terraza_17.jpg',
     gallery: [
@@ -12,7 +12,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
     ],
-    description: 'Un mirador privado con barandillas de cristal que enmarcan la entrada de la Ría de Arousa y la silueta de Sálvora. Pensada para las puestas de sol, con mesa para seis y zona de tumbonas.',
+    description: 'Un mirador privado con barandillas de cristal que enmarcan la ría y la silueta de Sálvora. Amanece directamente sobre el mar; al atardecer, la luz se queda en la ría. Mesa para seis y zona de tumbonas.',
     highlights: [
       'Vistas directas a la isla de Sálvora y al Parque Nacional',
       'Mesa exterior para 6 comensales al aire libre',
@@ -20,13 +20,13 @@ export const SPACES_DATA: Space[] = [
       'Iluminación cálida regulable para las noches de verano'
     ],
     features: [
-      'Orientación suroeste: sol todo el día y atardecer',
+      'Orientada a la ría: amanecer directo y luz del atardecer en el mar',
       'Toma de corriente exterior',
       'Resguardada del viento',
       'A un paso del salón, sin escaleras'
     ],
     specs: [
-      { label: 'El mejor momento', value: 'Atardecer sobre Sálvora' },
+      { label: 'El mejor momento', value: 'Amanecer sobre la ría' },
       { label: 'Orientación', value: 'Suroeste' },
       { label: 'Vistas', value: 'Panorámica sobre la ría' },
       { label: 'Mobiliario', value: 'Mesa, sillas y tumbonas' }
@@ -164,7 +164,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/cocina_percebes_01.jpg',
       '/fotos/cocina_centollas_08.jpg'
     ],
-    description: 'Cocina abierta al salón, con isla de piedra. Pensada para la lonja: cazuelas grandes, todo el menaje y una nevera amplia para guardar lo que compres en la subasta.',
+    description: 'Cocina abierta al salón y a la terraza, con isla de piedra. Se ve la terraza y el mar. Pensada para la lonja: cazuelas grandes, todo el menaje y una nevera amplia para guardar lo que compres en la subasta.',
     highlights: [
       'Nevera amplia y congelador para la compra de la lonja',
       'Placa de inducción y campana extractora',

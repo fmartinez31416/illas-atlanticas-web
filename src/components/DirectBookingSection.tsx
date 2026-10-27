@@ -1,4 +1,4 @@
-import { BadgeEuro, ShieldCheck, HandHeart, ArrowRight, UtensilsCrossed } from 'lucide-react';
+import { ArrowRight, UtensilsCrossed } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { t } from '../i18n/translate';
 
@@ -86,46 +86,6 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                   </ul>
                 </div>
               </details>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
-                <button
-                  type="button"
-                  onClick={onOpenCondiciones}
-                  className="group text-left border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 cursor-pointer transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
-                >
-                  <div className="flex items-start justify-between">
-                    <BadgeEuro className="w-5 h-5 text-[#D4A017] mb-2" />
-                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Sin comisiones")}</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin tarifas ocultas ni sorpresas")}</p>
-                </button>
-                <a
-                  href={`https://wa.me/34606025318?text=${encodeURIComponent(t("Hola, deseo consultar disponibilidad para el Ático Illas Atlánticas."))}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
-                >
-                  <div className="flex items-start justify-between">
-                    <HandHeart className="w-5 h-5 text-[#D4A017] mb-2" />
-                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Atención directa")}</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Hablas con Fernando, el anfitrión")}</p>
-                </a>
-                <button
-                  type="button"
-                  onClick={onOpenCondiciones}
-                  className="group text-left border border-[#1A3A5C]/10 bg-[#EBE6DD]/40 p-4 cursor-pointer transition-all duration-300 hover:border-[#1A3A5C]/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#D4A017]/50"
-                >
-                  <div className="flex items-start justify-between">
-                    <ShieldCheck className="w-5 h-5 text-[#D4A017] mb-2" />
-                    <ArrowRight className="w-3.5 h-3.5 text-[#D4A017] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <p className="text-[13px] font-medium text-[#1A3A5C]">{t("Condiciones claras")}</p>
-                  <p className="text-xs text-stone-500 mt-1 font-light">{t("Sin cargos ocultos ni sorpresas")}</p>
-                </button>
-              </div>
 
               <button
                 onClick={onOpenBooking}

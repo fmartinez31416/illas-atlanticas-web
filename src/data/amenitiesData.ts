@@ -6,7 +6,7 @@ export const AMENITIES_CATEGORIES: AmenityCategory[] = [
     items: [
       {
         name: 'Terraza Panorámica Privada',
-        description: 'Vistas frontales a la isla de Sálvora y puesta de sol atlántica.',
+        description: 'Vistas a la isla de Sálvora: amanecer directo y la luz del atardecer sobre el mar.',
         icon: 'Sun'
       },
       {
