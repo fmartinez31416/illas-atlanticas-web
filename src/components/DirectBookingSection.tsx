@@ -23,7 +23,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 {t("Pacto directo")}
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1A3A5C] tracking-tight mt-3 leading-tight">
-                {t("El mejor precio, garantizado.")}
+                {t("El mejor precio de compra, garantizado.")}
               </h2>
               <p className="text-stone-600 mt-4 leading-relaxed max-w-xl">
                 {t("La mejor tarifa, la atención personal del anfitrión y unas condiciones claras desde el primer momento. Sin intermediarios: la casa, tú y nosotros.")}
@@ -37,7 +37,7 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 <summary className="cursor-pointer list-none flex items-start gap-2 text-stone-700 hover:text-[#1A3A5C] transition-colors">
                   <span className="text-[#D4A017] text-xs leading-relaxed mt-0.5 shrink-0">▸</span>
                   <span className="text-sm leading-relaxed">
-                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio:")}</strong> {t("si está más barato en un portal oficial de reservas, lo igualamos y añadimos un 5 % extra. ¿Cómo funciona?")}
+                    <strong className="text-[#1A3A5C]">{t("Garantía del mejor precio de compra:")}</strong> {t("si está más barato en un portal oficial de reservas, lo igualamos y añadimos un 5 % extra. ¿Cómo funciona?")}
                   </span>
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
@@ -74,11 +74,15 @@ export function DirectBookingSection({ onOpenBooking, onOpenBitacora, onOpenLonj
                 </summary>
                 <div className="mt-3 space-y-1.5 text-xs text-stone-500 font-light leading-relaxed pl-5">
                   <ul className="space-y-1.5">
-                    <li>{t("• Se aplica a estancias entre mayo y septiembre (temporada de sol).")}</li>
+                    <li>{t("• Se aplica a estancias entre mayo y septiembre.")}</li>
                     <li>{t("• Se mide por días: cada día con más de 5 horas de lluvia entre las 10:00 y las 20:00 cuenta.")}</li>
                     <li>{t("• Compensación: el 15 % del precio de ese día, como crédito para tu próxima reserva (no en metálico).")}</li>
-                    <li>{t("• Lo comprobamos con el registro meteorológico de las coordenadas exactas de la casa, sin estaciones lejanas.")}</li>
+                    <li>{t("• Puedes cederlo: el crédito es transferible a quien tú elijas — tu pareja, tu familia, tus amigos. Queremos que la casa se llene y que la próxima visita sea vuestra, venga quien venga.")}</li>
+                    <li>{t("• Lo comprobamos con el registro horario de Open-Meteo en las coordenadas exactas de la casa (42.5222 N, 9.0194 O). Sin estaciones lejanas ni discusiones.")}</li>
                     <li>{t("• Solo reserva directa. El crédito se aplica en tu próxima estancia y no es acumulable con otras ofertas.")}</li>
+                    <li>{t("• El crédito es válido 24 meses desde tu salida.")}</li>
+                    <li>{t("• El crédito no se aplica a reservas de menos de 3 noches.")}</li>
+                    <li>{t("• Ejemplo: si tu noche de un sábado cuesta 200 € y ese día llueve más de 5 horas entre las 10:00 y las 20:00, te corresponde un crédito de 30 € (el 15 % de 200 €) para la próxima estancia — tuyo o de quien tú decidas invitar.")}</li>
                   </ul>
                 </div>
               </details>

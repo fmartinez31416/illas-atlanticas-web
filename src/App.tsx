@@ -260,7 +260,7 @@ function AppInner() {
   if (currentView === 'colaboraciones') {
     return (
       <>
-        <Suspense fallback={null}><ColaboracionesPage onBack={() => setCurrentView('home')} /></Suspense>
+        <Suspense fallback={null}><ColaboracionesPage onBack={() => setCurrentView('home')} onOpenBooking={scrollToBooking} /></Suspense>
         <NiaChat />
       </>
     );

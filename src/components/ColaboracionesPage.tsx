@@ -3,6 +3,7 @@ import { useI18n } from '../i18n/LangContext';
 
 interface ColaboracionesPageProps {
   onBack: () => void;
+  onOpenBooking: () => void;
 }
 
 const TEXTOS = {
@@ -38,9 +39,16 @@ const TEXTOS = {
     gl: 'Traballamos con blogs e medios que contan esta terra: intercambio de ligazóns, contidos e material propio do porto e da lonxa. Escríbenos a info@illasatlanticasatico.es',
   },
   volver: { es: 'Volver a la portada', en: 'Back to home', gl: 'Volver á portada' },
+  casaTitulo: { es: 'La casa de la que escriben', en: 'The house they write about', gl: 'A casa da que escriben' },
+  casaTexto: {
+    es: 'Compruébalo en primera persona: el paseo, la lonja y la terraza sobre Sálvora están a un clic.',
+    en: 'See it for yourself: the walk, the fish market and the terrace over Sálvora are one click away.',
+    gl: 'Compórobao en primeira persoa: o paseo, a lonxa e a terraza sobre Sálvora están a un clic.',
+  },
+  casaBoton: { es: 'Ver precio y reservar', en: 'Check price and book', gl: 'Ver prezo e reservar' },
 };
 
-export function ColaboracionesPage({ onBack }: ColaboracionesPageProps) {
+export function ColaboracionesPage({ onBack, onOpenBooking }: ColaboracionesPageProps) {
   const { lang } = useI18n();
   const g = (k: string) => (TEXTOS[k] ? TEXTOS[k][lang] ?? TEXTOS[k].es : k);
   return (
@@ -121,6 +129,20 @@ export function ColaboracionesPage({ onBack }: ColaboracionesPageProps) {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* La casa */}
+        <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white rounded-lg border border-stone-200 p-6 sm:p-8">
+          <div>
+            <h3 className="text-lg sm:text-xl font-serif text-stone-900 mb-1">{g('casaTitulo')}</h3>
+            <p className="text-stone-600 text-sm font-light max-w-xl">{g('casaTexto')}</p>
+          </div>
+          <button
+            onClick={onOpenBooking}
+            className="shrink-0 px-6 py-3 bg-[#D4A017] hover:bg-[#e6b52e] text-[#071522] text-xs uppercase tracking-[0.2em] font-semibold transition-colors rounded-sm"
+          >
+            {g('casaBoton')}
+          </button>
         </div>
       </div>
     </div>

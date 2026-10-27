@@ -135,7 +135,7 @@ export function PuenteGate({ onEnter, onVolverCasa }: PuenteGateProps) {
 
         {/* Coordenadas */}
         <p className="mt-14 text-[11px] italic tracking-[0.1em] text-[#635133]">
-          {t("42°27'39\" N · 9°00'54\" W — la terraza del ático, convertida en el puente de un clíper")}
+          {t("42°31′20″ N · 9°01′10″ W — la terraza del ático, convertida en el puente de un clíper")}
         </p>
       </div>
 

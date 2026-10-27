@@ -255,7 +255,7 @@ export function PlanificadorPage({ onBack, onOpenBooking, onOpenLonja }: Planifi
                   <div className="mt-1 flex items-center gap-3">
                     <button onClick={() => setPersonas(Math.max(1, personas - 1))} className="w-9 h-9 border border-[#1A3A5C]/30 text-[#1A3A5C] font-bold">−</button>
                     <span className="text-xl font-serif text-[#1A3A5C] w-8 text-center">{personas}</span>
-                    <button onClick={() => setPersonas(Math.min(8, personas + 1))} className="w-9 h-9 border border-[#1A3A5C]/30 text-[#1A3A5C] font-bold">+</button>
+                    <button onClick={() => setPersonas(Math.min(6, personas + 1))} className="w-9 h-9 border border-[#1A3A5C]/30 text-[#1A3A5C] font-bold">+</button>
                   </div>
                 </label>
                 <div>

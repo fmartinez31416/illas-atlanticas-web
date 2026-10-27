@@ -107,8 +107,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
     },
     club: {
-      title: 'Club de Huéspedes · Niveles, tarjeta virtual y ventajas · Illas Atlánticas Ático',
-      description: 'El club de huéspedes del ático de Aguiño: niveles Básico, Plata, Oro y Platino, tarjeta virtual de socio y 5 % por cada amigo que traigas, sin límite. Únete gratis.',
+      title: 'Club de Huéspedes · En preparación · Illas Atlánticas Ático',
+      description: 'El club de huéspedes del ático de Aguiño está en preparación: deja tu aviso y serás de los primeros en conocerlo.',
+    },
+    planificador: {
+      title: 'Planifica tu estancia en Aguiño · Illas Atlánticas Ático',
+      description: 'Cuéntanos quién viaja y a qué ritmo, y te proponemos un plan a tu medida: lonja, islas, calas y mesas de Aguiño, desde el ático.',
     },
     colaboraciones: {
       title: 'Colaboraciones · Medios y blogs que cuentan Aguiño · Illas Atlánticas Ático',
@@ -149,8 +153,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of the stay.',
     },
     club: {
-      title: 'The Guest Club · Levels, virtual card and perks · Illas Atlánticas Ático',
-      description: 'The guest club of the Aguiño penthouse: Basic, Silver, Gold and Platinum levels, a virtual membership card and 5 % for every friend you bring, no limit. Join for free.',
+      title: 'Guest Club · Coming soon · Illas Atlánticas Ático',
+      description: 'The guest club of the Aguiño penthouse is being prepared: leave your details and be among the first to know.',
+    },
+    planificador: {
+      title: 'Plan your stay in Aguiño · Illas Atlánticas Ático',
+      description: 'Tell us who travels and at what pace, and we suggest a plan to suit you: fish market, islands, coves and tables of Aguiño, from the penthouse.',
     },
     colaboraciones: {
       title: 'Collaborations · Media and blogs telling Aguiño · Illas Atlánticas Ático',
@@ -191,8 +199,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo anfitrión para cada estación e cada momento da estadía.',
     },
     club: {
-      title: 'Club de Hóspedes · Niveis, tarxeta virtual e vantaxes · Illas Atlánticas Ático',
-      description: 'O club de hóspedes do ático de Aguiño: niveis Básico, Prata, Ouro e Platino, tarxeta virtual de socio e 5 % por cada amigo que tragas, sen límite. Únete gratis.',
+      title: 'Club de Hóspedes · En preparación · Illas Atlánticas Ático',
+      description: 'O club de hóspedes do ático de Aguiño está en preparación: deixa o teu aviso e serás dos primeiros en coñecelo.',
+    },
+    planificador: {
+      title: 'Planifica a túa estadía en Aguiño · Illas Atlánticas Ático',
+      description: 'Cóntanos quen viaxa e a que ritmo, e propoñemos un plan á túa medida: lonxa, illas, calas e mesas de Aguiño, desde o ático.',
     },
     colaboraciones: {
       title: 'Colaboracións · Medios e blogs que contan Aguiño · Illas Atlánticas Ático',

@@ -32,7 +32,7 @@ export function Header({ onOpenBooking, onOpenBitacora, onOpenPuente }: HeaderPr
         { name: t('Gastronomía'), href: '/gastronomia' },
         { name: t('Música'), href: '/musica' },
         { name: t('Colaboraciones'), href: '/colaboraciones' },
-        { name: t('Club'), href: '/club', dot: true },
+        { name: t('Club'), href: '/club' },
       ];
 
   return (

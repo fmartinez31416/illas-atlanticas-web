@@ -35,20 +35,13 @@ mail('info@illasatlanticasatico.es', $asunto, $cuerpo, $cabeceras);
 
 $asuntoB = 'Bienvenido al Club Illas Atlánticas';
 $cuerpoB = "Hola $nombre,\n\n"
-  . "Bienvenido al Club Illas Atlánticas. Tu tarjeta de socio es el nivel Básico, "
-  . "que se obtiene solo con registrarse: 5 % GARANTIZADO en tu primera reserva directa. "
-  . "Para aplicarlo, introduce tu código de socio en el campo Voucher del motor de reservas.\n\n"
-  . "Tu código de socio: CLUB5\n"
-  . "Tu número de tarjeta: $socio\n\n"
-  . "Además, como Básico: acceso anticipado a las fechas de verano y contenido exclusivo de la casa.\n\n"
-  . "Cómo subes de nivel (por noches completadas): Plata a las 7 noches (8 %), "
-  . "Oro a las 15 (10 %), Platino a las 30 (12 %), en tu siguiente estancia directa.\n\n"
-  . "Y el motor del club: por cada amigo que reserve por recomendación tuya y complete "
-  . "una estancia de al menos 3 noches, ganas un 5 % en tu próxima reserva directa. "
-  . "Sin límite: puedes llegar a una estancia gratis. Se redime fuera de temporada alta "
-  . "y caduca a los 12 meses.\n\n"
-  . "Los descuentos no aplican en julio, agosto ni Navidad/Nochevieja.\n\n"
-  . "Todo en illasatlanticasatico.es/club\n\n"
+  . "Gracias por registrarte. El Club Illas Atlánticas está en preparación:\n"
+  . "lo estamos terminando con mimo para que sea una ventaja de verdad.\n\n"
+  . "En cuanto esté abierto, serás de los primeros en saberlo y tendrás\n"
+  . "tu plaza reservada.\n\n"
+  . "Mientras tanto, lo que sí está activo es el Pacto Directo: reserva en\n"
+  . "illasatlanticasatico.es, sin intermediarios, con la atención personal\n"
+  . "de Fernando.\n\n"
   . "Atentamente,\nFernando\nIllas Atlánticas Ático · Aguiño (Ribeira)";
 mail($email, $asuntoB, $cuerpoB, $cabeceras);
 
