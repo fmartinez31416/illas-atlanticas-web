@@ -50,8 +50,8 @@ export function ReviewsAndPress() {
         <div className="bg-white border border-stone-200 p-6 sm:p-8 shadow-sm mb-10 flex flex-col lg:flex-row items-center justify-between gap-6">
 
           <div className="flex items-center gap-5 text-center sm:text-left">
-            <div className="w-20 h-20 bg-stone-900 text-white flex flex-col items-center justify-center shrink-0 shadow-sm">
-              <span className="text-3xl font-serif font-bold leading-none">{REVIEW_STATS.score}</span>
+            <div className="w-28 h-28 sm:w-32 sm:h-32 bg-stone-900 text-white flex flex-col items-center justify-center shrink-0 shadow-sm">
+              <span className="text-5xl sm:text-6xl font-serif font-bold leading-none">{REVIEW_STATS.score}</span>
               <span className="text-[10px] uppercase tracking-wider text-stone-300 mt-1">{t("de 10")}</span>
             </div>
             <div>

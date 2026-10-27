@@ -106,6 +106,19 @@
   }
 }
 
+/* Parallax del contenido del héroe: sube y se desvanece al bajar */
+@keyframes heroParallax {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-16vh); opacity: 0.25; }
+}
+@supports (animation-timeline: scroll()) {
+  .anim-hero-parallax {
+    animation: heroParallax linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100vh;
+  }
+}
+
 /* Puente de Mando HUD */
 @keyframes spin360 {
   from { transform: rotate(0deg); }
@@ -131,7 +144,7 @@
 
 /* Respeta las preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-  .anim-kenburns, .anim-scroll-zoom { animation: none; }
+  .anim-kenburns, .anim-scroll-zoom, .anim-hero-parallax { animation: none; }
 }
 
 .amber-border-glow:hover {

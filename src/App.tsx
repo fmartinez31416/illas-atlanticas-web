@@ -2,6 +2,8 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { seoTitle, seoDescription } from './utils/seo';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { SplitScreenValue } from './components/SplitScreenValue';
+import { ScrollStory } from './components/ScrollStory';
 import { BookingWidget } from './components/BookingWidget';
 import { SpacesGrid } from './components/SpacesGrid';
 import { AmenitiesSection } from './components/AmenitiesSection';
@@ -335,6 +337,9 @@ function AppInner() {
 
             <main>
         <Hero onOpenBooking={scrollToBooking} />
+
+        {/* Capítulo 1 de la historia: la casa que lee el mar (foto fija + texto) */}
+        <SplitScreenValue />
         
         <div id="reservas">
           <BookingWidget />
@@ -350,9 +355,11 @@ function AppInner() {
           onOpenGastronomia={() => setCurrentView('gastronomia')}
         />
 
+        {/* La historia en cuatro capítulos: scroll que cuenta (sticky stacking) */}
+        <ScrollStory />
+
         {/* Prueba social pronto: opiniones reales de Booking.com */}
         <ReviewsAndPress />
-
         <SpacesGrid onOpenBooking={scrollToBooking} />
         <AmenitiesSection />
 

@@ -77,7 +77,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
       </div>
 
       {/* Contenido Principal */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center anim-hero-parallax">
         
         {/* Sello de Reputación Oficial Directo Arriba */}
         <div className="flex flex-wrap justify-center items-center gap-2.5 mb-6">
