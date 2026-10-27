@@ -7,7 +7,7 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
     subtitle: 'El percebe de Aguiño y el marisco de la ría, a 4 minutos a pie (350 m)',
     category: 'lonja',
     image: '/fotos/cocina_percebes_01.jpg',
-    description: 'El puerto y la lonja de Aguiño están a unos minutos a pie del ático. Allí se subasta cada mañana lo que trae la flota: percebe de los bajíos de Sálvora, centolla, nécora, pulpo, navaja y pescado del día. Te contamos cómo funciona la subasta, qué días hay más producto y los trucos del anfitrión para cocerlo todo en su punto.',
+    description: 'El puerto y la lonja de Aguiño están a unos minutos a pie del ático. Allí se subasta lo que trae la flota: percebe de los bajíos de Sálvora, centolla, nécora, pulpo, navaja y pescado del día. Te contamos cómo funciona la subasta, qué días hay más producto y los trucos de Fernando para cocerlo todo en su punto.',
     highlights: [
       'Lonja de Aguiño a 4 minutos a pie (350 m)',
       'Te explicamos cómo se subasta y cuándo hay más producto',

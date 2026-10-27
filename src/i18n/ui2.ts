@@ -91,7 +91,7 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "ScrollStory.c2.linkText": { es: "Abrir Puente de Mando", en: "Open the Bridge", gl: "Abrir Ponte de Mando" },
   "ScrollStory.c3.label": { es: "III · La lonja", en: "III · The fish market", gl: "III · A lonxa" },
   "ScrollStory.c3.title": { es: "La lonja, a 4 minutos.", en: "The fish market, 4 minutes away.", gl: "A lonxa, a 4 minutos." },
-  "ScrollStory.c3.text": { es: "La lonja de Aguiño, a 350 metros de la casa: subasta al ritmo de la marea —a veces a las siete, otras a mediodía— y fama ganada por los percebes.", en: "Aguiño's fish market, 350 metres from the house: the auction follows the tide — sometimes at seven, sometimes at noon — and its fame comes from the percebes.", gl: "A lonxa de Aguiño, a 350 metros da casa: poxa ao ritmo da marea —ás veces ás sete, outras ao mediodía— e fama gañada polos percebes." },
+  "ScrollStory.c3.text": { es: "La lonja de Aguiño, a 350 metros de la casa: la subasta espera a la flota y su fama la ganan los percebes, que se capturan al ritmo de la marea.", en: "Aguiño's fish market, 350 metres from the house: the auction waits for the fleet, and its fame comes from the percebes, harvested to the rhythm of the tide.", gl: "A lonxa de Aguiño, a 350 metros da casa: a poxa espera pola flota e a súa fama gáñana os percebes, que se capturan ao ritmo da marea." },
   "ScrollStory.c3.linkText": { es: "Ver LonjaLens", en: "See LonjaLens", gl: "Ver LonjaLens" },
   "ScrollStory.c4.label": { es: "IV · Territorio", en: "IV · Territory", gl: "IV · Territorio" },
   "ScrollStory.c4.title": { es: "Crónicas del Atlántico.", en: "Chronicles of the Atlantic.", gl: "Crónicas do Atlántico." },
