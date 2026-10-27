@@ -93,6 +93,19 @@
   animation: kenburns 22s ease-in-out infinite alternate;
 }
 
+/* Zoom-out del héroe accionado por scroll (progressive enhancement) */
+@keyframes heroZoomOut {
+  from { transform: scale(1.12); }
+  to { transform: scale(1.02); }
+}
+@supports (animation-timeline: scroll()) {
+  .anim-scroll-zoom {
+    animation: heroZoomOut linear both;
+    animation-timeline: scroll();
+    animation-range: 0 90vh;
+  }
+}
+
 /* Puente de Mando HUD */
 @keyframes spin360 {
   from { transform: rotate(0deg); }
@@ -118,7 +131,7 @@
 
 /* Respeta las preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-  .anim-kenburns { animation: none; }
+  .anim-kenburns, .anim-scroll-zoom { animation: none; }
 }
 
 .amber-border-glow:hover {

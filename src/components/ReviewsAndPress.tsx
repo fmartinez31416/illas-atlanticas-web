@@ -6,7 +6,7 @@ import { useI18n } from '../i18n/LangContext';
 
 export function ReviewsAndPress() {
   const { lang } = useI18n();
-  const reviews = getReviews(lang);
+  const reviews = getReviews(lang).filter((r) => ['Manuel', 'Karolina', 'Anne'].includes(r.name));
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);

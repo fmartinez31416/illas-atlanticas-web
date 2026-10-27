@@ -309,33 +309,16 @@ function AppInner() {
               onOpenPuente={() => setCurrentView('puente')}
             />
 
-            {/* Cinta de confianza: [ADDRESS] con garantías */}
-            <div className="w-full bg-[#06131F] border-b border-[#D4A017]/20 overflow-hidden" style={{ height: '26px' }}>
-              <div className="flex items-center h-full whitespace-nowrap" style={{ animation: 'marquee 28s linear infinite' }}>
-                <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
-                  <span>{t("Tarifa oficial garantizada")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Reserva directa sin comisiones")}</span>
-                  <span className="text-[#D4A017]">✦</span>
+            {/* Cinta de confianza estática: una línea, sin movimiento (móvil: desplazable con el dedo) */}
+            <div className="w-full bg-[#06131F] border-b border-[#D4A017]/20 overflow-x-auto" style={{ height: '26px', scrollbarWidth: 'none' }}>
+              <div className="flex items-center h-full whitespace-nowrap px-4 justify-start sm:justify-center min-w-max sm:min-w-0">
+                <span className="inline-flex items-center gap-3 sm:gap-5 text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-[#C5A059] font-medium">
                   <span>{t("Respuesta del anfitrión < 2 horas")}</span>
                   <span className="text-[#D4A017]">✦</span>
+                  <span className="hidden sm:inline">{t("Reserva directa sin comisiones")}</span>
+                  <span className="text-[#D4A017] hidden sm:inline">✦</span>
                   <span>{t("Garantía Sol")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  </span>
-                  <span className="inline-flex items-center gap-6 px-4 text-[10px] uppercase tracking-[0.18em] text-[#C5A059] font-medium">
-                  <span>{t("Tarifa oficial garantizada")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Reserva directa sin comisiones")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Respuesta del anfitrión < 2 horas")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Garantía Sol")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  <span>{t("Aguiño en vivo — VUT-CO-007656")}</span>
-                  <span className="text-[#D4A017]">✦</span>
-                  </span>
+                </span>
               </div>
             </div>
 
@@ -371,6 +354,31 @@ function AppInner() {
         {/* Acceso elegante a la Bitácora */}
         <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
         <NiaSection />
+
+        {/* Cierre emocional: fotografía real de la ría y UNA sola CTA de conversión final */}
+        <section id="cierre" className="relative min-h-[70svh] w-full flex items-center justify-center overflow-hidden bg-stone-950">
+          <img
+            src={`${import.meta.env.BASE_URL}footer-bg.webp`}
+            alt={t("Vistas a la ría y a las islas de Sálvora y Ons desde Ático Illas Atlánticas en Aguiño")}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-stone-950/65"></div>
+          <div className="relative z-10 max-w-3xl mx-auto px-6 py-24 text-center flex flex-col items-center gap-7">
+            <p className="font-serif italic text-stone-200 text-lg sm:text-xl">{t("Elige tus fechas. Nosotros ponemos la luz sobre Sálvora.")}</p>
+            <h2 className="text-4xl sm:text-6xl font-serif text-white font-normal tracking-tight leading-[1.1] drop-shadow-md">
+              {t("El Atlántico te espera.")}
+            </h2>
+            <p className="text-stone-300 font-light text-sm sm:text-base">{t("Reserva directa con el anfitrión, sin comisiones.")}</p>
+            <button
+              onClick={scrollToBooking}
+              className="mt-2 px-9 py-4 bg-[#D4A017] hover:bg-[#e6b52e] text-[#071522] text-xs uppercase tracking-[0.25em] font-semibold shadow-xl transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2.5"
+            >
+              <span>{t("Ver precio y reservar")}</span>
+            </button>
+          </div>
+        </section>
       </main>
 
       <Footer onOpenLegal={() => setCurrentView('legal')} />
