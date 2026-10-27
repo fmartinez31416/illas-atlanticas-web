@@ -174,7 +174,7 @@ export const UI: Record<string, Record<Lang, string>> = {
   "Puesta de Sol sobre la Ría": { es: "Puesta de Sol sobre la Ría", en: "Sunset over the Estuary", gl: "Posta de Sol sobre a Ría" },
   "Reserva directa con anfitrión · Licencia VUT-CO-007656": { es: "Reserva directa con anfitrión · Licencia VUT-CO-007656", en: "Direct booking with host · Licence VUT-CO-007656", gl: "Reserva directa con anfitrión · Licenza VUT-CO-007656" },
   "Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones": { es: "Reserva directa con el anfitrión · Mejor tarifa oficial sin comisiones", en: "Direct booking with the host · Best official rate without commissions", gl: "Reserva directa co anfitrión · Mellor tarifa oficial sen comisións" },
-  "Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira": { es: "Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira", en: "Restaurants Recommended by the Host in Aguiño & Ribeira", gl: "Restaurantes Recomendados polo Anfitrión en Aguiño & Ribeira" },
+  "Restaurantes Recomendados por Fernando en Aguiño & Ribeira": { es: "Restaurantes Recomendados por Fernando en Aguiño & Ribeira", en: "Restaurants Recommended by Fernando in Aguiño & Ribeira", gl: "Restaurantes Recomendados por Fernando en Aguiño & Ribeira" },
   "Ría de Arousa": { es: "Ría de Arousa", en: "Ría de Arousa", gl: "Ría de Arousa" },
   "Ría de Pontevedra": { es: "Ría de Pontevedra", en: "Ría de Pontevedra", gl: "Ría de Pontevedra" },
   "Rúa Francisco Lorenzo Mariño, 93": { es: "Rúa Francisco Lorenzo Mariño, 93", en: "Rúa Francisco Lorenzo Mariño, 93", gl: "Rúa Francisco Lorenzo Mariño, 93" },

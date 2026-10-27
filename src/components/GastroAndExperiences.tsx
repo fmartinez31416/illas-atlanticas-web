@@ -261,7 +261,7 @@ export function GastroAndExperiences() {
           {/* Local Restaurants Mini Guide */}
           <div className="mt-12">
             <h4 className="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">
-              {t("Restaurantes Recomendados por el Anfitrión en Aguiño & Ribeira")}
+              {t("Restaurantes Recomendados por Fernando en Aguiño & Ribeira")}
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {getGastroRestaurants(lang).map((resto, idx) => (

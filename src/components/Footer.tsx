@@ -176,7 +176,7 @@ export function Footer({ onOpenLegal }: FooterProps) {
             </h3>
             <div className="space-y-3 text-xs text-stone-100 font-light">
               <p className="text-white font-medium">
-                {t("Anfitrión:")} <span>Fernando</span>
+                <span>Fernando</span>
               </p>
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-amber-200 shrink-0 mt-0.5" />
