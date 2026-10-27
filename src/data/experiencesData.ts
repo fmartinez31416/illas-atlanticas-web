@@ -14,7 +14,7 @@ export const EXPERIENCES_DATA: GastroExperience[] = [
       'Tiempos de cocción tradicionales, con agua de mar',
       'Barcos a Sálvora y Ons desde el propio Aguiño'
     ],
-    curatorTip: 'Consejo del Anfitrión: Si tu estancia coincide con marea viva, pregunta por el percebe de piedra y disfrútalo en la terraza al caer el sol.'
+    curatorTip: 'Consejo de Fernando: Si tu estancia coincide con marea viva, pregunta por el percebe de piedra y disfrútalo en la terraza con la luz del atardecer.'
   },
   {
     id: 'enologia-rias-baixas',
