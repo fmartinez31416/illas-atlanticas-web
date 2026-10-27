@@ -121,7 +121,7 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
             {article.cover && (
               <figure className="rounded-sm overflow-hidden border border-stone-200 shadow-sm">
                 <img
-                  src={`${import.meta.env.BASE_URL}${article.cover}`}
+                  src={article.cover}
                   alt={article.title}
                   className="w-full h-64 sm:h-80 object-cover object-top"
                 />

@@ -150,7 +150,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                 {article.cover && (
                   <div className="relative h-44 sm:h-52 overflow-hidden rounded-sm border border-stone-800/70 mb-2">
                     <img
-                      src={`${import.meta.env.BASE_URL}${article.cover}`}
+                      src={article.cover}
                       alt={article.title}
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                     />

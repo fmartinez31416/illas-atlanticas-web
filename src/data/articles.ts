@@ -17,7 +17,7 @@ export const ARTICLES: Article[] = [
   {
     id: '16',
     slug: 'alquiler-vacacional-ribeira',
-    cover: '/laminas/atico-aguino_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/atico-aguino_v.webp',
     category: 'Guías & Entorno',
     title: 'Alquiler vacacional en Ribeira: la guía para acertar con la casa',
     excerpt: 'Ribeira no es un destino de folleto: es el puerto pesquero más vivo de la ría de Arousa, con la lonja más importante de Europa en pesca de bajura y el Parque Nacional enfrente. Guía práctica para elegir zona y casa, con los datos que de verdad importan antes de reservar.',
@@ -77,7 +77,7 @@ Si buscas mar auténtico, marisco del día y una casa espaciosa con vistas a las
   {
     id: '14',
     slug: 'cortegada-isla-rey-lauredal-europa',
-    cover: '/laminas/cortegada_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/cortegada_v.webp',
     category: 'Guías & Entorno',
     title: 'Cortegada: la isla regalada a un rey y el mayor lauredal de Europa',
     excerpt: 'De aldea expropiada a regalo real: la historia de Cortegada, la isla que perdió a sus 211 colonos y ganó el mayor bosque de laurel de Europa.',
@@ -129,7 +129,7 @@ Cortegada no es una isla abandonada. Es una isla que fue abandonada y volvió a 
   {
     id: '15',
     slug: 'sirena-salvora-leyenda-marino-o-almacen',
-    cover: '/laminas/salvora-sirena_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/salvora-sirena_v.webp',
     category: 'Historia & Navegación',
     title: 'La sirena de Sálvora: leyenda de los Mariño e historia de O Almacén',
     excerpt: 'La estatua de la playa de O Almacén, la leyenda de Mariña y la estirpe de los Mariño, junto a la historia de la fábrica de salazón que Jerónimo de Hijosa levantó en Sálvora en 1770 y que después se convirtió en pazo.',
@@ -179,7 +179,7 @@ La sirena sigue allí, mirando a la ría que trajo navegantes, salazoneros y vis
   {
     id: '12',
     slug: 'tesoros-rande-drake-galeon-cies',
-    cover: '/laminas/rande-tesoros_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/rande-tesoros_v.webp',
     category: 'Historia & Navegación',
     title: 'Tesoros de Rande: corsarios, Drake y el galeón perdido en las Cíes',
     excerpt: 'La tradición dice que bajo las Cíes duerme el Santo Cristo de Maracaibo, cargado de oro. Los documentos dicen otra cosa: el barco que se hundió al suroeste del archipiélago en 1702 iba casi vacío.',
@@ -233,7 +233,7 @@ El valor de esta historia no está en el oro. Está en el método: una tradició
   {
     id: '13',
     slug: 'buraco-do-inferno-furna-ons',
-    cover: '/laminas/ons-buraco-inferno_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/ons-buraco-inferno_v.webp',
     category: 'Oceanografía & Ría',
     title: 'O Buraco do Inferno: la furna que ruge en la costa de Ons',
     excerpt: 'La costa occidental de Ons es un frente de acantilados batidos donde el mar ha excavado decenas de furnas. Historia natural del Buraco do Inferno y las leyendas que la tradición oral le cosió encima: las ánimas del Purgatorio, la Santa Compaña, los trasnos de la Cova dos Mouros y el túnel imposible hacia O Cairo.',
@@ -279,7 +279,7 @@ El Buraco ya no ruge como antes, porque el derrumbe le tapó parte de la gargant
   {
     id: '10',
     slug: 'laxe-do-crego-sepultura-roca-ons',
-    cover: '/laminas/crego_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/crego_v.webp',
     category: 'Historia & Navegación',
     title: 'A Laxe do Crego: la sepultura tallada en la roca de Ons',
     excerpt: 'En la costa oriental de Ons, a poco más de cien metros de Area dos Cans, una roca guarda una sepultura antropomorfa de época altomedieval. La hipótesis del eremita, la leyenda del monasterio engullido por el mar y la lauda que se salvó de una lareira.',
@@ -329,7 +329,7 @@ La sepultura está vacía y no hay inscripción que nombre a su ocupante. Todo l
   {
     id: '11',
     slug: 'julio-cesar-cies-leyenda-herminios',
-    cover: '/laminas/cies-julio-cesar_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/cies-julio-cesar_v.webp',
     category: 'Historia & Navegación',
     title: 'Julio César en las Cíes: la leyenda de los herminios y el cerco por hambre',
     excerpt: 'La tradición sitúa a Julio César en las Cíes persiguiendo a los herminios y rindiéndolos por hambre. Dión Casio cuenta parte del episodio; el resto lo añadió la erudición romántica del siglo XIX.',
@@ -381,7 +381,7 @@ Quien suba a Monteagudo y mire al sur verá el canal, San Martiño y, detrás, l
   {
     id: '1',
     slug: 'salvora-tragedia-santa-isabel-parque-nacional',
-    cover: '/laminas/salvora-santa-isabel_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/salvora-santa-isabel_v.webp',
     category: 'Historia & Navegación',
     title: 'Sálvora y el vapor Santa Isabel: memoria náutica y soberanía del Parque Nacional',
     excerpt: 'Análisis histórico de la noche del 2 de enero de 1921 en la boca de la Ría de Arousa. El rescate de las heroínas de Sálvora, la hidrografía de los bajos de Pegar y el régimen actual de conservación del archipiélago.',
@@ -413,7 +413,7 @@ En la actualidad, la Isla de Sálvora forma parte del **Parque Nacional Marítim
   {
     id: '2',
     slug: 'la-ilusion-de-la-linea-recta-cartografia-aguiño-salvora',
-    cover: '/laminas/cartografia-linea-recta_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/cartografia-linea-recta_v.webp',
     category: 'Cartografía & Territorio',
     title: 'La ilusión de la línea recta: cartografía náutica, distancias reales y el horizonte de Sálvora',
     excerpt: 'Por qué las plataformas de reservas confunden la ría con un mapa llano. La trampa euclidiana entre el Barbanza y O Salnés: 80 km de carretera real frente a la derrota marítima de Aguiño a Sálvora.',
@@ -445,7 +445,7 @@ El trayecto real entre Aguiño y O Grove o A Lanzada se sitúa entre los **75 y 
   {
     id: '3',
     slug: 'percebe-bravura-rompiente-aguiño-tabla-salmuera',
-    cover: '/laminas/percebe-bajos_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/percebe-bajos_v.webp',
     category: 'Tratado de Producto & Lonja',
     title: 'El percebe de los bajos de Aguiño: hidrodinámica de la rompiente y tratado de cocción',
     excerpt: 'Diferenciación morfológica del pollicipes pollicipes extraído en roca batida frente al percebe de sombra. Fisiología, dinámica de mareas vivas y la regla exacta de salinidad y ebullición según la tradición costera.',
@@ -476,7 +476,7 @@ La regla tradicional sentencia: *«Auga que ferve, percebes bota; auga que ferve
   {
     id: '4',
     slug: 'cultivo-mejillon-ria-arousa-dinamica-bateas',
-    cover: '/laminas/bateas-ciclo-mejillon_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/bateas-ciclo-mejillon_v.webp',
     category: 'Oceanografía & Ría',
     title: 'La arquitectura flotante de la Ría de Arousa: el afloramiento costero y el ciclo del mejillón',
     excerpt: 'Por qué la Ría de Arousa es el ecosistema marino de mayor productividad de Europa. El fenómeno físico del afloramiento (upwelling), las vigas de madera de eucalipto curadas en salmuera y el ciclo biológico del mejillón.',
@@ -508,7 +508,7 @@ El mejillón (*Mytilus galloprovincialis*) filtra hasta 8 litros de agua por hor
 {
     id: 'la-falacia-del-mapa-del-tiempo-microclima-aguiño',
     slug: 'falacia-mapa-tiempo-modelos-neuronales-aguino',
-    cover: '/laminas/falacia-mapa-tiempo_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/falacia-mapa-tiempo_v.webp',
     title: 'La falacia del mapa del tiempo: por qué los modelos neuronales de 1 km dan la razón al marinero de Aguiño',
     category: 'Oceanografía & Ría',
     readTime: '4 min de lectura',
@@ -559,7 +559,7 @@ Sentarse en la terraza frente a las bateas al atardecer, bajo un cielo abierto q
   {
     id: '6',
     slug: 'guia-aguino-parque-nacional-illas-atlanticas',
-    cover: '/laminas/guia-aguino_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/guia-aguino_v.webp',
     category: 'Guías & Entorno',
     title: 'Guía de Aguiño y el Parque Nacional de las Islas Atlánticas: mar, granito y memoria',
     excerpt: 'Rutas marítimas hacia la Isla de Sálvora, calas recogidas de aguas serenas y la cultura marinera en la bocana de la Ría de Arousa.',
@@ -599,7 +599,7 @@ Dónde probarlos, sitio a sitio y con reseñas verificadas: la guía Dónde come
   {
     id: '7',
     slug: 'casa-lee-el-mar-ingenieria-interna-alojamiento-salvora',
-    cover: '/laminas/casa-lee-mar_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/casa-lee-mar_v.webp',
     category: 'El Oficio & la Casa',
     title: 'La casa que lee el mar: ingeniería interna de un alojamiento frente a Sálvora',
     excerpt: 'Qué sostiene una estancia frente a la ría: motor de reservas, guardianes automáticos, un puente de mando meteorológico y un agente de a bordo. La capa invisible de un alojamiento independiente.',
@@ -647,7 +647,7 @@ Al final, el huésped solo ve la terraza, el mar y Sálvora al fondo. Que no vea
   {
     id: '8',
     slug: 'faros-boca-ria-salvora-corrubedo-ons',
-    cover: '/laminas/faros-boca-ria_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/faros-boca-ria_v.webp',
     category: 'Historia & Navegación',
     title: 'Los faros de la boca de la ría: Sálvora, Corrubedo y Ons, la señal que ordena el mar',
     excerpt: 'Tres luces guardan la entrada de la Ría de Arousa: su historia, sus firmas de destellos y desde dónde se ven —dos desde la terraza de Aguiño, tres desde A Pedra da Ra.',
@@ -689,7 +689,7 @@ El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún 
   {
     id: '9',
     slug: 'indice-atlantico-como-puntuamos-gastronomia-barbanza',
-    cover: '/laminas/indice-atlantico_v.webp',
+    cover: 'https://illasatlanticasatico.es/laminas/indice-atlantico_v.webp',
     category: 'El Oficio & la Casa',
     title: 'El Índice Atlántico: cómo puntuamos la gastronomía de la ría',
     excerpt: 'La guía gastronómica de la casa no ordena por estrellas: ordena por un modelo estadístico que normaliza escalas, pondera la fiabilidad de cada fuente y encoge las muestras pequeñas. Seis pasos, publicados en abierto.',
