@@ -123,7 +123,7 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
                 <img
                   src={article.cover}
                   alt={article.title}
-                  className="w-full h-64 sm:h-80 object-cover object-top"
+                  className="w-full h-auto max-h-[62vh] object-contain mx-auto"
                 />
               </figure>
             )}

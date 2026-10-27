@@ -146,17 +146,15 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                 aria-label={article.title}
                 className="absolute inset-0 z-10"
               />
-              <div className="space-y-4">
+              <div className="flex items-start gap-4 sm:gap-5">
                 {article.cover && (
-                  <div className="relative h-44 sm:h-52 overflow-hidden rounded-sm border border-stone-800/70 mb-2">
-                    <img
-                      src={article.cover}
-                      alt={article.title}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/10 to-transparent" />
-                  </div>
+                  <img
+                    src={article.coverSquare || article.cover}
+                    alt={article.title}
+                    className="w-32 sm:w-44 shrink-0 aspect-square object-cover rounded-sm border border-stone-800/70 shadow-lg"
+                  />
                 )}
+                <div className="space-y-4 flex-1 min-w-0">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-stone-400">
                   <span className="text-amber-200/90 font-medium">{article.category}</span>
                   <span className="flex items-center gap-1 text-stone-400">
@@ -172,6 +170,7 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
                 <p className="text-stone-300/90 text-sm font-light leading-relaxed">
                   {article.excerpt}
                 </p>
+                </div>
               </div>
 
               <div className="pt-6 mt-8 border-t border-stone-800/80 flex items-center justify-between">
