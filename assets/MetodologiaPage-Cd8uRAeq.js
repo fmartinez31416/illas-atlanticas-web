@@ -1,4 +1,4 @@
-import{c as m,u as f,j as e,a as b,v as g}from"./main-CgM-QiEh.js";import{M as l,a as v,C as j,F as y}from"./gastroScores-BODcRpsS.js";import"./react-DfSJUp79.js";/**
+import{c as m,u as f,j as e,a as b,v as g}from"./main-CEDoNls0.js";import{M as l,a as v,C as j,F as y}from"./gastroScores-DQ1npEg3.js";import"./react-DfSJUp79.js";/**
  * @license lucide-react v0.546.0 - ISC
  *
  * This source code is licensed under the ISC license.
