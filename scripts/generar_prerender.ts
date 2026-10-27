@@ -14,6 +14,7 @@ import { dirname, join } from 'node:path';
 
 import { PAGE_META, VIEW_META } from '../src/i18n/LangContext';
 import { ARTICLES } from '../src/data/articles';
+import { seoTitle, seoDescription } from '../src/utils/seo';
 
 const BASE = 'https://illasatlanticasatico.es';
 const HOY = new Date().toISOString().slice(0, 10);
@@ -67,8 +68,8 @@ function archivoDe(lang: Lang, path: string): string {
 }
 
 function metaDe(lang: Lang, view: (typeof VIEWS)[number]): { title: string; description: string } {
-  if (view.meta) return view.meta[lang];
-  return VIEW_META[lang][view.key as string] ?? PAGE_META[lang];
+  const raw = view.meta ? view.meta[lang] : (VIEW_META[lang][view.key as string] ?? PAGE_META[lang]);
+  return { title: seoTitle(raw.title), description: seoDescription(raw.description) };
 }
 
 function alternatesTrilingues(path: string): { lang: string; url: string }[] {
@@ -86,8 +87,8 @@ for (const lang of LANGS) {
     archivo: archivoDe(lang, ''),
     url,
     lang,
-    title: PAGE_META[lang].title,
-    description: PAGE_META[lang].description,
+    title: seoTitle(PAGE_META[lang].title),
+    description: seoDescription(PAGE_META[lang].description),
     h1: lang === 'es'
       ? 'El Atlántico a tus pies — ático vacacional en Aguiño (Ribeira, Galicia)'
       : lang === 'en'
@@ -137,8 +138,8 @@ for (const art of ARTICLES) {
       archivo: archivoDe(lang, path),
       url: urlEs,
       lang: 'es',
-      title: `${art.title} · Cuaderno de Bitácora · Illas Atlánticas Ático`,
-      description: art.excerpt,
+      title: seoTitle(art.title),
+      description: seoDescription(art.excerpt),
       h1: art.title,
       intro: art.excerpt,
       alternates: alts,

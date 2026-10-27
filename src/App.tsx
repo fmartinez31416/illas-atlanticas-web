@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { seoTitle, seoDescription } from './utils/seo';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BookingWidget } from './components/BookingWidget';
@@ -45,9 +46,9 @@ function AppInner() {
 
   // Título y meta por idioma
   useEffect(() => {
-    document.title = PAGE_META[lang].title;
+    document.title = seoTitle(PAGE_META[lang].title);
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', PAGE_META[lang].description);
+    if (meta) meta.setAttribute('content', seoDescription(PAGE_META[lang].description));
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
@@ -104,13 +105,13 @@ function AppInner() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
   }, [currentView]);
 
-  // Título y meta por idioma y por página (SEO)
+  // Título y meta por idioma y por página (SEO) — con límites SiteGuru
   useEffect(() => {
     const meta = VIEW_META[lang][currentView];
     if (meta) {
-      document.title = meta.title;
+      document.title = seoTitle(meta.title);
       const d = document.querySelector('meta[name="description"]');
-      if (d) d.setAttribute('content', meta.description);
+      if (d) d.setAttribute('content', seoDescription(meta.description));
     }
   }, [lang, currentView]);
 
@@ -173,6 +174,7 @@ function AppInner() {
           initialArticleSlug={pendingArticle}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -199,6 +201,7 @@ function AppInner() {
           onOpenArticle={openBitacoraArticle}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -213,6 +216,7 @@ function AppInner() {
           onOpenMetodologia={() => setCurrentView('metodologia')}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -226,6 +230,7 @@ function AppInner() {
           onOpenBooking={scrollToBooking}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -239,6 +244,7 @@ function AppInner() {
           onOpenBooking={scrollToBooking}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -252,6 +258,7 @@ function AppInner() {
           onOpenBooking={scrollToBooking}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -262,6 +269,7 @@ function AppInner() {
       <>
         <Suspense fallback={null}><ColaboracionesPage onBack={() => setCurrentView('home')} onOpenBooking={scrollToBooking} /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -276,6 +284,7 @@ function AppInner() {
           onOpenLonja={() => setCurrentView('lonja')}
         /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -286,6 +295,7 @@ function AppInner() {
       <>
         <Suspense fallback={null}><CondicionesPage onBack={() => setCurrentView('home')} /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }
@@ -296,6 +306,7 @@ function AppInner() {
       <>
         <Suspense fallback={null}><LegalPage onBack={() => setCurrentView('home')} /></Suspense>
         <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>
     );
   }

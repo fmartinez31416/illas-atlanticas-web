@@ -457,9 +457,9 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
           <p className="text-xs text-stone-500 leading-relaxed mb-3">{g('nota')}</p>
           <p className="text-xs text-stone-500 leading-relaxed mb-12">
             {g('notaIndice')}
-            <button onClick={onOpenMetodologia} className="text-[#2BA8A8] hover:underline">
+            <a href={`/${lang === 'es' ? '' : lang + '/'}gastronomia/metodologia`} className="text-[#2BA8A8] hover:underline">
               {g('metodologia')}
-            </button>
+            </a>
             .
           </p>
 

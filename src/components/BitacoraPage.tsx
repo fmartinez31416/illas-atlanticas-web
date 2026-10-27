@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Clock, Compass, Tag, MapPin, Gauge } from 'lucide-react';
+import { seoTitle, seoDescription } from '../utils/seo';
 import { getArticles, ARTICLES as RAW_ARTICLES, Article } from '../data/articles';
 import { ArticleModal } from './ArticleModal';
 import { PuenteView } from './PuenteView';
@@ -28,10 +29,12 @@ export function BitacoraPage({ onBack, onOpenBooking, initialArticleSlug }: Bita
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // URL y meta propios por artículo (SEO): /bitacora/<slug>
+  // URL y meta propios por artículo (SEO): /bitacora/<slug> — límites SiteGuru
   useEffect(() => {
     if (selectedArticle && selectedArticle.slug) {
-      document.title = `${selectedArticle.title} · Illas Atlánticas Ático`;
+      document.title = seoTitle(selectedArticle.title);
+      const d = document.querySelector('meta[name="description"]');
+      if (d) d.setAttribute('content', seoDescription(selectedArticle.excerpt));
       window.history.pushState(null, '', `/bitacora/${selectedArticle.slug}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

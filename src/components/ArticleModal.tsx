@@ -117,6 +117,15 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
             </button>
           </div>
 
+          {article.slug && (
+            <div className="flex items-center justify-center gap-4 px-6 py-2 bg-stone-100 border-b border-stone-200 text-[11px] uppercase tracking-[0.15em] text-stone-500">
+              <span>{t("Leer en")}:</span>
+              <a href={`/bitacora/${article.slug}`} lang="es" className="hover:text-amber-800 text-stone-700 font-semibold">ES</a>
+              <a href={`/en/bitacora/${article.slug}`} lang="en" className="hover:text-amber-800 text-stone-700">EN</a>
+              <a href={`/gl/bitacora/${article.slug}`} lang="gl" className="hover:text-amber-800 text-stone-700">GL</a>
+            </div>
+          )}
+
           <article className="px-6 sm:px-12 md:px-16 py-10 sm:py-14 space-y-8 max-w-3xl mx-auto pb-16">
             {article.cover && (
               <figure className="rounded-sm overflow-hidden border border-stone-200 shadow-sm">
