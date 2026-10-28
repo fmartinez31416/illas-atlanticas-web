@@ -738,7 +738,7 @@ export const FOOTERS: Record<string, string> = {
   'la-falacia-del-mapa-del-tiempo-microclima-aguiño': 'El mapa del tiempo miente a un kilómetro; la ría dice la verdad cada mañana. Si quieres tu propio pronóstico, la casa tiene el mejor observatorio: la terraza.',
   '6': 'La guía está escrita desde la casa: todo lo que en ella se cuenta queda a un paseo, en barco o a la vista. Ven con la guía leída y marca los lugares con los pies.',
   '7': 'Este artículo describe la casa por dentro; la única forma de comprobar que no exagera es dormir en ella. Las vistas no se describen dos veces: se comprueban.',
-  '8': 'Por la noche, el faro de Sálvora parpadea delante de la terraza, a la vista de la casa. Corrubedo y Ons guardan sus destellos para quien navega la bocana — este artículo los cuenta para entenderlos.',
+  '8': 'Por la noche, desde la terraza, se ven dos faros de la bocana: Sálvora, delante, y Ons al fondo. Corrubedo queda para el mirador de A Pedra da Ra — y para quien navega.',
   '9': 'El Índice puntúa con matemáticas; el paladar puntúa con la cena. Duerme en la casa y somete el ranking a prueba en persona: los 27 locales están a un paseo o a un paseo en coche.',
 };
 
