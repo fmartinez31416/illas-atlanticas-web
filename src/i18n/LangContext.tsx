@@ -107,8 +107,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
     },
     club: {
-      title: 'Club de Huéspedes · En preparación · Illas Atlánticas Ático',
-      description: 'El club de huéspedes del ático de Aguiño está en preparación: deja tu aviso y serás de los primeros en conocerlo.',
+      title: 'Club de Huéspedes · Illas Atlánticas Ático',
+      description: 'El club de los que ya han dormido en la casa: por cada amigo que traigas, un 5 % de su reserva en crédito para las tuyas. Sin tope, canjeable cuando quieras.',
     },
     planificador: {
       title: 'Planifica tu estancia en Aguiño · Illas Atlánticas Ático',
@@ -153,8 +153,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of the stay.',
     },
     club: {
-      title: 'Guest Club · Coming soon · Illas Atlánticas Ático',
-      description: 'The guest club of the Aguiño penthouse is being prepared: leave your details and be among the first to know.',
+      title: 'Guest Club · Illas Atlánticas Ático',
+      description: 'The club for those who have already slept in the house: for every friend you bring, 5 % of their booking as credit towards yours. No cap, redeemable whenever you like.',
     },
     planificador: {
       title: 'Plan your stay in Aguiño · Illas Atlánticas Ático',
@@ -199,8 +199,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo anfitrión para cada estación e cada momento da estadía.',
     },
     club: {
-      title: 'Club de Hóspedes · En preparación · Illas Atlánticas Ático',
-      description: 'O club de hóspedes do ático de Aguiño está en preparación: deixa o teu aviso e serás dos primeiros en coñecelo.',
+      title: 'Club de Hóspedes · Illas Atlánticas Ático',
+      description: 'O club dos que xa durmiron na casa: por cada amigo que traias, un 5 % da súa reserva en crédito para as túas. Sen tope, canxeable cando queiras.',
     },
     planificador: {
       title: 'Planifica a túa estadía en Aguiño · Illas Atlánticas Ático',
