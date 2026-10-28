@@ -52,6 +52,108 @@ interface Pagina {
   intro: string;
   alternates: { lang: string; url: string }[];  // hreflang (incluye x-default)
   breadcrumb: { name: string; url: string }[];
+  listaArticulos?: string;  // HTML estático con <a> a los artículos (solo shells de /bitacora)
+  article?: { headline: string; description: string; author: string; datePublished?: string };
+}
+
+function esc(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/** Reserva directa: motor de reservas de Beds24 (enlace saliente real en TODAS las carcasa). */
+const RESERVA = `https://beds24.com/booking2.php?propid=349411&lang=es`;
+
+/** Fecha de temporada humana ('Otoño 2026', 'Septiembre 2026'…) → ISO honesto. Sin dato no inventamos: undefined. */
+function fechaISO(date: string): string | undefined {
+  const m = date.match(/(\d{4})/);
+  if (!m) return undefined;
+  const y = m[1];
+  const meses: Record<string, string> = {
+    enero: '01', febrero: '02', marzo: '03', abril: '04', mayo: '05', junio: '06',
+    julio: '07', agosto: '08', septiembre: '09', octubre: '10', noviembre: '11', diciembre: '12',
+  };
+  for (const [nombre, mm] of Object.entries(meses)) {
+    if (date.toLowerCase().includes(nombre)) return `${y}-${mm}-01`;
+  }
+  if (date.toLowerCase().includes('otoño') || date.toLowerCase().includes('outono')) return `${y}-09-22`;
+  if (date.toLowerCase().includes('verano') || date.toLowerCase().includes('verán')) return `${y}-06-21`;
+  if (date.toLowerCase().includes('primavera')) return `${y}-03-20`;
+  if (date.toLowerCase().includes('invierno') || date.toLowerCase().includes('inverno')) return `${y}-12-21`;
+  return undefined;
+}
+
+const NAV_LABELS: Record<Lang, { inicio: string; club: string; gastro: string; bitacora: string; plan: string; lonja: string; musica: string; legal: string; reserva: string }> = {
+  es: { inicio: 'Inicio', club: 'El club', gastro: 'Gastronomía', bitacora: 'Bitácora', plan: 'Planificador', lonja: 'La lonja', musica: 'Música', legal: 'Legal', reserva: 'Reserva directa' },
+  en: { inicio: 'Home', club: 'The club', gastro: 'Gastronomy', bitacora: 'Journal', plan: 'Trip planner', lonja: 'Fish market', musica: 'Music', legal: 'Legal', reserva: 'Direct booking' },
+  gl: { inicio: 'Inicio', club: 'O club', gastro: 'Gastronomía', bitacora: 'Bitácora', plan: 'Planificador', lonja: 'A lonxa', musica: 'Música', legal: 'Legal', reserva: 'Reserva directa' },
+};
+
+/** Navegación estática con <a> REALES dentro de #root: los rastreadores de HTML crudo
+ *  (Ahrefs, Letaido…) ven enlaces salientes en cada página. React la sustituye al hidratar. */
+function shellNav(p: Pagina): string {
+  const L = NAV_LABELS[p.lang] ?? NAV_LABELS.es;
+  const enlaces: [string, string][] = [
+    [L.inicio, urlDe(p.lang, '')],
+    [L.club, urlDe(p.lang, 'club')],
+    [L.gastro, urlDe(p.lang, 'gastronomia')],
+    [L.bitacora, urlDe(p.lang, 'bitacora')],
+    [L.plan, urlDe(p.lang, 'planificador')],
+    [L.lonja, urlDe(p.lang, 'lonja')],
+    [L.musica, urlDe(p.lang, 'musica')],
+    [L.legal, urlDe(p.lang, 'legal')],
+    [L.reserva, RESERVA],
+  ];
+  const items = enlaces
+    .map(([label, href]) => `<a href="${href}" style="color:#1A3A5C;text-decoration:none;margin:0.35rem 0.6rem;display:inline-block;border-bottom:1px solid #1A3A5C;">${esc(label)}</a>`)
+    .join('');
+  return `\n      <nav aria-label="Navegación" style="font-family:Georgia,'Times New Roman',serif;font-size:0.95rem;text-align:center;padding:0.5rem 1.5rem 2rem;line-height:1.6;">${items}</nav>`;
+}
+
+/** Lista estática de artículos (solo shells de /bitacora): da enlaces entrantes reales a los 16 artículos. */
+function listaArticulosHtml(lang: Lang): string {
+  const items = ARTICLES.filter((a) => a.slug)
+    .map((a) => `<li style="margin:0.4rem 0;"><a href="${urlDe(lang, `bitacora/${a.slug}`)}" style="color:#1A3A5C;">${esc(a.title)}</a></li>`)
+    .join('');
+  return `\n      <ul style="font-family:Georgia,'Times New Roman',serif;font-size:0.95rem;color:#1A3A5C;list-style:none;padding:0.5rem 1.5rem 2rem;text-align:center;margin:0;">${items}</ul>`;
+}
+
+function orgLd(): string {
+  return `    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Illas Atlánticas Ático",
+      "url": "${BASE}/",
+      "logo": "${BASE}/logo.png"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Illas Atlánticas Ático",
+      "url": "${BASE}/",
+      "inLanguage": ["es", "en", "gl"]
+    }
+    </script>`;
+}
+
+function articleLd(p: Pagina): string {
+  const a = p.article!;
+  const pub = a.datePublished ? `,\n      "datePublished": "${a.datePublished}"` : '';
+  return `    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "${esc(a.headline)}",
+      "description": "${esc(a.description)}",
+      "author": { "@type": "Organization", "name": "${esc(a.author)}" },
+      "publisher": { "@type": "Organization", "name": "Illas Atlánticas Ático" },
+      "mainEntityOfPage": "${p.url}",
+      "dateModified": "${HOY}",
+      "inLanguage": "es"${pub}
+    }
+    </script>`;
 }
 
 function urlDe(lang: Lang, path: string): string {
@@ -148,7 +250,20 @@ for (const art of ARTICLES) {
         { name: 'Cuaderno de Bitácora', url: `${BASE}/bitacora` },
         { name: art.title, url: urlEs },
       ],
+      article: {
+        headline: art.title,
+        description: art.excerpt,
+        author: art.author ?? 'Cuaderno Atlántico',
+        datePublished: fechaISO(art.date),
+      },
     });
+  }
+}
+
+// 4. Lista estática de artículos en las carcasas de /bitacora (enlaces entrantes reales a los 16)
+for (const p of paginas) {
+  if (p.url === urlDe(p.lang, 'bitacora')) {
+    p.listaArticulos = listaArticulosHtml(p.lang);
   }
 }
 
@@ -208,7 +323,12 @@ for (const p of paginas) {
   // H1 + intro estáticos dentro de #root
   html = html.replace(
     /<h1 style="[^"]*">[\s\S]*?<\/p>/,
-    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${p.h1.replace(/&/g, '&amp;')}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${p.intro.replace(/&/g, '&amp;')}</p>`,
+    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}`,
+  );
+  // JSON-LD por página: Organization+WebSite siempre; Article en artículos (antes de </head>)
+  html = html.replace(
+    '</head>',
+    `${p.article ? articleLd(p) + '\n' : ''}${orgLd()}\n  </head>`,
   );
   mkdirSync(dirname(p.archivo), { recursive: true });
   writeFileSync(p.archivo, html);
