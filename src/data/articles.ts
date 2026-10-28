@@ -12,6 +12,7 @@ export interface Article {
   cover?: string;
   coverSquare?: string;
   content: string;
+  footer?: string;
 }
 
 export const ARTICLES: Article[] = [
@@ -722,9 +723,29 @@ El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún 
 import { trc } from '../i18n/dataTranslations';
 import { Lang } from '../i18n/types';
 
+export const FOOTERS: Record<string, string> = {
+  '16': 'Elegiste bien la zona: la guía termina donde empieza la casa — en Aguiño, a diez minutos del centro de Ribeira y con la ría como vecina. Cuando quieras comprobar en persona lo que aquí se describe, mira las fechas.',
+  '14': 'Cortegada se visita en barco y se recuerda desde la cama: desde las ventanas del ático la ves flotar al fondo de la ría. Reserva tu fecha y deja que la isla del lauredal forme parte del paisaje.',
+  '15': 'La leyenda dice que la sirena se dejaba oír desde la costa; los huéspedes solo confirman el rumor del mar al amanecer. Duerme a un golpe de vista de la isla y juzga tú mismo.',
+  '12': 'El tesoro de Rande sigue en el fondo de la ría, donde lo dejó la historia; la vista de las Cíes, en cambio, se cobra todos los días desde la terraza. La ría guarda su parte — la tuya es mirarla.',
+  '13': 'El Buraco ruge en Ons, y Ons está enfrente: el rugido de la furna es de los pocos sonidos que la casa deja a la distancia. El otro es la subasta de la lonja, a un paseo.',
+  '10': 'La Laxe espera a quien camine Ons con la marea a favor; de vuelta, la casa espera con la bañera de hidromasaje para los que caminaron de más. Las vistas desde la terraza se agradecen sin andar un metro.',
+  '11': 'César no pudo con las Cíes; tú puedes — con billete de barco, no con balsas. Los barcos a las islas salen del puerto de Aguiño, a dos calles de la casa.',
+  '1': 'La memoria del Santa Isabel vive en Sálvora, y Sálvora se ve desde la casa. Ven a dormir frente a la isla que guarda una de las mayores gestas civiles del mar gallego.',
+  '2': 'En la ría, las distancias engañan: Sálvora parece a un paso y las bateas ordenan el horizonte. Comprueba la geometría del mar desde la terraza, con mapa en mano y café de la casa.',
+  '3': 'El percebe de Aguiño se juega la vida en la rompiente y llega a la lonja a un paseo de la casa. Cómpralo por la mañana, cuécelo por la noche y cómetelo mirando la ría.',
+  '4': 'Las bateas son la arquitectura del mar: se ven todas desde la terraza, ordenadas como un viñedo flotante. Y el mejillón que crían, en la lonja de Aguiño, a cuatro minutos a pie.',
+  'la-falacia-del-mapa-del-tiempo-microclima-aguiño': 'El mapa del tiempo miente a un kilómetro; la ría dice la verdad cada mañana. Si quieres tu propio pronóstico, la casa tiene el mejor observatorio: la terraza.',
+  '6': 'La guía está escrita desde la casa: todo lo que en ella se cuenta queda a un paseo, en barco o a la vista. Ven con la guía leída y marca los lugares con los pies.',
+  '7': 'Este artículo describe la casa por dentro; la única forma de comprobar que no exagera es dormir en ella. Las vistas no se describen dos veces: se comprueban.',
+  '8': 'Por la noche, desde la terraza, se cuentan los destellos de Corrubedo y Sálvora como los cuentan los marineros: en grupos y cadencia. Solo faltas tú contándolos.',
+  '9': 'El Índice puntúa con matemáticas; el paladar puntúa con la cena. Duerme en la casa y somete el ranking a prueba en persona: los 27 locales están a un paseo o a un paseo en coche.',
+};
+
 export function getArticles(lang: Lang): Article[] {
   return ARTICLES.map((a) => ({
     ...a,
+    footer: FOOTERS[a.id] ? trc(`art.${a.id}.footer`, lang, FOOTERS[a.id]) : undefined,
     category: trc(`art.${a.id}.category`, lang, a.category),
     title: trc(`art.${a.id}.title`, lang, a.title),
     excerpt: trc(`art.${a.id}.excerpt`, lang, a.excerpt),

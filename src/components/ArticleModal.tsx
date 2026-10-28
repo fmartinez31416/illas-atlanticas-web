@@ -175,7 +175,7 @@ export function ArticleModal({ article, onClose, onOpenBooking }: ArticleModalPr
               </h3>
 
               <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-                {t("Desde el salón y la terraza privada de")} <em>{t("Illas Atlánticas Ático")}</em>{t("en Aguiño, el perfil de las islas, las bateas y el puerto presiden el horizonte día y noche. Máxima tranquilidad, confort y autenticidad sin intermediarios.")}
+                {article.footer ?? t("Desde el salón y la terraza privada de")}
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stone-800">
