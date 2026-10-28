@@ -13,7 +13,7 @@ export function SplitScreenValue() {
         <div className="relative h-[58svh] lg:h-auto overflow-hidden">
           <div className="absolute inset-0 lg:sticky lg:top-0 lg:h-screen">
             <img
-              src={`${import.meta.env.BASE_URL}fotos/salon_01.jpg`}
+              src={`${import.meta.env.BASE_URL}fotos/vistas_terraza_17.jpg`}
               alt={t('SplitScreen.photoAlt')}
               className="w-full h-full object-cover"
               loading="lazy"

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { ArrowLeft, Gift, Users, Send, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Gift, Users, Send, ShieldCheck, CalendarCheck, Sparkles } from 'lucide-react';
 import { useI18n } from '../i18n/LangContext';
 
 interface ClubPageProps {
@@ -12,56 +12,51 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Club de huéspedes', en: 'Guest club', gl: 'Club de hóspedes' },
   titulo: { es: 'Club Illas Atlánticas', en: 'Illas Atlánticas Club', gl: 'Club Illas Atlánticas' },
   claim: {
-    es: 'El club de huéspedes está en preparación. Todavía no podemos anunciar sus condiciones, y preferimos no prometer lo que aún no está cerrado. Si quieres que te avisemos cuando abra, deja tu email y te escribirá Fernando.',
-    en: 'The guest club is being prepared. We cannot announce its conditions yet, and we would rather not promise what is not yet decided. If you want to be told when it opens, leave your email and Fernando will write to you.',
-    gl: 'O club de hóspedes está en preparación. Aínda non podemos anunciar as súas condicións, e preferimos non prometer o que aínda non está pechado. Se queres que te avisemos cando abra, deixa o teu email e escribirate Fernando.',
+    es: 'El club de los que ya han dormido en la casa. Trae amigos, gana créditos y vuelve por menos. Sin tarjetas ni niveles — solo un trato justo.',
+    en: 'The club for those who have already slept in the house. Bring friends, earn credits and come back for less. No cards, no tiers — just a fair deal.',
+    gl: 'O club dos que xa durmiron na casa. Trae amigos, gaña créditos e volve por menos. Sen tarxetas nin niveis — só un trato xusto.',
   },
-  soloRegistro: {
-    es: 'Solo registro',
-    en: 'Sign-up only',
-    gl: 'Só rexistro',
+  regla1Titulo: { es: '1 · Ganas', en: '1 · You earn', gl: '1 · Gañas' },
+  regla1: {
+    es: 'Por cada amigo que reserve por recomendación tuya y complete su estancia, ganas el 5 % del valor de su reserva en crédito para las tuyas. Sin tope de amigos ni de créditos: cuantas más estancias generes, más crédito acumulas.',
+    en: 'For every friend who books on your recommendation and completes their stay, you earn 5 % of their booking value as credit towards yours. No cap on friends or credits: the more stays you generate, the more credit you build.',
+    gl: 'Por cada amigo que reserve por recomendación túa e complete a súa estadía, gañas o 5 % do valor da súa reserva en crédito para as túas. Sen tope de amigos nin de créditos: cantas máis estadías xeres, máis crédito acumulas.',
   },
-  niveles: { es: 'En preparación', en: 'Being prepared', gl: 'En preparación' },
-  enPreparacion: {
-    es: 'Cuando el club abra, publicaremos aquí sus condiciones completas. Mientras tanto no hay tarjeta, cuota ni ventaja que podamos ofrecerte.',
-    en: 'When the club opens, we will publish its full conditions here. Until then there is no card, fee or perk we can offer you.',
-    gl: 'Cando o club abra, publicaremos aquí as súas condicións completas. Mentres tanto non hai tarxeta, cota nin vantaxe que poidamos ofrecerche.',
+  regla2Titulo: { es: '2 · Canjeas', en: '2 · You redeem', gl: '2 · Canxeas' },
+  regla2: {
+    es: 'Aplica tus créditos a la estancia que tú elijas, en las fechas que tú elijas — también en agosto. Bajan el precio de tu reserva. Único límite: el crédito no puede superar el total de la reserva (no devolvemos dinero ni reembolsamos el crédito).',
+    en: 'Apply your credits to whichever stay you choose, on whichever dates you choose — August included. They lower the price of your booking. Only limit: the credit cannot exceed the booking total (no cash back, credits are non-refundable).',
+    gl: 'Aplica os teus créditos á estadía que ti elixas, nas datas que ti elixas — tamén en agosto. Baixan o prezo da túa reserva. Único límite: o crédito non pode superar o total da reserva (non devolvemos cartos nin reembolsamos o crédito).',
   },
-  estancia: { es: 'estancia', en: 'stay', gl: 'estadía' },
-  estancias: { es: 'estancias', en: 'stays', gl: 'estadías' },
-  referidos: { es: 'Motor de recomendación', en: 'Referral engine', gl: 'Motor de recomendación' },
-  referidosTexto: {
-    es: 'Por cada amigo que reserve por recomendación tuya y complete una estancia de al menos 3 noches, ganas un 5 % en tu próxima reserva directa. Sin límite: puedes llegar a una estancia gratis. Se redime fuera de temporada alta y caduca a los 12 meses.',
-    en: 'For every friend who books on your recommendation and completes a stay of at least 3 nights, you earn 5 % off your next direct booking. No limit: you can earn a free stay. Redeemable outside high season, valid for 12 months.',
-    gl: 'Por cada amigo que reserve por recomendación túa e complete unha estadía de polo menos 3 noites, gañas un 5 % na túa próxima reserva directa. Sen límite: podes chegar a unha estadía gratis. Redímese fóra da tempada alta e caduca aos 12 meses.',
+  regla3Titulo: { es: '3 · El truco', en: '3 · The trick', gl: '3 · O truco' },
+  regla3: {
+    es: 'Como en las aerolíneas: los créditos pueden valer más según cuándo los uses. De vez en cuando lanzamos ofertas tipo «tus créditos valen el doble en noviembre». Nunca bloqueamos fechas — solo hacemos que tu crédito rinda más en temporada baja.',
+    en: 'Like the airlines: credits can be worth more depending on when you use them. From time to time we run offers like "your credits are worth double in November". We never block dates — we just make your credit go further in low season.',
+    gl: 'Como nas aeroliñas: os créditos poden valer máis segundo cando os uses. De cando en vez lanzamos ofertas tipo «os teus créditos valen o dobre en novembro». Nunca bloqueamos datas — só facemos que o teu crédito renda máis en tempada baixa.',
   },
-  tarjeta: { es: 'Tu tarjeta virtual', en: 'Your virtual card', gl: 'A túa tarxeta virtual' },
-  tarjetaTexto: {
-    es: 'La tarjeta del club se guarda en el móvil y viaja contigo. ¿Quieres tu foto en ella? Mándanosla a info@illasatlanticasatico.es y la añadimos.',
-    en: 'Your club card lives on your phone. Want your photo on it? Send it to info@illasatlanticasatico.es and we will add it.',
-    gl: 'A tarxeta do club gárdase no móbil e viaxa contigo. Queres a túa foto nela? Mándanola a info@illasatlanticasatico.es e engadímola.',
+  letraPequena: {
+    es: 'Los créditos caducan a los 24 meses de generarse. Un descuento por reserva: el crédito del club no se combina con el descuento de estancias largas. Los créditos son personales e intransferibles.',
+    en: 'Credits expire 24 months after they are earned. One discount per booking: club credit does not combine with the long-stay discount. Credits are personal and non-transferable.',
+    gl: 'Os créditos caducan aos 24 meses de xerarse. Un desconto por reserva: o crédito do club non se combina co desconto de estadías longas. Os créditos son persoais e intransferibles.',
   },
-  registro: { es: 'Avisos del club', en: 'Club updates', gl: 'Avisos do club' },
+  registro: { es: 'Únete al club', en: 'Join the club', gl: 'Únete ao club' },
   nombre: { es: 'Tu nombre', en: 'Your name', gl: 'O teu nome' },
   email: { es: 'Tu email', en: 'Your email', gl: 'O teu email' },
-  fechaEstancia: { es: 'Fecha de tu estancia (opcional)', en: 'Date of your stay (optional)', gl: 'Data da túa estadía (opcional)' },
+  fechaEstancia: { es: 'Fecha de tu última estancia (opcional)', en: 'Date of your last stay (optional)', gl: 'Data da túa última estadía (opcional)' },
   consent: {
-    es: 'Acepto recibir un máximo de 1 email al mes sobre el club (novedades y apertura) y que mis datos se guarden con esta única finalidad. Sin spam, sin cesiones a terceros.',
-    en: 'I agree to receive at most 1 email a month about the club (news and opening) and to my data being stored for this purpose only. No spam, no third parties.',
-    gl: 'Acepto recibir como máximo 1 email ao mes sobre o club (novidades e apertura) e que os meus datos se garden só con esta finalidade. Sen spam, sen cesións a terceiros.',
+    es: 'Acepto recibir un máximo de 1 email al mes del club (novedades y ofertas de crédito) y que mis datos se guarden con esta única finalidad. Sin spam, sin cesiones a terceros.',
+    en: 'I agree to receive at most 1 email a month from the club (news and credit offers) and to my data being stored for this purpose only. No spam, no third parties.',
+    gl: 'Acepto recibir como máximo 1 email ao mes do club (novidades e ofertas de crédito) e que os meus datos se garden só con esta finalidade. Sen spam, sen cesións a terceiros.',
   },
-  unirme: { es: 'Avísame cuando abra', en: 'Tell me when it opens', gl: 'Avísame cando abra' },
+  unirme: { es: 'Únete al club', en: 'Join the club', gl: 'Únete ao club' },
   enviando: { es: 'Enviando…', en: 'Sending…', gl: 'Enviando…' },
   exito: {
-    es: 'Gracias. Te escribiremos cuando el club abra.',
-    en: 'Thank you. We will write to you when the club opens.',
-    gl: 'Grazas. Escribirémosche cando o club abra.',
+    es: 'Bienvenido al club. Fernando te escribirá para confirmar el alta y explicarte cómo recomendar a tus amigos.',
+    en: 'Welcome to the club. Fernando will write to confirm your membership and explain how to refer your friends.',
+    gl: 'Benvido ao club. Fernando escribirate para confirmar a alta e explicarche como recomendar aos teus amigos.',
   },
   errorVal: { es: 'Revisa el nombre y el email — algo no cuadra.', en: 'Check your name and email — something is off.', gl: 'Revisa o nome e o email — algo non cadra.' },
   errorRed: { es: 'No ha llegado al servidor. Inténtalo de nuevo en un momento.', en: 'The server did not receive it. Try again in a moment.', gl: 'Non chegou ao servidor. Téntao de novo nun momento.' },
-  socio: { es: 'Socio nº', en: 'Member nº', gl: 'Socio nº' },
-  desde: { es: 'Desde', en: 'Member since', gl: 'Desde' },
-  tuNombre: { es: 'Tu nombre', en: 'Your name', gl: 'O teu nome' },
   reservar: { es: 'Reservar', en: 'Book', gl: 'Reservar' },
   avisoIA: {
     es: 'Texto revisado por Fernando. Los datos se guardan en nuestro propio buzón, sin servicios de terceros.',
@@ -101,6 +96,12 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
     }
   };
 
+  const reglas = [
+    { icon: Gift, titulo: 'regla1Titulo', texto: 'regla1' },
+    { icon: CalendarCheck, titulo: 'regla2Titulo', texto: 'regla2' },
+    { icon: Sparkles, titulo: 'regla3Titulo', texto: 'regla3' },
+  ];
+
   return (
     <div className="min-h-screen text-white" style={{ background: '#0B1524' }}>
       <div className="max-w-5xl mx-auto px-5 py-10">
@@ -116,13 +117,18 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
           <p className="text-white/80 max-w-2xl mx-auto leading-relaxed">{g('claim')}</p>
         </div>
 
-        {/* En preparación */}
-        <div className="mb-14 max-w-2xl mx-auto text-center">
-          <div className="flex items-center gap-2 text-amber-300 mb-4 justify-center">
-            <Gift size={16} />
-            <h2 className="text-xl" style={{ fontFamily: 'Georgia, serif' }}>{g('niveles')}</h2>
-          </div>
-          <p className="text-white/85 leading-relaxed">{g('enPreparacion')}</p>
+        {/* Las tres reglas */}
+        <div className="mb-10 max-w-2xl mx-auto space-y-4">
+          {reglas.map(({ icon: Icon, titulo, texto }) => (
+            <div key={titulo} className="bg-white/5 border border-white/15 rounded-xl p-6">
+              <div className="flex items-center gap-2 text-amber-300 mb-3">
+                <Icon size={18} />
+                <h2 className="text-lg font-bold" style={{ fontFamily: 'Georgia, serif' }}>{g(titulo)}</h2>
+              </div>
+              <p className="text-white/85 leading-relaxed">{g(texto)}</p>
+            </div>
+          ))}
+          <p className="text-white/50 text-sm leading-relaxed px-2">{g('letraPequena')}</p>
         </div>
 
         {/* Registro */}
