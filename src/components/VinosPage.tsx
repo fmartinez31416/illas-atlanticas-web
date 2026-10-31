@@ -50,9 +50,9 @@ const T: Record<string, { es: string; en: string; gl: string }> = {
   revisar: { es: 'añada por confirmar', en: 'vintage to confirm', gl: 'anada por confirmar' },
   sinNota: { es: 'sin nota todavía', en: 'no score yet', gl: 'sen nota aínda' },
   datos: {
-    es: 'Datos verificados el 31 de octubre de 2026. Las puntuaciones pertenecen a sus autores; aquí solo se agregan con método público. El Índice G no vende puntuaciones ni favores: su activo es la independencia.',
-    en: 'Data verified on 31 October 2026. The scores belong to their authors; here they are only aggregated with a public method. The Índice G does not sell scores or favours: its asset is independence.',
-    gl: 'Datos verificados o 31 de outubro de 2026. As puntuacións pertencen aos seus autores; aquí só se agregan cun método público. O Índice G non vende puntuacións nin favores: o seu activo é a independencia.',
+    es: 'Datos verificados el 31 de octubre de 2026. Las puntuaciones pertenecen a sus autores; aquí solo se agregan con método público. El Índice G no vende puntuaciones ni favores: su activo es la independencia. Nota: las fichas de Peñín y Decanter pueden mostrar primero un aviso de suscripción — se cierra y la nota queda visible en la ficha pública.',
+    en: 'Data verified on 31 October 2026. The scores belong to their authors; here they are only aggregated with a public method. The Índice G does not sell scores or favours: its asset is independence. Note: Peñín and Decanter listings may show a subscription prompt first — close it and the score remains visible on the public listing.',
+    gl: 'Datos verificados o 31 de outubro de 2026. As puntuacións pertencen aos seus autores; aquí só se agregan cun método público. O Índice G non vende puntuacións nin favores: o seu activo é a independencia. Nota: as fichas de Peñín e Decanter poden mostrar antes un aviso de subscrición — péchase e a nota queda visible na ficha pública.',
   },
   cierre: {
     es: 'El vino, en la terraza que lee el mar',
@@ -236,7 +236,7 @@ export function VinosPage({ onBack, onOpenBooking }: Props) {
                         href={f.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 border border-stone-700 hover:border-[#D4A017] px-2.5 py-1 text-[11px] text-stone-300 hover:text-[#D4A017] transition-colors"
+                        className="inline-flex items-center gap-1.5 border border-stone-700 hover:border-[#D4A017] px-3 py-1.5 text-xs text-stone-300 hover:text-[#D4A017] transition-colors"
                       >
                         {f.fn} {f.raw !== null && <span className="font-semibold">{f.raw}</span>}
                         {f.anada && <span className="text-stone-500">{f.anada}</span>}
