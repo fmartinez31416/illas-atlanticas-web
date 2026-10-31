@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { seoTitle, seoDescription } from './utils/seo';
+import { trackVista, trackOrigen } from './utils/clarityTrack';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { SplitScreenValue } from './components/SplitScreenValue';
@@ -117,7 +118,13 @@ function AppInner() {
       const d = document.querySelector('meta[name="description"]');
       if (d) d.setAttribute('content', seoDescription(meta.description));
     }
+    trackVista(currentView);
   }, [lang, currentView]);
+
+  // Origen de la visita (UTM/referente): una vez por sesión, para filtrar en Clarity por campaña.
+  useEffect(() => {
+    trackOrigen();
+  }, []);
 
   // Canonical autorreferente por página e idioma (coherente con hreflang)
   useEffect(() => {

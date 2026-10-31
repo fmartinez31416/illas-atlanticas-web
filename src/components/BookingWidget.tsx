@@ -3,6 +3,7 @@ import { Calendar, Users, ArrowRight, MessageCircle, Ticket } from 'lucide-react
 import { t } from '../i18n/translate';
 import { useI18n } from '../i18n/LangContext';
 import { NIA_API_URL } from '../niaConfig';
+import { trackCtaReserva } from '../utils/clarityTrack';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -93,6 +94,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
   };
 
   const handleWhatsAppBooking = () => {
+    trackCtaReserva('whatsapp');
     const text = encodeURIComponent(
       t("Hola, me gustaría consultar disponibilidad directa para Illas Atlánticas Ático. Fechas: del {checkIn} al {checkOut} ({nights} noches). Ocupantes: {adults} adultos, {children} niños. ¿Tienen disponibilidad confirmada para estas fechas?", { checkIn, checkOut, nights, adults, children })
     );
@@ -179,7 +181,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             <div className="flex items-center gap-2.5 shrink-0">
               <button
                 id="booking-beds24-confirm-btn"
-                onClick={() => setMotorAbierto(!motorAbierto)}
+                onClick={() => { setMotorAbierto(!motorAbierto); if (!motorAbierto) trackCtaReserva('pantalla'); }}
                 className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
                 <span>{motorAbierto ? t('Cerrar reserva') : t('Ver precio y reservar')}</span>
@@ -254,6 +256,7 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
                     href={beds24Url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackCtaReserva('motor')}
                     className="text-[11px] text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]"
                   >
                     {t("Abrir en ventana nueva ↗")}
