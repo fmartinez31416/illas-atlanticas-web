@@ -29,7 +29,7 @@ AddDefaultCharset utf-8
   RewriteRule ^blog/festa-percebe-aguino-guia/?$ /bitacora/percebe-bravura-rompiente-aguiño-tabla-salmuera [R=301,L]
   RewriteRule ^blog/guia-completa-playas-ribeira/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
   RewriteRule ^blog/guia-parque-natural-corrubedo/?$ /bitacora/faros-boca-ria-salvora-corrubedo-ons [R=301,L]
-  RewriteRule ^blog/mejores-miradores-barbanza/?$ /bitacora/la-ilusion-de-la-linea-recta-cartografia-aguiño-salvora [R=301,L]
+  RewriteRule ^blog/mejores-miradores-barbanza/?$ /bitacora/la-ilusion-de-la-linea-recta-cartografia-aguiño-a-lanzada [R=301,L]
   RewriteRule ^blog/ruta-albarino-desde-aguino/?$ /gastronomia [R=301,L]
   RewriteRule ^blog/tour-castros-barbanza/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
   RewriteRule ^ubicacion/naturaleza/?$ /bitacora/guia-aguino-parque-nacional-illas-atlanticas [R=301,L]
@@ -40,6 +40,10 @@ AddDefaultCharset utf-8
   # prerenderizadas (title/canonical/hreflang propios por ruta e idioma).
   RewriteRule ^es/?$ / [R=301,L]
   RewriteRule ^es/(.+?)/?$ /$1 [R=301,L]
+
+  # Artículos: solo existe la versión ES (contenido único, canonical ES);
+  # las rutas /en/ y /gl/ de la bitácora consolidan en / (301).
+  RewriteRule ^(en|gl)/bitacora/(.+?)/?$ /bitacora/$2 [R=301,L]
 
   # --- 2. Ficheros reales (assets, fotos, favicon, ical, llms.txt...) se sirven tal cual ---
   RewriteCond %{REQUEST_FILENAME} -f
