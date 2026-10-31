@@ -11,16 +11,16 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Música · Banda sonora de la casa', en: 'Music · The house soundtrack', gl: 'Música · Banda sonora da casa' },
   titulo: { es: 'La música de la casa', en: 'The music of the house', gl: 'A música da casa' },
   intro: {
-    es: 'Tres listas originales compuestas y producidas por el anfitrión para acompañar cada estancia: la BSO Oficial (mar, niebla y atardeceres), la Bailable (fiesta en la terraza) y la Alegre (luz para las cuatro estaciones).',
-    en: 'Three original playlists composed and produced by the host to accompany every stay: the Official Soundtrack (sea, fog and sunsets), the Dance one (terrace party) and the Bright one (light for the four seasons).',
-    gl: 'Tres listas orixinais compostas e producidas polo anfitrión para acompañar cada estadía: a BSO Oficial (mar, néboa e solpores), a Bailable (festa na terraza) e a Alegre (luz para as catro estacións).',
+    es: 'Tres listas originales compuestas y producidas por el propietario para acompañar cada estancia: la BSO Oficial (mar, niebla y atardeceres), la Bailable (fiesta en la terraza) y la Alegre (luz para las cuatro estaciones).',
+    en: 'Three original playlists composed and produced by the owner to accompany every stay: the Official Soundtrack (sea, fog and sunsets), the Dance one (terrace party) and the Bright one (light for the four seasons).',
+    gl: 'Tres listas orixinais compostas e producidas polo propietario para acompañar cada estadía: a BSO Oficial (mar, néboa e solpores), a Bailable (festa na terraza) e a Alegre (luz para as catro estacións).',
   },
   escuchar: { es: 'Escuchar en Flow Music', en: 'Listen on Flow Music', gl: 'Escoitar en Flow Music' },
   temas: { es: 'temas', en: 'tracks', gl: 'temas' },
   honesto: {
-    es: 'Música original creada con inteligencia artificial (Flow Music de Google) bajo licencia propia del anfitrión. Se escucha sin cuenta ni registro.',
-    en: 'Original music created with artificial intelligence (Google Flow Music) under the host\u2019s own licence. Listen without an account or sign-up.',
-    gl: 'Música orixinal creada con intelixencia artificial (Flow Music de Google) baixo licenza propia do anfitrión. Escoítase sen conta nin rexistro.',
+    es: 'Música original creada con inteligencia artificial (Flow Music de Google) bajo licencia propia del propietario. Se escucha sin cuenta ni registro.',
+    en: 'Original music created with artificial intelligence (Google Flow Music) under the owner\u2019s own licence. Listen without an account or sign-up.',
+    gl: 'Música orixinal creada con intelixencia artificial (Flow Music de Google) baixo licenza propia do propietario. Escoítase sen conta nin rexistro.',
   },
   cta: {
     es: 'Duerme con la banda sonora del Atlántico: reserva tu estancia.',

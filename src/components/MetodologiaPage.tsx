@@ -110,9 +110,9 @@ const T: Record<string, { es: string; en: string; gl: string }> = {
   },
   volverClasif: { es: 'Volver a la clasificación', en: 'Back to the ranking', gl: 'Volver á clasificación' },
   cierre: {
-    es: 'Los datos se extraen de fuentes públicas y de la verificación directa del anfitrión. Las puntuaciones se recalculan en cada carga de la guía con el modelo vigente; el desglose almacenado permite reconstruir cualquier instantánea pasada. Última extracción: 17 de octubre de 2026.',
-    en: 'Data is extracted from public sources and direct host verification. Scores are recomputed on every guide load with the current model; the stored breakdown allows reconstructing any past snapshot. Last extraction: 17 October 2026.',
-    gl: 'Os datos extráense de fontes públicas e da verificación directa do anfitrión. As puntuacións recalcúlanse en cada carga da guía co modelo vixente; o desglose almacenado permite reconstruír calquera instantánea pasada. Última extracción: 17 de outubro de 2026.',
+    es: 'Los datos se extraen de fuentes públicas y de la verificación directa del propietario. Las puntuaciones se recalculan en cada carga de la guía con el modelo vigente; el desglose almacenado permite reconstruir cualquier instantánea pasada. Última extracción: 17 de octubre de 2026.',
+    en: 'Data is extracted from public sources and direct owner verification. Scores are recomputed on every guide load with the current model; the stored breakdown allows reconstructing any past snapshot. Last extraction: 17 October 2026.',
+    gl: 'Os datos extráense de fontes públicas e da verificación directa do propietario. As puntuacións recalcúlanse en cada carga da guía co modelo vixente; o desglose almacenado permite reconstruír calquera instantánea pasada. Última extracción: 17 de outubro de 2026.',
   },
   reservar: { es: 'Reservar', en: 'Book', gl: 'Reservar' },
 };
@@ -123,7 +123,7 @@ const KIND_ES: Record<string, string> = {
   guia_viajes: 'Guía de viajes',
   directorio_oficial: 'Directorio oficial',
   prensa: 'Prensa local',
-  verificacion_anfitrion: 'Verificación del anfitrión',
+  verificacion_anfitrion: 'Verificación del propietario',
 };
 
 export function MetodologiaPage({ onBack, onOpenBooking }: { onBack: () => void; onOpenBooking: () => void }) {

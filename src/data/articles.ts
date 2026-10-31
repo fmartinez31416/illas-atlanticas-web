@@ -421,12 +421,12 @@ En la actualidad, la Isla de Sálvora forma parte del **Parque Nacional Marítim
   },
   {
     id: '2',
-    slug: 'la-ilusion-de-la-linea-recta-cartografia-aguiño-salvora',
+    slug: 'la-ilusion-de-la-linea-recta-cartografia-aguiño-a-lanzada',
     cover: 'https://illasatlanticasatico.es/laminas/cartografia-linea-recta_v.webp',
     coverSquare: 'https://illasatlanticasatico.es/laminas/cartografia-linea-recta_c.webp',
     category: 'Cartografía & Territorio',
-    title: 'La ilusión de la línea recta: cartografía náutica, distancias reales y el horizonte de Sálvora',
-    excerpt: 'Por qué las plataformas de reservas confunden la ría con un mapa llano. La trampa euclidiana entre el Barbanza y O Salnés: 80 km de carretera real frente a la derrota marítima de Aguiño a Sálvora.',
+    title: 'La ilusión de la línea recta: cartografía náutica, distancias reales y la trampa de A Lanzada',
+    excerpt: 'Por qué las plataformas de reservas confunden la ría con un mapa llano. La trampa euclidiana entre el Barbanza y O Salnés: A Lanzada parece a un paso de Aguiño y la carretera real son 80 km.',
     readTime: '2 min de lectura',
     date: 'Temporada 2026',
     author: 'Cuaderno Atlántico',
@@ -440,7 +440,9 @@ En la Ría de Arousa, la orilla norte (comarca do Barbanza) y la orilla sur (pen
 
 Pero ese segmento azul es la ría más caudalosa de Galicia: no existen puentes exteriores ni transbordadores de vehículos. El mapa plano promete una cercanía que la física niega.
 
-### II. La barrera líquida y los canales náuticos
+### II. La excepción que confirma la regla: donde el agua es camino
+
+La línea recta del mapa solo es verdadera cuando el medio de transporte es el agua. A Sálvora no se llega por carretera: se va en barco, y por eso allí la recta del mapa coincide con la derrota real.
 
 La bocana exterior de la ría es un espacio de gran complejidad técnica. El archipiélago de Sálvora y los islotes de Sagres fragmentan la entrada atlántica en pasos como el canal principal (con fondos de hasta 70 metros) y el angosto paso do Carreiro frente a Aguiño.
 
@@ -637,7 +639,7 @@ En Aguiño el tiempo decide el día: si salen los barcos a Sálvora, si trabaja 
 
 ### III. Los guardianes silenciosos
 
-El sistema se revisa solo para que el anfitrión pueda dedicarse a los huéspedes: un vigía comprueba el calendario tres veces al día, un guardián verifica la estancia mínima cada seis horas frente a cualquier sincronización externa, y el correo se recoge cada diez minutos. Cada mañana, un parte resume el estado de la casa: reservas, precios y tareas.
+El sistema se revisa solo para que el propietario pueda dedicarse a los huéspedes: un vigía comprueba el calendario tres veces al día, un guardián verifica la estancia mínima cada seis horas frente a cualquier sincronización externa, y el correo se recoge cada diez minutos. Cada mañana, un parte resume el estado de la casa: reservas, precios y tareas.
 
 ### IV. La escritura del cuaderno
 
@@ -645,13 +647,13 @@ La bitácora de la web se escribe con una regla propia: ningún dato sin fuente,
 
 ### V. Un agente de a bordo
 
-La pieza más nueva del sistema es un agente de inteligencia artificial, Hermes, integrado en la operación diaria: redacta y envía las colaboraciones con instituciones y prensa local, audita las facturas de los servicios, vigila la normativa y prepara los informes de la casa. Nada se ejecuta sin la revisión del anfitrión: el agente hace, la persona manda.
+La pieza más nueva del sistema es un agente de inteligencia artificial, Hermes, integrado en la operación diaria: redacta y envía las colaboraciones con instituciones y prensa local, audita las facturas de los servicios, vigila la normativa y prepara los informes de la casa. Nada se ejecuta sin la revisión del propietario: el agente hace, la persona manda.
 
 ### VI. La arquitectura, pieza a pieza
 
 El sistema no cabe en una sola máquina. El agente y los servicios internos —la puerta de entrada, los vigilantes programados, el cerebro del [agente de a bordo](https://nia.illasatlanticasatico.es/)— corren en un servidor propio de Contabo, la firma alemana de alojamiento. La web pública se sirve desde Hostinger, con despliegue automático desde el [repositorio del código en GitHub](https://github.com/fmartinez31416/illas-atlanticas-web): cada cambio pasa antes por una versión previa y solo sube a producción tras la revisión del anfitrión.
 
-Sobre esa base se apilan las piezas: Beds24 como motor de reservas; PriceLabs para el precio dinámico, con suelo, base y techo; Partee para el registro legal de huéspedes; Stripe y PayPal para el cobro; un bot propio en Telegram que informa al anfitrión; y una analítica privada, sin rastreadores de terceros. La meteorología del Puente cruza tres fuentes —AEMET, Google Weather y Open-Meteo— y el agente de a bordo conversa con los huéspedes mediante un modelo de lenguaje servido a través de una pasarela propia, con OpenRouter como respaldo multimodal.
+Sobre esa base se apilan las piezas: Beds24 como motor de reservas; PriceLabs para el precio dinámico, con suelo, base y techo; Partee para el registro legal de huéspedes; Stripe y PayPal para el cobro; un bot propio en Telegram que informa al propietario; y una analítica privada, sin rastreadores de terceros. La meteorología del Puente cruza tres fuentes —AEMET, Google Weather y Open-Meteo— y el agente de a bordo conversa con los huéspedes mediante un modelo de lenguaje servido a través de una pasarela propia, con OpenRouter como respaldo multimodal.
 
 Desde la terraza no se ve nada de esto. Esa es la idea.
 

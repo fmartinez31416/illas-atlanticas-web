@@ -11,7 +11,7 @@ const KIND_LABEL: Record<string, { es: string; en: string; gl: string }> = {
   guia_viajes: { es: 'Guía de viajes', en: 'Travel guide', gl: 'Guía de viaxes' },
   directorio_oficial: { es: 'Directorio oficial', en: 'Official directory', gl: 'Directorio oficial' },
   prensa: { es: 'Prensa local', en: 'Local press', gl: 'Prensa local' },
-  verificacion_anfitrion: { es: 'Verificación del anfitrión', en: 'Host verification', gl: 'Verificación do anfitrión' },
+  verificacion_anfitrion: { es: 'Verificación del propietario', en: 'Owner verification', gl: 'Verificación do propietario' },
 };
 
 type Lang = 'es' | 'en' | 'gl';

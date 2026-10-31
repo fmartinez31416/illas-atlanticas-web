@@ -35,7 +35,7 @@ export const GASTRO_FUENTES: GastroFuente[] = [
   { id: 'paxinas', label: { es: "Páxinas Galegas", en: "Páxinas Galegas", gl: "Páxinas Galegas" }, kind: 'directorio_oficial', reliability: 0.7, nativeScale: 5, url: "https://www.paxinasgalegas.es" },
   { id: 'lavoz', label: { es: "La Voz de Galicia", en: "La Voz de Galicia", gl: "La Voz de Galicia" }, kind: 'prensa', reliability: 0.8, nativeScale: 5, url: "https://www.lavozdegalicia.es" },
   { id: 'web_propia', label: { es: "Web oficial del local", en: "Venue’s official website", gl: "Web oficial do local" }, kind: 'directorio_oficial', reliability: 1, nativeScale: 5, url: null },
-  { id: 'anfitrion', label: { es: "Verificación del anfitrión", en: "Host verification", gl: "Verificación do anfitrión" }, kind: 'verificacion_anfitrion', reliability: 1, nativeScale: 5, url: null },
+  { id: 'anfitrion', label: { es: "Verificación del propietario", en: "Owner verification", gl: "Verificación do propietario" }, kind: 'verificacion_anfitrion', reliability: 1, nativeScale: 5, url: null },
 ];
 
 export const GASTRO_RATINGS: Record<string, GastroRatingInput[]> = {

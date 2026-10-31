@@ -7,7 +7,7 @@
  * Salida: paginas/**\/*.html (gitignored; Vite los toma como entradas multipágina)
  * y public/sitemap.xml regenerado con alternates hreflang completos.
  */
-import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 import { dirname, join } from 'node:path';
@@ -38,6 +38,7 @@ const VIEWS: { path: string; key?: string; meta?: Record<Lang, { title: string; 
   { path: 'gastronomia', key: 'gastronomia' },
   { path: 'gastronomia/metodologia', key: 'metodologia' },
   { path: 'musica', key: 'musica' },
+  { path: 'vinos', key: 'vinos' },
   { path: 'club', key: 'club' },
   { path: 'colaboraciones', key: 'colaboraciones' },
 ];
@@ -124,7 +125,23 @@ function orgLd(): string {
       "@type": "Organization",
       "name": "Illas Atlánticas Ático",
       "url": "${BASE}/",
-      "logo": "${BASE}/logo.png"
+      "logo": "${BASE}/logo.png",
+      "description": "Ático vacacional frente a la ría de Arousa en Aguiño (Ribeira, A Coruña). Alojamiento turístico con licencia VUT-CO-007656, gestionado por su propietario.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rúa Francisco Lorenzo Mariño 93, Ático F",
+        "addressLocality": "Aguiño, Ribeira",
+        "addressRegion": "A Coruña",
+        "postalCode": "15965",
+        "addressCountry": "ES"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+34606025318",
+        "contactType": "reservations",
+        "areaServed": "ES",
+        "availableLanguage": ["es", "en", "gl"]
+      }
     }
     </script>
     <script type="application/ld+json">
@@ -148,8 +165,10 @@ function articleLd(p: Pagina): string {
       "headline": "${esc(a.headline)}",
       "description": "${esc(a.description)}",
       "author": { "@type": "Organization", "name": "${esc(a.author)}" },
-      "publisher": { "@type": "Organization", "name": "Illas Atlánticas Ático" },
+      "publisher": { "@type": "Organization", "name": "Illas Atlánticas Ático", "logo": { "@type": "ImageObject", "url": "${BASE}/logo.png" } },
       "mainEntityOfPage": "${p.url}",
+      "url": "${p.url}",
+      "image": "${BASE}/mirador-pedra-da-ra-ribeira-atlantico.webp",
       "dateModified": "${HOY}",
       "inLanguage": "es"${pub}
     }
@@ -268,6 +287,10 @@ for (const p of paginas) {
 }
 
 // ---------- plantilla ----------
+// Limpieza de prerenders viejos (slugs renombrados no deben quedarse servidos).
+// OJO: el prerender escribe en /paginas (raíz del repo, gitignored); Vite los
+// toma como entradas multipágina y los copia a dist/paginas.
+rmSync(join(__dirname, '..', 'paginas'), { recursive: true, force: true });
 const plantilla = readFileSync(join(__dirname, '..', 'index.html'), 'utf-8');
 
 function hreflangHtml(alts: { lang: string; url: string }[]): string {
@@ -317,18 +340,21 @@ for (const p of paginas) {
   html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${p.title.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${p.description.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" />`);
   if (!html.includes('og:url')) {
-    html = html.replace(/<meta property="og:type" content="website" \/>/, `<meta property="og:type" content="website" />\n    <meta property="og:url" content="${p.url}" />`);
+    html = html.replace(/<meta property="og:type" content="website" \/>/, `<meta property="og:type" content="${p.article ? 'article' : 'website'}" />\n    <meta property="og:url" content="${p.url}" />`);
   }
+  const ogLocale = p.lang === 'en' ? 'en_GB' : p.lang === 'gl' ? 'gl_ES' : 'es_ES';
+  html = html.replace(/<meta property="og:locale" content="[^"]*" \/>/, `<meta property="og:locale" content="${ogLocale}" />`);
   html = html.replace(/<link rel="canonical" href="[^"]*"[^>]*>/, `<link rel="canonical" href="${p.url}" id="canonical-link" />`);
   // H1 + intro estáticos dentro de #root
   html = html.replace(
     /<h1 style="[^"]*">[\s\S]*?<\/p>/,
     `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}`,
   );
-  // JSON-LD por página: Organization+WebSite siempre; Article en artículos (antes de </head>)
+  // JSON-LD por página: Article en artículos; Organization+WebSite en todas
+  // MENOS la portada (que ya lo trae en su chunk original de index.html)
   html = html.replace(
     '</head>',
-    `${p.article ? articleLd(p) + '\n' : ''}${orgLd()}\n  </head>`,
+    `${p.article ? articleLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}\n  </head>`,
   );
   mkdirSync(dirname(p.archivo), { recursive: true });
   writeFileSync(p.archivo, html);

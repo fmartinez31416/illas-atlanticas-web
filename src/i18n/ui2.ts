@@ -20,7 +20,7 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Garantía & Registro": { es: "Garantía & Registro", en: "Guarantee & Registration", gl: "Garantía e Rexistro" },
   "Opiniones de Huéspedes": { es: "Opiniones de Huéspedes", en: "Guest Reviews", gl: "Opinións de Hóspedes" },
   "Síguenos en redes": { es: "Síguenos en redes", en: "Follow us on social media", gl: "Séguenos nas redes" },
-  "Anfitrión:": { es: "Anfitrión:", en: "Host:", gl: "Anfitrión:" },
+  "Propietario:": { es: "Propietario:", en: "Owner:", gl: "Propietario:" },
   "Ubicación & Entorno": { es: "Ubicación & Entorno", en: "Location & Surroundings", gl: "Ubicación e Contorna" },
   "Cómo llegar": { es: "Cómo llegar", en: "How to get here", gl: "Como chegar" },
   "Cartografía & Territorio": { es: "Cartografía & Territorio", en: "Cartography & Territory", gl: "Cartografía e Territorio" },

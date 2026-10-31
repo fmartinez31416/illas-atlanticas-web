@@ -104,7 +104,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     musica: {
       title: 'La música de la casa · Banda sonora original · Illas Atlánticas Ático',
-      description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el anfitrión para cada estación y cada momento de la estancia.',
+      description: 'La banda sonora original del ático de Aguiño: BSO Oficial, Bailable y Alegre, compuestas por el propietario para cada estación y cada momento de la estancia.',
     },
     club: {
       title: 'Club de Huéspedes · Illas Atlánticas Ático',
@@ -117,6 +117,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     colaboraciones: {
       title: 'Colaboraciones · Medios y blogs que cuentan Aguiño · Illas Atlánticas Ático',
       description: 'Escaparate de colaboraciones de Illas Atlánticas Ático: medios y blogs que cuentan Aguiño, con intercambio de enlaces y contenidos. ¿Escribes sobre el Barbanza? Hablamos.',
+    },
+    vinos: {
+      title: 'Índice G · Guía del vino de Galicia · Illas Atlánticas Ático',
+      description: 'Guía del vino gallego con Índice G: puntuación 0-100 calculada con método propio, reproducible y auditable, sobre las 5 D.O. de Galicia. Cada nota, con su fuente enlazable.',
     },
   },
   en: {
@@ -150,7 +154,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     musica: {
       title: 'The music of the house · Original soundtrack · Illas Atlánticas Ático',
-      description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the host for every season and every moment of the stay.',
+      description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the owner for every season and every moment of the stay.',
     },
     club: {
       title: 'Guest Club · Illas Atlánticas Ático',
@@ -163,6 +167,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     colaboraciones: {
       title: 'Collaborations · Media and blogs telling Aguiño · Illas Atlánticas Ático',
       description: 'The collaboration showcase of Illas Atlánticas Ático: media and blogs that tell Aguiño, with link and content exchanges. Do you write about the Barbanza? Let\u2019s talk.',
+    },
+    vinos: {
+      title: 'Índice G · Galician wine guide · Illas Atlánticas Ático',
+      description: 'A Galician wine guide with the Índice G: a 0-100 score computed with our own reproducible, auditable method across the 5 Galician D.O.s. Every note links to its public source.',
     },
   },
   gl: {
@@ -196,7 +204,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     musica: {
       title: 'A música da casa · Banda sonora orixinal · Illas Atlánticas Ático',
-      description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo anfitrión para cada estación e cada momento da estadía.',
+      description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo propietario para cada estación e cada momento da estadía.',
     },
     club: {
       title: 'Club de Hóspedes · Illas Atlánticas Ático',
@@ -209,6 +217,10 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     colaboraciones: {
       title: 'Colaboracións · Medios e blogs que contan Aguiño · Illas Atlánticas Ático',
       description: 'Escaparate de colaboracións de Illas Atlánticas Ático: medios e blogs que contan Aguiño, con intercambio de ligazóns e contidos. Escribes sobre o Barbanza? Falamos.',
+    },
+    vinos: {
+      title: 'Índice G · Guía do viño de Galicia · Illas Atlánticas Ático',
+      description: 'Guía do viño galego co Índice G: puntuación 0-100 calculada con método propio, reproducible e auditable, sobre as 5 D.O. de Galicia. Cada nota, coa súa fonte enlazable.',
     },
   },
 };

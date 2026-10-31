@@ -22,6 +22,7 @@ const GastronomiaPage = lazy(() => import('./components/GastronomiaPage').then(m
 const MusicaPage = lazy(() => import('./components/MusicaPage').then(m => ({ default: m.MusicaPage })));
 const ClubPage = lazy(() => import('./components/ClubPage'));
 const ColaboracionesPage = lazy(() => import('./components/ColaboracionesPage').then(m => ({ default: m.ColaboracionesPage })));
+const VinosPage = lazy(() => import('./components/VinosPage').then(m => ({ default: m.VinosPage })));
 const MetodologiaPage = lazy(() => import('./components/MetodologiaPage').then(m => ({ default: m.MetodologiaPage })));
 
 import { FaqSection } from './components/FaqSection';
@@ -43,7 +44,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -54,7 +55,7 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
@@ -65,6 +66,7 @@ function AppInner() {
     musica: 'musica',
     club: 'club',
     colaboraciones: 'colaboraciones',
+    vinos: 'vinos',
   };
   useEffect(() => {
     const leer = () => {
@@ -85,7 +87,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica', club: '/club', colaboraciones: '/colaboraciones' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica', club: '/club', colaboraciones: '/colaboraciones', vinos: '/vinos' };
     const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
@@ -270,6 +272,17 @@ function AppInner() {
     return (
       <>
         <Suspense fallback={null}><ColaboracionesPage onBack={() => setCurrentView('home')} onOpenBooking={scrollToBooking} /></Suspense>
+        <NiaChat />
+        <Footer onOpenLegal={() => setCurrentView('legal')} />
+      </>
+    );
+  }
+
+  // VISTA: Índice G — guía del vino de Galicia (producto: motor + datos)
+  if (currentView === 'vinos') {
+    return (
+      <>
+        <Suspense fallback={null}><VinosPage onBack={() => setCurrentView('home')} onOpenBooking={scrollToBooking} /></Suspense>
         <NiaChat />
         <Footer onOpenLegal={() => setCurrentView('legal')} />
       </>

@@ -1,7 +1,7 @@
 /*
  * instruments/VentanaFoto.tsx · Puente de Mando — Illas Atlánticas Ático
  * Rediseño 4-oct-2026: la ventana del puente muestra una FOTO REAL.
- * Ahora: la foto de portada, limpia y sin rótulos. Cuando el anfitrión
+ * Ahora: la foto de portada, limpia y sin rótulos. Cuando el propietario
  * saque la foto de las islas, se monta aquí con sus rótulos calibrados.
  */
 import * as X from 'react';
