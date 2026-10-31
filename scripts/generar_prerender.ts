@@ -14,6 +14,7 @@ import { dirname, join } from 'node:path';
 
 import { PAGE_META, VIEW_META } from '../src/i18n/LangContext';
 import { ARTICLES } from '../src/data/articles';
+import { VINOS } from '../src/data/vinos';
 import { seoTitle, seoDescription } from '../src/utils/seo';
 
 const BASE = 'https://illasatlanticasatico.es';
@@ -54,6 +55,7 @@ interface Pagina {
   alternates: { lang: string; url: string }[];  // hreflang (incluye x-default)
   breadcrumb: { name: string; url: string }[];
   listaArticulos?: string;  // HTML estático con <a> a los artículos (solo shells de /bitacora)
+  cuerpo?: string;          // HTML estático de refuerzo para vistas con poco texto (SEO primer byte)
   article?: { headline: string; description: string; author: string; datePublished?: string };
 }
 
@@ -243,6 +245,7 @@ for (const view of VIEWS) {
         { name: 'Illas Atlánticas Ático', url: `${BASE}/` },
         { name: view.path.split('/')[0], url: urlDe(lang, view.path.split('/')[0]) },
       ],
+      cuerpo: cuerpoVista(lang, view.key ?? ''),
     });
   }
 }
@@ -284,6 +287,77 @@ for (const p of paginas) {
   if (p.url === urlDe(p.lang, 'bitacora')) {
     p.listaArticulos = listaArticulosHtml(p.lang);
   }
+}
+
+// ---------- cuerpo estático por vista ----------
+// Refuerzo de contenido para las vistas cuyo texto vive en React: los rastreadores
+// sin JS ven contenido real desde el primer byte (React lo reemplaza al hidratar).
+function cuerpoVista(lang: Lang, key: string): string {
+  const P = 'style="max-width:44rem;margin:0 auto 0.45rem;padding:0 1.5rem;font-family:Georgia,\'Times New Roman\',serif;font-size:0.95rem;color:#3a4a5c;line-height:1.6;"';
+  const H = 'style="max-width:44rem;margin:1.3rem auto 0.5rem;padding:0 1.5rem;font-family:Georgia,\'Times New Roman\',serif;font-size:1.1rem;color:#1A3A5C;"';
+  const L = 'style="max-width:44rem;margin:0 auto 1.5rem;padding:0 1.5rem 0 2.4rem;font-family:Georgia,\'Times New Roman\',serif;font-size:0.95rem;color:#3a4a5c;line-height:1.75;"';
+  const A = 'style="color:#1A3A5C;"';
+  const pref = LANG_URL[lang] ? `/${LANG_URL[lang]}` : '';
+  const v = (p: string) => `${pref}/${p}`;
+  const a = (href: string, texto: string) => `<a href="${href}" ${A}>${texto}</a>`;
+  const p = (txt: string) => `<p ${P}>${txt}</p>`;
+  const li = (txt: string) => `<li>${txt}</li>`;
+
+  const T: Record<string, Record<string, string>> = {
+    legalT: {
+      es: 'Illas Atlánticas Ático es una vivienda de uso turístico inscrita en el Rexistro de Empresas e Actividades Turísticas de la Xunta de Galicia con el número VUT-CO-007656, sita en Rúa Francisco Lorenzo Mariño 93, Aguiño (Ribeira, A Coruña). Propietario: Fernando Martínez Piñeiro. Reservas y atención: reservas@illasatlanticasatico.es · +34 606 025 318. Los datos personales de las reservas se tratan conforme al RGPD y se comunican a las autoridades según la normativa española de hospedaje.',
+      en: 'Illas Atlánticas Ático is a holiday home registered in the Xunta de Galicia tourism registry under number VUT-CO-007656, at Rúa Francisco Lorenzo Mariño 93, Aguiño (Ribeira, A Coruña). Owner: Fernando Martínez Piñeiro. Bookings and guest care: reservas@illasatlanticasatico.es · +34 606 025 318. Personal data from bookings is processed under the GDPR and reported to the authorities as Spanish lodging law requires.',
+      gl: 'Illas Atlánticas Ático é unha vivenda de uso turístico inscrita no Rexistro de Empresas e Actividades Turísticas da Xunta de Galicia co número VUT-CO-007656, sita na Rúa Francisco Lorenzo Mariño 93, Aguiño (Ribeira, A Coruña). Propietario: Fernando Martínez Piñeiro. Reservas e atención: reservas@illasatlanticasatico.es · +34 606 025 318. Os datos persoais das reservas trátanse conforme ao RGPD e comunícanse ás autoridades segundo a normativa española de hospedaxe.',
+    },
+    condT: {
+      es: 'Las reglas de la casa, claras y por escrito: entrada a partir de las 17:00 y salida antes de las 12:00, porque los 230 m² se limpian a fondo entre estancias; ocupación máxima de 6 personas; estancia mínima de 2 noches de noviembre a febrero; señal del 30 % al reservar y el resto antes de la llegada; registro de todos los huéspedes conforme a la normativa española.',
+      en: 'The house rules, clear and in writing: check-in from 17:00 and check-out before 12:00, because the 230 m² are thoroughly cleaned between stays; maximum occupancy 6 people; minimum stay 2 nights from November to February; 30% deposit at booking with the rest before arrival; registration of every guest as Spanish law requires.',
+      gl: 'As regras da casa, claras e por escrito: entrada a partir das 17:00 e saída antes das 12:00, porque os 230 m² se limpan a fondo entre estancias; ocupación máxima de 6 persoas; estancia mínima de 2 noites de novembro a febreiro; sinal do 30 % ao reservar e o resto antes da chegada; rexistro de todos os hóspedes conforme á normativa española.',
+    },
+    clubT: {
+      es: 'El Club de Huéspedes recompensa a quien vuelve: créditos que se pagan en noches y avíos de la casa para el siguiente verano. Sin cuotas y sin letra pequeña: el club se gana estando. Condiciones completas en esta misma página.',
+      en: 'The Guest Club rewards those who return: credits paid in nights and house treats for the next summer. No fees, no small print: the club is earned by staying. Full terms on this very page.',
+      gl: 'O Club de Hóspedes recompensa a quen volve: créditos que se pagan en noites e avíos da casa para o seguinte verán. Sen cotas e sen letra pequena: o club gáñase estando. Condicións completas nesta mesma páxina.',
+    },
+    metodT: {
+      es: 'El Índice Atlántico puntúa la gastronomía del Barbanza con método abierto y auditable: puntuaciones de fuentes públicas, ponderadas y verificables, nunca una opinión a puerta cerrada. El Índice G aplica la misma filosofía al vino gallego: G = P̂ − 1,5·σ, con cada nota enlazada a su ficha pública.',
+      en: 'The Índice Atlántico scores the gastronomy of the Barbanza with an open, auditable method: scores from public sources, weighted and verifiable, never an opinion behind closed doors. The Índice G applies the same philosophy to Galician wine: G = P̂ − 1.5·σ, with every note linked to its public listing.',
+      gl: 'O Índice Atlántico puntúa a gastronomía do Barbanza con método aberto e auditable: puntuacións de fontes públicas, ponderadas e verificables, nunca unha opinión a porta pechada. O Índice G aplica a mesma filosofía ao viño galego: G = P̂ − 1,5·σ, con cada nota ligada á súa ficha pública.',
+    },
+    colabT: {
+      es: 'Aquí viven las colaboraciones de Illas Atlánticas Ático: medios y blogs que cuentan Aguiño, con intercambio de enlaces y contenidos, sin pagos por enlace ni reseñas de compromiso. Si escribes sobre el Barbanza, escríbenos.',
+      en: 'This is the home of Illas Atlánticas Ático collaborations: media and blogs telling Aguiño, with link and content exchanges — no paid links, no obligation reviews. If you write about the Barbanza, write to us.',
+      gl: 'Aquí viven as colaboracións de Illas Atlánticas Ático: medios e blogs que contan Aguiño, con intercambio de ligazóns e contidos, sen pagos por ligazón nin reseñas de compromiso. Se escribes sobre o Barbanza, escríbenos.',
+    },
+    vinT: {
+      es: 'El Índice G agrega las puntuaciones públicas de Peñín, Tim Atkin, Wine Advocate, James Suckling y Decanter sobre las cinco denominaciones de origen de Galicia — Rías Baixas, Ribeiro, Ribeira Sacra, Monterrei y Valdeorras — con método reproducible: G = P̂ − 1,5·σ. Bandas: Excepcional ≥ 92 · Notable ≥ 88 · Muy bueno ≥ 84 · Bueno ≥ 80. Cada nota enlaza a su ficha pública.',
+      en: 'The Índice G aggregates the public scores of Peñín, Tim Atkin, Wine Advocate, James Suckling and Decanter across the five Galician denominations — Rías Baixas, Ribeiro, Ribeira Sacra, Monterrei and Valdeorras — with a reproducible method: G = P̂ − 1.5·σ. Bands: Exceptional ≥ 92 · Notable ≥ 88 · Very good ≥ 84 · Good ≥ 80. Every note links to its public listing.',
+      gl: 'O Índice G agrega as puntuacións públicas de Peñín, Tim Atkin, Wine Advocate, James Suckling e Decanter sobre as cinco denominacións de orixe de Galicia — Rías Baixas, Ribeiro, Ribeira Sacra, Monterrei e Valdeorras — con método reproducible: G = P̂ − 1,5·σ. Bandas: Excepcional ≥ 92 · Notable ≥ 88 · Moi bo ≥ 84 · Bo ≥ 80. Cada nota liga á súa ficha pública.',
+    },
+    topH: { es: 'Los diez mejor puntuados hoy', en: 'Today\u2019s top ten', gl: 'Os dez mellor puntuados hoxe' },
+    vinL1: { es: 'Cómo puntuamos', en: 'How we score', gl: 'Como puntuamos' },
+    vinL2: { es: 'Gastronomía del Barbanza', en: 'Barbanza gastronomy', gl: 'Gastronomía do Barbanza' },
+    legL: { es: 'Condiciones de reserva', en: 'Booking conditions', gl: 'Condicións de reserva' },
+    bitL: { es: 'Cuaderno de Bitácora', en: 'Logbook', gl: 'Caderno de Bitácora' },
+  };
+
+  const b = (k: string) => T[k][lang] ?? T[k].es;
+  const banda = (g: number) => g >= 92 ? (lang === 'en' ? 'Exceptional' : 'Excepcional') : g >= 88 ? (lang === 'en' ? 'Notable' : 'Notable') : g >= 84 ? (lang === 'en' ? 'Very good' : lang === 'gl' ? 'Moi bo' : 'Muy bueno') : g >= 80 ? (lang === 'en' ? 'Good' : lang === 'gl' ? 'Bo' : 'Bueno') : lang === 'en' ? 'Fair' : 'Correcto';
+
+  if (key === 'vinos') {
+    const top = VINOS.filter((x) => x.g !== null).slice(0, 10);
+    const items = top.map((x, i) =>
+      li(`${i + 1}. <strong>${esc(x.nombre)}</strong> ${x.anada ? esc(x.anada) : ''} — ${esc(x.bodega)} (${esc(x.do)}) · ${x.g} · ${banda(x.g as number)}`)
+    ).join('\n');
+    return p(b('vinT')) + `<h2 ${H}>${b('topH')}</h2><ol ${L}>\n${items}\n</ol>` +
+      p(`${a(v('gastronomia/metodologia'), b('vinL1'))} → &nbsp;·&nbsp; ${a(v('gastronomia'), b('vinL2'))} →`);
+  }
+  if (key === 'legal') return p(b('legalT')) + p(`${a(v('condiciones'), b('legL'))} → &nbsp;·&nbsp; ${a(v('bitacora'), b('bitL'))} →`);
+  if (key === 'condiciones') return p(b('condT')) + p(`${a(v('legal'), lang === 'en' ? 'Legal notice' : lang === 'gl' ? 'Aviso legal' : 'Aviso legal')} → &nbsp;·&nbsp; ${a(v('club'), lang === 'en' ? 'Guest Club' : 'Club de Huéspedes')} →`);
+  if (key === 'club') return p(b('clubT')) + p(`${a(v('condiciones'), b('legL'))} → &nbsp;·&nbsp; ${a(v('vinos'), lang === 'en' ? 'Wine guide' : 'Guía de vinos')} →`);
+  if (key === 'metodologia') return p(b('metodT')) + p(`${a(v('vinos'), lang === 'en' ? 'Wine guide' : 'Guía de vinos')} → &nbsp;·&nbsp; ${a(v('gastronomia'), b('vinL2'))} →`);
+  if (key === 'colaboraciones') return p(b('colabT')) + p(`${a(v('bitacora'), b('bitL'))} → &nbsp;·&nbsp; ${a(v('vinos'), lang === 'en' ? 'Wine guide' : 'Guía de vinos')} →`);
+  return '';
 }
 
 // ---------- plantilla ----------
@@ -348,7 +422,7 @@ for (const p of paginas) {
   // H1 + intro estáticos dentro de #root
   html = html.replace(
     /<h1 style="[^"]*">[\s\S]*?<\/p>/,
-    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}`,
+    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}${p.cuerpo ?? ''}`,
   );
   // JSON-LD por página: Article en artículos; Organization+WebSite en todas
   // MENOS la portada (que ya lo trae en su chunk original de index.html)
