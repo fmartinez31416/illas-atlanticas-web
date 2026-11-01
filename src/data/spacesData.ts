@@ -186,8 +186,9 @@ export const SPACES_DATA: Space[] = [
     name: 'Cocina',
     subtitle: 'Abierta al salón, preparada para el marisco',
     tag: 'Cocina & Marisco',
-    coverImage: '/fotos/cocina_01.jpg',
+    coverImage: '/fotos/cocina_01.jpg?v=20261101',
     gallery: [
+      '/fotos/cocina_panoramica_01.jpg',
       '/fotos/cocina_02.jpg',
       '/fotos/cocina_percebes_01.jpg',
       '/fotos/cocina_centollas_08.jpg'
