@@ -192,8 +192,7 @@ export const SPACES_DATA: Space[] = [
     gallery: [
       '/fotos/bano_principal_16.jpg',
       '/fotos/bano_principal_15.jpg',
-      '/fotos/bano_principal_14.jpg',
-      '/fotos/bano_doble_01.jpg'
+      '/fotos/bano_principal_14.jpg'
     ],
     description: 'La pieza que todos recuerdan de la casa: una bañera de hidromasaje con chorros de agua en el dormitorio principal. Tres baños completos, así que por la mañana nadie hace cola.',
     highlights: [
@@ -211,6 +210,34 @@ export const SPACES_DATA: Space[] = [
       { label: 'Baños', value: 'Tres completos' },
       { label: 'Amenities', value: 'Gel, champú y jabón de manos' },
       { label: 'Toallas', value: 'Incluidas para toda la casa' }
+    ]
+  },
+  {
+    id: 'bano-doble',
+    name: 'Baño doble',
+    subtitle: 'Dos lavabos y bañera con ducha',
+    tag: 'Bienestar',
+    coverImage: '/fotos/bano_doble_02.jpg?v=20261102',
+    gallery: [
+      '/fotos/bano_doble_01.jpg'
+    ],
+    description: 'El baño familiar de la casa: dos lavabos de cerámica blanca bajo espejos de madera, y bañera con mampara y ducha. Con tres baños completos, por las mañanas nadie hace cola.',
+    highlights: [
+      'Dos lavabos: nadie espera turno',
+      'Bañera con mampara y ducha',
+      'Espejos de madera a juego con la casa',
+      'Toallas incluidas'
+    ],
+    features: [
+      'Grifos cromados de calidad',
+      'Almacenaje bajo el lavabo',
+      'Ventilación y calefacción'
+    ],
+    specs: [
+      { label: 'Lavabos', value: 'Dos' },
+      { label: 'Bañera', value: 'Con ducha' },
+      { label: 'Espejos', value: 'Dos de madera' },
+      { label: 'Baños totales', value: 'Tres en la casa' }
     ]
   },
   {
