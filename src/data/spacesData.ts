@@ -249,7 +249,8 @@ export const SPACES_DATA: Space[] = [
     tag: 'Bienestar',
     coverImage: '/fotos/bano_ducha_01.jpg?v=20261102',
     gallery: [
-      '/fotos/bano_ducha_02.jpg'
+      '/fotos/bano_ducha_02.jpg',
+      '/fotos/bano_ducha_03.jpg'
     ],
     description: 'El tercer baño de la casa: ducha amplia a ras de suelo con asidero de apoyo, lavabo sobre mueble de madera y espejo con marco de azulejos florales. Tres baños completos para seis huéspedes.',
     highlights: [
