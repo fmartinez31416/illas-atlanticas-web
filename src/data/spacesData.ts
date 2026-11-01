@@ -84,7 +84,7 @@ export const SPACES_DATA: Space[] = [
     features: [
       'Iluminación indirecta regulable',
       'Acceso directo a la terraza',
-      'Ropa de cama de calidad, planchada y lista',
+      'Ropa de cama de calidad, recién puesta',
       'Espacio para las maletas sin invadir el dormitorio'
     ],
     specs: [
@@ -97,28 +97,28 @@ export const SPACES_DATA: Space[] = [
   {
     id: 'dormitorio-doble',
     name: 'Habitación de dos camas',
-    subtitle: 'Dos camas, escritorio y luz de claraboya',
+    subtitle: 'Dos camas, escritorio y ventana Velux',
     tag: 'Descanso',
     coverImage: '/fotos/dormitorio_doble_01.jpg?v=20261101',
     gallery: [
       '/fotos/dormitorio_doble_02.jpg'
     ],
-    description: 'El segundo dormitorio, con dos camas individuales vestidas como las de toda la casa y un escritorio junto a la claraboya para trabajar o escribir. Vistas al pueblo marinero y a la ría.',
+    description: 'El segundo dormitorio, con dos camas individuales vestidas como las de toda la casa y un escritorio junto a la ventana Velux para trabajar o escribir. Vistas al pueblo marinero y a la ría.',
     highlights: [
-      'Dos camas individuales con ropa planchada',
-      'Escritorio con silla junto a la claraboya',
+      'Dos camas individuales hechas y listas',
+      'Escritorio con silla junto a la ventana Velux',
       'Vistas al pueblo marinero y a la ría',
       'Oscurecimiento y silencio para descansar'
     ],
     features: [
-      'Luz natural de la claraboya',
+      'Luz natural de la ventana Velux',
       'Zona de trabajo integrada en la habitación',
-      'Ropa de cama planchada y lista'
+      'Ropa de cama de calidad, recién puesta'
     ],
     specs: [
       { label: 'Camas', value: 'Dos individuales' },
       { label: 'Trabajo', value: 'Escritorio con silla' },
-      { label: 'Luz', value: 'Claraboya de techo' },
+      { label: 'Luz', value: 'Ventana Velux de techo' },
       { label: 'Vistas', value: 'Pueblo y mar' }
     ]
   },
