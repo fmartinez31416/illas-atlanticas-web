@@ -220,6 +220,7 @@ export const SPACES_DATA: Space[] = [
     coverImage: '/fotos/bano_doble_02.jpg?v=20261102',
     gallery: [
       '/fotos/bano_doble_03.jpg',
+      '/fotos/bano_doble_04.jpg',
       '/fotos/bano_doble_01.jpg'
     ],
     description: 'El baño familiar de la casa: dos lavabos de cerámica blanca bajo espejos de madera, y bañera con mampara y ducha. Con tres baños completos, por las mañanas nadie hace cola.',
