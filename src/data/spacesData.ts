@@ -241,6 +241,32 @@ export const SPACES_DATA: Space[] = [
     ]
   },
   {
+    id: 'bano-ducha',
+    name: 'Baño de ducha',
+    subtitle: 'Ducha a ras de suelo y lavabo rústico',
+    tag: 'Bienestar',
+    coverImage: '/fotos/bano_ducha_01.jpg?v=20261102',
+    gallery: [],
+    description: 'El tercer baño de la casa: ducha amplia a ras de suelo con asidero de apoyo, lavabo sobre mueble de madera y espejo con marco de azulejos florales. Tres baños completos para seis huéspedes.',
+    highlights: [
+      'Ducha amplia a ras de suelo',
+      'Asidero de apoyo en la ducha',
+      'Espejo con marco de azulejos florales',
+      'Toallas incluidas'
+    ],
+    features: [
+      'Mosaico beige con cenefa rojiza',
+      'Suelo de cerámica rojiza',
+      'Ventilación y calefacción'
+    ],
+    specs: [
+      { label: 'Ducha', value: 'A ras de suelo' },
+      { label: 'Lavabo', value: 'Sobre madera' },
+      { label: 'Apoyo', value: 'Asidero en la ducha' },
+      { label: 'Baños totales', value: 'Tres en la casa' }
+    ]
+  },
+  {
     id: 'despacho-workspace',
     name: 'Despacho Workspace',
     subtitle: 'Teletrabajo frente al mar: fibra y silencio',
