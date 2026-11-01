@@ -40,6 +40,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/vistas_terraza_17.jpg',
       '/fotos/vistas_terraza_20.jpg',
       '/fotos/vistas_terraza_19.jpg',
+      '/fotos/terraza_comedor_noche_01.jpg',
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
     ],
