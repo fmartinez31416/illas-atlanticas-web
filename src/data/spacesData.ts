@@ -134,7 +134,7 @@ export const SPACES_DATA: Space[] = [
     tag: 'Descanso',
     coverImage: '/fotos/dormitorio_doble_01.jpg?v=20261101',
     gallery: [
-      '/fotos/dormitorio_doble_02.jpg'
+      '/fotos/dormitorio_doble_02.jpg?v=20261102'
     ],
     description: 'El segundo dormitorio, con dos camas individuales vestidas como las de toda la casa y un escritorio junto a la ventana Velux para trabajar o escribir. Vistas al pueblo marinero y a la ría.',
     highlights: [
