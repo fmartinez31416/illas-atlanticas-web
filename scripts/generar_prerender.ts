@@ -276,7 +276,7 @@ for (const art of ARTICLES) {
         headline: art.title,
         description: art.excerpt,
         author: art.author ?? 'Cuaderno Atlántico',
-        datePublished: fechaISO(art.date),
+        datePublished: fechaISO(art.date) ?? '2026-09-07',
       },
     });
   }
@@ -339,11 +339,53 @@ function cuerpoVista(lang: Lang, key: string): string {
     vinL2: { es: 'Gastronomía del Barbanza', en: 'Barbanza gastronomy', gl: 'Gastronomía do Barbanza' },
     legL: { es: 'Condiciones de reserva', en: 'Booking conditions', gl: 'Condicións de reserva' },
     bitL: { es: 'Cuaderno de Bitácora', en: 'Logbook', gl: 'Caderno de Bitácora' },
+    pueL: { es: 'Puente de Mando', en: 'Bridge Deck', gl: 'Ponte de Mando' },
+    planL: { es: 'Planificador', en: 'Planner', gl: 'Planificador' },
+    lonjL: { es: 'Lonja en vivo', en: 'Live fish market', gl: 'Lonxa en vivo' },
+    musL: { es: 'Música gallega', en: 'Galician music', gl: 'Música galega' },
+    cluL: { es: 'Club de Huéspedes', en: 'Guest Club', gl: 'Club de Hóspedes' },
+    vinG: { es: 'Índice G · Guía de vinos', en: 'Índice G · Wine guide', gl: 'Índice G · Guía de viños' },
+    puenT: {
+      es: 'El Puente de Mando reúne en una pantalla los datos que cambian el día: estado del mar, mareas y precios de la lonja de Aguiño, siempre de fuentes oficiales y públicas. Lo que el huésped necesita para salir a la calle, sin buscar en diez sitios.',
+      en: 'The Bridge Deck brings together the data that changes the day: sea state, tides and Aguiño fish market prices, always from official public sources. What a guest needs before stepping out, without searching ten different sites.',
+      gl: 'A Ponte de Mando reúne nunha pantalla os datos que cambian o día: estado do mar, mareas e prezos da lonxa de Aguiño, sempre de fontes oficiais e públicas. O que o hóspede precisa antes de saír á rúa, sen buscar en dez sitios.',
+    },
+    planT: {
+      es: 'Planes de un día por el Barbanza: rutas, playas, miradores y mesa, combinados para que cuadren horarios y mareas. Itinerarios pensados por alguien que vive aquí.',
+      en: 'One-day plans around the Barbanza: routes, beaches, viewpoints and good tables, combined so times and tides fit. Itineraries put together by someone who lives here.',
+      gl: 'Plans dun día polo Barbanza: rutas, praias, miradoiros e mesa, combinados para que cadren horarios e mareas. Itinerarios pensados por alguén que vive aquí.',
+    },
+    bitT: {
+      es: 'El Cuaderno de Bitácora cuenta la vida del ático y de Aguiño: la ingeniería de la casa, las leyendas de las islas, la lonja y el mar. Entradas nuevas cada temporada.',
+      en: 'The Logbook tells the life of the penthouse and Aguiño: the engineering of the house, the island legends, the fish market and the sea. New entries every season.',
+      gl: 'O Caderno de Bitácora conta a vida do ático e de Aguiño: a enxeñaría da casa, as lendas das illas, a lonxa e o mar. Entradas novas cada tempada.',
+    },
+    lonjT: {
+      es: 'La lonja de Aguiño está a 350 metros del portal: la subasta de cada día, según la marea, con fama de los mejores percebes de la ría. En esta página, los precios reales del marisco, en vivo.',
+      en: 'The Aguiño fish market sits 350 metres from the front door: a daily auction ruled by the tide, famous for the finest goose barnacles of the ría. This page shows real seafood prices, live.',
+      gl: 'A lonxa de Aguiño está a 350 metros do portal: a poxa de cada día, segundo a marea, con fama dos mellores percebes da ría. Nesta páxina, os prezos reais do marisco, en vivo.',
+    },
+    gastT: {
+      es: 'La gastronomía del Barbanza, medida con el Índice Atlántico: puntuaciones de fuentes públicas, ponderadas y enlazables, nunca una opinión a puerta cerrada. Marisco, mesa y vinos de las cinco denominaciones gallegas.',
+      en: 'Barbanza gastronomy, measured with the Índice Atlántico: scores from public sources, weighted and linkable, never an opinion behind closed doors. Seafood, tables and the wines of the five Galician denominations.',
+      gl: 'A gastronomía do Barbanza, medida co Índice Atlántico: puntuacións de fontes públicas, ponderadas e ligables, nunca unha opinión a porta pechada. Marisco, mesa e viños das cinco denominacións galegas.',
+    },
+    musT: {
+      es: 'Música gallega para la estancia: playlists y artistas de aquí, del folk al nuevo sonido gallego. Lo que suena en la terraza al caer la tarde.',
+      en: 'Galician music for the stay: playlists and artists from here, from folk to the new Galician sound. What plays on the terrace as evening falls.',
+      gl: 'Música galega para a estancia: playlists e artistas de aquí, do folk ao novo son galego. O que soa na terraza ao caer a tarde.',
+    },
   };
 
   const b = (k: string) => T[k][lang] ?? T[k].es;
   const banda = (g: number) => g >= 92 ? (lang === 'en' ? 'Exceptional' : 'Excepcional') : g >= 88 ? (lang === 'en' ? 'Notable' : 'Notable') : g >= 84 ? (lang === 'en' ? 'Very good' : lang === 'gl' ? 'Moi bo' : 'Muy bueno') : g >= 80 ? (lang === 'en' ? 'Good' : lang === 'gl' ? 'Bo' : 'Bueno') : lang === 'en' ? 'Fair' : 'Correcto';
 
+  if (key === 'puente') return p(b('puenT')) + p(`${a(v('planificador'), b('planL'))} → &nbsp;·&nbsp; ${a(v('lonja'), b('lonjL'))} →`);
+  if (key === 'planificador') return p(b('planT')) + p(`${a(v('gastronomia'), b('vinL2'))} → &nbsp;·&nbsp; ${a(v('bitacora'), b('bitL'))} →`);
+  if (key === 'bitacora') return p(b('bitT')) + p(`${a(v('lonja'), b('lonjL'))} → &nbsp;·&nbsp; ${a(v('vinos'), b('vinG'))} →`);
+  if (key === 'lonja') return p(b('lonjT')) + p(`${a(v('puente'), b('pueL'))} → &nbsp;·&nbsp; ${a(v('gastronomia'), b('vinL2'))} →`);
+  if (key === 'gastronomia') return p(b('gastT')) + p(`${a(v('gastronomia/metodologia'), b('vinL1'))} → &nbsp;·&nbsp; ${a(v('vinos'), b('vinG'))} →`);
+  if (key === 'musica') return p(b('musT')) + p(`${a(v('club'), b('cluL'))} → &nbsp;·&nbsp; ${a(v('bitacora'), b('bitL'))} →`);
   if (key === 'vinos') {
     const top = VINOS.filter((x) => x.g !== null).slice(0, 10);
     const items = top.map((x, i) =>
@@ -358,6 +400,61 @@ function cuerpoVista(lang: Lang, key: string): string {
   if (key === 'metodologia') return p(b('metodT')) + p(`${a(v('vinos'), lang === 'en' ? 'Wine guide' : 'Guía de vinos')} → &nbsp;·&nbsp; ${a(v('gastronomia'), b('vinL2'))} →`);
   if (key === 'colaboraciones') return p(b('colabT')) + p(`${a(v('bitacora'), b('bitL'))} → &nbsp;·&nbsp; ${a(v('vinos'), lang === 'en' ? 'Wine guide' : 'Guía de vinos')} →`);
   return '';
+}
+
+// Bloque estático de enlaces internos + externos en TODAS las carcasas:
+// da enlaces entrantes reales a las vistas poco enlazadas y enlaces
+// salientes oficiales a las páginas sin ninguno (React lo reemplaza al hidratar).
+function pieEnlacesHtml(lang: Lang): string {
+  const pref = LANG_URL[lang] ? `/${LANG_URL[lang]}` : '';
+  const v = (p: string) => `${pref}/${p}`;
+  const A = 'style="color:#1A3A5C;"';
+  const P = 'style="max-width:44rem;margin:0 auto 0.4rem;padding:0 1.5rem;font-family:Georgia,\'Times New Roman\',serif;font-size:0.8rem;color:#5a6a7c;line-height:1.9;text-align:center;"';
+  const items: Record<Lang, [string, string][]> = {
+    es: [
+      ['', 'Inicio'], ['puente', 'Puente de Mando'], ['planificador', 'Planificador'],
+      ['bitacora', 'Bitácora'], ['lonja', 'Lonja en vivo'], ['gastronomia', 'Gastronomía'],
+      ['vinos', 'Índice G · Guía de vinos'], ['musica', 'Música gallega'],
+      ['club', 'Club de Huéspedes'], ['colaboraciones', 'Colaboraciones'],
+      ['legal', 'Aviso legal'], ['condiciones', 'Condiciones'],
+    ],
+    en: [
+      ['', 'Home'], ['puente', 'Bridge Deck'], ['planificador', 'Planner'],
+      ['bitacora', 'Logbook'], ['lonja', 'Live fish market'], ['gastronomia', 'Gastronomy'],
+      ['vinos', 'Índice G · Wine guide'], ['musica', 'Galician music'],
+      ['club', 'Guest Club'], ['colaboraciones', 'Collaborations'],
+      ['legal', 'Legal notice'], ['condiciones', 'Booking conditions'],
+    ],
+    gl: [
+      ['', 'Inicio'], ['puente', 'Ponte de Mando'], ['planificador', 'Planificador'],
+      ['bitacora', 'Bitácora'], ['lonja', 'Lonxa en vivo'], ['gastronomia', 'Gastronomía'],
+      ['vinos', 'Índice G · Guía de viños'], ['musica', 'Música galega'],
+      ['club', 'Club de Hóspedes'], ['colaboraciones', 'Colaboracións'],
+      ['legal', 'Aviso legal'], ['condiciones', 'Condicións'],
+    ],
+  };
+  const internos = items[lang].map(([p, t]) => `<a href="${v(p)}" ${A}>${t}</a>`).join(' &nbsp;·&nbsp; ');
+  const ext = lang === 'en'
+    ? '<a href="https://www.turismo.gal/" rel="noopener" style="color:#1A3A5C;">Turismo de Galicia</a> &nbsp;·&nbsp; <a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/ribeira-id15073" rel="noopener" style="color:#1A3A5C;">AEMET Ribeira</a> &nbsp;·&nbsp; <a href="https://illasatlanticas.gal/es" rel="noopener" style="color:#1A3A5C;">Atlantic Islands National Park</a>'
+    : '<a href="https://www.turismo.gal/" rel="noopener" style="color:#1A3A5C;">Turismo de Galicia</a> &nbsp;·&nbsp; <a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/ribeira-id15073" rel="noopener" style="color:#1A3A5C;">AEMET Ribeira</a> &nbsp;·&nbsp; <a href="https://illasatlanticas.gal/es" rel="noopener" style="color:#1A3A5C;">Parque Nacional das Illas Atlánticas</a>';
+  return `\n      <p ${P}>${internos}</p>\n      <p ${P}>${ext}</p>`;
+}
+
+// ItemList para /vinos (Letaido clasifica la guía como página de producto):
+// lista pública de los diez mejores, sin notas en el marcado (cero mentiras).
+function itemListLd(): string {
+  const top = VINOS.filter((x) => x.g !== null).slice(0, 10);
+  const items = top.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: `${x.nombre} — ${x.bodega} (${x.do})` }));
+  return `    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Índice G — los diez mejor puntuados",
+      "numberOfItems": 10,
+      "itemListElement": ${JSON.stringify(items)}
+    }
+    </script>
+`;
 }
 
 // ---------- plantilla ----------
@@ -422,13 +519,13 @@ for (const p of paginas) {
   // H1 + intro estáticos dentro de #root
   html = html.replace(
     /<h1 style="[^"]*">[\s\S]*?<\/p>/,
-    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}${p.cuerpo ?? ''}`,
+    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${shellNav(p)}${p.listaArticulos ?? ''}${p.cuerpo ?? ''}${pieEnlacesHtml(p.lang)}`,
   );
   // JSON-LD por página: Article en artículos; Organization+WebSite en todas
   // MENOS la portada (que ya lo trae en su chunk original de index.html)
   html = html.replace(
     '</head>',
-    `${p.article ? articleLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}\n  </head>`,
+    `${p.article ? articleLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}${p.archivo.endsWith('/vinos/index.html') ? itemListLd() : ''}\n  </head>`,
   );
   mkdirSync(dirname(p.archivo), { recursive: true });
   writeFileSync(p.archivo, html);

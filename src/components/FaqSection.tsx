@@ -4,7 +4,7 @@ import { t } from '../i18n/translate';
 function getFaqItems() { return [
   {
     q: t('¿A qué hora es la entrada y la salida?'),
-    a: t("La entrada es a partir de las 17:00 y la salida hasta las 12:00. En temporada baja, y con antelación, solemos poder flexibilizar ambos horarios: escríbenos y lo miramos."),
+    a: t("La entrada es a partir de las 17:00 y la salida hasta las 12:00. Preparamos los 230 m² a fondo entre estancias, y estos horarios son fijos para poder garantizarlo."),
   },
   {
     q: t('¿Cuántas personas pueden alojarse?'),
