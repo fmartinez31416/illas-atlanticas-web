@@ -96,7 +96,7 @@ export const SPACES_DATA: Space[] = [
   },
   {
     id: 'dormitorio-doble',
-    name: 'Dormitorio Doble',
+    name: 'Habitación de dos camas',
     subtitle: 'Dos camas, escritorio y luz de claraboya',
     tag: 'Descanso',
     coverImage: '/fotos/dormitorio_doble_01.jpg?v=20261101',

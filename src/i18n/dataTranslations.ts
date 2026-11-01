@@ -469,7 +469,7 @@ export const TR: Record<string, { en?: string; gl?: string }> = {
   "rev.r5.comment": {"en": "Huge, bright apartment with everything needed for a stay with children. The garage space is a great bonus and the beach is a short walk away. The host recommended routes around the islands which were the highlight of the holiday.", "gl": "Apartamento enorme, luminoso e con todo o necesario para vir con nenos. A praza de garaxe é un punto a favor e a praia está a un paseo. O anfitrión recomendounos rutas polas illas que foron o mellor das vacacións."},
   "rev.r5.details": {"en": "Family with children · 4 nights", "gl": "Familia con nenos · 4 noites"},
   "rev.r5.title": {"en": "We will definitely return", "gl": "Repetiremos seguro"},
-  "spaces.dormitorio-doble.name": {"en": "Twin Bedroom", "gl": "Dormitorio Dobre"},
+  "spaces.dormitorio-doble.name": {"en": "Twin Bedroom", "gl": "Habitación de dúas camas"},
   "spaces.dormitorio-doble.subtitle": {"en": "Two beds, a desk and skylight light", "gl": "Dúas camas, escritorio e luz de claraboia"},
   "spaces.dormitorio-doble.tag": {"en": "Rest", "gl": "Descanso"},
   "spaces.dormitorio-doble.description": {"en": "The second bedroom, with two single beds dressed like the rest of the house and a desk by the skylight to work or write. Views over the fishing village and the ría.", "gl": "O segundo dormitorio, con dúas camas individuais vestidas como as do resto da casa e un escritorio xunto á claraboia para traballar ou escribir. Vistas ao pobo mariñeiro e á ría."},
