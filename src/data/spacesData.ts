@@ -2,6 +2,34 @@ import { Space } from '../types';
 
 export const SPACES_DATA: Space[] = [
   {
+    id: 'llegada-edificio',
+    name: 'La llegada',
+    subtitle: 'Portal con ascensor y plaza de garaje privada',
+    tag: 'Llegada',
+    coverImage: '/fotos/portal_01.jpg?v=20261102',
+    gallery: [
+      '/fotos/portal_02.jpg'
+    ],
+    description: 'Edificio Sol y Mar, en pleno Aguiño: fachada de piedra, portal con rampa accesible y ascensor que sube directo a la puerta del ático. Sin escaleras que subir con maletas, y con tu plaza de garaje privada en el mismo edificio.',
+    highlights: [
+      'Ascensor directo a la puerta del ático',
+      'Rampa accesible con barandilla en el portal',
+      'Plaza de garaje privada nº 12',
+      'Portal videovigilado'
+    ],
+    features: [
+      'A un paseo del puerto y de la lonja',
+      'Sin escaleras de la calle al ático',
+      'Buzones y portero automático'
+    ],
+    specs: [
+      { label: 'Acceso', value: 'Ascensor directo' },
+      { label: 'Garaje', value: 'Plaza privada nº 12' },
+      { label: 'Portal', value: 'Videovigilado' },
+      { label: 'Accesibilidad', value: 'Rampa con barandilla' }
+    ]
+  },
+  {
     id: 'terraza',
     name: 'Terraza Panorámica',
     subtitle: 'Amanecer y atardecer, en privado',
