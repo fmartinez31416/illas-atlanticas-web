@@ -65,8 +65,9 @@ export const SPACES_DATA: Space[] = [
     name: 'Salón Principal',
     subtitle: 'Chimenea de ambiente y Smart TV 75"',
     tag: 'Estar & Confort',
-    coverImage: '/fotos/salon_01.jpg',
+    coverImage: '/fotos/salon_04.jpg?v=20261102',
     gallery: [
+      '/fotos/salon_01.jpg',
       '/fotos/salon_03.jpg',
       '/fotos/comedor_04.jpg',
       '/fotos/comedor_15.jpg'
