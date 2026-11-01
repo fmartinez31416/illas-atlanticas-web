@@ -34,8 +34,9 @@ export const SPACES_DATA: Space[] = [
     name: 'Terraza Panorámica',
     subtitle: 'Amanecer y atardecer, en privado',
     tag: 'Exterior',
-    coverImage: '/fotos/vistas_terraza_17.jpg',
+    coverImage: '/fotos/terraza_tumbonas_01.jpg?v=20261102',
     gallery: [
+      '/fotos/vistas_terraza_17.jpg',
       '/fotos/vistas_terraza_19.jpg',
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
