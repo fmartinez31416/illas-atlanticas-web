@@ -70,10 +70,10 @@ export const SPACES_DATA: Space[] = [
       '/fotos/salon_05.jpg',
       '/fotos/salon_06.jpg',
       '/fotos/salon_07.jpg',
-      '/fotos/salon_01.jpg',
       '/fotos/salon_03.jpg',
       '/fotos/comedor_04.jpg',
-      '/fotos/comedor_15.jpg'
+      '/fotos/comedor_15.jpg',
+      '/fotos/salon_01.jpg'
     ],
     description: 'Espacio abierto bañado por la luz del Atlántico a través de grandes ventanales. Chimenea de leña o briquetas, televisor de 75" con Netflix y Movistar+, y sistema de sonido para las noches de película.',
     highlights: [
