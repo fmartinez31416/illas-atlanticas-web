@@ -95,6 +95,34 @@ export const SPACES_DATA: Space[] = [
     ]
   },
   {
+    id: 'dormitorio-doble',
+    name: 'Dormitorio Doble',
+    subtitle: 'Dos camas, escritorio y luz de claraboya',
+    tag: 'Descanso',
+    coverImage: '/fotos/dormitorio_doble_01.jpg?v=20261101',
+    gallery: [
+      '/fotos/dormitorio_doble_02.jpg'
+    ],
+    description: 'El segundo dormitorio, con dos camas individuales vestidas como las de toda la casa y un escritorio junto a la claraboya para trabajar o escribir. Vistas al pueblo marinero y a la ría.',
+    highlights: [
+      'Dos camas individuales con ropa planchada',
+      'Escritorio con silla junto a la claraboya',
+      'Vistas al pueblo marinero y a la ría',
+      'Oscurecimiento y silencio para descansar'
+    ],
+    features: [
+      'Luz natural de la claraboya',
+      'Zona de trabajo integrada en la habitación',
+      'Ropa de cama planchada y lista'
+    ],
+    specs: [
+      { label: 'Camas', value: 'Dos individuales' },
+      { label: 'Trabajo', value: 'Escritorio con silla' },
+      { label: 'Luz', value: 'Claraboya de techo' },
+      { label: 'Vistas', value: 'Pueblo y mar' }
+    ]
+  },
+  {
     id: 'bano-hidromasaje',
     name: 'Bañera de Hidromasaje',
     subtitle: 'Bañera de hidromasaje con chorros de agua',
