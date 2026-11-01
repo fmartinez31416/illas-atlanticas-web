@@ -100,8 +100,9 @@ export const SPACES_DATA: Space[] = [
     name: 'Master Suite',
     subtitle: 'Ventanas de techo Velux sobre la cama',
     tag: 'Descanso',
-    coverImage: '/fotos/dormitorio_principal_01.jpg',
+    coverImage: '/fotos/dormitorio_principal_04.jpg?v=20261102',
     gallery: [
+      '/fotos/dormitorio_principal_01.jpg',
       '/fotos/dormitorio_principal_02.jpg',
       '/fotos/dormitorio_principal_03.jpg',
       '/fotos/bano_principal_02.jpg'
