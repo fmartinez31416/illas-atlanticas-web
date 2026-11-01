@@ -127,7 +127,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Despacho Workspace',
     subtitle: 'Teletrabajo frente al mar: fibra y silencio',
     tag: 'Workation & Focus',
-    coverImage: '/fotos/despacho_04.jpg',
+    coverImage: '/fotos/despacho_04.jpg?v=20261101',
     gallery: [
       '/fotos/despacho_05.jpg',
       '/fotos/hall_principal_02.jpg',
