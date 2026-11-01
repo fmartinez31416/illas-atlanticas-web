@@ -37,6 +37,7 @@ export const SPACES_DATA: Space[] = [
     coverImage: '/fotos/terraza_tumbonas_01.jpg?v=20261102',
     gallery: [
       '/fotos/vistas_terraza_17.jpg',
+      '/fotos/vistas_terraza_20.jpg',
       '/fotos/vistas_terraza_19.jpg',
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
