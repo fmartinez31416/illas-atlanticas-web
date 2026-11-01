@@ -45,7 +45,7 @@ export function App() {
 
 function AppInner() {
   const { lang } = useI18n();
-  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'gastronomia-ribeira' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'>('home');
   const [pendingArticle, setPendingArticle] = useState<string | null>(null);
 
   // Título y meta por idioma
@@ -56,7 +56,7 @@ function AppInner() {
   }, [lang]);
 
   // Rutas propias por página de servicio (SEO): /puente /lonja /bitacora /legal y /bitacora/<articulo>
-  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'> = {
+  const VIEW_BY_PATH: Record<string, 'home' | 'bitacora' | 'lonja' | 'legal' | 'condiciones' | 'puente' | 'planificador' | 'gastronomia' | 'gastronomia-ribeira' | 'metodologia' | 'musica' | 'club' | 'colaboraciones' | 'vinos'> = {
     puente: 'puente',
     lonja: 'lonja',
     bitacora: 'bitacora',
@@ -78,6 +78,10 @@ function AppInner() {
         setCurrentView('metodologia');
         return;
       }
+      if (partes[i] === 'gastronomia' && partes[i + 1] === 'ribeira') {
+        setCurrentView('gastronomia-ribeira');
+        return;
+      }
       const vista = VIEW_BY_PATH[partes[i]] || 'home';
       setCurrentView(vista);
       if (vista === 'bitacora' && partes[i + 1]) setPendingArticle(decodeURIComponent(partes[i + 1]));
@@ -88,7 +92,7 @@ function AppInner() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => {
-    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', metodologia: '/gastronomia/metodologia', musica: '/musica', club: '/club', colaboraciones: '/colaboraciones', vinos: '/vinos' };
+    const PATH_BY_VIEW: Record<string, string> = { home: '/', bitacora: '/bitacora', lonja: '/lonja', legal: '/legal', condiciones: '/condiciones', puente: '/puente', planificador: '/planificador', gastronomia: '/gastronomia', 'gastronomia-ribeira': '/gastronomia/ribeira', metodologia: '/gastronomia/metodologia', musica: '/musica', club: '/club', colaboraciones: '/colaboraciones', vinos: '/vinos' };
     const prefijo = lang === 'en' ? '/en' : lang === 'gl' ? '/gl' : '';
     const objetivo = currentView === 'home'
       ? (prefijo || '/')
@@ -101,7 +105,7 @@ function AppInner() {
     if (seg[0] === 'es' || seg[0] === 'en' || seg[0] === 'gl') vistaActual = seg[1];
     else vistaActual = seg[0];
     const rutaConocida = !!VIEW_BY_PATH[vistaActual ?? ''] ||
-      (vistaActual === 'gastronomia' && seg[1] === 'metodologia');
+      (vistaActual === 'gastronomia' && (seg[1] === 'metodologia' || seg[1] === 'ribeira'));
     if (window.location.pathname !== objetivo && currentView !== 'bitacora' && !rutaConocida) {
       window.history.pushState(null, '', objetivo);
     }
@@ -218,10 +222,11 @@ function AppInner() {
   }
 
   // VISTA: Gastronomía — dónde comer, por anillos de distancia
-  if (currentView === 'gastronomia') {
+  if (currentView === 'gastronomia' || currentView === 'gastronomia-ribeira') {
     return (
       <>
         <Suspense fallback={null}><GastronomiaPage
+          zona={currentView === 'gastronomia-ribeira' ? 'ribeira' : null}
           onBack={() => setCurrentView('home')}
           onOpenBooking={scrollToBooking}
           onOpenMetodologia={() => setCurrentView('metodologia')}

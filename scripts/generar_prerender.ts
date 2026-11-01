@@ -37,6 +37,11 @@ const VIEWS: { path: string; key?: string; meta?: Record<Lang, { title: string; 
       gl: { title: 'Planificador de viaxes · Aguiño e as Rías Baixas · Illas Atlánticas Ático', description: 'Planea a túa estadía en Aguiño: barcos a Sálvora e Ons, praias, miradoiros, marisqueo e a lonxa. Horarios, prezos e distancias reais verificadas dende o ático.' },
   }},
   { path: 'gastronomia', key: 'gastronomia' },
+  { path: 'gastronomia/ribeira', key: 'gastronomia/ribeira', meta: {
+    es: { title: 'Dónde comer en Ribeira · restaurantes verificados', description: 'Guía verificada de restaurantes de Ribeira (A Coruña): del marisco recién subastado en el puerto a la cocina de autor, con direcciones y horarios contrastados con fuentes públicas. A diez minutos del ático de Aguiño.' },
+    en: { title: 'Where to eat in Ribeira · verified restaurants', description: 'A verified guide to Ribeira (A Coruña) restaurants: from seafood fresh off the port auction to author cooking, with addresses and hours checked against public sources. Ten minutes from the Aguiño penthouse.' },
+    gl: { title: 'Onde comer en Ribeira · restaurantes verificados', description: 'Guía verificada de restaurantes de Ribeira (A Coruña): do marisco recén poxado no porto á cociña de autor, con enderezos e horarios contrastados con fontes públicas. A dez minutos do ático de Aguiño.' },
+  } },
   { path: 'gastronomia/metodologia', key: 'metodologia' },
   { path: 'musica', key: 'musica' },
   { path: 'vinos', key: 'vinos' },
@@ -386,6 +391,32 @@ function cuerpoVista(lang: Lang, key: string): string {
   if (key === 'lonja') return p(b('lonjT')) + p(`${a(v('puente'), b('pueL'))} → &nbsp;·&nbsp; ${a(v('gastronomia'), b('vinL2'))} →`);
   if (key === 'gastronomia') return p(b('gastT')) + p(`${a(v('gastronomia/metodologia'), b('vinL1'))} → &nbsp;·&nbsp; ${a(v('vinos'), b('vinG'))} →`);
   if (key === 'musica') return p(b('musT')) + p(`${a(v('club'), b('cluL'))} → &nbsp;·&nbsp; ${a(v('bitacora'), b('bitL'))} →`);
+  if (key === 'gastronomia/ribeira') {
+    const intro = {
+      es: 'La ciudad grande de la ría, a diez minutos del ático. Estas son las fichas de Ribeira de nuestra guía gastronómica — las direcciones y teléfonos verificados uno a uno con fuentes públicas (web del local, directorio de Turismo de Ribeira y Google Maps). Sin patrocinios: los datos son los que son, y los sitios en verificación se marcan como tales.',
+      en: 'The big town of the ría, ten minutes from the penthouse. These are the Ribeira entries of our food guide — every address and phone checked one by one against public sources (the restaurant\u2019s own website, the Ribeira tourism directory and Google Maps). No sponsorships: the data is what it is, and places still being verified are flagged as such.',
+      gl: 'A cidade grande da ría, a dez minutos do ático. Estas son as fichas de Ribeira da nosa guía gastronómica — os enderezos e teléfonos verificados un a un con fontes públicas (web do local, directorio de Turismo de Ribeira e Google Maps). Sen patrocinios: os datos son os que son, e os sitios en verificación márcanse como tales.',
+    }[lang] ?? '';
+    const lista = [
+      ['Beizos Gastrobar', 'Rúa Diego Delicado, 4 bajo B'],
+      ['Casa Fontao', 'Avda. da Coruña, 149'],
+      ['Restaurante Náutico', 'Puerto Deportivo, s/n · planta 1ª'],
+      ['A Bodega', 'Rúa Cristóbal Colón, 1'],
+      ['Bodegón Castelao', 'Avda. do Malecón, 55'],
+      ['Tapería A Recoveira', 'Rúa Alcalá Galiano, 4 bajo'],
+      ['Mesón Albariño', 'Xarás, 7'],
+      ['Bar O Porto', 'Muelle Comercial, s/n'],
+      ['El Golimbreo', 'Rúa Campo de Marte, 7'],
+      ['Vinoteca Abuela Gloria', 'Rúa do Sal, 3'],
+      ['Bar Cafetería A Fonte', 'Mosqueiros, 40 · Castiñeiras'],
+      ['O Timón', 'Estrada Xeral, 166 · Castiñeiras'],
+      ['Chiringuito Pedra Pateira', 'Rúa Manzanares, 83'],
+      ['A Barbecho', 'Rúa Norte, 22 · Palmeira'],
+      ['Marisquería Garsán', 'Camiño Rueiro, 21 · Palmeira'],
+    ];
+    const items = lista.map(([n, d]) => `<li><strong>${esc(n)}</strong> — ${esc(d)}</li>`).join('');
+    return p(intro) + `<ul style="max-width:44rem;margin:0 auto 1.5rem;padding:0 1.5rem;list-style:none;text-align:center;color:#3a4a5c;line-height:1.9;">${items}</ul>` + p(`${a(v('gastronomia'), b('vinL2'))} → &nbsp;·&nbsp; ${a(v('gastronomia/metodologia'), b('vinL1'))} →`);
+  }
   if (key === 'vinos') {
     const top = VINOS.filter((x) => x.g !== null).slice(0, 10);
     const items = top.map((x, i) =>
@@ -414,6 +445,7 @@ function pieEnlacesHtml(lang: Lang): string {
     es: [
       ['', 'Inicio'], ['puente', 'Puente de Mando'], ['planificador', 'Planificador'],
       ['bitacora', 'Bitácora'], ['lonja', 'Lonja en vivo'], ['gastronomia', 'Gastronomía'],
+      ['gastronomia/ribeira', 'Dónde comer en Ribeira'],
       ['vinos', 'Índice G · Guía de vinos'], ['musica', 'Música gallega'],
       ['club', 'Club de Huéspedes'], ['colaboraciones', 'Colaboraciones'],
       ['legal', 'Aviso legal'], ['condiciones', 'Condiciones'],
@@ -421,6 +453,7 @@ function pieEnlacesHtml(lang: Lang): string {
     en: [
       ['', 'Home'], ['puente', 'Bridge Deck'], ['planificador', 'Planner'],
       ['bitacora', 'Logbook'], ['lonja', 'Live fish market'], ['gastronomia', 'Gastronomy'],
+      ['gastronomia/ribeira', 'Where to eat in Ribeira'],
       ['vinos', 'Índice G · Wine guide'], ['musica', 'Galician music'],
       ['club', 'Guest Club'], ['colaboraciones', 'Collaborations'],
       ['legal', 'Legal notice'], ['condiciones', 'Booking conditions'],
@@ -428,6 +461,7 @@ function pieEnlacesHtml(lang: Lang): string {
     gl: [
       ['', 'Inicio'], ['puente', 'Ponte de Mando'], ['planificador', 'Planificador'],
       ['bitacora', 'Bitácora'], ['lonja', 'Lonxa en vivo'], ['gastronomia', 'Gastronomía'],
+      ['gastronomia/ribeira', 'Onde comer en Ribeira'],
       ['vinos', 'Índice G · Guía de viños'], ['musica', 'Música galega'],
       ['club', 'Club de Hóspedes'], ['colaboraciones', 'Colaboracións'],
       ['legal', 'Aviso legal'], ['condiciones', 'Condicións'],

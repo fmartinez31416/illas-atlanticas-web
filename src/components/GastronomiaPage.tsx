@@ -5,6 +5,7 @@ import { ArrowLeft, CalendarCheck, MapPin, Star, Euro, Filter, Route, FileText }
 import { useI18n } from '../i18n/LangContext';
 import { ANILLOS, GastroFicha } from '../data/gastroRings';
 import { GASTRO_META, ATICO, CriteriosGastro } from '../data/gastroMeta';
+import { DATOS_FICHA } from '../data/gastroFichas';
 import { indiceDe } from '../lib/indiceAtlantico';
 import ScoreDial from './ScoreDial';
 import FichaGastro from './FichaGastro';
@@ -13,6 +14,7 @@ interface GastroPageProps {
   onBack: () => void;
   onOpenBooking: () => void;
   onOpenMetodologia: () => void;
+  zona?: 'ribeira' | null;
 }
 
 const G: Record<string, { es: string; en: string; gl: string }> = {
@@ -20,6 +22,13 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   reservar: { es: 'Reservar', en: 'Book', gl: 'Reservar' },
   kicker: { es: 'Gastronomía · Ría de Arousa', en: 'Food & drink · Ría de Arousa', gl: 'Gastronomía · Ría de Arousa' },
   titulo: { es: 'Dónde comer en Aguiño', en: 'Where to eat in Aguiño', gl: 'Onde comer en Aguiño' },
+  ribeiraTitulo: { es: 'Dónde comer en Ribeira', en: 'Where to eat in Ribeira', gl: 'Onde comer en Ribeira' },
+  ribeiraIntro: {
+    es: 'La ciudad grande de la ría, a diez minutos del ático: del marisco recién subastado en el puerto a la cocina de autor. Estas son las fichas de Ribeira de nuestra guía — verificadas con fuentes públicas, sin patrocinios. Usa el buscador o vuelve a la guía completa del Barbanza.',
+    en: 'The big town of the ría, ten minutes from the penthouse: from seafood fresh from the port auction to author cooking. These are the Ribeira entries of our guide — checked against public sources, no sponsorships. Use the search box or go back to the full Barbanza guide.',
+    gl: 'A cidade grande da ría, a dez minutos do ático: do marisco recén poxado no porto á cociña de autor. Estas son as fichas de Ribeira da nosa guía — verificadas con fontes públicas, sen patrocinios. Usa o buscador ou volve á guía completa do Barbanza.',
+  },
+  ribeiraGuia: { es: '← Guía completa del Barbanza', en: '← Full Barbanza guide', gl: '← Guía completa do Barbanza' },
   intro: {
     es: 'Del mar a la mesa sin intermediarios: esta es la despensa de la ría. Aquí no se viene a carta larga — se come de barra, ración y marisco del día. Tres anillos por distancia desde el ático, con buscador: filtra, mira el mapa y traza la ruta. Todo verificado en reseñas públicas, sin patrocinios; las sombras también se cuentan.',
     en: 'From the sea to the table with no middlemen: this is the ría\u2019s pantry. Here you don\u2019t come for a long menu — you eat at the bar, generous raciones and the day\u2019s shellfish. Three rings by distance from the penthouse, with a search engine: filter, check the map and trace the route. Everything checked against public reviews, no sponsorships; the downsides are told too.',
@@ -108,7 +117,7 @@ function Chip({ activo, onClick, children }: { key?: Key; activo: boolean; onCli
   );
 }
 
-export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: GastroPageProps) {
+export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia, zona }: GastroPageProps) {
   const { lang } = useI18n();
   const g = (k: string) => G[k]?.[lang] ?? G[k]?.es ?? k;
 
@@ -158,6 +167,7 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
 
   const filtradas = useMemo(() => {
     return TODAS.filter((f) => {
+      if (zona === 'ribeira' && !(DATOS_FICHA[f.id]?.contacto?.address ?? '').includes('Ribeira')) return false;
       if (catSel.size && !catSel.has(f.categoria.es)) return false;
       if (precioSel.size && (!f.precio || !precioSel.has(f.precio))) return false;
       const meta = GASTRO_META[f.id];
@@ -281,8 +291,13 @@ export function GastronomiaPage({ onBack, onOpenBooking, onOpenMetodologia }: Ga
       <header className="pt-28 pb-8 px-4">
         <div className="max-w-3xl mx-auto">
           <p className="text-[#C5A059] text-xs uppercase tracking-[0.3em] mb-3">{g('kicker')}</p>
-          <h1 className="font-serif text-4xl sm:text-5xl text-amber-100 mb-5">{g('titulo')}</h1>
-          <p className="text-stone-300 leading-relaxed">{g('intro')}</p>
+          <h1 className="font-serif text-4xl sm:text-5xl text-amber-100 mb-5">{zona === 'ribeira' ? g('ribeiraTitulo') : g('titulo')}</h1>
+          {zona === 'ribeira' && (
+            <p className="text-[#2BA8A8] text-sm mb-3">
+              <a href={`/${lang === 'es' ? '' : lang + '/'}gastronomia`} className="hover:underline">{g('ribeiraGuia')}</a>
+            </p>
+          )}
+          <p className="text-stone-300 leading-relaxed">{zona === 'ribeira' ? g('ribeiraIntro') : g('intro')}</p>
         </div>
       </header>
 

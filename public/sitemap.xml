@@ -241,6 +241,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/gastronomia" />
   </url>
   <url>
+    <loc>https://illasatlanticasatico.es/gastronomia/ribeira</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://illasatlanticasatico.es/en/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="gl" href="https://illasatlanticasatico.es/gl/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+  </url>
+  <url>
+    <loc>https://illasatlanticasatico.es/en/gastronomia/ribeira</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://illasatlanticasatico.es/en/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="gl" href="https://illasatlanticasatico.es/gl/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+  </url>
+  <url>
+    <loc>https://illasatlanticasatico.es/gl/gastronomia/ribeira</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://illasatlanticasatico.es/en/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="gl" href="https://illasatlanticasatico.es/gl/gastronomia/ribeira" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/gastronomia/ribeira" />
+  </url>
+  <url>
     <loc>https://illasatlanticasatico.es/gastronomia/metodologia</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
