@@ -161,7 +161,9 @@ export const SPACES_DATA: Space[] = [
     subtitle: 'Cabecero de madera tallada y armario a juego',
     tag: 'Descanso',
     coverImage: '/fotos/dormitorio_matrimonio_01.jpg?v=20261102',
-    gallery: [],
+    gallery: [
+      '/fotos/dormitorio_matrimonio_02.jpg'
+    ],
     description: 'El tercer dormitorio, con cama de matrimonio de cabecero de madera tallada, armario a juego y climatización propia. Ropa de cama de calidad, recién puesta.',
     highlights: [
       'Cama de matrimonio con cabecero tallado',
