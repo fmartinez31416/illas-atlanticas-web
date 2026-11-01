@@ -190,6 +190,7 @@ export const SPACES_DATA: Space[] = [
     tag: 'Bienestar',
     coverImage: '/fotos/bano_principal_06.jpg',
     gallery: [
+      '/fotos/bano_principal_16.jpg',
       '/fotos/bano_principal_15.jpg',
       '/fotos/bano_principal_14.jpg',
       '/fotos/bano_doble_01.jpg'
