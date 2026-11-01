@@ -36,6 +36,7 @@ export const SPACES_DATA: Space[] = [
     tag: 'Exterior',
     coverImage: '/fotos/terraza_tumbonas_01.jpg?v=20261102',
     gallery: [
+      '/fotos/terraza_comedor_01.jpg',
       '/fotos/vistas_terraza_17.jpg',
       '/fotos/vistas_terraza_20.jpg',
       '/fotos/vistas_terraza_19.jpg',
