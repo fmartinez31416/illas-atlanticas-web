@@ -156,6 +156,32 @@ export const SPACES_DATA: Space[] = [
     ]
   },
   {
+    id: 'dormitorio-matrimonio',
+    name: 'Dormitorio de matrimonio',
+    subtitle: 'Cabecero de madera tallada y armario a juego',
+    tag: 'Descanso',
+    coverImage: '/fotos/dormitorio_matrimonio_01.jpg?v=20261102',
+    gallery: [],
+    description: 'El tercer dormitorio, con cama de matrimonio de cabecero de madera tallada, armario a juego y climatización propia. Ropa de cama de calidad, recién puesta.',
+    highlights: [
+      'Cama de matrimonio con cabecero tallado',
+      'Armario grande a juego',
+      'Climatización frío/calor en la habitación',
+      'Ropa de cama de calidad, recién puesta'
+    ],
+    features: [
+      'Estilo clásico en madera maciza',
+      'Climatización propia en la habitación',
+      'Silencio para descansar'
+    ],
+    specs: [
+      { label: 'Cama', value: 'Matrimonio' },
+      { label: 'Cabecero', value: 'Madera tallada' },
+      { label: 'Almacenaje', value: 'Armario a juego' },
+      { label: 'Clima', value: 'Frío/calor propio' }
+    ]
+  },
+  {
     id: 'bano-hidromasaje',
     name: 'Bañera de Hidromasaje',
     subtitle: 'Bañera de hidromasaje con chorros de agua',
