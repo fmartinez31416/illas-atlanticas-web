@@ -67,6 +67,7 @@ export const SPACES_DATA: Space[] = [
     tag: 'Estar & Confort',
     coverImage: '/fotos/salon_04.jpg?v=20261102',
     gallery: [
+      '/fotos/salon_05.jpg',
       '/fotos/salon_01.jpg',
       '/fotos/salon_03.jpg',
       '/fotos/comedor_04.jpg',
