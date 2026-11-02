@@ -44,7 +44,7 @@ export const SPACES_DATA: Space[] = [
       '/fotos/terraza_nocturna_05.jpg',
       '/fotos/terraza_dron.jpg'
     ],
-    description: 'Un mirador privado con barandillas de cristal que enmarcan la ría y la silueta de Sálvora. Amanece directamente sobre el mar; al atardecer, la luz se queda en la ría. Mesa para seis y zona de tumbonas.',
+    description: 'Un mirador privado abierto a la ría y a la silueta de Sálvora. Amanece directamente sobre el mar; al atardecer, la luz se queda en la ría. Mesa para seis y zona de tumbonas.',
     highlights: [
       'Vistas directas a la isla de Sálvora y al Parque Nacional',
       'Mesa exterior para 6 comensales al aire libre',
