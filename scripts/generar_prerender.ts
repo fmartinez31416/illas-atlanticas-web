@@ -171,7 +171,7 @@ function articleLd(p: Pagina): string {
       "@type": "Article",
       "headline": "${esc(a.headline)}",
       "description": "${esc(a.description)}",
-      "author": { "@type": "Organization", "name": "${esc(a.author)}" },
+      "author": { "@type": "${a.author === 'Cuaderno Atlántico' ? 'Organization' : 'Person'}", "name": "${esc(a.author)}" },
       "publisher": { "@type": "Organization", "name": "Illas Atlánticas Ático", "logo": { "@type": "ImageObject", "url": "${BASE}/logo.png" } },
       "mainEntityOfPage": "${p.url}",
       "url": "${p.url}",
