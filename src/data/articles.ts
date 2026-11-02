@@ -17,6 +17,31 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '17',
+    slug: 'volver-a-tener-equipo',
+    cover: 'https://illasatlanticasatico.es/laminas/volver-equipo_v.webp',
+    coverSquare: 'https://illasatlanticasatico.es/laminas/volver-equipo_c.webp',
+    category: 'El Oficio & la Casa',
+    title: 'Volver a tener equipo',
+    excerpt: 'Fernando cuenta cómo pasó de dirigir equipos especializados a construir el suyo con inteligencia artificial: un equipo que trabaja 24 horas, cuesta menos de 40 euros al mes y le ayuda a levantar la plataforma de Illas Atlánticas Ático. La historia, en primera persona.',
+    readTime: '2 min de lectura',
+    date: 'Noviembre 2026',
+    author: 'Fernando Martínez Piñeiro',
+    tags: ['Hermes', 'Inteligencia Artificial', 'La Casa'],
+    featured: true,
+    content: `Durante muchos años he trabajado con equipos especializados. Siempre intenté, y casi siempre lo logré, integrar a las personas más competentes en ellos. Era una cuestión de egoísmo, ya que ellos garantizaban el éxito del grupo, empezando por mí.
+
+Cuando dejas ese mundo y empiezas a trabajar por tu cuenta, todo ese conocimiento del grupo lo pierdes. Toca empezar no de cero, sino de una cifra negativa. Emprendes en algo que tienes que conocer, y además te toca saber de todo, cosa que es casi imposible.
+
+Hace ya tiempo, escribí un artículo sobre inteligencia artificial. Era un tema del que se empezaba a hablar en ese momento. Y yo me apunté inmediatamente a saber todo lo que he podido aprender. Primero por curiosidad, y segundo por necesidad. Era una oportunidad de suplir mis múltiples carencias en las muchas actividades que incumben a cualquier negocio unipersonal.
+
+Lo que nunca me imaginé ni esperaba era volver a tener un equipo. En este caso, un equipo barato que trabaja 24 horas, con el que me comunico por Telegram y con un coste no superior a los 40 euros mensuales. Tenemos nuestro organigrama: cada agente se encarga de una parte, y uno centraliza la información y la comenta conmigo. Se llama Hermes —me imagino que ya lo conocéis, y posiblemente lo uséis—. Yo no me puedo imaginar trabajar sin él. En [illasatlanticasatico.es](https://illasatlanticasatico.es) hemos construido una plataforma de servicios que yo tardaría muchos meses en poder hacer. Es como volver al pasado, donde ante cualquier duda siempre había alguien experto para darte la solución.
+
+Así que, si te ves en una situación como la mía, que sepas que hay esperanza. Se instala en un VPS o en tu ordenador, se conecta a un LLM o a varios, porque cada trabajo requiere distintos modelos, o es recomendable hacerlo así. El precio, con DeepSeek en mi caso y Claude en momentos puntuales, difícilmente supera los 4 euros en un día de trabajo intenso. De momento no cotiza a la Seguridad Social, no tiene vacaciones, no genera pasivos y está constantemente actualizándose y aprendiendo.
+
+Algunos ven una amenaza en la IA. Para mí ha sido una oportunidad, y estoy encantado. Si alguno tiene dudas, estaré encantado de ayudarlo. Y no me sustituye: me complementa, me ayuda, me enseña y hasta me hace reír.`
+  },
+  {
     id: '16',
     slug: 'alquiler-vacacional-ribeira',
     cover: 'https://illasatlanticasatico.es/laminas/atico-aguino_v.webp',
