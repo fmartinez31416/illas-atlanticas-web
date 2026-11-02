@@ -71,6 +71,8 @@ La casa se reserva directa por nuestra web, sin comisiones de plataforma: señal
 
 **¿Se puede visitar Sálvora y Ons?** Sí, con los barcos que salen del puerto de Aguiño y de la zona, siempre con autorización del Parque Nacional. En la bitácora de la web contamos la historia de ambas islas.
 
+**¿Dónde se come?** Donde subasta la lonja: tenemos una guía verificada de [dónde comer en Ribeira](/gastronomia/ribeira) — restaurantes con direcciones y teléfonos contrastados con fuentes públicas, a diez minutos de Aguiño.
+
 ### La decisión en un minuto
 
 Si buscas mar auténtico, marisco del día y una casa espaciosa con vistas a las islas, reserva directa y ahorra la comisión de las plataformas. Si quieres playa abierta, mira Corrubedo. Si quieres ciudad con paseo, Ribeira centro. Los tres están a diez minutos de distancia entre sí — que es otra manera de decir que desde cualquiera de ellos, la ría es tuya.

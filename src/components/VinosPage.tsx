@@ -9,9 +9,9 @@ const T: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Índice G · Guía del vino de Galicia', en: 'Índice G · Galician wine guide', gl: 'Índice G · Guía do viño de Galicia' },
   titulo: { es: 'El vino de Galicia, medido', en: 'The wine of Galicia, measured', gl: 'O viño de Galicia, medido' },
   intro: {
-    es: 'No catamos: medimos. El Índice G agrega las puntuaciones publicadas por las guías y críticos de referencia —Peñín, Tim Atkin, Wine Advocate, James Suckling y Decanter— con un método propio, público y reproducible. Cada nota enlaza a su fuente: cualquiera puede comprobarla.',
-    en: 'We do not taste: we measure. The Índice G aggregates the scores published by the leading guides and critics —Peñín, Tim Atkin, Wine Advocate, James Suckling and Decanter— with our own public, reproducible method. Every note links to its source: anyone can check it.',
-    gl: 'Non catamos: medimos. O Índice G agrega as puntuacións publicadas polas guías e críticos de referencia —Peñín, Tim Atkin, Wine Advocate, James Suckling e Decanter— cun método propio, público e reproducible. Cada nota liga coa súa fonte: calquera pode comprobala.',
+    es: 'No catamos: medimos. El Índice G agrega las puntuaciones publicadas por las guías y críticos de referencia —Peñín, Tim Atkin, Wine Advocate, James Suckling y Decanter— con un método propio, público y reproducible. Cada nota enlaza a su fuente: cualquiera puede comprobarla. No vendemos vino ni aceptamos publicidad de bodegas.',
+    en: 'We do not taste: we measure. The Índice G aggregates the scores published by the leading guides and critics —Peñín, Tim Atkin, Wine Advocate, James Suckling and Decanter— with our own public, reproducible method. Every note links to its source: anyone can check it. We sell no wine and take no advertising from wineries.',
+    gl: 'Non catamos: medimos. O Índice G agrega as puntuacións publicadas polas guías e críticos de referencia —Peñín, Tim Atkin, Wine Advocate, James Suckling e Decanter— cun método propio, público e reproducible. Cada nota liga coa súa fonte: calquera pode comprobala. Non vendemos viño nin aceptamos publicidade de adegas.',
   },
   formula: { es: 'G = P̂ − 1,5·σ', en: 'G = P̂ − 1.5·σ', gl: 'G = P̂ − 1,5·σ' },
   formulaTxt: {

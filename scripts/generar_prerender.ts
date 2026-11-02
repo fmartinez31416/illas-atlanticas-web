@@ -229,6 +229,7 @@ for (const lang of LANGS) {
         : 'Tres dormitorios, tres baños e terraza panorámica fronte ás illas de Sálvora e Ons, a cinco minutos da lonxa de Aguiño.',
     alternates: alternatesTrilingues(''),
     breadcrumb: [],
+    listaArticulos: listaArticulosHtml(lang),
   });
 }
 
@@ -478,7 +479,7 @@ function pieEnlacesHtml(lang: Lang): string {
 // lista pública de los diez mejores, sin notas en el marcado (cero mentiras).
 function itemListLd(): string {
   const top = VINOS.filter((x) => x.g !== null).slice(0, 10);
-  const items = top.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: `${x.nombre} — ${x.bodega} (${x.do})` }));
+  const items = top.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: `${x.nombre} — ${x.bodega} (${x.do})`, url: x.fuentes?.[0]?.url ?? `${BASE}/vinos` }));
   return `    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -544,9 +545,8 @@ for (const p of paginas) {
   );
   html = html.replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${p.title.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${p.description.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}" />`);
-  if (!html.includes('og:url')) {
-    html = html.replace(/<meta property="og:type" content="website" \/>/, `<meta property="og:type" content="${p.article ? 'article' : 'website'}" />\n    <meta property="og:url" content="${p.url}" />`);
-  }
+  html = html.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${p.url}" />`);
+  html = html.replace(/<meta property="og:type" content="website" \/>/, `<meta property="og:type" content="${p.article ? 'article' : 'website'}" />`);
   const ogLocale = p.lang === 'en' ? 'en_GB' : p.lang === 'gl' ? 'gl_ES' : 'es_ES';
   html = html.replace(/<meta property="og:locale" content="[^"]*" \/>/, `<meta property="og:locale" content="${ogLocale}" />`);
   html = html.replace(/<link rel="canonical" href="[^"]*"[^>]*>/, `<link rel="canonical" href="${p.url}" id="canonical-link" />`);
