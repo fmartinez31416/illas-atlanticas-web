@@ -17,6 +17,21 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '18',
+    slug: 'escribir-en-aguino',
+    cover: 'https://illasatlanticasatico.es/laminas/escribir-aguino_v.webp',
+    coverSquare: 'https://illasatlanticasatico.es/laminas/escribir-aguino_c.webp',
+    category: 'El Oficio & la Casa',
+    title: 'Escribir en Aguiño: el invierno como estudio',
+    excerpt: 'Noviembre en Aguiño: el mar para ti solo, una chimenea de leña y un despacho con fibra. Por qué el invierno es la mejor temporada para terminar lo pendiente — un libro, una memoria, un plan — frente a la ría de Arousa.',
+    readTime: '2 min de lectura',
+    date: 'Noviembre 2026',
+    author: 'Cuaderno Atlántico',
+    tags: ['Invierno', 'Teletrabajo', 'La Casa'],
+    featured: false,
+    content: `El mar cambia en noviembre\nAguiño en noviembre no es el pueblo del verano. Las terrazas cierran, las gamelas vuelven al muelle temprano y el Atlántico se queda para quien sabe mirarlo. A veinte metros del agua, la casa se asoma a la ría de Arousa con las islas de Sálvora y Ons al frente. Amanece directo sobre la terraza, y al atardecer la luz se queda sobre el mar: el sol no se ve caer, se ve su reflejo.\n\nEl silencio no es ausencia\nFuera sigue habiendo vida de pueblo: la lonja a 350 metros, la flota entrando, el astillero, algún coche. Dentro, poco de eso se escucha. No vendemos aislamiento absoluto, porque no existe: vendemos un estudio con chimenea de leña, un despacho con ventana al mar y al pueblo, y la certeza de que nadie va a interrumpirte.\nQuien viene en invierno no viene de vacaciones: viene a terminar algo. Un libro pendiente, una memoria, un plan que no avanzaba en casa. En noviembre la casa vale por su interior y por lo que no tiene: ni ruido, ni prisa, ni agenda.\n\nTrabajar mirando al Atlántico\nLa casa tiene 230 m²: tres dormitorios —dos con baño en suite—, salón con chimenea, cocina equipada y un despacho con fibra de 1 Gb. Se teletrabaja de verdad, no «con wifi decente». Y cuando la pantalla cansa, la ría resuelve el día: la lonja se ve desde la terraza, la cocina y el dormitorio principal, y su subasta es por la mañana, según la marea; de cerca, se sigue desde el malecón. El marisco se compra en la plaza de abastos de Ribeira, a cinco minutos, y se cocina en casa.\n\nCómo se alquila\nReserva directa en [illasatlanticasatico.es](https://illasatlanticasatico.es): noviembre desde 95 € la noche, y las estancias largas de invierno tienen descuento. Hay un código de descuento que no publicamos aquí: lo da Nía, la anfitriona digital del chat de la web, a quien se lo pide. Y si encuentras la casa más barata en un portal oficial, se iguala el precio y se añade un 5 % de descuento.\n\nDatos de la casa verificados con Fernando Martínez, propietario: distancias (mar a 20 m, lonja a 350 m, Ribeira a 5 min), orientación y vistas de cada estancia, horario de la subasta y condiciones del código. Precios de noviembre de 2026 según el motor de reserva.`
+  },
+  {
     id: '17',
     slug: 'volver-a-tener-equipo',
     cover: 'https://illasatlanticasatico.es/laminas/volver-equipo_v.webp',

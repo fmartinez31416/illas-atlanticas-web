@@ -65,6 +65,7 @@ const T: Record<string, { es: string; en: string; gl: string }> = {
     gl: 'Un albariño da ría, o Atlántico diante e a lonxa a un paseo. Así se bebe en Aguiño.',
   },
   reservar: { es: 'Ver precio y reservar', en: 'Check price and book', gl: 'Ver prezo e reservar' },
+  sinResultados: { es: 'No hay vinos que coincidan con la búsqueda.', en: 'No wines match your search.', gl: 'Non hai viños que coincidan coa busca.' },
   volver: { es: 'Volver al ático', en: 'Back to the penthouse', gl: 'Volver ao ático' },
   vendida: { es: 'a la venta', en: 'on sale', gl: 'á venda' },
 };
@@ -249,7 +250,7 @@ export function VinosPage({ onBack, onOpenBooking }: Props) {
             </div>
           ))}
           {filtrados.length === 0 && (
-            <p className="text-stone-500 text-sm py-10 text-center">No hay vinos que coincidan con la búsqueda.</p>
+            <p className="text-stone-500 text-sm py-10 text-center">{T.sinResultados[lang]}</p>
           )}
         </div>
       </div>

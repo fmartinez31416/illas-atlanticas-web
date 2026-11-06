@@ -398,6 +398,9 @@ export function DashboardNautico({ onBack, onOpenBooking }: DashboardNauticoProp
             <Plaque title={t("PUENTE DE MANDO · ILLAS ATLÁNTICAS")} className="px-10 py-2.5">
               {Ex(model.code)} {t("en Aguiño · la misma vista que tiene un capitán fondeado frente a Sálvora")}
             </Plaque>
+            <p className="mx-auto max-w-2xl px-4 text-center font-serif text-[13px] italic leading-relaxed text-zinc-300/80">
+              {t("Previsión de modelo numérico: en Aguiño la ría disuelve las nubes que el píxel pinta. El horizonte manda.")}
+            </p>
           </div>
 
           {/* Previsión a 7 días */}

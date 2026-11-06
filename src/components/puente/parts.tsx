@@ -106,7 +106,7 @@ export function th({on:s = undefined,onChange:u = undefined,label:r = undefined}
 export function Vi({children:s = undefined}){return <div className="font-display text-[9.5px] font-semibold tracking-[0.3em] text-[#d9bb73]">{s}</div>
   }
 
-export function iy(s){const u=s.status==="live"?`Open-Meteo en directo · ${s.updatedAt?Fe(new Date(s.updatedAt)):""}`:s.status==="partial"?"Datos parciales · reintentando":s.status==="loading"?t("Conectando con la estación…"):t("Sin conexión · valores de referencia");return <div className="flex h-full flex-col gap-4">{
+export function iy(s){const u=s.status==="live"?`Modelo Open-Meteo (ECMWF) · ${s.updatedAt?Fe(new Date(s.updatedAt)):""}`:s.status==="partial"?"Datos parciales · reintentando":s.status==="loading"?t("Conectando con la estación…"):t("Sin conexión · valores de referencia");return <div className="flex h-full flex-col gap-4">{
     <div className="relative isolate flex-1 overflow-hidden rounded-[14px] border border-black/60 bg-[linear-gradient(160deg,#1b1712_0%,#0b0907_55%,#15110c_100%)] p-4 shadow-[inset_0_1px_0_rgba(255,230,170,.12),inset_0_0_30px_rgba(0,0,0,.8)] sm:p-5">{
       <div className="lacquer" />
       }{
