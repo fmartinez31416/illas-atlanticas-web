@@ -130,9 +130,14 @@ function orgLd(): string {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "${BASE}/#organization",
       "name": "Illas Atlánticas Ático",
       "url": "${BASE}/",
       "logo": { "@type": "ImageObject", "url": "${BASE}/logo.png", "width": 500, "height": 500 },
+      "sameAs": [
+        "https://www.facebook.com/746876599362765",
+        "https://www.instagram.com/illas_atlanticas_atico/"
+      ],
       "description": "Ático vacacional frente a la ría de Arousa en Aguiño (Ribeira, A Coruña). Alojamiento turístico con licencia VUT-CO-007656, gestionado por su propietario.",
       "address": {
         "@type": "PostalAddress",
