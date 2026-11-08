@@ -9,9 +9,9 @@ export function truncMeta(s: string, n: number): string {
   return base.replace(/[,.;:]\s*$/, '') + '…';
 }
 
-/** Límites consensuados con SiteGuru: título ~60, descripción ~155. */
-export const SEO_TITLE_MAX = 60;
-export const SEO_DESC_MAX = 155;
+/** Límites: título 70 (Google muestra ~65-70 caracteres), descripción 165. */
+export const SEO_TITLE_MAX = 70;
+export const SEO_DESC_MAX = 165;
 
 export function seoTitle(s: string): string {
   return truncMeta(s, SEO_TITLE_MAX);

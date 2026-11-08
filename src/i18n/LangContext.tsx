@@ -58,7 +58,7 @@ export function useI18n(): I18n {
 /** Título y meta por idioma. */
 export const PAGE_META: Record<Lang, { title: string; description: string }> = {
   es: {
-    title: 'Illas Atlánticas Ático · Ático singular frente al mar en Aguiño, Rías Baixas',
+    title: 'Ático frente al mar en Aguiño (Ribeira) · Illas Atlánticas Ático',
     description: 'Ático de 230 m² frente al Atlántico en Aguiño (Ribeira, Rías Baixas). Marisqueo, islas de Sálvora y Ons, lonja y calma. Reserva directa sin comisiones.',
   },
   en: {
@@ -95,7 +95,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Condiciones de reserva de Illas Atlánticas Ático: precios, pagos, cancelación flexible y normas de la casa en Aguiño (Ribeira, Rías Baixas).',
     },
     gastronomia: {
-      title: 'Dónde comer en Aguiño y Ribeira: sitios verificados de la ría (con mapa)',
+      title: 'Dónde comer en Aguiño y Ribeira: sitios verificados (con mapa)',
       description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
     },
     metodologia: {
