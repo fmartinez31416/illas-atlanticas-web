@@ -167,6 +167,34 @@ function orgLd(): string {
     </script>`;
 }
 
+// Product en las portadas /en/ y /gl/ (la home lo lleva en index.html; Ahrefs marcaba
+// «falta el esquema del producto» en la portada EN — audit 7-nov). TODO: traducir
+// nombre/descripción cuando se localicen los bloques completos.
+function productLd(p: Pagina): string {
+  return `    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Illas Atlánticas Ático — ático vacacional en Aguiño (Ribeira)",
+      "description": "Ático vacacional de 230 m² con terraza panorámica frente a las islas de Sálvora y Ons, a 350 m de la lonja de Aguiño. VUT-CO-007656.",
+      "url": "${p.url}",
+      "image": "${BASE}/01_hero_portada.webp",
+      "brand": { "@type": "Organization", "name": "Illas Atlánticas Ático" },
+      "offers": {
+        "@type": "Offer",
+        "url": "${p.url}",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": 95,
+          "minPrice": 95,
+          "priceCurrency": "EUR"
+        }
+      }
+    }
+    </script>`;
+}
+
 function articleLd(p: Pagina): string {
   const a = p.article!;
   const pub = a.datePublished ? `,\n      "datePublished": "${a.datePublished}"` : '';
@@ -564,7 +592,7 @@ for (const p of paginas) {
   // MENOS la portada (que ya lo trae en su chunk original de index.html)
   html = html.replace(
     '</head>',
-    `${p.article ? articleLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}${p.archivo.endsWith('/vinos/index.html') ? itemListLd() : ''}\n  </head>`,
+    `${p.article ? articleLd(p) + '\n' : ''}${(p.url === `${BASE}/en/` || p.url === `${BASE}/gl/`) ? productLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}${p.archivo.endsWith('/vinos/index.html') ? itemListLd() : ''}\n  </head>`,
   );
   mkdirSync(dirname(p.archivo), { recursive: true });
   writeFileSync(p.archivo, html);
