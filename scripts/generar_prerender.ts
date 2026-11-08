@@ -566,7 +566,7 @@ chunkLd = chunkLd.replace(HREFLANG_HOME, '');
 
 for (const p of paginas) {
   let html = plantillaIni
-    + (p.url === `${BASE}/` ? chunkLd : breadcrumbLd(p) + '\n')
+    + (p.url === `${BASE}/` ? chunkLd : (p.breadcrumb.length ? breadcrumbLd(p) + '\n' : ''))
     + hreflangHtml(p.alternates)
     + '\n' + plantillaFin;
   // título / descripción / og / canonical / lang / H1 por página
