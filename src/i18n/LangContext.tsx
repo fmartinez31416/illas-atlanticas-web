@@ -95,7 +95,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Condiciones de reserva de Illas Atlánticas Ático: precios, pagos, cancelación flexible y normas de la casa en Aguiño (Ribeira, Rías Baixas).',
     },
     gastronomia: {
-      title: 'Dónde comer en Aguiño · Gastronomía de la ría · Illas Atlánticas Ático',
+      title: 'Dónde comer en Aguiño y Ribeira: sitios verificados de la ría (con mapa)',
       description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
     },
     metodologia: {

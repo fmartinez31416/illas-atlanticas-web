@@ -619,7 +619,7 @@ Sentarse en la terraza frente a las bateas al atardecer, bajo un cielo abierto q
     cover: 'https://illasatlanticasatico.es/laminas/guia-aguino_v.webp',
     coverSquare: 'https://illasatlanticasatico.es/laminas/guia-aguino_c.webp',
     category: 'Guías & Entorno',
-    title: 'Guía de Aguiño y el Parque Nacional de las Islas Atlánticas: mar, granito y memoria',
+    title: 'Qué ver en Aguiño y el Parque Nacional de las Islas Atlánticas (guía 2026)',
     excerpt: 'Rutas marítimas hacia la Isla de Sálvora, calas recogidas de aguas serenas y la cultura marinera en la bocana de la Ría de Arousa.',
     readTime: '2 min de lectura',
     date: 'Otoño 2026',
