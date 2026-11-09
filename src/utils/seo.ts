@@ -9,9 +9,13 @@ export function truncMeta(s: string, n: number): string {
   return base.replace(/[,.;:]\s*$/, '') + '…';
 }
 
-/** Límites: título 70 (Google muestra ~65-70 caracteres), descripción 165. */
-export const SEO_TITLE_MAX = 70;
-export const SEO_DESC_MAX = 165;
+/**
+ * Se respetan los metadatos editoriales íntegros: cortar en un límite fijo
+ * puede mutilar palabras/traducciones. Google trunca por ancho de píxel, no
+ * por un número universal de caracteres; corregir la cadena de origen es mejor.
+ */
+export const SEO_TITLE_MAX = 1000;
+export const SEO_DESC_MAX = 1000;
 
 export function seoTitle(s: string): string {
   return truncMeta(s, SEO_TITLE_MAX);
