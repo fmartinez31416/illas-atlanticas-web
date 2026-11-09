@@ -31,6 +31,9 @@ export function LegalPage({ onBack }: LegalPageProps) {
             <p className="mb-3">
               {t("Domicilio: Rúa Francisco Lorenzo Mariño 93, Ático F · 15965 Aguiño, Ribeira (A Coruña).")}
             </p>
+            <p className="mb-3">
+              NIF: <span className="text-white">35444540E</span>
+            </p>
             <p>
               {t("Contacto:")} <span className="text-white">+34 606 025 318</span> · <span className="text-white">reservas@illasatlanticasatico.es</span>
             </p>
