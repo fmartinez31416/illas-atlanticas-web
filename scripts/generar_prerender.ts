@@ -586,7 +586,7 @@ for (const p of paginas) {
   // H1 + intro estáticos dentro de #root
   html = html.replace(
     /<h1 style="[^"]*">[\s\S]*?<\/p>/,
-    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${p.lang === 'es' ? `<p style="max-width:44rem;margin:0 auto 1rem;padding:0 1.5rem;font-family:Georgia,'Times New Roman',serif;font-size:0.9rem;color:#3a4a5c;text-align:center;">Vivienda de uso turístico registrada en Galicia · VUT-CO-007656</p>` : ''}${shellNav(p)}${p.listaArticulos ?? ''}${p.cuerpo ?? ''}${pieEnlacesHtml(p.lang)}`,
+    `<h1 style="font-family:Georgia,'Times New Roman',serif;font-size:2rem;line-height:1.2;color:#1A3A5C;padding:2.5rem 1.5rem 0.5rem;text-align:center;">${esc(p.h1)}</h1>\n      <p style="font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:#3a4a5c;padding:0 1.5rem 2.5rem;text-align:center;">${esc(p.intro)}</p>${`<p style="max-width:44rem;margin:0 auto 1rem;padding:0 1.5rem;font-family:Georgia,'Times New Roman',serif;font-size:0.9rem;color:#3a4a5c;text-align:center;">${p.lang === 'en' ? 'Galicia tourist-use dwelling registration ·' : p.lang === 'gl' ? 'Vivenda de uso turístico rexistrada en Galicia ·' : 'Vivienda de uso turístico registrada en Galicia ·'} VUT-CO-007656</p>`}${shellNav(p)}${p.listaArticulos ?? ''}${p.cuerpo ?? ''}${pieEnlacesHtml(p.lang)}`,
   );
   // JSON-LD por página: Article en artículos; Organization+WebSite en todas
   // MENOS la portada (que ya lo trae en su chunk original de index.html)
