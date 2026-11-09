@@ -40,7 +40,10 @@ export function Footer({ onOpenLegal }: FooterProps) {
       <div className="absolute inset-0 bg-stone-950/25 backdrop-brightness-90 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-        
+        <p className="mb-6 text-xs text-stone-100/90">
+          Vivienda de uso turístico registrada en Galicia · VUT-CO-007656
+        </p>
+
         {/* Cabecera del pie */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between pb-14 border-b border-white/30 gap-8">
           <div>
