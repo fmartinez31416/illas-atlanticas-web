@@ -58,15 +58,15 @@ export function useI18n(): I18n {
 /** Título y meta por idioma. */
 export const PAGE_META: Record<Lang, { title: string; description: string }> = {
   es: {
-    title: 'Ático frente al mar en Aguiño (Ribeira) · Illas Atlánticas Ático',
+    title: 'Ático frente al mar en Aguiño · Illas Atlánticas Ático',
     description: 'Ático de 230 m² frente al Atlántico en Aguiño (Ribeira, Rías Baixas). Marisqueo, islas de Sálvora y Ons, lonja y calma. Reserva directa sin comisiones.',
   },
   en: {
     title: 'Seafront penthouse in Aguiño, Ribeira · Illas Atlánticas',
-    description: '230 m² penthouse facing the Atlantic in Aguiño (Ribeira, Rías Baixas). Shellfish, the islands of Sálvora and Ons, fish market and calm. Direct booking with no fees.',
+    description: '230 m² penthouse facing the Atlantic in Aguiño (Ribeira, Rías Baixas). Sálvora, Ons, fish market and calm. Direct booking, no fees.',
   },
   gl: {
-    title: 'Ático fronte ao mar en Aguiño (Ribeira) · Illas Atlánticas Ático',
+    title: 'Ático fronte ao mar en Aguiño · Illas Atlánticas Ático',
     description: 'Ático de 230 m² diante do Atlántico en Aguiño (Ribeira, Rías Baixas). Marisqueo, illas de Sálvora e Ons, lonxa e calma. Reserva directa sen comisións.',
   },
 };
@@ -75,8 +75,8 @@ export const PAGE_META: Record<Lang, { title: string; description: string }> = {
 export const VIEW_META: Record<Lang, Record<string, { title: string; description: string }>> = {
   es: {
     puente: {
-      title: 'Puente de Mando Atlántico · Mar en directo desde el ático en Aguiño',
-      description: 'El Puente de Mando del ático Illas Atlánticas: mar, luna y Sálvora en tiempo real desde la terraza de Aguiño. Una experiencia única del alojamiento frente al Atlántico.',
+      title: 'Puente de Mando · Mar en directo desde Aguiño',
+      description: 'El Puente de Mando del ático de Aguiño: mar, luna y Sálvora en tiempo real desde la terraza, frente al Atlántico.',
     },
     lonja: {
       title: 'LonjaLens · Guía de la lonja y el marisco de Aguiño',
@@ -95,12 +95,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Condiciones de reserva de Illas Atlánticas Ático: precios, pagos, cancelación flexible y normas de la casa en Aguiño (Ribeira, Rías Baixas).',
     },
     gastronomia: {
-      title: 'Dónde comer en Aguiño y Ribeira: sitios verificados (con mapa)',
-      description: 'Dónde comer en Aguiño a pie del ático: tascas de ración, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja, pulpo, percebe y albariño en la Ría de Arousa.',
+      title: 'Dónde comer en Aguiño y Ribeira: sitios verificados',
+      description: 'Dónde comer en Aguiño a pie del ático: tascas, restaurante, chiringuito y el histórico O Furón. Marisco de la lonja y albariño de la Ría.',
     },
     metodologia: {
       title: 'Cómo puntuamos el Índice Atlántico · Illas Atlánticas Ático',
-      description: 'Cómo se calcula el Índice Atlántico de cada restaurante: normalización de escalas, fiabilidad por fuente, encogimiento bayesiano, cota de Wilson y penalización por heterogeneidad. Fórmulas completas, en abierto.',
+      description: 'Cómo se calcula el Índice Atlántico: normalización de escalas, fiabilidad por fuente, encogimiento bayesiano y cota de Wilson. Fórmulas en abierto.',
     },
     musica: {
       title: 'Música de la casa en Aguiño · Illas Atlánticas Ático',
@@ -115,12 +115,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Cuéntanos quién viaja y a qué ritmo, y te proponemos un plan a tu medida: lonja, islas, calas y mesas de Aguiño, desde el ático.',
     },
     colaboraciones: {
-      title: 'Colaboraciones · Medios y blogs que cuentan Aguiño · Illas Atlánticas Ático',
-      description: 'Escaparate de colaboraciones de Illas Atlánticas Ático: medios y blogs que cuentan Aguiño, con intercambio de enlaces y contenidos. ¿Escribes sobre el Barbanza? Hablamos.',
+      title: 'Colaboraciones · Medios y blogs sobre Aguiño',
+      description: 'Escaparate de colaboraciones: medios y blogs que cuentan Aguiño, con intercambio de enlaces y contenidos. ¿Escribes sobre el Barbanza? Hablamos.',
     },
     vinos: {
       title: 'Índice G · Guía del vino de Galicia · Illas Atlánticas Ático',
-      description: 'Guía del vino gallego con Índice G: puntuación 0-100 calculada con método propio, reproducible y auditable, sobre las 5 D.O. de Galicia. Cada nota, con su fuente enlazable.',
+      description: 'Guía del vino gallego con Índice G: puntuación 0-100 con método propio, reproducible y auditable, sobre las 5 D.O. de Galicia.',
     },
   },
   en: {
@@ -145,38 +145,38 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Booking conditions for Illas Atlánticas Ático: prices, payments, flexible cancellation and house rules in Aguiño (Ribeira, Rías Baixas).',
     },
     gastronomia: {
-      title: 'Where to eat in Aguiño · Ría gastronomy · Illas Atlánticas Ático',
-      description: 'Where to eat in Aguiño within walking distance of the penthouse: raciones bars, a restaurant, the beach bar and the historic O Furón. Fish-market seafood, octopus, percebes and albariño in the Ría de Arousa.',
+      title: 'Where to eat in Aguiño · Ría gastronomy',
+      description: 'Where to eat in Aguiño near the penthouse: raciones bars, the beach bar and historic O Furón. Octopus, percebes and albariño by the Ría.',
     },
     metodologia: {
-      title: 'Atlantic Index methodology · How we score · Illas Atlánticas Ático',
-      description: 'How the Atlantic Index is computed for every restaurant: scale normalisation, per-source reliability, Bayesian shrinkage, Wilson lower bound and heterogeneity penalty. Full formulas, in the open.',
+      title: 'Atlantic Index methodology · How we score',
+      description: 'How the Atlantic Index is computed: scale normalisation, per-source reliability and Bayesian shrinkage. Full formulas, in the open.',
     },
     musica: {
-      title: 'The music of the house · Original soundtrack · Illas Atlánticas Ático',
+      title: 'The music of the house · Original soundtrack',
       description: 'The original soundtrack of the Aguiño penthouse: Official, Dance and Bright playlists, composed by the owner for every season and every moment of the stay.',
     },
     club: {
       title: 'Guest Club · Illas Atlánticas Ático',
-      description: 'The club for those who have already slept in the house: for every friend you bring, 5 % of their booking as credit towards yours. No cap, redeemable whenever you like.',
+      description: 'The club for returning guests: every friend you bring earns 5 % of their booking as credit towards yours. No cap.',
     },
     planificador: {
       title: 'Plan your stay in Aguiño · Illas Atlánticas Ático',
       description: 'Tell us who travels and at what pace, and we suggest a plan to suit you: fish market, islands, coves and tables of Aguiño, from the penthouse.',
     },
     colaboraciones: {
-      title: 'Collaborations · Media and blogs telling Aguiño · Illas Atlánticas Ático',
-      description: 'The collaboration showcase of Illas Atlánticas Ático: media and blogs that tell Aguiño, with link and content exchanges. Do you write about the Barbanza? Let\u2019s talk.',
+      title: 'Collaborations · Media and blogs about Aguiño',
+      description: 'Collaborations with media and blogs that tell Aguiño: link and content exchanges. Do you write about the Barbanza? Let\u2019s talk.',
     },
     vinos: {
       title: 'Índice G · Galician wine guide · Illas Atlánticas Ático',
-      description: 'A Galician wine guide with the Índice G: a 0-100 score computed with our own reproducible, auditable method across the 5 Galician D.O.s. Every note links to its public source.',
+      description: 'A Galician wine guide with the Índice G: a 0-100 score from a reproducible, auditable method across the 5 Galician D.O.s.',
     },
   },
   gl: {
     puente: {
-      title: 'Ponte de Mando Atlántico · Mar en directo dende o ático en Aguiño',
-      description: 'A Ponte de Mando do ático Illas Atlánticas: mar, lúa e Sálvora en tempo real dende a terraza de Aguiño. Unha experiencia única do aloxamento fronte ao Atlántico.',
+      title: 'Ponte de Mando · Mar en directo dende Aguiño',
+      description: 'A Ponte de Mando do ático de Aguiño: mar, lúa e Sálvora en tempo real dende a terraza, fronte ao Atlántico.',
     },
     lonja: {
       title: 'LonjaLens · Guía da lonxa e do marisco de Aguiño',
@@ -195,15 +195,15 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Condicións de reserva de Illas Atlánticas Ático: prezos, pagamentos, cancelación flexible e normas da casa en Aguiño (Ribeira, Rías Baixas).',
     },
     gastronomia: {
-      title: 'Onde comer en Aguiño · Gastronomía da ría · Illas Atlánticas Ático',
-      description: 'Onde comer en Aguiño a pé do ático: tascas de ración, restaurante, chiringuito e o histórico O Furón. Marisco da lonxa, polbo, percebe e albariño na Ría de Arousa.',
+      title: 'Onde comer en Aguiño · Gastronomía da ría',
+      description: 'Onde comer en Aguiño a pé do ático: tascas, restaurante, chiringuito e o histórico O Furón. Marisco da lonxa e albariño da Ría.',
     },
     metodologia: {
-      title: 'Metodoloxía do Índice Atlántico · Como puntuamos · Illas Atlánticas Ático',
-      description: 'Como se calcula o Índice Atlántico de cada restaurante: normalización de escalas, fiabilidade por fonte, encollemento bayesiano, cota de Wilson e penalización por heteroxeneidade. Fórmulas completas, en aberto.',
+      title: 'Metodoloxía do Índice Atlántico · Como puntuamos',
+      description: 'Como se calcula o Índice Atlántico: normalización de escalas, fiabilidade por fonte, encollemento bayesiano e cota de Wilson. Fórmulas en aberto.',
     },
     musica: {
-      title: 'A música da casa · Banda sonora orixinal · Illas Atlánticas Ático',
+      title: 'A música da casa · Banda sonora orixinal',
       description: 'A banda sonora orixinal do ático de Aguiño: BSO Oficial, Bailable e Alegre, compostas polo propietario para cada estación e cada momento da estadía.',
     },
     club: {
@@ -215,12 +215,12 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Cóntanos quen viaxa e a que ritmo, e propoñemos un plan á túa medida: lonxa, illas, calas e mesas de Aguiño, desde o ático.',
     },
     colaboraciones: {
-      title: 'Colaboracións · Medios e blogs que contan Aguiño · Illas Atlánticas Ático',
-      description: 'Escaparate de colaboracións de Illas Atlánticas Ático: medios e blogs que contan Aguiño, con intercambio de ligazóns e contidos. Escribes sobre o Barbanza? Falamos.',
+      title: 'Colaboracións · Medios e blogs sobre Aguiño',
+      description: 'Escaparate de colaboracións: medios e blogs que contan Aguiño, con intercambio de ligazóns e contidos. Escribes sobre o Barbanza?',
     },
     vinos: {
       title: 'Índice G · Guía do viño de Galicia · Illas Atlánticas Ático',
-      description: 'Guía do viño galego co Índice G: puntuación 0-100 calculada con método propio, reproducible e auditable, sobre as 5 D.O. de Galicia. Cada nota, coa súa fonte enlazable.',
+      description: 'Guía do viño galego co Índice G: puntuación 0-100 con método propio, reproducible e auditable, sobre as 5 D.O. de Galicia.',
     },
   },
 };
