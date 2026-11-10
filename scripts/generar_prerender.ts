@@ -190,6 +190,12 @@ function productLd(p: Pagina): string {
           "minPrice": 95,
           "priceCurrency": "EUR"
         }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 9.5,
+        "reviewCount": 54,
+        "bestRating": 10
       }
     }
     </script>`;
