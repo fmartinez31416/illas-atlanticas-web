@@ -9,7 +9,12 @@ export const dl=s=>Array.isArray(s)?s.map(u=>typeof u=="number"&&isFinite(u)?u:N
 
 export async function ih(s,u){const r=await fetch(s,{signal:u});if(!r.ok)throw new Error(`HTTP ${r.status}`);const o=await r.json();if(o?.error)throw new Error(o.reason??"API error");return o}
 
-export async function hx(s){const u=U1.map(p=>p[1]).join(","),r=`https://api.open-meteo.com/v1/forecast?latitude=${Ie.lat}&longitude=${Ie.lon}&current=${u},is_day&hourly=${u}&daily=uv_index_max,shortwave_radiation_sum,sunshine_duration,temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&timezone=Europe%2FMadrid&wind_speed_unit=kn&past_days=1&forecast_days=7&timeformat=unixtime`,o=await ih(r,s),d=o.hourly??{},m=o.current??{},y=o.daily??{},g={t:dl(d.time).map(p=>p*1e3)},h={t:Wi(m.time)*1e3,isDay:Wi(m.is_day)};for(const[p,b]of U1)g[p]=dl(d[b]),h[p]=Wi(m[b]);return{fetchedAt:Date.now(),current:h,hourly:g,daily:{t:dl(y.time).map(p=>p*1e3),uvMax:dl(y.uv_index_max),radiationSum:dl(y.shortwave_radiation_sum),sunshine:dl(y.sunshine_duration),tMax:dl(y.temperature_2m_max),tMin:dl(y.temperature_2m_min),code:dl(y.weather_code),pop:dl(y.precipitation_probability_max)}}}
+// Predicción oficial AEMET (Ribeira) + observación Google Weather superpuestas a
+// Open-Meteo. El cielo/nubosidad del "ahora" lo decide Google (observado); la
+// previsión de 7 días y temperaturas, AEMET (oficial municipal); Open-Meteo, respaldo.
+export async function aw(s,u){try{const o=await ih("https://api.illasatlanticasatico.es/api/aemet",s);const dias=o?.dias;const obs=o?.observado;const ahora=o?.ahora;if(Array.isArray(dias)&&dias.length){const idx={};u.t.forEach((g,h)=>{const d=new Date(g);idx[d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")]=h});for(const a of dias){const h=idx[a.fecha];if(h==null)continue;if(typeof a.wmo==="number")u.code[h]=a.wmo;if(typeof a.tMax==="number")u.tMax[h]=a.tMax;if(typeof a.tMin==="number")u.tMin[h]=a.tMin;if(typeof a.probPrecip==="number")u.pop[h]=a.probPrecip}}const gW=typeof obs?.wmo==="number"?obs.wmo:null;const aW=typeof ahora?.wmo==="number"?ahora.wmo:null;u._aemet=(obs?.descripcion)||(ahora?.descripcion)||null;u._aemet_wmo=gW??aW;u._now_cloud=(typeof obs?.nubosidad==="number")?obs.nubosidad:null;u._now_temp=(typeof obs?.temp==="number")?obs.temp:null;return u}catch{return u}}
+
+export async function hx(s){const u=U1.map(p=>p[1]).join(","),r=`https://api.open-meteo.com/v1/forecast?latitude=${Ie.lat}&longitude=${Ie.lon}&current=${u},is_day&hourly=${u}&daily=uv_index_max,shortwave_radiation_sum,sunshine_duration,temperature_2m_max,temperature_2m_min,weather_code,precipitation_probability_max&timezone=Europe%2FMadrid&wind_speed_unit=kn&past_days=1&forecast_days=7&timeformat=unixtime`,o=await ih(r,s),d=o.hourly??{},m=o.current??{},y=o.daily??{},g={t:dl(d.time).map(p=>p*1e3)},h={t:Wi(m.time)*1e3,isDay:Wi(m.is_day)};for(const[p,b]of U1)g[p]=dl(d[b]),h[p]=Wi(m[b]);const dia={t:dl(y.time).map(p=>p*1e3),uvMax:dl(y.uv_index_max),radiationSum:dl(y.shortwave_radiation_sum),sunshine:dl(y.sunshine_duration),tMax:dl(y.temperature_2m_max),tMin:dl(y.temperature_2m_min),code:dl(y.weather_code),pop:dl(y.precipitation_probability_max)};return{fetchedAt:Date.now(),current:h,hourly:g,daily:await aw(s,dia)}}
 
 export async function mx(s){const u=H1.map(h=>h[1]).join(","),r=`https://marine-api.open-meteo.com/v1/marine?latitude=${R1.lat}&longitude=${R1.lon}&current=${u}&hourly=${u}&timezone=Europe%2FMadrid&past_days=1&forecast_days=3&timeformat=unixtime&cell_selection=sea`,o=await ih(r,s),d=o.hourly??{},m=o.current??{},y: any={t:dl(d.time).map(h=>h*1e3)},g: any={t:Wi(m.time)*1e3};for(const[h,p]of H1)y[h]=dl(d[p]),g[h]=Wi(m[p]);return y.currentVel=y.currentVel.map(h=>h/1.852),g.currentVel=g.currentVel/1.852,{fetchedAt:Date.now(),current:g,hourly:y}}
 
@@ -25,7 +30,70 @@ export function px(s,u,r){if(!s.length)return null;const o=Rc(s,r),d=o+1<s.lengt
 
 export const Yi={temp:17.5,rh:76,apparent:17,dewPoint:13,pressure:1017,pressure3h:1016.2,pressureDelta:.8,cloud:30,shortwave:null,visibility:24e3,windSpeed:9,windDir:35,gusts:15,code:1,precip:0,uvMax:6,sunshine:null,radiationSum:null,waveHeight:1.2,waveDir:300,wavePeriod:9,swellHeight:1.1,swellDir:295,swellPeriod:11,windWaveHeight:.3,sst:16.2,currentVel:.3,currentDir:20,hasWeather:!1,hasMarine:!1},Zi=s=>s!=null&&isFinite(s)?s:null;
 
-export function yx(s,u,r,o){const d={...Yi};if(u&&u.hourly.t.length){const m=u.hourly,y=o&&isFinite(u.current.t)&&Math.abs(s-u.current.t)<2*36e5,g=A=>Hn(m.t,m[A],s),h=A=>y?Zi(u.current[A]):null;d.temp=h("temp")??g("temp"),d.rh=h("rh")??g("rh"),d.apparent=h("apparent")??g("apparent"),d.dewPoint=h("dewPoint")??g("dewPoint"),d.pressure=h("pressure")??g("pressure"),d.cloud=h("cloud")??g("cloud"),d.shortwave=h("shortwave")??g("shortwave"),d.visibility=h("visibility")??g("visibility"),d.windSpeed=h("windSpeed")??g("windSpeed"),d.windDir=h("windDir")??bc(m.t,m.windDir,s),d.gusts=h("gusts")??g("gusts"),d.code=h("code")??px(m.t,m.code,s),d.precip=h("precip")??g("precip"),d.pressure3h=Hn(m.t,m.pressure,s-3*36e5),d.pressureDelta=d.pressure!=null&&d.pressure3h!=null?d.pressure-d.pressure3h:null;const p=u.daily,b=p.t.findIndex((A,O)=>s>=A&&(O===p.t.length-1||s<p.t[O+1]));b>=0&&(d.uvMax=Zi(p.uvMax[b]),d.sunshine=Zi(p.sunshine[b]),d.radiationSum=Zi(p.radiationSum[b])),d.hasWeather=!0}if(r&&r.hourly.t.length){const m=r.hourly,y=o&&isFinite(r.current.t)&&Math.abs(s-r.current.t)<2*36e5,g=p=>Hn(m.t,m[p],s),h=p=>y?Zi(r.current[p]):null;d.waveHeight=h("waveHeight")??g("waveHeight")??Yi.waveHeight,d.waveDir=h("waveDir")??bc(m.t,m.waveDir,s)??Yi.waveDir,d.wavePeriod=h("wavePeriod")??g("wavePeriod")??Yi.wavePeriod,d.swellHeight=h("swellHeight")??g("swellHeight"),d.swellDir=h("swellDir")??bc(m.t,m.swellDir,s),d.swellPeriod=h("swellPeriod")??g("swellPeriod"),d.windWaveHeight=h("windWaveHeight")??g("windWaveHeight"),d.sst=h("sst")??g("sst")??Yi.sst,d.currentVel=h("currentVel")??g("currentVel"),d.currentDir=h("currentDir")??bc(m.t,m.currentDir,s),d.hasMarine=!0}return d}
+export function yx(s, u, r, o) {
+  const d = { ...Yi };
+  if (u && u.hourly.t.length) {
+    const m = u.hourly;
+    const y = o && isFinite(u.current.t) && Math.abs(s - u.current.t) < 2 * 36e5;
+    const g = (A) => Hn(m.t, m[A], s);
+    const h = (A) => (y ? Zi(u.current[A]) : null);
+    d.temp = h("temp") ?? g("temp");
+    d.rh = h("rh") ?? g("rh");
+    d.apparent = h("apparent") ?? g("apparent");
+    d.dewPoint = h("dewPoint") ?? g("dewPoint");
+    d.pressure = h("pressure") ?? g("pressure");
+    d.cloud = h("cloud") ?? g("cloud");
+    d.shortwave = h("shortwave") ?? g("shortwave");
+    d.visibility = h("visibility") ?? g("visibility");
+    d.windSpeed = h("windSpeed") ?? g("windSpeed");
+    d.windDir = h("windDir") ?? bc(m.t, m.windDir, s);
+    d.gusts = h("gusts") ?? g("gusts");
+    d.code = h("code") ?? px(m.t, m.code, s);
+    d.precip = h("precip") ?? g("precip");
+    d.pressure3h = Hn(m.t, m.pressure, s - 3 * 36e5);
+    d.pressureDelta = d.pressure != null && d.pressure3h != null ? d.pressure - d.pressure3h : null;
+    const p = u.daily;
+    const b = p.t.findIndex((A, O) => s >= A && (O === p.t.length - 1 || s < p.t[O + 1]));
+    if (b >= 0) {
+      d.uvMax = Zi(p.uvMax[b]);
+      d.sunshine = Zi(p.sunshine[b]);
+      d.radiationSum = Zi(p.radiationSum[b]);
+    }
+    d.hasWeather = true;
+    // Google (observación) decide el estado del cielo y la nube del "ahora";
+    // AEMET es el respaldo; Open-Meteo queda como última malla.
+    if (y && typeof p._aemet_wmo === "number") {
+      d.code = p._aemet_wmo;
+      if (typeof p._now_cloud === "number") {
+        d.cloud = p._now_cloud;
+      } else {
+        const c = Math.round(p._aemet_wmo);
+        if (c === 0 || c === 1) d.cloud = Math.min(d.cloud ?? 0, 20);
+        else if (c === 2) d.cloud = Math.min(d.cloud ?? 50, 55);
+        else if (c === 3) d.cloud = Math.max(d.cloud ?? 80, 82);
+      }
+    }
+    if (y && typeof p._now_temp === "number") d.temp = p._now_temp;
+  }
+  if (r && r.hourly.t.length) {
+    const m = r.hourly;
+    const y = o && isFinite(r.current.t) && Math.abs(s - r.current.t) < 2 * 36e5;
+    const g = (p) => Hn(m.t, m[p], s);
+    const h = (p) => (y ? Zi(r.current[p]) : null);
+    d.waveHeight = h("waveHeight") ?? g("waveHeight") ?? Yi.waveHeight;
+    d.waveDir = h("waveDir") ?? bc(m.t, m.waveDir, s) ?? Yi.waveDir;
+    d.wavePeriod = h("wavePeriod") ?? g("wavePeriod") ?? Yi.wavePeriod;
+    d.swellHeight = h("swellHeight") ?? g("swellHeight");
+    d.swellDir = h("swellDir") ?? bc(m.t, m.swellDir, s);
+    d.swellPeriod = h("swellPeriod") ?? g("swellPeriod");
+    d.windWaveHeight = h("windWaveHeight") ?? g("windWaveHeight");
+    d.sst = h("sst") ?? g("sst") ?? Yi.sst;
+    d.currentVel = h("currentVel") ?? g("currentVel");
+    d.currentDir = h("currentDir") ?? bc(m.t, m.currentDir, s);
+    d.hasMarine = true;
+  }
+  return d;
+}
 
 export function gx(s=1e3){const[u,r]=X.useState(()=>new Date);return X.useEffect(()=>{let o=0;const d=()=>{o=window.setTimeout(()=>{r(new Date),d()},s-Date.now()%s+4)};return d(),()=>window.clearTimeout(o)},[s]),u}
 

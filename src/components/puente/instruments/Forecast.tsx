@@ -14,6 +14,7 @@ export interface DailyForecast {
   pop: number[];
   tMax: number[];
   tMin: number[];
+  _aemet?: string | null;
 }
 
 const DORADO = '#8f6100';
@@ -114,7 +115,7 @@ export function Pronostico({ daily }: { daily?: DailyForecast | null }) {
           PREVISIÓN · 7 DÍAS
         </h3>
         <span className="font-serif text-[12px] font-medium italic text-[#4a3a1e] sm:text-[13px]">
-          Aguiño · la terraza del ático · Open-Meteo
+          {daily?._aemet ? 'AEMET · predicción oficial de Ribeira' : 'Aguiño · la terraza del ático · Open-Meteo'}
         </span>
       </div>
       <div className="relative">
