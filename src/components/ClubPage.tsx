@@ -18,9 +18,9 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   },
   regla1Titulo: { es: '1 · Ganas', en: '1 · You earn', gl: '1 · Gañas' },
   regla1: {
-    es: 'Por cada amigo que reserve por recomendación tuya y complete su estancia, ganas el 5 % del valor de su reserva en crédito para las tuyas. Sin tope de amigos ni de créditos: cuantas más estancias generes, más crédito acumulas.',
-    en: 'For every friend who books on your recommendation and completes their stay, you earn 5 % of their booking value as credit towards yours. No cap on friends or credits: the more stays you generate, the more credit you build.',
-    gl: 'Por cada amigo que reserve por recomendación túa e complete a súa estadía, gañas o 5 % do valor da súa reserva en crédito para as túas. Sen tope de amigos nin de créditos: cantas máis estadías xeres, máis crédito acumulas.',
+    es: 'Por cada amigo que reserve por recomendación tuya y complete su estancia, ganas el 10 % del valor de su reserva en crédito para las tuyas. Sin tope de amigos ni de créditos: cuantas más estancias generes, más crédito acumulas.',
+    en: 'For every friend who books on your recommendation and completes their stay, you earn 10 % of their booking value as credit towards yours. No cap on friends or credits: the more stays you generate, the more credit you build.',
+    gl: 'Por cada amigo que reserve por recomendación túa e complete a súa estadía, gañas o 10 % do valor da súa reserva en crédito para as túas. Sen tope de amigos nin de créditos: cantas máis estadías xeres, máis crédito acumulas.',
   },
   regla2Titulo: { es: '2 · Canjeas', en: '2 · You redeem', gl: '2 · Canxeas' },
   regla2: {

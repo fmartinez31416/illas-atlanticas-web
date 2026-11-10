@@ -158,7 +158,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Guest Club · Illas Atlánticas Ático',
-      description: 'The club for returning guests: every friend you bring earns 5 % of their booking as credit towards yours. No cap.',
+      description: 'The club for returning guests: every friend you bring earns 10 % of their booking as credit towards yours. No cap.',
     },
     planificador: {
       title: 'Plan your stay in Aguiño · Illas Atlánticas Ático',
@@ -208,7 +208,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Club de Hóspedes · Illas Atlánticas Ático',
-      description: 'O club dos que xa durmiron na casa: por cada amigo que traias, un 5 % da súa reserva en crédito para as túas. Sen tope, canxeable cando queiras.',
+      description: 'O club dos que xa durmiron na casa: por cada amigo que traias, un 10 % da súa reserva en crédito para as túas. Sen tope, canxeable cando queiras.',
     },
     planificador: {
       title: 'Planifica a túa estadía en Aguiño · Illas Atlánticas Ático',
