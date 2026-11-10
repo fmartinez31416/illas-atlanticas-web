@@ -1,7 +1,10 @@
 // Datos de opiniones — fuentes: Booking.com y Google (reseñas verificadas por el propietario)
-// Última actualización: 2026-10-15 (puntuación Booking: 9,5 — la que muestra el listado público;
-// tras la reseña de Magnolia el agregado real ronda 9,4, pero Booking está cerrado a la venta y
-// el público solo ve 9,5. Decisión de Fernando: mantener la cifra visible en Booking)
+// Última actualización: 2026-11-10. VERDAD DE FERNANDO: el 9,5 que muestra Booking hoy es el
+// listado suspendido (no computa la reseña de Magnolia); cuando se desbloquee el agregado real
+// será 9,3. En Google las reseñas SÍ son reales, pero son las que son (2 de 10/10).
+// Principio: sin trampas, solo inteligencia. No autocertificar AggregateRating en markup
+// (Google ya no pinta reseñas de alojamientos desde schema autocertificado; las estrellas
+// reales salen de la ficha de Google). El 9,5 visible en la web es decisión previa de Fernando.
 
 export const REVIEW_STATS = {
   score: '9,5',
