@@ -4,6 +4,7 @@ import { t } from '../i18n/translate';
 import { useI18n } from '../i18n/LangContext';
 import { NIA_API_URL } from '../niaConfig';
 import { trackCtaReserva } from '../utils/clarityTrack';
+import { LeadCaptureForm } from './LeadCaptureForm';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -243,6 +244,15 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               {t("Condiciones de reserva completas")} →
             </a>
           </div>
+
+          {/* Captura mecánica de lead: el que quiere precio deja el teléfono */}
+          <LeadCaptureForm
+            checkIn={checkIn}
+            checkOut={checkOut}
+            adults={adults}
+            children={children}
+            nights={nights}
+          />
 
           {/* Motor de reservas embebido (Beds24, sin salir de la web) */}
           {motorAbierto && (

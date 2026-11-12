@@ -370,4 +370,12 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "Copiar": { es: "Copiar", en: "Copy", gl: "Copiar" },
   "¡Copiado!": { es: "¡Copiado!", en: "Copied!", gl: "¡Copiado!" },
   "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.": { es: "Tu código de socio se descuenta en el siguiente paso: pégalo en el campo Voucher del motor de reservas.", en: "Your member code is applied in the next step: paste it into the booking engine's Voucher field.", gl: "O teu código de socio descóntase no seguinte paso: pégao no campo Voucher do motor de reservas." },
+  "lead.titulo": { es: "Déjame tu teléfono y te confirmo el mejor precio", en: "Leave me your phone number and I'll confirm the best price", gl: "Déixame o teu teléfono e confírmoche o mellor prezo" },
+  "lead.subtitulo": { es: "Fernando te responde personalmente, sin compromiso, en menos de 2 horas. Precio directo, sin comisiones de portal.", en: "Fernando replies personally, no obligation, within 2 hours. Direct price, no portal commission.", gl: "Fernando respóndeche persoalmente, sen compromiso, en menos de 2 horas. Prezo directo, sen comisións de portal." },
+  "lead.nombre": { es: "Tu nombre", en: "Your name", gl: "O teu nome" },
+  "lead.telefono": { es: "Tu teléfono (o email)", en: "Your phone (or email)", gl: "O teu teléfono (ou email)" },
+  "lead.enviar": { es: "Que me llame Fernando", en: "Have Fernando call me", gl: "Que me chame Fernando" },
+  "lead.enviando": { es: "Enviando…", en: "Sending…", gl: "Enviando…" },
+  "lead.ok": { es: "Recibido. Fernando te responde hoy mismo por teléfono o email. Gracias.", en: "Got it. Fernando will reply today by phone or email. Thank you.", gl: "Recibido. Fernando respóndeche hoxe mesmo por teléfono ou email. Grazas." },
+  "lead.error": { es: "Revisa el teléfono o el email; algo no cuadra.", en: "Check the phone or email; something is off.", gl: "Revisa o teléfono ou o email; algo non cadra." },
 };

@@ -52,7 +52,7 @@ export function trackOrigen(): void {
 }
 
 /** Clic en el CTA de reserva (motor de Beds24): evento + prioridad de grabación. */
-export function trackCtaReserva(detalle: 'motor' | 'whatsapp' | 'pantalla'): void {
+export function trackCtaReserva(detalle: 'motor' | 'whatsapp' | 'pantalla' | 'lead-telefono'): void {
   claritySafe('event', 'ctaReserva');
   claritySafe('set', 'ctaReserva', detalle);
   claritySafe('upgrade', 'ctaReserva');
