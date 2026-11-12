@@ -82,7 +82,7 @@ export function NiaChat() {
           localStorage.setItem('nia_sid_v1', sid);
         }
       } catch { /* ignore */ }
-      return fetch(NIA_API_URL, {
+      return fetch(`${NIA_API_URL}api/chat`, {
         method: 'POST',
         signal: ctrl.signal,
         headers: { 'Content-Type': 'application/json', 'X-Nia-Token': NIA_TOKEN },
