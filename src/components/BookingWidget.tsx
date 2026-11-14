@@ -300,22 +300,8 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             </p>
           )}
 
-          {/* Línea de confianza */}
-          <p className="mt-3 pt-3 border-t border-stone-100 text-[11px] text-stone-500 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-            <span>{t("Plaza de garaje incluida")}</span>
-            <span className="text-stone-300">·</span>
-            <span>{nights} {nights === 1 ? t("noche") : t("noches")} · {adults} {adults === 1 ? t("adulto") : t("adultos")}{children > 0 ? ` + ${children}` : ''}</span>
-            <span className="text-stone-300">·</span>
-            <span className="text-[#1A3A5C]">{t("Mejor precio garantizado: lo igualamos +5%")}</span>
-            <span className="text-stone-300">·</span>
-            <a href="/condiciones" className="underline underline-offset-2 hover:text-stone-700">{t("Condiciones de reserva")}</a>
-          </p>
-
-          {/* Pago y precio: lo que el huésped necesita saber antes de pulsar */}
-          <p className="mt-2 text-[11px] text-stone-500 text-center leading-relaxed">
-            {t("booking.pago.resumen")}
-          </p>
-          <p className="mt-1 text-[11px] text-stone-400 text-center">
+          {/* Precio: nota final */}
+          <p className="mt-2 text-[11px] text-stone-400 text-center">
             {t("booking.precio.nota")}
           </p>
         </div>
