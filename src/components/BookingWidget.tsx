@@ -193,6 +193,13 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
 
           {/* Código de socio (Club de Huéspedes) — línea propia, no compite con las fechas */}
           <div className="mt-3">
+            <p className="text-[12px] text-stone-700 mb-2">
+              {t("¿Eres socio del Club de Huéspedes?")} <span className="font-medium text-[#1A3A5C]">{t("Obtén tu 5% de descuento.")}</span>
+              {" "}
+              <a href="/club" className="text-[#1A3A5C] underline underline-offset-2 hover:text-[#D4A017]">{t("Regístrate gratis →")}</a>
+              {" · "}
+              <span className="text-stone-500">{t("o introduce tu código si ya lo tienes.")}</span>
+            </p>
             <label htmlFor="codigo-club" className="text-[10px] uppercase tracking-wider text-stone-500 font-medium flex items-center gap-1 mb-1">
               <Ticket className="w-3 h-3 text-stone-600" />
               <span>{t("Código de socio (opcional)")}</span>

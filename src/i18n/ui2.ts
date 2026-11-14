@@ -379,4 +379,8 @@ export const UI2: Record<string, Record<Lang, string>> = {
   "lead.ok": { es: "Recibido. Fernando te responde hoy mismo por teléfono o email. Gracias.", en: "Got it. Fernando will reply today by phone or email. Thank you.", gl: "Recibido. Fernando respóndeche hoxe mesmo por teléfono ou email. Grazas." },
   "lead.error": { es: "Revisa el teléfono o el email; algo no cuadra.", en: "Check the phone or email; something is off.", gl: "Revisa o teléfono ou o email; algo non cadra." },
   "¿Prefieres que te llamemos? Te confirmamos disponibilidad en 2h": { es: "¿Prefieres que te llamemos? Te confirmamos disponibilidad en 2h", en: "Prefer a call? We'll confirm availability within 2h", gl: "Prefires que te chamemos? Confirmámosche dispoñibilidade en 2h" },
+  "¿Eres socio del Club de Huéspedes?": { es: "¿Eres socio del Club de Huéspedes?", en: "Are you a Guest Club member?", gl: "Es socio do Club de Hóspedes?" },
+  "Obtén tu 5% de descuento.": { es: "Obtén tu 5% de descuento.", en: "Get your 5% discount.", gl: "Obtén o teu 5% de desconto." },
+  "Regístrate gratis →": { es: "Regístrate gratis →", en: "Sign up free →", gl: "Rexístrate gratis →" },
+  "o introduce tu código si ya lo tienes.": { es: "o introduce tu código si ya lo tienes.", en: "or enter your code if you already have one.", gl: "ou introduce o teu código se xa o tes." },
 };
