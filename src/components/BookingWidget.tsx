@@ -4,7 +4,6 @@ import { t } from '../i18n/translate';
 import { useI18n } from '../i18n/LangContext';
 import { NIA_API_URL } from '../niaConfig';
 import { trackCtaReserva } from '../utils/clarityTrack';
-import { LeadCaptureForm } from './LeadCaptureForm';
 
 interface BookingWidgetProps {
   initialCheckIn?: string;
@@ -178,24 +177,15 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
               </div>
             </div>
 
-            {/* Botones de acción */}
-            <div className="flex items-center gap-2.5 shrink-0">
+            {/* Botón principal único */}
+            <div className="w-full lg:w-auto">
               <button
                 id="booking-beds24-confirm-btn"
                 onClick={() => { setMotorAbierto(!motorAbierto); if (!motorAbierto) trackCtaReserva('pantalla'); }}
-                className="flex-1 lg:flex-initial px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
+                className="w-full px-6 py-3 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
               >
                 <span>{motorAbierto ? t('Cerrar reserva') : t('Ver precio y reservar')}</span>
                 <ArrowRight className={`w-3.5 h-3.5 text-amber-300 transition-transform ${motorAbierto ? 'rotate-90' : ''}`} />
-              </button>
-
-              <button
-                id="booking-whatsapp-direct-btn"
-                onClick={handleWhatsAppBooking}
-                className="flex-1 lg:flex-initial px-5 py-3 border border-stone-300 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-800 text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
-              >
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                <span>WhatsApp</span>
               </button>
             </div>
 
@@ -245,14 +235,17 @@ export function BookingWidget({ initialCheckIn, initialCheckOut }: BookingWidget
             </a>
           </div>
 
-          {/* Captura mecánica de lead: el que quiere precio deja el teléfono */}
-          <LeadCaptureForm
-            checkIn={checkIn}
-            checkOut={checkOut}
-            adults={adults}
-            children={children}
-            nights={nights}
-          />
+          {/* Botón secundario: llamada directa */}
+          <div className="mt-3">
+            <button
+              id="booking-llamada-btn"
+              onClick={handleWhatsAppBooking}
+              className="w-full px-6 py-3 border border-stone-300 hover:border-[#1A3A5C] bg-white hover:bg-stone-50 text-stone-700 hover:text-[#1A3A5C] text-[11px] uppercase tracking-[0.18em] font-medium transition-colors flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span>{t('¿Prefieres que te llamemos? Te confirmamos disponibilidad en 2h')}</span>
+            </button>
+          </div>
 
           {/* Motor de reservas embebido (Beds24, sin salir de la web) */}
           {motorAbierto && (
