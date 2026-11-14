@@ -19,10 +19,10 @@ export function SplitScreenValue() {
               loading="lazy"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-stone-950/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-stone-950/90 via-stone-950/40 to-stone-950/70 lg:bg-gradient-to-r lg:from-transparent lg:to-stone-950/50"></div>
             
-            {/* Texto superpuesto en móvil, oculto en desktop */}
-            <div className="absolute bottom-0 left-0 right-0 px-6 pb-12 lg:hidden space-y-5">
+            {/* Texto superpuesto en móvil (arriba, donde está el cielo), oculto en desktop */}
+            <div className="absolute top-0 left-0 right-0 px-6 pt-20 lg:hidden space-y-5">
               <p className="text-[#D4A017] text-[10px] uppercase tracking-[0.32em]">{t('SplitScreen.eyebrow')}</p>
               <h2 className="font-serif text-4xl sm:text-5xl font-light leading-[1.08]">
                 {t('SplitScreen.title')}
