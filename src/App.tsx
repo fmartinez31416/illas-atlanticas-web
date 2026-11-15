@@ -4,21 +4,23 @@ import { trackVista, trackOrigen } from './utils/clarityTrack';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { SplitScreenValue } from './components/SplitScreenValue';
-import { ScrollStory } from './components/ScrollStory';
 import { BookingWidget } from './components/BookingWidget';
-import { SpacesGrid } from './components/SpacesGrid';
-import { AmenitiesSection } from './components/AmenitiesSection';
-import { ReviewsAndPress } from './components/ReviewsAndPress';
-import { DirectBookingSection } from './components/DirectBookingSection';
-import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
+// Lazy-load secciones bajo el pliegue (P1: aligerar bundle inicial)
+const ScrollStory = lazy(() => import('./components/ScrollStory').then(m => ({ default: m.ScrollStory })));
+const SpacesGrid = lazy(() => import('./components/SpacesGrid').then(m => ({ default: m.SpacesGrid })));
+const AmenitiesSection = lazy(() => import('./components/AmenitiesSection').then(m => ({ default: m.AmenitiesSection })));
+const ReviewsAndPress = lazy(() => import('./components/ReviewsAndPress').then(m => ({ default: m.ReviewsAndPress })));
+const DirectBookingSection = lazy(() => import('./components/DirectBookingSection').then(m => ({ default: m.DirectBookingSection })));
+const BlogSection = lazy(() => import('./components/BlogSection').then(m => ({ default: m.BlogSection })));
+const LocationAndSurroundings = lazy(() => import('./components/LocationAndSurroundings').then(m => ({ default: m.LocationAndSurroundings })));
+const FaqSection = lazy(() => import('./components/FaqSection').then(m => ({ default: m.FaqSection })));
+const NiaSection = lazy(() => import('./components/NiaSection').then(m => ({ default: m.NiaSection })));
 const BitacoraPage = lazy(() => import('./components/BitacoraPage').then(m => ({ default: m.BitacoraPage })));
 const LonjaLens = lazy(() => import('./components/LonjaLens').then(m => ({ default: m.LonjaLens })));
 const PlanificadorPage = lazy(() => import('./components/PlanificadorPage').then(m => ({ default: m.PlanificadorPage })));
 import { NiaChat } from './components/NiaChat';
-import { NiaSection } from './components/NiaSection';
 import { ConsentBanner } from './components/ConsentBanner';
-import { LocationAndSurroundings } from './components/LocationAndSurroundings';
 const GastronomiaPage = lazy(() => import('./components/GastronomiaPage').then(m => ({ default: m.GastronomiaPage })));
 const MusicaPage = lazy(() => import('./components/MusicaPage').then(m => ({ default: m.MusicaPage })));
 const ClubPage = lazy(() => import('./components/ClubPage'));
@@ -26,7 +28,7 @@ const ColaboracionesPage = lazy(() => import('./components/ColaboracionesPage').
 const VinosPage = lazy(() => import('./components/VinosPage').then(m => ({ default: m.VinosPage })));
 const MetodologiaPage = lazy(() => import('./components/MetodologiaPage').then(m => ({ default: m.MetodologiaPage })));
 
-import { FaqSection } from './components/FaqSection';
+
 const LegalPage = lazy(() => import('./components/LegalPage').then(m => ({ default: m.LegalPage })));
 const CondicionesPage = lazy(() => import('./components/CondicionesPage').then(m => ({ default: m.CondicionesPage })));
 const PuenteView = lazy(() => import('./components/PuenteView').then(m => ({ default: m.PuenteView })));
@@ -371,32 +373,34 @@ function AppInner() {
         </div>
 
         {/* Reserva directa: el argumento que sostiene todo el negocio */}
-        <DirectBookingSection
-          onOpenBooking={scrollToBooking}
-          onOpenBitacora={() => setCurrentView('bitacora')}
-          onOpenLonja={() => setCurrentView('lonja')}
-          onOpenPuente={() => setCurrentView('puente')}
-          onOpenCondiciones={() => setCurrentView('condiciones')}
-          onOpenGastronomia={() => setCurrentView('gastronomia')}
-        />
+        <Suspense fallback={null}>
+          <DirectBookingSection
+            onOpenBooking={scrollToBooking}
+            onOpenBitacora={() => setCurrentView('bitacora')}
+            onOpenLonja={() => setCurrentView('lonja')}
+            onOpenPuente={() => setCurrentView('puente')}
+            onOpenCondiciones={() => setCurrentView('condiciones')}
+            onOpenGastronomia={() => setCurrentView('gastronomia')}
+          />
+        </Suspense>
 
         {/* La historia en cuatro capítulos: scroll que cuenta (sticky stacking) */}
-        <ScrollStory />
+        <Suspense fallback={null}><ScrollStory /></Suspense>
 
         {/* Prueba social pronto: opiniones reales de Booking.com */}
-        <ReviewsAndPress />
-        <SpacesGrid onOpenBooking={scrollToBooking} />
-        <AmenitiesSection />
+        <Suspense fallback={null}><ReviewsAndPress /></Suspense>
+        <Suspense fallback={null}><SpacesGrid onOpenBooking={scrollToBooking} /></Suspense>
+        <Suspense fallback={null}><AmenitiesSection /></Suspense>
 
         {/* Ubicación real: Aguiño, entorno y accesos */}
-        <LocationAndSurroundings />
+        <Suspense fallback={null}><LocationAndSurroundings /></Suspense>
 
         {/* Preguntas frecuentes (cierra objeciones antes del clic final) */}
-        <FaqSection />
+        <Suspense fallback={null}><FaqSection /></Suspense>
 
         {/* Acceso elegante a la Bitácora */}
-        <BlogSection onOpenBitacora={() => setCurrentView('bitacora')} />
-        <NiaSection />
+        <Suspense fallback={null}><BlogSection onOpenBitacora={() => setCurrentView('bitacora')} /></Suspense>
+        <Suspense fallback={null}><NiaSection /></Suspense>
 
         {/* Cierre emocional: fotografía real de la ría y UNA sola CTA de conversión final */}
         <section id="cierre" className="relative min-h-[70svh] w-full flex items-center justify-center overflow-hidden bg-stone-950">
