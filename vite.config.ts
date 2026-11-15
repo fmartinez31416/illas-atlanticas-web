@@ -37,7 +37,6 @@ export default defineConfig(() => {
             react: ['react', 'react-dom'],
             leaflet: ['leaflet'],
             motion: ['motion'],
-            genai: ['@google/genai'],
           },
         },
       },
