@@ -116,7 +116,7 @@ function shellNav(p: Pagina): string {
 /** Lista estática de artículos (solo shells de /bitacora): da enlaces entrantes reales a los 16 artículos. */
 function listaArticulosHtml(lang: Lang): string {
   const items = ARTICLES.filter((a) => a.slug)
-    .map((a) => `<li style="margin:0.4rem 0;"><a href="${urlDe(lang, `bitacora/${a.slug}`)}" style="color:#1A3A5C;">${esc(a.title)}</a></li>`)
+    .map((a) => `<li style="margin:0.4rem 0;"><a href="${urlDe('es', `bitacora/${a.slug}`)}" style="color:#1A3A5C;">${esc(a.title)}</a></li>`)
     .join('');
   return `\n      <ul style="font-family:Georgia,'Times New Roman',serif;font-size:0.95rem;color:#1A3A5C;list-style:none;padding:0.5rem 1.5rem 2rem;text-align:center;margin:0;">${items}</ul>`;
 }
@@ -521,6 +521,30 @@ function itemListLd(): string {
 `;
 }
 
+// Product para /vinos: la guía Índice G es un producto editorial (metodología + datos
+// agregados de vinos gallegos). Evita el «falta el esquema del producto» de Semrush/Letaido.
+function productVinosLd(p: Pagina): string {
+  return `    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Índice G — guía del vino de Galicia",
+      "description": "Guía de vinos de Galicia con puntuaciones públicas agregadas de Peñín, Tim Atkin, Wine Advocate, James Suckling y Decanter sobre las cinco denominaciones de origen gallegas. Método abierto: G = P̂ − 1,5·σ.",
+      "url": "${p.url}",
+      "image": "${BASE}/logo.png",
+      "brand": { "@type": "Organization", "name": "Illas Atlánticas Ático" },
+      "offers": {
+        "@type": "Offer",
+        "url": "${p.url}",
+        "priceCurrency": "EUR",
+        "price": 0,
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+`;
+}
+
 // ---------- plantilla ----------
 // Limpieza de prerenders viejos (slugs renombrados no deben quedarse servidos).
 // OJO: el prerender escribe en /paginas (raíz del repo, gitignored); Vite los
@@ -588,7 +612,7 @@ for (const p of paginas) {
   // MENOS la portada (que ya lo trae en su chunk original de index.html)
   html = html.replace(
     '</head>',
-    `${p.article ? articleLd(p) + '\n' : ''}${(p.url === `${BASE}/en/` || p.url === `${BASE}/gl/`) ? productLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}${p.archivo.endsWith('/vinos/index.html') ? itemListLd() : ''}\n  </head>`,
+    `${p.article ? articleLd(p) + '\n' : ''}${(p.url === `${BASE}/en/` || p.url === `${BASE}/gl/`) ? productLd(p) + '\n' : ''}${p.url === `${BASE}/` ? '' : orgLd()}${p.archivo.endsWith('/vinos/index.html') ? itemListLd() + productVinosLd(p) : ''}\n  </head>`,
   );
   mkdirSync(dirname(p.archivo), { recursive: true });
   writeFileSync(p.archivo, html);

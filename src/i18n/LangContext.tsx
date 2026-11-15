@@ -80,7 +80,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     lonja: {
       title: 'LonjaLens · Guía de la lonja y el marisco de Aguiño',
-      description: 'Guía de la lonja de Aguiño: subasta, percebes, especies de la ría y marisco de las Rías Baixas.',
+      description: 'Guía de la lonja de Aguiño a 350 metros del ático: horarios de subasta, percebes de la ría, especies de temporada y dónde comprar marisco fresco de las Rías Baixas.',
     },
     bitacora: {
       title: 'Cuaderno de Bitácora · Crónicas del Atlántico desde Aguiño',
@@ -180,7 +180,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     lonja: {
       title: 'LonjaLens · Guía da lonxa e do marisco de Aguiño',
-      description: 'Guía da lonxa de Aguiño: poxa, percebes, especies da ría e marisco das Rías Baixas.',
+      description: 'Guía da lonxa de Aguiño a 350 metros do ático: horarios da poxa, percebes da ría, especies de tempada e onde mercar marisco fresco das Rías Baixas.',
     },
     bitacora: {
       title: 'Caderno de Bitácora · Crónicas do Atlántico dende Aguiño',
