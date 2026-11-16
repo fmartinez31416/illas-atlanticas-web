@@ -111,8 +111,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'Ventajas para quienes vuelven a Illas Atlánticas Ático: crédito por recomendar la casa, sin cuotas y con condiciones claras.',
     },
     planificador: {
-      title: 'Planifica tu estancia en Aguiño · Illas Atlánticas Ático',
-      description: 'Cuéntanos quién viaja y a qué ritmo, y te proponemos un plan a tu medida: lonja, islas, calas y mesas de Aguiño, desde el ático.',
+      title: 'Qué hacer en Aguiño y Ribeira: plan a tu medida · Illas Atlánticas Ático',
+      description: 'Qué hacer en Aguiño y Ribeira (Rías Baixas): lonja, islas de Sálvora y Ons, calas, playas y restaurantes. Plan personalizado para tu estancia en el ático.',
     },
     colaboraciones: {
       title: 'Colaboraciones · Medios y blogs sobre Aguiño',
@@ -161,8 +161,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'The club for returning guests: every friend you bring earns 10 % of their booking as credit towards yours. No cap.',
     },
     planificador: {
-      title: 'Plan your stay in Aguiño · Illas Atlánticas Ático',
-      description: 'Tell us who travels and at what pace, and we suggest a plan to suit you: fish market, islands, coves and tables of Aguiño, from the penthouse.',
+      title: 'Things to do in Aguiño and Ribeira: a plan made for you · Illas Atlánticas Ático',
+      description: 'Things to do in Aguiño and Ribeira (Rías Baixas): the fish auction, Sálvora and Ons islands, coves, beaches and restaurants. A plan tailored to your stay in the penthouse.',
     },
     colaboraciones: {
       title: 'Collaborations · Media and blogs about Aguiño',
@@ -211,8 +211,8 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
       description: 'O club dos que xa durmiron na casa: por cada amigo que traias, un 10 % da súa reserva en crédito para as túas. Sen tope, canxeable cando queiras.',
     },
     planificador: {
-      title: 'Planifica a túa estadía en Aguiño · Illas Atlánticas Ático',
-      description: 'Cóntanos quen viaxa e a que ritmo, e propoñemos un plan á túa medida: lonxa, illas, calas e mesas de Aguiño, desde o ático.',
+      title: 'Que facer en Aguiño e Ribeira: plan á túa medida · Illas Atlánticas Ático',
+      description: 'Que facer en Aguiño e Ribeira (Rías Baixas): lonxa, illas de Sálvora e Ons, calas, praias e restaurantes. Plan personalizado para a túa estadía no ático.',
     },
     colaboraciones: {
       title: 'Colaboracións · Medios e blogs sobre Aguiño',
