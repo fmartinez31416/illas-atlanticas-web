@@ -6,6 +6,7 @@ import { Hero } from './components/Hero';
 import { SplitScreenValue } from './components/SplitScreenValue';
 import { BookingWidget } from './components/BookingWidget';
 import { Footer } from './components/Footer';
+import { BrandIntro } from './components/BrandIntro';
 // Lazy-load secciones bajo el pliegue (P1: aligerar bundle inicial)
 const ScrollStory = lazy(() => import('./components/ScrollStory').then(m => ({ default: m.ScrollStory })));
 const SpacesGrid = lazy(() => import('./components/SpacesGrid').then(m => ({ default: m.SpacesGrid })));
@@ -343,6 +344,7 @@ function AppInner() {
   // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen overflow-x-hidden bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
+      <BrandIntro />
       <Header
               onOpenBooking={scrollToBooking}
               onOpenBitacora={() => setCurrentView('bitacora')}
