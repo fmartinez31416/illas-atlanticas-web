@@ -344,7 +344,6 @@ function AppInner() {
   // VISTA 2: Portada de lujo limpia (Ático, estancias y reserva directa)
   return (
     <div className="min-h-screen overflow-x-hidden bg-stone-950 text-stone-100 font-sans selection:bg-amber-200 selection:text-stone-950">
-      <BrandIntro />
       <Header
               onOpenBooking={scrollToBooking}
               onOpenBitacora={() => setCurrentView('bitacora')}

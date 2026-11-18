@@ -8,10 +8,10 @@ import { t } from '../i18n/translate';
  */
 
 const CHAPTERS = [
-  { photo: 'fotos/dormitorio_principal_01.jpg', link: '#espacios' },
-  { photo: 'fotos/terraza_dron.jpg', link: '/puente' },
-  { photo: 'fotos/puerto_aguino.jpg', link: '/lonja' },
-  { photo: 'fotos/pedra_da_ra_mirador_52.jpg', link: '/bitacora' },
+  { photo: '/fotos/dormitorio_principal_01.jpg', link: '#espacios' },
+  { photo: '/fotos/terraza_dron.jpg', link: '/puente' },
+  { photo: '/fotos/puerto_aguino.jpg', link: '/lonja' },
+  { photo: '/fotos/pedra_da_ra_mirador_52.jpg', link: '/bitacora' },
 ];
 
 export function ScrollStory() {
