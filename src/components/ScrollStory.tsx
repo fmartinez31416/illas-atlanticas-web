@@ -20,7 +20,7 @@ export function ScrollStory() {
       {CHAPTERS.map((c, i) => (
         <article key={i} className="sticky top-0 h-[100svh] w-full overflow-hidden">
           <img
-            src={`${import.meta.env.BASE_URL}${c.photo}`}
+            src={c.photo}
             alt={t(`ScrollStory.c${i + 1}.title`)}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
