@@ -6,7 +6,7 @@ export const SPACES_DATA: Space[] = [
     name: 'La llegada',
     subtitle: 'Portal con ascensor y plaza de garaje privada',
     tag: 'Llegada',
-    coverImage: '/fotos/portal_01.jpg?v=20261102',
+    coverImage: '/fotos/portal_01.jpg',
     gallery: [
       '/fotos/portal_02.jpg'
     ],
@@ -34,7 +34,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Terraza Panorámica',
     subtitle: 'Amanecer y atardecer, en privado',
     tag: 'Exterior',
-    coverImage: '/fotos/terraza_tumbonas_01.jpg?v=20261102',
+    coverImage: '/fotos/terraza_tumbonas_01.jpg',
     gallery: [
       '/fotos/terraza_comedor_02.jpg',
       '/fotos/vistas_terraza_17.jpg',
@@ -69,7 +69,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Salón Principal',
     subtitle: 'Chimenea de ambiente y Smart TV 75"',
     tag: 'Estar & Confort',
-    coverImage: '/fotos/salon_04.jpg?v=20261102',
+    coverImage: '/fotos/salon_04.jpg',
     gallery: [
       '/fotos/salon_05.jpg',
       '/fotos/salon_06.jpg',
@@ -104,7 +104,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Master Suite',
     subtitle: 'Ventanas de techo Velux sobre la cama',
     tag: 'Descanso',
-    coverImage: '/fotos/dormitorio_principal_04.jpg?v=20261102',
+    coverImage: '/fotos/dormitorio_principal_04.jpg',
     gallery: [
       '/fotos/dormitorio_principal_01.jpg',
       '/fotos/dormitorio_principal_02.jpg',
@@ -136,9 +136,9 @@ export const SPACES_DATA: Space[] = [
     name: 'Habitación de dos camas',
     subtitle: 'Dos camas, escritorio y ventana Velux',
     tag: 'Descanso',
-    coverImage: '/fotos/dormitorio_doble_01.jpg?v=20261101',
+    coverImage: '/fotos/dormitorio_doble_01.jpg',
     gallery: [
-      '/fotos/dormitorio_doble_02.jpg?v=20261102'
+      '/fotos/dormitorio_doble_02.jpg'
     ],
     description: 'El segundo dormitorio, con dos camas individuales vestidas como las de toda la casa y un escritorio junto a la ventana Velux para trabajar o escribir. Vistas al pueblo marinero y a la ría.',
     highlights: [
@@ -164,7 +164,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Dormitorio de matrimonio',
     subtitle: 'Cabecero de madera tallada y armario a juego',
     tag: 'Descanso',
-    coverImage: '/fotos/dormitorio_matrimonio_01.jpg?v=20261102',
+    coverImage: '/fotos/dormitorio_matrimonio_01.jpg',
     gallery: [
       '/fotos/dormitorio_matrimonio_02.jpg'
     ],
@@ -221,7 +221,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Baño doble',
     subtitle: 'Dos lavabos y bañera con ducha',
     tag: 'Bienestar',
-    coverImage: '/fotos/bano_doble_02.jpg?v=20261102',
+    coverImage: '/fotos/bano_doble_02.jpg',
     gallery: [
       '/fotos/bano_doble_03.jpg',
       '/fotos/bano_doble_04.jpg',
@@ -251,7 +251,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Baño de ducha',
     subtitle: 'Ducha a ras de suelo y lavabo rústico',
     tag: 'Bienestar',
-    coverImage: '/fotos/bano_ducha_01.jpg?v=20261102',
+    coverImage: '/fotos/bano_ducha_01.jpg',
     gallery: [
       '/fotos/bano_ducha_02.jpg',
       '/fotos/bano_ducha_03.jpg'
@@ -280,7 +280,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Despacho Workspace',
     subtitle: 'Teletrabajo frente al mar: fibra y silencio',
     tag: 'Workation & Focus',
-    coverImage: '/fotos/despacho_04.jpg?v=20261101',
+    coverImage: '/fotos/despacho_04.jpg',
     gallery: [
       '/fotos/despacho_05.jpg',
       '/fotos/hall_principal_02.jpg',
@@ -311,7 +311,7 @@ export const SPACES_DATA: Space[] = [
     name: 'Cocina',
     subtitle: 'Abierta al salón, preparada para el marisco',
     tag: 'Cocina & Marisco',
-    coverImage: '/fotos/cocina_01.jpg?v=20261101',
+    coverImage: '/fotos/cocina_01.jpg',
     gallery: [
       '/fotos/cocina_panoramica_01.jpg',
       '/fotos/cocina_02.jpg',
