@@ -73,11 +73,9 @@ export function LegalPage({ onBack }: LegalPageProps) {
             <p className="mb-3">
               {t("legal.cookies.text")}
             </p>
-            <ul className="list-disc pl-6 space-y-2 mb-3">
-              <li>{t("legal.cookies.umami")}</li>
-              <li>{t("legal.cookies.baliza")}</li>
-              <li>{t("legal.cookies.clarity")}</li>
-            </ul>
+            <p className="mb-3">
+              {t("legal.cookies.sin")}
+            </p>
             <p>
               {t("legal.cookies.salida")}
             </p>

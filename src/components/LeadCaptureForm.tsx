@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { PhoneCall, Check } from 'lucide-react';
 import { t } from '../i18n/translate';
 import { NIA_API_URL } from '../niaConfig';
-import { trackCtaReserva } from '../utils/clarityTrack';
 
 // Captura mecánica de lead (embudo directo): el visitante que quiere precio deja
 // nombre + teléfono/email, y el aviso cae a Fernando al instante por Telegram.
@@ -41,7 +40,6 @@ export function LeadCaptureForm({ checkIn, checkOut, adults = 2, children = 0, n
         }),
       });
       if (r.ok) {
-        trackCtaReserva('lead-telefono');
         setEstado('ok');
       } else {
         setEstado('error');

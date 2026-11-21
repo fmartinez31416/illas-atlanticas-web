@@ -23,7 +23,7 @@ export function ScrollStory() {
             src={c.photo}
             alt={t(`ScrollStory.c${i + 1}.title`)}
             className="absolute inset-0 w-full h-full object-cover"
-            loading="lazy"
+            loading={i === 0 ? "eager" : "lazy"}
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/35 to-stone-950/35"></div>

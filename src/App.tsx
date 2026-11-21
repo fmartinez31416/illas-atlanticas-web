@@ -1,6 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { seoTitle, seoDescription } from './utils/seo';
-import { trackVista, trackOrigen } from './utils/clarityTrack';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { SplitScreenValue } from './components/SplitScreenValue';
@@ -21,7 +20,6 @@ const BitacoraPage = lazy(() => import('./components/BitacoraPage').then(m => ({
 const LonjaLens = lazy(() => import('./components/LonjaLens').then(m => ({ default: m.LonjaLens })));
 const PlanificadorPage = lazy(() => import('./components/PlanificadorPage').then(m => ({ default: m.PlanificadorPage })));
 import { NiaChat } from './components/NiaChat';
-import { ConsentBanner } from './components/ConsentBanner';
 const GastronomiaPage = lazy(() => import('./components/GastronomiaPage').then(m => ({ default: m.GastronomiaPage })));
 const MusicaPage = lazy(() => import('./components/MusicaPage').then(m => ({ default: m.MusicaPage })));
 const ClubPage = lazy(() => import('./components/ClubPage'));
@@ -125,13 +123,8 @@ function AppInner() {
       const d = document.querySelector('meta[name="description"]');
       if (d) d.setAttribute('content', seoDescription(meta.description));
     }
-    trackVista(currentView);
   }, [lang, currentView]);
 
-  // Origen de la visita (UTM/referente): una vez por sesión, para filtrar en Clarity por campaña.
-  useEffect(() => {
-    trackOrigen();
-  }, []);
 
   // Canonical autorreferente por página e idioma (coherente con hreflang)
   useEffect(() => {
@@ -142,30 +135,6 @@ function AppInner() {
     }
   }, [lang, currentView]);
 
-  // Baliza de visitas privada (1 píxel, sin cookies, en nuestro propio servidor):
-  // cuenta visitas, de dónde vienen (TikTok, Google, directo...) y CUÁNTO DURAN
-  // (pulso al entrar + pulso al salir con la duración) para medir qué funciona.
-  useEffect(() => {
-    if (sessionStorage.getItem('hit_enviado')) return;
-    sessionStorage.setItem('hit_enviado', '1');
-    sessionStorage.setItem('t0', String(Date.now()));
-    try {
-      const referer = document.referrer || 'directo';
-      const fuente = new URLSearchParams(window.location.search).get('fuente') || '';
-      fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=${encodeURIComponent(referer)}&s=${encodeURIComponent(fuente)}`)
-        .catch(() => {});
-      const despedir = () => {
-        const t0 = Number(sessionStorage.getItem('t0') || 0);
-        const seg = t0 ? Math.round((Date.now() - t0) / 1000) : 0;
-        if (seg > 0) {
-          fetch(`${NIA_API_URL}hit?p=${encodeURIComponent(currentView)}&r=cierre&s=${encodeURIComponent(fuente)}&d=${seg}`, { keepalive: true })
-            .catch(() => {});
-        }
-      };
-      window.addEventListener('pagehide', despedir);
-      return () => window.removeEventListener('pagehide', despedir);
-    } catch { /* silencioso: nunca bloquea la web */ }
-  }, []);
 
   const scrollToBooking = () => {
     setCurrentView('home');
@@ -431,7 +400,6 @@ function AppInner() {
 
       <Footer onOpenLegal={() => setCurrentView('legal')} />
       <NiaChat />
-      <ConsentBanner />
     </div>
   );
 }
