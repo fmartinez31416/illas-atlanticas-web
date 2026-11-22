@@ -49,7 +49,10 @@ export function LegalPage({ onBack }: LegalPageProps) {
               <li>{t("cumplir obligaciones legales, incluida la comunicación de viajeros a las Fuerzas y Cuerpos de Seguridad (Real Decreto 933/2021) y las obligaciones fiscales.")}</li>
             </ul>
             <p className="mb-3">
-              {t("No cedemos tus datos a terceros salvo obligación legal (SES-Hospedajes, Administración tributaria) o proveedores necesarios para el pago (Stripe, PayPal), que actúan como encargados del tratamiento.")} {t("legal.transfers.p")}
+              {t("legal.encargados.p1")}
+            </p>
+            <p className="mb-3">
+              {t("legal.encargados.p2")}
             </p>
             <p className="mb-3">
               {t("legal.baselegal.p")}
@@ -61,7 +64,7 @@ export function LegalPage({ onBack }: LegalPageProps) {
               <a href="/condiciones" className="text-[#D4A017] underline underline-offset-2 hover:text-amber-200">{t("legal.condiciones.link")}</a>
             </p>
             <p className="mb-3">
-              {t("Conservamos los datos el tiempo exigido por la normativa (los registros de viajeros, tres años conforme al RD 933/2021).")}
+              {t("legal.conservacion.p")}
             </p>
             <p>
               {t("Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a")} <span className="text-white">reservas@illasatlanticasatico.es</span> {t("o llamando al")} <span className="text-white">+34 606 025 318</span>. {t("Si consideras que el tratamiento no es conforme, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).")}
@@ -78,6 +81,13 @@ export function LegalPage({ onBack }: LegalPageProps) {
             </p>
             <p>
               {t("legal.cookies.salida")}
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-serif text-white mb-4">{t("legal.nia.title")}</h2>
+            <p>
+              {t("legal.nia.p")}
             </p>
           </section>
 
