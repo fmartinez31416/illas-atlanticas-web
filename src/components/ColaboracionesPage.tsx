@@ -28,6 +28,19 @@ const TEXTOS = {
   },
   leerArticulo: { es: 'Leer el artículo', en: 'Read the article', gl: 'Ler o artigo' },
   nuestraGuia: { es: 'Nuestra guía de Aguiño', en: 'Our Aguiño guide', gl: 'A nosa guía de Aguiño' },
+  margaEtiqueta: { es: 'Noviembre de 2026', en: 'November 2026', gl: 'Novembro de 2026' },
+  margaTitulo: { es: 'Los Viajes de Margalliver', en: 'Los Viajes de Margalliver', gl: 'Los Viajes de Margalliver' },
+  margaSub: {
+    es: 'Blog de viajes y road trips por España',
+    en: 'Travel and road trip blog from Spain',
+    gl: 'Blog de viaxes e road trips por España',
+  },
+  margaTexto: {
+    es: 'Enrique y Marga recorren las Rías Baixas en su «Ruta en coche por las Rías Baixas en 7 días», con etapa por el Barbanza. Nos intercambiamos los enlaces: su ruta, aquí; la casa y la guía, en su artículo.',
+    en: 'Enrique and Marga tour the Rías Baixas in their \u201c7-day road trip through the Rías Baixas\u201d, with a stage along the Barbanza. We exchange links: their route here; the house and the guide, in their article.',
+    gl: 'Enrique e Marga percorren as Rías Baixas na súa «Ruta en coche polas Rías Baixas en 7 días», con etapa polo Barbanza. Intercambiamos as ligazóns: a súa ruta, aquí; a casa e a guía, no seu artigo.',
+  },
+  leerRuta: { es: 'Leer la ruta', en: 'Read the route', gl: 'Ler a ruta' },
   ctaTitulo: {
     es: '¿Escribes sobre Aguiño, la ría o el Barbanza?',
     en: 'Do you write about Aguiño, the ría or the Barbanza?',
@@ -80,37 +93,65 @@ export function ColaboracionesPage({ onBack, onOpenBooking }: ColaboracionesPage
           </h2>
         </div>
 
-        <article className="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
-          <div className="p-6 sm:p-10">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className="text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-[#F5EDDA] text-[#B8860B] font-semibold">
-                {g('etiqueta')}
-              </span>
+        <div className="space-y-6">
+          <article className="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+            <div className="p-6 sm:p-10">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-[#F5EDDA] text-[#B8860B] font-semibold">
+                  {g('etiqueta')}
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-serif text-stone-900 mb-2">{g('cyvTitulo')}</h3>
+              <p className="text-stone-500 text-sm font-light mb-5">{g('cyvSub')}</p>
+              <p className="text-stone-700 font-light leading-relaxed mb-8 max-w-3xl">
+                {g('cyvTexto')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://www.comeryviajar.com/2026/03/aguino-y-el-secreto-de-o-carreiro.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors rounded-sm"
+                >
+                  {g('leerArticulo')}
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="/bitacora/guia-aguino-parque-nacional-illas-atlanticas"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-stone-300 hover:border-stone-500 text-stone-800 text-xs uppercase tracking-[0.2em] font-medium transition-colors rounded-sm"
+                >
+                  {g('nuestraGuia')}
+                </a>
+              </div>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-serif text-stone-900 mb-2">{g('cyvTitulo')}</h3>
-            <p className="text-stone-500 text-sm font-light mb-5">{g('cyvSub')}</p>
-            <p className="text-stone-700 font-light leading-relaxed mb-8 max-w-3xl">
-              {g('cyvTexto')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="https://www.comeryviajar.com/2026/03/aguino-y-el-secreto-de-o-carreiro.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors rounded-sm"
-              >
-                {g('leerArticulo')}
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="/bitacora/guia-aguino-parque-nacional-illas-atlanticas"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-stone-300 hover:border-stone-500 text-stone-800 text-xs uppercase tracking-[0.2em] font-medium transition-colors rounded-sm"
-              >
-                {g('nuestraGuia')}
-              </a>
+          </article>
+
+          <article className="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+            <div className="p-6 sm:p-10">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-[#F5EDDA] text-[#B8860B] font-semibold">
+                  {g('margaEtiqueta')}
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-serif text-stone-900 mb-2">{g('margaTitulo')}</h3>
+              <p className="text-stone-500 text-sm font-light mb-5">{g('margaSub')}</p>
+              <p className="text-stone-700 font-light leading-relaxed mb-8 max-w-3xl">
+                {g('margaTexto')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://losviajesdemargalliver.com/ruta-en-coche-por-las-rias-baixas-en-7-dias/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-stone-900 hover:bg-stone-800 text-white text-xs uppercase tracking-[0.2em] font-medium transition-colors rounded-sm"
+                >
+                  {g('leerRuta')}
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
 
         {/* Llamada a escritores */}
         <div className="mt-12 bg-stone-900 text-stone-100 rounded-lg p-8 sm:p-10">

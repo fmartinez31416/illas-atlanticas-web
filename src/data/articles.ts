@@ -759,7 +759,9 @@ En el Puente de esta web, la carta náutica de la ría reproduce estas firmas: c
 
 No hace falta barco: en una noche despejada, desde la terraza de la casa se distinguen dos luces —Sálvora al frente y, hacia el sur, Ons—. Para ver la tercera hay que subir al mirador de A Pedra da Ra, en lo alto del pueblo: desde allí, Corrubedo asoma por encima del Barbanza y se ven los tres faros de la bocana a la vez.
 
-El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún conserva luz y las linternas ya han encendido. Un té en la terraza y los faros contando sus destellos: la manera más barata y más antigua de entender este mar.`,
+El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún conserva luz y las linternas ya han encendido. Un té en la terraza y los faros contando sus destellos: la manera más barata y más antigua de entender este mar.
+
+**Para seguir leyendo:** [Los Viajes de Margalliver — Ruta en coche por las Rías Baixas en 7 días](https://losviajesdemargalliver.com/ruta-en-coche-por-las-rias-baixas-en-7-dias/), un road trip por las rías con etapa por el Barbanza y Corrubedo.`,
   },
   {
     id: '9',
