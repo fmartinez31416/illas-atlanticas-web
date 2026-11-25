@@ -21,6 +21,7 @@ AddDefaultCharset utf-8
   RewriteRule ^cookies/?$ /legal [R=301,L]
   RewriteRule ^(contacto|faq)/?$ / [R=301,L]
   RewriteRule ^apartamento/?$ / [R=301,L]
+  RewriteRule ^bitacora/lamprea-del-ulla-y-ria-de-arousa/?$ /bitacora [R=301,L]
   RewriteRule ^index\.html$ / [R=301,L]
 
   # Artículos del blog antiguo (Semrush 23-oct: seguían en el índice; sin redirect se perdía su equity)
