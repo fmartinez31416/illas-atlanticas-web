@@ -421,6 +421,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/colaboraciones" />
   </url>
   <url>
+    <loc>https://illasatlanticasatico.es/bitacora/corrubedo-en-invierno</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://illasatlanticasatico.es/bitacora/corrubedo-en-invierno" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://illasatlanticasatico.es/bitacora/corrubedo-en-invierno" />
+  </url>
+  <url>
     <loc>https://illasatlanticasatico.es/bitacora/escribir-en-aguino</loc>
     <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
