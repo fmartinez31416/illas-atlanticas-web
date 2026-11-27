@@ -87,7 +87,42 @@ Después de comer, los 230 m² del ático, la chimenea y la terraza frente al pu
     author: 'Cuaderno Atlántico',
     tags: ['Corrubedo', 'Naturaleza', 'Invierno', 'Ría de Arousa'],
     featured: true,
-    content: `El Parque Natural Complexo dunar de Corrubedo e lagoas de Carregal e Vixán cabe en menos de mil hectáreas y se recorre a pie en un día. En invierno, con los arenales vacíos y la luz baja, es el plan perfecto desde Aguiño: a diez minutos en coche de la casa, un paisaje de dunas vivas, dos lagunas de aguas distintas y aves que solo se dejan ver entre el otoño y la primavera.\n\n### Un parque pequeño, protegido desde 1992\n\nEl parque abarca 996 hectáreas, todas dentro del municipio de Ribeira, y nació con el Decreto 139/1992, de 5 de junio. Desde 1993 es además humedal de importancia internacional, incluido en el Convenio Ramsar como «Complejo de Corrubedo». En ese espacio reducido conviven sistemas de dunas, una marisma, dos lagunas y dos arenales abiertos al Atlántico: un excelente ejemplo de complejo barra-laguna litoral.\n\n### La duna móvil, siempre en movimiento\n\nAl norte del parque, tras la playa de A Ladeira, se levanta la duna móvil más grande del noroeste peninsular: cerca de un kilómetro de longitud, hasta 250 metros de ancho y unos 15 metros de altura. No está quieta: empujada por el viento del suroeste, avanza tierra adentro año a año, mientras el nordeste devuelve la arena hacia el mar. En invierno, sin bañistas, la cresta dibuja líneas nítidas y el silencio del arenal se deja oír.\n\n### Dos lagunas, dos aguas\n\nBuena parte del valor del parque está en sus dos lagunas, muy distintas entre sí:\n\n- **La laguna de Carregal**, salobre, con su marisma: refugio de las aves limícolas que invernan en el arenal.\n- **La laguna de Vixán**, de agua dulce y abundante carrizo: cuartel general de anátidas y rállidos, con un observatorio de aves junto a la orilla.\n\n### Aves que solo se ven en temporada baja\n\nEntre septiembre y abril el parque es zona de invernada de aves acuáticas. En Carregal se reúnen el chorlito dorado europeo, el alcaraván común, el zarapito trinador, los correlimos tridáctilo y común y el archibebe claro. En Vixán flotan los patos nadadores —lavanco, cuchara común, cerceta común, ánade friso— y, en el centro de la lámina de agua, el porrón europeo y el cormorán grande se zambullen. Las garzas reales esperan inmóviles en las orillas. Unos prismáticos y un poco de paciencia bastan; el observatorio de Vixán hace el resto.\n\n### Cinco caminos señalizados\n\nLa visita empieza en el Centro de Recepción de Visitantes Casa da Costa, en Lugar do Vilar (Carreira), a diez minutos en coche de la casa. La entrada es libre; conviene consultar los horarios de invierno antes de ir. Desde allí parten cinco itinerarios señalizados de dificultad baja:\n\n- **Camino del Viento** (1,5 km, 30 min, lineal): los campos de Olveira y la gran duna móvil; es accesible para personas con movilidad reducida.\n- **Camino de la Playa** (1,5 km, 45 min, circular): pasarelas junto al centro y el túmulo de Pipín, la huella humana más antigua del espacio natural.\n- **Camino del Agua** (2,5 km, 2 h, circular): rodea la laguna de Vixán, con desvíos a un castro y a un conjunto de molinos.\n- **Camino del Río del Mar** (3,5 km, 1 h 30, lineal): la marisma y la llanura intermareal.\n- **Camino de A Gandarela** (6 km, 2 h, circular): el papel del mar en la formación de la laguna de Carregal.\n\n### El faro y los arenales del Atlántico\n\nLas dos playas del parque, A Ladeira y O Vilar —esta última de más de tres kilómetros—, miran al océano abierto y no a la ría: en invierno son paseos de arena y oleaje más que de baño. En la punta del cabo, sobre un entorno rocoso, está el faro de Corrubedo, desde el que se observan las dunas; se llega en coche por la carretera que sube al cabo. No se ve desde Aguiño: forma parte de la visita, no del paisaje de la casa.\n\n*Fuentes: Patrimonio Natural de Galicia — Complexo dunar de Corrubedo e lagoas de Carregal e Vixán (patrimonionatural.xunta.gal); Turismo de Galicia — Faro Cabo Corrubedo; Turismo de Galicia — Parques naturales: Complexo dunar de Corrubedo; Ramsar — Complejo de Corrubedo (sitio 598).*`
+    content: `El Parque Natural Complexo dunar de Corrubedo e lagoas de Carregal e Vixán cabe en menos de mil hectáreas y se recorre a pie en un día. En invierno, con los arenales vacíos y la luz baja, es el plan perfecto desde Aguiño: a diez minutos en coche de la casa, un paisaje de dunas vivas, dos lagunas de aguas distintas y aves que solo se dejan ver entre el otoño y la primavera.
+
+### Un parque pequeño, protegido desde 1992
+
+El parque abarca 996 hectáreas, todas dentro del municipio de Ribeira, y nació con el Decreto 139/1992, de 5 de junio. Desde 1993 es además humedal de importancia internacional, incluido en el Convenio Ramsar como «Complejo de Corrubedo». En ese espacio reducido conviven sistemas de dunas, una marisma, dos lagunas y dos arenales abiertos al Atlántico: un excelente ejemplo de complejo barra-laguna litoral.
+
+### La duna móvil, siempre en movimiento
+
+Al norte del parque, tras la playa de A Ladeira, se levanta la duna móvil más grande del noroeste peninsular: cerca de un kilómetro de longitud, hasta 250 metros de ancho y unos 15 metros de altura. No está quieta: empujada por el viento del suroeste, avanza tierra adentro año a año, mientras el nordeste devuelve la arena hacia el mar. En invierno, sin bañistas, la cresta dibuja líneas nítidas y el silencio del arenal se deja oír.
+
+### Dos lagunas, dos aguas
+
+Buena parte del valor del parque está en sus dos lagunas, muy distintas entre sí:
+
+- **La laguna de Carregal**, salobre, con su marisma: refugio de las aves limícolas que invernan en el arenal.
+- **La laguna de Vixán**, de agua dulce y abundante carrizo: cuartel general de anátidas y rállidos, con un observatorio de aves junto a la orilla.
+
+### Aves que solo se ven en temporada baja
+
+Entre septiembre y abril el parque es zona de invernada de aves acuáticas. En Carregal se reúnen el chorlito dorado europeo, el alcaraván común, el zarapito trinador, los correlimos tridáctilo y común y el archibebe claro. En Vixán flotan los patos nadadores —lavanco, cuchara común, cerceta común, ánade friso— y, en el centro de la lámina de agua, el porrón europeo y el cormorán grande se zambullen. Las garzas reales esperan inmóviles en las orillas. Unos prismáticos y un poco de paciencia bastan; el observatorio de Vixán hace el resto.
+
+### Cinco caminos señalizados
+
+La visita empieza en el Centro de Recepción de Visitantes Casa da Costa, en Lugar do Vilar (Carreira), a diez minutos en coche de la casa. La entrada es libre; conviene consultar los horarios de invierno antes de ir. Desde allí parten cinco itinerarios señalizados de dificultad baja:
+
+- **Camino del Viento** (1,5 km, 30 min, lineal): los campos de Olveira y la gran duna móvil; es accesible para personas con movilidad reducida.
+- **Camino de la Playa** (1,5 km, 45 min, circular): pasarelas junto al centro y el túmulo de Pipín, la huella humana más antigua del espacio natural.
+- **Camino del Agua** (2,5 km, 2 h, circular): rodea la laguna de Vixán, con desvíos a un castro y a un conjunto de molinos.
+- **Camino del Río del Mar** (3,5 km, 1 h 30, lineal): la marisma y la llanura intermareal.
+- **Camino de A Gandarela** (6 km, 2 h, circular): el papel del mar en la formación de la laguna de Carregal.
+
+### El faro y los arenales del Atlántico
+
+Las dos playas del parque, A Ladeira y O Vilar —esta última de más de tres kilómetros—, miran al océano abierto y no a la ría: en invierno son paseos de arena y oleaje más que de baño. En la punta del cabo, sobre un entorno rocoso, está el faro de Corrubedo, desde el que se observan las dunas; se llega en coche por la carretera que sube al cabo. No se ve desde Aguiño: forma parte de la visita, no del paisaje de la casa.
+
+*Fuentes: Patrimonio Natural de Galicia — Complexo dunar de Corrubedo e lagoas de Carregal e Vixán (patrimonionatural.xunta.gal); Turismo de Galicia — Faro Cabo Corrubedo; Turismo de Galicia — Parques naturales: Complexo dunar de Corrubedo; Ramsar — Complejo de Corrubedo (sitio 598).*`
   },
   {
     id: '18',
@@ -102,7 +137,20 @@ Después de comer, los 230 m² del ático, la chimenea y la terraza frente al pu
     author: 'Cuaderno Atlántico',
     tags: ['Invierno', 'Teletrabajo', 'La Casa'],
     featured: false,
-    content: `El mar cambia en noviembre\nAguiño en noviembre no es el pueblo del verano. Las terrazas cierran, las gamelas vuelven al muelle temprano y el Atlántico se queda para quien sabe mirarlo. A veinte metros del agua, la casa se asoma a la ría de Arousa con las islas de Sálvora y Ons al frente. Amanece directo sobre la terraza, y al atardecer la luz se queda sobre el mar: el sol no se ve caer, se ve su reflejo.\n\nEl silencio no es ausencia\nFuera sigue habiendo vida de pueblo: la lonja a 350 metros, la flota entrando, el astillero, algún coche. Dentro, poco de eso se escucha. No vendemos aislamiento absoluto, porque no existe: vendemos un estudio con chimenea de leña, un despacho con ventana al mar y al pueblo, y la certeza de que nadie va a interrumpirte.\nQuien viene en invierno no viene de vacaciones: viene a terminar algo. Un libro pendiente, una memoria, un plan que no avanzaba en casa. En noviembre la casa vale por su interior y por lo que no tiene: ni ruido, ni prisa, ni agenda.\n\nTrabajar mirando al Atlántico\nLa casa tiene 230 m²: tres dormitorios —dos con baño en suite—, salón con chimenea, cocina equipada y un despacho con fibra de 1 Gb. Se teletrabaja de verdad, no «con wifi decente». Y cuando la pantalla cansa, la ría resuelve el día: la lonja se ve desde la terraza, la cocina y el dormitorio principal, y su subasta es por la mañana, según la marea; de cerca, se sigue desde el malecón. El marisco se compra en la plaza de abastos de Ribeira, a cinco minutos, y se cocina en casa.\n\nCómo se alquila\nReserva directa en [illasatlanticasatico.es](https://illasatlanticasatico.es): noviembre desde 95 € la noche, y las estancias largas de invierno tienen descuento. Hay un código de descuento que no publicamos aquí: lo da Nía, la anfitriona digital del chat de la web, a quien se lo pide. Y si encuentras la casa más barata en un portal oficial, se iguala el precio y se añade un 5 % de descuento.\n\n*Fuentes: datos verificados con Fernando Martínez, propietario: distancias (mar a 20 m, lonja a 350 m, Ribeira a 5 min), orientación y vistas de cada estancia, horario de la subasta y condiciones del código. Precios de noviembre de 2026 según el motor de reserva.*`
+    content: `El mar cambia en noviembre
+Aguiño en noviembre no es el pueblo del verano. Las terrazas cierran, las gamelas vuelven al muelle temprano y el Atlántico se queda para quien sabe mirarlo. A veinte metros del agua, la casa se asoma a la ría de Arousa con las islas de Sálvora y Ons al frente. Amanece directo sobre la terraza, y al atardecer la luz se queda sobre el mar: el sol no se ve caer, se ve su reflejo.
+
+El silencio no es ausencia
+Fuera sigue habiendo vida de pueblo: la lonja a 350 metros, la flota entrando, el astillero, algún coche. Dentro, poco de eso se escucha. No vendemos aislamiento absoluto, porque no existe: vendemos un estudio con chimenea de leña, un despacho con ventana al mar y al pueblo, y la certeza de que nadie va a interrumpirte.
+Quien viene en invierno no viene de vacaciones: viene a terminar algo. Un libro pendiente, una memoria, un plan que no avanzaba en casa. En noviembre la casa vale por su interior y por lo que no tiene: ni ruido, ni prisa, ni agenda.
+
+Trabajar mirando al Atlántico
+La casa tiene 230 m²: tres dormitorios —dos con baño en suite—, salón con chimenea, cocina equipada y un despacho con fibra de 1 Gb. Se teletrabaja de verdad, no «con wifi decente». Y cuando la pantalla cansa, la ría resuelve el día: la lonja se ve desde la terraza, la cocina y el dormitorio principal, y su subasta es por la mañana, según la marea; de cerca, se sigue desde el malecón. El marisco se compra en la plaza de abastos de Ribeira, a cinco minutos, y se cocina en casa.
+
+Cómo se alquila
+Reserva directa en [illasatlanticasatico.es](https://illasatlanticasatico.es): noviembre desde 95 € la noche, y las estancias largas de invierno tienen descuento. Hay un código de descuento que no publicamos aquí: lo da Nía, la anfitriona digital del chat de la web, a quien se lo pide. Y si encuentras la casa más barata en un portal oficial, se iguala el precio y se añade un 5 % de descuento.
+
+*Fuentes: datos verificados con Fernando Martínez, propietario: distancias (mar a 20 m, lonja a 350 m, Ribeira a 5 min), orientación y vistas de cada estancia, horario de la subasta y condiciones del código. Precios de noviembre de 2026 según el motor de reserva.*`
   },
   {
     id: '17',
@@ -164,7 +212,7 @@ Somos propietarios, no una agencia: Illas Atlánticas Ático es nuestra casa y l
 
 - **3 dormitorios y 3 baños, hasta 6 personas** — espacio real, no un sofá cama contado como habitación.
 - **Terraza panorámica de 50 m²** frente a Sálvora y Ons, a 20 metros del agua.
-- **A 4 minutos andando de la lonja** (350 m): el marisco y el pescado del día, casi sin desplazarse.
+- **A 4 minutos andando de la lonja** (350 m): la subasta del día, casi sin desplazarse; para tu mesa, la plaza de abastos de Ribeira.
 - **Registro oficial VUT-CO-007656** y **9,5 sobre 10 en 54 reseñas verificadas**.
 - Playas a 3 minutos andando; Corrubedo a 10 minutos en coche; Santiago a 50 minutos.
 
@@ -834,7 +882,39 @@ El mejor momento es la primera hora tras la puesta de sol, cuando el cielo aún 
     author: 'Cuaderno Atlántico',
     tags: ['Gastronomía', 'Índice Atlántico', 'Datos reales'],
     featured: false,
-    content: `En Aguiño no hace falta crítico gastronómico para saber dónde se come bien: hace falta el mismo pueblo. Pero un huésped que llega por primera vez no tiene el pueblo al lado — tiene Google. Y Google es un problema: una media de estrellas no es una medida, es el resultado de un proceso con sesgos, volúmenes desiguales y escalas incomparables. Un local reabierto con cuatro reseñas de cinco estrellas no es mejor que una marisquería con novecientas de cuatro y media. La estadística, sin embargo, puede separarlos con justicia. Eso es el Índice Atlántico.\n\n### El problema, con nombres\n\nO Furón Brunch, el histórico del pulpo, reabrió este año bajo nuevos dueños. Cuatro reseñas, tres de ellas excelentes. A Bodega acumula 1.364 en Google. Una media simple colocaría al recién llegado por encima del consolidado solo por tener pocas voces. El índice existe para que eso no ocurra: con cuatro reseñas, la incertidumbre es enorme, y el número debe decirlo.\n\n### La cadena de cálculo, paso a paso\n\nToda la puntuación se construye en seis pasos, y cada paso queda publicado en la ficha de cada local:\n\n1. **Normalización.** Google y TripAdvisor puntúan sobre 5; TheFork sobre 10. Todo se lleva a una escala común de 0 a 100. Un 9,3 en TheFork y un 4,65 en Google son exactamente lo mismo: 93,0. Solo entonces se comparan.\n\n2. **Muestra efectiva.** No todas las reseñas pesan igual. Cada fuente tiene una fiabilidad publicada (Google 0,95; TripAdvisor 0,90; Facebook 0,55; la verificación directa del anfitrión, 1,00) y los datos envejecen: una extracción pierde la mitad de su peso cada 540 días, porque un local cambia de dueño, de cocinero o de carta.\n\n3. **Encogimiento bayesiano.** Cada local se ancla a la media del corredor con una fuerza de 25 reseñas equivalentes. Con mucha muestra, el ancla apenas se nota; con poca, protege de los espejismos. O Furón, con sus cuatro reseñas, queda cerca de la media del corredor por muy buenas que sean. Es intencional.\n\n4. **Cota inferior de Wilson.** Sobre la proporción estimada de comensales que puntuarían 4 estrellas o más, se publica el límite inferior del intervalo de confianza al 95 %: el valor que, con esa certeza, no se supera. Dos locales con la misma media quedan separados por su volumen, y gana el de más reseñas.\n\n5. **Penalización por heterogeneidad.** Cuando dos fuentes con muestra suficiente discrepan más de 12 puntos, la discrepancia es información — turista frente a local, o inconstancia real. El caso extremo del corredor es Garsán: 4,3 en Google, 3,5 en TripAdvisor. La penalización es moderada, visible y queda registrada.\n\n6. **Composición y confianza.** El índice final combina la media encogida con la cota de Wilson, y se acompaña de una confianza de 0 a 100 que dice cuánto fiarse del número: 55 % por el volumen de muestra, 30 % por las fuentes independientes, 15 % por la vigencia.\n\n### La regla de la casa: lo que no está verificado, no se inventa\n\nEl índice solo puntúa lo que las reseñas públicas documentan. Los datos operativos —mesas, horarios, teléfonos— son otra cosa: muchos no son públicos, y cuando no están contrastados la ficha muestra «pendiente de verificar» en lugar de una estimación. En cada ficha hay una cola de curación: cualquiera puede enviar un dato, pero una corrección sin verificar contra la fuente original no entra nunca. Un número publicado aquí se puede reconstruir a mano con la información de la propia ficha.\n\n### Transparencia total\n\nLas fórmulas completas, la tabla de fiabilidades de las catorce fuentes y la lista de lo que el modelo no hace —no mide la calidad objetiva de un plato, no corrige el sesgo de selección de las plataformas— están publicadas en la [metodología](/gastronomia/metodologia). La guía entera, con sus 27 locales y sus desgloses, en [la guía gastronómica](/gastronomia).\n\nUn índice no sustituye a una comida en la barra del puerto. Pero al menos, antes de sentarse, el huésped sabe exactamente por qué aparece cada local donde aparece — y qué confianza merece el número. Eso, en una ría donde la despensa es de verdad, es lo mínimo.\n\nFuentes: reseñas públicas de Google, TripAdvisor, TheFork, Facebook, GastroRanking, Carta.menu, Guía Repsol, Guía Michelin, Turismo Ribeira, Turismo de Galicia, Páxinas Galegas y La Voz de Galicia (extracción del 17 de octubre de 2026); verificación directa del anfitrión. Modelo v1.3, publicado el 18 de octubre de 2026.`,
+    content: `En Aguiño no hace falta crítico gastronómico para saber dónde se come bien: hace falta el mismo pueblo. Pero un huésped que llega por primera vez no tiene el pueblo al lado — tiene Google. Y Google es un problema: una media de estrellas no es una medida, es el resultado de un proceso con sesgos, volúmenes desiguales y escalas incomparables. Un local reabierto con cuatro reseñas de cinco estrellas no es mejor que una marisquería con novecientas de cuatro y media. La estadística, sin embargo, puede separarlos con justicia. Eso es el Índice Atlántico.
+
+### El problema, con nombres
+
+O Furón Brunch, el histórico del pulpo, reabrió este año bajo nuevos dueños. Cuatro reseñas, tres de ellas excelentes. A Bodega acumula 1.364 en Google. Una media simple colocaría al recién llegado por encima del consolidado solo por tener pocas voces. El índice existe para que eso no ocurra: con cuatro reseñas, la incertidumbre es enorme, y el número debe decirlo.
+
+### La cadena de cálculo, paso a paso
+
+Toda la puntuación se construye en seis pasos, y cada paso queda publicado en la ficha de cada local:
+
+1. **Normalización.** Google y TripAdvisor puntúan sobre 5; TheFork sobre 10. Todo se lleva a una escala común de 0 a 100. Un 9,3 en TheFork y un 4,65 en Google son exactamente lo mismo: 93,0. Solo entonces se comparan.
+
+2. **Muestra efectiva.** No todas las reseñas pesan igual. Cada fuente tiene una fiabilidad publicada (Google 0,95; TripAdvisor 0,90; Facebook 0,55; la verificación directa del anfitrión, 1,00) y los datos envejecen: una extracción pierde la mitad de su peso cada 540 días, porque un local cambia de dueño, de cocinero o de carta.
+
+3. **Encogimiento bayesiano.** Cada local se ancla a la media del corredor con una fuerza de 25 reseñas equivalentes. Con mucha muestra, el ancla apenas se nota; con poca, protege de los espejismos. O Furón, con sus cuatro reseñas, queda cerca de la media del corredor por muy buenas que sean. Es intencional.
+
+4. **Cota inferior de Wilson.** Sobre la proporción estimada de comensales que puntuarían 4 estrellas o más, se publica el límite inferior del intervalo de confianza al 95 %: el valor que, con esa certeza, no se supera. Dos locales con la misma media quedan separados por su volumen, y gana el de más reseñas.
+
+5. **Penalización por heterogeneidad.** Cuando dos fuentes con muestra suficiente discrepan más de 12 puntos, la discrepancia es información — turista frente a local, o inconstancia real. El caso extremo del corredor es Garsán: 4,3 en Google, 3,5 en TripAdvisor. La penalización es moderada, visible y queda registrada.
+
+6. **Composición y confianza.** El índice final combina la media encogida con la cota de Wilson, y se acompaña de una confianza de 0 a 100 que dice cuánto fiarse del número: 55 % por el volumen de muestra, 30 % por las fuentes independientes, 15 % por la vigencia.
+
+### La regla de la casa: lo que no está verificado, no se inventa
+
+El índice solo puntúa lo que las reseñas públicas documentan. Los datos operativos —mesas, horarios, teléfonos— son otra cosa: muchos no son públicos, y cuando no están contrastados la ficha muestra «pendiente de verificar» en lugar de una estimación. En cada ficha hay una cola de curación: cualquiera puede enviar un dato, pero una corrección sin verificar contra la fuente original no entra nunca. Un número publicado aquí se puede reconstruir a mano con la información de la propia ficha.
+
+### Transparencia total
+
+Las fórmulas completas, la tabla de fiabilidades de las catorce fuentes y la lista de lo que el modelo no hace —no mide la calidad objetiva de un plato, no corrige el sesgo de selección de las plataformas— están publicadas en la [metodología](/gastronomia/metodologia). La guía entera, con sus 27 locales y sus desgloses, en [la guía gastronómica](/gastronomia).
+
+Un índice no sustituye a una comida en la barra del puerto. Pero al menos, antes de sentarse, el huésped sabe exactamente por qué aparece cada local donde aparece — y qué confianza merece el número. Eso, en una ría donde la despensa es de verdad, es lo mínimo.
+
+Fuentes: reseñas públicas de Google, TripAdvisor, TheFork, Facebook, GastroRanking, Carta.menu, Guía Repsol, Guía Michelin, Turismo Ribeira, Turismo de Galicia, Páxinas Galegas y La Voz de Galicia (extracción del 17 de octubre de 2026); verificación directa del anfitrión. Modelo v1.3, publicado el 18 de octubre de 2026.`,
   },
 ];
 
@@ -854,7 +934,7 @@ export const FOOTERS: Record<string, string> = {
   '11': 'César no pudo con las Cíes, y desde Aguiño no hay barcos que lleven hasta ellas: se ven a lo lejos, los días claros. A Sálvora sí se va en barco desde el puerto — a dos calles de la casa.',
   '1': 'La memoria del Santa Isabel vive en Sálvora, y Sálvora se ve desde la casa. Ven a dormir frente a la isla que guarda una de las mayores gestas civiles del mar gallego.',
   '2': 'La línea recta de los mapas de reservas ignora el agua: O Grove y A Lanzada parecen a un paso y hay que rodear la ría. En la casa, las distancias son las reales: la lonja, a 350 metros andando.',
-  '3': 'El percebe de Aguiño se juega la vida en la rompiente y llega a la lonja a un paseo de la casa. Cómpralo por la mañana, cuécelo por la noche y cómetelo mirando la ría.',
+  '3': 'El percebe de Aguiño se juega la vida en la rompiente y se subasta en la lonja, a un paseo de la casa. Cómpralo por la mañana en la plaza de abastos de Ribeira, cuécelo por la noche y cómetelo mirando la ría.',
   '4': 'Las bateas son la arquitectura del mar: se ven todas desde la terraza, ordenadas como un viñedo flotante. Y el mejillón que crían, en la lonja de Aguiño, a cuatro minutos a pie.',
   'la-falacia-del-mapa-del-tiempo-microclima-aguiño': 'El mapa del tiempo miente a un kilómetro; la ría dice la verdad cada mañana. Si quieres tu propio pronóstico, la casa tiene el mejor observatorio: la terraza.',
   '6': 'La guía está escrita desde la casa: todo lo que en ella se cuenta queda a un paseo, en barco o a la vista. Ven con la guía leída y marca los lugares con los pies.',
