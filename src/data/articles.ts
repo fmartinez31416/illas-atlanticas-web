@@ -29,7 +29,49 @@ export const ARTICLES: Article[] = [
     cover: 'https://illasatlanticasatico.es/fotos/cocina_percebes_01.jpg',
     content: `# Mariscada de invierno en la ría de Arousa: qué pedir y cuándo
 
-El invierno invita a sentarse a la mesa sin prisa en la ría de Arousa. Fuera, el puerto sigue su ritmo; dentro, una fuente de marisco recién preparado pide poco más que buen producto y una cocción precisa. Pero acertar con una **mariscada de invierno en Arousa** no consiste en pedir de todo: conviene conocer las vedas, preguntar por la procedencia y dejar que la oferta del día decida parte del menú.`,
+El invierno invita a sentarse a la mesa sin prisa en la ría de Arousa. Fuera, el puerto sigue su ritmo; dentro, una fuente de marisco recién preparado pide poco más que buen producto y una cocción precisa. Pero acertar con una **mariscada de invierno en Arousa** no consiste en pedir de todo: conviene conocer las vedas, preguntar por la procedencia y dejar que la oferta del día decida parte del menú.
+
+En Aguiño, en el municipio de Ribeira, esa relación entre mar y cocina forma parte del paisaje cotidiano.
+
+## Qué marisco pedir en invierno
+
+La centolla suele ser una de las protagonistas de los meses fríos, siempre dentro de la campaña autorizada para su captura. Antes de encargarla, pregunta si es gallega, cuándo ha llegado y qué pieza recomiendan según su estado y el número de comensales. El tamaño, por sí solo, no garantiza una mejor experiencia.
+
+El percebe merece un lugar propio, especialmente en una localidad tan vinculada a su extracción como Aguiño. Su oferta depende del estado del mar, de los planes de explotación y de las aperturas autorizadas. Hay jornadas en las que lo sensato es cambiar el pedido: una buena mesa también sabe adaptarse.
+
+Para completar, funcionan muy bien los mejillones al vapor, los berberechos abiertos al momento y unas almejas a la marinera o preparadas de forma sencilla. Son opciones que aportan variedad sin convertir la comida en una sucesión interminable de fuentes.
+
+## Cuándo pedir: las vedas importan más que el calendario gastronómico
+
+La conocida regla de los meses con «r» no sustituye a la normativa ni garantiza por sí misma la calidad. Cada especie tiene sus condiciones de captura y comercialización, y pueden producirse cierres por razones sanitarias o de gestión del recurso.
+
+La nécora es un buen ejemplo: **no debe darse por hecho que todo el invierno es temporada de captura en Galicia**. Sus periodos de veda obligan a comprobar el calendario vigente. También conviene distinguir entre producto gallego fresco, producto de otras procedencias y producto congelado.
+
+Al reservar mesa, pregunta qué marisco esperan ofrecer y confirma el pedido cerca de la fecha. Para comprobar vedas y aperturas, consulta la información actualizada de la Xunta de Galicia; para decidir qué comer ese día, escucha al establecimiento.
+
+## Cómo componer una mariscada equilibrada
+
+Para dos personas, suele resultar más agradable escoger tres o cuatro elaboraciones y ajustar las cantidades que intentar probar toda la carta. Una secuencia razonable sería empezar con un bivalvo, continuar con percebes si los hay y terminar con una centolla para compartir, adaptando la pieza al apetito.
+
+Si prefieres una comida más ligera, puedes prescindir del crustáceo grande y combinar mejillones, berberechos y almejas. El objetivo es disfrutar de cada sabor, no llenar la mesa.
+
+Pregunta también por las denominaciones: volandeira y zamburiña son especies distintas. Una carta clara debería identificar lo que sirve. La procedencia y la trazabilidad cuentan tanto como una presentación cuidada.
+
+## La preparación: cuanto menos distraiga, mejor
+
+Un marisco bien escogido necesita atención, no artificio. Los percebes agradecen una cocción breve y llegar calientes a la mesa; los berberechos, retirarse del fuego en cuanto se abren; los mejillones, conservar su jugosidad.
+
+Las salsas tienen su sitio, pero conviene que no oculten el producto. Si pides almejas a la marinera, busca equilibrio. Y con el limón, mejor empezar probando el marisco solo.
+
+Para acompañar, un blanco de la zona puede encajar bien. También el agua: no hace falta complicar lo que ya funciona.
+
+## Aguiño: del puerto a una sobremesa tranquila
+
+Una escapada gastronómica gana sentido cuando deja espacio para pasear. La playa de Aguiño y el entorno del puerto permiten acercarse al carácter marinero de este rincón de la ría, siempre adaptando el recorrido al tiempo.
+
+En **Illas Atlánticas Ático**, la lonja de percebes y marisco queda a 350 metros. Su cercanía ayuda a entender ese vínculo con el mar, aunque no implica venta directa al público.
+
+Después de comer, los 230 m² del ático, la chimenea y la terraza frente al puerto, con vistas a Sálvora, ofrecen otro ritmo para la tarde. Puedes conocer el alojamiento y organizar tu reserva directa con Fernando en **illasatlanticasatico.es**. La mejor mariscada de invierno empieza preguntando qué merece la pena hoy.`,
   },
 
   {
