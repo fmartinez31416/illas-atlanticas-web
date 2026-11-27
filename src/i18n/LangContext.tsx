@@ -108,7 +108,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Club de Huéspedes · Illas Atlánticas Ático',
-      description: 'Ventajas para quienes vuelven a Illas Atlánticas Ático: crédito por recomendar la casa, sin cuotas y con condiciones claras.',
+      description: 'Únete gratis al Club de Huéspedes: 5 % de descuento en tu primera reserva directa y 10 % en crédito por cada amigo que traigas. Sin cuotas y con condiciones claras.',
     },
     planificador: {
       title: 'Qué hacer en Aguiño y Ribeira: plan a tu medida · Illas Atlánticas Ático',
@@ -158,7 +158,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Guest Club · Illas Atlánticas Ático',
-      description: 'The club for returning guests: every friend you bring earns 10 % of their booking as credit towards yours. No cap.',
+      description: 'Join the Guest Club free: 5 % off your first direct booking and 10 % credit for every friend you bring. No fees, clear terms.',
     },
     planificador: {
       title: 'Things to do in Aguiño and Ribeira: a plan made for you · Illas Atlánticas Ático',
@@ -208,7 +208,7 @@ export const VIEW_META: Record<Lang, Record<string, { title: string; description
     },
     club: {
       title: 'Club de Hóspedes · Illas Atlánticas Ático',
-      description: 'O club dos que xa durmiron na casa: por cada amigo que traias, un 10 % da súa reserva en crédito para as túas. Sen tope, canxeable cando queiras.',
+      description: 'Únete gratis ao Club de Hóspedes: 5 % de desconto na túa primeira reserva directa e 10 % en crédito por cada amigo que traias. Sen cotas e con condicións claras.',
     },
     planificador: {
       title: 'Que facer en Aguiño e Ribeira: plan á túa medida · Illas Atlánticas Ático',

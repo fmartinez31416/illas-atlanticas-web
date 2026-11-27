@@ -350,9 +350,9 @@ function cuerpoVista(lang: Lang, key: string): string {
       gl: 'As regras da casa, claras e por escrito: entrada a partir das 17:00 e saída antes das 12:00, porque os 230 m² se limpan a fondo entre estancias; ocupación máxima de 6 persoas; estancia mínima de 2 noites de novembro a febreiro; sinal do 30 % ao reservar e o resto antes da chegada; rexistro de todos os hóspedes conforme á normativa española.',
     },
     clubT: {
-      es: 'El Club de Huéspedes recompensa a quien vuelve: créditos que se pagan en noches y avíos de la casa para el siguiente verano. Sin cuotas y sin letra pequeña: el club se gana estando. Condiciones completas en esta misma página.',
-      en: 'The Guest Club rewards those who return: credits paid in nights and house treats for the next summer. No fees, no small print: the club is earned by staying. Full terms on this very page.',
-      gl: 'O Club de Hóspedes recompensa a quen volve: créditos que se pagan en noites e avíos da casa para o seguinte verán. Sen cotas e sen letra pequena: o club gáñase estando. Condicións completas nesta mesma páxina.',
+      es: 'El Club de Huéspedes tiene dos ventajas sin cuotas: un 5 % de descuento en tu primera reserva directa solo por registrarte, y un 10 % en crédito por cada amigo que traigas una vez te hayas alojado. El alta es gratis en esta misma página y el código del 5 % llega al momento. Condiciones completas aquí abajo.',
+      en: 'The Guest Club has two no-fee benefits: 5 % off your first direct booking just for registering, and 10 % credit for every friend you bring once you have stayed. Signing up is free on this very page and the 5 % code arrives instantly. Full terms below.',
+      gl: 'O Club de Hóspedes ten dúas vantaxes sen cotas: un 5 % de desconto na túa primeira reserva directa só por rexistrarte, e un 10 % en crédito por cada amigo que traias unha vez te aloxes. A alta é gratis nesta mesma páxina e o código do 5 % chega ao momento. Condicións completas aquí abaixo.',
     },
     metodT: {
       es: 'El Índice Atlántico puntúa la gastronomía del Barbanza con método abierto y auditable: puntuaciones de fuentes públicas, ponderadas y verificables, nunca una opinión a puerta cerrada. El Índice G aplica la misma filosofía al vino gallego: G = P̂ − 1,5·σ, con cada nota enlazada a su ficha pública.',

@@ -2,6 +2,9 @@ import { useState, type FormEvent } from 'react';
 import { ArrowLeft, Gift, Users, Send, ShieldCheck, CalendarCheck, Sparkles } from 'lucide-react';
 import { useI18n } from '../i18n/LangContext';
 
+// Código voucher vigente en Beds24 (5 % de descuento directo). Se muestra SOLO tras el alta.
+const CLUB_CODE = 'CLUB5';
+
 interface ClubPageProps {
   onBack: () => void;
   onOpenBooking: () => void;
@@ -12,23 +15,29 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
   kicker: { es: 'Club de huéspedes', en: 'Guest club', gl: 'Club de hóspedes' },
   titulo: { es: 'Club Illas Atlánticas', en: 'Illas Atlánticas Club', gl: 'Club Illas Atlánticas' },
   claim: {
-    es: 'El club de los que ya han dormido en la casa. Trae amigos, gana créditos y vuelve por menos. Sin tarjetas ni niveles — solo un trato justo.',
-    en: 'The club for those who have already slept in the house. Bring friends, earn credits and come back for less. No cards, no tiers — just a fair deal.',
-    gl: 'O club dos que xa durmiron na casa. Trae amigos, gaña créditos e volve por menos. Sen tarxetas nin niveis — só un trato xusto.',
+    es: 'Dos ventajas sin cuotas: un 5 % de descuento en tu primera reserva directa solo por registrarte, y un 10 % en crédito por cada amigo que traigas. Únete gratis y vuelve por menos.',
+    en: 'Two no-fee benefits: 5 % off your first direct booking just for registering, and 10 % credit for every friend you bring. Join free and come back for less.',
+    gl: 'Dúas vantaxes sen cotas: un 5 % de desconto na túa primeira reserva directa só por rexistrarte, e un 10 % en crédito por cada amigo que traias. Únete gratis e volve por menos.',
   },
-  regla1Titulo: { es: '1 · Ganas', en: '1 · You earn', gl: '1 · Gañas' },
+  regla0Titulo: { es: '1 · Regístrate gratis', en: '1 · Register free', gl: '1 · Rexístrate gratis' },
+  regla0: {
+    es: 'Solo por darte de alta te llevas un 5 % de descuento garantizado en tu primera reserva directa. Recibes tu código al momento: pégalo en el campo Voucher del buscador y el precio baja. El 5 % es tuyo desde el registro, sin más condiciones.',
+    en: 'Just for signing up you get a guaranteed 5 % off your first direct booking. You receive your code instantly: paste it into the Voucher field of the booking engine and the price drops. The 5 % is yours from registration, no strings attached.',
+    gl: 'Só por darte de alta levas un 5 % de desconto garantido na túa primeira reserva directa. Recibes o teu código ao momento: pégao no campo Voucher do buscador e o prezo baixa. O 5 % é teu desde o rexistro, sen máis condicións.',
+  },
+  regla1Titulo: { es: '2 · Ganas', en: '2 · You earn', gl: '2 · Gañas' },
   regla1: {
-    es: 'Por cada amigo que reserve por recomendación tuya y complete su estancia, ganas el 10 % del valor de su reserva en crédito para las tuyas. Sin tope de amigos ni de créditos: cuantas más estancias generes, más crédito acumulas.',
-    en: 'For every friend who books on your recommendation and completes their stay, you earn 10 % of their booking value as credit towards yours. No cap on friends or credits: the more stays you generate, the more credit you build.',
-    gl: 'Por cada amigo que reserve por recomendación túa e complete a súa estadía, gañas o 10 % do valor da súa reserva en crédito para as túas. Sen tope de amigos nin de créditos: cantas máis estadías xeres, máis crédito acumulas.',
+    es: 'Una vez te hayas alojado en la casa, por cada amigo que reserve por recomendación tuya y complete su estancia ganas el 10 % del valor de su reserva en crédito para las tuyas. Sin tope de amigos ni de créditos: cuantas más estancias generes, más crédito acumulas.',
+    en: 'Once you have stayed at the house, for every friend who books on your recommendation and completes their stay you earn 10 % of their booking value as credit towards yours. No cap on friends or credits: the more stays you generate, the more credit you build.',
+    gl: 'Unha vez te aloxes na casa, por cada amigo que reserve por recomendación túa e complete a súa estadía gañas o 10 % do valor da súa reserva en crédito para as túas. Sen tope de amigos nin de créditos: cantas máis estadías xeres, máis crédito acumulas.',
   },
-  regla2Titulo: { es: '2 · Canjeas', en: '2 · You redeem', gl: '2 · Canxeas' },
+  regla2Titulo: { es: '3 · Canjeas', en: '3 · You redeem', gl: '3 · Canxeas' },
   regla2: {
     es: 'Aplica tus créditos a la estancia que tú elijas, en las fechas que tú elijas — también en agosto. Bajan el precio de tu reserva. Único límite: el crédito no puede superar el total de la reserva (no devolvemos dinero ni reembolsamos el crédito).',
     en: 'Apply your credits to whichever stay you choose, on whichever dates you choose — August included. They lower the price of your booking. Only limit: the credit cannot exceed the booking total (no cash back, credits are non-refundable).',
     gl: 'Aplica os teus créditos á estadía que ti elixas, nas datas que ti elixas — tamén en agosto. Baixan o prezo da túa reserva. Único límite: o crédito non pode superar o total da reserva (non devolvemos cartos nin reembolsamos o crédito).',
   },
-  regla3Titulo: { es: '3 · El truco', en: '3 · The trick', gl: '3 · O truco' },
+  regla3Titulo: { es: '4 · El truco', en: '4 · The trick', gl: '4 · O truco' },
   regla3: {
     es: 'Como en las aerolíneas: los créditos pueden valer más según cuándo los uses. De vez en cuando lanzamos ofertas tipo «tus créditos valen el doble en noviembre». Nunca bloqueamos fechas — solo hacemos que tu crédito rinda más en temporada baja.',
     en: 'Like the airlines: credits can be worth more depending on when you use them. From time to time we run offers like "your credits are worth double in November". We never block dates — we just make your credit go further in low season.',
@@ -39,25 +48,35 @@ const G: Record<string, { es: string; en: string; gl: string }> = {
     en: 'Credits expire 24 months after they are earned. One discount per booking: club credit does not combine with the long-stay discount. Credits are personal and non-transferable.',
     gl: 'Os créditos caducan aos 24 meses de xerarse. Un desconto por reserva: o crédito do club non se combina co desconto de estadías longas. Os créditos son persoais e intransferibles.',
   },
-  registro: { es: 'Únete al club', en: 'Join the club', gl: 'Únete ao club' },
+  registro: { es: 'Únete gratis', en: 'Join free', gl: 'Únete gratis' },
   nombre: { es: 'Tu nombre', en: 'Your name', gl: 'O teu nome' },
   email: { es: 'Tu email', en: 'Your email', gl: 'O teu email' },
-  fechaEstancia: { es: 'Fecha de tu última estancia (opcional)', en: 'Date of your last stay (optional)', gl: 'Data da túa última estadía (opcional)' },
-  consent: {
-    es: 'Acepto recibir un máximo de 1 email al mes del club (novedades y ofertas de crédito) y que mis datos se guarden con esta única finalidad. Sin spam, sin cesiones a terceros.',
-    en: 'I agree to receive at most 1 email a month from the club (news and credit offers) and to my data being stored for this purpose only. No spam, no third parties.',
-    gl: 'Acepto recibir como máximo 1 email ao mes do club (novidades e ofertas de crédito) e que os meus datos se garden só con esta finalidade. Sen spam, sen cesións a terceiros.',
+  fechaEstancia: { es: 'Fecha de tu estancia — anterior o prevista (opcional)', en: 'Date of your stay — past or planned (optional)', gl: 'Data da túa estadía — anterior ou prevista (opcional)' },
+  consentA: {
+    es: 'Acepto recibir un máximo de 1 email al mes del club y que mis datos se traten conforme a la ',
+    en: 'I agree to receive at most 1 email a month from the club and to my data being processed under the ',
+    gl: 'Acepto recibir como máximo 1 email ao mes do club e que os meus datos se traten conforme á ',
   },
-  unirme: { es: 'Únete al club', en: 'Join the club', gl: 'Únete ao club' },
+  consentLink: { es: 'política de privacidad', en: 'privacy policy', gl: 'política de privacidade' },
+  consentB: {
+    es: '. Sin spam, sin cesiones a terceros.',
+    en: '. No spam, no third parties.',
+    gl: '. Sen spam, sen cesións a terceiros.',
+  },
+  unirme: { es: 'Únete gratis', en: 'Join free', gl: 'Únete gratis' },
   enviando: { es: 'Enviando…', en: 'Sending…', gl: 'Enviando…' },
-  exito: {
-    es: 'Bienvenido al club. Fernando te escribirá para confirmar el alta y explicarte cómo recomendar a tus amigos.',
-    en: 'Welcome to the club. Fernando will write to confirm your membership and explain how to refer your friends.',
-    gl: 'Benvido ao club. Fernando escribirate para confirmar a alta e explicarche como recomendar aos teus amigos.',
+  exitoTitulo: { es: 'Ya eres socio del club', en: 'You are now a club member', gl: 'Xa es socio do club' },
+  exitoCodigoLabel: { es: 'Tu código del 5 %:', en: 'Your 5 % code:', gl: 'O teu código do 5 %:' },
+  exitoUso: {
+    es: 'Pégalo en el campo «Voucher» al reservar y el 5 % se descuenta al instante. Te lo enviamos también por email para que no lo pierdas.',
+    en: 'Paste it into the "Voucher" field when booking and 5 % is taken off instantly. We also email it to you so you never lose it.',
+    gl: 'Pégao no campo «Voucher» ao reservar e o 5 % descóntase ao instante. Tamén cho enviamos por email para que non o perdas.',
   },
+  copiar: { es: 'Copiar código', en: 'Copy code', gl: 'Copiar código' },
+  copiado: { es: '¡Copiado!', en: 'Copied!', gl: '¡Copiado!' },
+  reservarAhora: { es: 'Reservar ahora con tu 5 %', en: 'Book now with your 5 %', gl: 'Reservar agora co teu 5 %' },
   errorVal: { es: 'Revisa el nombre y el email — algo no cuadra.', en: 'Check your name and email — something is off.', gl: 'Revisa o nome e o email — algo non cadra.' },
   errorRed: { es: 'No ha llegado al servidor. Inténtalo de nuevo en un momento.', en: 'The server did not receive it. Try again in a moment.', gl: 'Non chegou ao servidor. Téntao de novo nun momento.' },
-  reservar: { es: 'Reservar', en: 'Book', gl: 'Reservar' },
   avisoIA: {
     es: 'Texto revisado por Fernando. Los datos se guardan en nuestro propio buzón, sin servicios de terceros.',
     en: 'Copy reviewed by Fernando. Your data stays in our own mailbox, with no third-party services.',
@@ -74,10 +93,37 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
   const [consent, setConsent] = useState(false);
   const [web, setWeb] = useState('');
   const [estado, setEstado] = useState<'idle' | 'enviando' | 'exito' | 'error'>('idle');
+  const [copiado, setCopiado] = useState(false);
+
+  const copiarCodigo = async () => {
+    try {
+      await navigator.clipboard.writeText(CLUB_CODE);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = CLUB_CODE;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 4000);
+  };
 
   const enviar = async (e: FormEvent) => {
     e.preventDefault();
     if (estado === 'enviando') return;
+    // Vista previa (previa.illasatlanticasatico.es o /previa/): el PHP solo vive en producción —
+    // se muestra el flujo de éxito para la revisión visual, sin llamar al servidor ni crear altas.
+    const esPrevia =
+      (typeof location !== 'undefined' && location.pathname.includes('/previa/')) ||
+      (typeof location !== 'undefined' && location.hostname === 'previa.illasatlanticasatico.es');
+    if (esPrevia) {
+      setEstado('exito');
+      return;
+    }
     setEstado('enviando');
     try {
       const res = await fetch('/club.php', {
@@ -97,7 +143,8 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
   };
 
   const reglas = [
-    { icon: Gift, titulo: 'regla1Titulo', texto: 'regla1' },
+    { icon: Gift, titulo: 'regla0Titulo', texto: 'regla0' },
+    { icon: Users, titulo: 'regla1Titulo', texto: 'regla1' },
     { icon: CalendarCheck, titulo: 'regla2Titulo', texto: 'regla2' },
     { icon: Sparkles, titulo: 'regla3Titulo', texto: 'regla3' },
   ];
@@ -117,7 +164,7 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
           <p className="text-white/80 max-w-2xl mx-auto leading-relaxed">{g('claim')}</p>
         </div>
 
-        {/* Las tres reglas */}
+        {/* Las cuatro reglas */}
         <div className="mb-10 max-w-2xl mx-auto space-y-4">
           {reglas.map(({ icon: Icon, titulo, texto }) => (
             <div key={titulo} className="bg-white/5 border border-white/15 rounded-xl p-6">
@@ -136,8 +183,25 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
           <h2 className="text-2xl text-center mb-6" style={{ fontFamily: 'Georgia, serif' }}>{g('registro')}</h2>
           {estado === 'exito' ? (
             <div className="text-center space-y-4">
-              <div className="bg-emerald-500/15 border border-emerald-400/40 rounded-xl p-6 text-emerald-200">{g('exito')}</div>
-              <button onClick={onOpenBooking} className="bg-amber-300 hover:bg-amber-200 text-[#0B1524] font-bold px-8 py-3 rounded-lg transition-colors">{g('reservar')}</button>
+              <div className="bg-emerald-500/15 border border-emerald-400/40 rounded-xl p-6 text-emerald-200 space-y-4">
+                <p className="font-bold text-xl" style={{ fontFamily: 'Georgia, serif' }}>{g('exitoTitulo')}</p>
+                <div>
+                  <p className="text-emerald-100/80 text-sm mb-2">{g('exitoCodigoLabel')}</p>
+                  <div className="flex items-center justify-center gap-3 flex-wrap">
+                    <code className="bg-[#0B1524] text-amber-300 text-2xl font-bold tracking-[0.25em] px-5 py-3 rounded-lg border border-amber-300/30">{CLUB_CODE}</code>
+                    <button
+                      onClick={copiarCodigo}
+                      className="bg-white/10 border border-amber-300/40 text-amber-200 hover:bg-white/20 px-4 py-2 rounded-lg text-sm font-bold transition-colors"
+                    >
+                      {copiado ? g('copiado') : g('copiar')}
+                    </button>
+                  </div>
+                </div>
+                <p className="text-emerald-100/80 text-sm leading-relaxed max-w-md mx-auto">{g('exitoUso')}</p>
+              </div>
+              <button onClick={onOpenBooking} className="bg-amber-300 hover:bg-amber-200 text-[#0B1524] font-bold px-8 py-3 rounded-lg transition-colors">
+                {g('reservarAhora')}
+              </button>
             </div>
           ) : (
             <form onSubmit={enviar} className="space-y-4">
@@ -169,7 +233,11 @@ export default function ClubPage({ onBack, onOpenBooking }: ClubPageProps) {
               <input type="text" name="web" value={web} onChange={(e) => setWeb(e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <label className="flex items-start gap-3 text-white/70 text-sm cursor-pointer">
                 <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required className="mt-1 accent-amber-300" />
-                <span>{g('consent')}</span>
+                <span>
+                  {g('consentA')}
+                  <a href="/legal" target="_blank" rel="noopener" className="underline text-amber-200 hover:text-amber-100">{g('consentLink')}</a>
+                  {g('consentB')}
+                </span>
               </label>
               {estado === 'error' && <div className="text-red-300 text-sm bg-red-500/10 border border-red-400/30 rounded-lg px-4 py-3">{g('errorVal')} {g('errorRed')}</div>}
               <button type="submit" disabled={estado === 'enviando'} className="w-full flex items-center justify-center gap-2 bg-amber-300 hover:bg-amber-200 text-[#0B1524] font-bold px-8 py-3 rounded-lg transition-colors disabled:opacity-60">
