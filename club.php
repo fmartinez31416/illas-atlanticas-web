@@ -33,16 +33,25 @@ $cuerpo = "Nombre: $nombre\nEmail: $email\nEstancia: $estancia\nSocio nº: $soci
         . "Origen: " . ($_SERVER['HTTP_REFERER'] ?? 'directo') . "\n";
 mail('info@illasatlanticasatico.es', $asunto, $cuerpo, $cabeceras);
 
-$asuntoB = 'Bienvenido al Club Illas Atlánticas';
+$asuntoB = 'Bienvenido al Club Illas Atlánticas · tu código del 5 %';
 $cuerpoB = "Hola $nombre,\n\n"
-  . "Gracias por registrarte. El Club Illas Atlánticas está en preparación:\n"
-  . "lo estamos terminando con mimo para que sea una ventaja de verdad.\n\n"
-  . "En cuanto esté abierto, serás de los primeros en saberlo y tendrás\n"
-  . "tu plaza reservada.\n\n"
-  . "Mientras tanto, lo que sí está activo es el Pacto Directo: reserva en\n"
-  . "illasatlanticasatico.es, sin intermediarios, con la atención personal\n"
-  . "de Fernando.\n\n"
-  . "Atentamente,\nFernando\nIllas Atlánticas Ático · Aguiño (Ribeira)";
+  . "Bienvenido al Club Illas Atlánticas. Ya eres socio.\n\n"
+  . "TU CÓDIGO DEL 5 %: CLUB5\n"
+  . "Úsalo en tu primera reserva directa: en illasatlanticasatico.es,\n"
+  . "pega CLUB5 en el campo Voucher y el precio baja un 5 % al instante.\n"
+  . "Es tuyo desde ya, sin más condiciones.\n\n"
+  . "Y el club sigue trabajando para ti: por cada amigo que reserve por\n"
+  . "recomendación tuya y complete su estancia, ganas el 10 % del valor\n"
+  . "de su reserva en crédito para tus próximas estancias. Sin tope de\n"
+  . "amigos ni de créditos. Los créditos caducan a los 24 meses y no se\n"
+  . "combinan con el descuento de estancias largas.\n\n"
+  . "Para recomendar a un amigo: que diga tu nombre al reservar en la\n"
+  . "web, o escríbeme un correo con su nombre. Yo asigno tu crédito\n"
+  . "cuando su estancia se completa.\n\n"
+  . "Atentamente,\nFernando\n"
+  . "Illas Atlánticas Ático · Aguiño (Ribeira)\n"
+  . "Tus datos se tratan solo para gestionar tu participación en el club\n"
+  . "(RGPD); puedes pedir su supresión respondiendo a este correo.";
 mail($email, $asuntoB, $cuerpoB, $cabeceras);
 
 echo json_encode(['ok' => true, 'socio' => $socio]);
