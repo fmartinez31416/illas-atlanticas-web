@@ -17,6 +17,22 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
+    id: '21',
+    slug: 'mariscada-invierno-ria-arousa',
+    category: 'Tratado de Producto & Lonja',
+    title: 'Mariscada de invierno en la ría de Arousa: qué pedir y cuándo',
+    excerpt: 'Guía para componer una mariscada de invierno en Aguiño: qué pedir, cómo respetar las vedas y por qué el mejor marisco es el que pregunta primero por su origen.',
+    readTime: '6 min de lectura',
+    date: 'Noviembre 2026',
+    tags: ['Mariscada', 'Gastronomía', 'Invierno', 'Aguiño'],
+    featured: false,
+    cover: 'https://illasatlanticasatico.es/fotos/cocina_percebes_01.jpg',
+    content: `# Mariscada de invierno en la ría de Arousa: qué pedir y cuándo
+
+El invierno invita a sentarse a la mesa sin prisa en la ría de Arousa. Fuera, el puerto sigue su ritmo; dentro, una fuente de marisco recién preparado pide poco más que buen producto y una cocción precisa. Pero acertar con una **mariscada de invierno en Arousa** no consiste en pedir de todo: conviene conocer las vedas, preguntar por la procedencia y dejar que la oferta del día decida parte del menú.`,
+  },
+
+  {
     id: '20',
     slug: 'corrubedo-en-invierno',
     cover: 'https://illasatlanticasatico.es/laminas/corrubedo-invierno_v.webp',
@@ -785,6 +801,7 @@ import { trc } from '../i18n/dataTranslations';
 import { Lang } from '../i18n/types';
 
 export const FOOTERS: Record<string, string> = {
+  '21': 'La centolla se encarga antes que la mesa; las fechas del ático, también conviene mirarlas con tiempo. Habla con Fernando en illasatlanticasatico.es y deja que la ría decida el menú.',
   '20': 'Volver a Aguiño al caer la tarde, con la ría en calma y la casa esperando con la chimenea encendida, es el cierre natural de este plan de invierno. Consulta las fechas y reserva tu escapada: en temporada baja el parque es más tuyo.',
   '16': 'Elegiste bien la zona: la guía termina donde empieza la casa — en Aguiño, a diez minutos del centro de Ribeira y con la ría como vecina. Cuando quieras comprobar en persona lo que aquí se describe, mira las fechas.',
   '14': 'Cortegada espera a doscientos metros de Carril, al otro lado de la ría; se llega en barco y se recuerda como la isla del lauredal. De vuelta a Aguiño te espera la casa — con Sálvora, esa sí, delante de la terraza.',
