@@ -116,20 +116,20 @@ export function LonjaLens({ onBack, onOpenBooking, onOpenArticle }: LonjaLensPro
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="font-serif text-xl text-[#1A3A5C]">{t("Lonxa de Ribeira")}</h2>
               <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.18em] uppercase text-[#D4A017] border border-[#D4A017]/40 rounded-full px-3 py-1">
-                {t("subasta")} · 16:30 · L-V
+                {t("subastas todo el día")} · L-V
               </span>
             </div>
             <p className="mt-2 text-sm text-stone-600 leading-relaxed">
               <strong className="text-[#1A3A5C] font-medium">{t("La lonja más importante de Europa en pesca de bajura")}</strong>{". "}
-              {t("La flota de Ribeira descarga por la tarde y subasta de lunes a viernes a las 16:30. Aquí abajo, los lotes y precios de hoy en tiempo real, junto con los de Aguiño.")}
+              {t("Subastas todo el día, de lunes a viernes: cerco ~08:00, almeja ~15:00, crustáceos ~18:00 y el variado ~18:30, cantado a la vieja usanza. La lonja opera 24 horas: hasta 42 millones de kilos al año, 400 barcos y 1.200 trabajadores. El público puede ver las subastas (acceso controlado) y hay visitas guiadas: 881 076 880. La lonja de Ribeira no publica sus subastas en la plataforma pública de datos, así que en el panel en vivo verás Aguiño, Pobra do Caramiñal y Rianxo.")}
             </p>
             <a
-              href="https://www.lonxasgalegas40.gal/portal/lonjas-pujas/detail/64?openPanel=true"
+              href="https://lonxaderiveira.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A3A5C] hover:bg-[#132B44] text-white text-[11px] uppercase tracking-[0.16em] font-medium transition-colors"
             >
-              {t("Panel oficial de la subasta en tiempo real")} <ExternalLink className="w-3.5 h-3.5" />
+              {t("Web oficial de la lonja de Ribeira")} <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <p className="mt-2 text-[10px] text-stone-500">{t("Fuente oficial: Xunta de Galicia")} · lonxasgalegas40.gal</p>
           </div>
